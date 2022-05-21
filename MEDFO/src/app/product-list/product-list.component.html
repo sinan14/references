@@ -1,0 +1,927 @@
+
+<div class="ps-page">
+    <app-header></app-header>
+</div>
+
+
+ <!-- Google Tag Manager (noscript) -->
+ <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W32L424"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) →-->
+    <section class="inner_new_page_container" style="overflow: hidden;">
+    <div class="category_banner_cnt" > 
+       
+            <img src={{banner}} alt="" (click)= "bannerClick()" style="object-fit: cover;height: inherit;width: inherit;" >
+     
+        
+    </div>
+
+ <section class="breadcrumbs_sec">
+ <div class="container" >
+         <a>Product</a> <a >></a> <a>Category</a> <a >></a> <a >{{mainCat}}</a>
+     </div>
+ </section>
+
+
+
+
+ <section class="produc_list_categ_scr">
+     <div class="container">
+
+         <div class="row">
+             <div class="col-md-6">
+                 <h3 class="produc_list_categ_cnt_head" style="margin-top: 10px;">{{mainCat}}</h3>
+             </div>
+             <div class="col-md-6"> 
+               
+                <div class="produc_list_sort_sec" >
+                    <span>Sort by</span>
+                    <select name="" class="produc_list_sort_select" (change)="lowToHigh($event)" >
+                        <option value="newest"selected>Newest</option>
+                        
+                        <option value="popularity">Popularity</option>
+                        <option value="lowToHigh"  >Price - Low to High</option>
+                        <option value="highToLow">Price - High to Low</option>
+                        
+                    
+                    </select>
+                </div>
+             </div>
+         </div>
+     
+         <div class="produc_list_categ_cnt" *ngIf="subcategoryData.length>0 ;else e" >
+             <div class="ps-section__carousel"  id="product-list-first">
+
+                      <owl-carousel-o [options]="customOptions">
+              
+                          <ng-container  *ngFor="let pro of subcategoryData">
+                          <ng-template carouselSlide [id]="pro._id">
+                              <div class="ps-section__product ">
+                                  <div class="ps-product ps-product--standard ">
+                                    <div class="ps-product__thumbnail shopby" (click)="productListing(pro._id)" 
+                                    [ngClass]="subcatFirstId==pro._id?'prdoct_active':''" >
+                                        <a class="ps-product__image ">
+                                             <img src={{pro.image}} alt="alt" > 
+                                       
+                                          </a>
+                                        </div>
+                                      <div class="ps-product__content">
+                                          <h5 class="ps-product__title"><a >{{pro.title}}</a></h5> </div>
+                                  </div>
+                              </div>
+                          </ng-template>
+                          </ng-container>
+                          
+                      </owl-carousel-o>
+                       
+                     
+             </div>    
+            <ng-template #e>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <h3>No products found</h3>
+                </div>
+            </ng-template>
+         
+         </div>
+        
+     </div>
+ </section>
+<!-- Sort -->
+ <section class="product_list_sec">
+
+    <div class="product_filter_btn">Filter <i class="fa fa-angle-down"></i></div>
+  
+     <div class="container">
+         <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 product_mob_filter">
+                <div class="product_prd_left_sec">
+                    
+                    <div class="product_mob_filter_pop_close" data-dismiss="modal">
+                        <a><i class="fa fa-close"></i></a>
+                      </div>
+                    <div class="sort" *ngIf="suSubCategory.length > 0"> 
+                     <div class="product_prd_left_sec_head" >Sort By
+
+
+                     </div>
+                     
+                     <div class="product_prd_left_box sort-by"  *ngIf="suSubCategory.length > 0">
+                         <div class="sorting_by">
+                         <div class="product_prd_left_box_scrl" *ngFor="let sub of suSubCategory;let i=index">
+                             
+                             <div class="product_prd_left_box_row form-group">                                  
+                                     <div class="product_prd_left_box_img"><img src={{sub.image}} alt=""></div>
+                                     <input  type="checkbox" id="flt1_{{i}}"  name="ui"
+                                     [checked]="sub.checkedFlag?true:false"
+                                     (change)="sendData($any($event.target).checked,sub._id)"
+                               
+                                >
+                                     <label  class="product_prd_left_box_txt" for="flt1_{{i}}">{{sub.title}}</label>
+                             </div>
+
+                            </div>
+                        </div>
+                           
+                     </div>
+                     <div class="col-md-12"><hr class="flt_hr"></div>
+                    </div>
+
+
+                     
+
+                     <div class="product_prd_left_sec_head">Filters</div>
+                     <div class="product_prd_left_box">
+
+                         <div class="accordion">
+                             <div class="accordion-item"> 
+                               <a class="active">Price</a>
+                               <div class="content active wow fadeInUp" data-wow-delay="0.4s" style="padding-left: 0 !important;">
+                                 <div class="min" style="width: 100%; margin: 0px auto; display: flex; align-items: center; flex-direction: column;    margin-bottom: 20px;">
+                               
+                                <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (mouseup)="sliderValue()"></ngx-slider>
+                                <div class="row mt-2">
+                                <p class="col-md-6">Min value: <input type="number" [(ngModel)]="minValue" style="width: 100%;" (keyup)="minValueSend($event)"></p>
+                                <p class="col-md-6">Max value: <input type="number" style="width: 100%;" placeholder="5000" (keyup)="maxValueSend($event)"></p></div>
+                                   <!-- <svg id="histogram-view"></svg>
+                                   
+                                   <div style="margin-top: -30px; width: 100%;">
+                                      <input type="text" id="slider" />
+                                    </div>-->
+                                   </div>
+                               </div>
+                             </div>
+                             <div class="accordion-item" style="position: relative;">
+                                 <div class="flt_srch_ico"><i class="fa fa-search"></i></div>
+                               <a class="active">Brand  </a>
+                               <div class="content active wow fadeInUp" data-wow-delay="0.4s" >
+                                  
+                                <div class="flt_brt_search">
+                                
+                                    <input type="text" placeholder="Search Brand" (keyup)=searchBrand($event)>
+                                    <div class="flt_srch_btn"><i class="fa fa-search"></i></div>
+                                </div>
+                                <div class="filter_mn_bx form-group brands" *ngFor="let brand of brands1;let i=index">
+                                    <input type="checkbox" id="chk{{i}}" name="brnd" [checked]="searchValue" 
+                                     (change)="sendBrand($event,brand._id)">
+                                    <label class="product_prd_left_box_txt" for="chk{{i}}">{{brand.name}}<span>({{brand.count}})</span></label>
+                                </div>
+
+                                    
+
+                                     <div class="filter_mn_bx viewmore">
+                                         <a class="prd_view_mr_btn" style="color: #00AAFF !important; font-size: 13px !important;" (click)="viewMore()" *ngIf="brands1.length>=6">{{brandView}}</a>
+                                     </div>
+                               </div>
+                             </div>
+
+                             
+    
+
+
+                                 <div class="accordion-item" style="position: relative;">
+                                 <a class="active">Discounts</a>
+                                 <div class="content discounts active wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="filter_mn_bx form-group  brands" *ngFor="let dis of discountTest;let i=index">                                  
+                                        <input type="checkbox"
+                                        [(ngModel)]="dis.isChecked" 
+                                        [checked]="dis.isChecked"
+                                        id="ch{{i}}"
+                                         name="discount"
+                                        value={{dis}}
+                                        (change)="sendDiscount1(i)"
+                                    >
+                                        <label class="product_prd_left_box_txt" for="ch{{i}}">{{dis.name}}</label>
+                                    </div>
+                                     
+                                    
+
+                               </div>
+                               </div>
+                               
+
+
+                               <div class="accordion-item">
+                                <a class="active">Availability</a>
+                                <div class="content active acc_cnt_no_bdr wow fadeInUp" data-wow-delay="0.4s" >
+                                    <div class="filter_mn_bx form-group  brands">                                  
+                                        <input type="checkbox" id="flt0500" 
+                                     
+                                         (change)="stockAvailable($event)">
+                                        <label class="product_prd_left_box_txt" for="flt0500">Exclude Out of Stock</label>
+                                    </div>
+                                </div>
+                              </div>
+                            
+                             
+                             
+               
+                           </div>
+
+                     </div>
+
+
+
+
+                 </div>
+             </div>
+             <!--Product list-->
+             <div id="top-pro" class="col-lg-9 col-md-8 col-sm-12 col-xs-12 tb_full_wd">
+
+                 <div class="product_right_product_sec left-padd">
+                     
+
+                     <div class="row" *ngIf="productlist1.length>0;else e">
+                        
+                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"  *ngFor="let con of productlist1;let i=index">
+                             <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                 <div class="product_list_box_img">
+
+                                     <div class="prd_star_rate_sec ">
+                                        <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> {{con.rating}}</div> 
+                                        <span>Ratings</span>
+                                     </div>
+                                <div class="prd_discount_cpn_sec">
+                                    <div class="prd_discount_coupon" *ngIf="con.discount!=''">
+                                        {{con.discount}} <span>Discount</span>
+                                    </div>
+                                         <div class="prd_ml_sec">{{con.uom}}</div>
+                                    </div>
+                                    <div class="outofstock" *ngIf="con.stockStatus=='Out of stock'">
+                                        <span >Out of Stock</span>
+                                    </div>
+                                    <a (click)="productDetails(con)"><img src="{{con.image}}" alt="" (click)="productDetails(con)"></a>
+                             
+                                 </div>
+                                 <div class="product_list_box_text">
+                                     <a ><div class="product_list_box_text_prd_name" (click)="productDetails(con)">{{con.title}}</div></a>
+                                         <div class="product_list_box_text_prd_sub">{{con.brand}}</div>
+                                         <div class="product_list_box_text_prd_rate  search-prd-rate"><i class="fa fa-rupee"></i> {{con.spl_price}} <span  class="product_price_sec_currnt_rate"  *ngIf="con.spl_price !=con.price">{{con.price}}</span></div>
+                                 </div>
+                                 <div class="product_list_box_btn_row">
+                                    <!-- (click)="Add_To_Cart()" -->
+                                     <a><div class="product_list_box_btn"  (click)="Add_To_Cart(con._id,con.varientId,con)">Add to cart</div></a>
+                                     <a><div class="product_list_box_btn">Buy Now</div></a>
+                                 </div>
+
+                             </div>
+                         </div>
+                       </div>
+                       <ng-template #e>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                                <h3>No products found</h3>
+                            </div>
+                       </ng-template>
+
+                 </div>
+
+
+
+                
+<div class="popular_brand_sec first" *ngIf="productlist1.length>=6 && cartByBrand.length>0">
+    <div class="popular_brand_head">Cart By Brands</div>
+        <div class="ps-section__carousel" >
+              
+                <owl-carousel-o [options]="customOptions">
+              
+                    <ng-container  *ngFor="let cart of cartByBrand">
+                    <ng-template carouselSlide [id]="cart._id">
+                        <div class="ps-section__product wow fadeInUp" data-wow-delay="0.1s"  >
+                            <div class="ps-product ps-product--standard"  >
+                                <div class="ps-product__thumbnail shopby cartb" >
+                                    <a class="ps-product__image"  [routerLink]="['/brand',cart._id]">
+                                       <img src={{cart.image}} alt="alt"> 
+                                    </a>
+                                </div>
+                                <div class="ps-product__content">
+                                    <h5 class="ps-product__title"><a>{{cart.title}}</a></h5> </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    </ng-container>
+                    
+                </owl-carousel-o>               
+                     
+        </div>  
+
+
+</div>
+
+<!--Product lis-->
+<div class="row  left-padd">
+                        
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"  *ngFor="let con of productlist2">
+        <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+            <div class="product_list_box_img">
+
+                <div class="prd_star_rate_sec">
+                   <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> {{con.rating}}</div> 
+                   <span>Ratings</span>
+                </div>
+        <div class="prd_discount_cpn_sec">
+            <div class="prd_discount_coupon" *ngIf="con.discount!=''">
+                {{con.discount}} <span>Discount</span>
+            </div>
+                    <div class="prd_ml_sec">{{con.uom}}</div>
+              </div>
+
+                <div class="outofstock" *ngIf="con.stockStatus=='Out of stock'">
+                    <span>Out of Stock</span>
+                </div>
+                <a (click)="productDetails(con)"><img src="{{con.image}}" alt="" (click)="productDetails(con)"></a>
+                
+                </div>
+            <div class="product_list_box_text">
+                <a ><div class="product_list_box_text_prd_name" (click)="productDetails(con)">{{con.title}}</div></a>
+                    <div class="product_list_box_text_prd_sub">{{con.brand}}</div>
+                    <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> {{con.spl_price}} <span  class="product_price_sec_currnt_rate"  *ngIf="con.spl_price !=con.price">{{con.price}}</span></div>
+            </div>
+            <div class="product_list_box_btn_row">
+                <a><div class="product_list_box_btn"  (click)="Add_To_Cart(con._id,con.varientId,con)">Add to cart</div></a>
+                <a><div class="product_list_box_btn">Buy Now</div></a>
+            </div>
+
+        </div>
+    </div>
+
+
+    
+
+
+
+ </div>
+<!--Discount-->
+             <div class="popular_brand_sec"  *ngIf="productlist1.length>=6">
+                     <div class="popular_brand_head" style="    margin-bottom: 0;">Discounts That'll Blow Your Mind</div>
+                     <div class="price_range_sec">
+
+                      
+                             <div class="ps-section__carousel" >
+                                <owl-carousel-o [options]="customOptions">
+              
+                                    <ng-container  *ngFor="let cart of discount;let i=index"  >
+                                    <ng-template carouselSlide id="i">
+                                     
+                                     <div class="ps-section__product wow fadeInUp" data-wow-delay="0.1s">
+                                         <div class="ps-product ps-product--standard ">
+                                         
+                                                 <div class="price_range_box price_range_box_{{i+1}}" (click)="discountClick1(i)">
+                                               {{cart}}
+                                                       
+                                             </div>
+                                       
+                                          </div>
+                                    </div>
+                         
+                            
+
+                                         
+                                                 
+                                            
+                                           
+                                       
+                                         
+                                </ng-template>
+                            </ng-container>
+                            
+                        </owl-carousel-o> 
+                                 
+                             </div>  
+
+
+
+
+                         
+                     </div>
+
+
+
+
+                    <div class="row  left-padd">
+                        
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"  *ngFor="let con of productlist3">
+                            <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                <div class="product_list_box_img">
+
+                                    <div class="prd_star_rate_sec">
+                                       <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> {{con.rating}}</div> 
+                                       <span>Ratings</span>
+                                    </div>
+                                <div class="prd_discount_cpn_sec">
+                                    <div class="prd_discount_coupon" *ngIf="con.discount!=''">
+                                        {{con.discount}} <span>Discount</span>
+                                    </div>
+                                        <div class="prd_ml_sec">{{con.uom}}</div>
+                                   
+                                    </div>
+                                    <div class="outofstock" *ngIf="con.stockStatus=='Out of stock'">
+                                        <span>Out of Stock</span>
+                                    </div>
+                                    <a (click)="productDetails(con)"><img src="{{con.image}}" alt="" (click)="productDetails(con)"></a>
+                                    
+                                    </div>
+                                <div class="product_list_box_text">
+                                    <a ><div class="product_list_box_text_prd_name" (click)="productDetails(con)">{{con.title}}</div></a>
+                                        <div class="product_list_box_text_prd_sub">{{con.brand}}</div>
+                                        <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> {{con.spl_price}} <span  class="product_price_sec_currnt_rate" *ngIf="con.spl_price !=con.price">{{con.price}}</span></div>
+                                </div>
+                                <div class="product_list_box_btn_row">
+                                    <a><div class="product_list_box_btn"  (click)="Add_To_Cart(con._id,con.varientId,con)">Add to cart</div></a>
+                                    <a><div class="product_list_box_btn">Buy Now</div></a>
+                                </div>
+
+                            </div>
+                        </div>
+ 
+ 
+                        
+ 
+ 
+ 
+                     </div>
+
+
+
+
+
+                 </div>
+
+
+
+
+
+                 
+             </div>
+         </div>
+     </div>
+ </section>
+</section>
+
+
+
+<footer class="ps-footer ps-footer--5" style="padding-top: 1px;">
+         
+        <app-footer></app-footer>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+    
+     <div class="ps-search">
+         <div class="ps-search__content ps-search--mobile"><a class="ps-search__close"  id="close-search"><i class="icon-cross"></i></a>
+             <h3>Search</h3>
+             <form action="do_action" method="post">
+                 <div class="ps-search-table">
+                     <div class="input-group">
+                         <input class="form-control ps-input" type="text" placeholder="Search for products">
+                         <div class="input-group-append"><a><i class="fa fa-search"></i></a></div>
+                     </div>
+                 </div>
+             </form>
+             <div class="ps-search__result">
+                 <div class="ps-search__item">
+                     <div class="ps-product ps-product--horizontal">
+                         <div class="ps-product__thumbnail">
+                             <a class="ps-product__image">
+                                 <figure><img src="../../../assets/img/png\smade.png" alt="alt"></figure>
+                             </a>
+                         </div>
+                         <div class="ps-product__content">
+                             <h5 class="ps-product__title"><a>3-layer <span class='hightlight'>mask</span> with an elastic band (1 piece)</a></h5>
+                             <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate</p>
+                             <div class="ps-product__meta"><span class="ps-product__price">$38.24</span> </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="ps-search__item">
+                     <div class="ps-product ps-product--horizontal">
+                         <div class="ps-product__thumbnail">
+                             <a class="ps-product__image" href="#">
+                                 <!--<figure><img src="../../../assets/img/products\033.jpg" alt="alt"></figure>-->
+                             </a>
+                         </div>
+                         <div class="ps-product__content">
+                             <h5 class="ps-product__title"><a>3 Layer Disposable Protective Face <span class='hightlight'>mask</span>s</a></h5>
+                             <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate</p>
+                             <div class="ps-product__meta"><span class="ps-product__price sale">$14.52</span><span class="ps-product__del">$17.24</span> </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="ps-search__item">
+                     <div class="ps-product ps-product--horizontal">
+                         <div class="ps-product__thumbnail">
+                             <a class="ps-product__image" href="#">
+                                 <figure><img src="../../../assets/img/png\smade.png" alt="alt"></figure>
+                             </a>
+                         </div>
+                         <div class="ps-product__content">
+                             <h5 class="ps-product__title"><a>3-Ply Ear-Loop Disposable Blue Face <span class='hightlight'>mask</span></a></h5>
+                             <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate</p>
+                             <div class="ps-product__meta"><span class="ps-product__price sale">$14.99</span><span class="ps-product__del">$38.24</span> </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="ps-search__item">
+                     <div class="ps-product ps-product--horizontal">
+                         <div class="ps-product__thumbnail">
+                             <a class="ps-product__image" href="#">
+                                 <!--<figure><img src="../../../assets/img/products\050.jpg" alt="alt"></figure>-->
+                             </a>
+                         </div>
+                         <div class="ps-product__content">
+                             <h5 class="ps-product__title"><a>Disposable Face <span class='hightlight'>mask</span> for Unisex</a></h5>
+                             <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate</p>
+                             <div class="ps-product__meta"><span class="ps-product__price sale">$8.15</span><span class="ps-product__del">$12.24</span> </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+   
+     <div class="ps-menu--slidebar">
+         <div class="ps-menu__content">
+             <div id="close-menu" class="overlay_mob_menu"></div>
+     <div class="mobile_menu_sec">
+
+         <a href="#"><div class="mobile_menu_sec_head">Login / Sign Up <span><i class="fa fa-angle-right"></i></span></div></a>
+         <div class="mobile_menu_sec_banner">
+             <div class="mobile_menu_banner_left_txt">
+                 <strong>Exciting offers are Waiting for you</strong>
+                 <span>Get flat 74% Off on Medimall App</span>
+                  <div class="mobile_menu_banner_btm_sec">
+                 <a href="#"><div class="mobile_menu_banner_btm_btn"><img src="../../../assets/img/menu/appstore.png" alt=""></div></a>
+                 <a href="#"><div class="mobile_menu_banner_btm_btn"><img class="" src="../../../assets/img/menu/playstore.png"></div></a>
+             </div>
+             </div>
+             <div class="mobile_menu_banner_right_img_sec"><img src="../../../assets/img/menu/bann_img.png" alt=""></div>
+            
+         </div>
+         
+         <div class="mobile_menu_mn_1 mn_bdr_btm">
+             <a href="#"> <div class="mobile_menu_mn_ico"><img src="../../../assets/img/menu/home.png" alt=""></div>
+             <div class="mobile_menu_mn_text">Home</div></a>
+         </div>
+
+         <div class="mobile_menu_mn_1 ">
+             <a  href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><div class="mob_btn_left_ico"><img src="../../../assets/img/menu/odr_top1.png" alt=""></div>
+             <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="../../../assets/img/menu/order_med.png" alt=""></div>
+             <div class="mobile_menu_mn_text">Order Medicine<br>
+             <span>A home where you will find that healing touch that will cure all your health</span>
+             </div></a>
+
+             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                 <a class="dropdown-item" href="#">Action</a>
+                 <a class="dropdown-item" href="#">Another action</a>
+                 <a class="dropdown-item" href="#">Something else here</a>
+             </div>
+         </div>
+
+         <div class="mobile_menu_mn_1 ">
+             <a  href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><div class="mob_btn_left_ico"><img src="../../../assets/img/menu/odr_top2.png" alt=""></div>
+             <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="../../../assets/img/menu/order_heal.png" alt=""></div>
+             <div class="mobile_menu_mn_text">Order Healthcare Products<br>
+             <span>A home where you will find that healing touch that will cure all your health</span>
+             </div></a>
+
+             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                 <a class="dropdown-item" href="#">Action</a>
+                 <a class="dropdown-item" href="#">Another action</a>
+                 <a class="dropdown-item" href="#">Something else here</a>
+             </div>
+         </div>
+
+
+         <div class="mobile_menu_mn_1 mn_bdr_btm" style="padding-right: 50px;margin-bottom: 10px ;">
+             <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="../../../assets/img/menu/offer.png" alt=""></div>
+             <div class="mobile_menu_mn_text">Offers<br>
+             <span>A home where you will find that healing touch that will cure all your health</span>
+             </div>
+             <div class="mob_mn_new_btn">NEW</div>
+              </a>
+         </div>
+
+         
+         <div class="mobile_menu_mn_1 "  style="padding: 5px 15px;">
+             <a  href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="../../../assets/img/menu/account.png" alt=""></div>
+             <div class="mobile_menu_mn_text">MY Account<br>
+             <span>A home where you will find that healing touch that will cure all your health</span>
+             </div></a>
+
+             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                 <a class="dropdown-item" href="#">Action</a>
+                 <a class="dropdown-item" href="#">Another action</a>
+                 <a class="dropdown-item" href="#">Something else here</a>
+             </div>
+         </div>
+
+         <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+             <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="../../../assets/img/menu/orders.png" alt=""></div>
+             <div class="mobile_menu_mn_text">My Orders<br>
+             <span>A home where you will find that healing touch that will cure all your health</span>
+             </div>
+              </a>
+         </div>
+
+         
+         <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+             <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="../../../assets/img/menu/medfill.png" alt=""></div>
+             <div class="mobile_menu_mn_text">Med Refill<br>
+             <span>A home where you will find that healing touch that will cure all your health</span>
+             </div>
+              </a>
+         </div>
+
+         <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+             <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="../../../assets/img/menu/membership.png" alt=""></div>
+             <div class="mobile_menu_mn_text">Medpride Membership<br>
+             <span>A home where you will find that healing touch that will cure all your health</span>
+             </div>
+              </a>
+         </div>
+         <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+             <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="../../../assets/img/menu/health_vault.png" alt=""></div>
+             <div class="mobile_menu_mn_text">Health Vault<br>
+             <span>A home where you will find that healing touch that will cure all your health</span>
+             </div>
+              </a>
+         </div>
+
+         <div class="mobile_menu_mn_1 mn_bdr_btm"  style="padding: 5px 15px;margin-bottom: 10px ;padding-bottom: 15px;">
+             <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="../../../assets/img/menu/wallet.png" alt=""></div>
+             <div class="mobile_menu_mn_text">Wallet<br>
+             <span>A home where you will find that healing touch that will cure all your health</span>
+             </div>
+              </a>
+         </div>
+
+         <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+             <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="../../../assets/img/menu/refer_earn.png" alt=""></div>
+             <div class="mobile_menu_mn_text">Refer and Earn<br>
+             <span>A home where you will find that healing touch that will cure all your health</span>
+             </div>
+              </a>
+         </div>
+
+         <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+             <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="../../../assets/img/menu/conact_us.png" alt=""></div>
+             <div class="mobile_menu_mn_text">Contact Us<br>
+             <span>A home where you will find that healing touch that will cure all your health</span>
+             </div>
+              </a>
+         </div>
+
+         <div class="mobile_menu_mn_1 mn_bdr_btm" style="padding: 5px 15px;padding-bottom:30px">
+             <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="../../../assets/img/menu/faq.png" alt=""></div>
+             <div class="mobile_menu_mn_text">FAQ<br>
+             <span>A home where you will find that healing touch that will cure all your health</span>
+             </div>
+              </a>
+         </div>
+         <div class="mobile_menu_mn_1 mn_bdr_btm"></div>
+         </div>
+       </div>
+     </div>
+     <button class="btn scroll-top"><i class="fa fa-angle-double-up"></i></button>
+     <div class="ps-preloader" id="preloader">
+         <div class="ps-preloader-section ps-preloader-left"></div>
+         <div class="ps-preloader-section ps-preloader-right"></div>
+     </div>
+    
+
+     
+                                                 
+     <style type="text/css">
+        .intro {
+          height: auto;
+          min-height: 100vh;
+          text-align: center;
+          background-color: teal;
+        }
+        </style>
+        
+        
+        <script type="text/javascript">
+        function inVisible(element) {
+          //Checking if the element is
+          //visible in the viewport
+          var WindowTop = $(window).scrollTop();
+          var WindowBottom = WindowTop + $(window).height();
+          var ElementTop = element.offset().top;
+          var ElementBottom = ElementTop + element.height();
+          //animating the element if it is
+          //visible in the viewport
+          if ((ElementBottom <= WindowBottom) && ElementTop >= WindowTop) animate(element);
+        }
+        
+        function animate(element) {
+          //Animating the element if not animated before
+          if (!element.hasClass('ms-animated')) {
+              var maxval = element.data('max');
+              var html = element.html();
+              element.addClass("ms-animated");
+              $({
+                  countNum: element.html()
+              }).animate({
+                  countNum: maxval
+              }, {
+                  //duration 5 seconds
+                  duration: 5000,
+                  easing: 'linear',
+                  step: function () {
+                      element.html(Math.floor(this.countNum) + html);
+                  },
+                  complete: function () {
+                      element.html(this.countNum + html);
+                  }
+              });
+          }
+        }
+        //When the document is ready
+        $(function () {
+          //This is triggered when the
+          //user scrolls the page
+          $(window).scroll(function () {
+              //Checking if each items to animate are 
+              //visible in the viewport
+              $("h2[data-max]").each(function () {
+                  inVisible($(this));
+              });
+          })
+        });
+        </script>
+        
+        
+        
+        <script src="../../../assets/plugins\jquery.min.js"></script>
+        <script src="../../../assets/plugins\popper.min.js"></script>
+        <script src="../../../assets/plugins\bootstrap4\js\bootstrap.min.js"></script>
+        
+        <script src="../../../assets/plugins\select2\dist\js\select2.full.min.js"></script>
+        <script src="../../../assets/plugins\owl-carousel\owl.carousel.min.js"></script>
+        <script src="../../../assets/plugins\jquery-bar-rating\dist\jquery.barrating.min.js"></script>
+        <script src="../../../assets/plugins\lightGallery\dist\js\lightgallery-all.min.js"></script>
+        <script src="../../../assets/plugins\slick\slick\slick.min.js"></script>
+        <!-- <script type="text/javascript" src="https://www.medfoliotechnologies.com/js/wow.js"></script> -->
+        
+        <script src="../../../home\js\script.js" type="be9dfe49072cb4d1912e7519-text/javascript"></script>
+        <script src="../../../home\js\output.min.js" type="be9dfe49072cb4d1912e7519-text/javascript"></script>
+        
+        
+        <script src="../../../js/rocket-loader.min.js" data-cf-settings="be9dfe49072cb4d1912e7519-|49" defer=""></script>
+        
+        <script>
+        var hideTimeout = null;
+        
+        var show = function () {
+          $('.sticky-container').show();
+        }
+        
+        var hide = function () {
+          $('.sticky-container').hide();
+        }
+        
+        $(document).ready(function () {
+        
+          $(window).scroll(function (e) {
+              if (hideTimeout) {
+                  window.clearTimeout(hideTimeout);
+                  hideTimeout = null;
+              }
+              hide();
+        
+              window.setTimeout(show, 1000);
+          });
+        
+        });
+        
+        
+        </script>
+        
+        
+        
+        <script>
+        
+        $(window).ready(function () {
+          setInterval(function () {
+              $('.loader-container').addClass("active")
+          }, 1500);
+        
+        });
+        
+        </script>
+        <!-- custom code-->
+        <script>
+            const config = {
+            width: 200,
+            barHeight: 50,
+            barWidth: 6,
+            barGap: 5,
+            barRadius: 4,
+            lang: "tr",
+            min: new Date(2004, 11, 0).valueOf(),
+            max: new Date(2017, 11, 1000).valueOf(),
+            prettify: function (ts) {
+              return new Date(ts).toLocaleDateString("en", {
+                //year: 'numeric',
+               // month: 'long',
+                day: 'numeric'
+              });
+            }
+          };
+          
+          // x scale for time
+          var x = d3.scaleTime()
+              .domain([config.min, config.max])
+              .range([0, config.width])
+              .clamp(true);
+          
+          // y scale for histogram
+          var y = d3.scaleLinear()
+              .range([config.barHeight, 0]);
+          
+          ////////// histogram set up //////////
+          var histogram = d3.histogram()
+              .value(d => d.date)
+              .domain(x.domain())
+              .thresholds(config.width/(config.barWidth+config.barGap));
+          
+          var svg = d3.select("#histogram-view")
+              .attr("width", config.width)
+              .attr("height", config.barHeight);
+          
+          var hist = svg.append("g")
+              .attr("class", "histogram");
+          
+          d3.csv("https://gist.githubusercontent.com/oguzhaninan/ae7466169c06d9c145e028ff398b6eb3/raw/be32fbc76953c349c9c695e98a69f1a46d775375/example.csv", prepare, function(data) {
+            // group data for bars
+            var bins = histogram(data);
+          
+            // y domain based on binned data
+            y.domain([0, d3.max(bins, d => d.length)]);
+          
+            var bar = hist.selectAll(".bar")
+                .data(bins)
+                .enter()
+                .append("g")
+                .attr("class", "bar")
+                .attr("transform", d => `translate(${x(d.x0)}, ${y(d.length)})`);
+                
+            bar.append("rect")
+                .attr("class", "bar")
+                .attr("x", 1)
+                .attr("rx", config.barRadius)
+                .attr("width", config.barWidth)
+                .attr("height", d => config.barHeight - y(d.length))
+                .attr("fill", '#0091ff');
+          })
+          
+          var parseDate = d3.timeParse("%d-%b-%y")
+          function prepare(d) {
+            d.date = parseDate(d.date);
+            d.value = +d.value;
+            return d;
+          }
+          </script>
+        
+        <script src="../../../js\main.js"></script>
+        <!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.8.3/TweenMax.min.js"></script>
+              <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+              <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script> -->
+        
+        <script type="text/javascript">
+        
+        const items = document.querySelectorAll(".accordion a");
+        
+        function toggleAccordion() {
+          this.classList.toggle('active');
+          this.nextElementSibling.classList.toggle('active');
+        }
+        
+        items.forEach(item => item.addEventListener('click', toggleAccordion));
+        
+        </script>
+        
+        <script>
+        wow = new WOW({
+          animateClass: 'animated',
+          offset: 100,
+          callback: function (box) {
+              console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+          }
+        });
+        wow.init();
+        document.getElementById('moar').onclick = function () {
+          var section = document.createElement('section');
+          section.className = 'section--purple wow fadeInDown';
+          this.parentNode.insertBefore(section, this);
+        };
+        </script>

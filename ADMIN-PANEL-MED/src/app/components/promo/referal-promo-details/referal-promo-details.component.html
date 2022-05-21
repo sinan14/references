@@ -1,0 +1,66 @@
+<div class="container-fluid referal_promoo">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card tab2-card">
+
+                <div class="card-body tab2-card">
+                    <h5 style="color: white;opacity: 0.7;"> Referral Promotion</h5>
+
+                    <div class="col-md-6 mt-3 tab-pane fade active show" id="account" role="tabpanel"
+                        aria-labelledby="account-tab">
+                        <input type="text" class="form-control form-control-text added search-relation" placeholder="SEARCH BY NAME" (keyup)="Search_Name($event)">
+                        <div class="table-sorter-wrapper  table-responsive col-md-12 mt-4 p-0">
+                            <h5><span style="opacity: 0.7;">New user will get :</span> {{newUser}}</h5>
+                            <h5><span style="opacity: 0.7;">Referral person will get :</span> {{referalUser}}</h5>
+                            <h5><span style="opacity: 0.7;"> Referral person will get benefits on :</span> {{benefit}}</h5>
+                            <table id="sortable-table-2" class="table table-bordered mt-3">
+                                <thead class="t-head">
+                                    <tr>
+                                        <th class="sortStyle">Sl.No</th>
+                                        <th class="sortStyle">New User</th>
+                                        <th class="sortStyle">Referral Person</th>
+                                        <th class="sortStyle">Registered Date</th>
+                                        <!-- <th class="sortStyle">Total medcoin issued</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody *ngIf="User_Details_Array.length">
+                                    <tr *ngFor="let a of User_Details_Array">
+                                        <td style="color: white">{{a.sl}}</td>
+                                        <td  style="color: white">{{a.new_user}}</td>
+                                        <td  style="color: white">{{a.ref_user}}</td>
+                                        <td  style="color: white">{{a.date}}</td>
+                                        <!-- <td></td> -->
+                                    </tr>
+                                </tbody>
+                                <tbody *ngIf="!User_Details_Array.length" style="text-align: center;align-items: center;">
+                                    <tr style="text-align: center;align-items: center;">
+                                        <h5 style="text-align: center;">No Data Available</h5>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+                            <div class="pagination-button">
+                                <button (click)=" get_USER_DETAILS_BY_ID(current_page - 1, 10)"
+                                    *ngIf="hasPrevPage">Prev</button>
+                                <button (click)=" get_USER_DETAILS_BY_ID( 1, 10)"
+                                    *ngIf="current_page > 1">First</button>
+                                <button (click)=" get_USER_DETAILS_BY_ID(current_page - 1, 10)"
+                                    *ngIf="hasPrevPage">{{current_page - 1}}</button>
+                                <button (click)=" get_USER_DETAILS_BY_ID(current_page, 10)"
+                                    *ngIf="current_page > 0">{{current_page}}</button>
+                                <button (click)=" get_USER_DETAILS_BY_ID(current_page + 1, 10)"
+                                    *ngIf="hasNextPage">{{current_page+1}}</button>
+                                <button (click)=" get_USER_DETAILS_BY_ID(total_page, 10)"
+                                    *ngIf="hasNextPage">Last</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

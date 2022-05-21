@@ -1,0 +1,178 @@
+.card-data{
+  background-color: #00486D;
+  align-content: center;
+  border-radius: 15px;
+  opacity: 0.7;
+  position: relative;
+  width: 100%;
+  height: 94%;
+  margin: 13px 0 -3px 0;
+  color: #FFFFFF;
+}
+.shyam {
+  color: #ffffff;
+  opacity: 1;
+  font-weight: 400;
+  font-size: 11px;
+  text-align: left;
+}
+
+.team-name {
+  padding-top: 16px;
+  padding-bottom: 0;
+}
+
+p.ligth{
+  float: left;
+  margin: 0px 0px 0px 16px;
+}
+
+
+.header_name{
+  color: white;
+  font-weight: lighter;
+  font-size: 15px;
+  padding-left: 6%;
+}
+
+// .card-data :hover{
+//   background: none !important;
+//     color: #FFFFFF;
+//     opacity: 0.5;
+// }
+
+.span-data{
+  justify-content: space-between;
+  padding: 7px 19px 8px 17px;
+  border-radius: 19px 0px 0px 19px;
+  float: right;
+  background: #042B3F 0% 0% no-repeat padding-box;
+  opacity: 1;
+  color: #FFFFFF;
+}
+h5,label,p,table td th{
+  color: white;
+  opacity: 0.5;
+  font-size: 12px;
+}
+
+
+
+/*Button CSS*/
+.btn{
+  color: #99b2bf ;
+  font-weight: 400;
+}
+
+.btn-dark-rounded{
+  margin-left: 12px;
+  background-color: #00283d;
+  border: unset;
+  border-radius: 10.25em;
+  }
+
+  .btn-inverse-dark{
+    background-color: #00486D;
+    background-image: none;
+    border: unset;
+    border-radius: 10.25em;
+  }
+
+  .search-bar{
+    background-color: #00486d;
+    padding:0%;
+    width: 81%;
+    height: 30%;
+    padding-top: 1%;
+    border-radius: 70px;
+  }
+  
+//  .form-control{
+//     background: #033752;
+//     margin: 15px 57px 0 161px;
+//     padding: 4px 0 6px 17px;
+//     width: 70%;
+//   }
+
+  .form-control{
+    background: #00496E;
+    color: white;
+    opacity: 0.5;
+    border: 1px solid #FFFFFF;
+  }
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.modal-body, .modal-header, .modal-footer{
+    background-color: #00496E;
+    color:#fff;
+    width: 100%;
+    border-bottom: none !important;
+    border-top: none !important;
+    
+}
+
+.modal-header{
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.modal-footer{
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+th.lightwhite {
+  color: #FFFFFF;
+  opacity: 0.5;
+  font-weight: 400;
+  padding: 14px 0px 0px 43px;
+  text-align: left;
+}
+img.iconimages {
+  border-radius: 50%;
+  margin: 0px 0px 0px 13px;
+  object-fit: contain;
+}
+input.form-control.costmr_srch {
+  text-align: left;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  opacity: 0.63;
+}
+span.lightwhite
+{
+color: #FFFFFF;
+opacity: 0.5;
+margin: 0px 0px 0px 16px;
+}
+
+.edit-box{
+  position: absolute;
+  right: 15px;
+  margin-bottom: 10px;
+}
+
+.edit-icon{
+  color: white;
+  opacity: 0.5;
+  font-size: 14px;
+  padding: 6px;
+  margin: 1px;
+  cursor: pointer;
+}
+
+.alert-no-found{
+  color: white;
+}
+
+.al-center{
+  margin-top: 3%;
+  align-items: center;
+}
+
+.edit-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+

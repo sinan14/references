@@ -1,0 +1,290 @@
+<body>
+  <section  class="save_section_container">
+    <a routerLink="/" style="cursor: pointer;">
+      <div class="membership_backto_home_btn">
+          <div class="membership_backto_home_btn_ico"><img src="assets/img/membership/home.png" alt=""></div>
+          Back To Home
+      </div>
+  </a>
+    <div class="container">
+      <div class="save_logo_container_sec">
+        <img src="assets/img/save/med-savings.png" />
+      </div>
+
+      <div class="save_feature_sec">
+        <div class="col-md-12 saving-content">
+          <h3>Super {{ myBenefits.planName }} savings</h3>
+          <p>In the last {{ myBenefits.daysAfterMemberShipPurchase }} days</p>
+        </div>
+      </div>
+
+      <div class="save-row">
+        <div class="save-blue1">
+          <div class="save-blue-content">
+            <img src="assets/img/save/save-del.svg" />
+
+            <h5>Cash Back</h5>
+          </div>
+          <h3><i class="fa fa-inr"></i> {{ myBenefits.cashBackAmount }}</h3>
+          <p>Availed</p>
+        <img class="overlaps" src="assets/img/save/cash.svg">
+        </div>
+        <div class="save-blue1">
+          <div class="save-blue-content">
+            <img src="assets/img/save/save-dis.svg" />
+
+            <h5>Discount</h5>
+          </div>
+          <h3><i class="fa fa-inr"></i>{{ myBenefits.discount }}</h3>
+          <p>Redeemed</p>
+          <img class="overlaps" src="assets/img/save/tag.svg">
+        </div>
+        <div class="save-blue1">
+          <div class="save-blue-content">
+            <img src="assets/img/save/save-cash.svg" />
+            <h5>Delivery <br />Charges</h5>
+          </div>
+          <h3><i class="fa fa-inr"></i>{{ myBenefits.deliveryCharges }}</h3>
+          <p>Saved</p>
+          <img class="overlaps" src="assets/img/save/truck.svg">
+        </div>
+      </div>
+
+      <div class="Save-images">
+        <div class="container">
+          <div class="row save-second">
+            <div class="save-imgs">
+              <div class="save-carousel shines">
+                <span class="save-badge" *ngIf="myBenefits.freeDelivery == 0"
+                  >Zero left</span
+                >
+                <span class="save-badge" *ngIf="myBenefits.freeDelivery > 0"
+                  >{{ myBenefits.freeDeliveryLeftInWords }} left</span
+                >
+                <div class="freeDelivery">
+                  <a class="ps-product__image">
+                    <figure>
+                      <img
+                        src="../../assets/img/save\save-sec-1.png"
+                        alt="alt"
+                        class="save-car-img"
+                      />
+                    </figure>
+                  </a>
+
+                  <!-- <div class="dots">
+                    <span class="dot-fulled"></span>
+                    <span class="dot-border"></span>
+                    <span class="dot-border"></span>
+                    <span class="dot-border"></span>
+                    <span class="dot-border"></span>
+                  </div> -->
+                  <div class="dots">
+                    <ng-container
+                      *ngFor="
+                        let hv of myBenefits.fakeArray;
+                        let RowIndex = index
+                      "
+                    >
+                      <span
+                        [class.dot-fulled]="
+                          RowIndex < myBenefits.freeDeliveryUsed
+                        "
+                        [class.dot-border]="
+                          RowIndex >= myBenefits.freeDeliveryUsed
+                        "
+                      ></span>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="save-img-conet"
+                style="
+                  background: transparent
+                    linear-gradient(90deg, #ffaf5c 0%, #ff5cdd 100%) 0% 0%;
+                "
+              >
+                <p>Free Delivery</p>
+              </div>
+            </div>
+
+            <div class="save-imgs">
+              <div class="save-carousel shines">
+                <span class="save-badge" *ngIf="myBenefits.freeDelivery == 0"
+                  >Zero left</span
+                >
+                <span class="save-badge" *ngIf="myBenefits.freeDelivery > 0"
+                  >{{ myBenefits.freeDeliveryLeftInWords }} left</span
+                >
+
+                <div id="fastDelivery">
+                  <a class="ps-product__image">
+                    <figure>
+                      <img
+                        src="assets/img/save\save-sec-2.png"
+                        alt="alt"
+                        class="save-car-img"
+                      />
+                    </figure>
+                  </a>
+
+                  <div class="dots">
+                    <ng-container
+                      *ngFor="
+                        let hv of myBenefits.fakeArray;
+                        let RowIndex = index
+                      "
+                    >
+                      <span
+                        [class.dot-fulled]="
+                          RowIndex < myBenefits.freeDeliveryUsed
+                        "
+                        [class.dot-border]="
+                          RowIndex >= myBenefits.freeDeliveryUsed
+                        "
+                      ></span>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="save-img-conet"
+                style="
+                  background: transparent
+                    linear-gradient(
+                      90deg,
+                      #5c5cff 0%,
+                      #d95cff 100%,
+                      #ff5cdd 100%
+                    )
+                    0% 0%;
+                "
+              >
+                <p>Fast Delivery</p>
+              </div>
+            </div>
+
+            <div class="save-imgs">
+              <div class="save-carousel shines">
+                <span class="save-badge"
+                  >Earned : <i class="fa fa-rupee"></i>
+                  {{ myBenefits.cashBackAmount }}</span
+                >
+                <img
+                  src="assets/img/save\save-sec-3.png"
+                  alt="alt"
+                  class="save-car-img"
+                />
+              </div>
+              <div
+                class="save-img-conet"
+                style="
+                  background: transparent
+                    linear-gradient(
+                      90deg,
+                      #3ecdd2 0%,
+                      #5c67ff 100%,
+                      #ff5cdd 100%
+                    )
+                    0% 0%;
+                "
+              >
+                <p>{{ myBenefits.cashBack }}% Cash Back</p>
+              </div>
+            </div>
+
+            <div class="save-imgs">
+              <div class="save-carousel">
+                <img
+                  src="assets/img/save/fft.png"
+                  alt="alt"
+                  class="save-car-img"
+                />
+              </div>
+              <div
+                class="save-img-conet"
+                style="
+                  background: transparent
+                    linear-gradient(90deg, #ffaf5c 0%, #ff5cdd 100%) 0% 0%;
+                "
+              >
+                <p>FolioFit Membership</p>
+              </div>
+            </div>
+          </div>
+          <div class="row save-sec-2">
+            <div class="save-imgs">
+              <div class="save-carousel">
+                <img
+                  src="assets/img/save/exclusive.png"
+                  alt="alt"
+                  class="save-car-img"
+                />
+              </div>
+              <div
+                class="save-img-conet"
+                style="
+                  background: transparent
+                    linear-gradient(
+                      90deg,
+                      #5c5cff 0%,
+                      #d95cff 100%,
+                      #ff5cdd 100%
+                    )
+                    0% 0%;
+                "
+              >
+                <p>Exclusive Offers</p>
+              </div>
+            </div>
+
+            <div class="save-imgs">
+              <div class="save-carousel">
+                <img
+                  src="assets/img/save/priority.png"
+                  alt="alt"
+                  class="save-car-img"
+                />
+              </div>
+              <div
+                class="save-img-conet"
+                style="
+                  background: transparent
+                    linear-gradient(
+                      90deg,
+                      #3ecdd2 0%,
+                      #5c67ff 100%,
+                      #ff5cdd 100%
+                    )
+                    0% 0%;
+                "
+              >
+                <p>Priority Support</p>
+              </div>
+            </div>
+
+            <div class="save-imgs">
+              <div class="save-carousel">
+                <img
+                  src="assets/img/save/ten.png"
+                  alt="alt"
+                  class="save-car-img"
+                />
+              </div>
+              <div
+                class="save-img-conet"
+                style="
+                  background: transparent
+                    linear-gradient(90deg, #ffaf5c 0%, #ff5cdd 100%) 0% 0%;
+                "
+              >
+                <p>{{ myBenefits.miniMumOffer }}% off on Outlets</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

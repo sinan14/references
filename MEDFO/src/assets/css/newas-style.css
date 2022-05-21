@@ -1,0 +1,201 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+.category_banner1 {
+    width: 100%;
+    display: inline-block;
+    background-color: #a4d7fd;
+    margin-top: 30px;
+    background-image: url(../img/demo/banrcarinnerpage.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.category_banner1_cnt_left_img {
+    width: 25%;
+    height: auto;
+    float: left;
+    display: flex;
+}
+.category_banner1_cnt {
+    width: 100%;
+    height: auto;
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+}
+.category_banner1_cnt_right_txt {
+    font: normal normal 600 56px/62px Poppins;
+    letter-spacing: 0px;
+    color: #027AB6;
+    font-size: 26px;
+    padding: 41px 15px;
+}
+span.unveil {
+    font-size: 40px;
+    font-weight: 600;
+}
+section.wishmillons h4 {
+    letter-spacing: 0px;
+    color: #777777;
+    opacity: 0.7;
+    text-align: center;
+    padding: 12px 0;
+    font-weight: 400;
+}
+.product_prd_left_sec1 {
+    float: left;
+    width: 100%;
+
+}
+.product_prd_left_box1 {
+    width: 100%;
+    height: auto;
+    float: left;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 4px 4px 16px #00000017;
+    border-radius: 0 0 6px 6px;
+    margin-top: -7px;
+}
+.itemfiltr {
+    padding: 0 30px;
+}
+.product_prd_left_sec_head1 {
+    width: 100%;
+    height: auto;
+    font-size: 18px;
+    font-weight: 600;
+    float: left;
+    text-align: center;
+    margin: 24px 0 8px 1px;
+    color: #161616;
+    opacity: 1;
+}
+.product_prd_left_sec_head1::after {
+    border: 1px #B1B1B1 solid !important;
+    position: absolute;
+    left: 30px;
+    width: 268px;
+    content: '';
+    opacity: 0.7;
+    margin: 36px 0 0 0;
+}
+.filter_mn_bx.form-group.mainnew {
+    margin: 30px 0 0 0;
+}
+
+
+/* --------------search for career innerpage----------- */
+
+#custom-search-input .search-query {
+    box-shadow: 4px 7px 15px #0000000f;
+    border-radius: 6px;
+    opacity: 1;
+    background: #fff;
+    border: 0;
+}
+input.search-query.form-control::placeholder {
+    font-size: 20px;
+    opacity: 0.4;
+    color: #777777;
+    font-weight: 600;
+}
+
+#custom-search-input button {
+    border: 0;
+    background: none;
+    margin-top: 2px;
+    position: relative;
+    left: -42px;
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #161e33;
+    font-size: 27px;
+}
+
+.search-query:focus + button {
+    z-index: 3;   
+}
+.form-control:focus {
+    outline: none;
+    border-color: #ababab;
+}
+section.job h4 {
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 0.3;
+    text-align: center;
+}
+section.searchbox {
+    padding-top: 0;
+    position: relative;
+}
+.finacemain {
+    box-shadow: 7px 7px 36px #0000000f;
+    border-radius: 15px;
+    opacity: 1;
+    width: 100%;
+    height: 137px;
+    background: #fff;
+    margin: 0 0px;
+    padding: 10px 15px;
+    margin-top: 30px;
+}
+.finacemain label {
+    float: right;
+}
+i.fa.fa-angle-right.design {
+    margin: 0 0 0px 7px;
+    font-size: 17px;
+}
+.finacemain p {
+    margin: 6px 0;
+    color: #000;
+    opacity: 0.7;
+}
+section.designmain {
+    padding: 0;
+}
+.diamound {
+    position: absolute;
+    top: -88px;
+    right: -125px;
+    width: 24%;
+}
+.whitedesign {
+    height: 37px;
+    width: 22%;
+    margin: 0 0 0 34px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 24px #0000000d;
+    opacity: 1;
+}
+
+/* ----------media break point--------- */
+ /* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .whitedesign {
+        display: none;
+    }
+    span.unveil {
+        font-size: 19px;
+    }
+    .category_banner1_cnt_right_txt {
+        font-size: 13px;
+ }
+
+/* /Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) { ... }
+
+ /* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) { ... }
+
+ /* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) { ... }
+
+ /* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { ... }

@@ -1,0 +1,1834 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid cont-full-body" >
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 dash_mainmenu_itop" >
+                <ul>
+                    <li><a routerLink="#" style="border-radius: 45px 0px 0px 45px;">Day</a></li>
+                    <li><a routerLink="#">Week</a></li>
+                    <li><a routerLink="#">Month</a></li>
+                    <li><a routerLink="#" style="border-radius: 0px 45px 45px 0;">Annual</a></li>
+                    <li><a routerLink="#" style="padding: 10px 20px;border-radius: 15px;margin-left: 10px;"><i style="font-size: 28px;" class="fa fa-calendar" aria-hidden="true"></i></a></li>    
+                </ul>
+            </div>           
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item" >
+                <label>Todays Order</label>
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="background-color: #ff00aa;min-height:235px;">                                   
+                            <h6 class="pinkbox" style="opacity: 0.5;"> Todays Order</h6>
+                            <span>
+                                <div class="dshimg_icon"><img src="assets/images/dashboard/icon/icon-orders.svg"></div>
+                                <i class="fa fa-ellipsis-v " aria-hidden="true"></i>
+                            </span>
+                            <h2>{{Todays_TotalOrdersCount}}</h2>
+                            <small>{{Todays_TotalOrdersPercentage}}%</small>
+                            <!-- <h2>8,682</h2>
+                            <small>+50 % (30 Days)</small> -->
+                            <canvas id="myChart" width="50%" height="10%"></canvas>
+                                
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item">
+                <label>Total Order</label>
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="background-color: #69a78c;min-height:235px;">
+
+                            
+                            <h6 class="background">Total Order</h6>
+                            <span>
+                                <div class="dshimg_icon"><img src="assets/images/dashboard/icon/icon-order2.svg"></div>
+                                <i class="fa fa-ellipsis-v " aria-hidden="true"></i>
+                            </span>
+                            <h2>{{TotalOrdersCount}}</h2>
+                            <small>{{TotalOrdersPercentage}}%</small>
+                            <!-- <h2>8,682</h2>
+                            <small>5.00 (30 Days)</small> -->
+                            
+                                <div class="graph_item_data"style="padding-top: 10%;">
+                                    <!-- <h5 style="padding: 0px 0px 2px 7px;">90</h5> -->
+                                    <h5 style="padding: 0px 0px 2px 7px;">{{TotalOrdersCount}}</h5>
+                                </div>
+                                <div class="dshgraph_icon pl-0 pr-0">
+                                    <canvas id="totalOrderdoughnutChart" width="60%" height="40%" style="padding-top: -5%;"></canvas>
+                                </div>
+                            
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item">
+                <label>Total Products</label>
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="background-color: #d9c542;min-height:235px;">
+                        <h6 class="yellowbox" style="opacity: 0.5;">Total Products</h6>
+                        <span>
+                            <div class="dshimg_icon"><img src="assets/images/dashboard/icon/icon-board.svg"></div>
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </span>
+                        
+                        <h2>{{TotalProductsCount}}</h2>
+                        <small>{{TotalProductsPercentage}}%</small>
+                        <!-- <h2>8,682</h2>
+                        <small>+50 % (30 Days)</small> -->
+                        <canvas id="medimallBarChart" width="40%" height="10%"></canvas>
+                                    
+                                
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item">
+                <label>Pending Orders</label>
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="background-color: #0099ff;min-height:235px;">
+                        <h6 class="bluebox" style="opacity: 0.5;">Pending Orders</h6>
+                        <span>
+                            <div class="dshimg_icon"><img src="assets/images/dashboard/icon/icon-cart.svg"></div>
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </span>
+                        <h2>{{TotalPendingOrderCount}}</h2>
+                        <small>{{TotalPendingOrderPercentage}}%</small>
+                        <!-- <h2>8,682</h2>
+                        <small>+50 % (30 Days)</small> -->
+                            <canvas id="pendingOrderPieChart" width="31%" height="11%"></canvas>
+                                    
+                                
+                    </div>
+                </div>
+                   
+            </div>
+
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item">
+                <label>Total Revenue</label>
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="background-color: #18d513;min-height:235px;">
+                        <h6 class="green1box" style="opacity: 0.5;">Total Revenue</h6>
+                        <span>
+                            <div class="dshimg_icon"><img src="assets/images/dashboard/icon/icon-revenue.svg"></div>
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </span>
+                        <h2><i class="fa fa-inr"></i>{{TotalRevenueCount}}</h2>
+                        <small>{{TotalRevenuePercentage}}%</small>
+                        <!-- <h2><i class="fa fa-inr"></i> 8,682</h2>
+                        <small>+50 % (30 Days)</small> -->
+                      
+                        <canvas id="totalRevenueChart" width="29%" height="10%" ></canvas>
+                        <!-- <ngx-charts-advanced-pie-chart
+                            [view]="view"
+                            [scheme]="total_revenue_colorScheme"
+                            [results]="total_revenue_data"
+                            [gradient]="gradient"
+                            >
+                        </ngx-charts-advanced-pie-chart> -->
+                                
+                    </div>
+                </div>
+                   
+            </div>
+
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item">
+                <label>Total Profit</label>
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="background-color: #cd0261;min-height:248px;">
+                        <h6 class="redbox" style="opacity: 0.5;">Total Profit</h6>
+                        <span>
+                            <div class="dshimg_icon"><img src="assets/images/dashboard/icon/icon-profit.svg"></div>
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </span>
+                        <h2><i class="fa fa-inr"></i>{{TotalProfitCount}}</h2>
+                        <small>{{TotalProfitPercentage}}%</small>
+                        <!-- <h2><i class="fa fa-inr"></i> 8,682</h2>
+                        <small>+50 % (30 Days)</small> -->
+                        <canvas id="profitBarChart" width="26%" height="8%" style="float: right;"></canvas>
+                        <!-- <ngx-charts-bar-vertical
+                                [view]="profit_view"
+                                [scheme]="profit_colorScheme"
+                                [results]="profit_single"
+                                [xAxis]="false"
+                                [yAxis]="false"
+                                [legend]="false"
+                                [legendPosition]="legendPosition"
+                                [showXAxisLabel]="false"
+                                [showYAxisLabel]="false"
+                                [xAxisLabel]="false" style="float: right;">
+                        </ngx-charts-bar-vertical> -->
+                                    
+                                
+                    </div>
+                </div>
+                   
+            </div>
+       
+
+        
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item">
+                <label>Total prime Members</label>
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="background-color: #4e6b6f;min-height:235px;">
+                        <h6 class="greybox" style="opacity: 0.5;">Total Prime Members</h6>
+                        <span>
+                            <div class="dshimg_icon"><img src="assets/images/dashboard/icon/icon-prime-member.svg"></div>
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </span>
+
+                        <h2>{{TotalPrimeMembersCount}}</h2>
+                        <small>{{TotalPrimeMembersPercentage}}%</small>
+                        <!-- <h2>8,682</h2>
+                        <small>+50 % (30 Days)</small> -->
+                        <canvas id="primeLineBarChart"  width="39" height="12%"></canvas>
+                         
+                    </div>
+                </div>
+                    
+            </div>
+
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item">
+                <label>Subscriptions</label>
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="background-color: #a558c5;min-height:235px;">
+                        <h6 class="volitebox" style="opacity: 0.5;">Subscriptions</h6>
+                        <span>
+                            <div class="dshimg_icon"><img src="assets/images/dashboard/icon/icon-subscription.svg"></div>
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </span>
+                        <h2>8,682</h2>
+                        <small>+50 % (30 Days)</small>
+                        <canvas id="mySubscriptionChart" width="50%" height="10%"></canvas>
+
+                                    
+                                
+                    </div>
+                </div>
+                   
+            </div>
+
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item">
+                <label>Average Order Value</label>
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="background-color: #cc6753;min-height:235px;">
+                        <h6 class="brownbox" style="opacity: 0.5;">Average Order Value</h6>
+                        <span>
+                            <div class="dshimg_icon"><img src="assets/images/dashboard/icon/icon-avg-ordervalue.svg"></div>
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </span>
+                        <h2>8,682</h2>
+                        <small>+50 % (30 Days)</small>
+                        <canvas id="averageOrderValueChart" width="50%" height="10%"></canvas>
+                                    
+                                
+                    </div>
+                </div>
+                   
+            </div>
+        </div>
+
+        <hr style="background: #2a89b9;"><br>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item">
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="background:#00496e;min-height:235px;">
+                        <h6 class="background" style="opacity: 0.5;">Total Users</h6>
+                        <span><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+                        <h2>8,682</h2>
+                        <small>+50 % (30 Days)</small>
+                        <canvas id="totalUsersLineChart" width="50%" height="10%"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item" >
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="min-height:235px;justify-content: center;background:#00496e;text-align: center;">
+                        <br><br><label class="background"><h3 style="color: white;opacity:0.5 !important;font-size: 25px;font-weight: 400;">Visitors Today</h3></label>
+                        <span><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+                        <h2>8,682</h2>
+                        <small>+50 % (30 Days)</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item" >
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="background:#00496e;min-height:235px;">
+                        <h6 class="background" style="opacity: 0.5;">Todays Signup</h6>
+                        <span><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+                        <h2>8,682</h2>
+                        <small>+50 % (30 Days)</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <hr style="background: #2a89b9;"><br>
+        
+        <div class="row">
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item" >
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="min-height: 485px;background:#00496e;min-width: 295px;">
+                        <h6 class="background" style="color: #D4EEFF; font-size: 20px; letter-spacing: 0; margin-bottom: 20px;opacity: 1 !important;">Source of enter</h6>
+                        <span><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+                        <div class="mt-2 row dash_mainmenu_item_scl_titl">
+                            <div class="ml-2 col-md-1">
+                                <img src="assets/images/dashboard/icon-facebook.svg" width="30px" height="30px" style="margin-left: 3px;">
+                            </div>
+                            <div class="col-md-6">
+                               <h6> Facebook</h6>
+                            </div>
+                            <div class="col-md-4 dash_mainmenu_item_sourc_grph">
+                                <ngx-charts-gauge
+                                [view]="fb_view"
+                                [scheme]="fb_colorScheme"
+                                [results]="facebook"
+                                [legend]="false"
+                                [legendPosition]="false"
+                                [legendTitle]="false"
+                                [textValue]=""
+                                [valueFormatting]="formatValue"
+                                [showAxis]="false"
+                                [angleSpan]="360"
+                                [showText]="true"
+                                >
+                              </ngx-charts-gauge>
+                                <!-- <canvas id="chartProgress" width="50px" height="40"></canvas> -->
+                                
+                            </div>
+                        </div>
+
+                        <div class="mt-2 row dash_mainmenu_item_scl_titl">
+                            <div class=" ml-2 col-md-1">
+                                <img src="assets/images/dashboard/icon-insta.png" width="30px" height="30px">
+                            </div>
+                            <div class="col-md-6">
+                               <h6> Instagram</h6>
+                            </div>
+                            <div class="col-md-4 dash_mainmenu_item_sourc_grph">
+                                <ngx-charts-gauge
+                                [view]="fb_view"
+                                [scheme]="fb_colorScheme"
+                                [results]="insta"
+                                [legend]="false"
+                                [legendPosition]="false"
+                                [legendTitle]="false"
+                                [valueFormatting]="formatValue"
+                                [textValue]=""
+                                [showAxis]="false"
+                                [angleSpan]="360"
+                                >
+                              </ngx-charts-gauge>
+                            </div>
+                        </div>
+
+                        <div class="mt-2 row dash_mainmenu_item_scl_titl">
+                            <div class="ml-2 col-md-1">
+                                <img src="assets/images/dashboard/icon-youtube.png" width="33px" height="33px">
+                            </div>
+                            <div class="col-md-6">
+                               <h6> Youtube</h6>
+                            </div>
+                            <div class="col-md-4 dash_mainmenu_item_sourc_grph">
+                                <ngx-charts-gauge
+                                [view]="fb_view"
+                                [scheme]="fb_colorScheme"
+                                [results]="youtube"
+                                [legend]="false"
+                                [legendPosition]="false"
+                                [legendTitle]="false"
+                                [valueFormatting]="formatValue"
+                                [textValue]=""
+                                [showAxis]="false"
+                                [angleSpan]="360"
+                                >
+                              </ngx-charts-gauge>
+                            </div>
+                        </div>
+
+                        <div class="mt-2 row dash_mainmenu_item_scl_titl">
+                            <div class="ml-2 col-md-1">
+                                <img src="assets/images/dashboard/icon-whatsapp.png"  width="30px" height="30px">
+                            </div>
+                            <div class="col-md-6">
+                               <h6> Whatsapp</h6>
+                            </div>
+                            <div class="col-md-4 dash_mainmenu_item_sourc_grph">
+                                <ngx-charts-gauge
+                                [view]="fb_view"
+                                [scheme]="fb_colorScheme"
+                                [results]="whatsapp"
+                                [legend]="false"
+                                [legendPosition]="false"
+                                [legendTitle]="false"
+                                [valueFormatting]="formatValue"
+                                [textValue]=""
+                                [showAxis]="false"
+                                [angleSpan]="360"
+                                >
+                              </ngx-charts-gauge>
+                            </div>
+                        </div>
+
+                        <div class="mt-2 row dash_mainmenu_item_scl_titl">
+                            <div class="ml-2 col-md-1">
+                                <img src="assets/images/dashboard/icon-share.svg" width="30px" height="30px">
+                            </div>
+                            <div class="col-md-6">
+                               <h6> Social media link</h6>
+                            </div>
+                            <div class="col-md-4 dash_mainmenu_item_sourc_grph">
+                                <ngx-charts-gauge
+                                [view]="fb_view"
+                                [scheme]="fb_colorScheme"
+                                [results]="social"
+                                [legend]="false"
+                                [legendPosition]="false"
+                                [legendTitle]="false"
+                                [valueFormatting]="formatValue"
+                                [textValue]=""
+                                [showAxis]="false"
+                                [angleSpan]="360"
+                                >
+                              </ngx-charts-gauge>
+                            </div>
+                        </div>
+
+                        <div class="mt-2 row dash_mainmenu_item_scl_titl">
+                            <div class="ml-2 col-md-1">
+                                <img src="assets/images/dashboard/icon-others.svg" width="30px" height="30px">
+                            </div>
+                            <div class="col-md-6">
+                               <h6> Others</h6>
+                            </div>
+                            <div class="col-md-4 dash_mainmenu_item_sourc_grph">
+                                <ngx-charts-gauge
+                                [view]="fb_view"
+                                [scheme]="fb_colorScheme"
+                                [results]="others"
+                                [legend]="false"
+                                [legendPosition]="false"
+                                [legendTitle]="false"
+                                [valueFormatting]="formatValue"
+                                [textValue]=""
+                                [showAxis]="false"
+                                [angleSpan]="360"
+                                >
+                              </ngx-charts-gauge>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item" >
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="min-height: 485px;background:#00496e;padding-bottom: 0;">
+                        <h6 class="background" style="color: #D4EEFF; font-size: 20px; letter-spacing: 0; margin-bottom: 20px;opacity: 1 !important;">Goal Overview</h6>
+                        <span><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+                        <!-- <img src="assets/images/Graphs/graph-overview.svg" width="70%" > -->
+                            <canvas id="goaldoughnutChart"></canvas>
+                            <div class="donut-inner">
+                                <h5>83%</h5>
+                            </div>
+                            <div class="row" style="margin-top: -90px;height:90px">
+                                <div class="col-md-6" >
+                                    <h6 class="background" style="color: #fff;float: left;padding: 0 0px 0 18px;">0</h6>                              
+                                </div>
+                                <div class="col-md-6"  >
+                                    <h6 class="background" style="color: #fff;float: right;padding: 1px 0px 0 0;">10,000,00</h6>
+                                </div>
+                            </div>                           
+                            <div class="row" >
+                                <div class="col-md-6" style="border-top:1px solid #042b3f;border-right:1px solid #042b3f;text-align: center;padding-top: 10px;padding-bottom: 14px;">
+                                    <h6 style="color:#fff;opacity: 0.5;" class="background">Completed</h6>
+                                    <h5 style="color:#fff;">15254</h5>
+                                </div>
+                                <div class="col-md-6"  style="border-top:1px solid #042b3f;text-align: center;padding-top: 10px;padding-bottom: 14px;">
+                                    <h6 style="color:#fff;opacity: 0.5;"  class="background">In Progress</h6>
+                                    <h5 style="color:#fff;">245</h5>
+                                </div>
+
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 dash_mainmenu_item" >
+                <div class="card widget-cards"> 
+                    <div class="card-header" style="min-height: 485px;background:#00496e">
+                        <h6 class="background" style="color: #D4EEFF; font-size: 20px; letter-spacing: 0; margin-bottom: 20px;opacity: 1 !important;"> Transactions</h6>
+                        <span><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+                        <div class="mt-2 row dash_mainmenu_item_scl">
+                            <div class="col-md-2">
+                                <img src="assets/images/dashboard/icon-paypal.png" width="40px" >
+                            </div>
+                            <div class="col-md-6">
+                               <h6>Paypal</h6>
+                            </div>
+                            <div class="col-md-4">
+                               <h6 style="float:right;"><i class="fa fa-inr"></i> 1085</h6>
+                            </div>
+                        </div>
+
+
+
+                        <div class="mt-2 row dash_mainmenu_item_scl">
+                            <div class="col-md-2">
+                                <img src="assets/images/dashboard/icon-razor.svg" width="40px" >
+                            </div>
+                            <div class="col-md-6">
+                               <h6>Razorpay</h6>
+                            </div>
+                            <div class="col-md-4">
+                               <h6 style="float:right;"><i class="fa fa-inr"></i> 1085</h6>
+                            </div>
+                        </div>
+
+                        <div class="mt-2 row dash_mainmenu_item_scl">
+                            <div class="col-md-2">
+                                <img src="assets/images/dashboard/icon-wallet.svg" width="40px" >
+                            </div>
+                            <div class="col-md-6">
+                               <h6>Wallet</h6>
+                            </div>
+                            <div class="col-md-4">
+                               <h6 style="float:right;"><i class="fa fa-inr"></i> 1085</h6>
+                            </div>
+                        </div>
+
+                        <div class="mt-2 row dash_mainmenu_item_scl">
+                            <div class="col-md-2">
+                                <img src="assets/images/dashboard/icon-cashon.svg" width="40px" >
+                            </div>
+                            <div class="col-md-6">
+                               <h6>Cash on Delivery</h6>
+                            </div>
+                            <div class="col-md-4">
+                               <h6 style="float:right;"><i class="fa fa-inr"></i> 1085</h6>
+                            </div>
+                        </div>
+
+                        <div class="mt-2 row dash_mainmenu_item_scl">
+                            <div class="col-md-2">
+                                <img src="assets/images/dashboard/icon-medcoin.png" width="40px"  >
+                            </div>
+                            <div class="col-md-6">
+                               <h6>Medcoin</h6>
+                            </div>
+                            <div class="col-md-4">
+                               <h6 style="float:right;"><i class="fa fa-inr"></i> 1085</h6>
+                            </div>
+                        </div>
+
+
+                        <div class="mt-2 row dash_mainmenu_item_scl">
+                            <div class="col-md-2">
+                                <img src="assets/images/dashboard/icon-promotions.svg" width="40px" >
+                            </div>
+                            <div class="col-md-6">
+                               <h6>Promotions</h6>
+                            </div>
+                            <div class="col-md-4">
+                               <h6 style="float:right;"><i class="fa fa-inr"></i> 1085</h6>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+    
+    <div class="mt-4 row">
+        <label style="padding-left: 5%;">Total Prime Members</label>
+        <div class="cssProgress col-md-12">
+            <div class="progress2"  style="width: 100%;padding: 10px;">
+              <div class="cssProgress-bar" data-percent="25" style="width: 75%; font-size: 26px; color: #fff; height: 45px; text-align: center; padding: 0; padding-top: 4px;">
+                 800 Completed
+              </div>
+              <span class="cssProgress-label" style="font-size: 26px; color: #000; float: left; margin-left: 17px; height: 45px; text-align: center; padding: 0; padding-top: 4px;">1200 Pending</span>
+            </div>
+          </div>
+    </div>
+
+
+
+    <div class="mt-4 row">
+        <div class="col-lg-6 col-md-6 dash_mainmenu_item">
+            <div class="card widget-cards"> 
+                <div class="card-header" style="background:#00496e;min-height:410px;">
+                        <label ><h3 style="color:  #FFFFFF;opacity: 0.5;" >Gender</h3></label>
+                        <div class="row">
+                            <div class="col-md-4" ></div>
+                            <div class="col-md-8" >
+                                <canvas id="genderPieChart" style="float: right;" width="5%"></canvas> 
+                            </div>
+
+
+                        </div>
+                        
+                        <label ><h3 style="color:  #FFFFFF;opacity: 0.5;">Marital</h3></label>
+                        <div class="row">
+                            <div class="col-md-1" ></div>
+                            <div class="col-md-8">
+                                <canvas id="maritalPieChart" width="5%" ></canvas>
+                            </div>
+                            <div class="col-md-3" ></div>
+                          
+
+
+                        </div>
+                        
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 dash_mainmenu_item">
+            <div class="card widget-cards"> 
+                <div class="card-header" style="background:#00496e;min-height:410px;">
+                        
+                    <label ><h3 style="color:  #FFFFFF;opacity: 0.5;">Age</h3></label><br><br><br><br>
+                          <!-- <img src="assets/images/Graphs/graph-age.svg" width="90%" height="83%"> -->
+                        <canvas id="ageBarChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+</div>
+
+<div class="row">
+    <div class="col-lg-6 col-md-6 dash_mainmenu_item">
+        <div class="card widget-cards"> 
+            <div class="card-header" style="background:#00496e;min-height:455px;">
+                <label ><h3 style="color:  #FFFFFF;opacity: 0.5;float:left;">Medcoin</h3></label>
+                    <!-- <img src="assets/images/Graphs/graph-medcoin.svg" width="50%"> -->
+                    <ngx-charts-gauge 
+                        [view]="medcoinview" 
+                        [startAngle]="-10"
+                        [results]="medcoin_data" 
+                        [scheme]="medcoin_colorScheme" 
+                        [valueFormatting]="format"
+                        [legend]="legend"
+                        [legendPosition]="legendPosition"
+                        [legendTitle]="false"
+                        [showAxis]="false"
+                        [angleSpan]="360" style="float: left;">
+                    </ngx-charts-gauge>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 dash_mainmenu_item">
+        <div class="card widget-cards"> 
+            <div class="card-header" style="background:#00496e;min-height:462px;">
+                <label ><h3 style="color:  #FFFFFF;opacity: 0.5;">Promocode</h3></label>
+                <br><br><br><br>
+                    <div class="mt-4 row">
+                        <div class="col-md-7">
+                            <h6 class="background">Promocode Applied</h6>
+                            <h2>8,682</h2>
+                            <small>+50 % (30 Days)</small>
+                        </div>
+
+                        <div class="col-md-5">
+                            <h6 class="background">Amount</h6>
+                            <h2><i class="fa fa-inr"></i> 12503</h2>
+                            <small>+50 % (30 Days)</small>
+                        </div>
+
+                    </div>
+                    <div class="mt-4 row">
+                        <div class="col-md-12">
+                                <canvas id="promocodeChart" width="50%" height="10%"></canvas>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <div class="mt-2 row">
+        <div class="col-md-12">
+            <h4>Play Store Rating</h4>
+        </div>
+        
+    </div>
+
+    <div class="row dash_mainmenu_item" style="margin-bottom:30px;margin-top: 30px;">
+        <div class="col-lg-5 col-md-6">
+            <div class="row ">
+                <div class="col-md-6 p-0">
+                    <h2 class="background" style="color: #fff; text-align: center; margin-bottom: 10px; font-size: 14px;opacity: 0.5;">Play Store rating</h2>
+                    <div class="card-header" style="background:#00496e;text-align:center;">
+                        <img src="assets/images/dashboard/icon-star.svg" height="50%" width="50%" style="width: 60px;margin-bottom: 20px;"><br>
+                        <h3 style="color: #f8ac11;font-size:30px;font-weight:bold;">3.5</h3>
+                        <div class="star-rating star-rating1">
+                            <input id="star-5" type="radio" name="rating1" value="star-5" />
+                            <label for="star-5" title="5 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-4" type="radio" name="rating2" value="star-4" />
+                            <label for="star-4" title="4 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-3" type="radio" name="rating3" value="star-3" checked/>
+                            <label for="star-3" title="3 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-2" type="radio" name="rating4" value="star-2" />
+                            <label for="star-2" title="2 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-1" type="radio" name="rating5" value="star-1" />
+                            <label for="star-1" title="1 star">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                        </div>                       
+                        <h6>Total no.of Ratings</h6>
+                        <h3>8,682</h3>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2 class="background" style="color: #fff; text-align: center; margin-bottom: 10px; font-size: 14px;opacity: 0.5;">App Store rating</h2>                    
+                    <div class="card-header" style="background:#00496e;text-align:center;">
+                        <img src="assets/images/dashboard/icon-star.svg" height="50%" width="50%" style="width: 60px;margin-bottom: 20px;"><br>
+                        <h3 style="color: #f8ac11;font-size:30px;font-weight:bold;">4.5</h3>
+                        <div class="star-rating star-rating1">
+                            <input id="star-5" type="radio" name="rating1" value="star-5" />
+                            <label for="star-5" title="5 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-4" type="radio" name="rating2" value="star-4" />
+                            <label for="star-4" title="4 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-3" type="radio" name="rating3" value="star-3" checked/>
+                            <label for="star-3" title="3 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-2" type="radio" name="rating4" value="star-2" />
+                            <label for="star-2" title="2 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-1" type="radio" name="rating5" value="star-1" />
+                            <label for="star-1" title="1 star">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                        </div>                       
+                        <h6>Total no.of Ratings</h6>
+                        <h3>8,682</h3>
+                    </div>
+                </div>
+            </div>                           
+        </div>
+        <div class="col-lg-7 col-md-6">
+            <div class="row ">
+                <div class="col-md-3">
+                    <div class="card-header" style="background:#00496e;text-align:center;">
+                        <img src="assets/images/dashboard/icon-star.svg" height="50%" width="50%" style="width:30px;margin-bottom:10px;"><br>
+                        <h3 style="color: #f8ac11;font-size:18px;font-weight:bold;">3.5</h3>
+                        <div class="star-rating">
+                            <input id="star-5" type="radio" name="rating1" value="star-5" />
+                            <label for="star-5" title="5 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-4" type="radio" name="rating2" value="star-4" />
+                            <label for="star-4" title="4 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-3" type="radio" name="rating3" value="star-3" checked/>
+                            <label for="star-3" title="3 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-2" type="radio" name="rating4" value="star-2" />
+                            <label for="star-2" title="2 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-1" type="radio" name="rating5" value="star-1" />
+                            <label for="star-1" title="1 star">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                        </div>                       
+                    </div>
+                    <h3 style="color: #fff; text-align: center; margin-top: 10px; font-size: 14px;opacity: 1 !important;">Yoga</h3>
+                </div>
+                <div class="col-md-3">
+                    <div class="card-header" style="background:#00496e;text-align:center;">
+                        <img src="assets/images/dashboard/icon-star.svg" height="50%" width="50%" style="width:30px;margin-bottom:10px;"><br>
+                        <h3 style="color: #f8ac11;font-size:18px;font-weight:bold;">3.5</h3>
+                        <div class="star-rating">
+                            <input id="star-5" type="radio" name="rating1" value="star-5" />
+                            <label for="star-5" title="5 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-4" type="radio" name="rating2" value="star-4" />
+                            <label for="star-4" title="4 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-3" type="radio" name="rating3" value="star-3" checked/>
+                            <label for="star-3" title="3 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-2" type="radio" name="rating4" value="star-2" />
+                            <label for="star-2" title="2 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-1" type="radio" name="rating5" value="star-1" />
+                            <label for="star-1" title="1 star">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                        </div>                       
+                    </div>
+                    <h3 style="color: #fff; text-align: center; margin-top: 10px; font-size: 14px;opacity: 1 !important;">Gym</h3>
+                </div>
+                <div class="col-md-3">
+                    <div class="card-header" style="background:#00496e;text-align:center;">
+                        <img src="assets/images/dashboard/icon-star.svg" height="50%" width="50%" style="width:30px;margin-bottom:10px;"><br>
+                        <h3 style="color: #f8ac11;font-size:18px;font-weight:bold;">3.5</h3>
+                        <div class="star-rating">
+                            <input id="star-5" type="radio" name="rating1" value="star-5" />
+                            <label for="star-5" title="5 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-4" type="radio" name="rating2" value="star-4" />
+                            <label for="star-4" title="4 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-3" type="radio" name="rating3" value="star-3" checked/>
+                            <label for="star-3" title="3 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-2" type="radio" name="rating4" value="star-2" />
+                            <label for="star-2" title="2 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-1" type="radio" name="rating5" value="star-1" />
+                            <label for="star-1" title="1 star">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                        </div>                       
+                    </div>
+                    <h3 style="color: #fff; text-align: center; margin-top: 10px; font-size: 14px;opacity: 1 !important;">Calorie Chart</h3>                   
+                </div>
+                <div class="col-md-3">
+                    <div class="card-header" style="background:#00496e;text-align:center;">
+                        <img src="assets/images/dashboard/icon-star.svg" height="50%" width="50%" style="width:30px;margin-bottom:10px;"><br>
+                        <h3 style="color: #f8ac11;font-size:18px;font-weight:bold;">3.5</h3>
+                        <div class="star-rating">
+                            <input id="star-5" type="radio" name="rating1" value="star-5" />
+                            <label for="star-5" title="5 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-4" type="radio" name="rating2" value="star-4" />
+                            <label for="star-4" title="4 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-3" type="radio" name="rating3" value="star-3" checked/>
+                            <label for="star-3" title="3 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-2" type="radio" name="rating4" value="star-2" />
+                            <label for="star-2" title="2 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-1" type="radio" name="rating5" value="star-1" />
+                            <label for="star-1" title="1 star">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                        </div>                       
+                    </div>
+                    <h3 style="color: #fff; text-align: center; margin-top: 10px; font-size: 14px;opacity: 1 !important;">Health Expert</h3>
+                </div>
+                <div class="col-md-3">
+                    <div class="card-header" style="background:#00496e;text-align:center;">
+                        <img src="assets/images/dashboard/icon-star.svg" height="50%" width="50%" style="width:30px;margin-bottom:10px;"><br>
+                        <h3 style="color: #f8ac11;font-size:18px;font-weight:bold;">3.5</h3>
+                        <div class="star-rating">
+                            <input id="star-5" type="radio" name="rating1" value="star-5" />
+                            <label for="star-5" title="5 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-4" type="radio" name="rating2" value="star-4" />
+                            <label for="star-4" title="4 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-3" type="radio" name="rating3" value="star-3" checked/>
+                            <label for="star-3" title="3 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-2" type="radio" name="rating4" value="star-2" />
+                            <label for="star-2" title="2 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-1" type="radio" name="rating5" value="star-1" />
+                            <label for="star-1" title="1 star">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                        </div>                       
+                    </div>
+                    <h3 style="color: #fff; text-align: center; margin-top: 10px; font-size: 14px;opacity: 1 !important;">Health Calculator</h3>
+                </div>
+                <div class="col-md-3">
+                    <div class="card-header" style="background:#00496e;text-align:center;">
+                        <img src="assets/images/dashboard/icon-star.svg" height="50%" width="50%" style="width:30px;margin-bottom:10px;"><br>
+                        <h3 style="color: #f8ac11;font-size:18px;font-weight:bold;">3.5</h3>
+                        <div class="star-rating">
+                            <input id="star-5" type="radio" name="rating1" value="star-5" />
+                            <label for="star-5" title="5 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-4" type="radio" name="rating2" value="star-4" />
+                            <label for="star-4" title="4 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-3" type="radio" name="rating3" value="star-3" checked/>
+                            <label for="star-3" title="3 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-2" type="radio" name="rating4" value="star-2" />
+                            <label for="star-2" title="2 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-1" type="radio" name="rating5" value="star-1" />
+                            <label for="star-1" title="1 star">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                        </div>                       
+                    </div>
+                    <h3 style="color: #fff; text-align: center; margin-top: 10px; font-size: 14px;opacity: 1 !important;">Diet plans</h3>
+                </div>
+                <div class="col-md-3">
+                    <div class="card-header" style="background:#00496e;text-align:center;">
+                        <img src="assets/images/dashboard/icon-star.svg" height="50%" width="50%" style="width:30px;margin-bottom:10px;"><br>
+                        <h3 style="color: #f8ac11;font-size:18px;font-weight:bold;">3.5</h3>
+                        <div class="star-rating">
+                            <input id="star-5" type="radio" name="rating1" value="star-5" />
+                            <label for="star-5" title="5 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-4" type="radio" name="rating2" value="star-4" />
+                            <label for="star-4" title="4 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-3" type="radio" name="rating3" value="star-3" checked/>
+                            <label for="star-3" title="3 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-2" type="radio" name="rating4" value="star-2" />
+                            <label for="star-2" title="2 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-1" type="radio" name="rating5" value="star-1" />
+                            <label for="star-1" title="1 star">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                        </div>                       
+                    </div>
+                    <h3 style="color: #fff; text-align: center; margin-top: 10px; font-size: 14px;opacity: 1 !important;">Health Reminders</h3>
+                </div>
+                <div class="col-md-3">
+                    <div class="card-header" style="background:#00496e;text-align:center;">
+                        <img src="assets/images/dashboard/icon-star.svg" height="50%" width="50%" style="width:30px;margin-bottom:10px;"><br>
+                        <h3 style="color: #f8ac11;font-size:18px;font-weight:bold;">3.5</h3>
+                        <div class="star-rating">
+                            <input id="star-5" type="radio" name="rating1" value="star-5" />
+                            <label for="star-5" title="5 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-4" type="radio" name="rating2" value="star-4" />
+                            <label for="star-4" title="4 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-3" type="radio" name="rating3" value="star-3" checked/>
+                            <label for="star-3" title="3 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-2" type="radio" name="rating4" value="star-2" />
+                            <label for="star-2" title="2 stars">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                            <input id="star-1" type="radio" name="rating5" value="star-1" />
+                            <label for="star-1" title="1 star">
+                              <i class="active fa fa-star" aria-hidden="true"></i>
+                            </label>
+                        </div>                       
+                    </div>
+                    
+                <h3 style="color: #fff; text-align: center; margin-top: 10px; font-size: 14px;opacity: 1 !important;">Quiz</h3>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+
+
+
+    <div class="mt-2 row">
+        <div class="md-100 w-100 dash_mainmenu_item" style="margin: 0;padding: 0;">
+            <div class="card height-equal" style="margin: 0;padding: 0;background: transparent;">
+                <div class="card-header" style="background:#00496e;margin: 0;padding: 0;">
+                    <h3 style="float:left;font-size:18px;margin: 17px 23px;opacity: 0.5;">Recent Orders</h3>
+                
+                <div style="margin: 0;padding: 0;">
+                    <div class="user-status table-responsive products-table dash_mainmenu_item dash_table_style
+                    ">
+                        <table class="table table-bordernone mb-0" style="color: whitesmoke;">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="text-align: center;">Product</th>
+                                    <th scope="col">Order ID</th>
+                                    <th scope="col">Shipping Zone</th>
+                                    <th scope="col">Mode of Payment</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <img src="assets/images/electronics/product/toothpaste.png"><br>
+                                        <label>Colgate +2 item</label>
+                                    <td class="digits">SSA12387</td>
+                                    <td style="">Kerala</td>
+                                    <td >Cash on Delivery</td>
+                                    <td class="digits"><i class="fa fa-inr"></i> 120</td>
+                                    <td class="font-primary">Dispatched</td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <img src="assets/images/electronics/product/medical-mask.png"><br>
+                                        <label>Puma Mask +2 item</label>
+                                    </td>
+                                    <td class="digits">SSA32787</td>
+                                    <td style="">Kerala</td>
+                                    <td >Cash on Delivery</td>
+                                    <td class="digits"><i class="fa fa-inr"></i> 152</td>
+                                    <td class="font-primary">Dispatched</td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <img src="assets/images/electronics/product/facewash.png"><br>
+                                        <label>Himalaya +2 item</label>
+                                    </td>
+                                    <td class="digits">SSA38790</td>
+                                    <td >Kerala</td>
+                                    <td >Cash on Delivery</td>
+                                    <td class="digits"><i class="fa fa-inr"></i> 200</td>
+                                    <td class="font-primary">Dispatched</td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <img src="assets/images/electronics/product/pankaja_kasthuri.png"><br>
+                                        <label>Breath Easy +2 item</label>
+                                    </td>
+                                    <td class="digits">SSA38790</td>
+                                    <td >Kerala</td>
+                                    <td >Cash on Delivery</td>
+                                    <td class="digits"><i class="fa fa-inr"></i> 200</td>
+                                    <td class="font-primary">Dispatched</td>
+                                </tr>
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="mt-4 row">
+        <h3 style="opacity: 0.5;margin-left: 2%;">Location of Users</h3>
+        <div class="col-md-12 dash_mainmenu_item">
+            <div class="card widget-cards"> 
+                <div class="card-header" style="background:#00496e">
+                                <agm-map [latitude]="lat" [longitude]="lng"  [zoom]="3" (mapClick)="onChooselocation($event)">
+                                    <agm-marker 
+                                        [latitude]="lat" 
+                                        [longitude]="lng" 
+                                        [label]="labelName"
+                                        [iconUrl]="iconUrl"
+                                        [zIndex]="2" 
+                                        [opacity]="1.0"
+                                       >
+                                    </agm-marker>
+
+                                    <agm-marker 
+                                    [latitude]="clat" 
+                                    [longitude]="clng" 
+                                    >
+                                    </agm-marker>
+
+                                    <agm-marker 
+                                    [latitude]="alat" 
+                                    [longitude]="alng" 
+                                    >
+                                    </agm-marker>
+
+
+                                    <agm-marker 
+                                    [latitude]="blat" 
+                                    [longitude]="blng" 
+                                    >
+                                    </agm-marker>
+
+
+                                </agm-map>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    
+    <div class="mt-2 row">
+        <div class="col-md-6 dash_mainmenu_item">
+            <div class="card widget-cards"> 
+                <div class="card height-equal" style="margin: 0;padding: 0;background: transparent;">
+                    <div class="card-header" style="background:#00496e;margin: 0;padding: 0;">
+                        <h6 style="float:left;font-size:18px;margin: 17px 23px;opacity: 0.5;">Most Purchased Item</h6>
+                    
+                        <div style="margin: 0;padding: 0;">
+                            <div class="user-status table-responsive products-table dash_mainmenu_item dash_table_style">
+                                <table class="table table-bordernone mb-0" style="color: whitesmoke;">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center;">Product</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">No.of Sell</th>
+                                            <th scope="col">Rating</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="digits" style="text-align: center;">
+                                                <img src="assets/images/electronics/product/toothpaste.png"><br>
+                                                <label>Colgate +2 item</label>
+                                            <td class="digits"  style="text-align: left;"><i class="fa fa-inr"></i> 250</td>
+                                            <td class="digits" style="text-align: left;">189</td>
+                                            <td class="font-primary">
+                                                    <h3 style="color: #f8ac11;padding-left:23px;font-weight: 600;">3.5</h3>
+                                                    <div class="star-rating">
+                                                        <input id="star-5" type="radio" name="rating" value="star-5" />
+                                                        <label for="star-5" title="5 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-4" type="radio" name="rating" value="star-4" />
+                                                        <label for="star-4" title="4 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-3" type="radio" name="rating" value="star-3" checked/>
+                                                        <label for="star-3" title="3 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-2" type="radio" name="rating" value="star-2" />
+                                                        <label for="star-2" title="2 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-1" type="radio" name="rating" value="star-1" />
+                                                        <label for="star-1" title="1 star">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                      </div>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td style="text-align: center;">
+                                                <img src="assets/images/electronics/product/medical-mask.png"><br>
+                                                <label>Puma Mask +2 item</label></td>
+                                            <td class="digits"  style="text-align: left;"><i class="fa fa-inr"></i> 250</td>
+                                            <td class="digits"   style="text-align: left;">189</td>
+                                            <td class="font-primary">
+                                                <h3 style="color: #f8ac11;padding-left: 23px;font-weight: 600;">3.5</h3>
+                                                    <div class="star-rating">
+                                                        <input id="star-5" type="radio" name="rating" value="star-5" />
+                                                        <label for="star-5" title="5 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-4" type="radio" name="rating" value="star-4" />
+                                                        <label for="star-4" title="4 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-3" type="radio" name="rating" value="star-3" />
+                                                        <label for="star-3" title="3 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-2" type="radio" name="rating" value="star-2" checked/>
+                                                        <label for="star-2" title="2 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-1" type="radio" name="rating" value="star-1" />
+                                                        <label for="star-1" title="1 star">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                      </div>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td style="text-align: center;">
+                                                <img src="assets/images/electronics/product/facewash.png"><br>
+                                                <label>Himalaya +2 item</label>
+                                            </td>
+                                            <td class="digits"   style="text-align: left;"><i class="fa fa-inr"></i> 250</td>
+                                            <td class="digits"   style="text-align: left;">189</td>
+                                            <td class="font-primary"> 
+                                                <h3 style="color: #f8ac11;padding-left: 23px;font-weight: 600;">3.5</h3>
+                                                    <div class="star-rating">
+                                                        <input id="star-5" type="radio" name="rating" value="star-5" checked/>
+                                                        <label for="star-5" title="5 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-4" type="radio" name="rating" value="star-4" />
+                                                        <label for="star-4" title="4 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-3" type="radio" name="rating" value="star-3" />
+                                                        <label for="star-3" title="3 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-2" type="radio" name="rating" value="star-2" />
+                                                        <label for="star-2" title="2 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-1" type="radio" name="rating" value="star-1" />
+                                                        <label for="star-1" title="1 star">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                      </div>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td style="text-align: center;">
+                                                <img src="assets/images/electronics/product/pankaja_kasthuri.png"><br>
+                                                <label>Breath Easy +2 item</label>
+                                            </td>
+                                            <td class="digits"  style="text-align: left;"><i class="fa fa-inr"></i> 250</td>
+                                            <td class="digits"   style="text-align: left;">189</td>
+                                            <td class="font-primary">
+                                                <h3 style="color: #f8ac11;padding-left: 23px;font-weight: 600;">3.5</h3>
+                                                    <div class="star-rating">
+                                                        <input id="star-5" type="radio" name="rating" value="star-5" />
+                                                        <label for="star-5" title="5 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-4" type="radio" name="rating" value="star-4" />
+                                                        <label for="star-4" title="4 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-3" type="radio" name="rating" value="star-3" />
+                                                        <label for="star-3" title="3 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-2" type="radio" name="rating" value="star-2" />
+                                                        <label for="star-2" title="2 stars">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                        <input id="star-1" type="radio" name="rating" value="star-1" />
+                                                        <label for="star-1" title="1 star">
+                                                          <i class="active fa fa-star" aria-hidden="true"></i>
+                                                        </label>
+                                                      </div>
+                                            </td>
+                                        </tr>
+            
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6 dash_mainmenu_item">
+            <div class="card widget-cards"> 
+                <div class="card height-equal" style="margin: 0;padding: 0;background: transparent;">
+                    <div class="card-header" style="background:#00496e;margin: 0;padding: 0;">
+                        <h6 style="float:left;font-size:18px;margin: 17px 23px;opacity: 0.5;">Most Viewed Items</h6>
+                    
+                                    <div style="margin: 0;padding: 0;">
+                                        <div class="user-status table-responsive products-table dash_mainmenu_item dash_table_style">
+                                            <table class="table table-bordernone mb-0" style="color: whitesmoke;">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="text-align: center;">Product</th>
+                                                        <th scope="col">Price</th>
+                                                        <th scope="col">No.of Views</th>
+                                                        <th scope="col">Rating</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="digits" style="text-align: center;">
+                                                            <img src="assets/images/electronics/product/toothpaste.png"><br>
+                                                            <label>Colgate +2 item</label>
+                                                        <td class="digits"  style="text-align: left;"><i class="fa fa-inr"></i> 250</td>
+                                                        <td class="digits"   style="text-align: left;">189</td>
+                                                        <td class="font-primary">
+                                                                <h3 style="color: #f8ac11;padding-left: 23px;font-weight: 600;">3.5</h3>
+                                                                <div class="star-rating">
+                                                                    <input id="star-5" type="radio" name="rating" value="star-5" />
+                                                                    <label for="star-5" title="5 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-4" type="radio" name="rating" value="star-4" />
+                                                                    <label for="star-4" title="4 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-3" type="radio" name="rating" value="star-3" checked/>
+                                                                    <label for="star-3" title="3 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-2" type="radio" name="rating" value="star-2" />
+                                                                    <label for="star-2" title="2 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-1" type="radio" name="rating" value="star-1" />
+                                                                    <label for="star-1" title="1 star">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                </div>
+                                                        </td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td style="text-align: center;">
+                                                            <img src="assets/images/electronics/product/medical-mask.png"><br>
+                                                            <label>Puma Mask +2 item</label></td>
+                                                        <td class="digits"   style="text-align: left;"><i class="fa fa-inr"></i> 250</td>
+                                                        <td class="digits"   style="text-align: left;">189</td>
+                                                        <td class="font-primary">
+                                                            <h3 style="color: #f8ac11;padding-left:23px;font-weight: 600;">3.5</h3>
+                                                                <div class="star-rating">
+                                                                    <input id="star-5" type="radio" name="rating" value="star-5" />
+                                                                    <label for="star-5" title="5 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-4" type="radio" name="rating" value="star-4" />
+                                                                    <label for="star-4" title="4 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-3" type="radio" name="rating" value="star-3" />
+                                                                    <label for="star-3" title="3 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-2" type="radio" name="rating" value="star-2" checked/>
+                                                                    <label for="star-2" title="2 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-1" type="radio" name="rating" value="star-1" />
+                                                                    <label for="star-1" title="1 star">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                </div>
+                                                        </td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td style="text-align: center;">
+                                                            <img src="assets/images/electronics/product/facewash.png"><br>
+                                                            <label>Himalaya +2 item</label>
+                                                        </td>
+                                                        <td class="digits"  style="text-align: left;"><i class="fa fa-inr"></i> 250</td>
+                                                        <td class="digits"   style="text-align: left;">189</td>
+                                                        <td class="font-primary"> 
+                                                            <h3 style="color: #f8ac11;padding-left: 23px;font-weight: 600;">3.5</h3>
+                                                                <div class="star-rating">
+                                                                    <input id="star-5" type="radio" name="rating" value="star-5" checked/>
+                                                                    <label for="star-5" title="5 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-4" type="radio" name="rating" value="star-4" />
+                                                                    <label for="star-4" title="4 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-3" type="radio" name="rating" value="star-3" />
+                                                                    <label for="star-3" title="3 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-2" type="radio" name="rating" value="star-2" />
+                                                                    <label for="star-2" title="2 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-1" type="radio" name="rating" value="star-1" />
+                                                                    <label for="star-1" title="1 star">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                </div>
+                                                        </td>
+                                                    </tr>
+
+
+
+
+
+
+                                                    <tr>
+                                                        <td style="text-align: center;">
+                                                            <img src="assets/images/electronics/product/pankaja_kasthuri.png"><br>
+                                                            <label>Breath Easy +2 item</label>
+                                                        </td>
+                                                        <td class="digits"   style="text-align: left;"><i class="fa fa-inr"></i> 250</td>
+                                                        <td class="digits"   style="text-align: left;">189</td>
+                                                        <td class="font-primary"> 
+                                                            <h3 style="color: #f8ac11;padding-left: 23px;font-weight: 600;">3.5</h3>
+                                                                <div class="star-rating">
+                                                                    <input id="star-5" type="radio" name="rating" value="star-5" checked/>
+                                                                    <label for="star-5" title="5 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-4" type="radio" name="rating" value="star-4" />
+                                                                    <label for="star-4" title="4 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-3" type="radio" name="rating" value="star-3" />
+                                                                    <label for="star-3" title="3 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-2" type="radio" name="rating" value="star-2" />
+                                                                    <label for="star-2" title="2 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-1" type="radio" name="rating" value="star-1" />
+                                                                    <label for="star-1" title="1 star">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                </div>
+                                                        </td>
+                                                    </tr>
+
+
+
+
+
+
+
+
+
+                                                    <!-- <tr style="text-align: center;">
+                                                        <td>
+                                                            <img src="assets/images/electronics/product/pankaja_kasthuri.png"><br>
+                                                            <label>Breath Easy +2 item</label>
+                                                        </td>
+                                                        <td class="digits"><i class="fa fa-inr"></i> 250</td>
+                                                        <td class="digits">189</td>
+                                                        <td class="font-primary">
+                                                            <h3 style="color: #f8ac11; padding: 0 23px 0 0;font-weight: 600;">3.5</h3>
+                                                                <div class="star-rating">
+                                                                    <input id="star-5" type="radio" name="rating" value="star-5" />
+                                                                    <label for="star-5" title="5 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-4" type="radio" name="rating" value="star-4" />
+                                                                    <label for="star-4" title="4 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-3" type="radio" name="rating" value="star-3" />
+                                                                    <label for="star-3" title="3 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-2" type="radio" name="rating" value="star-2" />
+                                                                    <label for="star-2" title="2 stars">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                    <input id="star-1" type="radio" name="rating" value="star-1" />
+                                                                    <label for="star-1" title="1 star">
+                                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                    </label>
+                                                                </div>
+                                                        </td>
+                                                    </tr> -->
+                        
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-8 dash_mainmenu_item">
+            <h5 class="background" style="color: white;opacity : 0.5;margin-left: 20px;">User Engagement</h5>
+            
+                <div class="card-header" style="background:#00496e;min-height: 700px;">
+                    <br><br><br><br>
+                    <div style="width:100%;" class="container">
+                        <canvas id="usersMultiLineChart" width="900px" height="800px"></canvas>
+                    </div>
+                </div>
+        </div>
+        
+
+        <div class="col-md-4 dash_mainmenu_item">
+            
+            <label style="color:#FFFFFF;opacity:0.3;font-size: 18px;padding-left: 32%;">Ram Usage</label>
+                <div class="col-md-12">
+                    <div class="card-header" style="background:#00496e;min-height: 290px;">
+                        <div style="width:50%;" class="graph-container">
+                            <canvas id="ramChartOne"></canvas>
+                        </div>
+                        <div class="donut-inner">
+                            <h5 style="font-weight: 600;">2.5 GB</h5>
+                            <small style="padding-left: -1%;opacity:0.5;">Out of 6 GB</small>
+                        </div>
+                    </div>
+                </div>
+            
+            <label style="color:#FFFFFF;opacity:0.3;font-size: 18px;padding-left: 32%;">Ram Usage</label>
+                    <div class="col-md-12">
+                        <div class="card-header" style="background:#00496e;min-height: 290px;">
+                            <div style="width:50%;" class="graph-container">
+                                <canvas id="ramChartTwo"></canvas>
+                            </div>
+                            <div class="donut-inner">
+                                <h5 style="font-weight: 600;">410 GB</h5>
+                                <small style="padding-left: 11%;opacity:0.5;">Out of 1 TB</small>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-12">
+                        <div class="card-header" style="background:#00496e;min-height: 200px;">
+                            <div style="width:50%;" class="container">
+                                <canvas id="ramChartTwo"></canvas>
+                            </div>
+                            <div class="donut-inner">
+                                <h5 style="font-weight: 600;">410 GB</h5>
+                                <small style="padding-left: 11%;opacity:0.5;">Out of 1 TB</small>
+                            </div>
+                        </div>
+                    </div> -->
+        </div>
+
+    </div>
+
+
+    
+    <div class="mt-3 ml-2 row">
+        <div class="col-md-4 dash_mainmenu_item">
+            <h5 class="background" style="color: white;opacity : 0.5;margin-left: 20px;">Total Complaints</h5>
+            <div class="card widget-cards"> 
+                <div class="card-header" style="background:#00496e;min-height: 345px;">
+                   <div  style="padding-right: 3%;padding-top: 4%;">
+                    <ngx-charts-gauge
+                    [view]="totalcomplaint_view"
+                    [scheme]="colorScheme"
+                    [results]="single"
+                    [legend]="legend"
+                    [legendPosition]="legendPosition"
+                    [legendTitle]="false"
+                    [showAxis]="false"
+                    [startAngle]="-360"
+                    [angleSpan]="280" 
+                    [valueFormatting]="gaugeValueFormatting"
+                    >
+                  </ngx-charts-gauge>
+                   </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="col-md-8 dash_mainmenu_item">
+            <h5 class="background" style="color: white;opacity : 0.5;margin-left: 20px;">Video View</h5>
+            <div class="card widget-cards"> 
+                <div class="card-header" style="background:#00496e;min-height: 334px;">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6 class="background" style="opacity: 0.5;">Total No.of Views</h6>
+                            <h2>8,682</h2>
+                        </div>
+                        
+                        <div class="col-md-6">
+                        </div>
+                        <div class="col-md-2">
+                            <select class="form-control" style="font-size: 12px;border-color: #042b3f;background:#042b3f;color: #fff;">
+                                <option>Weekly</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <canvas id="vedioViewLineChart" width="50px" height="8px"></canvas>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <br><br>
+                    <div class="mt-3 row" >
+                        <div class="col-md-3">
+                            <div class="col-md-12" style="padding: 12px;background:#003e5c;border-radius: 10px;">
+                                <h6 class="background">Gym Video</h6>
+                                <h5 style="color:#fff;">254</h5>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="col-md-12" style="padding: 12px;background:#003e5c;border-radius: 10px;">
+                                <h6 class="background">Yoga Video</h6>
+                                <h5 style="color:#fff;">365</h5>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="col-md-12" style="padding: 12px;background:#003e5c;border-radius: 10px;">
+                                <h6 class="background">Health Videos</h6>
+                                <h5 style="color:#fff;">498</h5>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="col-md-12" style="padding: 12px;background:#003e5c;border-radius: 10px;">
+                                <h6 class="background">Health Education</h6>
+                                <h5 style="color:#fff;">498</h5>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="mt-2  row">
+        <div class="col-md-6 dash_mainmenu_item">
+            <h5 class="background" style="color: white;opacity : 0.5;margin-left: 20px;">Most Popular Video</h5>
+            <div class="card widget-cards"> 
+                <div class="card-header"  style="background:#00496e;">
+                        <div class="row">
+                            <div class="col-md-4">
+                                        <img src="assets/images/dashboard/poliofit2.png" width="150px" height="50px">
+                            </div>
+                            <div class="col-md-4">
+                                    <h6 style="opacity: 0.5;">Byceps Session 01</h6>
+                                    <small>Total Views 254</small><br>
+                                    
+                            </div>
+
+                            
+                            <div class="col-md-4">
+                                <div class="star-rating">
+                                    <input id="star-5" type="radio" name="rating" value="star-5" />
+                                    <label for="star-5" title="5 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                    <input id="star-4" type="radio" name="rating" value="star-4" />
+                                    <label for="star-4" title="4 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                    <input id="star-3" type="radio" name="rating" value="star-3" />
+                                    <label for="star-3" title="3 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                    <input id="star-2" type="radio" name="rating" value="star-2" />
+                                    <label for="star-2" title="2 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                    <input id="star-1" type="radio" name="rating" value="star-1" />
+                                    <label for="star-1" title="1 star">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <hr>
+                        <div class="mt-2 row">
+                            <div class="col-md-4">
+                                        <img src="assets/images/dashboard/health1.png" width="150px" height="50px">
+                            </div>
+                            <div class="col-md-4">
+                                    <h6 style="opacity: 0.5;">Byceps Session 01</h6>
+                                    <small>Total Views 254</small><br>
+                                    
+                            </div>
+
+                            
+                            <div class="col-md-4">
+                                <div class="star-rating">
+                                    <input id="star-5" type="radio" name="rating" value="star-5" />
+                                    <label for="star-5" title="5 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                    <input id="star-4" type="radio" name="rating" value="star-4" />
+                                    <label for="star-4" title="4 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                    <input id="star-3" type="radio" name="rating" value="star-3" />
+                                    <label for="star-3" title="3 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                    <input id="star-2" type="radio" name="rating" value="star-2" />
+                                    <label for="star-2" title="2 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                    <input id="star-1" type="radio" name="rating" value="star-1" />
+                                    <label for="star-1" title="1 star">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                      
+                        <hr>
+                        <div class="mt-2 row">
+                            <div class="col-md-4">
+                                        <img src="assets/images/dashboard/poliofit1.png" width="150px" height="50px">
+                            </div>
+                            <div class="col-md-4">
+                                    <h6 style="opacity: 0.5;">Byceps Session 01</h6>
+                                    <small>Total Views 254</small><br>
+                                    
+                            </div>
+
+                            
+                            <div class="col-md-4">
+                                <div class="star-rating">
+                                    <input id="star-5" type="radio" name="rating" value="star-5" />
+                                    <label for="star-5" title="5 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                    <input id="star-4" type="radio" name="rating" value="star-4" />
+                                    <label for="star-4" title="4 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                    <input id="star-3" type="radio" name="rating" value="star-3" />
+                                    <label for="star-3" title="3 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                    <input id="star-2" type="radio" name="rating" value="star-2" />
+                                    <label for="star-2" title="2 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                    <input id="star-1" type="radio" name="rating" value="star-1" />
+                                    <label for="star-1" title="1 star">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                      
+                      
+                       
+
+                        
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 dash_mainmenu_item ">
+            <h5 class="background" style="color: white;opacity : 0.5;margin-left: 20px;">Video Played Minutes</h5>
+            <div class="card widget-cards"> 
+                <div class="card-header vedios" style="background:#00496e;min-height: 259px;">
+                       
+                        <!-- <ngx-charts-pie-grid
+                            [view]="video_view"
+                            [scheme]="vedio_colorScheme"
+                            [results]="vedio_single">
+                        </ngx-charts-pie-grid> 
+                       -->
+                    <div class="ml-2 mt-2 row">
+                                <ngx-charts-gauge
+                                [view]="vedio_play_view"
+                                [scheme]="fb_colorScheme"
+                                [results]="Vedio_Play"
+                                [legend]="false"
+                                [legendPosition]="false"
+                                [legendTitle]="false"
+                                [textValue]=""
+                                [valueFormatting]="vedioFormatValue"
+                                [showAxis]="false"
+                                [angleSpan]="360"
+                                [showText]="true"
+                                >
+                              </ngx-charts-gauge>
+
+
+                              <ngx-charts-gauge
+                              [view]="vedio_play_view"
+                                [scheme]="fb_colorScheme"
+                                [results]="Vedio_Play"
+                                [legend]="false"
+                                [legendPosition]="false"
+                                [legendTitle]="false"
+                                [textValue]=""
+                                [valueFormatting]="vedioFormatValue"
+                                [showAxis]="false"
+                                [angleSpan]="360"
+                                [showText]="true"
+                                >
+                              </ngx-charts-gauge>
+                                
+                              <ngx-charts-gauge
+                                [view]="vedio_play_view"
+                                [scheme]="fb_colorScheme"
+                                [results]="Vedio_Play"
+                                [legend]="false"
+                                [legendPosition]="false"
+                                [legendTitle]="false"
+                                [textValue]=""
+                                [valueFormatting]="vedioFormatValue"
+                                [showAxis]="false"
+                                [angleSpan]="360"
+                                [showText]="true"
+                                >
+                              </ngx-charts-gauge>
+                              
+
+                    </div>  
+                    
+                    <div class="ml-2 mt-2 row">
+                        <label style="padding-left: 10%;">Gym</label>
+                        <label style="padding-left: 27%;">Yoga</label>
+                        <label style="padding-left: 18%;">Health Videos</label>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+  

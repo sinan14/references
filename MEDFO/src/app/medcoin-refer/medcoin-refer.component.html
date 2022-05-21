@@ -1,0 +1,325 @@
+<div class="">
+  <div class="bnr1">
+    <img [src]="medCoinDatas.ad1" class="img-fluid" />
+  </div>
+  <!-- <a target="_blank" [href]="medCoinDatas.ad1">view ad 1</a>
+<a target="_blank" [href]="medCoinDatas.ad2">view ad 2</a>
+<a target="_blank" [href]="medCoinDatas.howItWorks">view how it works</a>
+<a target="_blank" [href]="medCoinDatas.disclaimer">disclaimer</a> -->
+
+  <div class="row m-0 p-0">
+    <div class="col-md-6 float-left m-0 p-0">
+      <div class="refferbox1">
+        <div class="bb000">
+          <div class="col-md-8 col-8 float-left totalavaliable">
+            <h5 style="color: #fff">Total Avalilable Medi coins</h5>
+            <label style="color: #fff"
+              >You can pay 100% Medcoins of your order value</label
+            >
+          </div>
+          <div class="col-md-4 col-4 float-left totalavaliable1">
+            <label style="color: #fff">
+              <img
+                src="assets/img/cart/coin.png"
+                class="img-fluid coin-img"
+              /><i>{{ medCoinDatas.totalBalance }}</i></label
+            >
+          </div>
+        </div>
+        <div class="tablereffer">
+          <h5>Transaction History</h5>
+          <div [class.medocin-table]="viewLess">
+            <h5
+              *ngIf="medCoinDatas.transactionHistory.length == 0"
+              style="text-align: center; margin-top: 25px"
+            >
+              No transaction to show
+            </h5>
+
+            <table
+              *ngIf="medCoinDatas.transactionHistory.length != 0"
+              class="table table-striped tabres medTable"
+            >
+              <thead>
+                <tr>
+                  <th scope="col" style="border-top: 0">Description</th>
+                  <th scope="col" style="border-top: 0">Credit</th>
+                  <th scope="col" style="border-top: 0">Debit</th>
+                  <th scope="col" style="border-top: 0">Balance</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <ng-container
+                  *ngFor="let coin of medCoinDatas.transactionHistory"
+                >
+                  <tr>
+                    <th scope="row" class="bluelight">
+                      {{ coin.type | titlecase }}
+                    </th>
+                    <td *ngIf="coin.credit == 0" class="bluelight"></td>
+
+                    <td *ngIf="coin.credit != 0" class="bluelight">
+                      {{ coin.credit }}
+                    </td>
+                    <td *ngIf="coin.debit != 0" class="bluelight">
+                      {{ coin.debit }}
+                    </td>
+                    <td *ngIf="coin.debit == 0" class="bluelight"></td>
+                    <td class="bluelight">{{ coin.customerBalance }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="grey">
+                      {{ coin.date }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ coin.time }}
+                    </th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+          <button
+            *ngIf="viewLess"
+            (click)="view3()"
+            type="button"
+            class="btn btn-primary View-more"
+          >
+            View less
+          </button>
+          <button
+            (click)="viewAll()"
+            *ngIf="viewMore"
+            type="button"
+            class="btn btn-primary View-more"
+          >
+            View more
+          </button>
+          <!-- <p *ngIf="totalPages != 0">
+            showing page {{ pageNumber + 1 }} of {{ totalPages }}
+          </p> -->
+        </div>
+      </div>
+      <div class="row genaral">
+        <div class="addnew">
+          <div
+            class="col-md-12 addnew1"
+            style="text-align: center; cursor: pointer"
+          >
+            <label (click)="openTerms()" class="addneww" style="cursor: pointer"
+              >General terms and conditions</label
+            >
+          </div>
+        </div>
+      </div>
+      <h5 class="faqhead">FAQ</h5>
+      <section class="faqsection">
+        <div class="faq_box_sec" style="margin-top: 0px">
+          <div class="accordion">
+            <div class="accordion-item giving11">
+              <a [class.active]="show1" (click)="show1 = !show1" class="g11123">
+                <div class="gym_faq_ico">
+                  <img class="give1" src="assets/img/cart/pad.png" />
+                </div>
+                <b>How long does it take to receive the referral amount?</b>
+              </a>
+              <div [class.active]="show1" class="content give2">
+                <p>
+                  As soon as a friend, family member, or any other signs up
+                  using your referral code and makes their first purchase, the
+                  amount is instantly transferred to your e-wallet.
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item giving11">
+              <a [class.active]="show2" (click)="show2 = !show2" class="g11123">
+                <div class="gym_faq_ico">
+                  <img class="give1" src="assets/img/cart/pad.png" />
+                </div>
+                <b
+                  >Is the referral feature only available for medpride
+                  members?</b
+                >
+              </a>
+              <div [class.active]="show2" class="content give2">
+                <p>
+                  No, it is applicable for all members, regardless if you are a
+                  premium member or not
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item giving11">
+              <a [class.active]="show3" (click)="show3 = !show3" class="g11123">
+                <div class="gym_faq_ico">
+                  <img class="give1" src="assets/img/cart/pad.png" />
+                </div>
+                <b
+                  >What should I do if my referral amount has not been processed
+                  yet?
+                </b>
+              </a>
+              <div [class.active]="show3" class="content give2">
+                <p>
+                  Worry not my friend. You can always contact our customer care
+                  executive to resolve this issue as soon as we can.
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item giving11">
+              <a [class.active]="show4" (click)="show4 = !show4" class="g11123">
+                <div class="gym_faq_ico">
+                  <img class="give1" src="assets/img/cart/pad.png" />
+                </div>
+                <b>How many referrals do I need for a reward?</b>
+              </a>
+              <div [class.active]="show4" class="content give2">
+                <p>
+                  You'll get a reward for each friend you refer. When they make
+                  their first health purchase, your reward will be transferred
+                  to your e-wallet.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="col-md-6 float-right pr-0 mr-0">
+      <div class="row pr-0 m-0">
+        <div class="youget">
+          <img src="{{ medCoinDatas.ad2 }}" class="img-fluid" />
+          <!-- <div class="col-md-12 float-left">
+            <h3>You get upto 100 coins</h3>
+            <div class="imgget float-right">
+            </div>
+          </div>
+          <div class="backlabel">
+            <label>Use code : #15454232</label>
+          </div> -->
+        </div>
+
+        <h5 class="social1">Refer a friend via</h5>
+        <div class="p-3 d-flex w-100">
+          <div class="big-box">
+            <div class="position-relative">
+              <div class="line"></div>
+              <div class="boxreffer bg-white">
+                <img
+                  (click)="openWhatsApp()"
+                  src="assets/img/cart/whatsapp.png"
+                  class="img-fluid"
+                />
+                <br />
+                <label>Whatsapp</label>
+              </div>
+            </div>
+          </div>
+          <div class="big-box">
+            <div class="position-relative">
+              <div class="line"></div>
+              <div (click)="copyText()" class="boxreffer bg-white">
+                <img src="assets/img/cart/link.png" class="img-fluid" /><br />
+                <label>Generate Link</label>
+                <!-- <label *ngIf="linkCopied">Link Copied</label> -->
+              </div>
+            </div>
+          </div>
+          <div class="big-box">
+            <div class="position-relative">
+              <div class="line"></div>
+              <div (click)="copyText()" class="boxreffer bg-white">
+                <img src="assets/img/cart/share.png" class="img-fluid" /><br />
+                <label>Share</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <section class="how11">
+          <div class="cart_item_lst_row pr-0">
+            <h5 style="margin: 1px 0">How it works</h5>
+            <div class="howwork1">
+              <div class="cart_item_lst_row_img">
+                <img
+                  src="assets/img/cart/r2.png"
+                  class="carsubscription medcoin-how-img"
+                />
+              </div>
+              <div class="cart_item_lst_row_contant">
+                <div class="cart_item_lst_row_contant_name">Refer a friend</div>
+                <div class="cart_item_lst_row_contant_cmpny">
+                  Refer your friend to Medimall, the health companion.
+                </div>
+              </div>
+            </div>
+
+            <div class="howwork1">
+              <div class="cart_item_lst_row_img">
+                <img
+                  src="assets/img/cart/r1.png"
+                  class="carsubscription medcoin-how-img"
+                />
+              </div>
+              <div class="cart_item_lst_row_contant">
+                <div class="cart_item_lst_row_contant_name">
+                  Share a pinch of health
+                </div>
+                <div class="cart_item_lst_row_contant_cmpny">
+                  Share health through social media.
+                </div>
+              </div>
+            </div>
+
+            <div class="howwork1">
+              <div class="cart_item_lst_row_img">
+                <img
+                  src="assets/img/cart/r3.png"
+                  class="carsubscription medcoin-how-img"
+                />
+              </div>
+              <div class="cart_item_lst_row_contant">
+                <div class="cart_item_lst_row_contant_name">Earn Medcoins</div>
+                <div class="cart_item_lst_row_contant_cmpny">
+                  When your friend signs in with the health refferal code, you
+                  and your friend will gain Medcoins.
+                </div>
+              </div>
+            </div>
+            <div class="howwork1">
+              <div class="cart_item_lst_row_img">
+                <img
+                  src="assets/img/cart/r4.png"
+                  class="carsubscription medcoin-how-img"
+                />
+              </div>
+              <div class="cart_item_lst_row_contant">
+                <div class="cart_item_lst_row_contant_name">
+                  Enjoy lifelong health
+                </div>
+                <div class="cart_item_lst_row_contant_cmpny">
+                  Redeem Medcoins on products, and live a healthy and happy
+                  life.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="boxdis">
+                <h5>Disclaimer</h5>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                  commodo finibus quam, ut lacinia quam dapibus at. Pellentesque
+                  lobortis, est et cursus iaculis, massa magna pharetra ligula,
+                  sit amet mattis enim odio ut nibh. Vestibulum porta ex sit
+                  amet cursus vehicula. Fusce neque dui, blandit sit amet rutrum
+                  quis, venenatis eu ligula.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

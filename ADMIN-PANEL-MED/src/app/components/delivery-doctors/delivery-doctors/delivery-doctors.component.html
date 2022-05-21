@@ -1,0 +1,674 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="kendo_table master-demo">
+        <div class="card-body deliveryBoy_tab tab2-card">
+          <h6>Doctors</h6>
+
+          <ngb-tabset
+            class="tab-coupon"
+            #t="ngbTabset"
+            [activeId]="selectedTab"
+            (tabChange)="TabChange($event)"
+          >
+            <ngb-tab
+              title="Pending"
+              id="pending"
+              *ngIf="disableTab('Pending')"
+            >
+              <ng-template ngbTabContent>
+                <br /><br />
+                <form [formGroup]="pending_date_form">
+                  <div class="mt-2 row">
+                    <div class="col-md-3">
+                      <h6>From Date</h6>
+                      <input
+                        type="date"
+                        class="form-control"
+                        class="form-control"
+                        [max]="getToday()"
+                        formControlName="pending_start_date"
+                        (change)="getPendingStart($event)"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <h6>To Date</h6>
+                      <input
+                        type="date"
+                        class="form-control"
+                        onkeydown="return false"
+                        [min]="pending_min"
+                        formControlName="pending_end_date"
+                        (change)="getPendingEnd()"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <button
+                        type="button"
+                        class="btn btn-dark btn-excel-rounded m-30"
+                        (click)="pendingClear()"
+                      >
+                        CLEAR
+                      </button>
+                    </div>
+                  </div>
+                </form>
+
+                <br /><br />
+                <div class="table-responsive">
+                  <kendo-grid
+                    [kendoGridBinding]="PendingDoctorsWithIndex"
+                    [filterable]="true"
+                    [sortable]="true"
+                    [pageSize]="10"
+                    [pageable]="true"
+                    [skip]="skip"
+                  >
+                    <kendo-grid-column field="no" title="Sl.No" width="20">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column field="name" title="Name" width="25">
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <a *ngIf="viewFlag"
+                          style="text-decoration: underline; cursor: pointer"
+                          (click)="viewDoctor(dataItem._id)"
+                          >{{ dataItem.name }}</a
+                        >
+
+                        <a *ngIf="!viewFlag"
+                        >{{ dataItem.name }}</a
+                      >
+                        <!-- <a (click)="viewDoctor(dataItem._id)"
+                          style="text-decoration: underline; cursor: pointer"
+                          routerLink="/delivery-doctors/details"
+                          >{{ dataItem.name }}</a
+                        > -->
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="mobile"
+                      title="Mobile No"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column field="email" title="Email" width="25">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="createdDate"
+                      title="Created Date"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Created Date"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-command-column
+                      title="Action"
+                      width="30"
+                      class="text-center"
+                    >
+                      <ng-template
+                        let-dataItem="dataItem"
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                      >
+                        <!-- <input
+                          type="checkbox"
+                          class="toggle-switch oversize"
+                          id="toggle3"
+                          checked
+                          *ngIf="editFlag"
+                        /> -->
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                          (click)="verifyDoctor(dataItem)" *ngIf="editFlag"
+                        >
+                          Verify
+                        </button>
+                      </ng-template>
+                    </kendo-grid-command-column>
+                  </kendo-grid>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab
+              title="Verified"
+              id="verified"
+              *ngIf="disableTab('Verified')"
+            >
+              <ng-template ngbTabContent>
+                <br /><br />
+                <form [formGroup]="verified_date_form">
+                  <div class="mt-2 row">
+                    <div class="col-md-3">
+                      <h6>From Date</h6>
+                      <input
+                        type="date"
+                        class="form-control"
+                        [max]="getToday()"
+                        formControlName="verified_start_date"
+                        (change)="getVerifiedStart($event)"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <h6>To Date</h6>
+                      <input
+                        type="date"
+                        class="form-control"
+                        onkeydown="return false"
+                        [min]="verified_min"
+                        formControlName="verified_end_date"
+                        (change)="getVerifiedEnd()"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <button
+                        type="button"
+                        class="btn btn-dark btn-excel-rounded m-30"
+                        (click)="verifiedClear()"
+                      >
+                        CLEAR
+                      </button>
+                    </div>
+                  </div>
+                </form>
+
+                <br /><br />
+                <div class="table-responsive">
+                  <kendo-grid
+                    [kendoGridBinding]="VerifiedDoctorsWithIndex"
+                    [filterable]="true"
+                    [sortable]="true"
+                    [pageSize]="10"
+                    [pageable]="true"
+                    [skip]="skip"
+                  >
+                    <kendo-grid-column field="no" title="Sl.No" width="20">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column field="name" title="Name" width="20">
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <a *ngIf="viewFlag"
+                          (click)="viewDoctor(dataItem._id)"
+                          style="text-decoration: underline; cursor: pointer"
+                          routerLink="/delivery-doctors/details"
+                          >{{ dataItem.name }}</a
+                        >
+
+                        <a *ngIf="!viewFlag"
+                        >{{ dataItem.name }}</a
+                      >
+
+                      </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column field="email" title="Email" width="20">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="mobile"
+                      title="Mobile No"
+                      width="20"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-command-column
+                      title="Action"
+                      width="20"
+                      class="text-center"
+                    >
+                      <ng-template
+                        let-dataItem="dataItem"
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                      >
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                          data-toggle="modal"
+                          data-original-title="test"
+                          data-target="#PendingExampleModal"
+                          (click)="approveDoctor(dataItem)" *ngIf="editFlag"
+                        >
+                          Approve
+                        </button>
+
+                        &nbsp;&nbsp;<button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                          (click)="rejectDoctor(dataItem)" *ngIf="editFlag"
+                        >
+                          Reject
+                        </button>
+                      </ng-template>
+                    </kendo-grid-command-column>
+                  </kendo-grid>
+                </div>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab
+              title="Approved"
+              id="approved"
+              *ngIf="disableTab('approved')"
+            >
+              <ng-template ngbTabContent>
+                <br /><br />
+                <form [formGroup]="approved_date_form">
+                  <div class="mt-2 row">
+                    <div class="col-md-3">
+                      <h6>From Date</h6>
+                      <input
+                        type="date"
+                        class="form-control"
+                        [max]="getToday()"
+                        formControlName="approved_start_date"
+                        (change)="getApprovedStart($event)"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <h6>To Date</h6>
+                      <input
+                        type="date"
+                        class="form-control"
+                        onkeydown="return false"
+                        [min]="approved_min"
+                        formControlName="approved_end_date"
+                        (change)="getApprovedEnd()"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <button
+                        type="button"
+                        class="btn btn-dark btn-excel-rounded m-30"
+                        (click)="approvedClear()"
+                      >
+                        CLEAR
+                      </button>
+                    </div>
+                  </div>
+                </form>
+
+                <br /><br />
+
+                <div class="table-responsive">
+                  <kendo-grid
+                    [kendoGridBinding]="ApprovedDoctorsWithIndex"
+                    [filterable]="true"
+                    [sortable]="true"
+                    [pageSize]="10"
+                    [pageable]="true"
+                    [skip]="skip"
+                  >
+                    <kendo-grid-column field="no" title="Sl.No" width="20">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column field="name" title="Name" width="30">
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <a *ngIf="viewFlag"
+                          (click)="viewDoctor(dataItem._id)"
+                          style="text-decoration: underline; cursor: pointer"
+                          routerLink="/delivery-doctors/details"
+                          >{{ dataItem.name }}</a
+                        >
+
+                        <a *ngIf="!viewFlag"
+                        >{{ dataItem.name }}</a
+                      >
+
+                      </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column field="email" title="Email" width="30">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="mobile"
+                      title="Mobile No"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <!-- <kendo-grid-command-column title="Action" width="40">
+                      <ng-template kendoGridCellTemplate let-isNew="isNew">
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                          data-toggle="modal"
+                          data-original-title="test"
+                          data-target="#PendingExampleModal"
+                          (click)="open(PendingContent, 'edit')"
+                        >
+                          Approve
+                        </button>
+
+                        &nbsp;&nbsp;<button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                        >
+                          Reject
+                        </button>
+                      </ng-template>
+                    </kendo-grid-command-column> -->
+                  </kendo-grid>
+                </div>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab
+              title="Rejected"
+              id="rejected"
+              *ngIf="disableTab('rejected')"
+            >
+              <ng-template ngbTabContent>
+                <br /><br />
+                <form [formGroup]="rejected_date_form">
+                  <div class="mt-2 row">
+                    <div class="col-md-3">
+                      <h6>From Date</h6>
+                      <input
+                        type="date"
+                        class="form-control"
+                        [max]="getToday()"
+                        formControlName="rejected_start_date"
+                        (change)="getRejectedStart($event)"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <h6>To Date</h6>
+                      <input
+                        type="date"
+                        class="form-control"
+                        onkeydown="return false"
+                        min="{{ rejected_min }}"
+                        formControlName="rejected_end_date"
+                        (change)="getRejectedEnd()"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <button
+                        type="button"
+                        class="btn btn-dark btn-excel-rounded m-30"
+                        (click)="rejectedClear()"
+                      >
+                        CLEAR
+                      </button>
+                    </div>
+                  </div>
+                </form>
+
+                <br /><br />
+                <div class="table-responsive">
+                  <kendo-grid
+                    [kendoGridBinding]="RejectedDoctorsWithIndex"
+                    [filterable]="true"
+                    [sortable]="true"
+                    [pageSize]="10"
+                    [pageable]="true"
+                    [skip]="skip"
+                  >
+                    <kendo-grid-column field="no" title="Sl.No" width="20">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column field="name" title="Name" width="30">
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <a *ngIf="viewFlag"
+                          (click)="viewDoctor(dataItem._id)"
+                          style="text-decoration: underline; cursor: pointer"
+                          routerLink="/delivery-doctors/details"
+                          >{{ dataItem.name }}</a
+                        >
+
+                        <a *ngIf="!viewFlag"
+                        >{{ dataItem.name }}</a
+                      >
+
+                      </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column field="email" title="Email" width="30">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="mobile"
+                      title="Mobile No"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <!-- <kendo-grid-command-column title="Action" width="40">
+                  <ng-template kendoGridCellTemplate let-isNew="isNew">
+                    <button
+                      type="button"
+                      class="btn btn-dark btn-dark-rounded"
+                      data-toggle="modal"
+                      data-original-title="test"
+                      data-target="#PendingExampleModal"
+                      (click)="open(PendingContent, 'edit')"
+                    >
+                      Approved
+                    </button>
+
+                    &nbsp;&nbsp;<button
+                      type="button"
+                      class="btn btn-dark btn-dark-rounded"
+                    >
+                      Rejected
+                    </button>
+                  </ng-template>
+                </kendo-grid-command-column> -->
+                  </kendo-grid>
+                </div>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

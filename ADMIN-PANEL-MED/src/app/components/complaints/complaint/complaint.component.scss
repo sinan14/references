@@ -1,0 +1,225 @@
+
+table td a{
+  color: white;
+  text-decoration: underline;
+}
+
+.card-data{
+  background-color: #1c5470;
+}
+.cmpnt_pop_align {float: left;width:100%;margin-bottom: 15px;}
+.cmpnt_pop_align li{float: left;color: rgb(255 255 255 / 70%);}
+.cmpnt_pop_align li:first-child{
+  color:#acc4d0;    
+  width: 12%;
+  min-width: 130px;
+}
+.card-data{
+  background-color: #144258;
+  padding:10px;
+  padding: 40px;
+  align-content: center;
+  border-radius: 10px;
+  padding-right: 20px;
+  color:white;
+  position: relative;
+}
+
+.span-data{
+  justify-content: space-between;
+  background-color: #0a3347;
+  color:white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 75px;
+  font-weight: 5em;
+  float: right;
+}
+
+tbody  td{
+  font: normal normal 100 Poppins;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  opacity: 0.7
+}
+.innerr_table_style table thead th .box{
+  color:red !important;
+  opacity: 0.5 !important;
+}
+
+
+/*Button CSS*/
+.close-btn{
+  width: 100px;
+}
+.btn-dark-rounded{
+margin-left: 12px;
+background-color: #042b3f;
+border-radius: 10.25em;
+}
+
+.btn-inverse-rounded{
+  background-color: #042b3f;
+  border-radius: 5px;
+}
+
+.btn{
+  
+  font-weight: 300;
+}
+
+.btn-inverse-dark {
+    background-color: rgba(79, 74, 96, 0.2);
+    background-image: none;
+    border-color: rgba(79, 74, 96, 0);
+  }
+  
+  .btn-inverse-dark:not(.btn-inverse-light) {
+    color: #4f4a60;
+  }
+  
+  .btn-inverse-dark:hover {
+    color: #ffffff;
+    background-color: #4f4a60;
+    border-color: #4f4a60;
+  }
+  
+  .btn-inverse-dark.focus, .btn-inverse-dark:focus {
+    box-shadow: 0 0 0 3px rgba(79, 74, 96, 0.5);
+  }
+  
+  .btn-inverse-dark.disabled, .btn-inverse-dark:disabled {
+    color: #4f4a60;
+    background-color: transparent;
+  }
+  
+  .btn-inverse-dark.active, .btn-inverse-dark:active,
+  .show > .btn-inverse-dark.dropdown-toggle {
+    color: #ffffff;
+    background-color: #4f4a60;
+    border-color: #4f4a60;
+  }
+  
+  .btn-dark, .btn-dark:hover {
+    box-shadow: 0 2px 2px 0 rgba(79, 74, 96, 0.14), 0 3px 1px -2px rgba(79, 74, 96, 0.2), 0 1px 5px 0 rgba(79, 74, 96, 0.12);
+      justify-content: center;
+  }
+  
+  
+.form-control{
+    background: #014466;
+    color: white;
+    
+  }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    
+    .modal-body, .modal-header, .modal-footer{
+      background-color: #00496e;
+      .form-group {
+        margin-bottom: 0.5rem;
+      }
+  }
+.modal-body{
+    background-color: #00496e !important;
+    width: 821px !important;
+    margin-left: -100px;
+    margin-top: 70px;
+    border-radius: 15px;
+    padding: 20px;    
+}
+@media (max-width: 680px){
+  .modal-body{
+    background-color: #00496e !important;
+    width: 100% !important;
+    margin-left:0px;
+    margin-top: 70px;
+    border-radius: 15px;
+    padding: 20px;    
+  } 
+}
+.cmpnt_mnnms .modal-dialog {
+      max-width: 55% !important;
+      margin: 1.75rem auto;
+  }
+
+  .modal-content-data{
+      width: 100%;
+      float: left;
+  }
+
+
+  label{
+      color: whitesmoke;
+  }
+  .data{
+      padding-top: 2%;
+      background-color: #053449;
+      align-content: center;
+      justify-content: center;
+  }
+ 
+
+
+
+
+/* CSS Tabs*/
+.tabs {
+  max-width: 100%;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+.tabs input {
+  display: none;
+}
+.tabs label {
+  display: inline-block;
+  padding: 6px 0 6px 0;
+  margin: 0 -2px;
+  width: 20%; /* =100/tabs number */
+  border-bottom: 1px solid #000;
+  text-align: center;
+}
+.tabs label:hover {
+  cursor: pointer;
+}
+.tabs input:checked + label {
+  border: 1px solid #000;
+  border-width: 1px 1px 0 1px;
+}
+.tabs #tab1:checked ~ .content #content1,
+.tabs #tab2:checked ~ .content #content2,
+.tabs #tab3:checked ~ .content #content3,
+.tabs #tab4:checked ~ .content #content4, 
+.tabs #tab5:checked ~ .content #content5 {
+  display: block;
+}
+.tabs .content > div {
+  display: none;
+  padding-top: 20px;
+  text-align: center;
+  /*height: 192px;*/
+  overflow: auto;
+}
+
+
+/* COLOR CSS */
+.cmpnt_mnnms h6{
+  color: #FFFFFF;
+  opacity: 0.7;
+  margin: 25px 0 7px 0;
+}
+
+
+textarea::placeholder{
+  color: white;
+  opacity: 0.7;
+}
+
+.tab2-card .nav-tabs .nav-link.active, .tab2-card .nav-tabs .nav-link:focus{
+    border-color: #014466 !important;
+    color: #ffffff !important;
+    opacity: 0.7 !important;
+}

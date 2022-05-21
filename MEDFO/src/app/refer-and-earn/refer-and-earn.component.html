@@ -1,0 +1,388 @@
+<button
+  type="button"
+  id="open-modal"
+  style="display: none"
+  class="btn btn-info btn-lg"
+  data-toggle="modal"
+  data-target="#earnrefer"
+>
+  Open Model
+</button>
+
+<style>
+  /* width */
+  .general-term::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  /* Track */
+  .general-term::-webkit-scrollbar-track {
+    background: #d3d1d1;
+  }
+
+  /* Handle */
+  .general-term::-webkit-scrollbar-thumb {
+    background: rgba(177, 177, 177, 0.623);
+  }
+
+  /* Handle on hover */
+  .general-term::-webkit-scrollbar-thumb:hover {
+    background: rgba(177, 177, 177, 0);
+  }
+</style>
+
+<!-- Modal -->
+<div class="modal fade" id="earnrefer" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content" id="earnrefer1">
+      <div class="row">
+        <div class="col-md-12">
+          <button
+            type="button"
+            (click)="exitFromReferAndEarn()"
+            class="closeselect"
+            data-dismiss="modal"
+          >
+            &times;
+          </button>
+        </div>
+      </div>
+      <div class="modal-body" id="earnrefer112">
+        <h3 class="rhheading">
+          <label style="font-weight: 300">Refer</label> Health,
+          <label style="font-weight: 300"> Earn</label> Wealth
+        </h3>
+
+        <div class="rhimg">
+          <img src="{{ referalData.image }}" class="img-fluid" />
+        </div>
+
+        <div (click)="tapToCopy()" class="dottedhe">
+          <h5>{{ referalData.referralCode }}</h5>
+          <p>Tap to copy code</p>
+        </div>
+        <label class="shearevia">Share via</label><br />
+        <div class="row">
+          <div class="container">
+            <div class="col-md-12">
+              <div class="col-md-4 col-4 float-left">
+                <div class="ehbox1">
+                  <div class="ehbox" (click)="openWhatsapp()">
+                    <!-- <img
+                      src="assets/img/cart/whatsapppopup.png"
+                      class="img-fluid"
+                    /> -->
+                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                  </div>
+                  <label>Whatsapp</label>
+                </div>
+              </div>
+              <div class="col-md-4 col-4 float-left">
+                <div style="text-align: center" class="ehbox1">
+                  <div class="ehbox">
+                    <i
+                      (click)="openEmail()"
+                      class="fa fa-envelope"
+                      aria-hidden="true"
+                    ></i>
+                  </div>
+                  <label>Email</label>
+                </div>
+              </div>
+              <div class="col-md-4 col-4 float-left text-center">
+                <div class="ehbox1" (click)="share()">
+                  <div class="ehbox">
+                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                  </div>
+                  <label>Share</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="container">
+            <div class="col-md-12">
+              <h4 class="Benefits">Benefits</h4>
+              <ul class="ulhe">
+                <li>
+                  <div class="col-md-1 pgheh float-left p-0">
+                    <i class="fa fa-circle" aria-hidden="true"></i>
+                  </div>
+                  <div class="col-md-11 pgheh1 float-left pl-0">
+                    Invite your friends to Medimall and earn
+                    <span>Medcoins</span> on their first payment. T&C apply
+                  </div>
+                </li>
+
+                <li>
+                  <div class="col-md-1 pgheh float-left p-0">
+                    <i class="fa fa-circle" aria-hidden="true"></i>
+                  </div>
+                  <div class="col-md-11 pgheh1 float-left pl-0">
+                    The Referral Payments will be governed by the Referral
+                    Policy.
+                  </div>
+                </li>
+
+                <li>
+                  <div class="col-md-1 pgheh float-left p-0">
+                    <i class="fa fa-circle" aria-hidden="true"></i>
+                  </div>
+                  <div class="col-md-11 pgheh1 float-left pl-0">
+                    The More friends you refer, the more <span> Medcoins</span>
+                    you can redeem
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr class="hreh" />
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <!-- Right tooltip-->
+            <div class="con-tooltip right">
+              <div class="genarleh">General terms and conditions</div>
+              <div class="tooltip">
+                <div class="general-term">
+                  <h5
+                    style="
+                      margin: 0px 0 14px 0px;
+                      font-size: 15px;
+                      font-weight: 600;
+                    "
+                  >
+                    Terms & Conditions
+                  </h5>
+                  <label
+                    id="generalTerms"
+                    style="padding: 0 5px; text-align: justify; font-size: 11px"
+                  >
+                    {{ referalData.termsAndCondition }}</label
+                  >
+                </div>
+              </div>
+            </div>
+            <br />
+
+            <div class="con-tooltip right fa-q">
+              <div class="genarleh">FAQ</div>
+              <div class="tooltip">
+                <section class="faqsection">
+                  <div class="faq_box_sec" style="margin-top: 0px">
+                    <h5
+                      style="
+                        font-size: 15px;
+                        font-weight: 600;
+                        padding-left: 10px;
+                        padding-bottom: 15px;
+                      "
+                    >
+                      FAQ
+                    </h5>
+                    <div class="accordion">
+                      <div class="accordion-item giving11">
+                        <a
+                          [class.active]="show1"
+                          (click)="show1 = !show1"
+                          class="g11123"
+                        >
+                          <div class="gym_faq_ico">
+                            <img class="give1" src="assets/img/cart/pad.png" />
+                          </div>
+                          <b>How do I check my referral codes?</b>
+                        </a>
+                        <div [class.active]="show1" class="content give2">
+                          <p>
+                            You can find your referral code in the refer & earn
+                            section below the profile section of the Medimall
+                            app.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="accordion-item giving11">
+                        <a
+                          [class.active]="show2"
+                          (click)="show2 = !show2"
+                          class="g11123"
+                        >
+                          <div class="gym_faq_ico">
+                            <img class="give1" src="assets/img/cart/pad.png" />
+                          </div>
+                          <b>How can I refer my friend to Medimall?</b>
+                        </a>
+                        <div [class.active]="show2" class="content give2">
+                          <p>
+                            Once you've checked the referral code, you can send
+                            it to your friends via Whatsapp, SMS, or any other
+                            method. You will receive your reward when your
+                            friend uses the code to install the Medimall app and
+                            makes their first purchase.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="accordion-item giving11">
+                        <a
+                          [class.active]="show3"
+                          (click)="show3 = !show3"
+                          class="g11123"
+                        >
+                          <div class="gym_faq_ico">
+                            <img class="give1" src="assets/img/cart/pad.png" />
+                          </div>
+                          <b
+                            >Is there an expiration date for referral codes?
+                          </b>
+                        </a>
+                        <div [class.active]="show3" class="content give2">
+                          <p>No, the referral codes have no expiration date.</p>
+                        </div>
+                      </div>
+                      <div class="accordion-item giving11">
+                        <a
+                          [class.active]="show4"
+                          (click)="show4 = !show4"
+                          class="g11123"
+                        >
+                          <div class="gym_faq_ico">
+                            <img class="give1" src="assets/img/cart/pad.png" />
+                          </div>
+                          <b>How long does it take to get a reward?</b>
+                        </a>
+                        <div [class.active]="show4" class="content give2">
+                          <p>
+                            When the friend you referred purchases through the
+                            application, you will receive the referral reward
+                            within 7 days once the product is delivered.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="accordion-item giving11">
+                        <a
+                          [class.active]="show5"
+                          (click)="show5 = !show5"
+                          class="g11123"
+                        >
+                          <div class="gym_faq_ico">
+                            <img class="give1" src="assets/img/cart/pad.png" />
+                          </div>
+                          <b>How will I get my reward?</b>
+                        </a>
+                        <div [class.active]="show5" class="content give2">
+                          <p>
+                            Your reward will be in the form of MedCoins, which
+                            you can use to buy medicines and healthcare products
+                            for yourself and your family.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="accordion-item giving11">
+                        <a
+                          [class.active]="show6"
+                          (click)="show6 = !show6"
+                          class="g11123"
+                        >
+                          <div class="gym_faq_ico">
+                            <img class="give1" src="assets/img/cart/pad.png" />
+                          </div>
+                          <b
+                            >Are there any limits on the most number of
+                            referrals that can be made?</b
+                          >
+                        </a>
+                        <div [class.active]="show6" class="content give2">
+                          <p>
+                            No, there is no limit. You can make as many
+                            referrals and get rewards as you want.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="accordion-item giving11">
+                        <a
+                          [class.active]="show7"
+                          (click)="show7 = !show7"
+                          class="g11123"
+                        >
+                          <div class="gym_faq_ico">
+                            <img class="give1" src="assets/img/cart/pad.png" />
+                          </div>
+                          <b>Why didn't I receive the reward?</b>
+                        </a>
+                        <div [class.active]="show7" class="content give2">
+                          <p>
+                            Your friend did not use your code when logging in
+                            the Medimall application.
+                          </p>
+                          <p>
+                            Your friend entered your code but did not create an
+                            account or make any purchases with it.
+                          </p>
+                          <p>
+                            The person who used the referral code has already
+                            purchased from Medimall and is an existing customer.
+                          </p>
+                          <p>
+                            If your referral does not fall into one of the above
+                            criteria and you have not received your reward,
+                            please contact our customer service representatives.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="accordion-item giving11">
+                        <a
+                          [class.active]="show8"
+                          (click)="show8 = !show8"
+                          class="g11123"
+                        >
+                          <div class="gym_faq_ico">
+                            <img class="give1" src="assets/img/cart/pad.png" />
+                          </div>
+                          <b
+                            >How many referrals do I need to qualify for a
+                            reward?</b
+                          >
+                        </a>
+                        <div [class.active]="show8" class="content give2">
+                          <p>
+                            You will be rewarded for each user you refer. There
+                            are no lower or upper limits.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="accordion-item giving11">
+                        <a
+                          [class.active]="show9"
+                          (click)="show9 = !show9"
+                          class="g11123"
+                        >
+                          <div class="gym_faq_ico">
+                            <img class="give1" src="assets/img/cart/pad.png" />
+                          </div>
+                          <b
+                            >How do I check the status of my referral
+                            benefits?</b
+                          >
+                        </a>
+                        <div [class.active]="show9" class="content give2">
+                          <p>
+                            You can view your referral benefits under the
+                            profile section in the Medimall application.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

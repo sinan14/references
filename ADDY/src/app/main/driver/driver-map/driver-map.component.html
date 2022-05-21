@@ -1,0 +1,52 @@
+<body class="customer-page">  
+
+  <!--====== PRELOADER PART START ======-->
+
+  <!-- <div class="loader-wrap">
+      <div class="preloader"><div class="preloader-close">Preloader Close</div></div>
+      <div class="layer layer-one"><span class="overlay"></span></div>
+      <div class="layer layer-two"><span class="overlay"></span></div>        
+      <div class="layer layer-three"><span class="overlay"></span></div>        
+  </div> -->
+
+  <!--====== PRELOADER PART ENDS ======-->
+
+
+  <!--====== APPIE PAGE TITLE PART START ======-->
+  <div class="desktop">
+  <div class="appie-page-title-area-form1" style="background-color: #ffffff; display:block;">
+    
+
+
+    <agm-map 
+    [latitude]="latitude" 
+    [longitude]="longitude" 
+    [zoom]="zoom" >
+     <!----> <agm-marker 
+      [latitude]="latitude" 
+      [longitude]="longitude"></agm-marker>
+      <agm-marker 
+      [latitude]="from_Latitude" 
+      [longitude]="from_Longitude"></agm-marker>
+    
+      
+      <agm-polyline [visible]="true" [strokeWeight]="3" [strokeColor]="'blue'">
+        <agm-polyline-point [latitude]="latitude" [longitude]="longitude">
+        </agm-polyline-point>
+        <agm-polyline-point
+        
+        [latitude]="from_Latitude"
+        [longitude]="from_Longitude">
+    
+    </agm-polyline-point>
+    </agm-polyline>
+    </agm-map>
+<!--<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-direction 
+    [origin]="origin" 
+    [destination]="destination"
+  >
+  </agm-direction>
+</agm-map>-->
+</div>
+</div>

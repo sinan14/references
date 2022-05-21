@@ -1,0 +1,95 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="innerr_table_style">
+                <div class="card-body master_Tab">
+                    <h6>Delivery Area</h6>
+                    <div class="btn-popup pull-right">
+                        <button type="button" class="btn btn-dark btn-inverse-dark" data-toggle="modal" data-original-title="test"
+                            data-target="#exampleModal" (click)="open(content,'add')"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;"> Add New</button>
+                    </div>
+                   
+                            <div class="table-responsive ">
+                                    <ng2-smart-table  [settings]="settings" [source]="vendors"
+                                    (edit)="editRow($event,content,'edit')"></ng2-smart-table>
+                            </div>
+
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<ng-template #content let-modal>
+    <div *ngIf="update_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.5;" class="modal-title f-w-200" id="exampleModal">Update</h5>
+        <button style="color: white;opacity: 0.5;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div *ngIf="add_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.5;" class="modal-title f-w-200" id="exampleModal">Add</h5>
+        <button style="color: white;opacity: 0.5;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form class="needs-validation">
+
+                <div class="form row">
+                    <div class="form-group col-md-12">
+                        <label for="validationCustom01" class="mb-1">Area </label>
+                        <input class="form-control" id="validationCustom02" type="text">
+                    </div>
+                </div>
+
+                <div class="form row">
+                    <div class="form-group col-md-12">
+                        <label for="validationCustom02" class="mb-1">Covering Locations</label>
+                        <input class="form-control" id="validationCustom02" type="text" >
+                    </div>
+                </div>
+
+                <div class="form row">
+                    <div class="form-group col-md-12">
+                        <label for="validationCustom02" class="mb-1">PinCode</label>
+                        <select class="form-control">
+                            <option>--please select--</option>
+                        </select>
+                    </div>
+                </div>
+
+                 <div class="form row">
+                    <div class="form-group col-md-12">
+                        <label for="validationCustom02" class="mb-1">Standard Delivery Charge</label>
+                        <input class="form-control" id="validationCustom02" type="text" >
+                    </div>
+                </div>
+
+                <div class="form row">
+                    <div class="form-group col-md-12">
+                        <label for="validationCustom02" class="mb-1">Express Delivery Charge</label>
+                        <input class="form-control" id="validationCustom02" type="text" >
+                    </div>
+                </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Close</button>
+            <button type="button" class="btn btn-dark-rounded">Save</button>
+    </div>
+</ng-template>
+
+
+

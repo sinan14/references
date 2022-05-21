@@ -1,0 +1,915 @@
+<div class="container-fluid Qiuz_page">
+  <div class="card-body tab2-card">
+    <div class="col-md-12 kendo_table">
+      <!-- <div class="row">
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4">
+                        <div class="med_coin_table_bg_filtr" >
+                            <i class="fa fa-filter" aria-hidden="true" style="opacity: 0.8;"></i> <a style="opacity: 0.5;">   Sort & Filter</a>
+                        </div>
+                    </div>
+                </div> -->
+      <label style="color: white; opacity: 0.5">Quiz</label>
+
+      <div class="main-list">
+        <ngb-tabset
+          class="tab-coupon quiz-tab"
+          #t="ngbTabset"
+          [activeId]="selectedTab"
+          (tabChange)="tabChangeEvent($event)"
+        >
+          <ngb-tab id="tab1"  *ngIf="disableTab('Live Quiz')">
+            <ng-template ngbTabTitle
+              >Live Quiz
+              <ng-template ngbTabContent>
+                <div
+                  class="tab-pane fade active show innerr_table_style"
+                  id="account"
+                  role="tabpanel"
+                  aria-labelledby="account-tab"
+                >
+                  <div class="tab" *ngIf="liveQuizQuestions">
+                    <input type="checkbox" id="chckss" />
+                    <label
+                      class="tab-label"
+                      for="chckss"
+                      style="
+                        font-size: 18px;
+                        text-align: left;
+                        letter-spacing: 0px;
+                        color: rgb(255 255 255 / 90%);
+                        opacity: 1;
+                        align-items: center;
+                        font-weight: 200;
+                        margin-bottom: 0px;
+                      "
+                      >{{ quizName }}&nbsp;&nbsp;(Live Quiz)<span
+                        class="total-quiz"
+                        >Total Participants&nbsp; :
+                        <b style="font-weight: 900">{{
+                          totalParticipants
+                        }}</b> </span
+                      ><span class="view-quiz"
+                        >View <i class="fa fa-arrow"></i> </span
+                    ></label>
+                    <div class="tab-content">
+                      <div class="mt-4 col-md-12" style="float: right">
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-secondary bbn"
+                          (click)="editQuiz('live', '')"
+                          *ngIf="activeQuiz && editFlag"
+                        >
+                          <i class="fa fa-edit"></i>EDIT</button
+                        >&nbsp;
+                        <button *ngIf="editFlag"
+                          type="button"
+                          class="btn btn-dark btn-secondary bbn"
+                          (click)="disableQuizDetails('live', '')"
+                        >
+                          {{ activeQuiz ? "DISABLE" : "ENABLE" }}
+                        </button>
+                      </div>
+                      <br /><br />
+
+                      <div class="mt-4 pl-0 col-md-12">
+                        <span class="title-date">Starting Date &nbsp;:</span
+                        >&nbsp;&nbsp; {{ startMinDate }}&nbsp;&nbsp;;&nbsp;
+                        <span class="title-date">Ending Date &nbsp;:</span
+                        >&nbsp;&nbsp; {{ startMaxDate }}
+                      </div>
+
+                      <ng-container
+                        *ngFor="let quest of liveQuizQuestions; let i = index"
+                      >
+                        <div class="mt-3 row">
+                          <div
+                            class="col-md-12"
+                            style="
+                              float: right;
+                              opacity: 0.7;
+                              font-size: 14px;
+                              font-weight: 300;
+                              padding-bottom: 9px;
+                            "
+                          >
+                            Q.{{ i + 1 }} {{ quest.question }}
+                          </div>
+                        </div>
+                        <div class="mt-2 ml-2 row options">
+                          <div class="">
+                            <button
+                              class="btn btn-dark btn-dark-rounded"
+                              [ngClass]="
+                                quest.correctindex === 1
+                                  ? 'btn-green'
+                                  : 'btn-dark'
+                              "
+                              style="margin-right: 20px"
+                            >
+                              A. {{ quest.option1 }}
+                            </button>
+                          </div>
+                          <div class="">
+                            <button
+                              class="btn btn-dark btn-dark-rounded"
+                              [ngClass]="
+                                quest.correctindex === 2
+                                  ? 'btn-green'
+                                  : 'btn-dark'
+                              "
+                              style="margin-right: 20px"
+                            >
+                              B. {{ quest.option2 }}
+                            </button>
+                          </div>
+                          <div class="">
+                            <button
+                              class="btn btn-dark btn-dark-rounded"
+                              [ngClass]="
+                                quest.correctindex === 3
+                                  ? 'btn-green'
+                                  : 'btn-dark'
+                              "
+                              style="margin-right: 20px"
+                            >
+                              C.{{ quest.option3 }}
+                            </button>
+                          </div>
+                          <div class="">
+                            <button
+                              class="btn btn-dark btn-dark-rounded"
+                              [ngClass]="
+                                quest.correctindex === 4
+                                  ? 'btn-green'
+                                  : 'btn-dark'
+                              "
+                              style="margin-right: 20px"
+                            >
+                              D. {{ quest.option4 }}
+                            </button>
+                          </div>
+                        </div>
+                      </ng-container>
+
+                      <h6
+                        *ngIf="liveQuizQuestions && !liveQuizQuestions.length"
+                        class="text-center text-muted alert-no-found"
+                      >
+                        <i> <small>No Live Quiz details</small> </i>
+                      </h6>
+                    </div>
+                  </div>
+
+                  <ng-container
+                    *ngFor="let quest of upcomingDetails; let i = index"
+                  >
+                    <div class="tab">
+                      <input type="checkbox" id="chck{{ i }}" />
+                      <label
+                        class="tab-label"
+                        for="chck{{ i }}"
+                        style="
+                          font-size: 18px;
+                          text-align: left;
+                          letter-spacing: 0px;
+                          color: rgb(255 255 255 / 90%);
+                          opacity: 1;
+                          align-items: center;
+                          font-weight: 200;
+                          margin-bottom: 0px;
+                        "
+                        >{{ quest.name }} (Upcoming)<span class="total-quiz"
+                          ><b style="font-weight: 900"></b> </span
+                        ><span class="view-quiz"
+                          >View <i class="fa fa-arrow"></i> </span
+                      ></label>
+                      <div class="tab-content">
+                        <div class="mt-4 col-md-12" style="float: right">
+                          <button
+                            type="button"
+                            class="btn btn-dark btn-secondary bbn"
+                            (click)="editQuiz('upcoming', quest._id)"
+                            *ngIf="quest.isactive && editFlag"
+                          >
+                            <i class="fa fa-edit"></i>EDIT</button
+                          >&nbsp;
+                          <button *ngIf="editFlag"
+                            type="button"
+                            class="btn btn-dark btn-secondary bbn"
+                            (click)="disableQuizDetails('upcoming', quest._id)"
+                          >
+                            {{ quest.isactive ? "DISABLE" : "ENABLE" }}
+                          </button>
+                        </div>
+
+                        <br /><br />
+
+                        <div class="mt-4 pl-0 col-md-12">
+                          <span class="title-date">Starting Date &nbsp;:</span
+                          >&nbsp;&nbsp;
+                          {{ quest.startingdate }}&nbsp;&nbsp;;&nbsp;
+                          <span class="title-date">Ending Date &nbsp;:</span
+                          >&nbsp;&nbsp; {{ quest.endingdate }}
+                        </div>
+
+                        <ng-container
+                          *ngFor="let p of quest.questions; let t = index"
+                        >
+                          <div class="mt-3 row">
+                            <div
+                              class="col-md-12"
+                              style="
+                                float: right;
+                                opacity: 0.7;
+                                font-size: 14px;
+                                font-weight: 300;
+                                padding-bottom: 9px;
+                              "
+                            >
+                              Q.{{ t + 1 }} {{ p.question }}
+                            </div>
+                          </div>
+                          <div class="mt-2 ml-2 row options">
+                            <div class="">
+                              <button
+                                class="btn btn-dark btn-dark-rounded"
+                                [ngClass]="
+                                  p.correctindex === 1
+                                    ? 'btn-green'
+                                    : 'btn-dark'
+                                "
+                                style="margin-right: 20px"
+                              >
+                                A. {{ p.option1 }}
+                              </button>
+                            </div>
+                            <div class="">
+                              <button
+                                class="btn btn-dark btn-dark-rounded"
+                                [ngClass]="
+                                  p.correctindex === 2
+                                    ? 'btn-green'
+                                    : 'btn-dark'
+                                "
+                                style="margin-right: 20px"
+                              >
+                                B. {{ p.option2 }}
+                              </button>
+                            </div>
+                            <div class="">
+                              <button
+                                class="btn btn-dark btn-dark-rounded"
+                                [ngClass]="
+                                  p.correctindex === 3
+                                    ? 'btn-green'
+                                    : 'btn-dark'
+                                "
+                                style="margin-right: 20px"
+                              >
+                                C.{{ p.option3 }}
+                              </button>
+                            </div>
+                            <div class="">
+                              <button
+                                class="btn btn-dark btn-dark-rounded"
+                                [ngClass]="
+                                  p.correctindex === 4
+                                    ? 'btn-green'
+                                    : 'btn-dark'
+                                "
+                                style="margin-right: 20px"
+                              >
+                                D. {{ p.option4 }}
+                              </button>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <br /><br />
+                  <h6
+                    *ngIf="upcomingDetails && !upcomingDetails.length"
+                    class="text-center text-muted alert-no-found"
+                  >
+                    <i> <small>No Upcoming Quiz details</small> </i>
+                  </h6>
+
+                  <div class="mt-2">
+                    <div class="table-responsive">
+                      <kendo-grid
+                        [kendoGridBinding]="liveQuizParticipants"
+                        [filterable]="true"
+                        [sortable]="true"
+                      >
+                        <ng-template kendoGridToolbarTemplate>
+                          <div style="padding-left: 80%">
+                            <button *ngIf="viewFlag"
+                              type="button"
+                              style="padding: 10px 20px"
+                              kendoGridExcelCommand
+                              class="btn btn-dark btn-excel-rounded"
+                            >
+                              <i class="fa fa-file-excel-o"></i>Download to
+                              Excel
+                            </button>
+                          </div>
+                        </ng-template>
+                        <kendo-grid-column
+                          field="date"
+                          title="Date & Time"
+                          width="30"
+                        >
+                          <ng-template
+                            kendoGridFilterCellTemplate
+                            let-filter
+                            let-column="column"
+                          >
+                            <kendo-grid-string-filter-cell
+                              placeholder="search"
+                              [showOperators]="false"
+                              [column]="column"
+                              title="Parent Store"
+                              [filter]="filter"
+                            >
+                            </kendo-grid-string-filter-cell>
+                          </ng-template>
+                        </kendo-grid-column>
+
+                        <kendo-grid-column
+                          field="customer_id"
+                          title="Customer ID"
+                          width="30"
+                        >
+                          <ng-template
+                            kendoGridFilterCellTemplate
+                            let-filter
+                            let-column="column"
+                          >
+                            <kendo-grid-string-filter-cell
+                              placeholder="search"
+                              [showOperators]="false"
+                              [column]="column"
+                              title="Parent Store"
+                              [filter]="filter"
+                            >
+                            </kendo-grid-string-filter-cell>
+                          </ng-template>
+                        </kendo-grid-column>
+
+                        <kendo-grid-column
+                          field="username"
+                          title="Name"
+                          width="30"
+                        >
+                          <ng-template
+                            kendoGridFilterCellTemplate
+                            let-filter
+                            let-column="column"
+                          >
+                            <kendo-grid-string-filter-cell
+                              placeholder="search"
+                              [showOperators]="false"
+                              [column]="column"
+                              title="Parent Store"
+                              [filter]="filter"
+                            >
+                            </kendo-grid-string-filter-cell>
+                          </ng-template>
+                        </kendo-grid-column>
+
+                        <kendo-grid-column
+                          field="corrected_count"
+                          title="Score"
+                          width="30"
+                        >
+                          <ng-template
+                            kendoGridCellTemplate
+                            let-dataItem="dataItem"
+                            style="
+                              text-align: center;
+                              opacity: 1;
+                              font-weight: 600;
+                            "
+                          >
+                            <span class="score-list"
+                              ><span style="color: yellow"
+                                >{{ dataItem.corrected_count }}/</span
+                              >{{ dataItem.total_questions }}</span
+                            >
+                          </ng-template>
+                        </kendo-grid-column>
+
+                        <kendo-grid-column
+                          field="time_used"
+                          title="Time Used"
+                          width="20"
+                        >
+                          <ng-template
+                            kendoGridCellTemplate
+                            let-dataItem="dataItem"
+                          >
+                            <span>{{ dataItem.time_used }}</span> Seconds
+                          </ng-template>
+                          <kendo-grid-excel
+                            fileName="Quiz.xlsx"
+                          ></kendo-grid-excel>
+                        </kendo-grid-column>
+                      </kendo-grid>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Previous Quiz Winners" id="tab2" *ngIf="disableTab('Previous Quiz Winners')">
+            <ng-template ngbTabContent>
+              <div
+                class="tab-pane fade active show"
+                id="account"
+                role="tabpanel"
+                aria-labelledby="account-tab"
+                style="margin-top: 4%; margin-left: -8%"
+              >
+                <!-- <div class="mt-2 row" style="float: right;">
+                                            <button  type="button" class="btn btn-dark btn-dark-rounded"> Quiz Winners</button>
+                                        </div> -->
+
+                <div class="mt-2 row" style="cursor: pointer">
+                  <div
+                    class="card-header reminders-data"
+                    *ngFor="let i of previusQuizWinners"
+                  >
+                    <div (click)="redirectToDayQuiz(i._id)">
+                      <a
+                        >{{ i.name }}
+                        <span style="padding-left: 25%"
+                          >Name: <b>{{ i.winner_name }}</b> &nbsp;&nbsp; ID:
+                          <b>{{ i.winner_id }} </b></span
+                        >
+                        <span style="float: right">
+                          Total partcipants:
+                          <b>{{ i.total_participants }}</b></span
+                        ></a
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <h6
+                  *ngIf="previusQuizWinners && !previusQuizWinners.length"
+                  class="text-center text-muted alert-no-found"
+                >
+                  <i> <small>No Data found</small> </i>
+                </h6>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab *ngIf="disableTab('Create a Quiz')"
+            [title]="editMode ? 'Update a Quiz' : 'Create a Quiz'"
+            id="tab3"
+          >
+            <ng-template ngbTabContent>
+              <div
+                class="tab-pane fade active show tab"
+                id="width"
+                role="tabpanel"
+                aria-labelledby="account-tab"
+              >
+                <!-- <h6 _ngcontent-serverapp-c372="" for="validationCustom0">Question 1</h6> -->
+
+                <form [formGroup]="quizForm">
+                  <div
+                    class="ml-3 mr-2 mt-3 col-md-12"
+                    style="background-color: #00496e"
+                  >
+                    <div class="mt-2 row">
+                      <div class="col-md-3">
+                        <label>Quiz Name</label>
+                        <sup class="text-danger">*</sup>
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="quizname"
+                        />
+                        <small
+                          for="heading"
+                          class="form-text text-danger"
+                          *ngIf="
+                            quizForm.controls['quizname'].errors?.required &&
+                            (quizForm.controls['quizname'].dirty ||
+                              quizForm.controls['quizname'].touched ||
+                              (quizForm.controls['quizname'].untouched &&
+                                attemptedSubmit))
+                          "
+                        >
+                          Quiz Name required.
+                        </small>
+                      </div>
+
+                      <div class="col-md-3">
+                        &nbsp;&nbsp;<label>Medcoin</label>
+                        <sup class="text-danger">*</sup>
+                        <input
+                          type="number"
+                          class="form-control"
+                          formControlName="medcoin"
+                        />
+                        <small
+                          for="heading"
+                          class="form-text text-danger"
+                          *ngIf="
+                            quizForm.controls['medcoin'].errors?.required &&
+                            (quizForm.controls['medcoin'].dirty ||
+                              quizForm.controls['medcoin'].touched ||
+                              (quizForm.controls['medcoin'].untouched &&
+                                attemptedSubmit))
+                          "
+                        >
+                          Medcoin required.
+                        </small>
+                      </div>
+                    </div>
+
+                    <div class="mt-3 row">
+                      <div class="col-md-3">
+                        <label>Starting Date</label>
+                        <sup class="text-danger">*</sup>
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="datetimepicker1"
+                          formControlName="startingdate"
+                          min="{{ minDate }}"
+                          (change)="getStartdate($event)"
+                          onkeydown="return false"
+                        />
+
+                        <!-- <ngb-datepicker [(ngModel)]="model" 
+                                                                [markDisabled]="markDisabled" 
+                                                                formControlName='startingdate'
+                                                                [showWeekNumbers]="false"
+                                                                [minDate]="minDate"
+                                                                (dateSelect)="navigateEvent($event)">
+                                                            </ngb-datepicker> -->
+
+                        <small
+                          for="heading"
+                          class="form-text text-danger"
+                          *ngIf="
+                            quizForm.controls['startingdate'].errors
+                              ?.required &&
+                            (quizForm.controls['startingdate'].dirty ||
+                              quizForm.controls['startingdate'].touched ||
+                              (quizForm.controls['startingdate'].untouched &&
+                                attemptedSubmit))
+                          "
+                        >
+                          Starting Date required.
+                        </small>
+                      </div>
+                      <div class="col-md-3">
+                        <label>Ending Date</label>
+                        <sup class="text-danger">*</sup>
+                        <input
+                          type="date"
+                          class="form-control"
+                          formControlName="endingdate"
+                          (change)="getEnddate($event)"
+                          min="{{ temp }}"
+                          onkeydown="return false"
+                        />
+                        <small
+                          for="heading"
+                          class="form-text text-danger"
+                          *ngIf="
+                            quizForm.controls['endingdate'].errors?.required &&
+                            (quizForm.controls['endingdate'].dirty ||
+                              quizForm.controls['endingdate'].touched ||
+                              (quizForm.controls['endingdate'].untouched &&
+                                attemptedSubmit))
+                          "
+                        >
+                          Ending Date required.
+                        </small>
+                      </div>
+                      <div class="col-md-3">
+                        <label>Quiz Time(In Minutes, Eg : 10 )</label>
+                        <sup class="text-danger">*</sup>
+                        <input
+                          type="number"
+                          class="form-control"
+                          formControlName="quiztime"
+                        />
+                        <small
+                          for="heading"
+                          class="form-text text-danger"
+                          *ngIf="
+                            quizForm.controls['quiztime'].errors?.required &&
+                            (quizForm.controls['quiztime'].dirty ||
+                              quizForm.controls['quiztime'].touched ||
+                              (quizForm.controls['quiztime'].untouched &&
+                                attemptedSubmit))
+                          "
+                        >
+                          Quiz Time required.
+                        </small>
+                      </div>
+                    </div>
+
+                    <form
+                      action="#"
+                      class="invoice-repeater"
+                      #questionsForm="ngForm"
+                    >
+                      <div class="mt-4 row">
+                        <div class="col-md-7"></div>
+                        <div class="col-md-4">
+                          <button
+                            style="margin-top: 10px; width: 80px"
+                            type="button"
+                            class="btn btn-secondary bbn"
+                            (click)="addForm()"
+                          >
+                            +Add
+                          </button>
+                        </div>
+                      </div>
+
+                      <ng-container
+                        *ngFor="
+                          let formOption of formArray;
+                          let i = index;
+                          trackBy: trackByFn
+                        "
+                      >
+                        <div class="mt-3 row">
+                          <div class="col-md-10">
+                            <label>Question&nbsp;{{ i + 1 }}</label
+                            ><sup class="text-danger"> *</sup>
+                            <textarea
+                              style="
+                                background-color: #00496e;
+                                color: #ffffff;
+                                opacity: 0.5;
+                                width: 100%;
+                              "
+                              class="form-control"
+                              [(ngModel)]="formOption.question"
+                              name="formOption{{ i }}.question"
+                              #question="ngModel"
+                              id="formOption{{ i }}.question"
+                              required
+                            ></textarea>
+                            <small
+                              for="heading"
+                              class="form-text text-danger"
+                              *ngIf="
+                                formOption.question === '' && attemptedSubmit
+                              "
+                            >
+                              Question Required
+                            </small>
+                          </div>
+
+                          <div class="mt-0 col-md-2" *ngIf="i != 0">
+                            <label for="validationCustom0" class=""></label>
+                            <button
+                              style="margin-top: 30px; width: 80px"
+                              type="button"
+                              class="btn btn-secondary bbn"
+                              (click)="removeForm(i)"
+                            >
+                              X
+                            </button>
+                          </div>
+
+                          <div class="col-md-1"></div>
+                        </div>
+
+                        <div class="mt-3 col-md-12 open">
+                          <div class="row options">
+                            <div class="pl-0 col-md-3">
+                              <label>Option A</label
+                              ><sup class="text-danger"> *</sup>
+                              <textarea
+                                style="
+                                  background-color: #00496e;
+                                  color: #ffffff;
+                                  opacity: 0.5;
+                                "
+                                class="form-control"
+                                [(ngModel)]="formOption.option1"
+                                name="formOption{{ i }}.option1"
+                                #option1="ngModel"
+                                id="formOption{{ i }}.option1"
+                                required
+                              ></textarea>
+                              <small
+                                for="heading"
+                                class="form-text text-danger"
+                                *ngIf="
+                                  formOption.option1 === '' && attemptedSubmit
+                                "
+                              >
+                                OptionA Required
+                              </small>
+                            </div>
+                            <div class="col-md-3">
+                              &nbsp;&nbsp;<label>Option B</label
+                              ><sup class="text-danger"> *</sup>
+                              <textarea
+                                style="
+                                  background-color: #00496e;
+                                  color: #ffffff;
+                                  opacity: 0.5;
+                                "
+                                class="form-control"
+                                [(ngModel)]="formOption.option2"
+                                name="formOption{{ i }}.option2"
+                                #option2="ngModel"
+                                id="formOption{{ i }}.option2"
+                                required
+                              >
+                              </textarea>
+                              <small
+                                for="heading"
+                                class="form-text text-danger"
+                                *ngIf="
+                                  formOption.option2 === '' && attemptedSubmit
+                                "
+                              >
+                                OptionB Required
+                              </small>
+                            </div>
+                            <div class="col-md-3">
+                              &nbsp;&nbsp;<label>Option C</label
+                              ><sup class="text-danger"> *</sup>
+                              <textarea
+                                style="
+                                  background-color: #00496e;
+                                  color: #ffffff;
+                                  opacity: 0.5;
+                                "
+                                class="form-control"
+                                [(ngModel)]="formOption.option3"
+                                name="formOption{{ i }}.option3"
+                                #option3="ngModel"
+                                id="formOption{{ i }}.option3"
+                                required
+                              ></textarea>
+                              <small
+                                for="heading"
+                                class="form-text text-danger"
+                                *ngIf="
+                                  formOption.option3 === '' && attemptedSubmit
+                                "
+                              >
+                                OptionC Required
+                              </small>
+                            </div>
+                            <div class="col-md-3">
+                              &nbsp;&nbsp;<label>Option D</label
+                              ><sup class="text-danger"> *</sup>
+                              <textarea
+                                style="
+                                  background-color: #00496e;
+                                  color: #ffffff;
+                                  opacity: 0.5;
+                                "
+                                class="form-control"
+                                [(ngModel)]="formOption.option4"
+                                name="formOption{{ i }}.option4"
+                                #option4="ngModel"
+                                id="formOption{{ i }}.option4"
+                                required
+                              ></textarea>
+                              <small
+                                for="heading"
+                                class="form-text text-danger"
+                                *ngIf="
+                                  formOption.option4 === '' && attemptedSubmit
+                                "
+                              >
+                                OptionD Required
+                              </small>
+                            </div>
+
+                            <div class="mt-4 row">
+                              <div class="col-md-4">
+                                <label class="answer">Answer</label
+                                ><sup class="text-danger"> *</sup>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="example-wrapper">
+                                  <select
+                                    class="form-control"
+                                    [(ngModel)]="formOption.correctindex"
+                                    name="formOption{{ i }}.correctindex"
+                                    #correctindex="ngModel"
+                                    id="formOption{{ i }}.correctindex"
+                                    required
+                                  >
+                                    <option
+                                      *ngFor="let i of Answers"
+                                      [value]="i.value"
+                                    >
+                                      {{ i.text }}
+                                    </option>
+                                  </select>
+                                  <small
+                                    for="heading"
+                                    class="form-text text-danger"
+                                    *ngIf="
+                                      formOption.correctindex === '' &&
+                                      attemptedSubmit
+                                    "
+                                  >
+                                    Answer Required
+                                  </small>
+                                  <!-- <kendo-dropdownlist class="form-control" style="background-color: #00496E; color: #FFFFFF; opacity: 0.5;"
+                                                                                                    [data]="Answers"
+                                                                                                    textField="text"
+                                                                                                    valueField="value"
+                                                                                                    [(ngModel)]="formOption.correctindex"
+                                                                                                    [valuePrimitive]="true"
+                                                                                                >
+                                                                                                </kendo-dropdownlist> -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="mt-4"></div>
+                        <hr
+                          style="
+                            background: white;
+                            opacity: 0.5;
+                            height: 2px;
+                            width: 90%;
+                          "
+                          class="mt-2"
+                        />
+
+                        <div class="ml-4"></div>
+                        <small
+                          for="heading"
+                          class="form-text text-danger"
+                          *ngIf="
+                            formOption ===
+                              {
+                                question: '',
+                                optionA: '',
+                                optionB: '',
+                                optionC: '',
+                                optionD: '',
+                                correctindex: ''
+                              } && attemptedSubmit
+                          "
+                        >
+                          Question & Answers required.
+                        </small>
+                      </ng-container>
+                    </form>
+                  </div>
+                </form>
+              </div>
+
+              <br />
+
+              <!-- <button  class="btn btn-dark inverse-dark-rounded"  style="width: 25%;">Post</button> -->
+
+              <div class="mb-1 row">
+                <div class="col-md-12" *ngIf="!editMode">
+                  <button *ngIf="editFlag"
+                    style="margin: 0 0 0 365px !important; width: 25%"
+                    type="button"
+                    class="btn btn-dark inverse-dark-rounded"
+                    (click)="addQuiz(questionsForm); attemptedSubmit = true"
+                  >
+                    {{ addLoading ? "Uploading..." : "Upload" }}
+                  </button>
+                </div>
+
+                <div class="col-md-12" *ngIf="editMode">
+                  <button *ngIf="editFlag"
+                    style="margin: 0 0 0 365px !important; width: 25%"
+                    type="button"
+                    class="btn btn-dark inverse-dark-rounded"
+                    (click)="updateQuiz(questionsForm); attemptedSubmit = true"
+                  >
+                    {{ updateLoading ? "Updating..." : "Update" }}
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
+  </div>
+</div>

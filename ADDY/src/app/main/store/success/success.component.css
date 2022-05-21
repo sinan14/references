@@ -1,0 +1,25 @@
+@import url('../../../../assets/css/style2.css');
+.form-padding.text-center.pbd {
+    padding: 1px 86px;
+}
+@media (max-width: 480px){
+.form-padding.text-center.pbd {
+    padding: 1px 72px !important;
+}}
+
+.shopping-page .address-sec .first-div {
+    width: 20%;
+    float: left;
+    overflow: hidden;
+    padding: 15px 10px;
+    text-align: center;
+}
+.thank-pic h5 {
+    color: #A2CD85;
+    font-size: 22px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+.a-change{
+    text-decoration: underline !important;
+}

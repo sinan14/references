@@ -1,0 +1,35 @@
+
+@import "../../../../../assets/css/style2.css";
+
+.product-header{
+  display: -webkit-box;
+  margin-bottom: 10px!important;
+}
+.container-fluid:before{
+  display: table;
+}
+.first-div .imgwidth{
+  height: 86px;
+  width: 85px;
+
+}
+.center-element {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.form-down {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+.product-section .leftpd{
+  padding-left: 179px;
+}
+ #setup label {
+    text-align: left;
+    display: block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}

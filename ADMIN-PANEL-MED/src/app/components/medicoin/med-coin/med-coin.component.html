@@ -1,0 +1,1619 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card-body tab2-card medcoin-table">
+        <div class="row" style="justify-content: space-evenly">
+          <div class="col-md-3 mt-4">
+            <h5 style="color: white; opacity: 0.5; padding-top: 40px">
+              MedCoin
+            </h5>
+          </div>
+          <!-- <div class="col-md-3 mt-4"></div> -->
+          <div class="col-md-2 mt-4">
+            <div class="header-data">
+              <a
+                *ngIf="disableTab('Recharge')"
+                routerLink="#"
+                for="validationCustom0"
+                data-toggle="modal"
+                data-original-title="test"
+                (click)="open(RechargeContent, 'add', 1)"
+                >Recharge</a
+              >
+            </div>
+          </div>
+          <div class="col-md-2 mt-4">
+            <div class="header-data">
+              <a
+                *ngIf="disableTab('Withdraw')"
+                routerLink="#"
+                for="validationCustom0"
+                data-toggle="modal"
+                data-original-title="test"
+                (click)="open(WithdrawContent, 'add', 1)"
+                >Withdraw</a
+              >
+            </div>
+          </div>
+          <div class="col-md-2 mt-4">
+            <div class="header-data">
+              <a
+                *ngIf="disableTab('Pay')"
+                routerLink="#"
+                for="validationCustom0"
+                data-toggle="modal"
+                data-original-title="test"
+                (click)="open(PayContent, 'pay', 1)"
+                >Pay</a
+              >
+            </div>
+          </div>
+
+          <div class="col-md-2 mt-4">
+            <div class="header-data">
+              <a
+                routerLink="#"
+                for="validationCustom0"
+                data-toggle="modal"
+                data-original-title="test"
+                (click)="open(RedeemContent, 'redeem', 1)"
+                >Redeem</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="row prem_topbanner m-0">
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            Total MedCoins Used <span>{{ medCoinDetails.medCoinUsed }}</span>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            Available Balance
+            <span
+              ><i class="fa fa-inr" style="opacity: 0.5"></i>
+              <a style="margin-left: 3%"></a
+              >{{ medCoinDetails.availableBalance }}</span
+            >
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            Near to Expiry <span>{{ medCoinDetails.nearToExpiry }}</span>
+          </div>
+        </div>
+
+        <br />
+        <ngb-tabset class="mt-5 tab-coupon innerr_table_style">
+          <ngb-tab
+            title="MedCoin Statement"
+            *ngIf="disableTab('MedCoin Statement')"
+          >
+            <ng-template ngbTabContent>
+              <div
+                class="tab-pane fade active show"
+                id="account"
+                role="tabpanel"
+                aria-labelledby="account-tab"
+              >
+                <div class="med_coin_table_top row align-items-baseline">
+                  <div class="col-lg-6 col-md-6 med_coin_table_bg">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <label
+                          style="
+                            color: whitesmoke;
+                            font-size: 18px;
+                            margin-top: 3px;
+                            margin-bottom: 0;
+                          "
+                          for="validationCustom0"
+                          class=""
+                        >
+                          Date
+                        </label>
+                      </div>
+                      <div class="col-md-1">
+                        <label
+                          style="color: #fff; opacity: 0.5; margin-top: 6px"
+                          for="validationCustom0"
+                          >From</label
+                        >
+                      </div>
+                      <div class="col-md-4">
+                        <div class="coc-block">
+                          <input
+                            class="form-control"
+                            id="stm1"
+                            [max]="getToday()"
+                            type="date"
+                            (change)="
+                              statmentFilterStartDate($event.target.value)
+                            "
+                            placeholder="20 Dec 2020"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-1">
+                        <label
+                          style="color: #fff; opacity: 0.5; margin-top: 6px"
+                          for="validationCustom0"
+                          >To</label
+                        >
+                      </div>
+                      <div class="col-md-4">
+                        <input
+                          type="date"
+                          id="stm2"
+                          [min]="statMin"
+                          class="form-control"
+                          (change)="statmentFilterEndDate($event.target.value)"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6">
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        trim="blur"
+                        class="form-control form-control-text added"
+                        style="
+                          border-radius: 27px 0px 0px 27px;
+                          opacity: 1;
+                          padding: 26px 20px;
+                          border: none !important;
+                        "
+                        (keyup)="searchStatment($event.target.value)"
+                        placeholder="Search"
+                        name="search"
+                      />
+                      <div
+                        class="input-group-btn"
+                        style="
+                          background-color: #042b3f;
+                          border-radius: 0px 20px 20px 0px;
+                        "
+                      >
+                        <button
+                          class="btn btn-default"
+                          type="submit"
+                          style="padding: 15px 20px"
+                        >
+                          <i class="fa fa-search" style="color: white"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="table-responsive kendo_table"
+                  style="
+                    border-radius: 0px 0px 25px 25px;
+                    padding: 0px 12px;
+                    background: #00496e;
+                  "
+                >
+                  <kendo-grid
+                    [kendoGridBinding]="medCoinStatement"
+                    [filterable]="false"
+                    [sortable]="false"
+                  >
+                    <kendo-grid-column field="index" title="Sl.No" width="10">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="date"
+                      title="Date & Time"
+                      width="20"
+                    >
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <a style="text-decoration: none; cursor: pointer">{{
+                          dataItem.date
+                        }}</a>
+                        <p>{{ dataItem.time }}</p>
+                      </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column title="Customer ID" width="20">
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <a
+                          *ngIf="dataItem.customerIdString"
+                          style="text-decoration: underline; cursor: pointer"
+                          (click)="goToCustomer(dataItem.customerIdString)"
+                          >{{ dataItem.customerIdString }}</a
+                        >
+                        <a
+                          *ngIf="!dataItem.customerIdString"
+                          style="text-decoration: none"
+                          >Admin</a
+                        >
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column title="Name" width="20">
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <a
+                          *ngIf="dataItem.customerIdString"
+                          style="text-decoration: underline; cursor: pointer"
+                          (click)="goToCustomer(dataItem.customerIdString)"
+                          >{{ dataItem.name }}</a
+                        >
+                        <a
+                          *ngIf="!dataItem.customerIdString"
+                          style="text-decoration: none"
+                          >Admin</a
+                        >
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column title="Usage Status" width="20">
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-dataItem="dataItem"
+                      >
+                        <a
+                          [class.hand-tool]="dataItem.narration != undefined"
+                          (click)="
+                            open(NarrationContent, 'narr', dataItem.narration)
+                          "
+                          [style.color]="getColor(dataItem.type)"
+                          >{{ dataItem.type | titlecase }}</a
+                        >
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column-group
+                      title="Amount"
+                      [width]="30"
+                      [locked]="false"
+                    >
+                      <kendo-grid-column
+                        title="Credit"
+                        [width]="10"
+                        [locked]="false"
+                      >
+                        <ng-template
+                          kendoGridCellTemplate
+                          let-dataItem="dataItem"
+                        >
+                          <a
+                            *ngIf="dataItem.credit"
+                            style="text-decoration: none; color: #fff"
+                            >{{ dataItem.credit }}</a
+                          >
+                          <a></a>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column
+                        title="Debit"
+                        [width]="10"
+                        [locked]="false"
+                      >
+                        <ng-template
+                          kendoGridCellTemplate
+                          let-dataItem="dataItem"
+                        >
+                          <a
+                            *ngIf="dataItem.debit"
+                            style="text-decoration: none; color: #fff"
+                            >{{ dataItem.debit }}</a
+                          >
+                          <a></a>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column
+                        field="balance"
+                        title="Balance"
+                        [width]="13"
+                        [locked]="false"
+                      >
+                      </kendo-grid-column>
+                    </kendo-grid-column-group>
+                  </kendo-grid>
+
+                  <div class="pagination">
+                    <button (click)="onPageChange(1)">First</button>
+                    <button
+                      *ngIf="statementPageDetails.hasPrevPage"
+                      (click)="
+                        onPageChange(statementPageDetails.currentPage - 1)
+                      "
+                    >
+                      Prev
+                    </button>
+                    <button
+                      *ngIf="statementPageDetails.hasPrevPage"
+                      (click)="
+                        onPageChange(statementPageDetails.currentPage - 1)
+                      "
+                    >
+                      {{ statementPageDetails.currentPage - 1 }}
+                    </button>
+                    <button style="color: yellow">
+                      {{ statementPageDetails.currentPage }}
+                    </button>
+                    <button
+                      *ngIf="statementPageDetails.hasNextPage"
+                      (click)="
+                        onPageChange(statementPageDetails.currentPage + 1)
+                      "
+                    >
+                      {{ statementPageDetails.currentPage + 1 }}
+                    </button>
+                    <button
+                      *ngIf="statementPageDetails.hasNextPage"
+                      (click)="
+                        onPageChange(statementPageDetails.currentPage + 1)
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      (click)="onPageChange(statementPageDetails.totalPages)"
+                    >
+                      Last
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab
+            title="Customer-Wise Statement"
+            *ngIf="disableTab('Customer-Wise Statement')"
+          >
+            <ng-template ngbTabContent>
+              <div
+                class="tab-pane fade active show"
+                id="account"
+                role="tabpanel"
+                aria-labelledby="account-tab"
+              >
+                <div class="med_coin_table_top row">
+                  <div class="col-lg-6 col-md-6 med_coin_table_bg">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <label
+                          style="
+                            color: whitesmoke;
+                            font-size: 18px;
+                            margin-top: 3px;
+                            margin-bottom: 0;
+                          "
+                          for="validationCustom0"
+                          class=""
+                        >
+                          Date
+                        </label>
+                      </div>
+                      <div class="col-md-1">
+                        <label
+                          style="color: #fff; opacity: 0.5; margin-top: 6px"
+                          for="validationCustom0"
+                          >From</label
+                        >
+                      </div>
+                      <div class="col-md-4">
+                        <div class="coc-block">
+                          <input
+                            class="form-control"
+                            id="cstm1"
+                            type="date"
+                            (change)="custStart($event.target.value)"
+                            [max]="getToday()"
+                            placeholder="20 Dec 2020"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-1">
+                        <label
+                          style="color: #fff; opacity: 0.5; margin-top: 6px"
+                          for="validationCustom0"
+                          >To</label
+                        >
+                      </div>
+                      <div class="col-md-4">
+                        <input
+                          type="date"
+                          id="cstm2"
+                          [min]="custMin"
+                          (change)="custEnd($event.target.value)"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6">
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        trim="blur"
+                        class="form-control form-control-text added"
+                        style="
+                          border-radius: 27px 0px 0px 27px;
+                          opacity: 1;
+                          padding: 26px 20px;
+                          border: none !important;
+                        "
+                        (keyup)="searchCustStatment($event.target.value)"
+                        placeholder="Search"
+                        name="search"
+                      />
+                      <div class="input-group-btn">
+                        <button
+                          class="btn btn-default"
+                          type="submit"
+                          style="
+                            border-radius: 0px 27px 27px 0px;
+                            padding: 15px 20px;
+                            background: #042b3f;
+                          "
+                        >
+                          <i class="fa fa-search" style="color: white"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="table-responsive kendo_table"
+                  style="border-radius: 0px 0px 25px 25px"
+                >
+                  <kendo-grid
+                    [kendoGridBinding]="customerMedCoinStatement"
+                    [filterable]="false"
+                    [sortable]="false"
+                  >
+                    <kendo-grid-column field="index" title="Sl.No" width="10">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="date"
+                      title="Date & Time"
+                      width="20"
+                    >
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <a style="text-decoration: none; cursor: pointer">{{
+                          dataItem.date
+                        }}</a>
+                        <p>{{ dataItem.time }}</p>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column title="Customer ID" width="20">
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <a
+                          *ngIf="dataItem.customerIdString"
+                          style="text-decoration: underline; cursor: pointer"
+                          (click)="goToCustomer(dataItem.customerIdString)"
+                          >{{ dataItem.customerIdString }}</a
+                        >
+                        <a
+                          *ngIf="!dataItem.customerIdString"
+                          style="text-decoration: none"
+                          >Admin</a
+                        >
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column title="Name" width="20">
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <a
+                          *ngIf="dataItem.customerIdString"
+                          style="text-decoration: underline; cursor: pointer"
+                          (click)="goToCustomer(dataItem.customerIdString)"
+                          >{{ dataItem.name }}</a
+                        >
+
+                        <a
+                          *ngIf="!dataItem.customerIdString"
+                          style="text-decoration: none"
+                          >Admin</a
+                        >
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column title="Usage Status" width="20">
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-dataItem="dataItem"
+                      >
+                        <a
+                          (click)="
+                            open(NarrationContent, 'narr', dataItem.narration)
+                          "
+                          [class.hand-tool]="dataItem.narration != undefined"
+                          [style.color]="getColor(dataItem.type)"
+                          >{{ dataItem.type | titlecase }}</a
+                        >
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column-group
+                      title="Amount"
+                      [width]="30"
+                      [locked]="false"
+                    >
+                      <kendo-grid-column
+                        title="Credit"
+                        [width]="10"
+                        [locked]="false"
+                      >
+                        <ng-template
+                          kendoGridCellTemplate
+                          let-dataItem="dataItem"
+                        >
+                          <a
+                            *ngIf="dataItem.credit"
+                            style="text-decoration: none; color: #fff"
+                            >{{ dataItem.credit }}</a
+                          >
+                          <a></a>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column
+                        title="Debit"
+                        [width]="10"
+                        [locked]="false"
+                      >
+                        <ng-template
+                          kendoGridCellTemplate
+                          let-dataItem="dataItem"
+                        >
+                          <a
+                            *ngIf="dataItem.debit"
+                            style="text-decoration: none; color: #fff"
+                            >{{ dataItem.debit }}</a
+                          >
+                          <a></a>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column
+                        field="customerBalance"
+                        title="Balance"
+                        [width]="13"
+                        [locked]="false"
+                      >
+                        <ng-template
+                          kendoGridFilterCellTemplate
+                          let-filter
+                          let-column="column"
+                        >
+                          <!-- <kendo-grid-string-filter-cell
+                            placeholder="search"
+                            [showOperators]="false"
+                            [column]="column"
+                            title="Parent Store"
+                            [filter]="filter"
+                          >
+                          </kendo-grid-string-filter-cell> -->
+                        </ng-template>
+                      </kendo-grid-column>
+                    </kendo-grid-column-group>
+                  </kendo-grid>
+                  <div class="pagination">
+                    <button (click)="onPageChange2(1)">First</button>
+                    <button
+                      *ngIf="customerPageDetails.hasPrevPage"
+                      (click)="
+                        onPageChange2(customerPageDetails.currentPage - 1)
+                      "
+                    >
+                      Prev
+                    </button>
+                    <button
+                      *ngIf="customerPageDetails.hasPrevPage"
+                      (click)="
+                        onPageChange2(customerPageDetails.currentPage - 1)
+                      "
+                    >
+                      {{ customerPageDetails.currentPage - 1 }}
+                    </button>
+                    <button style="color: yellow">
+                      {{ customerPageDetails.currentPage }}
+                    </button>
+                    <button
+                      *ngIf="customerPageDetails.hasNextPage"
+                      (click)="
+                        onPageChange2(customerPageDetails.currentPage + 1)
+                      "
+                    >
+                      {{ customerPageDetails.currentPage + 1 }}
+                    </button>
+                    <button
+                      *ngIf="customerPageDetails.hasNextPage"
+                      (click)="
+                        onPageChange2(customerPageDetails.currentPage + 1)
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      (click)="onPageChange2(customerPageDetails.totalPages)"
+                    >
+                      Last
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <!-- <ngb-tab  title="Recharge">
+            <ng-template ngbTabContent>
+              <div
+                class="tab-pane fade active show"
+                id="account"
+                role="tabpanel"
+                aria-labelledby="account-tab"
+              >
+                <div class="med_coin_table_top row">
+                  <div class="col-lg-8 col-md-8 med_coin_table_bg">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <label
+                          style="
+                            color: whitesmoke;
+                            font-size: 18px;
+                            margin-top: 3px;
+                            margin-bottom: 0;
+                          "
+                          for="validationCustom0"
+                          class=""
+                        >
+                          Date
+                        </label>
+                      </div>
+                      <div class="col-md-1">
+                        <label
+                          style="color: #fff; opacity: 0.5; margin-top: 6px"
+                          for="validationCustom0"
+                          >From</label
+                        >
+                      </div>
+                      <div class="col-md-4">
+                        <div class="coc-block">
+                          <input
+                            class="form-control"
+                            id="validationCustom01"
+                            type="date"
+                            placeholder="20 Dec 2020"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-1">
+                        <label
+                          style="color: #fff; opacity: 0.5; margin-top: 6px"
+                          for="validationCustom0"
+                          >To</label
+                        >
+                      </div>
+                      <div class="col-md-4">
+                        <input type="date" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="table-responsive kendo_table"
+                  style="border-radius: 0px 0px 25px 25px"
+                  
+                >
+                  <kendo-grid
+                    [kendoGridBinding]="rechargeData"
+                    [filterable]="false"
+                    [sortable]="false"
+                  >
+                    <kendo-grid-column field="slno" title="Sl.No" width="10">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                       
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="date"
+                      title="Date & Time"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                        [filterable]="false"
+                      >
+                        <a style="text-decoration: none; cursor: pointer">{{
+                          dataItem.date
+                        }}</a>
+                        <p>{{ dataItem.time }}</p>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="recharge"
+                      title="Recharge Coin"
+                      width="20"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="remark"
+                      title="Narration"
+                      width="20"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                       
+                      </ng-template>
+                    </kendo-grid-column>
+                  </kendo-grid>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab> -->
+
+          <!-- <ngb-tab  title="Withdraw">
+            <ng-template ngbTabContent>
+              <div
+                class="tab-pane fade active show"
+                id="account"
+                role="tabpanel"
+                aria-labelledby="account-tab"
+              >
+                <div class="med_coin_table_top row">
+                  <div class="col-lg-8 col-md-8 med_coin_table_bg">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <label
+                          style="
+                            color: whitesmoke;
+                            font-size: 18px;
+                            margin-top: 3px;
+                            margin-bottom: 0;
+                          "
+                          for="validationCustom0"
+                          class=""
+                        >
+                          Date
+                        </label>
+                      </div>
+                      <div class="col-md-1">
+                        <label
+                          style="color: #fff; opacity: 0.5; margin-top: 6px"
+                          for="validationCustom0"
+                          >From</label
+                        >
+                      </div>
+                      <div class="col-md-4">
+                        <div class="coc-block">
+                          <input
+                            class="form-control"
+                            id="validationCustom01"
+                            type="date"
+                            placeholder="20 Dec 2020"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-1">
+                        <label
+                          style="color: #fff; opacity: 0.5; margin-top: 6px"
+                          for="validationCustom0"
+                          >To</label
+                        >
+                      </div>
+                      <div class="col-md-4">
+                        <input type="date" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="table-responsive kendo_table"
+                  *ngIf="false"
+                  style="border-radius: 0px 0px 25px 25px"
+                >
+                  <kendo-grid
+                    [kendoGridBinding]="withdrawData"
+                    [filterable]="true"
+                    [sortable]="true"
+                  >
+                    <kendo-grid-column field="slno" title="Sl.No" width="10">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="date"
+                      title="Date & Time"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <a style="text-decoration: none; cursor: pointer">{{
+                          dataItem.date
+                        }}</a>
+                        <p>{{ dataItem.time }}</p>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="withdraw"
+                      title="Withdraw Coin"
+                      width="20"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="remark"
+                      title="Narration"
+                      width="20"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+                  </kendo-grid>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Pay">
+            <ng-template ngbTabContent>
+              <div
+                class="tab-pane fade active show"
+                id="account"
+                role="tabpanel"
+                aria-labelledby="account-tab"
+              >
+                <div class="med_coin_table_top row">
+                  <div class="col-lg-8 col-md-8 med_coin_table_bg">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <label
+                          style="
+                            color: whitesmoke;
+                            font-size: 18px;
+                            margin-top: 3px;
+                            margin-bottom: 0;
+                          "
+                          for="validationCustom0"
+                          class=""
+                        >
+                          Date
+                        </label>
+                      </div>
+                      <div class="col-md-1">
+                        <label
+                          style="color: #fff; opacity: 0.5; margin-top: 6px"
+                          for="validationCustom0"
+                          >From</label
+                        >
+                      </div>
+                      <div class="col-md-4">
+                        <div class="coc-block">
+                          <input
+                            class="form-control"
+                            id="validationCustom01"
+                            type="date"
+                            placeholder="20 Dec 2020"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-1">
+                        <label
+                          style="color: #fff; opacity: 0.5; margin-top: 6px"
+                          for="validationCustom0"
+                          >To</label
+                        >
+                      </div>
+                      <div class="col-md-4">
+                        <input type="date" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="table-responsive kendo_table"
+                  *ngIf="false"
+                  style="border-radius: 0px 0px 25px 25px"
+                >
+                  <kendo-grid
+                    [kendoGridBinding]="payData"
+                    [filterable]="true"
+                    [sortable]="true"
+                  >
+                    <kendo-grid-column field="slno" title="Sl.No" width="10">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="date"
+                      title="Date & Time"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <a style="text-decoration: none; cursor: pointer">{{
+                          dataItem.date
+                        }}</a>
+                        <p>{{ dataItem.time }}</p>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="name"
+                      title="Customer Name"
+                      width="20"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="medcoin"
+                      title="MedCoin"
+                      width="20"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="expiry"
+                      title="Expiry date"
+                      width="20"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="remark"
+                      title="Narration"
+                      width="20"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+                  </kendo-grid>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab> -->
+        </ngb-tabset>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #RechargeContent let-modal>
+  <form [formGroup]="rechargeForm">
+    <div class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="RechargeExampleModal"
+      >
+        Recharge
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click'); closeAll()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="mt-2 row">
+        <div class="col-md-12">
+          <label>MedCoin Count</label>
+          <input
+            formControlName="medCoinCount"
+            min="0"
+            min="1"
+            class="form-control"
+          />
+          <small
+            class="form-text help-block"
+            *ngIf="isValidRecharge('medCoinCount')"
+          >
+            Enter valid amount
+          </small>
+        </div>
+      </div>
+
+      <div class="mt-2 row">
+        <div class="col-md-12">
+          <label>Narration</label>
+          <textarea
+            formControlName="narration"
+            class="form-control"
+            rows="4"
+          ></textarea>
+          <small
+            class="form-text help-block"
+            *ngIf="isValidRecharge('narration')"
+          >
+            Narration cannot be empty
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        (click)="onSubmitRecharge()"
+        type="button"
+        class="btn btn-dark-rounded"
+      >
+        Recharge
+      </button>
+      <button
+        class="btn btn-dark-rounded"
+        type="button"
+        class="btn btn-dark-rounded"
+        type="button"
+        data-dismiss="modal"
+        (click)="modal.dismiss('Cross click'); closeAll()"
+      >
+        Close
+      </button>
+    </div>
+  </form></ng-template
+>
+
+<ng-template #WithdrawContent let-modal>
+  <form [formGroup]="withDrawForm">
+    <div class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="WithdrawExampleModal"
+      >
+        Withdraw
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click'); closeAll()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="mt-2 row">
+        <div class="col-md-12">
+          <label>Withdraw MedCoin</label>
+          <input formControlName="medCoinCount" min="0" class="form-control" />
+          <small
+            class="form-text help-block"
+            *ngIf="isValidWith('medCoinCount')"
+          >
+            Enter valid amount
+          </small>
+        </div>
+      </div>
+
+      <div class="mt-2 row">
+        <div class="col-md-12">
+          <label>Narration</label>
+
+          <textarea formControlName="narration" class="form-control"></textarea>
+          <small class="form-text help-block" *ngIf="isValidWith('narration')">
+            Narration cannot be empty
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        (click)="onSubmitWithDraw()"
+        type="button"
+        class="btn btn-dark-rounded"
+      >
+        Withdraw
+      </button>
+      <button
+        class="btn btn-dark-rounded"
+        type="button"
+        class="btn btn-dark-rounded"
+        type="button"
+        data-dismiss="modal"
+        (click)="modal.dismiss('Cross click'); closeAll()"
+      >
+        Close
+      </button>
+    </div>
+  </form></ng-template
+>
+
+<ng-template #PayContent let-modal>
+  <form [formGroup]="payForm">
+    <div class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="PayExampleModal"
+      >
+        Pay
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click'); closeAll()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group row">
+        <div class="col-md-6">
+          <label>Segment</label>
+          <select
+            (change)="onChangeSegment($event.target.value)"
+            class="form-control"
+            id="ps"
+          >
+            <option value="all_customers">ALL CUSTOMERS</option>
+            <option value="single_order_customers">
+              SINGLE ORDER CUSTOMERS
+            </option>
+            <option value="no_orders_customers">NO ORDERS CUSTOMERS</option>
+            <option value="order_ongoing_customers">
+              ORDER ONGOING CUSTOMERS
+            </option>
+            <option value="premium_customers">PREMIUM CUSTOMERS</option>
+            <option value="subscribed_customers">SUBSCRIBED CUSTOMERS</option>
+          </select>
+        </div>
+        <div class="col-md-6 mb-3 text-center">
+          <label style="visibility: hidden; width: 100%; margin-bottom: 5px"
+            >label</label
+          >
+          <button
+            style="
+              width: 100%;
+              margin: 0px;
+              background: #083a53;
+              border: 1px solid #dadada45;
+            "
+            class="btn btn-inverse-dark"
+            (click)="selectAllCustomers()"
+          >
+            Select All Customers
+          </button>
+        </div>
+
+        <div class="col-md-12">
+          <label class="">Customer</label>
+
+          <kendo-multiselect
+            #multiselect
+            id="multiselect"
+            formControlName="customers"
+            [placeholder]="'-- Select customers --'"
+            class="form-control multiselect"
+            [filterable]="true"
+            textField="name"
+            valueField="_id"
+            [autoClose]="false"
+            [checkboxes]="false"
+            [data]="customerList"
+            (closed)="(payClose)"
+            (blur)="(payClose)"
+            (valueChange)="payCustomerChange($event)"
+            (filterChange)="payCustomerFilter($event)"
+          >
+          </kendo-multiselect>
+          <small class="form-text help-block" *ngIf="isValidPay('customers')">
+            Customers cannot be empty
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <label>MedCoin</label>
+          <input formControlName="medCoinCount" min="0" class="form-control" />
+          <small
+            class="form-text help-block"
+            *ngIf="isValidPay('medCoinCount')"
+          >
+            Enter valid amount
+          </small>
+        </div>
+
+        <div class="col-md-6">
+          <label class="">Expiry</label>
+          <input
+            formControlName="expiryDate"
+            [min]="getToday()"
+            type="date"
+            class="form-control"
+          />
+          <small class="form-text help-block" *ngIf="isValidPay('expiryDate')">
+            Enter valid date
+          </small>
+        </div>
+      </div>
+
+      <div class="mt-2 row">
+        <div class="col-md-12">
+          <label>Narration</label>
+          <textarea formControlName="narration" class="form-control"></textarea>
+          <small class="form-text help-block" *ngIf="isValidPay('narration')">
+            Narration cannot be empty
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        (click)="onSubmitPay()"
+        type="button"
+        class="btn btn-dark-rounded"
+      >
+        <span
+          *ngIf="payLoading"
+          class="spinner-border spinner-border-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        {{ payLoading ? "paying..." : "pay" }}
+      </button>
+      <button
+        class="btn btn-dark-rounded"
+        type="button"
+        class="btn btn-dark-rounded"
+        type="button"
+        data-dismiss="modal"
+        (click)="modal.dismiss('Cross click'); closeAll()"
+      >
+        Close
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #RedeemContent let-modal>
+  <form [formGroup]="redeemForm">
+    <div class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="PayExampleModal"
+      >
+        Redeem
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click'); closeAll()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group row">
+        <div class="col-md-6">
+          <label>Segment</label>
+          <select
+            id="rs"
+            (change)="onChangeSegment($event.target.value)"
+            class="form-control"
+          >
+            <option value="all_customers">ALL CUSTOMERS</option>
+            <option value="single_order_customers">
+              SINGLE ORDER CUSTOMERS
+            </option>
+            <option value="no_orders_customers">NO ORDERS CUSTOMERS</option>
+            <option value="order_ongoing_customers">
+              ORDER ONGOING CUSTOMERS
+            </option>
+            <option value="premium_customers">PREMIUM CUSTOMERS</option>
+            <option value="subscribed_customers">SUBSCRIBED CUSTOMERS</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label class="">Customer</label>
+
+          <!-- <kendo-multiselect
+            formControlName="customers"
+            [placeholder]="'-- Select customers --'"
+            class="form-control multiselect"
+            [data]="customerList"
+            [valuePrimitive]="false"
+            [filterable]="true"
+            textField="name"
+            valueField="_id"
+            [autoClose]="true"
+            [checkboxes]="false"
+            [data]="customerList"
+            (valueChange)="redeemChange($event)"
+            (filterChange)="redeemFilter($event)"
+          >
+          </kendo-multiselect> -->
+
+          <kendo-dropdownlist
+            formControlName="customerId"
+            placeholder="Select customer"
+            class="form-control"
+            [data]="customerList"
+            [filterable]="true"
+            textField="name"
+            valueField="_id"
+            [data]="customerList"
+            (filterChange)="redeemFilter($event)"
+            (valueChange)="redeemChange($event)"
+            [valuePrimitive]="true"
+          >
+          </kendo-dropdownlist>
+
+          <small
+            class="form-text help-block"
+            *ngIf="isValidRedeem('customerId')"
+          >
+            Customer cannot be empty
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <label>MedCoin</label>
+          <input formControlName="medCoinCount" min="0" class="form-control" />
+          <small
+            class="form-text help-block"
+            *ngIf="isValidRedeem('medCoinCount')"
+          >
+            Enter valid amount
+          </small>
+        </div>
+      </div>
+
+      <div class="mt-2 row">
+        <div class="col-md-12">
+          <label>Narration</label>
+          <textarea formControlName="narration" class="form-control"></textarea>
+          <small
+            class="form-text help-block"
+            *ngIf="isValidRedeem('narration')"
+          >
+            Narration cannot be empty
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        (click)="onSubmitRedeem()"
+        type="button"
+        class="btn btn-dark-rounded"
+      >
+        Redeem
+      </button>
+      <button
+        class="btn btn-dark-rounded"
+        type="button"
+        class="btn btn-dark-rounded"
+        type="button"
+        data-dismiss="modal"
+        (click)="modal.dismiss('Cross click'); closeAll()"
+      >
+        Close
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #NarrationContent let-modal>
+  <div class="modal-header">
+    <h5
+      style="color: white; opacity: 0.5"
+      class="modal-title f-w-200"
+      id="WithdrawExampleModal"
+    >
+      Narration
+    </h5>
+    <button
+      style="color: white; opacity: 0.5; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click'); closeAll()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="mt-2 row">
+      <div class="col-md-12">
+        <P class="form-control">{{ narration }}</P>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      class="btn btn-dark-rounded"
+      type="button"
+      class="btn btn-dark-rounded"
+      type="button"
+      data-dismiss="modal"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
+
+<!-- below first statement -->

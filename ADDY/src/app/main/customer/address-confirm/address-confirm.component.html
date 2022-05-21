@@ -1,0 +1,112 @@
+<body class="customer-page">  
+
+    <!--====== PRELOADER PART START ======-->
+
+    <!-- <div class="loader-wrap">
+        <div class="preloader"><div class="preloader-close">Preloader Close</div></div>
+        <div class="layer layer-one"><span class="overlay"></span></div>
+        <div class="layer layer-two"><span class="overlay"></span></div>        
+        <div class="layer layer-three"><span class="overlay"></span></div>        
+    </div> -->
+
+    <!--====== PRELOADER PART ENDS ======-->
+
+  
+    
+ 
+
+    <!--====== APPIE PAGE TITLE PART START ======-->
+    <div class="desktop">
+        
+    <div class="appie-page-title-area-form1" style="background: #F1F7FF;">
+         <div class="search pt-4">
+            <span><a (click)="back()"  class="ad"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;&nbsp;<span class="hd1">Address</span> </a></span>
+            <!-- <div class="box">
+               <img src="assets/images/boxes.png">
+            </div> -->
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12  text-center">
+                    <div class="appie-page-title-address">
+                        <h6>Map location</h6>
+                      <div class="d-flex">
+                          <img src="assets/images/logo-loc.svg">
+                          <p>{{this.locaton.area}},{{this.locaton.street}} address or map details shown here</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-down">
+          <div class="forms form-padding">
+            <div>
+                <h5 style="margin-top: 10px;font-size: 20px;">Enter your address </h5>
+                <h5 class="secd pb-2">What do you call this address?</h5>
+            <div class="what">
+
+                <form  [formGroup]="form" (ngSubmit)="submit()" class="row">
+                    
+                    <div class="col-md-12 py-0 form-1">
+                        <input type="text" 
+                        formControlName="address"
+                        id="address" placeholder="Address label">
+                        <div *ngIf="f.address.touched && f.address.invalid"  class="error">
+                            <div *ngIf="f.address.errors && f.address.errors.required">Address is required.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 form-1">
+                        <input type="text"
+                        formControlName="number"
+                        id="number" placeholder="House no, villa no, apartment no.">
+                        <div *ngIf="f.number.touched && f.number.invalid"  class="error">
+                            <div *ngIf="f.number.errors && f.number.errors.required">House no, villa no, apartment no is required.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 form-1">
+                        <input type="text"
+                        formControlName="Bname"
+                        id="Bname" placeholder="Building name">
+                        <div *ngIf="f.Bname.touched && f.Bname.invalid"  class="error">
+                            <div *ngIf="f.Bname.errors && f.Bname.errors.required">Building name is required.</div>
+                        </div>
+                    </div>
+                     <div class="col-md-12 form-1">
+                        <input type="text" 
+                        formControlName="delivery"
+                        id="delivery" placeholder="Delivery instruction">
+                        <div *ngIf="f.delivery.touched && f.delivery.invalid"  class="error">
+                            <div *ngIf="f.delivery.errors && f.delivery.errors.required">"Delivery instruction is required.</div>
+                        </div>
+                    </div>
+                    
+                  
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary blue-thank mb-1" 
+                           style="    width: 100%;padding: 20px 44px;">
+Done
+</button>
+                        <!-- <a class="blue-button-cust2" (click)="checkout()" >Done</a> -->
+                    </div>
+                </form>
+
+            </div>
+            </div>
+
+
+          </div>
+        </div>
+    </div>
+
+       
+</div>
+      
+
+   
+
+
+    
+    
+</body>
+

@@ -1,0 +1,133 @@
+.card-data{
+    background-color: #1c5470;
+    padding:10px;
+    padding: 40px;
+    align-content: center;
+    border-radius: 10px;
+    padding-right: 20px;
+    color:white;
+    position: relative;
+}
+
+.span-data{
+    justify-content: space-between;
+    background-color: #0a3347;
+    color:white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 75px;
+    font-weight: 5em;
+    float: right;
+}
+
+
+
+
+/*Button CSS*/
+
+.btn{
+    
+    font-weight: 300;
+  }
+  .btn-dark{
+      
+    border-radius: 10px;
+    background-color: #0b4866;
+  }
+
+  
+  .btn-dark-rounded{
+    margin-left: 12px;
+    background-color: #042b3f;
+    border-radius: 10.25em;
+  }
+
+  
+  .btn-inverse-dark{
+      background-color: #0b4866;
+      background-image: none;
+      border-color: rgba(79, 74, 96, 0);
+    }
+    
+    .btn-inverse-dark:not(.btn-inverse-light) {
+      color: #4f4a60;
+    }
+    
+    .btn-inverse-dark:hover, .btn-primary :hover {
+      color: #ffffff;
+      background-color: #17074d;
+    }
+    
+    .btn-inverse-dark.focus, .btn-inverse-dark:focus ,.btn-primary:focus {
+      box-shadow: 0 0 0 3px rgba(79, 74, 96, 0.5);
+    }
+    
+    .btn-inverse-dark.disabled, .btn-inverse-dark:disabled ,.btn-primary :disabled{
+      color: #4f4a60;
+      background-color: transparent;
+    }
+    
+    .btn-inverse-dark.active, .btn-inverse-dark:active,
+    .show > .btn-inverse-dark.dropdown-toggle, .btn-primary :active {
+      color: #ffffff;
+      background-color: #4f4a60;
+      border-color: #4f4a60;
+    }
+    
+    .btn-dark, .btn-dark:hover ,.btn-primary :hover{
+      box-shadow: 0 2px 2px 0 rgba(79, 74, 96, 0.14), 0 3px 1px -2px rgba(79, 74, 96, 0.2), 0 1px 5px 0 rgba(79, 74, 96, 0.12);
+        justify-content: right;
+    }
+    
+    
+  .form-control{
+      background: #093d57;
+    }
+    .form-class{
+        background: #093d57;
+        width: 152px;
+    }
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .modal-body, .modal-header, .modal-footer{
+        
+        background-color: #0b4866;
+    }
+    label{
+        color: wheat;
+    }
+
+
+    .font-primary{
+        background: green;
+        border-radius: 10px;
+        width: 30px;
+        height: 22px;
+    }
+
+    .font-secondary{
+        background: red;
+        border-radius: 10px;
+        width: 35px;
+        height: 22px;
+    }
+
+    .font-danger{
+        background: orange;
+        border-radius: 10px;
+        width: 30px;
+        height: 22px;
+    }
+
+
+    .image{
+        background-color: transparent;
+    }
+
+
+    hr{
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }

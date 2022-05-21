@@ -1,0 +1,320 @@
+
+.tab-des{
+  background: #0B364C !important;
+  padding: 13px 0px;
+  text-align: center;
+  border-radius: 10px;
+}
+.tab-active{
+background-color: #064e72 !important;
+}
+.editables-input{
+  border: 1px solid white;
+}
+
+
+.pagination button {
+  padding: 8px 10px !important;
+  margin: 8px;
+  color: white !important;
+  background: #014466 !important;
+  border: none !important;
+}
+.span_numbers {
+  padding-right: 5%;
+}
+.editable {
+  color: #e5ff00;
+}
+
+.tab-coupon {
+  justify-content: left;
+  background-color: #0a3347;
+  color: white;
+  border-radius: 20px;
+  margin-left: 40px;
+  padding: 4px;
+}
+
+.heading {
+  border-radius: 8px;
+  padding: 0;
+  background-color: #0d577b;
+  padding-top: 5px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.prem_topbanner {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+.prem_topbanner span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 15px;
+}
+.prem_innersctn {
+  color: #ffffff;
+  opacity: 1;
+}
+.prem_innersctn_items,
+.prem_innersctn_items2 {
+  width: 100%;
+  background: #0d577b;
+  float: left;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 25px;
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 50%);
+}
+.prem_innersctn_items2 h6 {
+  color: #fff;
+  text-align: left;
+  padding: 10px 15px;
+  margin-bottom: 0;
+}
+.prem_innersctn_items2 h6 span {
+  //float: right;
+  padding-left: 18%;
+  font-size: 18px;
+  font-weight: bold;
+}
+.prem_innersctn_items p {
+  float: left;
+  width: 100%;
+  padding: 25px 0px;
+  margin-bottom: 0px;
+  color: #fff;
+  font-size: 17px;
+  opacity: 1;
+}
+.prem_innersctn_items span {
+  float: left;
+  width: 100%;
+  padding: 10px 0px;
+  background-color: #062230;
+  border-radius: 0px 0px 5px 5px;
+  color: #bfbfbf;
+}
+.modal-body h6 {
+  color: #fff;
+  opacity: 0.5;
+}
+.modal-body .form-control {
+  background: #0b4866;
+  border-radius: 10px;
+  opacity: 1;
+  border: 1px solid #bfbfbf;
+  color: #fff;
+  opacity: 0.5;
+}
+.modal-body,
+.modal-header,
+.modal-footer {
+  background-color: #0b4866;
+  color: #fff;
+  width: 80%;
+  padding: 1rem;
+  border-bottom: none !important;
+  border-top: none !important;
+  .form-control {
+    border: 1.5px solid #99b2bf;
+  }
+}
+
+.modal-header {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding-bottom: 0px;
+}
+.modal-footer {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.card-header {
+  border-radius: 8px;
+  padding: 0;
+  background-color: #0d577b;
+  padding-top: 5px;
+}
+.card-footer {
+  padding: 15px;
+  color: whitesmoke;
+  background-color: #0a3347;
+  border-top: 0px solid #f8f8f9;
+  max-width: 50%;
+  padding-bottom: 23px;
+  padding-top: 2px;
+  padding-left: 40px;
+  padding-right: 10px;
+}
+
+.span-data {
+  justify-content: left;
+  background-color: #0a3347;
+  color: white;
+  border-radius: 20px;
+  margin-left: 30px;
+  padding: 4px;
+}
+.span-data a {
+  padding-left: 10px;
+}
+.card-data {
+  background-color: #093e57;
+  align-content: left;
+  border-radius: 10px;
+}
+
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: 0.5;
+}
+
+h6.background {
+  position: relative;
+  z-index: 1;
+
+  &:before {
+    border-top: 2px solid #dfdfdf;
+    content: "";
+    margin: 0 auto; /* this centers the line to the full width specified */
+    position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 95%;
+    z-index: -1;
+  }
+
+  span {
+    /* to hide the lines from behind the text, you have to set the background color the same as the container */
+    background: #fff;
+    padding: 0 15px;
+  }
+}
+
+.form-control {
+  background: #033147;
+  color: white;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.modal-body,
+.modal-header,
+.modal-footer {
+  background-color: #0b4866;
+}
+
+/*Button CSS*/
+
+.btn {
+  font-weight: 400;
+}
+
+.btn-dark-rounded {
+  margin-left: 12px;
+  background-color: #032b3f;
+  border-radius: 10.25em;
+}
+
+.btn-inverse-dark {
+  background-color: #0b4866;
+  background-image: none;
+  border: unset;
+  border-radius: 10.25em;
+}
+
+.pull-right {
+  float: right;
+}
+
+.btn {
+  color: #99b2bf;
+  font-weight: 400;
+}
+
+.card {
+  border-radius: 16px;
+  padding: 27px;
+  background-color: #00496e;
+}
+
+.btn-dark-rounded {
+  margin-left: 12px;
+  background-color: #00283d;
+  border: unset;
+  border-radius: 10.25em;
+}
+
+/* Look and feel (not lib specific) */
+
+li {
+  line-height: 4;
+  font-family: helvetica;
+  list-style-type: none;
+  border-bottom: 1px solid #ccc;
+  color: white;
+  opacity: 0.5;
+  .form-control {
+    // background: #052a3d;
+    width: 45%;
+  }
+}
+label {
+  display: inline-block;
+  //width: 14em;
+  width: 45%;
+}
+input {
+  border: none;
+  display: inline-block;
+}
+
+/* Libary CSS */
+.shell {
+  position: relative;
+  line-height: 1;
+  span {
+    position: absolute;
+    left: 3px;
+    top: 1px;
+    color: red;
+    pointer-events: none;
+    z-index: -1;
+    i {
+      /* any of these 3 will work */
+      color: transparent;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+input.masked,
+.shell span {
+  font-size: 16px;
+  font-family: monospace;
+  padding-right: 10px;
+  background-color: transparent;
+  text-transform: uppercase;
+}
+.help-block {
+  color: #e73a3a;
+}
+input.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+iput.ng-invalid {
+  border: 4px solid red;
+}

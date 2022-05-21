@@ -1,0 +1,111 @@
+.div-data{
+    background-color: #033a56;
+    padding: 13px;
+    border-radius: 3px;
+    padding-right: 120px;
+    color:white;
+    position: relative;
+  }
+
+  .card-data{
+    background-color: #00496E;
+    padding: 13px;
+    border-radius: 3px;
+    padding-right: 120px;
+    color:white;
+    position: relative;
+  }
+ 
+  a,span,h6{
+    color: white;
+    opacity: 0.6;
+    padding-left: 2%;
+    font-weight: lighter;
+  }
+
+  span{
+      padding-left: 10%;
+  }
+
+  
+.btn{
+  
+    font-weight: 400;
+    box-shadow: none;
+  }
+
+  .btn-dark{
+    margin-left: 12px;
+    background-color: #00AAFF;
+    border-radius: 10.25em;
+    box-shadow: none;
+  }
+  
+
+
+  
+/* Calculator*/
+
+
+
+a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  a:active{
+    color: white;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: red;
+    text-decoration: none;
+  }
+  
+  p {
+    text-align: center;
+  }
+  
+  div.calc {
+    background-color: #00496E;
+    margin: 0px auto;
+    height: auto;
+    padding: 1.5vw;
+    //box-shadow: 2px 2px 5px gray;
+  }
+  
+  .calculator_div button {
+    background-color: #00496E;
+    color: white;
+    font-size: 1.5vw;
+    border: none;
+    height: 50px;
+    width: 73px;
+    margin: 2px;
+    box-shadow: none;
+    
+  }
+
+  .calculator_div .table td{
+        padding: none !important;
+}
+  
+  button:hover {
+    background-color: #FFE1D4;
+   
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  textarea {
+    margin: 0px auto;
+    font-size: 2vw;
+    width: 100%;
+    border: none;
+    text-align: right;
+  }
+  
+  

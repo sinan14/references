@@ -1,0 +1,155 @@
+
+<!-- Container-fluid starts-->
+<div class="container-fluid" style="font-family:Poppins, sans-serif !important;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-body tab2-card" style="background:transparent" *ngIf="disableTab('Set Your Deal')">
+
+                <label>{{dealName | titlecase}}</label>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-dark-rounded-add" (click)="BackRedirectTo()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+
+                    </div>
+                    <div class="col-md-6"></div>
+                    <div class="col-md-4">
+                        
+                        <button style="margin-top:-20px;float:right;" type="button" class="btn btn-dark btn-dark-rounded-add"  data-toggle="modal" data-original-title="test"
+                        data-target="#ChooseProductExampleModal" (click)="open(ChooseProductContent,'add')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+            
+
+                    </div>
+                   
+                </div>
+                       
+               
+                    <br><br>
+                    <div class="mt-4 row">
+                        <div class="col-md-3" *ngFor="let i of dealList">
+                            <div class="post_items" >    
+                                        
+                                            <img [src]="i.image" width="100%" >
+                                            <h6 style="margin-left: 36%;font-size: 13px;">{{i.title}}
+                                                <i style="margin-left: 10%;font-size: 13px;" class="fa fa-trash"  *ngIf="deleteFlag" (click)="delete(i.id)"></i></h6>
+                                        
+                                        
+                            </div>
+                        </div>
+                      
+                    </div>
+                    <div class="col-12">
+                        <p *ngIf="dealList && !dealList.length" class="text-center text-muted alert-no-found">
+                            <small>No Data found</small>
+                        </p>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Container-fluid ends-->
+
+
+
+
+<ng-template #ChooseProductContent let-modal>
+    <form [formGroup]="setDealForm">
+    <div  class="modal-header">
+        <h5 style="color: white;opacity: 0.5;" class="modal-title f-w-200" id="ChooseProductExampleModal">Choose Your Product</h5>
+        <button style="color: white;opacity: 0.5;font-size: 31px;" type="button" class="close" aria-label="Close"
+        (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+       
+        <div class="mt-1 row">
+          
+            <div class="col-md-6">
+                <label>Select Category</label>
+                <!-- <select class="form-control classic" id="validationCustom02" formControlName="categoryid" (change)="categoryChange($event.target.value)">
+                    <option *ngFor="let i of categoryList" [value]="i._id">{{i.title}}</option>
+                </select> -->
+                <kendo-dropdownlist #categoryId class="form-control" [data]="categoryList" [filterable]="true"
+                [textField]="'title'" [valueField]="'_id'" formControlName="categoryid" [valuePrimitive]="true"
+                (filterChange)="handleFilterCategory($event)" (valueChange)="categoryChange($event)">
+                </kendo-dropdownlist>
+                <small for="categoryid" class="form-text text-danger" 
+                *ngIf="setDealForm.controls['categoryid'].errors?.required && 
+                (setDealForm.controls['categoryid'].dirty ||  
+                setDealForm.controls['categoryid'].touched || 
+                (setDealForm.controls['categoryid'].untouched  && attemptedSubmit ) )">
+                This field is required.
+                </small>
+            </div>
+
+            <div class="col-md-6">
+                <label>Select Product</label>
+                <!-- <select class="form-control classic" id="validationCustom02" placeholder="--Select--" formControlName="subcategoryid">
+                    <option *ngFor="let i of inventoryList" [value]="i._id">{{i.title}}</option>
+                </select> -->
+                <kendo-dropdownlist #productId class="form-control" [data]="inventoryList"
+                [filterable]="true" [textField]="'title'" [valueField]="'_id'" formControlName="subcategoryid"
+                [valuePrimitive]="true" (filterChange)="handleCategoryWiseFilterProduct($event)">
+                </kendo-dropdownlist>
+                <small for="subcategoryid" class="form-text text-danger" 
+                *ngIf="setDealForm.controls['subcategoryid'].errors?.required && 
+                (setDealForm.controls['subcategoryid'].dirty ||  
+                setDealForm.controls['subcategoryid'].touched || 
+                (setDealForm.controls['subcategoryid'].untouched  && attemptedSubmit ) )">
+               This field is required.
+                </small>
+            </div>
+
+        </div>
+     
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+        (click)="close()">Close</button>
+        
+        <button type="submit" class="btn btn-dark btn-dark-rounded" (click)="save();attemptedSubmit = true">{{addLoading ? 'Saving...' : 'Save'}}</button>
+    </div>
+    </form>
+</ng-template>
+
+
+<ng-template #SetDealsContent let-modal>
+    <div  class="modal-header">
+        <h5 style="color: white;opacity: 0.5;" class="modal-title f-w-200" id="SetDealsExampleModal">Set Your Deal</h5>
+        <button style="color: white;opacity: 0.5;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        
+      
+        <div class="mt-1 row">
+          
+            <div class="col-md-6">
+                <label>Select Category</label>
+                <select class="form-control classic" id="validationCustom02">
+                    <option *ngFor="let i of categoryList" [value]="i._id">{{i.title}}</option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label>Select Product</label>
+                <select class="form-control classic" id="validationCustom02" placeholder="--Select--">
+                    <option *ngFor="let i of inventoryList" [value]="i._id">{{i.title}}</option>
+                </select>
+            </div>
+
+        </div>
+
+     
+    </div>
+    <div class="modal-footer">
+     
+    </div>
+</ng-template>
+
+

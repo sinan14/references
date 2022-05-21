@@ -1,0 +1,285 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid referal_promoo">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card tab2-card">
+
+                <div class="card-body tab2-card">
+                    <h5 style="color: white;opacity: 0.7;"> Referral Promotion</h5>
+                    <ngb-tabset class="tab-coupon add_inventory_tab" (tabChange)="Tab_Change($event)">
+                        <ngb-tab title="Create New Referral Policy" id="create_referal_policy" *ngIf="disableTab('Create New Referal Policy')">
+                            <ng-template ngbTabContent>
+                                <div class="card-body">
+                                    <form [formGroup]="Referal_Form" class="needs-validation">
+                                        <div class="col-lg-10 col-md-12" style="padding:0;">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="validationCustom01" class="">New User will get</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input class="form-control" id="validationCustom01" type="text"
+                                                        formControlName="new_user">
+                                                    <small for="new_user" class="form-text text-danger" *ngIf="Referal_Form.controls['new_user'].errors?.required && 
+                            (Referal_Form.controls['new_user'].dirty ||  
+                            Referal_Form.controls['new_user'].touched || 
+                            (Referal_Form.controls['new_user'].untouched  && submitted ) )">
+                                                        This Field required.
+                                                    </small>
+
+                                                    <small for="new_user" class="form-text text-danger"
+                                                        *ngIf="Referal_Form.controls['new_user'].errors?.pattern">
+                                                        Letters Not Allowed.
+                                                    </small>
+
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="validationCustom02" class="">Referral Person will
+                                                        get</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input class="form-control" id="validationCustom02" type="text"
+                                                        formControlName="old_user">
+
+                                                    <small for="old_user" class="form-text text-danger"
+                                                        *ngIf="Referal_Form.controls['old_user'].errors?.required && 
+                                                        (Referal_Form.controls['old_user'].dirty ||  
+                                                        Referal_Form.controls['old_user'].touched || 
+                                                        (Referal_Form.controls['old_user'].untouched  && submitted ) )">
+                                                        This Field required.
+                                                    </small>
+
+                                                    <small for="old_user" class="form-text text-danger"
+                                                        *ngIf="Referal_Form.controls['old_user'].errors?.pattern">
+                                                        Letters Not Allowed.
+                                                    </small>
+
+
+                                                </div>
+
+                                            </div>
+
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="validationCustom02" class="">Valid From</label>
+                                                </div>
+                                                <div class="col-md-3 coc-block">
+                                                    <input class="form-control" id="validationCustom02" type="date"
+                                                        formControlName="from_dt" min={{today}}
+                                                        (change)="Date_Change()">
+
+                                                    <small for="from_dt" class="form-text text-danger" *ngIf="Referal_Form.controls['from_dt'].errors?.required && 
+                                                        (Referal_Form.controls['from_dt'].dirty ||  
+                                                        Referal_Form.controls['from_dt'].touched || 
+                                                        (Referal_Form.controls['from_dt'].untouched  && submitted ) )">
+                                                        This Field required.
+                                                    </small>
+
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="validationCustom02" class="">Valid Till</label>
+                                                </div>
+                                                <div class="col-md-3 coc-block">
+                                                    <input class="form-control" id="validationCustom02" type="date"
+                                                        formControlName="to_date" min={{temp_dt}}
+                                                        (change)="Date_Change_To()">
+
+                                                    <small for="to_date" class="form-text text-danger" *ngIf="Referal_Form.controls['to_date'].errors?.required && 
+                                                        (Referal_Form.controls['to_date'].dirty ||  
+                                                        Referal_Form.controls['to_date'].touched || 
+                                                        (Referal_Form.controls['to_date'].untouched  && submitted ) )">
+                                                        This Field required.
+                                                    </small>
+
+
+
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-4 d-flex align-items-center">
+
+                                                    <label for="validationCustom02" class="mb-0">Referral Person will get
+                                                        benefits
+                                                        on</label>
+
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button [ngClass]="Benefit == 'immediate' ? 'active' : '' "
+                                                        type="button" class="btn btn-dark-rounded"
+                                                        (click)="Benefit_Click('immediate')">Immediate</button>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <button [ngClass]="Benefit == 'first' ? 'active' : '' "
+                                                        type="button" class="btn  btn-dark-rounded"
+                                                        (click)="Benefit_Click('first')">1st
+                                                        Order</button>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="mt-3 row">
+                                                <div class="col-md-8"></div>
+                                                <div class="col-md-4">
+                                                    <button style="float: right;width:150px;align-content: center;"
+                                                        type="button" class="btn btn-submit"
+                                                        (click)="Create_Referal()" *ngIf="editFlag">Submit</button>
+                                                    <div *ngIf="submitted && addLoading" class="spinner-border"
+                                                        role="status">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+
+
+
+                        <ngb-tab id="past_referal_policies" *ngIf="disableTab('Past Referal Policies')">
+                            <ng-template ngbTabTitle>Past Referral Policies
+                                <ng-template ngbTabContent>
+                                    <div class="mt-3 tab-pane fade active show" id="account" role="tabpanel"
+                                        aria-labelledby="account-tab">
+                                        <div class="table-sorter-wrapper  table-responsive col-md-12 satemt_promo_main">
+                                            <table id="sortable-table-2" class="table table-bordered">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th class="sortStyle">Sl.No</th>
+                                                        <th class="sortStyle">Valid From</th>
+                                                        <th class="sortStyle">Valid To</th>
+                                                        <th class="sortStyle">Total No. of use</th>
+                                                        <th class="sortStyle">Total medcoin issued</th>
+                                                        <th class="sortStyle"  style="text-align: center;">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let i of Past_Referal_Policies_Array">
+                                                        <td>{{i.sl}}</td>
+                                                        <td>{{i.from.slice(0, 10)}}</td>
+                                                        <td>{{i.to.slice(0, 10)}}</td>
+                                                        <td>{{i.usedCount}}</td>
+                                                        <td>{{i.medcoin}}</td>
+                                                        <td style="text-align: center;" ><button class="btn btn-dark btn-inverse-dark" style="background: #03344d;"><a routerLink="/promo/referal-promo-details/{{i._id}}">View</a></button></td>
+                                                    </tr>
+                                                    <!-- <tr>
+                                                        <td>10 Dec 2020</td>
+                                                        <td>21 Dec 2020</td>
+                                                        <td>152</td>
+                                                        <td>152</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>15 Dec 2020</td>
+                                                        <td>21 Dec 2020</td>
+                                                        <td>152</td>
+                                                        <td>152</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>25 Dec 2020</td>
+                                                        <td>21 Dec 2020</td>
+                                                        <td>152</td>
+                                                        <td>152</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>20 Dec 2020</td>
+                                                        <td>21 Dec 2020</td>
+                                                        <td>152</td>
+                                                        <td>152</td>
+                                                    </tr>
+
+ -->
+
+                                                </tbody>
+                                            </table>
+                                            &nbsp; &nbsp;<button (click)=" get_PAST_REFERAL_POLICY_LIST(current_page - 1, 10)" *ngIf="hasPrevPage" class="buttons button-prev">Prev</button>
+                                            <button (click)=" get_PAST_REFERAL_POLICY_LIST( 1, 10)" *ngIf="current_page > 1" class="buttons">First</button>
+                                            <button class="buttons" (click)=" get_PAST_REFERAL_POLICY_LIST(current_page - 1, 10)" *ngIf="hasPrevPage">{{current_page - 1}}</button>
+                                            <button  class="buttons" (click)=" get_PAST_REFERAL_POLICY_LIST(current_page, 10)" *ngIf="current_page > 0">{{current_page}}</button>
+                                            <button class="buttons" (click)=" get_PAST_REFERAL_POLICY_LIST(current_page + 1, 10)" *ngIf="hasNextPage">{{current_page+1}}</button>
+                                            <button class="buttons" (click)=" get_PAST_REFERAL_POLICY_LIST(total_page, 10)" *ngIf="hasNextPage">Last</button>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ng-template>
+                        </ngb-tab>
+
+                        <!-- 
+                        <ngb-tab id="referal_user_details">
+                            <ng-template ngbTabTitle>Referal User Details
+                                <ng-template ngbTabContent>
+                                    <div class="mt-3 tab-pane fade active show" id="account" role="tabpanel"
+                                        aria-labelledby="account-tab">
+                                        <div class="table-sorter-wrapper  table-responsive col-md-8">
+                                            <table id="sortable-table-2" class="table table-bordered">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th class="sortStyle">Valid From</th>
+                                                        <th class="sortStyle">Valid To</th>
+                                                        <th class="sortStyle">Total No. of use</th>
+                                                        <th class="sortStyle">Total medcoin issued</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+
+
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ng-template>
+                        </ngb-tab> -->
+
+
+                    </ngb-tabset>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->

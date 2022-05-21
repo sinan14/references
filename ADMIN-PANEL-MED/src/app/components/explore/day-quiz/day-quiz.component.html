@@ -1,0 +1,233 @@
+<div class="container-fluid">
+   <div class="row">
+       <div class="col-md-12 kendo_table">
+                        <br><br>
+                        <h6 style="color: white;opacity: 0.5;margin-bottom: -3%;margin-left: 1%;" class="mt-4"> {{prevQuizname}}</h6>
+                        <div class="tab">
+                            <input type="checkbox" id="chck1">
+                            <label class="tab-label" for="chck1" style="font-size: 14px;font-weight: lighter;">{{prevQuizname}} Question and Answers<span style="margin-left: 145px;opacity: 0.5;">Total Participants {{totalParticipants}}</span><span style="margin-left: 250px;opacity: 0.5;">View</span></label>
+                            <div class="tab-content"   >
+
+                                        <ng-container *ngFor="let question of prevQuestionslist;let i=index">
+                                            <div class="mt-2 row">
+                                                <div class="col-md-12" style="opacity: 0.5;font-size: 14px;">
+                                                    Q.{{i+1}} {{question.question}}
+                                                        
+                                                </div>
+                                            </div>
+                                            <div class="mt-2 ml-2 row options">
+                                                <div class="">
+                                                    <button class="btn btn-dark btn-dark-rounded" [ngClass]=" question.correctindex === 1 ? 'btn-green' : 'btn-dark' "   style="margin-right: 20px;">A.  {{question.option1}}</button>
+                                                </div>
+                                                <div class="">
+                                                    <button class="btn btn-dark btn-dark-rounded" [ngClass]=" question.correctindex === 2 ? 'btn-green' : 'btn-dark' "   style="margin-right: 20px;">B. {{question.option2}}</button>
+                                                </div>
+                                                <div class="">
+                                                    <button class="btn btn-dark btn-dark-rounded" [ngClass]=" question.correctindex === 3 ? 'btn-green' : 'btn-dark' "   style="margin-right: 20px;">C. {{question.option3}}</button>
+                                                </div>
+                                                <div class="">
+                                                    <button class="btn btn-dark btn-dark-rounded" [ngClass]=" question.correctindex === 4 ? 'btn-green' : 'btn-dark' "   style="margin-right: 20px;">D.{{question.option4}}</button>
+                                                </div>
+                                                
+                                            </div>
+                                        </ng-container>
+
+                            </div>
+                        </div>
+
+                                
+                        <div class="table-responsive">
+                            <kendo-grid [kendoGridBinding]="quizWinnersList" [filterable]="true"  [sortable]="true">
+                                <ng-template kendoGridToolbarTemplate >
+                                    <div  style="padding-left: 75%;">
+                                        <button type="button" kendoGridExcelCommand class="btn btn-dark btn-excel-rounded">
+                                            <i class="fa fa-file-excel-o"></i>Download to Excel
+                                          </button>
+                                    </div>
+                                </ng-template>
+                                <kendo-grid-column field="date" title="Date & Time" width="30">
+                                  
+                                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                        <kendo-grid-string-filter-cell
+                                            placeholder="search"
+                                            [showOperators]="false"
+                                            [column]="column"
+                                            title="Parent Store"
+                                            [filter]="filter">
+                                        </kendo-grid-string-filter-cell>
+                                    </ng-template>
+                                    
+                                </kendo-grid-column>
+
+                                <kendo-grid-column field="customer_id" title="Customer ID" width="30">
+                                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                        <kendo-grid-string-filter-cell
+                                            placeholder="search"
+                                            [showOperators]="false"
+                                            [column]="column"
+                                            title="Parent Store"
+                                            [filter]="filter">
+                                        </kendo-grid-string-filter-cell>
+                                    </ng-template>
+                                    
+                                </kendo-grid-column>
+                                
+                                <kendo-grid-column field="username" title="Name" width="30" >
+                                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                        <a [ngClass]="dataItem.winner ? 'set-winner' : '' " data-toggle="modal" data-original-title="test" 
+                                                        data-target="#AlertModal" (click)="open(AlertContent,dataItem.customer_id,dataItem.winner)">{{dataItem.username}}</a>
+                                        <img class='crown_item' src='assets/images/customer/icon-crown.png' *ngIf="dataItem.winner">
+                                       
+                                    </ng-template>
+
+                                   
+                                </kendo-grid-column>
+
+                                <kendo-grid-column field="corrected_count" title="Score" width="30">
+                                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                        <span style="color: yellow;" >{{dataItem.corrected_count}}/</span>{{dataItem.total_questions}}
+                                    </ng-template>
+                                 
+                                </kendo-grid-column>
+
+                                <kendo-grid-column field="time_used" title="Time Used" width="20">
+                                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                        <span >{{dataItem.time_used}}</span>&nbsp;Seconds
+                                    </ng-template>
+                                 
+                                    <kendo-grid-excel fileName="Quiz.xlsx"></kendo-grid-excel>
+                                </kendo-grid-column>
+
+                               
+
+                              </kendo-grid>
+                        </div>
+
+                                <!-- <div class="mt-2 innerr_table_style">
+                                    <div  style="border-radius: 25px 25px 25px" class="table-sorter-wrapper  table-responsive">
+                                        <table i id="sortable-table-2" class="table table-striped" style="background-color: #014466 !important;">
+                                        <thead class="">
+                                            <tr>
+                                            <th class="sortStyle">Date & Time<i class="mdi mdi-chevron-down"></i></th>
+                                            <th class="sortStyle">Customer ID<i class="mdi mdi-chevron-down"></i></th>
+                                            <th class="sortStyle">Name<i class="mdi mdi-chevron-down"></i></th>
+                                            <th class="sortStyle">Score<i class="mdi mdi-chevron-down"></i></th>
+                                            <th class="sortStyle">Time Used<i class="mdi mdi-chevron-down"></i></th>
+                                            </tr>
+                                        </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Dec 25 2020 10 : 30 am</td>
+                                                    <td>#5tgf734</td>
+                                                    <td>
+                                                        <a [style.color]="getColor()" data-toggle="modal" data-original-title="test"
+                                                        data-target="#AlertModal" (click)="open(AlertContent)">Aswin Vinod</a>
+                                                    </td>
+                                                    <td><span style="color: yellow;">5/</span>5</td>
+                                                    <td>2 : 05 seconds</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Dec 25 2020 10 : 30 am</td>
+                                                    <td>#5tgf734</td>
+                                                    <td>
+                                                        <a >Aswin Vinod</a>
+                                                    </td>
+                                                    <td><span style="color: yellow;">5/</span>5</td>
+                                                    <td>2 : 05 seconds</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Dec 25 2020 10 : 30 am</td>
+                                                    <td>#5tgf734</td>
+                                                    <td>
+                                                        <a >Aswin Vinod</a>
+                                                    </td>
+                                                    <td><span style="color: yellow;">5/</span>5</td>
+                                                    <td>2 : 05 seconds</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Dec 25 2020 10 : 30 am</td>
+                                                    <td>#5tgf734</td>
+                                                    <td>
+                                                        <a >Aswin Vinod</a>
+                                                    </td>
+                                                    <td><span style="color: yellow;">5/</span>5</td>
+                                                    <td>2 : 05 seconds</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Dec 25 2020 10 : 30 am</td>
+                                                    <td>#5tgf734</td>
+                                                    <td>
+                                                        <a >Aswin Vinod</a>
+                                                    </td>
+                                                    <td><span style="color: yellow;">5/</span>5</td>
+                                                    <td>2 : 05 seconds</td>
+                                                </tr>
+                                            
+
+
+                                                <tr>
+                                                    <td>Dec 25 2020 10 : 30 am</td>
+                                                    <td>#5tgf734</td>
+                                                    <td>Aswin Vinod</td>
+                                                    <td><span style="color: yellow;">5/</span>5</td>
+                                                    <td>2 : 05 seconds</td>
+                                                </tr>
+                                            
+
+
+                                                <tr>
+                                                    <td>Dec 25 2020 10 : 30 am</td>
+                                                    <td>#5tgf734</td>
+                                                    <td>
+                                                        <a>Aswin Vinod</a>
+                                                    </td>
+                                                    <td><span style="color: yellow;">5/</span>5</td>
+                                                    <td>2 : 05 seconds</td>
+                                                </tr>
+                                            
+
+                                                <tr>
+                                                    <td>Dec 25 2020 10 : 30 am</td>
+                                                    <td>#5tgf734</td>
+                                                    <td>
+                                                        <a >Aswin Vinod</a>
+                                                    </td>
+                                                    <td><span style="color: yellow;">5/</span>5</td>
+                                                    <td>2 : 05 seconds</td>
+                                                </tr>
+                                            
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div> -->
+
+       </div>
+   </div>
+</div>
+
+
+
+<ng-template #AlertContent let-modal>
+    <div class="modal-header">
+        <h5 style="color: white;opacity: 0.5;" class="modal-title f-w-200" id="AlertModal">Please Confirm </h5>
+        <button style="color: white;opacity: 0.5;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+      
+        <p>Do you want to declare this user as a quiz winner ?</p>
+    </div>
+    
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dark btn-dark-rounded"   (click)="confirmModal()" >Yes</button>
+        <button class="btn btn-dark btn-dark-rounded" type="button" (click)="dismissModal()" >No</button>
+    </div>
+</ng-template>

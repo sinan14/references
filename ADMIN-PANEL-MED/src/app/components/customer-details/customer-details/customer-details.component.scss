@@ -1,0 +1,456 @@
+button.btn.btn-dark-rounded.active {
+  color: yellow;
+  background-color: #064e72;
+  opacity: 1;
+}
+
+.pagination button {
+  padding: 8px 10px !important;
+  margin: 8px;
+  color: white !important;
+  background: #014466 !important;
+  border: none !important;
+}
+.span-data {
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.span-yellow-label {
+  color: orange;
+}
+
+.span-green-label {
+  color: #039703;
+  font-size: 14px;
+}
+
+table.table.table-bordered.Personal-table tr td {
+  border: 1px solid #d5d5d545 !important;
+}
+table.table.table-bordered.Personal-table tr th {
+  border: 1px solid #a3a3a345 !important;
+}
+.full-row-data {
+  background-color: #023a57;
+  border-radius: 1.25em;
+  padding: 10px 10px;
+}
+.full-row {
+  background-color: #00496e;
+  border-radius: 1.25em;
+  padding: 10px;
+}
+
+.card-data {
+  background-color: #014060;
+  padding: 10px;
+  padding: 40px;
+  align-content: center;
+  border-radius: 10px;
+}
+
+table tr:nth-child(even) {
+  background-color: #03344d;
+}
+
+/*Button CSS*/
+
+.form-control {
+  background: #014466;
+}
+
+.select_list {
+  width: 45%;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group-append,
+.input-group-prepend {
+  color: #aaa7a7;
+  width: auto;
+  border: none;
+}
+
+.input-group-append .input-group-text,
+.input-group-prepend .input-group-text {
+  background-color: #014466;
+  border-color: #3d3f4e;
+  padding: 0.875rem 0.75rem;
+  color: #aaa7a7;
+}
+
+.form-group .file-upload-default {
+  visibility: hidden;
+  position: absolute;
+}
+
+.form-group .file-upload-info {
+  background: transparent;
+}
+.form-class {
+  border-radius: 10px;
+}
+
+.btn {
+  font-weight: 300;
+}
+
+.btn-sm {
+  padding: 1px 10px !important;
+  border-radius: 11px !important;
+  font-size: 9px;
+  margin: 0;
+}
+
+.btn-dark-rounded {
+  margin-left: 12px;
+  background-color: #042b3f;
+  border-radius: 10.25em;
+}
+.btn-order {
+  background-color: #042b3f;
+}
+
+.btn-inverse-dark {
+  background-color: #0b4866;
+  background-image: none;
+  border-color: rgba(79, 74, 96, 0);
+}
+
+.btn-inverse-dark:not(.btn-inverse-light) {
+  color: #4f4a60;
+}
+
+.btn-inverse-dark:hover,
+.btn-primary :hover {
+  color: #ffffff;
+  background-color: #17074d;
+}
+
+.btn-inverse-dark.focus,
+.btn-inverse-dark:focus,
+.btn-primary:focus {
+  box-shadow: 0 0 0 3px rgba(79, 74, 96, 0.5);
+}
+
+.btn-inverse-dark.disabled,
+.btn-inverse-dark:disabled,
+.btn-primary :disabled {
+  color: #4f4a60;
+  background-color: transparent;
+}
+
+.btn-inverse-dark.active,
+.btn-inverse-dark:active,
+.show > .btn-inverse-dark.dropdown-toggle,
+.btn-primary :active {
+  color: #ffffff;
+  background-color: blue;
+  border-color: #4f4a60;
+}
+
+.btn-dark,
+.btn-dark:hover,
+.btn-primary :hover {
+  box-shadow: 0 2px 2px 0 rgba(79, 74, 96, 0.14),
+    0 3px 1px -2px rgba(79, 74, 96, 0.2), 0 1px 5px 0 rgba(79, 74, 96, 0.12);
+  justify-content: right;
+}
+
+hr {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  background: #093d57;
+  color: #fff;
+  opacity: 0.7;
+  box-shadow: none !important;
+  border: 1px solid #8a959a;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.modal-body .table thead th {
+  border-bottom: unset;
+  color: #8a959a;
+  font-size: 12px;
+  font-weight: normal;
+}
+.modal-body .table tr td button {
+  padding: 1px 10px !important;
+  border-radius: 11px !important;
+  font-size: 9px;
+  margin: 0;
+}
+
+.modal-body,
+.modal-header,
+.modal-content {
+  background-color: #00496e !important;
+  border-bottom: none !important;
+}
+.modal-content {
+  width: 150%;
+}
+.modal-footer {
+  border-top: none !important;
+  display: block;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: normal;
+  padding: 0.75rem;
+  background-color: #0b4866;
+}
+
+.modal-header {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border: none;
+}
+.modal-footer {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border: none;
+}
+
+.bar-div {
+  background-color: #042b3f;
+  // padding: 10px;
+  padding-top: 1rem;
+}
+.text-muted {
+  color: #989ca0 !important;
+  opacity: 1;
+}
+label {
+  color: #fff;
+  opacity: 0.5;
+  font-weight: lighter;
+  padding-bottom: 10px;
+}
+.card-body {
+  border-radius: 15px;
+}
+
+/*Bullet line avtivity chart*/
+
+.bullet-line-list {
+  padding-left: 30px;
+  position: relative;
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+.rtl .bullet-line-list {
+  padding-left: unset;
+  padding-right: 30px;
+}
+
+.bullet-line-list li {
+  position: relative;
+  margin-bottom: 1.75rem;
+}
+
+.bullet-line-list li:last-child {
+  margin-bottom: 0;
+}
+
+.bullet-line-list li:before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  left: -30px;
+  top: 0;
+  margin-right: 15px;
+  z-index: 2;
+  position: absolute;
+  border-radius: 100%;
+}
+
+.rtl .bullet-line-list li:before {
+  left: unset;
+  right: -45px;
+}
+
+.bullet-line-list li:nth-child(n + 1):before {
+  background: #7c3396;
+}
+
+.bullet-line-list li:nth-child(n + 2):before {
+  background: #00c689;
+}
+
+.bullet-line-list li:nth-child(n + 3):before {
+  background: #fc7242;
+}
+
+.bullet-line-list li:nth-child(n + 4):before {
+  background: #4d13d1;
+}
+
+.bullet-line-list li:nth-child(n + 15):before {
+  background: #ffc100;
+}
+
+.bullet-line-list:after {
+  content: "";
+  border: 1px solid #3d3f4e;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 8px;
+}
+
+.rtl .bullet-line-list:after {
+  left: unset;
+  right: 7px;
+}
+
+.row-data {
+  background: #03344d;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 1.25em;
+  justify-content: center;
+  padding-right: 15px;
+  text-align: center;
+}
+.row-data small {
+  font-size: 10px;
+}
+
+.img-move-wrapper {
+  position: relative;
+  overflow: hidden;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+//Select List Style CSS
+select {
+  /* styling */
+  background-color: white;
+  border: thin solid blue;
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+
+  /* reset */
+
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+// 6/1/22
+.button-reson.active {
+  background: #04364e;
+}
+.button-reson {
+  padding: 8px !important;
+  width: 100%;
+  line-height: 1;
+  border: 1px solid white;
+  color: white;
+  background: #00496e;
+  font-size: 12px;
+}
+.customer-complaint label {
+  padding-bottom: 0px;
+  margin-top: 0px;
+}
+.customer-complaint p {
+  margin-bottom: 0px;
+}
+
+.customer-complaint .row {
+  align-items: center;
+}
+.modal-header .close {
+  padding: 0rem 1rem;
+  margin: -1.2rem -1rem -1rem auto;
+}
+.text-danger {
+  color: #dc3545 !important;
+  opacity: 1 !important;
+  font-weight: 400;
+}
+// end
+
+/* arrows */
+
+select.select_custum_classic {
+  background-image: linear-gradient(45deg, transparent 50%, #042b3f 50%),
+    linear-gradient(135deg, #042b3f 50%, transparent 50%),
+    linear-gradient(to right, white, white);
+  background-position: calc(100% - 15px) calc(1em + 2px),
+    calc(100% - 10px) calc(1em + 2px), 100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+  background-repeat: no-repeat;
+}
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
+// -----------------------------------new-------------
+legend {
+  text-align: center;
+  color: #fff;
+  opacity: 0.7;
+}
+
+span#validationCustom0 {
+  color: #fff;
+}
+small {
+  color: #fff;
+  opacity: 0.5;
+}
+h3 {
+  color: #fff;
+  opacity: 0.5;
+}
+span {
+  color: #fff;
+}
+.mt-3.col-sm-4.full-row-data {
+  color: #fff;
+}
+.pagination button {
+  padding: 5px 10px;
+  margin: 8px;
+  color: black;
+}
+.help-block {
+  color: #ec5362 !important;
+  font-size: medium;
+}
+
+.white-text {
+  color: white;
+  opacity: 1;
+}
+.border {
+  color: red;
+  border: 10px solid red;
+}
+.refund-type {
+  background-color: cadetblue;
+}

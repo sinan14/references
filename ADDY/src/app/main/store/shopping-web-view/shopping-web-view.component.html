@@ -1,0 +1,216 @@
+<button
+  id="openOtp"
+  class="btn-2 mt-20"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal1"
+  style="display: none"
+>
+  open otp pop up
+</button>
+<!--! testing purposely set to block this below button causes to blur the field recently it showed error messages that the button didnot exists even if exists clearly-->
+<button
+  id="openUser"
+  #openUser
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal2"
+  style="display: none"
+>
+  open address popup
+</button>
+<button id="closeModal" data-bs-dismiss="modal" style="display: none"></button>
+
+<button
+  id="openAddress"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal3"
+  style="display: none"
+></button>
+<body class="shopping-page">
+  <app-navbar></app-navbar>
+  <section class="sec-padding">
+    <div class="container-fluid">
+      <div class="product-header">
+        <div class="first-div">
+          <a (click)="goToPreviousPage()"
+            ><i class="fa fa-angle-left" aria-hidden="true"></i
+          ></a>
+          <h5>Shopping cart</h5>
+        </div>
+        <div class="second-div">
+          <a href="shoping.html"><img src="assets/img/boxes.png" /></a>
+        </div>
+      </div>
+    </div>
+    <div class="product-section">
+      <div class="container-fluid" style="max-width: 600px">
+        <div class="product-list" *ngIf="cartDiv">
+          <h4>#items</h4>
+          <div
+            class="single-item"
+            *ngFor="let cat of productList; let i = index"
+          >
+            <div class="first-div">
+              <img src="{{ cat.image }}" class="img-responsive imgwidth" />
+            </div>
+            <div class="second-div">
+              <h5>{{ cat.productName }}</h5>
+              <p>
+                <span *ngIf="cat.uom">{{ cat.uom }}: {{ cat.uomValue }}</span>
+                <span *ngIf="cat.color">| Color:{{ cat.color }}</span>
+              </p>
+              <a (click)="deletecart(cat, i)">Delete</a>
+            </div>
+            <div class="third-div">
+              <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                ><i class="fa fa-file-text-o"></i
+              ></a>
+            </div>
+            <div class="clearfix"></div>
+            <br />
+            <div class="fourth-div">
+              <h5>Quantity</h5>
+            </div>
+            <div class="fifth-div">
+              <form id="myform" #myform="ngForm" class="quantity">
+                <input
+                  type="submit"
+                  value="-"
+                  class="qtyminus minus btn-3"
+                  field="quantity"
+                  (click)="removeQuantity(myform.value, i)"
+                />
+                <input
+                  type="text"
+                  readonly
+                  name="quantity"
+                  value="{{ cat.quantity }}"
+                  class="qty"
+                  [(ngModel)]="cat.quantity"
+                  (ngModelChange)="modelChangeFn($event)"
+                />
+                <input
+                  type="submit"
+                  value="+"
+                  class="qtyplus plus btn-3"
+                  field="quantity"
+                  (click)="addQuantity(myform.value, i)"
+                />
+              </form>
+            </div>
+            <div class="sixth-div">
+              <h5>
+                {{ _homeService.localCurrency }}
+                <span>{{ cat.convertedPrice }}</span>
+              </h5>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+
+          <div *ngIf="deliveryFee">
+            <div class="row amount-list">
+              <div class="col-md-6 col-xs-6">
+                <h5>Item total</h5>
+              </div>
+              <div class="col-md-6 col-xs-6 leftpd text-right">
+                <h5>AED {{ gTotal }}</h5>
+              </div>
+            </div>
+            <!-- <div class="row amount-list" >
+            <div class="col-md-6 col-xs-6">
+              <h5>Delivery fee</h5>
+            </div>
+            <div class="col-md-6 col-xs-6  leftpd text-right">
+              <h5 > {{localCurrency}} {{deliveryFeeamount}}</h5>
+
+            </div>
+          </div> -->
+          </div>
+          <br />
+          <div class="row amount-list">
+            <div class="col-md-6 col-xs-6">
+              <h5 class="blk">Grand total</h5>
+            </div>
+            <div class="col-md-6 col-xs-6 leftpd text-right">
+              <h5>
+                {{ _homeService.localCurrency }} <span>{{ gTotal }}</span>
+              </h5>
+            </div>
+          </div>
+          <div class="row payment-mode">
+            <div class="col-md-12">
+              <h5>Payment mode</h5>
+              <div class="payment-block" *ngIf="cashOnDelivery">
+                <input
+                  type="radio"
+                  class="radio-custom"
+                  id="cash"
+                  name="payment"
+                  checked
+                />
+                <label for="cash" class="radio-custom-label">
+                  <h5>Cash on Delivery</h5>
+                </label>
+                <div class="clearfix"></div>
+              </div>
+              <div class="payment-block" *ngIf="onlinePayment">
+                <input
+                  type="radio"
+                  class="radio-custom"
+                  id="online"
+                  name="payment"
+                />
+                <label for="online" class="radio-custom-label">
+                  <h5>Online Payment</h5>
+                </label>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row payment-mode">
+            <div class="col-md-12">
+              <h5>Instruction to the seller</h5>
+              <div class="payment-block">
+                <input
+                  type="radio"
+                  class="radio-custom"
+                  id="photo"
+                  name="instruction"
+                />
+                <label for="photo" class="radio-custom-label">
+                  <h5>Ask for photo</h5>
+                </label>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+          <app-intl-no></app-intl-no>
+        </div>
+      </div>
+      <br /><br />
+    </div>
+    <app-login></app-login>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+      style="padding: 0"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <h4>Instruction</h4>
+            <p>Instuction here...</p>
+            <div class="clearfix"></div>
+            <a class="btn-2 mt-20" data-bs-dismiss="modal">Close</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-footer></app-footer>
+</body>

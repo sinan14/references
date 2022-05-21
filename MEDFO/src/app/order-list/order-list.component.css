@@ -1,0 +1,74 @@
+.or-tr{
+    display: flex;
+    justify-content: space-between
+}
+.order_list_box_cnt{
+    cursor: pointer;
+}
+.order_list_box_cnt3_rate {
+   padding-right: 10px;} 
+   .odr_list_sc .dashboard_right_cnt_head {
+    margin-bottom: 0px;}
+    .order_list_box_cnt3_rate i {
+        font-size: 18px;
+    }
+.accordion a{
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    border: 0 !important;
+    padding: 10px 60px !important;
+    color: #050500 !important;
+    font-size: 13px !important;
+    font-weight: normal !important;
+    opacity: 1 !important;
+}
+.order_list_box_cnt3_ico img {
+    width: 100%;
+    height: 28px;
+    object-fit: contain;
+}
+.rej-img{
+    left: 50px;
+}
+.rej-img-pharm{
+    left: 25px;
+}
+@media (max-width: 991px){
+    .rej-img{
+        left: 0px !important;
+    }
+    .rej-img-pharm{
+        left: 0px !important;
+    }
+    .rej{
+        padding-left: 25px !important;
+    }
+    .rupee{
+        padding-left: 0px !important;
+    }
+    .order_list_box_cnt3 {
+        text-align: left;
+        padding-left: 50px;
+    }
+        .col-xl-9.col-md-8.col-sm-12.col-xs-12 {
+            padding: 0px;
+        }
+        .col-xl-12.col-md-12.col-sm-12.col-xs-12{
+            padding: 0px;
+        }
+    .dashboard_sbmn_lft {
+        padding-right: 15px;
+        display: none;
+    }
+
+    .order-mobile {
+        display: none;
+    }
+}

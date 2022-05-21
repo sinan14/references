@@ -1,0 +1,249 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-body tab2-card">  
+                  
+                                    <div class="prem_topbanner">
+                                        <div class="row" style="border-bottom: 1px solid black;">
+                                            <div class="col-md-4">
+                                                <label>New Sale</label>
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-4">
+                                                <button type="button" class="btn btn-dark" (click)="redirectToSalesReport()">Sales Report</button>
+                                                &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-dark-rounded">POS Sale</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-2 row">
+                                                    <div class="col-md-2 pr-0">
+                                                        <label for="validationCustom02" class="mb-0" >Customer Name/Phone</label>
+                                                    </div>
+                                                    <div class="col-md-3 pl-0">
+                                                        <input type="text" class="form-control" style="float: left;width: 80%;">
+                                                        <span style="line-height: 2;">
+                                                            <img src="assets/images/pos/icon-green-plus-button.svg" width="30px">
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="col-md-2 pr-0 offset-md-2">
+                                                        <label for="validationCustom02" class="mb-0" >Payment Type</label>
+                                                    </div>
+                                                    <div class=" col-md-3 pl-0">
+                                                        <input type="text" class="form-control dark" placeholder="Cash Payment">
+                                                    </div>
+                                                    
+                                        </div>
+
+                                        <div class="mt-2 row">
+                                            <div class="col-md-2 pr-0">
+                                                <label for="validationCustom02" class="mb-0" >Date</label>
+                                            </div>
+                                            <div class="col-md-3 pl-0">
+                                                <input type="text" class="form-control" >
+                                            </div>
+
+                                            <div class="col-md-2 pr-0 offset-md-2">
+                                                <label for="validationCustom02" class="mb-0" >Invoice No</label>
+                                            </div>
+                                            <div class=" col-md-3 pl-0">   
+                                                <input type="text" class="form-control" placeholder="1015">
+                                            </div>
+                                            
+                                        </div>
+
+                                               
+
+                                    </div>               
+
+
+
+
+
+                                    <br><br>
+                                    <div class="prem_topbanner table-responsive" style="border-radius: 8px 8px 8px 8px;padding: 20px 20px 10px 20px;">
+                                        <table id="sortable-table-2" class="table table-striped">
+                                            <thead class="" style="height: 100%;"> 
+                                                <tr>
+                                                    <th  rowspan="2"><label style="color: white;">Item information</label></th>
+                                                    <th  rowspan="2"><label style="color: white;">Desc</label></th>
+                                                    <th  rowspan="2"><label style="color: white;">SN</label></th>
+                                                    <th  rowspan="2"><label style="color: white;">Av.Qnty</label></th>
+                                                    <th  rowspan="2"><label style="color: white;">Unit</label></th>
+                                                    <th  rowspan="2"><label style="color: white;">Qnty</label></th>
+                                                    <th  rowspan="2"><label style="color: white;">Rate</label></th>
+                                                    <th  rowspan="2"><label style="color: white;">Discount%</label></th>
+                                                    <th  rowspan="2"><label style="color: white;">Total</label></th>
+                                                    <th  rowspan="2"><label style="color: white;">Action</label></th>
+                                                                               
+                                                </tr>
+                                                
+                                            </thead>   
+                                            <tbody>
+                                                    <tr *ngFor="let formOption of formArray; let i = index; trackBy: trackByFn ">
+                                                        <td>
+                                                        <input type="text" class="form-control dark" placeholder="Product Name"> 
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control dark"> 
+                                                        </td>  
+                                                        <td>
+                                                            <select class="form-control"> 
+                                                                <option hidden>select option</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control dark" value="0"> 
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control dark" value="None"> 
+                                                        </td> 
+                                                        <td>
+                                                            <input type="text" class="form-control dark" value="1 "> 
+                                                        </td> 
+                                                        <td>
+                                                            <input type="text" class="form-control dark" value="0.00"> 
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control dark" value="0.00"> 
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control dark" value="0.00"> 
+                                                        </td>
+                                                        <td *ngIf="i==0">
+                                                            <img src="assets/images/pos/icon-green-plus-button.svg" width="30px" (click)="addForm()" >
+                                                        </td>   
+                                                        <td *ngIf="i!=0">
+                                                            <img  src="assets/images/pos/icon-cross-button.svg" width="25px"  (click)="removeForm(i)">
+                                                        </td> 
+                                                    </tr> 
+                                                    
+
+                                                <tr>
+                                                    <td colspan="7">
+                                                        <h6 style="padding-left: 50%;">Sales Details</h6>
+                                                        <textarea class="form-control" placeholder="Sales Details"></textarea>
+                                                    </td>
+                                                    <td>
+                                                        Sale Discount 
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control dark"> 
+                                                    </td>
+                                                   
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="7"></td>
+                                                    <td>Total Discount</td>
+                                                    <td>
+                                                        <input type="text" class="form-control dark"> 
+                                                    </td>
+                                                </tr>
+
+                                                <tr *ngIf="setBooleanRow">
+                                                    <td colspan="7"></td>
+                                                    <td>VAT</td>
+                                                    <td>
+                                                        <input type="text" class="form-control dark"> 
+                                                    </td>
+                                                </tr>
+
+                                                <tr *ngIf="setBooleanRow">
+                                                    <td colspan="7"></td>
+                                                    <td>GST</td>
+                                                    <td>
+                                                        <input type="text" class="form-control dark"> 
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="7"></td>
+                                                    <td>Total Tax</td>
+                                                    <td>
+                                                        <input type="text" class="form-control dark"> 
+                                                    </td>
+                                                    <td>
+                                                        <img *ngIf="trueFlag" class="img" style="cursor: pointer;" src="assets/images/pos/icon-extend.png" width="25px" (click)="AddTableRow('true')">
+                                                        <img *ngIf="falseFlag" class="img" style="cursor: pointer;" src="assets/images/pos/icon-extend-reverse.png" width="25px" (click)="AddTableRow('')">
+                                                    </td>
+                                                </tr>
+
+                                               
+
+                                                <tr>
+                                                    <td colspan="7"></td>
+                                                    <td>Shipping Cost</td>
+                                                    <td>
+                                                        <input type="text" class="form-control dark"> 
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td colspan="7"></td>
+                                                    <td>Grand Total</td>
+                                                    <td>
+                                                        <input type="text" class="form-control dark"> 
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="7"></td>
+                                                    <td>Previous</td>
+                                                    <td>
+                                                        <input type="text" class="form-control dark"> 
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="7"></td>
+                                                    <td>Next Total</td>
+                                                    <td>
+                                                        <input type="text" class="form-control dark"> 
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="7"></td>
+                                                    <td>Paid Amount</td>
+                                                    <td>
+                                                        <input type="text" class="form-control dark"> 
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="7"></td>
+                                                    <td>Due</td>
+                                                    <td>
+                                                        <input type="text" class="form-control dark"> 
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="7">
+                                                        &nbsp;&nbsp;<button type="button" class="btn btn-yellow btn-sm">FULL PAID</button>
+                                                        &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-dark-rounded btn-sm">SUBMIT</button>
+                                                        
+        
+                                                    </td>
+                                                    <td>Change</td>
+                                                    <td>
+                                                        <input type="text" class="form-control dark"> 
+                                                    </td>
+                                                </tr>
+
+
+                                            </tbody>       
+                                        </table>                                                                      
+                                    </div>      
+    
+    
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

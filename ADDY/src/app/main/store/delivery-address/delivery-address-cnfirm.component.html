@@ -1,0 +1,137 @@
+<body class="address-page">
+  <div class="desktop">
+    <header>
+      <div class="container-fluid">
+        <div class="row">
+          <div
+            class="col-md-9 col-xs-6"
+            style="width: 70%; float: left; overflow: hidden"
+          >
+            <img src="assets/img/logo.png" class="img-responsive" />
+          </div>
+          <div
+            class="col-md-3 col-xs-6"
+            style="width: 30%; float: left; overflow: hidden"
+          >
+            <div class="right" style="height: 100%">
+              <ul>
+                <li>
+                  <a href=""><i class="fa fa-whatsapp"></i></a>
+                </li>
+                <li>
+                  <a href=""><i class="fa fa-instagram"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div
+      class="appie-page-title-area-form1"
+      style="background: #f1f7ff; display: block"
+    >
+      <div class="search pt-4">
+        <span
+          ><a class="ad"
+            ><i class="fal fa-chevron-left"></i>&nbsp;&nbsp;&nbsp; Shopping
+            cart</a
+          ></span
+        >
+        <div class="box">
+          <img src="assets/images/boxes.png" />
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <div class="appie-page-title-address">
+              <h6>Map location</h6>
+              <div class="d-flex">
+                <img src="assets/images/logo-loc.svg" />
+                <p>
+                  {{ location.area }},{{ location.street }} address or map
+                  details shown here
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-down mt-50">
+        <div class="forms form-padding">
+          <div style="max-width: 500px; margin: auto">
+            <h5>Type your current address</h5>
+            <h5 class="secd pb-2">Address label</h5>
+            <div class="what">
+              <form [formGroup]="addressForm" class="row">
+                <div class="col-md-12 py-0 form-1">
+                  <input
+                    formControlName="address"
+                    trim="blur"
+                    type="text"
+                    name="email"
+                    placeholder="Address label"
+                  />
+                  <small *ngIf="isValidAddress('address')" class="form-text"
+                    >Enter valid address</small
+                  >
+                </div>
+                <div class="col-md-12 form-1">
+                  <input
+                    type="text"
+                    trim="blur"
+                    formControlName="houseNumber"
+                    name="phone"
+                    placeholder="House no, villa no, apartment no."
+                  />
+                  <small *ngIf="isValidAddress('houseNumber')" class="form-text"
+                    >Enter valid House no, villa no, apartment no.</small
+                  >
+                </div>
+                <div class="col-md-12 form-1">
+                  <input
+                    type="text"
+                    trim="blur"
+                    formControlName="buildingName"
+                    name="suject"
+                    placeholder="Building name"
+                  />
+                  <small
+                    *ngIf="isValidAddress('buildingName')"
+                    class="form-text"
+                    >Enter valid building name</small
+                  >
+                </div>
+                <div class="col-md-12 form-1">
+                  <textarea
+                    formControlName="deliveryInstruction"
+                    placeholder="Delivery instruction"
+                    trim="blur"
+                    rows="1"
+                  ></textarea>
+                  <small
+                    *ngIf="isValidAddress('deliveryInstruction')"
+                    class="form-text"
+                    >Required</small
+                  >
+                </div>
+
+                <div class="col-md-12 text-center button-div">
+                  <a class="blue-button-cust2" (click)="submitAddress()"
+                    >Continue</a
+                  >
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+
+    <app-footer></app-footer>
+  </div>
+</body>

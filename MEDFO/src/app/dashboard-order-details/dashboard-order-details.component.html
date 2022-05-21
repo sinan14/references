@@ -1,0 +1,333 @@
+<div class="ps-page">
+  <app-header></app-header>
+</div>
+<!-- Google Tag Manager (noscript) -->
+<noscript
+  ><iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-W32L424"
+    height="0"
+    width="0"
+    style="display: none; visibility: hidden"
+  ></iframe
+></noscript>
+<!-- End Google Tag Manager (noscript) →-->
+
+<section
+  class="inner_new_page_container medfill"
+  style="background: #f7f7f7; overflow: hidden; "
+>
+  <section class="profile_sec">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-md-4 dashboard_sbmn_lft order-mobile">
+          <div class="dahboard_left_sec">
+            <div class="dahboard_left_main_head">Profile</div>
+            <div class="dahboard_left_box prf_box_sc" style="padding: 10px">
+              <div class="profile_left_avatar_box">
+                <div class="profile_left_avatar_box_img">
+                  <input
+                    class="upload-input"
+                    type="file"
+                    accept="image/png, image/jpeg"
+                    name="myfile"
+                    (change)="onChangeProfile($event, '352', '250')"
+                  />
+                  <img
+                    *ngIf="_userService.personal_info.image != null"
+                    style="cursor: pointer"
+                    [src]="_userService.personal_info.image"
+                  />
+                  <img
+                    *ngIf="
+                      _userService.personal_info.image == null ||
+                      _userService.personal_info.image == ''
+                    "
+                    src="assets/img/pro-ifelse.png"
+                    alt=""
+                  />
+
+                  <div class="profile_left_avatar_editt">
+                    <i class="fa fa-edit"></i>
+                  </div>
+                </div>
+                <div
+                  style="cursor: pointer"
+                  class="profile_left_avatar_box_name"
+                >
+                  {{ _userService.personal_info.name }}
+                  {{ _userService.personal_info.surname }}
+                </div>
+                <div class="profile_left_avatar_box_sb">
+                  +91 {{ _userService.personal_info.phone }}
+                </div>
+                <div class="profile_left_avatar_box_sb">
+                  {{ _userService.personal_info.email }}
+                </div>
+              </div>
+              <div class="profile_left_avatar_btm_progress">
+                <div
+                  class="profile_left_avatar_box_sb"
+                  routerLink="/dashboard-order-details/profile"
+                >
+                  Complete Your Profile
+                </div>
+                <div
+                  style="cursor: pointer"
+                  class="d"
+                  routerLink="/dashboard-order-details/profile"
+                >
+                  <progress
+                    value="{{ _userService.personal_info.percentage }}"
+                    max="100"
+                  ></progress>
+                  <div class="percent">
+                    {{ _userService.personal_info.percentage }}%
+                  </div>
+                </div>
+                <div class="col-md-12 pl-1">
+                  <div class="row">
+                    <ng-container
+                      *ngFor="let one of _userService.familyMembers"
+                    >
+                      <div class="col-md-6 new-members">
+                        <img
+                          style="cursor: pointer"
+                          (click)="_userService.clickedFamilyMember(one._id)"
+                          src="{{ one.image }}"
+                        />
+                        <p
+                          style="cursor: pointer"
+                          (click)="_userService.clickedFamilyMember(one._id)"
+                        >
+                          {{ one.name }} {{ one.surname }}
+                        </p>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="add-family">
+                  <p (click)="_userService.clickedFamilyMember('false')">
+                    <i
+                      style="cursor: pointer"
+                      class="fa fa-plus"
+                      aria-hidden="true"
+                    ></i
+                    >Add Family
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mob_mn_sec">
+              <div class="dashmob_mn_sec_cls"><i class="fa fa-close"></i></div>
+              <div class="dahboard_left_box_schead">My Account</div>
+              <div class="dahboard_left_box">
+                <ul>
+                  <a routerLink="/dashboard-order-details/order-list">
+                    <li class="">
+                      <div class="dahboard_left_box_ico">
+                        <img src="assets/img/dashboard/1.png" />
+                      </div>
+                      My Orders
+                      <div class="dahboard_left_box_arrow">
+                        <i class="fa fa-angle-right"></i>
+                      </div>
+                    </li>
+                  </a>
+                  <a routerLink="/recently-purchased">
+                    <li>
+                      <div class="dahboard_left_box_ico">
+                        <img src="assets/img/dashboard/2.png" />
+                      </div>
+                      Recent Purchases
+                      <div class="dahboard_left_box_arrow">
+                        <i class="fa fa-angle-right"></i>
+                      </div>
+                    </li>
+                  </a>
+                  <a routerLink="/dashboard-order-details/medfill-subscription">
+                    <li>
+                      <div class="dahboard_left_box_ico">
+                        <img src="assets/img/dashboard/3.png" />
+                      </div>
+                      MedFill Subscription
+                      <div class="dahboard_left_box_arrow">
+                        <i class="fa fa-angle-right"></i>
+                      </div>
+                    </li>
+                  </a>
+                  <a routerLink="/dashboard-order-details/health-vault">
+                    <li>
+                      <div class="dahboard_left_box_ico">
+                        <img src="assets/img/dashboard/4.png" />
+                      </div>
+                      Health Vault
+                      <div class="dahboard_left_box_arrow">
+                        <i class="fa fa-angle-right"></i>
+                      </div>
+                    </li>
+                  </a>
+                  <a routerLink="/dashboard-order-details/medcoin-refer">
+                    <li>
+                      <div class="dahboard_left_box_ico">
+                        <img src="assets/img/dashboard/5.png" />
+                      </div>
+                      Wallet
+                      <div class="dahboard_left_box_arrow">
+                        <i class="fa fa-angle-right"></i>
+                      </div>
+                    </li>
+                  </a>
+                  <a routerLink="/medpride-membership">
+                    <li>
+                      <div class="dahboard_left_box_ico">
+                        <img src="assets/img/dashboard/6.png" />
+                      </div>
+                      Medpride Membership
+                      <div class="dahboard_left_box_arrow">
+                        <i class="fa fa-angle-right"></i>
+                      </div>
+                    </li>
+                  </a>
+                  <a>
+                    <li>
+                      <div class="dahboard_left_box_ico">
+                        <img src="assets/img/dashboard/7.png" />
+                      </div>
+                      Offers
+                      <div class="dahboard_left_box_arrow">
+                        <i class="fa fa-angle-right"></i>
+                      </div>
+                    </li>
+                  </a>
+                  <a (click)="_userService.openReferAndEarn()">
+                    <li style="border: 0">
+                      <div class="dahboard_left_box_ico">
+                        <img src="assets/img/dashboard/8.png" />
+                      </div>
+                      Refer & Earn
+                      <div class="dahboard_left_box_arrow">
+                        <i class="fa fa-angle-right"></i>
+                      </div>
+                    </li>
+                  </a>
+                </ul>
+              </div>
+
+              <div class="dahboard_left_box_schead">Settings</div>
+              <div class="dahboard_left_box">
+                <ul>
+                  <a>
+                    <li>
+                      <div class="dahboard_left_box_ico">
+                        <img src="assets/img/dashboard/9.png" />
+                      </div>
+                      Help
+                      <div class="dahboard_left_box_arrow">
+                        <i class="fa fa-angle-right"></i>
+                      </div>
+                    </li>
+                  </a>
+                  <a>
+                    <li>
+                      <div class="dahboard_left_box_ico">
+                        <img
+                          style="width: 80%"
+                          src="assets/img/dashboard/10.png"
+                        />
+                      </div>
+                      About Us
+                      <div class="dahboard_left_box_arrow">
+                        <i class="fa fa-angle-right"></i>
+                      </div>
+                    </li>
+                  </a>
+                  <a>
+                    <li>
+                      <div class="dahboard_left_box_ico">
+                        <img src="assets/img/dashboard/11.png" />
+                      </div>
+                      Legal Informations
+                      <div class="dahboard_left_box_arrow">
+                        <i class="fa fa-angle-right"></i>
+                      </div>
+                    </li>
+                  </a>
+                  <li class="accordion">
+                    <div class="accordion-item" style="margin-bottom: 0">
+                      <a>
+                        <div class="dahboard_left_box_ico">
+                          <img src="assets/img/dashboard/12.png" />
+                        </div>
+                        Customer Support
+                        <div class="dahboard_left_box_arrow"></div>
+                      </a>
+                      <div class="content">
+                        <ul>
+                          <a style="padding: 0 !important">
+                            <li>
+                              <div class="dahboard_left_box_ico">
+                                <img src="assets/img/dashboard/13.png" />
+                              </div>
+                              Live Chat
+                            </li>
+                          </a>
+                          <a style="padding: 0 !important">
+                            <li>
+                              <div class="dahboard_left_box_ico">
+                                <img src="assets/img/dashboard/14.png" />
+                              </div>
+                              Call
+                            </li>
+                          </a>
+                          <a style="padding: 0 !important">
+                            <li>
+                              <div class="dahboard_left_box_ico">
+                                <img src="assets/img/dashboard/15.png" />
+                              </div>
+                              Write to Us
+                            </li>
+                          </a>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+
+                  <a>
+                    <li>
+                      <div class="dahboard_left_box_ico">
+                        <img
+                          style="width: 80%"
+                          src="assets/img/dashboard/16.png"
+                        />
+                      </div>
+                      Rate Us
+                    </li>
+                  </a>
+
+                  <a (click)="_authenticationService.logout()">
+                    <li style="border: 0">
+                      <div class="dahboard_left_box_ico">
+                        <img
+                          style="width: 80%"
+                          src="assets/img/dashboard/17.png"
+                        />
+                      </div>
+                      Logout
+                    </li>
+                  </a>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-9 col-md-8 col-sm-12 col-xs-12">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+<footer class="ps-footer ps-footer--5" style="padding-top: 40px">
+  <app-footer></app-footer>
+</footer>

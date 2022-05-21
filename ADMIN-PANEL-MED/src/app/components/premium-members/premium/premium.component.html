@@ -1,0 +1,649 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row" *ngIf="disableTab('Premium')">
+    <div class="col-lg-12 pt-5">
+      <h6>Premium</h6>
+      <div class="row prem_topbanner">
+        <div class="col-lg-3 col-md-6 col-sm-12 tab-des tab-active">
+          <u
+            style="
+              color: #ffffff;
+              opacity: 0.5;
+              font-weight: lighter;
+              cursor: pointer;
+            "
+            routerLink="/premium/premium-list"
+            >Total Premium Members</u
+          >
+          <span style="color: #ffffff; font-size: 25px"
+            >{{ premiumData.totalPremiumUserCount }}
+          </span>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 tab-des ml-2">
+          <u
+            style="
+              color: #ffffff;
+              opacity: 0.5;
+              font-weight: lighter;
+              cursor: pointer;
+            "
+            (click)="premiumDetails()"
+            >Active Users</u
+          >
+          <span style="color: #ffffff; font-size: 25px"
+            >{{ premiumData.totalActivePremiumUserCount }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row mt-3 costmr_srch_ivntrylist">
+        <div class="col-md-10"></div>
+        <div class="col-md-2">
+          <button
+            type="button"
+            *ngIf="!allowEdit && editPermFlag"
+            class="btn btn-dark btn-inverse-dark pull-right"
+            id="btnClick"
+            (click)="onEdit()"
+          >
+            <i class="fa fa-edit"></i> Edit
+          </button>
+          <button
+            *ngIf="allowEdit"
+            type="button"
+            class="btn btn-dark btn-inverse-dark pull-right"
+            id="btnClick"
+            (click)="onSave()"
+          >
+            <i class="fa fa-save"></i> Save
+          </button>
+        </div>
+      </div>
+      <form id="premiumForm" [formGroup]="premiumForm">
+        <div class="mt-2 row">
+          <ul class="col-md-8">
+            <li>
+              <span class="span_numbers">1.</span
+              ><label for="expiration">Free Delivery</label>
+              <!-- todo feel free to edit this Editable className -->
+              <input
+                type="number"
+                formControlName="freeDelivery"
+                [class.editables-input]="allowEdit"
+                class="form-control"
+                [readonly]="!allowEdit"
+                min="0"
+                id="myTextBox"
+              />
+              <!-- <span *ngIf="isValid('freeDelivery')" class="help-block"
+                >this field cannot be empty</span
+              > -->
+            </li>
+
+            <li>
+              <span class="span_numbers">2.</span
+              ><label for="expiration">% cashback on all Products</label>
+              <input
+                type="number"
+                formControlName="cashBack"
+                min="0"
+                max="100"
+                class="form-control"
+                [class.editables-input]="allowEdit"
+                [readonly]="!allowEdit"
+              />
+              <!-- <span *ngIf="isValid('cashBack')" class="help-block"
+            >this field cannot be empty</span
+          > -->
+            </li>
+            <li>
+              <span class="span_numbers">3.</span
+              ><label for="expiration"
+                >Minimum Offer on Products in Medimall Outlets</label
+              >
+              <input
+                type="text"
+                type="number"
+                min="0"
+                max="100"
+                [class.editables-input]="allowEdit"
+                formControlName="miniMumOffer"
+                class="form-control"
+                [readonly]="!allowEdit"
+              />
+              <!-- <span *ngIf="isValid('miniMumOffer')" class="help-block"
+            >this field cannot be empty</span
+          > -->
+            </li>
+            <li>
+              <span class="span_numbers">4.</span>
+              <label for="expiration">Priority Support</label>
+              <label></label>
+            </li>
+            <li>
+              <span class="span_numbers">5.</span>
+              <label for="expiration">Exclusive Deals & Offers</label>
+              <label></label>
+            </li>
+            <li>
+              <span class="span_numbers">6.</span>
+              <label>FolioFit Membership</label>
+              <label></label>
+            </li>
+
+            <li>
+              <span class="span_numbers">7.</span>
+              <label>Super Fast Delivery</label>
+              <label></label>
+            </li>
+          </ul>
+        </div>
+      </form>
+
+      <!-- <div class="row prem_innersctn">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <h6 style="color:#fff;margin-top:20px;opacity: 0.5;font-weight: lighter;">Total Offers</h6>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-12"  data-toggle="modal" data-original-title="test"
+                data-target="#addexampleModal" (click)="open(data,'add')">
+                    <div class="prem_innersctn_items">
+                        <p>70% offer</p>
+                        <span>Used : 250</span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <div class="prem_innersctn_items">
+                        <p>60% offer</p>
+                        <span>Used : 250</span>
+                    </div>
+                </div>    
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <div class="prem_innersctn_items">
+                        <p>Free Delivery</p>
+                        <span>Used : 250</span>
+                    </div>
+                </div>                 
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <div class="prem_innersctn_items">
+                        <p>Flat 50%</p>
+                        <span>Used : 250</span>
+                    </div>
+                </div>                 
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <div class="prem_innersctn_items">
+                        <p>25% OFF</p>
+                        <span>Used : 250</span>
+                    </div>
+                </div> 
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <div class="prem_innersctn_items">
+                        <p>60% OFF</p>
+                        <span>Used : 250</span>
+                    </div>
+                </div> 
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <div class="prem_innersctn_items">
+                        <p>Free Delivery</p>
+                        <span>Used : 250</span>
+                    </div>
+                </div> 
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <div class="prem_innersctn_items">
+                        <p>60% OFF</p>
+                        <span>Used : 250</span>
+                    </div>
+                </div> 
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <div class="prem_innersctn_items">
+                        <p>Flat 50%</p>
+                        <span>Used : 250</span>
+                    </div>
+                </div>                
+            </div>
+
+            <div class="mt-2 row">
+                <div class="col-md-12">
+                    <h6 style="color:#fff;margin-top:20px;opacity: 0.5;font-weight: lighter;">Golden Membership Category</h6>
+                </div>
+            </div> -->
+
+      <!-- <div class="mt-2 row " data-toggle="modal" data-original-title="test"
+            data-target="#addexampleModal" (click)="open(data,'')">
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <div class="prem_innersctn_items2" >    
+                        <h6>1 Month<span><i class="fa fa-inr"></i> 250</span></h6>      
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-sm-12" data-toggle="modal" data-original-title="test"
+                data-target="#addexampleModal" (click)="open(data,'')">
+                    <div class="prem_innersctn_items2" >    
+                        <h6>2 Month<span><i class="fa fa-inr"></i> 350</span></h6>     
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-sm-12" data-toggle="modal" data-original-title="test"
+                data-target="#addexampleModal" (click)="open(data,'')">
+                    <div class="prem_innersctn_items2" >    
+                        <h6>3 Month<span><i class="fa fa-inr"></i> 450</span></h6>     
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <div class="prem_innersctn_items2" >    
+                        <h6>5 Month<span><i class="fa fa-inr"></i> 600</span></h6>     
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <div class="prem_innersctn_items2" >    
+                        <h6>6 Month<span><i class="fa fa-inr"></i> 750</span></h6>     
+                    </div>
+                </div>           
+            
+            </div> -->
+
+      <br /><br />
+
+      <div class="btn-popup pull-right">
+        <!-- <button type="button" class="btn btn-dark btn-inverse-dark" data-toggle="modal" data-original-title="test"
+                    data-target="#AddPremiumExampleModal" (click)="open(AddPremiumContent,'add')"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;"> Add New</button> -->
+      </div>
+
+      <br /><br /><br />
+      <kendo-grid
+        class="kendo_table master-demo"
+        [kendoGridBinding]="specialProducts"
+        [filterable]="false"
+        [sortable]="true"
+        [pageSize]="10"
+        [pageable]="true"
+        [skip]="skip"
+      >
+        <kendo-grid-column field="no" title="No" width="20">
+          <ng-template
+            kendoGridFilterCellTemplate
+            let-filter
+            let-column="column"
+          >
+            <kendo-grid-string-filter-cell
+              placeholder="search"
+              [showOperators]="false"
+              [column]="column"
+              title="Parent Store"
+              [filter]="filter"
+            >
+            </kendo-grid-string-filter-cell>
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="name" title="Name" width="20">
+          <ng-template
+            kendoGridFilterCellTemplate
+            let-filter
+            let-column="column"
+          >
+            <kendo-grid-string-filter-cell
+              placeholder="search"
+              [showOperators]="false"
+              [column]="column"
+              title="Parent Store"
+              [filter]="filter"
+            >
+            </kendo-grid-string-filter-cell>
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="month" title="Month" width="30">
+          <ng-template
+            kendoGridFilterCellTemplate
+            let-filter
+            let-column="column"
+          >
+            <kendo-grid-string-filter-cell
+              placeholder="search"
+              [showOperators]="false"
+              [column]="column"
+              title="Parent Store"
+              [filter]="filter"
+            >
+            </kendo-grid-string-filter-cell>
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="price" title="Price" width="30">
+          <ng-template
+            kendoGridFilterCellTemplate
+            let-filter
+            let-column="column"
+          >
+            <kendo-grid-string-filter-cell
+              placeholder="search"
+              [showOperators]="false"
+              [column]="column"
+              title="Parent Store"
+              [filter]="filter"
+            >
+            </kendo-grid-string-filter-cell>
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column
+          field="specialPrice"
+          title="Special Price"
+          width="25"
+        >
+          <ng-template
+            kendoGridFilterCellTemplate
+            let-filter
+            let-column="column"
+          >
+            <kendo-grid-string-filter-cell
+              placeholder="search"
+              [showOperators]="false"
+              [column]="column"
+              title="Parent Store"
+              [filter]="filter"
+            >
+            </kendo-grid-string-filter-cell>
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-command-column
+          title="Action"
+          width="40"
+          class="text-center"
+        >
+          <ng-template
+            let-dataItem="dataItem"
+            kendoGridCellTemplate
+            let-isNew="isNew"
+          >
+            <button
+              *ngIf="editPermFlag"
+              type="button"
+              class="btn btn-dark btn-dark-rounded"
+              data-toggle="modal"
+              data-original-title="test"
+              data-target="#AddPremiumExampleModal"
+              (click)="
+                open(
+                  AddPremiumContent,
+                  dataItem._id,
+                  dataItem.name,
+                  dataItem.month,
+                  dataItem.price,
+                  dataItem.specialPrice,
+                  'edit'
+                )
+              "
+            >
+              Edit
+            </button>
+
+            <!-- &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-dark-rounded">Delete</button> -->
+          </ng-template>
+        </kendo-grid-command-column>
+      </kendo-grid>
+    </div>
+  </div>
+  <!-- Container-fluid Ends-->
+
+  <ng-template #data let-modal>
+    <div *ngIf="update_Modal_Flag" class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="AddPremiumExampleModal"
+      ></h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div *ngIf="add_Modal_Flag" class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="AddPremiumExampleModal"
+      ></h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-12">
+          <h6 for="validationCustom02" class="mb-0">Member Ship Name</h6>
+          <input trim="blur" type="text" class="form-control" />
+        </div>
+      </div>
+
+      <div class="mt-2 row">
+        <div class="col-md-6">
+          <h6 for="validationCustom02" class="mb-0">Member Amount</h6>
+          <input trim="blur" type="text" class="form-control" />
+        </div>
+      </div>
+
+      <div class="mt-2 row">
+        <div class="col-md-5">
+          <h6 for="validationCustom02" class="mb-0">Discount</h6>
+          <input
+            trim="blur"
+            type="text"
+            class="form-control"
+            style="float: left; width: 85%"
+          /><span
+            style="
+              line-height: 3;
+              padding-left: 3px;
+              color: white;
+              opacity: 0.5;
+            "
+            >&#37;</span
+          >
+        </div>
+
+        <div class="col-md-6">
+          <h6 for="validationCustom02" class="mt-4"></h6>
+          <input
+            trim="blur"
+            type="text"
+            class="form-control"
+            style="float: left; width: 69%"
+          /><span
+            style="
+              line-height: 3;
+              padding-left: 5px;
+              color: white;
+              opacity: 0.5;
+            "
+            >Flat</span
+          >
+        </div>
+      </div>
+
+      <div class="mt-2 row">
+        <div class="col-md-12">
+          <h6 for="validationCustom02" class="mb-0">
+            Special Discount Segment
+          </h6>
+          <input trim="blur" type="text" class="form-control" />
+        </div>
+      </div>
+
+      <div class="mt-2 row">
+        <div class="col-md-4">
+          <h6 for="validationCustom02" class="mb-0">From</h6>
+          <input trim="blur" type="text" class="form-control" />
+        </div>
+
+        <div class="col-md-4">
+          <h6 for="validationCustom02" class="mb-0">To</h6>
+          <input trim="blur" type="text" class="form-control" />
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal-footer"
+      style="border-top: unset; border-radius: 0px 0px 15px 15px"
+    >
+      <div class="col-md-12" style="text-align: center">
+        <button
+          style="width: 170px"
+          type="submit"
+          class="btn btn-dark btn-dark-rounded"
+          data-dismiss="modal"
+          (click)="modal.dismiss('Cross click')"
+        >
+          Set
+        </button>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #AddPremiumContent let-modal>
+    <div *ngIf="update_Modal_Flag" class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="AddPremiumExampleModal"
+      >
+        Update
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div *ngIf="add_Modal_Flag" class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="AddPremiumExampleModal"
+      >
+        Add
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form [formGroup]="specialForm">
+        <div class="row">
+          <div class="col-md-12">
+            <h6 for="validationCustom02" class="mb-0">Name</h6>
+            <input
+              trim="blur"
+              formControlName="name"
+              type="text"
+              class="form-control"
+            />
+            <span *ngIf="isValidSp('name')" class="help-block"
+              >Name cannot be empty</span
+            >
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h6 for="validationCustom02" class="mb-0">Month</h6>
+            <input
+              trim="blur"
+              formControlName="month"
+              type="number"
+              min="0"
+              max="1200"
+              class="form-control"
+            />
+            <span *ngIf="isValidSp('month')" class="help-block"
+              >Enter Valid Month</span
+            >
+          </div>
+        </div>
+
+        <div class="mt-2 row">
+          <div class="col-md-12">
+            <h6 for="validationCustom02" class="mb-0">Price</h6>
+            <input
+              trim="blur"
+              formControlName="price"
+              min="0"
+              type="number"
+              class="form-control"
+            />
+            <span *ngIf="isValidSp('price')" class="help-block"
+              >Price cannot be empty</span
+            >
+          </div>
+        </div>
+
+        <div class="mt-2 row">
+          <div class="col-md-12">
+            <h6 for="validationCustom02" class="mb-0">Special Price</h6>
+            <input
+              trim="blur"
+              min="0"
+              type="number"
+              formControlName="specialPrice"
+              class="form-control"
+            />
+            <span *ngIf="isValidSp('specialPrice')" class="help-block"
+              >Special price must be less than price</span
+            >
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div
+      class="modal-footer"
+      style="border-top: unset; border-radius: 0px 0px 15px 15px"
+    >
+      <button
+        (click)="updateSpecial()"
+        type="button"
+        class="btn btn-dark btn-dark-rounded"
+      >
+        Save
+      </button>
+      <button
+        class="btn btn-dark btn-dark-rounded"
+        type="button"
+        type="button"
+        data-dismiss="modal"
+        (click)="modal.dismiss('Cross click')"
+      >
+        Close
+      </button>
+    </div>
+  </ng-template>
+</div>
+
+<script></script>

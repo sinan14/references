@@ -1,0 +1,164 @@
+<body style="background: #F1F7FF;">  
+
+    <!--====== PRELOADER PART START ======-->
+
+    <!-- <div class="loader-wrap">
+        <div class="preloader"><div class="preloader-close">Preloader Close</div></div>
+        <div class="layer layer-one"><span class="overlay"></span></div>
+        <div class="layer layer-two"><span class="overlay"></span></div>        
+        <div class="layer layer-three"><span class="overlay"></span></div>        
+    </div> -->
+
+    <!--====== PRELOADER PART ENDS ======-->
+
+  
+    
+ 
+<div class="driver2 pt-4 pb-3">
+              <span><a href="driver.html" style="" class="ad"><i class="fal fa-chevron-left"></i>&nbsp;&nbsp;&nbsp; Order Details</a></span>
+           
+            <!--<div class="box">
+               <img src="assets/images/boxes.png">
+            </div>-->
+        </div>
+    <!--====== APPIE PAGE TITLE PART START ======-->
+    <div class="desktop" style="max-width: 500px;margin: auto;border: none;">
+        
+       
+    <div class="appie-page-title-area-thank" style="    min-height: 90vh;">
+         
+        <div class="col-md-12 mt-4 cardpd" > <span class="dates">From</span>
+            <div class="d2-padding">
+               
+                <div class="dvr2 d-flex" style="justify-content: space-between;">
+                    <span>
+                        <h6>{{fromAddress.userName}}</h6>
+                        <p>{{fromAddress.address}}, {{fromAddress.houseNumber}}, {{fromAddress.street}},{{fromAddress.area}},{{fromAddress.city}}</p>
+                        <p>Delivery instruction</p>
+                    </span>
+                    <span>
+                       <a href="callto:"><img src="assets/images/phone.svg" (click)="callNow()"></a>
+                    </span>
+                </div>
+               
+                <div class="">
+                    <div style="width: 70%;float: left;overflow: hidden;">
+                        <p style="font-size: 12px;line-height: 10px;">Box size: Small</p>
+                        <p style="font-size: 12px;line-height: 0px;"><a href="" style="color: #F50606;    font-weight: 500;" *ngIf="acceptvalue==false">Collect Delivery fee</a></p>
+                    </div>
+                    <div style="width: 30%;float: left;overflow: hidden;">
+                        <button class="button-navi"  (click)="fromNav()">Navigate</button>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding: 0">
+  <div class="modal-dialog" role="document" style="max-width: 400px;margin-top: 100px;">
+    <div class="modal-content" style="background: none;border: none;">
+    <div class="d2-padding" style="box-shadow: 1px 1px 4px #c9e0ffb3;">
+        <div style="width: 100%;border-bottom: 1px dotted #c9e0ff;padding: 20px 0;">
+            <div style="width: 100%;float:left;overflow: hidden;">
+                <p style="margin-top: 11px;font-size: 18px;color: #000;font-weight: 500;">Estimated delivery Fee:</p>
+            </div>
+            <div style="width: 100%;float:left;overflow: hidden;">
+                <input type="number" name="deliveryFee" [(ngModel)]="deliveryFee" placeholder="AED">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <!-- <center><a href="" class="blue-buttons">Confirm</a></center> -->
+        <a style="width: 100%;max-width: 400px;padding: 12px;" class="blue-buttons" (click)="deliverFeePay()"  data-bs-dismiss="modal">Confirm</a>
+               
+            </div>
+            </div>
+  </div>
+</div>
+        
+         <div class="col-md-12 mt-4 cardpd" style="position: relative;" > <span class="dates">To</span>
+            <div class="d2-padding">
+               
+                <div class="dvr2 d-flex " style="justify-content: space-between;">
+                    <span>
+                        <h6>{{toAddress.userName}}</h6>
+                        <p>{{toAddress.address}}, {{toAddress.houseNumber}},{{toAddress.street}},{{toAddress.area}},{{toAddress.city}}</p>
+                        <p>Delivery instruction</p>
+                    </span>
+                    <span>
+                       <a href="callto:"><img src="assets/images/phone.svg" (click)="callNow()"></a>
+                    </span>
+                </div>
+                <div class="">
+                    <div style="width: 70%;float: left;overflow: hidden;">
+                        <p style="font-size: 12px;line-height: 10px;"><a href="" style="color: #F50606;    font-weight: 500;" >Collect Package amount</a></p>
+                        <p style="font-size: 12px;line-height: 0px;"><a href="" style="color: #F50606;    font-weight: 500;" >AED {{packagePrice}}</a></p>
+                    </div>
+                <div class="pb-4">
+                     <button  class="button-navi" [routerLink]="['/map']" (click)="toNav()">Navigate</button>
+                
+                </div>
+               </div>
+            </div>
+        </div>
+        </div>
+ <div class="form-down">
+       
+          <div class="forms form-padding" *ngIf="!acceptvalue">
+
+                 <form action="#" method="post" class="row">
+                    
+                    
+                    <div class="col-md-12 text-center mt-50"  style="margin-bottom: 18px;
+                ">
+                       <!-- <a (click)="accept()" class="blue-buttons" >Accept</a> -->
+                       <button type="button"   class="btn btn-primary btn-lg blueButton"data-bs-toggle="modal" data-bs-target="#exampleModal" >Accept</button>
+
+                    </div>
+                    <div class="col-md-12 text-center">
+                       <!-- <a href="" class="blue-buttons" style="margin-bottom: 11px;">Reject</a> -->
+                       <button type="button"class="btn btn-primary btn-lg blueButton" (click)="reject()">Reject</button>
+
+                    </div>
+                </form>
+
+          </div>
+          <div class="forms form-padding" *ngIf="acceptvalue">
+           
+            <h3 styl="font-weight: 500;">Update Status</h3>
+           
+            <form action="#" method="post" class="row">
+               
+               
+                <div class="col-md-12 mb-2">
+                    <select (change)="statusUpdate($event)">
+                        <option *ngFor="let s of status">{{s}} </option>
+                       
+                         
+                        
+                    </select>
+                   
+               </div>
+               
+             
+               <div class="col-md-12 text-center">
+                  <!-- <a class="blue-buttons">Update</a> -->
+                  <button type="button"   class="btn btn-primary btn-lg blueButton" (click)="update()">Update</button>
+
+               </div>
+           </form>
+     </div>
+        </div>
+    </div>
+    
+    <!--====== APPIE PAGE TITLE PART ENDS ======-->
+   
+
+      
+
+   
+
+
+    
+
+</body>
+
+

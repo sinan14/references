@@ -1,0 +1,633 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card tab2-card" style="background:transparent">
+                <div class="row mt-3 costmr_srch_ivntrylist">
+                    <div class="col-md-8">
+                        <h5 style="margin-top:20px;color: white;opacity: 0.7;">Profile Home</h5>
+                    </div>
+
+                </div>
+
+                <ngb-tabset class="tab-coupon side_innerpage_tab">
+
+                    <ngb-tab title="Ad 1" *ngIf="disableTab('Ad 1')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+
+
+                                <div class=" row">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of Ad1;">
+
+
+                                        <div class="post_items" *ngIf="item.type === 'ad1'">
+                                            <img src={{item.image}} width="100%">
+                                            <!-- <img src="assets/images/ads-images/ads-medimall-slider1.png" width="100%"> -->
+                                            <h6 style="margin-left: 80%;color: white;font-size: 15px;">
+                                                <span style="float: right;">
+                                                    <i style="margin-left: 0%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Ad1ExampleModal"
+                                                        (click)="open(Ad1Content,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="MedFil Subscription" *ngIf="disableTab('MedFil Subscription')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+
+
+                                <div class="row">
+                                    <!-- <div class="col-lg-4 col-md-6"> -->
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of medFill;">
+
+                                        <!-- <div class="post_items"> -->
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%">
+                                            <!-- <img src="assets/images/ads-images/ads-medimall-slider1.png" width="100%"> -->
+                                            <h6 style="margin-left: 92%;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i style="margin-left: 20%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test"
+                                                        data-target="#MedfillSubscriptionExampleModal"
+                                                        (click)="open(MedfillSubscriptionContent,'edit',item)"
+                                                        *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="MedPride Membership" *ngIf="disableTab('MedPride Membership')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+                                <!-- <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                                data-target="#MedPrideMembershipExampleModal" (click)="open(MedPrideMembershipContent,'add')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button> -->
+
+
+
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of medPride_Array;">
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%">
+
+                                            <!-- <img src="assets/images/ads-images/ads-home-slider1.png" width="100%"
+                                                height="130px"> -->
+                                            <h6 style="float: right; color: white;font-size: 15px;">
+                                                <span>
+                                                    <i class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                                        data-target="#MedPrideMembershipExampleModal"
+                                                        (click)="open(MedPrideMembershipContent,'edit',item)"
+                                                        *ngIf="editFlag"></i>
+
+                                                    <!-- <i style="margin-left: 35%;" class="fa fa-trash" *ngIf="deleteFlag"></i> -->
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="col-lg-4 col-md-6">
+                                        <div class="post_items">
+                                            <img src="assets/images/ads-images/ads-home-slider2.png" width="100%"
+                                                height="130px">
+                                            <h6 style="margin-left: 90%;color: white;font-size: 15px;"> <span> <i
+                                                        class="fa fa-edit" *ngIf="editFlag"></i> -->
+                                    <!-- <i style="margin-left: 35%;" class="fa fa-trash" *ngIf="deleteFlag"></i> -->
+                                    <!-- </span></h6>
+
+                                        </div>
+                                    </div> -->
+
+                                    <!-- <div class="col-lg-4 col-md-6">
+                                        <div class="post_items">
+                                            <img src="assets/images/ads-images/ads-home-slider3.png" width="100%"
+                                                height="130px">
+                                            <h6 style="margin-left: 90%;color: white;font-size: 15px;"> <span>
+                                                    <i class="fa fa-edit" *ngIf="editFlag"></i> -->
+                                    <!-- <i style="margin-left: 35%;" class="fa fa-trash" *ngIf="deleteFlag"></i> -->
+                                    <!-- </span></h6>
+
+                                        </div>
+                                    </div> -->
+
+                                    <!-- <div class="col-lg-4 col-md-6">
+                                        <div class="post_items">
+                                            <img src="assets/images/dashboard/poster1.png" width="100%" height="130px">
+                                            <h6 style="margin-left: 90%;color: white;font-size: 15px;"> <span>
+                                                    <i class="fa fa-edit" *ngIf="editFlag"></i> -->
+                                    <!-- <i style="margin-left: 35%;" class="fa fa-trash" *ngIf="deleteFlag"></i> -->
+                                    <!-- </span></h6>
+
+                                        </div>
+                                    </div> -->
+
+                                    <!-- <div class="col-lg-4 col-md-6">
+                                        <div class="post_items">
+                                            <img src="assets/images/dashboard/poster1.png" width="100%" height="130px">
+                                            <h6 style="margin-left: 90%;color: white;font-size: 15px;"> <span>
+                                                    <i class="fa fa-edit" *ngIf="editFlag"></i> -->
+                                    <!-- <i style="margin-left: 35%;" class="fa fa-trash" *ngIf="deleteFlag"></i> -->
+                                    <!-- </span></h6>
+
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="col-lg-4 col-md-6">
+                                        <div class="post_items">
+                                            <img src="assets/images/dashboard/poster1.png" width="100%" height="130px">
+                                            <h6 style="margin-left: 90%;color: white;font-size: 15px;"> <span>
+                                                    <i class="fa fa-edit" *ngIf="editFlag"></i> -->
+                                    <!-- <i style="margin-left: 35%;" class="fa fa-trash" *ngIf="deleteFlag"></i> -->
+                                    <!-- </span></h6>
+
+                                        </div>
+                                    </div> -->
+
+                                    <!-- <div class="col-lg-4 col-md-6">
+                                        <div class="post_items">
+                                            <img src="assets/images/dashboard/poster1.png" width="100%" height="130px">
+                                            <h6 style="margin-left: 90%;color: white;font-size: 15px;"> <span>
+                                                    <i class="fa fa-edit" *ngIf="editFlag"></i> -->
+                                    <!-- <i style="margin-left: 35%;" class="fa fa-trash" *ngIf="deleteFlag"></i> -->
+                                    <!-- </span></h6>
+
+                                        </div>
+                                    </div> -->
+
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Refer & Earn" *ngIf="disableTab('Refer & Earn')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+
+
+                                <div class="col-lg-4 col-md-6" *ngFor="let item of ReferEarn_Array;">
+                                    <div class="post_items">
+                                        <img src={{item.image}} width="100%">
+                                        <h6 style="margin-left: 0%;color: white;font-size: 13px;">{{item.title}}
+                                            <!-- <img src="assets/images/ads-images/ads-medimall-slider1.png" width="100%"> -->
+                                            <!-- <h6 style="margin-left: 80%;color: white;font-size: 15px;">{{item.title}} -->
+                                            <span style="float: right;">
+                                                <i style="margin-left: 20%;" class="fa fa-edit" data-toggle="modal"
+                                                    data-original-title="test" data-target="#ReferEarnExampleModal"
+                                                    (click)="open(ReferEarnContent,'edit',item)" *ngIf="editFlag"></i>
+                                            </span>
+                                        </h6>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Address" *ngIf="disableTab('Address')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+
+
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of Addrs_Array;">
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%">
+
+                                            <!-- <img src="assets/images/ads-images/ads-medimall-slider1.png" width="100%"> -->
+                                            <h6 style="margin-left: 0%;color: white;font-size: 15px;">
+                                                <span style="    float: right;">
+                                                    <i style="margin-left: 20%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#AddressExampleModal"
+                                                        (click)="open(AddressContent,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+
+                </ngb-tabset>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+
+<ng-template #Ad1Content let-modal>
+    <form [formGroup]="Ad1ContentUpdateForm">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="Ad1ExampleModal">Update</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="Ad1ExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+
+                            <!-- <img src="{{image_URL}}" width="100%" class="image-icon">
+                        <input type="file" name="myfile" class="input-type" formControlName="image"
+                            (change)="onChangeImage($event,'312','360')" /> -->
+
+
+
+                            <img src="{{image_URL}}" width="100%" height="50%" class="image-icon">
+                            <!-- <input type="file" name="myfile" class="input-type" accept="image/*"
+                            (change)="onChangeImage($event,'1604','182')" /> -->
+
+                            <!-- checking -->
+                            <input type="file" name="myfile" class="input-type" accept="image/*"
+                                (change)="onChangeImage($event,'1604','182')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 1604 x 182</h6>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 pr-0">
+                    <button type="button" class="btn btn-dark btn-dark-rounded" (click)="OnUpdate('Ad1_Image')">{{
+                        addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('Ad1_Image')">Update</button> -->
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+
+<ng-template #MedfillSubscriptionContent let-modal>
+    <form [formGroup]="MedfillContentUpdateForm">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="MedfillSubscriptionExampleModal">
+                Update
+            </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="MedfillSubscriptionExampleModal">Add
+            </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+                            <img src="{{image_URL}}" width="100%" class="image-icon">
+                            <input type="file" name="myfile" class="input-type" accept="image/*"
+                                (change)="onChangeImage($event,'1506','310')" />
+                            <!-- <input type="file" name="myfile" /> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 1506 x 310</h6>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 pr-0">
+                    <button type="button" class="btn btn-dark btn-dark-rounded" (click)="OnUpdate('Medfill_img')">{{
+                        addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('Medfill_img')">Update</button> -->
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #MedPrideMembershipContent let-modal>
+    <form [formGroup]="MedPrideUpdateForm">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="MedPrideMembershipExampleModal">
+                Update
+            </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="MedPrideMembershipExampleModal">Add
+            </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+                            <!-- <P style="text-align: center;"> App</P> -->
+                            <img src="{{image_URL}}" width="100%" class="image-icon">
+                            <input type="file" name="myfile" class="input-type" accept="image/*"
+                                (change)="onChangeImage($event,'714','425')" />
+                            <!-- <input type="file" name="myfile" /> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 714 x 425</h6>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 pr-0">
+                    <button type="button" class="btn btn-dark btn-dark-rounded" (click)="OnUpdate('MedPride_img')">{{
+                        addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('MedPride_img')">Update</button> -->
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+
+
+<ng-template #ReferEarnContent let-modal>
+    <form [formGroup]="ReferEarnUpdateForm">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="ReferEarnExampleModal">Update</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="ReferEarnExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <label style="color: #fff;font-size: 10px;">Refer Health, Earn Wealth</label>
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+                            <img src="{{image_URL}}" width="100%" class="image-icon popup-images-ht">
+                            <input type="file" name="myfile" class="input-type" accept="image/*"
+                                (change)="onChangeImage($event,'1144','1144')" />
+                            <!-- <input type="file" name="myfile" /> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 1144 x 1144</h6>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Title</label>
+                    <input type="text" class="form-control" formControlName="title">
+                    <small for="title" class="form-text text-danger" *ngIf="ReferEarnUpdateForm.controls['title'].errors?.required && 
+                    (ReferEarnUpdateForm.controls['title'].dirty ||  
+                    ReferEarnUpdateForm.controls['title'].touched || 
+                    (ReferEarnUpdateForm.controls['title'].untouched  && attemptedSubmit ) )">
+                        Title required.
+                    </small>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 pr-0">
+                    <button type="button" class="btn btn-dark btn-dark-rounded" (click)="OnUpdate('ReferEarn_img')">{{
+                        addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('ReferEarn_img')">Update</button> -->
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+
+
+<ng-template #AddressContent let-modal>
+    <form [formGroup]="AddrssUpdateForm">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="AddressExampleModal">Update</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="AddressExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+                            <img src="{{image_URL}}" width="100%" class="image-icon">
+                            <input type="file" name="myfile" class="input-type" accept="image/*"
+                                (change)="onChangeImage($event,'1501','632')" />
+                            <!-- <input type="file" name="myfile" /> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 1501 x 632</h6>
+                </div>
+            </div>
+
+            <div class="mt-2 row">
+                <div class="col-md-6">
+                    <select class="form-control classic" id="validationCustom02" formControlName="type"
+                        (change)="dropDownProductChange($event.target.value)">
+                        <!-- <option hidden>select</option> -->
+                        <!-- <option value= null>select</option> -->
+                        <option value="1">Product</option>
+                        <option value="0">Category</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+
+
+                    <kendo-dropdownlist formControlName="typeId" #list [data]="newdrop_list_array" class="form-control"
+                        [filterable]="true" textField="title" valueField="_id" [valuePrimitive]="true"
+                        (filterChange)="Filter($event)">
+                    </kendo-dropdownlist>
+
+                    <!-- <option hidden>select</option> -->
+                    <!-- <option value= null>select</option> -->
+                    <!-- <select class="form-control classic" id="validationCustom02" formControlName="typeId"
+                        placeholder="--Select--">
+                        
+                        <option *ngFor='let data of newdrop_list_array' value={{data._id}}>{{ data.title }}</option>
+                       
+                    </select>
+                    <small for="typeId" class="form-text text-danger" *ngIf="AddrssUpdateForm.controls['typeId'].errors?.required && 
+                    (AddrssUpdateForm.controls['typeId'].dirty ||  
+                    AddrssUpdateForm.controls['typeId'].touched ||
+                    (AddrssUpdateForm.controls['typeId'].untouched  && attemptedSubmit ) )">
+                        Data required.
+                    </small> -->
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 pr-0">
+                    <button type="button" class="btn btn-dark btn-dark-rounded" (click)="OnUpdate('Addrs_img')">{{
+                        addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('Addrs_img')">Update</button> -->
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>

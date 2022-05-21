@@ -1,0 +1,82 @@
+.d2-padding input {
+    background: #f1f7ff;
+    border: 0.5px solid #c9e0ff;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    color: #000;
+}
+.d2-padding a.blue-buttons {
+    padding: 8px;
+    border: none;
+    max-width: 130px;
+    text-align: center;
+    outline: none;
+    border-radius: 10px;
+    background-color: #2787ff;
+    color: white !important;
+    width: 100%;
+    font-size: 15px;
+    position: relative;
+    font-weight: 500;
+    margin: 10px auto;
+}
+body {
+    font-family: 'Rubik', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    color: #505056;
+    overflow-x: hidden; }
+    i, span, a {
+        display: inline-block;
+        transition: all linear 0.3s;
+    }
+    img {
+        max-width: 100%; }
+        .dates {
+            position: absolute;
+            background: red;
+            top: -10px;
+            z-index: 999;
+            background: #A2CD85;
+            font-size: 12px;
+            padding: 2px 0px;
+            width: 100px;
+            left: 32px;
+            text-align: center;
+            border-radius: 20px;
+            color: white;
+        }
+        .d2-padding {
+            /* background: #FFFFFF;
+            padding: 18px 18px 10px 18px;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #c9e0ff; */
+          
+                background: #FFFFFF;
+                padding: 15px 26px 6px 19px;
+                border-radius: 16px;
+                position: relative;
+                overflow: hidden;
+                border: 1px solid #c9e0ff;
+            
+        }
+        .cardpd{
+            padding-left: 15px;
+    padding-right: 15px;
+
+
+        }
+        .blueButton{
+            border-radius: 10px;
+            background-color: #2787ff;
+             color: white;
+            margin-bottom: 10px;
+            font-size: 16px;
+           font-weight: 500;
+           width: 100%;height: 100%;
+                                  
+          }

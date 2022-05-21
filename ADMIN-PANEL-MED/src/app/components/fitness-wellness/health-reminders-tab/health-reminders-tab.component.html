@@ -1,0 +1,82 @@
+<!-- <label>Health Reminders</label>
+<br><br>
+<form [formGroup]="medForm">
+    <div class="mt-2 row ">
+        <div class="col-md-3">
+            <h6>From Date</h6>
+            <input formControlName='strt_dt' type="date" class="form-control" max="{{ strt_dt }}"
+                (change)="getStartdate($event)">
+        </div>
+
+        <div class="col-md-3">
+            <h6>To Date</h6>
+            <input formControlName='end_dt' min="{{temp}}" max="{{ strt_dt }}" type="date" class="form-control"
+                (change)="date_change()">
+        </div>
+
+        <div class="col-md-6">
+            <button type="button" class="btn btn-dark btn-excel-rounded m-30" (click)="clear()">CLEAR</button>
+
+
+        </div>
+
+
+    </div>
+</form>
+
+<br><br>
+
+
+
+
+<div class="table-responsive kendo_table tab-coupon">
+    <kendo-grid [kendoGridBinding]="medicinedata" [filterable]="true" [sortable]="true" [pageSize]="10"
+        [pageable]="true" [skip]="skip">
+        <ng-template kendoGridToolbarTemplate>
+
+
+            <div style="padding-left: 54%;">
+
+
+                <button type="button" kendoGridPDFCommand class="btn btn-dark btn-excel-rounded">
+                    <i class="fa fa-file-pdf-o"></i> Export to
+                    PDF</button>
+
+                &nbsp;&nbsp;&nbsp;<button type="button" kendoGridExcelCommand class="btn btn-dark btn-excel-rounded">
+                    <i class="fa fa-file-excel-o"></i>Export to Excel
+                </button>&nbsp;&nbsp;
+            </div>
+        </ng-template>
+
+
+        <kendo-grid-column field="sl" title="SlNo." width="20" [filterable]="true">
+            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false" [column]="column"
+                    title="SlNo" [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </ng-template>
+
+        </kendo-grid-column>
+
+        <kendo-grid-column field="userId.name" title="Name" width="30">
+            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false" [column]="column"
+                    title="Name" [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </ng-template>
+
+        </kendo-grid-column>
+
+
+        <kendo-grid-column field="medicine" title="Medicine" width="30" [filterable]="true">
+        </kendo-grid-column>
+        <kendo-grid-excel fileName="Medicine.xlsx">
+
+        </kendo-grid-excel>
+        <kendo-grid-pdf fileName="Medicine.pdf" [allPages]="true" paperSize="A4" [repeatHeaders]="true"
+            [landscape]="true">
+            <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm">
+            </kendo-grid-pdf-margin>
+        </kendo-grid-pdf>
+    </kendo-grid>
+</div> -->

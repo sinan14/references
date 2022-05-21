@@ -1,0 +1,341 @@
+.card{
+  border-radius: 25px;
+  padding: 15px;
+}
+label{
+  color: white;
+  opacity: 0.7;
+}
+p{
+  color: white !important;
+}
+small{
+  color: white;
+  font-size: 10px;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.check-initial{
+  align-items: initial;
+    display: flex;
+}
+
+
+.Create_artcl_main{
+  background-color:#014466;
+  margin-top: 15px;
+  border-radius: 20px;
+  padding: 35px;
+}
+
+.Create_artcl_main .span-data a{
+  float: left;
+  width: 130%;
+  background-color: #0a3347;
+  color: #dadada;
+  border-radius: 20px;
+  padding: 7px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.Create_artcl_main .span-data a:hover,.Create_artcl_main .span-data a:active{
+  //background-color: #006ea7;
+  color: #dadada;
+}
+
+.active{
+  background-color: #006ea7 !important;
+}
+
+.Create_artcl_main h6{
+color: #9ebac8;
+font-size: 22px;
+margin: 15px 0px;
+}
+.Create_artcl_main p{
+  color: white !important;
+  font-size: 14px;
+  font-weight: lighter;
+  letter-spacing: 0;
+  text-align: justify;
+  text-indent: 100px;
+}
+.Create_artcl_main .image-data{
+  color: #fff;
+  background-color: #023d5b;
+  text-align: center;
+  margin: 25px 0px 5px 0px;
+  padding: 40px 25px;
+  cursor: pointer;
+}
+.card-data{
+  background-color: #00496e;
+  align-content: center;
+  border-radius: 10px;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  padding-right: 3%;
+}
+
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+}
+
+h6.background {
+  position: relative;
+  z-index: 1;
+  
+  &:before {
+      border-top: 2px solid #dfdfdf;
+      content:"";
+      margin: 0 auto; /* this centers the line to the full width specified */
+      position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+      top: 50%; left: 0; right: 0; bottom: 0;
+      width: 95%;
+      z-index: -1;
+  }
+
+  span { 
+      /* to hide the lines from behind the text, you have to set the background color the same as the container */ 
+      background: #fff; 
+      padding: 0 15px; 
+  }
+}
+
+
+
+.form-control{
+  color: white;
+  opacity: 0.7 !important;
+  font-weight: lighter;
+  background: #033147;
+  border: none;
+  //height: 32px;
+  font-family: "Poppins";
+ // border: 1px solid #Fff;
+}
+
+
+.form-control:focus {
+  color: white;
+  opacity: 0.7 !important;
+  background-color: #033147 ;
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: #033147 !important;
+  opacity: 0.7 !important;
+}
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-body, .modal-header, .modal-footer{
+    background-color: #0b4866;
+}
+
+
+/*Button CSS*/
+
+.btn{
+  
+  font-weight: 400;
+}
+
+
+.btn-dark-rounded{
+  margin-left: 12px;
+  background-color: #0a3347;
+  border-radius: 10.25em;
+  border: unset;
+}
+
+.btn-inverse-dark {
+    background-color: rgba(79, 74, 96, 0.2);
+    background-image: none;
+    border-color: rgba(79, 74, 96, 0);
+  }
+  
+  .btn-inverse-dark:not(.btn-inverse-light) {
+    color: #4f4a60;
+  }
+ 
+
+
+  /*Image Upload CSS*/
+  .image-data{
+    background-color: #116792;
+    padding:30px;
+    align-content: center;
+    border-radius: 10px;
+    padding-right:113px;
+    color:white;
+    cursor: pointer;
+    //opacity: 0.7;
+    /*position: relative;
+    margin-left: 1rem;*/
+  }
+  
+  
+  .icon-style{
+    font-size: 100%;
+  }    
+  
+  
+  .upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  cursor: pointer;
+  //margin-left: -6%;
+  }
+  
+  .upload-btn-wrapper :hover i {
+  -webkit-transition-delay: 0.05s;
+  transition-delay: 0.05s;
+  -webkit-transition-duration: 0.35s;
+  transition-duration: 0.35s;
+  }
+  
+
+.icon {
+  border: 0px solid gray;
+  color: white;
+  opacity: 0.5;
+  background-color: transparent;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+
+
+
+  /*Checkbox*/
+
+
+  input[type=checkbox] {
+    margin-left: 4%;
+    zoom: 1.4;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+  }
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container  input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container  input:checked ~ .checkmark:after {
+  display: block;
+}
+
+
+
+//Scroll Container
+
+.scroll-container {
+  // border: 2px solid silver;
+   display: flex;
+   align-items: center;
+   overflow: hidden;
+ 
+   &.hide-scrollbar {
+     overflow: auto;
+     &::-webkit-scrollbar {
+       display: none;
+     }
+   }
+ 
+   &.show-scroll {
+     overflow: auto;
+   }
+ 
+   div {
+     white-space: nowrap;
+     //background: #efefef;
+     //border: 1px solid #efefef;
+     margin: .1rem;
+     padding: .2rem .7rem;
+     &:hover {
+       cursor: pointer;
+       //border-color: #ccc;
+     }
+   }
+ }
+
+ .text-danger{
+  color: #ec5362 !important;
+  //position: absolute;
+}
+
+.hidden {
+  display: none;
+}
+
+.span-data label{
+  float: left;
+  width: 130%;
+  background-color: #0a3347;
+  border-radius: 20px;
+  padding: 7px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+  color: white;
+  opacity: 1;
+  input[type=checkbox]{
+    display: none;
+  }
+}
+
+ .span-data2{
+    //width: 170px; 
+    text-align: center; 
+    border-radius: 10px; 
+    margin-top: 5px;
+    }
+    .span-data2 input{
+      position: absolute;
+      top: 35px;
+      left: 15px;
+      width: 170px;
+      height: 500px !important;
+      opacity: 0;
+      cursor: pointer;
+    }
+.input-type{
+  height: 180px !important;
+  cursor: pointer !important;
+}
+      

@@ -1,0 +1,51 @@
+
+.driver-page .rowDiv{
+    padding: 194px 4px 9px 122px;
+    color: white;
+}
+.driver-page .iti--separate-dial-code .iti__selected-flag {
+    background-color: #ffffff00;
+    width: 100%;
+}
+.driver-page .iti--allow-dropdown .iti__flag-container:hover .iti__selected-flag {
+    background-color: #ffffff00;
+}
+.driver-page .iti__arrow {
+    display: none;
+}
+.driver-page .iti--allow-dropdown .iti__flag-container, .iti--separate-dial-code .iti__flag-container{
+    width: 100%;
+}
+.driver-page .first-div {
+    width: 30%;
+    float: left;
+    padding: 2px 10px 0 0;
+    overflow: hidden;
+}
+.driver-page .first-div .txtbox {
+    background: #f1f7ff;
+    border: 0.5px solid #c9e0ff;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    padding-left: 60px !important;
+}
+.driver-page .second-div {
+    width: 70%;
+    float: left;
+    padding: 2px;
+}
+
+.driver-page .second-div input {
+    background: #f1f7ff;
+    border: 0.5px solid #c9e0ff;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    color: #000;
+}
+.driver-page .second-div input::placeholder {
+  color: #7a7a7a;
+}

@@ -1,0 +1,248 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid side_innerpage_tab inventory_List_Tab">
+  <div class="card-body" *ngIf="disableTab('Inventory List')">
+    <div class="row">
+      <div class="col-md-4">
+        <form [formGroup]="DropDown">
+          <kendo-dropdowntree
+            [kendoDropDownTreeHierarchyBinding]="CAT_DROP_ARRAY"
+            childrenField="subCategories"
+            textField="title"
+            valueField="_id"
+            placeholder="All"
+            (valueChange)="onChangeList($event)"
+            [filterable]="true"
+            (filterChange)="FilterDrop($event)"
+            class="form-control"
+            formControlName="type"
+            style="width: 100%; float: right"
+          >
+          </kendo-dropdowntree>
+          <!-- <kendo-dropdownlist formControlName="type" #list [data]="CAT_DROP_ARRAY"
+                        class="form-control classic" [filterable]="true" textField="title" valueField="_id"
+                        [valuePrimitive]="true" placeholder="All" (filterChange)="FilterDrop($event)"
+                        (valueChange)="onChangeList($event)" id="validationCustom02" style="width: 100%;float: right;">
+                    </kendo-dropdownlist> -->
+        </form>
+
+        <!-- <form [formGroup]="DropDown">
+                    <kendo-dropdowntree [kendoDropDownTreeHierarchyBinding]="CAT_DROP_ARRAY"
+                        childrenField="subCategories" textField="title" valueField="_id" placeholder="All"
+                        (valueChange)="onChangeList($event)" [filterable]="true" (filterChange)="FilterDrop($event)"
+                        class="form-control" formControlName='drop' style="width: 15%;float: right;">
+                    </kendo-dropdowntree>
+                </form> -->
+        <!-- <form [formGroup]="DropDown">
+                    <kendo-dropdowntree [kendoDropDownTreeHierarchyBinding]="CAT_DROP_ARRAY"
+                        childrenField="subCategories" textField="title" valueField="_id" placeholder="All"
+                        (valueChange)="onChangeList($event)"  [filterable]="true" (filterChange)="FilterDrop($event)" class="form-control" 
+                        formControlName='drop' style="width: 75%;float: right;">
+                    </kendo-dropdowntree>
+                </form> -->
+      </div>
+      <div class="col-md-6">
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control form-control-text added"
+            style="border-radius: 27px 0px 0px 27px; opacity: 1"
+            (keyup)="searchInventory($event.target.value)"
+            placeholder="Search"
+            name="search"
+          />
+          <div class="input-group-btn">
+            <button
+              class="btn btn-default"
+              type="submit"
+              style="border-radius: 0px 27px 27px 0px"
+            >
+              <i class="fa fa-search" style="color: white"></i>
+            </button>
+          </div>
+        </div>
+        <!-- <input type="text" class="form-control form-control-text" (keyup)="searchInventory($event.target.value)"
+                    placeholder="Search" name="search"> -->
+      </div>
+
+      <!-- <kendo-dropdowntree kendoDropDownTreeExpandable class="form-control" style="width: 15%;float: right;"
+                    [kendoDropDownTreeHierarchyBinding]="CAT_DROP_ARRAY" textField="title" valueField="_id"
+                    childrenField="subCategories" (valueChange)="onChangeList($event)">
+                </kendo-dropdowntree> -->
+
+      <!-- <kendo-dropdownlist class="form-control" style="width: 15%;float: right;" [data]="CAT_DROP_ARRAY"
+                    textField="title" valueField="_id" childrenField="subCategories" [valuePrimitive]="true"
+                    (valueChange)="onChangeList($event)">
+                </kendo-dropdownlist> -->
+      <div class="col-md-2">
+        <button *ngIf="editFlag"
+          style="float: right"
+          type="button"
+          class="btn btn-dark btn-sm"
+          (click)="addnewProduct()"
+        >
+          Add New Product
+        </button>
+      </div>
+    </div>
+
+    <br /><br />
+    <div class="table-responsive kendo_table vendor-list invertory-list1">
+      <!-- <ng2-smart-table  [settings]="settings" [source]="vendors"></ng2-smart-table> -->
+
+      <kendo-grid
+        [kendoGridBinding]="LIST_ARRAY"
+        [filterable]="true"
+        [sortable]="true"
+      >
+        <!-- [skip]="skip" -->
+        <!-- [pageSize]="pageSize" -->
+        <!-- <kendo-grid [kendoGridBinding]="LIST_ARRAY" [filterable]="true" [sortable]="true" [skip]="skip"
+                *ngIf="disableTab('Inventory List')" [pageSize]="pageSize" [pageable]="true" (pageChange)="onPageChange($event)"> -->
+        <!-- <kendo-grid
+                
+                [pageSize]=""
+                
+                
+                
+                
+              > -->
+        <kendo-grid-column
+          field="image"
+          title=""
+          width="20"
+          [filterable]="false"
+        >
+          <ng-template
+            kendoGridCellTemplate
+            let-isNew="isNew"
+            let-dataItem="dataItem"
+          >
+            <img class="img-fluid" src="{{ dataItem.image }}" />
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column
+          field="productId"
+          title="Product ID"
+          width="20"
+          class="text-left"
+        >
+          <ng-template
+            kendoGridFilterCellTemplate
+            let-filter
+            let-column="column"
+          >
+            <!-- <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false" [column]="column"
+                            title="Parent Store" [filter]="filter">
+                        </kendo-grid-string-filter-cell> -->
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column
+          field="name"
+          title="Name"
+          width="30"
+          class="text-left"
+        >
+          <ng-template
+            kendoGridFilterCellTemplate
+            let-filter
+            let-column="column"
+          >
+            <!-- <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false" [column]="column"
+                            title="Parent Store" [filter]="filter">
+                        </kendo-grid-string-filter-cell> -->
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column
+          field="categories"
+          title="Category"
+          width="30"
+          class="text-left"
+        >
+          <ng-template
+            kendoGridFilterCellTemplate
+            let-filter
+            let-column="column"
+          >
+            <!-- <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false" [column]="column"
+                            title="Parent Store" [filter]="filter">
+                        </kendo-grid-string-filter-cell> -->
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column
+          field="brand"
+          title="Brand"
+          width="20"
+          class="text-left"
+        >
+          <ng-template
+            kendoGridFilterCellTemplate
+            let-filter
+            let-column="column"
+          >
+            <!-- <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false" [column]="column"
+                            title="Parent Store" [filter]="filter">
+                        </kendo-grid-string-filter-cell> -->
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-command-column
+          title="Action"
+          width="30"
+          class="text-center"
+        >
+          <ng-template
+            kendoGridCellTemplate
+            let-isNew="isNew"
+            let-dataItem="dataItem"
+          >
+            <button *ngIf="editFlag"
+              type="button"
+              class="btn btn-dark btn-sm"
+              (click)="Edit(dataItem._id)"
+            >
+              EDIT
+            </button>
+            &nbsp;&nbsp;<input
+              type="checkbox"
+              class="toggle-switch oversize"
+              id="toggle3"
+              [checked]="!dataItem.isDisabled"
+              (change)="Deactivate_INVENTORY_PRODUCTS($event, dataItem._id)" *ngIf="editFlag"
+            />
+          </ng-template>
+        </kendo-grid-command-column>
+      </kendo-grid>
+
+      <!-- <kendo-datapager [style.width.%]="100" [pageSize]="pageSize" [skip]="skip" [total]="total"
+                (pageChange)="onPageChange($event)">
+            </kendo-datapager> -->
+    </div>
+
+    <div class="pagination">
+      <!-- <ngb-pagination [collectionSize]={{TotalRecords}} [(page)]={{CurrentPage}} [maxSize]={{PageSize}} [rotate]="true"
+                [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+      <button *ngIf="hasPrevPage" (click)="onPageChange(1)">First</button>
+      <button *ngIf="hasPrevPage" (click)="onPageChange(CurrentPage - 1)">
+        Prev
+      </button>
+      <button *ngIf="hasPrevPage" (click)="onPageChange(CurrentPage - 1)">
+        {{ CurrentPage - 1 }}
+      </button>
+      <button style="color: yellow">{{ CurrentPage }}</button>
+      <button *ngIf="hasNextPage" (click)="onPageChange(CurrentPage + 1)">
+        {{ CurrentPage + 1 }}
+      </button>
+      <button *ngIf="hasNextPage" (click)="onPageChange(CurrentPage + 1)">
+        Next
+      </button>
+      <button *ngIf="hasNextPage" (click)="onPageChange(totalPages)">
+        Last
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->

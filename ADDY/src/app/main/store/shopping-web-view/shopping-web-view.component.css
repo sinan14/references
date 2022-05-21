@@ -1,0 +1,192 @@
+@import "../../../../assets/css/style2.css";
+/* @import "../../../../assets/css/responsive2.css"; */
+
+.product-header{
+  display: -webkit-box;
+  margin-bottom: 10px!important;
+}
+.container-fluid:before{
+  display: table;
+}
+.first-div .imgwidth{
+  height: 86px;
+  width: 85px;
+
+}
+.center-element {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.form-down {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+.product-section .leftpd{
+  padding-left: 179px;
+}
+ #setup label {
+    text-align: left;
+    display: block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.form-text {
+  color: red;
+}
+/*
+.shopping-page #exampleModal {
+  padding-right: 0 !important;
+}
+.shopping-page #exampleModal .modal-dialog {
+  margin-top: 150px;
+}
+.shopping-page #exampleModal .btn-2 {
+  display: block;
+  max-width: 200px;
+  margin: auto;
+  margin-top: 50px;
+}
+.shopping-page #exampleModal .btn-2:hover {
+  cursor: pointer;
+}
+.shopping-page #exampleModal1 .modal-content {
+  border-radius: 24px;
+  padding: 15px 5px;
+  max-width: 370px;
+  margin: auto;
+}
+.shopping-page #exampleModal1 .modal-dialog {
+  margin: 150px auto;
+  max-width: 90%;
+}
+.shopping-page #exampleModal1 .form-otp small a {
+  color: var(--primary);
+  text-decoration: underline;
+  margin-left: 5px;
+}
+.shopping-page #exampleModal2 .modal-content {
+  border-radius: 24px;
+  padding: 15px 5px;
+  max-width: 370px;
+  margin: auto;
+}
+.shopping-page #exampleModal2 .modal-dialog {
+  margin: 100px auto;
+  max-width: 90%;
+}
+.shopping-page .form-down .form-otp p {
+  margin-bottom: 20px;
+}
+.shopping-page .form-down .form-otp h4 {
+  margin-bottom: 20px;
+}
+.shopping-page #exampleModal2 {
+  padding-left: 0 !important;
+}
+.shopping-page #exampleModal3 .modal-content {
+  border-radius: 24px;
+  padding: 15px 5px;
+  max-width: 370px;
+  margin: auto;
+}
+.shopping-page #exampleModal3 .modal-dialog {
+  margin: 100px auto;
+  max-width: 90%;
+}
+.shopping-page #exampleModal3 {
+  padding-left: 0 !important;
+}
+.shopping-page .form-down #setup input {
+  width: 100%;
+  background: var(--primary2);
+  border: 0.5px solid var(--primary1);
+  box-sizing: border-box;
+  border-radius: 10px;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+#myBtnContainer::-webkit-scrollbar {
+  display: none;
+}
+#myBtnContainer1::-webkit-scrollbar {
+  display: none;
+}
+#exampleModal3 .address .address-sec {
+  border: 1px solid var(--primary);
+  padding: 10px;
+  border-radius: 24px;
+}
+#exampleModal3 .address .address-sec .first-div {
+  width: 20%;
+  float: left;
+  overflow: hidden;
+  padding: 15px 10px;
+}
+#exampleModal3 .address .address-sec .second-div {
+  width: 80%;
+  float: left;
+  overflow: hidden;
+}
+#exampleModal3 .address .address-sec .second-div p {
+  color: var(--primary);
+}
+#exampleModal3 .address .address-sec .second-div h4 {
+  font-weight: 600;
+  margin-top: 10px;
+}
+#exampleModal3 .address .address-sec .second-div a {
+  color: var(--primary);
+  float: right;
+  margin-top: -20px;
+}
+#exampleModal3 .address .address-btn {
+  border: 1px dashed var(--grey);
+  width: 100%;
+  padding: 7px;
+  border-radius: 8px;
+  color: var(--primary);
+  background: var(--white);
+  margin-bottom: 20px;
+}
+.form-down .logo-img {
+  opacity: 50%;
+  max-width: 150px;
+}
+.shopping-page .address-sec {
+  border: 1px solid var(--primary);
+  padding: 10px;
+  border-radius: 24px;
+  margin-top: 20px;
+}
+.shopping-page .address-sec .first-div {
+  width: 20%;
+  float: left;
+  overflow: hidden;
+  padding: 15px 10px;
+  text-align: center;
+}
+.shopping-page .address-sec .first-div img {
+  max-width: 60px;
+}
+.shopping-page .address-sec .second-div {
+  width: 80%;
+  float: left;
+  overflow: hidden;
+}
+.shopping-page .address-sec .second-div p {
+  color: var(--primary);
+}
+.shopping-page .address-sec .second-div a {
+  color: var(--primary);
+  float: right;
+  margin-top: -10px;
+}
+.shopping-page .address-sec .second-div h4 {
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 20px;
+} */

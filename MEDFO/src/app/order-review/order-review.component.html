@@ -1,0 +1,432 @@
+<div class="ps-page">
+    <app-header></app-header>
+  </div>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W32L424"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) →-->
+
+
+<section class="inner_new_page_container">
+    <div class="container">
+        <div class="review-head">
+            <div class="heade-1">
+                 <h2>Order Review</h2>
+            </div>
+            <div class="heade-2" *ngIf="token" (click)="redirectToWishListPage()">
+                <div class="cart_page_top_wishlist_btn"> <i class="fa fa-heart"></i> <div class="cart_page_top_count">2+</div></div>
+            </div>
+        </div>
+        <div class="review-bluebox">
+            <div class="container">
+                <div class="review-blue-heads">
+                   <div class="review-blue-head">
+                    <h2>Attach Prescription</h2>
+                </div>
+                <div class="review-blue-number">
+                   <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#step1" style="cursor: initial;"><span>1</span>
+          </a>
+          <h6 class="text-center mt-1">Your Cart</h6>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#step2"  style="cursor: initial;"><span>2</span></a>
+          <h6 class="text-center mt-1">Attach prescription</h6>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link " data-toggle="tab" href="#step3" routerLinkActive="active"><span>3</span></a>
+          <h6 class="text-center mt-1">Order Review</h6>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#step4"  style="cursor: initial;"><span>4</span></a>
+          <h6 class="text-center mt-1">Payment</h6>
+        </li>
+
+        
+      </ul>
+                </div>
+                </div>
+
+            </div>
+        </div>
+       
+    </div>
+</section>
+
+<section class="review-order-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="review-product" >
+                    <div class="review-product-one" *ngFor="let i of cartList">
+                          <div class="review-product-img" >
+                              <img src="{{i.image}}">
+                          </div>
+                          <div class="review-product-cont" >
+                              <h2>{{i.productName | titlecase}}</h2>
+                              <p>{{i.brandName | titlecase}}</p>
+                              <div class="review-product-sub">
+                                  <div  class="review-sub-1">
+                                      <h6>{{i.uomValue | titlecase}}</h6>
+                                      <p>Qty : <span>{{i.quantity}}</span></p>
+                                  </div>
+                                  <div  class="review-sub-2">
+                                      <h6><i class="fa fa-rupee"></i> {{i.specialPrice  * i.quantity}}</h6>
+                                      <p>Delivery : <span>{{cartDetails.deliveryDate | date}}</span></p>
+                                  </div>
+                              </div>
+                          </div>
+                    </div>
+                    
+                </div>
+                <div class="adding-review">
+                    <div class="adds" *ngIf="!isSubscriptionAdded">
+                        <p>Add to MedFill<a routerLink="/add-subscription" class="green-add">+ Add</a></p>
+                    </div>
+                    <a style="display:none;" data-toggle="modal" id="display-success-popup" data-target="#success1">success</a> 
+
+                    <div class="adds addeds" *ngIf="isSubscriptionAdded">
+                      <span>
+                        <img src="assets/img/cart/grn_tick.png" alt="" />&nbsp;MedFill Added </span>
+                        <p>Next Delivery Date : <span style="font-weight: 500;color: black;
+                          opacity: 0.7;">{{nextDeliveryDate}}</span>
+                        <a routerLink="/add-subscription" class="green-add"><i class="fa fa-edit"></i> Edit</a>
+                        </p>
+                    </div>
+
+                </div>
+              
+                    <div class="row order-review-forgot" *ngIf="orderReview">
+                        <img src="{{orderReview.image}}">
+                    </div>
+                    <!-- <div class="col-md-8 order-review-forgot-cont">
+                        <h1>Forgot to Restock Pills? </h1>
+                        <h1>We Got Your Back</h1>
+                        <p>As they say, What we dwell on is who we become. Embrace health and open new paths to becoming healthy with MedFill.</p>
+                    </div> -->
+                
+            </div>
+            <div class="col-md-4" *ngIf="cartDetails">
+                <div class="listing-review">
+                    <div class="f-review r-one" style="border-bottom: 1px solid rgb(201 201 201 / 60%);">
+                        <h4>Payment Details</h4>
+                        
+                    </div>
+                    <div class="f-review mt-3">
+                      <ul>
+                        <li>Cart Value</li>
+                        <li><i class="fa fa-rupee"></i> {{cartDetails.totalCartValue}}</li>
+                    </ul>
+                        <ul>
+                            <li>Delivery Charge</li>
+                            <li style="color: #000000; opacity: 0.7; font-weight: 200;" *ngIf="!cartDetails.isThisCartEligibleForFreeDelivery"> {{cartDetails.deliveryCharge}}</li>
+                            <li style="color: #000000; opacity: 0.7; font-weight: 200;" *ngIf="cartDetails.isThisCartEligibleForFreeDelivery">Free</li>
+                        </ul>
+                    </div>
+                    <div class="f-review" *ngIf="cartDetails.donationAmount">
+                      <ul>
+                          <li>Donation Amount</li>
+                          <li>+{{cartDetails.donationAmount}}</li>
+                      </ul>
+                  </div>
+                    <div class="f-review">
+                        <ul>
+                            <li>Medcoins Used</li>
+                            <li>-{{cartDetails.medCoinRedeemed}}</li>
+                        </ul>
+                    </div>
+                     <div class="f-review">
+                        <ul>
+                            <li>Member discount</li>
+                            <li>-{{cartDetails.memberDiscount}}</li>
+                        </ul>
+                    </div>
+                     <div class="f-review disocun">
+                        <ul>
+                            <li>Coupon Discount </li>
+                            <li>-{{cartDetails.couponAppliedDiscount}}</li>
+                        </ul>
+                    </div>
+                       <div class="f-review-blue">
+                        <ul>
+                            <li style="color: #00AAFF;font-weight: 600;">Total payable amount</li>
+                            <li style="color: #00AAFF;font-weight: 600;"><i class="fa fa-rupee"></i> {{cartDetails.totalAmountToBePaid.toFixed(2)}}</li>
+                        </ul>
+                    </div>
+                </div>
+              
+                    <div class="review-del">
+                    <div class="f-del">
+                       
+                        <ul style="padding: 0;">
+                            <li style="width: 65%;color:#050500"><a >Delivery to {{customerAddress.type}} - {{customerAddress.pincode}}</a>
+                                <p>{{customerAddress.wholeAddress}}</p></li>
+                            <!-- <li><a class="change"  data-toggle="modal" id="popup-select-address"
+                                data-target="#selectaddress" (click)="getUserAddress()">Change &nbsp;<i class="fa fa-angle-right"></i></a></li> -->
+                        </ul>
+                        <p style="font-weight: 500;" class="mb-0" *ngIf="cartDetails.deliveryTime!=0">Delivery in {{cartDetails.deliveryTime}}</p>
+
+                        <p *ngIf="cartDetails.deliveryTime===0"> Not Deliverable</p>
+
+                    </div>
+                   
+                </div>   
+
+                <!-- <div class="row">
+                    <div class="container">
+                        <div class="col-md-12">
+                            <div class="boxa">
+                                <div class="col-md-6" style="float: right">
+
+                                    <div class="radioaa">
+                                        GOLD<input class="rrb" type="radio" name="addressStatus" value="gold"
+                                          (change)="chooseMembership($event)" />
+    
+                                      </div>
+
+                                </div>
+
+                                <div class="col-md-6" style="float: right">
+                                    <div class="radioaa">
+    
+                                        PLATINUM<input class="rrb" type="radio" name="addressStatus" value="platinum"
+                                          (change)="chooseMembership($event)" />
+                                      </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <a class="review-pay" data-toggle="modal" id="popup4"
+                data-target="#refundss">Pay</a>
+                <div class="imp-review">
+                   
+                
+                    
+                  <p><span>IMPORTANT UPDATE :</span> Due to the current Covid 19 situation, we cannot commit to our mentioned delivery dates. We are working hard to meet the unprecedented demand and we thank you for your patience.</p>
+                     
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            
+<footer class="ps-footer ps-footer--5" style="padding-top: 40px;">
+    <app-footer></app-footer>
+</footer>
+
+
+
+
+<button class="btn scroll-top"><i class="fa fa-angle-double-up"></i></button>
+<div class="ps-preloader" id="preloader">
+    <div class="ps-preloader-section ps-preloader-left"></div>
+    <div class="ps-preloader-section ps-preloader-right"></div>
+</div>
+
+
+
+<script type="text/javascript">
+function inVisible(element) {
+    //Checking if the element is
+    //visible in the viewport
+    var WindowTop = $(window).scrollTop();
+    var WindowBottom = WindowTop + $(window).height();
+    var ElementTop = element.offset().top;
+    var ElementBottom = ElementTop + element.height();
+    //animating the element if it is
+    //visible in the viewport
+    if((ElementBottom <= WindowBottom) && ElementTop >= WindowTop) animate(element);
+}
+
+function animate(element) {
+    //Animating the element if not animated before
+    if(!element.hasClass('ms-animated')) {
+        var maxval = element.data('max');
+        var html = element.html();
+        element.addClass("ms-animated");
+        $({
+            countNum: element.html()
+        }).animate({
+            countNum: maxval
+        }, {
+            //duration 5 seconds
+            duration: 5000,
+            easing: 'linear',
+            step: function() {
+                element.html(Math.floor(this.countNum) + html);
+            },
+            complete: function() {
+                element.html(this.countNum + html);
+            }
+        });
+     }
+}
+//When the document is ready
+$(function() {
+    //This is triggered when the
+    //user scrolls the page
+    $(window).scroll(function() {
+        //Checking if each items to animate are 
+        //visible in the viewport
+        $("h2[data-max]").each(function() {
+            inVisible($(this));
+        });
+    })
+});
+</script>
+
+
+
+<script>
+wow = new WOW({
+animateClass: 'animated',
+offset: 100,
+callback: function(box) {
+    console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+}
+});
+wow.init();
+document.getElementById('moar').onclick = function() {
+var section = document.createElement('section');
+section.className = 'section--purple wow fadeInDown';
+this.parentNode.insertBefore(section, this);
+};
+</script>
+
+
+
+
+      <!-- ------------------------Choose a refund mode------------- -->
+      <!-- <section class="mode">
+        <div class="container">
+         
+        
+        </div>
+      
+      </section> -->
+
+      <div class="modal fade" id="refundss" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content bclolor">
+            <div class="row">
+              <div class="col-md-12">
+                <button
+                  type="button"
+                  class="closeselect"
+                  data-dismiss="modal"
+                  id="dismiss-payment-mode"
+                >
+                  &times;
+                </button>
+              </div>
+            </div>
+            <div class="headerpopup"  style="border-bottom: 1px solid #e9ecef;">
+              <div class="row ">
+                <div class="col-md-12">
+                  <h4 style="font-weight: 400;">Choose a payment mode</h4>
+                  <h5 class="headingre" style="font-weight: 300;">choose the payment mode</h5>
+                 
+                </div>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <div class="row">
+                    <div
+                      class="col-md-6 text-center"
+                      style="padding: 23px 43px" 
+                    >
+                      <div class="box3" (click)="selectPaymentType('razorpay')" [ngClass]="paymentType=='razorpay' ? 'border-active' : '' ">
+                        <img
+                          src="assets/img/cart/atmcard.png"
+                          class="img-fluid"
+                        />
+                      </div>
+                      <label class="medi">Online Payment</label>
+                    </div>
+                    <div
+                      class="col-md-6 text-center"
+                      style="padding: 23px 43px"
+                    >
+                    
+                      <div class="box3" (click)="selectPaymentType('cod')" *ngIf="cartDetails.cashOnDelivery" [ngClass]="paymentType=='cod' ? 'border-active' : '' ">
+                        <img
+                          src="assets/img/cart/pay-medcoin.png"
+                          class="img-fluid"
+                        />
+                      </div>
+
+                      <div class="box3" *ngIf="!cartDetails.cashOnDelivery">
+                       <img
+                         src="assets/img/cart/medcoin.png"
+                         class="img-fluid"
+                       />
+                     </div>
+
+
+                      <label class="medi" *ngIf="cartDetails.cashOnDelivery">COD</label>
+                      <label class="medi small-block" *ngIf="!cartDetails.cashOnDelivery">COD not available</label>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="modal-footer ftrbox">
+              <div class="container">
+                <div class="row align-items-center">
+                  <div class="col-md-6">
+                    <label class="refundamout">Total amount</label><br />
+                    <strong style="font-size: 18px; font-weight: 300;"
+                      ><i class="fa fa-rupee"></i> {{cartDetails.totalAmountToBePaid }}</strong
+                    >
+                  </div>
+                  <div class="col-md-6">
+                    <button
+                      type="submit"
+                      class="btn btn-primary Confirm-btn" (click)="continuePayment()"
+                    >
+                      Confirm
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ------------Choose a refund mode close ------------------- -->
+
+<!-- class="modal fade" -->
+<div class="modal fade success-pop" id="success1" tabindex="-1" role="dialog" aria-labelledby="successLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="blue-back" style="background-image: url('../../../assets/img/icon.svg')">
+          <div class="inner-blue">
+            <div class="blue-img">
+              <img src="assets/img/success-tick.png" />
+            </div>
+            <div class="blue-cont">
+              <h5 *ngIf="paymentType=='razorpay'">Payment Successfull.</h5>
+              <h5>Your order is placed.</h5>
+              <p style="opacity: 1;font-weight: 200;">
+                Your order is expected to delivered <br />on ({{cartDetails.deliveryDate | date}})
+                <span style="font-weight: 300; color: white"><a routerLink="/">keep shopping with us.</a></span>
+              </p>
+              <button type="submit" class="btn ok-button " (click)="redirectToHome()"  data-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Prescription Pop Up -->

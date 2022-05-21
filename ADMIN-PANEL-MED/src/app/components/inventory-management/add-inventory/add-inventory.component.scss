@@ -1,0 +1,261 @@
+div.ProseMirror p {
+  color: black;
+  opacity: 0.45;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.basic_info{
+  font-size: 13px;
+  padding-top: 0px;
+  margin-bottom: 0px;
+}
+
+.substitution_info{
+  font-size: 10px;
+  padding-top: 8px;
+  margin-bottom: 0px;
+}
+
+small{
+  color: white;
+  opacity: 0.7;
+}
+
+a{
+  color: white;
+  font-weight: lighter;
+}
+
+label,h6,.sub-text{
+  color: white;
+  opacity: 0.7;
+  font-weight: lighter;
+  font-family: "Poppins";letter-spacing: 0px;
+}
+
+.card-data{
+  background-color: #1c5470;
+}
+
+
+.card-data{
+  background-color: #144258;
+  padding: 40px;
+  align-content: center;
+  border-radius: 10px;
+  padding-right: 20px;
+  color:white;
+  position: relative;
+  padding-right: 20px;
+}
+
+.span-data{
+background-color: #014466; 
+width: auto; 
+height: 140px; 
+text-align: center; 
+border-radius: 10px; 
+margin-top: 5px;
+}
+.span-data input{
+  position: absolute;
+  top: 35px;
+  left: 15px;
+  width: 270px;
+  height: 140px !important;
+  opacity: 0;
+  cursor: pointer;
+}
+.span-data a {
+  padding-left:30%;
+}
+.span-data .icon{
+color: white;
+opacity: 0.7;
+padding-top: 30px;
+}
+
+.header-data{
+background-color: #033349;
+padding:10px;
+align-content: center;
+border-radius: 10px;
+padding-right: 20px;
+color:white;
+position: relative;
+}
+.header-data a {
+padding-left:30%;
+}
+
+
+
+/*Button CSS*/
+.btn-dark-rounded{
+margin-left: 12px;
+background-color: #014466;
+border-radius: 10.25em;
+}
+.btn{
+  
+  font-weight: 400;
+}
+
+  
+  .form-control{
+      background: #052a3d;
+      border: 1px solid #7696a7 !important;
+    }
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+label{
+    color: gray;
+}
+.pull-right{
+  float: right;
+}
+
+.icon-style{
+  font-size: 100%;
+}    
+
+
+.upload-btn-wrapper {
+position: relative;
+overflow: hidden;
+display: inline-block;
+}
+
+.icon {
+border: 0px solid gray;
+color: gray;
+background-color: transparent;
+padding: 10px 20px;
+border-radius: 8px;
+font-size: 50px;
+font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+font-size: 100px;
+position: absolute;
+left: 0;
+top: 0;
+opacity: 0;
+}
+
+
+
+/* CSS Tabs*/
+.tabs {
+  max-width: 100%;
+  margin-top: 20px;
+  padding: 0 20px;
+  }
+  .tabs input[type=radio] {
+  display: none;
+  }
+  .tabs label {
+    border: unset;
+    border-width: unset;
+    background-color: #0e6e9e;
+    padding: 9px;
+    width: 170px;
+    border-radius: 8px;
+    margin: 0px 8px;
+  background-color: #00496e;
+  text-align:center;
+  }
+  .tabs label:hover {
+  cursor: pointer;
+  }
+  
+  .tabs input:checked + label {
+    border: unset;
+    border-width: unset;
+    background-color: #0e6e9e;
+    padding: 9px;
+    width: 170px;
+    border-radius: 8px;
+    margin: 0px 8px;
+  }
+  .tabs #tab1:checked ~ .content #content1,
+  .tabs #tab2:checked ~ .content #content2,
+  .tabs #tab3:checked ~ .content #content3,
+  .tabs #tab4:checked ~ .content #content4, 
+  .tabs #tab5:checked ~ .content #content5 {
+  display: block;
+  }
+  .tabs .content > div {
+  display: none;
+  padding-top: 20px;
+  text-align: center;
+  /*height: 192px;*/
+  overflow: none;
+  }
+  
+  
+
+.k-dropdown :hover{
+  background: red !important;
+}
+
+
+
+  /*Checkbox*/
+
+
+  input[type=checkbox] {
+    margin-left: 4%;
+    zoom: 1.4;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+  }
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container  input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container  input:checked ~ .checkmark:after {
+  display: block;
+}
+
+
+
+//Date Styling CSS
+
+[type="date"] {
+  background:#052a3d  url('../../../../assets/images/calendar-icon.svg')  95% 45% no-repeat  ;
+  background-size:1em auto, 100% 100%;
+  color: grey;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+  background:#fff;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+
+.furniture { width: 250px; }
+
+.text-danger{
+  color: #ec5362 !important;
+  //position: absolute;
+}

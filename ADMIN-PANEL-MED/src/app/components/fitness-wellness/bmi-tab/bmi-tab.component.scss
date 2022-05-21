@@ -1,0 +1,74 @@
+body{
+  color: white !important;
+}
+
+
+.form-control{
+    background: #00496e;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+     opacity: 0.7;
+    }
+
+    h6{
+      color: white;
+    opacity: 0.7;
+    }
+
+    .btn{
+  
+        color: #99b2bf ;
+        font-weight: 400;
+      }
+      .btn-dark-rounded{
+        margin-left: 12px;
+        background-color: #014466;
+        border-radius: 10.25em;
+      }
+      
+      .btn-excel-rounded{
+        float: right;
+        margin-left: 12px;
+        background-color: #014466;
+        border-radius: 7px;
+      }
+
+      //Date Styling CSS
+input{
+  color: white !important;
+}
+
+
+[type="date"] {
+  background:  #00496e url('../../../../assets/images/calendar-icon.svg')  90% 45% no-repeat  ;
+  background-size:1em auto, 100% 100%;
+  color: white;
+  opacity: 0.7;
+  
+}
+[type="date"]::-webkit-inner-spin-button {
+  background:#fff;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+::-webkit-calendar-picker-indicator {
+  filter: sepia(100%);
+}
+
+.invalid-feedback{
+  color: #ec5362;
+  font-weight: 700;
+}
+.k-grid th {
+  padding: 12px 22px;
+}
+input.k-textbox {
+  border-radius: 2px;
+  margin: 4px;
+  margin-left: 15px !important;} 
+
+  .m-30{
+    margin-top: 30px;
+  }

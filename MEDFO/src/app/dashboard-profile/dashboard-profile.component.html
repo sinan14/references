@@ -1,0 +1,990 @@
+<div class="col-xl-9 col-md-10 col-sm-12 col-xs-12">
+  <div class="dashboard_right_cnt_sec">
+    <div class="dashboard_right_cnt_head">
+      {{ personalForm.get("name").value }}
+      {{ personalForm.get("surname").value }}
+    </div>
+    <div class="dashboard_right_tab_sec">
+      <div
+        (click)="clickToShow()"
+        id="prsnl"
+        [class.dashboard_right_tab_btn_act]="showOrHidePersonal"
+        class="dashboard_right_tab_btn"
+      >
+        <a>Personal</a>
+      </div>
+      <div
+        (click)="clickToShow()"
+        [class.dashboard_right_tab_btn_act]="!showOrHidePersonal"
+        id="mdcl"
+        class="dashboard_right_tab_btn"
+      >
+        <a>Medical</a>
+      </div>
+    </div>
+
+    <form *ngIf="showOrHidePersonal" [formGroup]="personalForm">
+      <div id="personal" class="dashboard_right_txt_row">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Name</div>
+              <input
+                formControlName="name"
+                placeholder="Enter your name"
+                [ngClass]="{
+                  'help-block': invalidPersonal('name')
+                }"
+                type="text"
+                trim="blur"
+                class="dashboard_right_txt_box_input"
+              />
+              <small
+                class="form-text small-block"
+                *ngIf="invalidPersonal('name')"
+              >
+                Required
+              </small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Surname</div>
+              <input
+                formControlName="surname"
+                placeholder="Enter your surname"
+                [ngClass]="{
+                  'help-block': invalidPersonal('surname')
+                }"
+                type="text"
+                trim="blur"
+                class="dashboard_right_txt_box_input"
+                style="background: #f7f7f7"
+              />
+              <small
+                class="form-text small-block"
+                *ngIf="invalidPersonal('surname')"
+              >
+                Required
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Gender</div>
+              <div class="ram-in">
+                <div class="ramagb gender">
+                  <input
+                    type="radio"
+                    formControlName="gender"
+                    value="male"
+                    name="gender"
+                    id="male1"
+                  />
+                  <label class="opt" for="male1"
+                    ><img src="assets/img/dashboard/male.png"
+                  /></label>
+                </div>
+
+                <div class="ramagb gender">
+                  <input
+                    type="radio"
+                    formControlName="gender"
+                    name="gender"
+                    value="female"
+                    id="female1"
+                  />
+                  <label class="opt" for="female1"
+                    ><img src="assets/img/dashboard/female.png"
+                  /></label>
+                </div>
+
+                <div class="ramagb gender">
+                  <input
+                    type="radio"
+                    formControlName="gender"
+                    name="gender"
+                    value="other"
+                    id="neutral"
+                  />
+                  <label class="opt" for="neutral"
+                    ><img
+                      src="assets/img/dashboard/com.png"
+                      style="padding: 14px 15px; object-fit: contain"
+                  /></label>
+                </div>
+              </div>
+            </div>
+            <small
+              class="form-text small-block"
+              *ngIf="invalidPersonal('gender')"
+            >
+              Select gender
+            </small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Contact Number</div>
+              <input
+                formControlName="phone"
+                placeholder="Enter your number"
+                readonly
+                [class.help-block]="
+                  invalidPersonal('phone') ||
+                  personalForm.controls['phone'].errors?.pattern
+                "
+                type="text"
+                trim="blur"
+                class="dashboard_right_txt_box_input"
+                style="background: #f7f7f7"
+              />
+              <small
+                class="form-text small-block"
+                *ngIf="
+                  invalidPersonal('phone') ||
+                  personalForm.controls['phone'].errors?.pattern
+                "
+              >
+                Enter valid phone number
+              </small>
+              <small
+                class="form-text small-block"
+                *ngIf="personalForm.controls['phone'].errors?.pattern"
+              >
+                Enter valid phone number
+              </small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Date of Birth</div>
+              <input
+                formControlName="dob"
+                placeholder="Select your date of birth"
+                min="1900-01-01"
+                [max]="getToday()"
+                [ngClass]="{
+                  'help-block': invalidPersonal('dob')
+                }"
+                onfocus="(this.type='date')"
+                onblur="(this.type='text')"
+                class="dashboard_right_txt_box_input"
+                style="background: #f7f7f7"
+              /><small
+                class="form-text small-block"
+                *ngIf="invalidPersonal('dob')"
+              >
+                Enter valid date
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Blood Group</div>
+              <div class="gender_rnd_sec" style="padding-left: 0">
+                <div class="ram-in">
+                  <div
+                    *ngFor="let bg of bgroup; let RowIndex = index"
+                    class="ramagb"
+                  >
+                    <input
+                      formControlName="bloodGroup"
+                      id="1b{{ RowIndex }}"
+                      [value]="bg"
+                      type="radio"
+                    />
+                    <label for="1b{{ RowIndex }}" class="opt blood">
+                      {{ bg }}</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <small
+                class="form-text small-block"
+                *ngIf="invalidPersonal('bloodGroup')"
+              >
+                Select blood group
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Marital Status</div>
+              <div class="marital_sts_box">
+                <div class="ram-in">
+                  <div class="ramagb">
+                    <input
+                      formControlName="maritalStatus"
+                      id="S1"
+                      value="married"
+                      type="radio"
+                    />
+                    <label for="S1" class="opt marit">Married</label>
+                  </div>
+                  <div class="ramagb">
+                    <input
+                      value="single"
+                      formControlName="maritalStatus"
+                      id="S2"
+                      type="radio"
+                    />
+                    <label for="S2" class="opt marit">Single</label>
+                  </div>
+                </div>
+              </div>
+              <small
+                class="form-text small-block"
+                *ngIf="invalidPersonal('bloodGroup')"
+              >
+                Select blood group
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2 cl_6_mb">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Height</div>
+              <input
+                formControlName="height"
+                placeholder="Height"
+                (change)="validateHeight()"
+                [ngClass]="{
+                  'help-block': invalidPersonal('height')
+                }"
+                onfocus="(this.type='number')"
+                onblur="(this.type='text')"
+                trim="blur"
+                class="dashboard_right_txt_box_input"
+                style="background: #f7f7f7"
+              />
+
+              <small
+                class="form-text small-block"
+                *ngIf="invalidPersonal('height')"
+              >
+                Enter valid height
+              </small>
+              <!-- <small
+                for="height"
+                class="form-text text-danger"
+                *ngIf="personalForm.controls['height'].errors?.pattern"
+              >
+                Enter valid height
+              </small> -->
+            </div>
+          </div>
+          <div class="col-md-2 cl_6_mb">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Weight</div>
+              <input
+                formControlName="weight"
+                placeholder="Weight"
+                [ngClass]="{
+                  'help-block': invalidPersonal('weight')
+                }"
+                onfocus="(this.type='number')"
+                (change)="validateWeight()"
+                onblur="(this.type='text')"
+                trim="blur"
+                class="dashboard_right_txt_box_input"
+                style="background: #f7f7f7"
+              />
+              <small
+                class="form-text small-block"
+                *ngIf="invalidPersonal('weight')"
+              >
+                Enter valid weight
+              </small>
+              <!-- <small
+                for="weight"
+                class="form-text text-danger"
+                *ngIf="personalForm.controls['weight'].errors?.pattern"
+              >
+                Enter valid input
+              </small> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-5">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Email</div>
+              <input
+                formControlName="email"
+                placeholder="Enter your mail"
+                [ngClass]="{
+                  'help-block': invalidPersonal('email')
+                }"
+                type="text"
+                trim="blur"
+                class="dashboard_right_txt_box_input"
+                style="background: #f7f7f7"
+              />
+              <small
+                class="form-text small-block"
+                *ngIf="invalidPersonal('email')"
+              >
+                Enter valid mail
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard_right_txt_box">
+          <a
+            data-toggle="modal"
+            id="changepasspopup"
+            data-target="#Changepassword"
+            (click)="resetPassForm()"
+            class="chage_pass_sec"
+            >Change password</a
+          >
+        </div>
+
+        <div
+          class="dashboard_right_txt_box"
+          style="text-align: center; cursor: pointer"
+        >
+          <button
+            style="text-align: center; cursor: pointer"
+            (click)="onSubmitPersonal2()"
+            class="prf_save_dtl"
+          >
+            <div *ngIf="personalLoading" class="lod">
+              <app-loading-spinner></app-loading-spinner>
+            </div>
+            Save details
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <form *ngIf="!showOrHidePersonal" [formGroup]="medicalForm">
+      <div id="medical" class="dashboard_right_txt_row">
+        <div class="prf_crnt_mdctation">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="prf_crnt_mdctation_labl">Current Medications</div>
+            </div>
+            <div class="col-md-6">
+              <div class="prf_crnt_mdctation_cck_bx">
+                <input
+                  formControlName="currentMed"
+                  [checked]="medicalForm.get('currentMed').value == 'true'"
+                  name="currentMed"
+                  type="radio"
+                  value="true"
+                  id="ys01"
+                />
+                <label for="ys01">Yes</label>
+              </div>
+
+              <div class="prf_crnt_mdctation_cck_bx">
+                <input
+                  name="currentMed"
+                  formControlName="currentMed"
+                  [checked]="medicalForm.get('currentMed').value == 'false'"
+                  type="radio"
+                  (click)="emptyCurrentMedDetails()"
+                  value="false"
+                  id="no01"
+                />
+                <label for="no01">No</label>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="invalidMedical('currentMed')">
+            <small class="form-text small-block"> Required field </small>
+          </div>
+          <div
+            *ngIf="medicalForm.get('currentMed').value == 'true'"
+            class="row"
+          >
+            <div class="col-md-5">&nbsp;</div>
+            <div class="col-md-5">
+              <div
+                class="dashboard_right_txt_box"
+                style="padding-left: 0px; margin-bottom: 27px"
+              >
+                <input
+                  formControlName="currentMedDetails"
+                  name="currentMedDetails"
+                  type="text"
+                  trim="blur"
+                  class="dashboard_right_txt_box_input dsh_inp_2"
+                  style="background: #f7f7f7; height: 50px"
+                  placeholder="If yes"
+                />
+                <div *ngIf="invalidMedical('currentMedDetails')">
+                  <small class="form-text small-block"> Required field </small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-5">
+              <div class="prf_crnt_mdctation_labl">Allergies</div>
+            </div>
+            <div class="col-md-6">
+              <div class="prf_crnt_mdctation_cck_bx">
+                <input
+                  formControlName="allergies"
+                  [checked]="medicalForm.get('allergies').value == 'true'"
+                  type="radio"
+                  value="true"
+                  id="ys1"
+                  name="allergies"
+                />
+                <label for="ys1">Yes</label>
+              </div>
+
+              <div class="prf_crnt_mdctation_cck_bx">
+                <input
+                  formControlName="allergies"
+                  [checked]="medicalForm.get('allergies').value == 'false'"
+                  name="allergies"
+                  type="radio"
+                  value="false"
+                  (click)="emptyAllergyDetails()"
+                  id="no1"
+                />
+                <label for="no1">No</label>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="invalidMedical('allergies')">
+            <small class="form-text small-block"> Required field </small>
+          </div>
+          <div *ngIf="medicalForm.get('allergies').value == 'true'" class="row">
+            <div class="col-md-5 mob_hide">&nbsp;</div>
+            <div class="col-md-5">
+              <div class="dashboard_right_txt_box">
+                <input
+                  formControlName="allergyDetails"
+                  type="text"
+                  trim="blur"
+                  class="dashboard_right_txt_box_input dsh_inp_2"
+                  style="background: #f7f7f7; height: 50px"
+                  placeholder="If yes"
+                />
+                <div *ngIf="invalidMedical('allergyDetails')">
+                  <small class="form-text small-block"> Required field </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5">
+              <div class="prf_crnt_mdctation_labl">Past Medications</div>
+            </div>
+            <div class="col-md-6">
+              <div class="prf_crnt_mdctation_cck_bx">
+                <input
+                  formControlName="pastMed"
+                  [checked]="medicalForm.get('pastMed').value == 'true'"
+                  name="pastMed"
+                  type="radio"
+                  value="true"
+                  id="ys2"
+                />
+                <label for="ys2">Yes</label>
+              </div>
+
+              <div class="prf_crnt_mdctation_cck_bx">
+                <input
+                  formControlName="pastMed"
+                  [checked]="medicalForm.get('pastMed').value == 'false'"
+                  name="pastMed"
+                  type="radio"
+                  value="false"
+                  (click)="emptyPastMedDetails()"
+                  id="no2"
+                />
+                <label for="no2">No</label>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="invalidMedical('pastMed')">
+            <small class="form-text small-block"> Required field </small>
+          </div>
+          <div *ngIf="medicalForm.get('pastMed').value == 'true'" class="row">
+            <div class="col-md-5 mob_hide">&nbsp;</div>
+            <div class="col-md-5">
+              <div
+                class="dashboard_right_txt_box"
+                style="padding-left: 5px; margin-bottom: 27px"
+              >
+                <input
+                  formControlName="pastMedDetails"
+                  type="text"
+                  trim="blur"
+                  class="dashboard_right_txt_box_input dsh_inp_2"
+                  style="background: #f7f7f7; height: 50px"
+                  placeholder="If yes"
+                />
+                <div *ngIf="invalidMedical('pastMedDetails')">
+                  <small class="form-text small-block"> Required field </small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-5">
+              <div class="prf_crnt_mdctation_labl">Chronic Diseases</div>
+            </div>
+            <div class="col-md-6">
+              <div class="prf_crnt_mdctation_cck_bx">
+                <input
+                  formControlName="chronicDisease"
+                  [checked]="medicalForm.get('chronicDisease').value == 'true'"
+                  name="chronicDisease"
+                  type="radio"
+                  value="true"
+                  id="ys3"
+                />
+                <label for="ys3">Yes</label>
+              </div>
+
+              <div class="prf_crnt_mdctation_cck_bx">
+                <input
+                  formControlName="chronicDisease"
+                  [checked]="medicalForm.get('chronicDisease').value == 'false'"
+                  name="chronicDisease"
+                  type="radio"
+                  value="false"
+                  (click)="emptyChronicMedDetails()"
+                  id="no3"
+                />
+                <label for="no3">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="invalidMedical('chronicDisease')">
+            <small class="form-text small-block"> Required field </small>
+          </div>
+          <div
+            *ngIf="medicalForm.get('chronicDisease').value == 'true'"
+            class="row"
+          >
+            <div class="col-md-5 mob_hide">&nbsp;</div>
+            <div class="col-md-5">
+              <div
+                class="dashboard_right_txt_box"
+                style="padding-left: 5px; margin-bottom: 27px"
+              >
+                <input
+                  formControlName="chronicDiseaseDetails"
+                  type="text"
+                  trim="blur"
+                  class="dashboard_right_txt_box_input dsh_inp_2"
+                  style="background: #f7f7f7; height: 50px"
+                  placeholder="If yes"
+                />
+                <div *ngIf="invalidMedical('chronicDiseaseDetails')">
+                  <small class="form-text small-block"> Required field </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5">
+              <div class="prf_crnt_mdctation_labl">Injuries</div>
+            </div>
+            <div class="col-md-6">
+              <div class="prf_crnt_mdctation_cck_bx">
+                <input
+                  formControlName="injuries"
+                  [checked]="medicalForm.get('injuries').value == 'true'"
+                  name="injuries"
+                  required
+                  value="true"
+                  type="radio"
+                  id="ys4"
+                />
+                <label for="ys4">Yes</label>
+              </div>
+
+              <div class="prf_crnt_mdctation_cck_bx">
+                <input
+                  formControlName="injuries"
+                  [checked]="medicalForm.get('injuries').value == 'false'"
+                  name="injuries"
+                  type="radio"
+                  value="false"
+                  (click)="emptyInjuryMedDetails()"
+                  id="no4"
+                />
+                <label for="no4">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="invalidMedical('injuries')">
+            <small class="form-text small-block"> Required field </small>
+          </div>
+          <div *ngIf="medicalForm.get('injuries').value == 'true'" class="row">
+            <div class="col-md-5 mob_hide">&nbsp;</div>
+            <div class="col-md-5">
+              <div
+                class="dashboard_right_txt_box"
+                style="padding-left: 5px; margin-bottom: 27px"
+              >
+                <input
+                  formControlName="injuryDetails"
+                  type="text"
+                  trim="blur"
+                  class="dashboard_right_txt_box_input dsh_inp_2"
+                  style="background: #f7f7f7; height: 50px"
+                  placeholder="If yes "
+                />
+                <div *ngIf="invalidMedical('injuryDetails')">
+                  <small class="form-text small-block"> Required field </small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-5">
+              <div class="prf_crnt_mdctation_labl">Surgeries</div>
+            </div>
+            <div class="col-md-6">
+              <div class="prf_crnt_mdctation_cck_bx">
+                <input
+                  formControlName="surgeries"
+                  [checked]="medicalForm.get('surgeries').value == 'true'"
+                  name="surgeries"
+                  type="radio"
+                  value="true"
+                  id="ys5"
+                />
+                <label for="ys5">Yes</label>
+              </div>
+
+              <div class="prf_crnt_mdctation_cck_bx">
+                <input
+                  formControlName="surgeries"
+                  [checked]="medicalForm.get('surgeries').value == 'false'"
+                  name="surgeries"
+                  type="radio"
+                  value="false"
+                  (click)="emptySurjeryMedDetails()"
+                  id="no5"
+                />
+                <label for="no5">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="invalidMedical('surgeries')">
+            <small class="form-text small-block"> Required </small>
+          </div>
+        </div>
+        <div *ngIf="medicalForm.get('surgeries').value == 'true'" class="row">
+          <div class="col-md-5 mob_hide">&nbsp;</div>
+          <div class="col-md-5">
+            <div
+              class="dashboard_right_txt_box"
+              style="padding-left: 5px; margin-bottom: 27px"
+            >
+              <input
+                formControlName="surgeryDetails"
+                type="text"
+                trim="blur"
+                class="dashboard_right_txt_box_input dsh_inp_2"
+                style="background: #f7f7f7; height: 50px"
+                placeholder="If yes "
+              />
+              <div *ngIf="invalidMedical('surgeryDetails')">
+                <small class="form-text small-block"> Required field</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="dashboard_right_txt_box"
+          style="text-align: center; cursor: pointer"
+        >
+          <button
+            type="button"
+            style="text-align: center; cursor: pointer"
+            class="prf_save_dtl"
+            (click)="onSubmitMedical()"
+          >
+            Save details
+            <div *ngIf="medicalLoading" class="lod">
+              <app-loading-spinner></app-loading-spinner>
+            </div>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!---------------------- Reason For not completing-------------->
+<div class="modal fade" id="Reasonfornotcompleting" role="dialog">
+  <form [formGroup]="reasonForm" (ngSubmit)="submitReason()">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius: 10px">
+        <div class="row">
+          <div class="col-md-12">
+            <button
+              id="dismiss-reason-for-not-completing"
+              type="button"
+              class="closeselect"
+              data-dismiss="modal"
+              (click)="resetReason()"
+              hidden
+            >
+              &times;
+            </button>
+            <button type="submit" class="closeselect">&times;</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="reasonmain">
+            <h3 class="reason-popup">Reason for not completing</h3>
+            <label class="pleasechoose1"
+              >Please choose the correct reason for leaving</label
+            >
+            <hr class="reason-line" />
+            <div class="modal-body">
+              <div class="">
+                <div class="row">
+                  <div class="col-md-12 p-0">
+                    <h5
+                      style="
+                        color: #000000;
+                        opacity: 0.5;
+                        margin: 5px 0 17px 3px;
+                      "
+                    >
+                      Select reasons
+                    </h5>
+                    <ul>
+                      <li *ngFor="let web of reasons">
+                        <label class="checkbox-button">
+                          <input
+                            name="choice1"
+                            class="checkbox-button__input"
+                            type="checkbox"
+                            [value]="web.id"
+                            (change)="onCheckboxChange($event)"
+                          />
+                          <span class="checkbox-button__control" checked></span>
+                          <span class="checkbox-button__label">{{
+                            web.name
+                          }}</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <hr style="width: 112%; margin: 0 0 0 -26px" />
+              <div class="">
+                <div class="row">
+                  <div class="col-md-12 text-center p-0">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        trim="blur"
+                        name="name"
+                        class="form-control aditionalcmd1"
+                        placeholder="Additional Comments"
+                        formControlName="comment"
+                      />
+                      <small
+                        *ngIf="
+                          invalidReason &&
+                          reasonForm.get('comment')!.invalid &&
+                          reasonForm.get('reason')!.invalid
+                        "
+                        class="small-block"
+                        >Please select a reason or give a comment</small
+                      >
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <button
+                          type="submit"
+                          class="btn btn-primary normal-button"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                      <div class="col-md-6">
+                        <button
+                          type="button"
+                          (click)="closeReason()"
+                          class="btn btn-primary normal-button"
+                        >
+                          Complete Profile
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!----------------------- Reason For not completing close  -------------->
+<!-- </div> -->
+<!-------------------------------- Change password------------------>
+<!-- Modal -->
+<div class="modal fade" id="Changepassword" role="dialog">
+  <div class="modal-dialog">
+    <div
+      class="modal-content"
+      style="width: 85%; padding: 0 9px"
+      id="changewidth"
+    >
+      <div class="row">
+        <div class="col-md-12">
+          <button
+            id="dismiss-change-password"
+            type="button"
+            class="closeselect"
+            data-dismiss="modal"
+            (click)="resetPassForm()"
+          >
+            &times;
+          </button>
+        </div>
+      </div>
+      <div class="modal-body text-center Login11">
+        <div class="row">
+          <div class="container">
+            <h5 style="margin: 0 0 20px 0; font-weight: 600">
+              Change password
+            </h5>
+            <form [formGroup]="changePasswordForm">
+              <div class="form-group chng-pswrd">
+                <input
+                  [type]="toggleOldPass ? 'password' : 'text'"
+                  trim="blur"
+                  formControlName="oldPassword"
+                  class="form-control newpass"
+                  placeholder="Current password"
+                  style="
+                    border-radius: 6px;
+                    opacity: 0.5;
+                    font-weight: 300;
+                    border: 1px solid #cccccc;
+                  "
+                />
+                <span
+                  [ngClass]="toggleOldPass ? ' fa-eye-slash' : 'fa-eye'"
+                  class="fa fa-fw field-icon1 toggle-password"
+                  (click)="togglePassTypeOld()"
+                ></span>
+                <small
+                  *ngIf="isInvalidChangePass('oldPassword')"
+                  class="form-text small-block"
+                >
+                  Password must be minumum 8 characters
+                </small>
+              </div>
+              <div class="form-group chng-pswrd">
+                <input
+                  [type]="toggleNewPass ? 'password' : 'text'"
+                  formControlName="newPassword"
+                  class="form-control newpass"
+                  placeholder="New password"
+                  style="
+                    border-radius: 6px;
+                    opacity: 0.5;
+                    border: 1px solid #cccccc;
+                    font-weight: 300;
+                  "
+                />
+                <span
+                  [ngClass]="toggleNewPass ? ' fa-eye-slash' : 'fa-eye'"
+                  class="fa fa-fw field-icon1 toggle-password"
+                  (click)="togglePassTypeNew()"
+                ></span>
+                <small
+                  *ngIf="isInvalidChangePass('newPassword')"
+                  class="form-text small-block"
+                >
+                  Password must be minumum 8 characters
+                </small>
+              </div>
+              <div class="form-group chng-pswrd">
+                <input
+                  type="text"
+                  [type]="toggleCnfPass ? 'password' : 'text'"
+                  trim="blur"
+                  formControlName="confirmNewPassword"
+                  class="form-control newpass"
+                  placeholder="Confirm password"
+                  style="
+                    border-radius: 6px;
+                    opacity: 0.5;
+                    border: 1px solid #cccccc;
+                    font-weight: 300;
+                  "
+                />
+                <span
+                  [ngClass]="toggleCnfPass ? ' fa-eye-slash' : 'fa-eye'"
+                  class="fa fa-fw field-icon1 toggle-password"
+                  (click)="togglePassTypeCnf()"
+                ></span>
+
+                <small
+                  *ngIf="isInvalidChangePass('confirmNewPassword')"
+                  class="form-text small-block"
+                >
+                  New password and confirm password are not same
+                </small>
+              </div>
+            </form>
+
+            <button
+              (click)="updatePassword()"
+              type="button"
+              class="btn btn-primary update"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button
+  style="display: none"
+  type="button"
+  data-toggle="modal"
+  id="rrr"
+  data-target="#Reasonfornotcompleting"
+>
+  <a>close modal</a>
+</button>

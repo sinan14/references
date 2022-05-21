@@ -1,0 +1,1789 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="kendo_table master-demo">
+        <div class="card-body tab2-card explore_mastertab">
+          <label class="mt-2 title_page">Category</label>
+
+          <ngb-tabset
+            class="mt-2 tab-coupon"
+            [activeId]="selectedTab"
+            #tabs
+            (tabChange)="onTabChange($event)"
+          >
+            <ngb-tab title="Med Article" id="med_article" *ngIf="disableTab('Med Article')">
+              <ng-template ngbTabContent>
+                <br /><br />
+                <ngb-tabset class="tab-coupon">
+                  <ngb-tab title="All" id="all_medArticle">
+                    <ng-template ngbTabContent>
+                      <br /><br /><br />
+                      <div class="btn-popup pull-right">
+                        <button *ngIf="editFlag"
+                          style="margin-top: -100px; float: right"
+                          type="button"
+                          class="btn btn-dark btn-inverse-dark"
+                          data-toggle="modal"
+                          data-original-title="test"
+                          data-target="#MedArticleExampleModal"
+                          (click)="open(MedArticleContent, 'add', '', '')"
+                        >
+                          <img
+                            src="assets/images/file-icons/icon-add-circle.svg"
+                            width="15%"
+                            height="15%"
+                            style="margin-right: 10px"
+                          />Add New
+                        </button>
+                      </div>
+                      <!-- <div class="table-responsive ">
+                                                                <ng2-smart-table  [settings]="settings" [source]="vendors"  bdata-target="#exampleModal" 
+                                                                (edit)="editRow($event,content,'edit')"></ng2-smart-table>
+                                                        </div> -->
+
+                      <div class="table-responsive">
+                        <kendo-grid
+                          [kendoGridBinding]="listArticleCategoryDetails"
+                          [filterable]="true"
+                          [sortable]="true"
+                          [pageSize]="10"
+                          [skip]="skip"
+                          [pageable]="true"
+                          classs="master-table"
+                        >
+                          <kendo-grid-column
+                            field="name"
+                            title="Category"
+                            width="30"
+                          >
+                            <ng-template
+                              kendoGridFilterCellTemplate
+                              let-filter
+                              let-column="column"
+                            >
+                              <kendo-grid-string-filter-cell
+                                placeholder="search"
+                                [showOperators]="false"
+                                [column]="column"
+                                title="Parent Store"
+                                [filter]="filter"
+                              >
+                              </kendo-grid-string-filter-cell>
+                            </ng-template>
+                          </kendo-grid-column>
+
+                          <kendo-grid-column
+                            field="parent"
+                            title="Parent"
+                            width="30"
+                          >
+                            <ng-template
+                              kendoGridFilterCellTemplate
+                              let-filter
+                              let-column="column"
+                            >
+                              <kendo-grid-string-filter-cell
+                                placeholder="search"
+                                [showOperators]="false"
+                                [column]="column"
+                                title="Parent Store"
+                                [filter]="filter"
+                              >
+                              </kendo-grid-string-filter-cell>
+                            </ng-template>
+                          </kendo-grid-column>
+
+                          <kendo-grid-column
+                            field="image"
+                            title="Image"
+                            width="30"
+                            [filterable]="false"
+                          >
+                            <ng-template
+                              kendoGridCellTemplate
+                              let-dataItem="dataItem"
+                            >
+                              <img
+                                class="flag"
+                                src="{{ dataItem.image }}"
+                                width="40"
+                              />
+                            </ng-template>
+                          </kendo-grid-column>
+
+                          <kendo-grid-command-column
+                            title="Action"
+                            width="30"
+                            class="text-center"
+                          >
+                            <ng-template
+                              kendoGridCellTemplate
+                              let-isNew="isNew"
+                              let-dataItem="dataItem"
+                            >
+                              <button *ngIf="editFlag"
+                                type="button"
+                                class="btn btn-dark btn-dark-rounded"
+                                data-toggle="modal"
+                                data-original-title="test"
+                                data-target="#MedArticleExampleModal"
+                                (click)="
+                                  open(
+                                    MedArticleContent,
+                                    'edit',
+                                    dataItem._id,
+                                    'article_category'
+                                  )
+                                "
+                              >
+                                Edit
+                              </button>
+
+                              &nbsp;&nbsp;<button
+                                type="button" *ngIf="editFlag"
+                                class="btn btn-dark btn-dark-rounded"
+                                (click)="
+                                  delete('article_category', dataItem._id)
+                                "
+                              >
+                                Delete
+                              </button>
+                            </ng-template>
+                          </kendo-grid-command-column>
+                        </kendo-grid>
+                      </div>
+                    </ng-template>
+                  </ngb-tab>
+
+                  <ngb-tab
+                    title="MedFeed Home Page"
+                    id="medfeed_home_medarticle"
+                  >
+                    <ng-template ngbTabContent>
+                      <br /><br /><br />
+                      <!-- <div class="btn-popup pull-right">
+                                                    <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-inverse-dark" data-toggle="modal" data-original-title="test"
+                                                    data-target="#MedArticleExampleModal" (click)="open(MedArticleContent,'add')"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+                                              
+                                                </div> -->
+                      <!-- <div class="table-responsive ">
+                                                                <ng2-smart-table  [settings]="settings" [source]="vendors"  bdata-target="#exampleModal" 
+                                                                (edit)="editRow($event,content,'edit')"></ng2-smart-table>
+                                                        </div> -->
+
+                      <div class="table-responsive">
+                        <kendo-grid
+                          [kendoGridBinding]="listMedfeedHomePageArticleList"
+                          [filterable]="true"
+                          [sortable]="true"
+                          [pageSize]="10"
+                          [skip]="skip"
+                          [pageable]="true"
+                        >
+                          <kendo-grid-column
+                            field="name"
+                            title="Category"
+                            width="30"
+                          >
+                            <ng-template
+                              kendoGridFilterCellTemplate
+                              let-filter
+                              let-column="column"
+                            >
+                              <kendo-grid-string-filter-cell
+                                placeholder="search"
+                                [showOperators]="false"
+                                [column]="column"
+                                title="Parent Store"
+                                [filter]="filter"
+                              >
+                              </kendo-grid-string-filter-cell>
+                            </ng-template>
+                          </kendo-grid-column>
+
+                          <kendo-grid-column
+                            field="parent"
+                            title="Parent"
+                            width="30"
+                          >
+                            <ng-template
+                              kendoGridFilterCellTemplate
+                              let-filter
+                              let-column="column"
+                            >
+                              <kendo-grid-string-filter-cell
+                                placeholder="search"
+                                [showOperators]="false"
+                                [column]="column"
+                                title="Parent Store"
+                                [filter]="filter"
+                              >
+                              </kendo-grid-string-filter-cell>
+                            </ng-template>
+                          </kendo-grid-column>
+
+                          <kendo-grid-column
+                            field="image"
+                            title="Image"
+                            width="20"
+                            [filterable]="false"
+                          >
+                            <ng-template
+                              kendoGridCellTemplate
+                              let-dataItem="dataItem"
+                            >
+                              <img
+                                class="flag"
+                                src="{{ dataItem.image }}"
+                                width="40"
+                              />
+                            </ng-template>
+                          </kendo-grid-column>
+
+                          <kendo-grid-command-column
+                            title="Action"
+                            width="20"
+                            class="text-center"
+                          >
+                            <ng-template
+                              kendoGridCellTemplate
+                              let-isNew="isNew"
+                              let-dataItem="dataItem"
+                            >
+                              <button *ngIf="editFlag"
+                                type="button"
+                                class="btn btn-dark btn-dark-rounded"
+                                data-toggle="modal"
+                                data-original-title="test"
+                                data-target="#MedfeedHomePageExampleModal"
+                                (click)="
+                                  open(
+                                    MedfeedHomePageContent,
+                                    'edit',
+                                    dataItem._id,
+                                    'medfeed_homepage'
+                                  )
+                                "
+                              >
+                                Edit
+                              </button>
+
+                              <!-- &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-dark-rounded">Delete</button> -->
+                            </ng-template>
+                          </kendo-grid-command-column>
+                        </kendo-grid>
+                      </div>
+                    </ng-template>
+                  </ngb-tab>
+
+                  <ngb-tab title="Live Update" id="live_updates">
+                    <ng-template ngbTabContent>
+                      <br />
+                      <div class="mt-4 row">
+                        <div class="col-md-3" *ngFor="let i of liveUpdateList">
+                          <div
+                            class="icon-data"
+                            data-toggle="modal"
+                            data-original-title="test"
+                            data-target="#LiveUpdateExampleModal"
+                            (click)="
+                              open(
+                                LiveUpdateContent,
+                                'edit',
+                                i._id,
+                                'live_updates'
+                              )
+                            "
+                          >
+                            <img
+                              src="{{ i.image }}"
+                              style="
+                                background-position: center;
+                                background-size: cover;
+                                width: 100%;
+                                height: 100%;
+                              "
+                            />
+                            <p class="content-name">
+                              <span> {{ LiveUpdateCategoryName }}</span
+                              >&nbsp;&nbsp;&nbsp;&nbsp;<i *ngIf="editFlag"
+                                class="fa fa-edit"
+                                data-toggle="modal"
+                                data-original-title="test"
+                                data-target="#LiveUpdateExampleModal"
+                                (click)="
+                                  open(
+                                    LiveUpdateContent,
+                                    'edit',
+                                    i._id,
+                                    'live_updates'
+                                  )
+                                "
+                              ></i>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ngb-tab>
+                </ngb-tabset>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="Health Care Videos" id="healthcare_videos"  *ngIf="disableTab('Health Care Videos')">
+              <ng-template ngbTabContent>
+                <br /><br />
+                <ngb-tabset class="tab-coupon">
+                  <ngb-tab title="All" id="all_helathcare_videos">
+                    <ng-template ngbTabContent>
+                      <br />
+                      <div class="mt-4 row">
+                        <div class="mb-0 col-md-8"></div>
+                        <div class="mb-0 col-md-4" style="text-align: right">
+                          <button *ngIf="editFlag"
+                            style="margin-top: -92px; float: right"
+                            type="button"
+                            class="btn btn-dark btn-inverse-dark"
+                            data-toggle="modal"
+                            data-original-title="test"
+                            data-target="#HealthCareVediosexampleModal"
+                            (click)="
+                              open(HealthCareVediosContent, 'add', '', '')
+                            "
+                          >
+                            <img
+                              src="assets/images/file-icons/icon-add-circle.svg"
+                              width="15%"
+                              height="15%"
+                              style="margin-right: 10px"
+                            />Add Category
+                          </button>
+                        </div>
+                      </div>
+
+                      <div class="table-responsive">
+                        <kendo-grid
+                          [kendoGridBinding]="listHealthCarevideosDetails"
+                          [filterable]="true"
+                          [sortable]="true"
+                          [pageSize]="10"
+                          [skip]="skip"
+                          (pageChange)="pageChange($event)"
+                          [pageable]="true"
+                        >
+                          <kendo-grid-column
+                            field="name"
+                            title="Category"
+                            width="30"
+                          >
+                            <ng-template
+                              kendoGridFilterCellTemplate
+                              let-filter
+                              let-column="column"
+                            >
+                              <kendo-grid-string-filter-cell
+                                placeholder="search"
+                                [showOperators]="false"
+                                [column]="column"
+                                title="Parent Store"
+                                [filter]="filter"
+                              >
+                              </kendo-grid-string-filter-cell>
+                            </ng-template>
+                          </kendo-grid-column>
+
+                          <kendo-grid-column
+                            field="parent"
+                            title="Parent"
+                            width="30"
+                          >
+                            <ng-template
+                              kendoGridFilterCellTemplate
+                              let-filter
+                              let-column="column"
+                            >
+                              <kendo-grid-string-filter-cell
+                                placeholder="search"
+                                [showOperators]="false"
+                                [column]="column"
+                                title="Parent Store"
+                                [filter]="filter"
+                              >
+                              </kendo-grid-string-filter-cell>
+                            </ng-template>
+                          </kendo-grid-column>
+
+                          <kendo-grid-column
+                            field="image"
+                            title="Image"
+                            width="20"
+                            [filterable]="false"
+                          >
+                            <ng-template
+                              kendoGridCellTemplate
+                              let-dataItem="dataItem"
+                            >
+                              <img
+                                class="flag"
+                                src="{{ dataItem.image }}"
+                                width="40"
+                              />
+                            </ng-template>
+                          </kendo-grid-column>
+
+                          <kendo-grid-command-column
+                            title="Action"
+                            width="40"
+                            class="text-center"
+                          >
+                            <ng-template
+                              kendoGridCellTemplate
+                              let-isNew="isNew"
+                              let-dataItem="dataItem"
+                            >
+                              <button *ngIf="editFlag"
+                                type="submit"
+                                class="btn btn-dark btn-dark-rounded"
+                                data-toggle="modal"
+                                data-original-title="test"
+                                data-target="#HealthCareVediosexampleModal"
+                                (click)="
+                                  open(
+                                    HealthCareVediosContent,
+                                    'edit',
+                                    dataItem._id,
+                                    'all_helathcare_videos'
+                                  )
+                                "
+                              >
+                                Edit
+                              </button>
+
+                              &nbsp;&nbsp;<button
+                                type="submit" *ngIf="editFlag"
+                                class="btn btn-dark btn-dark-rounded"
+                                (click)="
+                                  delete('all_helathcare_videos', dataItem._id)
+                                "
+                              >
+                                Delete
+                              </button>
+                            </ng-template>
+                          </kendo-grid-command-column>
+                        </kendo-grid>
+                      </div>
+                    </ng-template>
+                  </ngb-tab>
+
+                  <ngb-tab title="MedFeed Home Page">
+                    <ng-template ngbTabContent id="medfeedhome_healthcare">
+                      <br />
+                      <div class="mt-4 row">
+                        <div class="mb-0 col-md-8"></div>
+                        <!-- <div class=" mb-0 col-md-4" style="text-align:right;">
+                                                        <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-inverse-dark"data-toggle="modal" data-original-title="test"
+                                                        data-target="#HealthCareVediosexampleModal" (click)="open(HealthCareVediosContent,'add')"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add Category</button>
+                                                  
+                                                    </div> -->
+                      </div>
+
+                      <div class="table-responsive">
+                        <kendo-grid
+                          [kendoGridBinding]="listMedfeedHomeHealthCareList"
+                          [filterable]="true"
+                          [sortable]="true"
+                          [pageSize]="10"
+                          [skip]="skip"
+                          [pageable]="true"
+                        >
+                          <kendo-grid-column
+                            field="name"
+                            title="Category"
+                            width="30"
+                          >
+                            <ng-template
+                              kendoGridFilterCellTemplate
+                              let-filter
+                              let-column="column"
+                            >
+                              <kendo-grid-string-filter-cell
+                                placeholder="search"
+                                [showOperators]="false"
+                                [column]="column"
+                                title="Parent Store"
+                                [filter]="filter"
+                              >
+                              </kendo-grid-string-filter-cell>
+                            </ng-template>
+                          </kendo-grid-column>
+
+                          <kendo-grid-column
+                            field="parent"
+                            title="Parent"
+                            width="30"
+                          >
+                            <ng-template
+                              kendoGridFilterCellTemplate
+                              let-filter
+                              let-column="column"
+                            >
+                              <kendo-grid-string-filter-cell
+                                placeholder="search"
+                                [showOperators]="false"
+                                [column]="column"
+                                title="Parent Store"
+                                [filter]="filter"
+                              >
+                              </kendo-grid-string-filter-cell>
+                            </ng-template>
+                          </kendo-grid-column>
+
+                          <kendo-grid-column
+                            field="image"
+                            title="Image"
+                            width="20"
+                            [filterable]="false"
+                          >
+                            <ng-template
+                              kendoGridCellTemplate
+                              let-dataItem="dataItem"
+                            >
+                              <img
+                                class="flag"
+                                src="{{ dataItem.image }}"
+                                width="40"
+                              />
+                            </ng-template>
+                          </kendo-grid-column>
+
+                          <kendo-grid-command-column
+                            title="Action"
+                            width="20"
+                            class="text-center"
+                          >
+                            <ng-template
+                              kendoGridCellTemplate
+                              let-isNew="isNew"
+                              let-dataItem="dataItem"
+                            >
+                              <button *ngIf="editFlag"
+                                type="button"
+                                class="btn btn-dark btn-dark-rounded"
+                                data-toggle="modal"
+                                data-original-title="test"
+                                data-target="#MedfeedHomePageHealthCareExampleModal"
+                                (click)="
+                                  open(
+                                    MedfeedHomePageHealthCareContent,
+                                    'edit',
+                                    dataItem._id,
+                                    'medfeedhome_healthcare'
+                                  )
+                                "
+                              >
+                                Edit
+                              </button>
+
+                              <!-- &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-dark-rounded">Delete</button> -->
+                            </ng-template>
+                          </kendo-grid-command-column>
+                        </kendo-grid>
+                      </div>
+                    </ng-template>
+                  </ngb-tab>
+                </ngb-tabset>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="Health Tips" id="healthtips"  *ngIf="disableTab('Health Tips')">
+              <ng-template ngbTabContent>
+                <br /><br /><br />
+                <div class="btn-popup pull-right">
+                  <button *ngIf="editFlag"
+                    style="margin-top: -100px; float: right"
+                    type="button"
+                    class="btn btn-dark btn-inverse-dark"
+                    data-toggle="modal"
+                    data-original-title="test"
+                    data-target="#healthTipsExampleModal"
+                    (click)="open(healthTipsContent, 'add', '', 'healthtips')"
+                  >
+                    <img
+                      src="assets/images/file-icons/icon-add-circle.svg"
+                      width="15%"
+                      height="15%"
+                      style="margin-right: 10px"
+                    />Add New
+                  </button>
+                </div>
+                <!-- <div class="table-responsive ">
+                                                    <ng2-smart-table  [settings]="settings" [source]="vendors"  bdata-target="#exampleModal" 
+                                                    (edit)="editRow($event,content,'edit')"></ng2-smart-table>
+                                            </div> -->
+
+                <div class="table-responsive" style="padding-bottom: 0px">
+                  <kendo-grid
+                    [kendoGridBinding]="healthTipsList"
+                    [filterable]="true"
+                    [sortable]="true"
+                    [pageSize]="10"
+                    [skip]="skip"
+                    (pageChange)="pageChange($event)"
+                    [pageable]="true"
+                  >
+                    <kendo-grid-column
+                      field="title"
+                      title="Category Name"
+                      width="50"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-command-column
+                      title="Action"
+                      width="50"
+                      class="text-center"
+                    >
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <button *ngIf="editFlag"
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                          data-toggle="modal"
+                          data-original-title="test"
+                          data-target="#healthTipsExampleModal"
+                          (click)="
+                            open(
+                              healthTipsContent,
+                              'edit',
+                              dataItem._id,
+                              'healthtips'
+                            )
+                          "
+                        >
+                          Edit
+                        </button>
+
+                        &nbsp;&nbsp;<button *ngIf="editFlag"
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                          (click)="delete('healthtips', dataItem._id)"
+                        >
+                          Delete
+                        </button>
+                      </ng-template>
+                    </kendo-grid-command-column>
+                  </kendo-grid>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="Health Expert" id="healthexpert"  *ngIf="disableTab('Health Expert')">
+              <ng-template ngbTabContent>
+                <div
+                  class="tab-pane fade active show"
+                  id="account"
+                  role="tabpanel"
+                  aria-labelledby="account-tab"
+                >
+                  <br /><br /><br />
+
+                  <div class="btn-popup pull-right">
+                    <button *ngIf="editFlag"
+                      style="margin-top: -100px; float: right"
+                      type="button"
+                      class="btn btn-dark btn-inverse-dark"
+                      data-toggle="modal"
+                      data-original-title="test"
+                      data-target="#healthExpertExampleModal"
+                      (click)="open(healthExpertContent, 'add', '', '')"
+                    >
+                      <img
+                        src="assets/images/file-icons/icon-add-circle.svg"
+                        width="15%"
+                        height="15%"
+                        style="margin-right: 10px"
+                      />Add New
+                    </button>
+                  </div>
+
+                  <div class="table-responsive">
+                    <kendo-grid
+                      [kendoGridBinding]="healthExpertList"
+                      [filterable]="true"
+                      [sortable]="true"
+                      [pageSize]="10"
+                      [skip]="skip"
+                      (pageChange)="pageChange($event)"
+                      [pageable]="true"
+                    >
+                      <kendo-grid-column
+                        field="title"
+                        title="Category Name"
+                        width="50"
+                      >
+                        <ng-template
+                          kendoGridFilterCellTemplate
+                          let-filter
+                          let-column="column"
+                        >
+                          <kendo-grid-string-filter-cell
+                            placeholder="search"
+                            [showOperators]="false"
+                            [column]="column"
+                            title="Parent Store"
+                            [filter]="filter"
+                          >
+                          </kendo-grid-string-filter-cell>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-command-column
+                        title="Action"
+                        width="50"
+                        class="text-center"
+                      >
+                        <ng-template
+                          kendoGridCellTemplate
+                          let-isNew="isNew"
+                          let-dataItem="dataItem"
+                        >
+                          <button *ngIf="editFlag"
+                            type="button"
+                            class="btn btn-dark btn-dark-rounded"
+                            data-toggle="modal"
+                            data-original-title="test"
+                            data-target="#healthExpertExampleModal"
+                            (click)="
+                              open(
+                                healthExpertContent,
+                                'edit',
+                                dataItem._id,
+                                'healthexpert'
+                              )
+                            "
+                          >
+                            Edit
+                          </button>
+
+                          &nbsp;&nbsp;<button
+                            type="button" *ngIf="editFlag"
+                            class="btn btn-dark btn-dark-rounded"
+                            (click)="delete('healthexpert', dataItem._id)"
+                          >
+                            Delete
+                          </button>
+                        </ng-template>
+                      </kendo-grid-command-column>
+                    </kendo-grid>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<ng-template #MedArticleContent let-modal>
+  <form [formGroup]="articleCategoryForm">
+    <div class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="MedArticleExampleModal"
+      >
+        {{ add_Modal_Flag ? "Add" : "Edit" }}
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="close()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form row">
+        <!-- <code>{{ articleCategoryForm.value | json}}</code> -->
+        <div class="form-group col-md-6">
+          <label for="validationCustom01" class="mb-1">Parent </label>
+
+          <select
+            class="form-control"
+            formControlName="parent"
+            (change)="
+              selectParentCategory($event.target.value, 'article_category')
+            "
+          >
+            <option value="main">Main Category</option>
+            <option
+              *ngFor="let i of listAllArticleCategory"
+              value="{{ i._id }}"
+            >
+              {{ i.name }}
+            </option>
+          </select>
+          <small
+            for="parent"
+            class="form-text text-danger"
+            *ngIf="
+              articleCategoryForm.controls['parent'].errors?.required &&
+              (articleCategoryForm.controls['parent'].dirty ||
+                articleCategoryForm.controls['parent'].touched ||
+                (articleCategoryForm.controls['parent'].untouched &&
+                  attemptedSubmit))
+            "
+          >
+            Parent required.
+          </small>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="validationCustom01" class="mb-1">Category Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="categoryname"
+          />
+
+          <small
+            for="categoryname"
+            class="form-text text-danger"
+            *ngIf="
+              articleCategoryForm.controls['categoryname'].errors?.required &&
+              (articleCategoryForm.controls['categoryname'].dirty ||
+                articleCategoryForm.controls['categoryname'].touched ||
+                (articleCategoryForm.controls['categoryname'].untouched &&
+                  attemptedSubmit))
+            "
+          >
+            Category Name required.
+          </small>
+        </div>
+      </div>
+
+      <div class="form row">
+        <div class="col-md-12">
+          <label for="validationCustom01" class="mb-1">Choose Image</label>
+          <div class="image-data">
+            <div
+              class="upload-btn-wrapper"
+              [ngClass]="
+                add_Modal_Flag && !image_URL
+                  ? 'upload-btn-wrapper1'
+                  : 'upload-btn-wrapper'
+              "
+            >
+              <i
+                class="icon fa fa-upload"
+                *ngIf="add_Modal_Flag && !image_URL"
+              ></i
+              ><br />
+              <img [src]="image_URL" width="100%" class="image-icon" />
+              <input
+                type="file"
+                class="input-type"
+                name="myfile"
+                formControlName="image"
+                (change)="onChange($event, '', '')"
+              />
+            </div>
+          </div>
+          <small
+            for="image"
+            class="form-text text-danger"
+            *ngIf="image_URL === '' && attemptedSubmit"
+          >
+            Image required.
+          </small>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="medArticleImageWidth && medArticleImageHeight">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+          <h6
+            style="color: #fff; margin-left: 60%"
+            for="validationCustom0"
+            class=""
+          >
+            Size : {{ medArticleImageWidth }} x {{ medArticleImageHeight }}
+          </h6>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="checkboxEnableFlag">
+        <div class="mt-4 col-md-6">
+          <label>MedFeed Home Page</label>
+          <input
+            type="checkbox"
+            name="chkbox"
+            formControlName="homepage"
+            (change)="
+              checkBoxEventArticleChange(
+                $event.target.checked,
+                'article_category'
+              )
+            "
+          />
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="submit"
+        *ngIf="add_Modal_Flag"
+        class="btn btn-dark-rounded"
+        (click)="onSubmit('article_category'); attemptedSubmit = true"
+      >
+        Save
+      </button>
+      <button
+        *ngIf="!add_Modal_Flag"
+        type="submit"
+        class="btn btn-dark-rounded"
+        (click)="update('article_category'); attemptedSubmit = true"
+      >
+        Update
+      </button>
+      <button
+        class="btn btn-dark-rounded"
+        type="submit"
+        class="btn btn-dark-rounded"
+        data-dismiss="modal"
+        (click)="close()"
+      >
+        Close
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #MedfeedHomePageContent let-modal>
+  <form [formGroup]="medfeedForm">
+    <div class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="MedfeedHomePageExampleModal"
+      >
+        {{ add_Modal_Flag ? "Add" : "Edit" }}
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="close()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form row">
+        <div class="form-group col-md-6">
+          <label for="validationCustom01" class="mb-1">Parent </label>
+          <select
+            class="form-control"
+            id="validationCustom01"
+            formControlName="parent"
+            (change)="
+              selectParentCategory($event.target.value, 'medfeed_homepage')
+            "
+          >
+            <option value="main">Main Category</option>
+            <option
+              *ngFor="let i of listAllArticleCategory"
+              value="{{ i._id }}"
+            >
+              {{ i.name }}
+            </option>
+          </select>
+          <small
+            for="parent"
+            class="form-text text-danger"
+            *ngIf="
+              articleCategoryForm.controls['parent'].errors?.required &&
+              (articleCategoryForm.controls['parent'].dirty ||
+                articleCategoryForm.controls['parent'].touched ||
+                (articleCategoryForm.controls['parent'].untouched &&
+                  attemptedSubmit))
+            "
+          >
+            Parent required.
+          </small>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="validationCustom01" class="mb-1">Category Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="categoryname"
+          />
+
+          <small
+            for="categoryname"
+            class="form-text text-danger"
+            *ngIf="
+              articleCategoryForm.controls['categoryname'].errors?.required &&
+              (articleCategoryForm.controls['categoryname'].dirty ||
+                articleCategoryForm.controls['categoryname'].touched ||
+                (articleCategoryForm.controls['categoryname'].untouched &&
+                  attemptedSubmit))
+            "
+          >
+            Category Name required.
+          </small>
+        </div>
+      </div>
+
+      <div class="form row">
+        <div class="col-md-12">
+          <label for="validationCustom01" class="mb-1">Choose Image</label>
+          <div class="image-data">
+            <div
+              class="upload-btn-wrapper"
+              [ngClass]="
+                add_Modal_Flag && !image_URL
+                  ? 'upload-btn-wrapper1'
+                  : 'upload-btn-wrapper'
+              "
+            >
+              <i
+                class="icon fa fa-upload"
+                *ngIf="add_Modal_Flag && !image_URL"
+              ></i
+              ><br />
+              <img src="{{ image_URL }}" width="100%" class="image-icon" />
+              <input
+                type="file"
+                name="myfile"
+                class="input-type"
+                formControlName="image"
+                (change)="onChange($event, '200', '200')"
+              />
+            </div>
+          </div>
+          <small
+            for="image"
+            class="form-text text-danger"
+            *ngIf="image_URL === '' && attemptedSubmit"
+          >
+            Image required.
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+          <h6
+            style="color: #fff; margin-left: 60%"
+            for="validationCustom0"
+            class=""
+          >
+            Size : 200 x 200
+          </h6>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="checkboxEnableFlag">
+        <div class="mt-4 col-md-6">
+          <label>MedFeed Home Page</label>
+          <input
+            type="checkbox"
+            name="chk1"
+            formControlName="homepage"
+            (change)="
+              checkBoxEventArticleChange(
+                $event.target.checked,
+                'medfeed_homepage'
+              )
+            "
+          />
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        *ngIf="!add_Modal_Flag"
+        type="submit"
+        class="btn btn-dark-rounded"
+        (click)="update('medfeed_homepage'); attemptedSubmit = true"
+      >
+        Update
+      </button>
+      <button
+        class="btn btn-dark-rounded"
+        type="submit"
+        class="btn btn-dark-rounded"
+        data-dismiss="modal"
+        (click)="close()"
+      >
+        Close
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #LiveUpdateContent let-modal>
+  <form [formGroup]="liveupdateForm">
+    <div class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="LiveUpdateExampleModal"
+      >
+        Edit
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="close()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form row">
+        <div class="col-md-12">
+          <label for="validationCustom01" class="mb-1">Choose Image</label>
+          <div class="image-data">
+            <div
+              class="upload-btn-wrapper"
+              [ngClass]="
+                !add_Modal_Flag && image_URL
+                  ? 'upload-btn-wrapper'
+                  : 'upload-btn-wrapper1'
+              "
+            >
+              <!-- <i class="icon fa fa-upload"  *ngIf="!add_Modal_Flag" ></i><br> -->
+              <img src="{{ image_URL }}" width="100%" class="image-icon" />
+              <input
+                type="file"
+                name="myfile"
+                class="input-type"
+                formControlName="image"
+                (change)="onChangeImage($event, '186', '162')"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+          <h6
+            style="color: #fff; margin-left: 60%"
+            for="validationCustom0"
+            class=""
+          >
+            Size : 186 x 162
+          </h6>
+        </div>
+      </div>
+
+      <div class="form row">
+        <div class="form-group col-md-12">
+          <label for="validationCustom01" class="mb-1">Category Name </label>
+          <div class="example-wrapper">
+            <kendo-dropdownlist
+              id="multiselect"
+              class="form-control"
+              formControlName="categoryname"
+              [data]="listAllArticleCategory"
+              [filterable]="false"
+              textField="name"
+              valueField="_id"
+              [(ngModel)]="selectedValues"
+              (valueChange)="handleChange($event)"
+            >
+            </kendo-dropdownlist>
+            <small
+              for="categoryname"
+              class="form-text text-danger"
+              *ngIf="
+                liveupdateForm.controls['categoryname'].errors?.required &&
+                (liveupdateForm.controls['categoryname'].dirty ||
+                  liveupdateForm.controls['categoryname'].touched ||
+                  (liveupdateForm.controls['categoryname'].untouched &&
+                    attemptedSubmit))
+              "
+            >
+              Category Name required.
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-dark-rounded"
+        (click)="update('live_updates'); attemptedSubmit = true"
+      >
+        Update
+      </button>
+      <button
+        class="btn btn-dark-rounded"
+        type="button"
+        class="btn btn-dark-rounded"
+        type="button"
+        data-dismiss="modal"
+        (click)="close()"
+      >
+        Close
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #HealthCareVediosContent let-modal>
+  <form [formGroup]="articleHealthCategoryForm">
+    <div class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="HealthCareVediosexampleModal"
+      >
+        {{ add_Modal_Flag ? "Add" : "Edit" }}
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="close()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form row">
+        <div class="form-group col-md-6">
+          <label for="validationCustom01" class="mb-1">Parent </label>
+          <select
+            class="form-control"
+            id="validationCustom01"
+            formControlName="parent"
+            (change)="
+              selectParentCategory($event.target.value, 'all_helathcare_videos')
+            "
+          >
+            <option value="main">Main Category</option>
+            <option
+              *ngFor="let i of listAllHealthCareCategory"
+              value="{{ i._id }}"
+            >
+              {{ i.name }}
+            </option>
+          </select>
+          <small
+            for="parent"
+            class="form-text text-danger"
+            *ngIf="
+              articleHealthCategoryForm.controls['parent'].errors?.required &&
+              (articleHealthCategoryForm.controls['parent'].dirty ||
+                articleHealthCategoryForm.controls['parent'].touched ||
+                (articleHealthCategoryForm.controls['parent'].untouched &&
+                  attemptedSubmit))
+            "
+          >
+            Parent required.
+          </small>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="validationCustom01" class="mb-1">Category Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="categoryname"
+          />
+
+          <small
+            for="categoryname"
+            class="form-text text-danger"
+            *ngIf="
+              articleHealthCategoryForm.controls['categoryname'].errors
+                ?.required &&
+              (articleHealthCategoryForm.controls['categoryname'].dirty ||
+                articleHealthCategoryForm.controls['categoryname'].touched ||
+                (articleHealthCategoryForm.controls['categoryname'].untouched &&
+                  attemptedSubmit))
+            "
+          >
+            Category Name required.
+          </small>
+        </div>
+      </div>
+
+      <div class="form row">
+        <div class="col-md-12">
+          <label for="validationCustom01" class="mb-1">Choose Image</label>
+          <div class="image-data">
+            <div
+              class="upload-btn-wrapper"
+              [ngClass]="
+                add_Modal_Flag && !image_URL
+                  ? 'upload-btn-wrapper1'
+                  : 'upload-btn-wrapper'
+              "
+            >
+              <i
+                class="icon fa fa-upload"
+                *ngIf="add_Modal_Flag && !image_URL"
+              ></i
+              ><br />
+              <img src="{{ image_URL }}" width="100%" class="image-icon" />
+              <input
+                type="file"
+                name="myfile"
+                class="input-type"
+                formControlName="image"
+                (change)="onChangeImage($event, '312', '360')"
+              />
+            </div>
+          </div>
+          <small
+            for="image"
+            class="form-text text-danger"
+            *ngIf="
+              articleHealthCategoryForm.controls['image'].errors?.required &&
+              (articleHealthCategoryForm.controls['image'].dirty ||
+                articleHealthCategoryForm.controls['image'].touched ||
+                (articleHealthCategoryForm.controls['image'].untouched &&
+                  attemptedSubmit))
+            "
+          >
+            Image required.
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+          <h6
+            style="color: #fff; margin-left: 60%"
+            for="validationCustom0"
+            class=""
+          >
+            Size : 312 x 360
+          </h6>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="checkboxEnableFlag">
+        <div class="mt-4 col-md-6">
+          <label>MedFeed Home Page</label>
+          <input
+            type="checkbox"
+            name="chk2"
+            formControlName="homepage"
+            (change)="
+              checkBoxEventArticleChange(
+                $event.target.checked,
+                'all_helathcare_videos'
+              )
+            "
+          />
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="submit"
+        *ngIf="add_Modal_Flag"
+        class="btn btn-dark-rounded"
+        (click)="onSubmit('all_helathcare_videos'); attemptedSubmit = true"
+      >
+        Save
+      </button>
+      <button
+        *ngIf="!add_Modal_Flag"
+        type="submit"
+        class="btn btn-dark-rounded"
+        (click)="update('all_helathcare_videos'); attemptedSubmit = true"
+      >
+        Update
+      </button>
+      <button
+        class="btn btn-dark-rounded"
+        type="submit"
+        class="btn btn-dark-rounded"
+        data-dismiss="modal"
+        (click)="close()"
+      >
+        Close
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #MedfeedHomePageHealthCareContent let-modal>
+  <form [formGroup]="medfeedHealthForm">
+    <div class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="MedfeedHomePageHealthCareExampleModal"
+      >
+        {{ add_Modal_Flag ? "Add" : "Edit" }}
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="close()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form row">
+        <div class="form-group col-md-6">
+          <label for="validationCustom01" class="mb-1">Parent </label>
+          <select
+            class="form-control"
+            id="validationCustom01"
+            formControlName="parent"
+            (change)="
+              selectParentCategory(
+                $event.target.value,
+                'medfeedhome_healthcare'
+              )
+            "
+          >
+            <option value="main">Main Category</option>
+            <option
+              *ngFor="let i of listAllHealthCareCategory"
+              value="{{ i._id }}"
+            >
+              {{ i.name }}
+            </option>
+          </select>
+          <small
+            for="parent"
+            class="form-text text-danger"
+            *ngIf="
+              medfeedHealthForm.controls['parent'].errors?.required &&
+              (medfeedHealthForm.controls['parent'].dirty ||
+                medfeedHealthForm.controls['parent'].touched ||
+                (medfeedHealthForm.controls['parent'].untouched &&
+                  attemptedSubmit))
+            "
+          >
+            Parent required.
+          </small>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="validationCustom01" class="mb-1">Category Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="categoryname"
+          />
+
+          <small
+            for="categoryname"
+            class="form-text text-danger"
+            *ngIf="
+              medfeedHealthForm.controls['categoryname'].errors?.required &&
+              (medfeedHealthForm.controls['categoryname'].dirty ||
+                medfeedHealthForm.controls['categoryname'].touched ||
+                (medfeedHealthForm.controls['categoryname'].untouched &&
+                  attemptedSubmit))
+            "
+          >
+            Category Name required.
+          </small>
+        </div>
+      </div>
+
+      <div class="form row">
+        <div class="col-md-12">
+          <label for="validationCustom01" class="mb-1">Choose Image</label>
+          <div class="image-data">
+            <div
+              class="upload-btn-wrapper"
+              [ngClass]="
+                add_Modal_Flag && !image_URL
+                  ? 'upload-btn-wrapper1'
+                  : 'upload-btn-wrapper'
+              "
+            >
+              <i
+                class="icon fa fa-upload"
+                *ngIf="add_Modal_Flag && !image_URL"
+              ></i
+              ><br />
+              <img
+                *ngIf="!add_Modal_Flag"
+                src="{{ image_URL }}"
+                width="100%"
+                class="image-icon"
+              />
+              <input
+                type="file"
+                name="myfile"
+                class="input-type"
+                formControlName="image"
+                (change)="onChangeImage($event, '312', '360')"
+              />
+            </div>
+          </div>
+
+          <small
+            for="image"
+            class="form-text text-danger"
+            *ngIf="
+              medfeedHealthForm.controls['image'].errors?.required &&
+              (medfeedHealthForm.controls['image'].dirty ||
+                medfeedHealthForm.controls['image'].touched ||
+                (medfeedHealthForm.controls['image'].untouched &&
+                  attemptedSubmit))
+            "
+          >
+            Image required.
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+          <h6
+            style="color: #fff; margin-left: 60%"
+            for="validationCustom0"
+            class=""
+          >
+            Size : 312 x 360
+          </h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="mt-4 col-md-6">
+          <label>MedFeed Home Page</label>
+          <input
+            type="checkbox"
+            name="chk3"
+            formControlName="homepage"
+            value="checkBoxSelectedValue"
+            (change)="
+              checkBoxEventArticleChange(
+                $event.target.checked,
+                'medfeedhome_healthcare'
+              )
+            "
+          />
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        *ngIf="!add_Modal_Flag"
+        type="submit"
+        class="btn btn-dark-rounded"
+        (click)="update('medfeedhome_healthcare'); attemptedSubmit = true"
+      >
+        Update
+      </button>
+      <button
+        class="btn btn-dark-rounded"
+        type="submit"
+        class="btn btn-dark-rounded"
+        data-dismiss="modal"
+        (click)="close()"
+      >
+        Close
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #healthTipsContent let-modal>
+  <form [formGroup]="healthTipForm">
+    <div class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="healthTipsExampleModal"
+      >
+        {{ add_Modal_Flag ? "Add" : "Edit" }}
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="close()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form row">
+        <div class="form-group col-md-12">
+          <label for="validationCustom01" class="mb-1">Category Name </label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="categoryname"
+          />
+          <small
+            for="categoryname"
+            class="form-text text-danger"
+            *ngIf="
+              healthTipForm.controls['categoryname'].errors?.required &&
+              (healthTipForm.controls['categoryname'].dirty ||
+                healthTipForm.controls['categoryname'].touched ||
+                (healthTipForm.controls['categoryname'].untouched &&
+                  attemptedSubmit))
+            "
+          >
+            Category Name required.
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="submit"
+        *ngIf="add_Modal_Flag"
+        class="btn btn-dark-rounded"
+        (click)="onSubmit('healthtips'); attemptedSubmit = true"
+      >
+        Save
+      </button>
+      <button
+        *ngIf="!add_Modal_Flag"
+        type="submit"
+        class="btn btn-dark-rounded"
+        (click)="update('healthtips'); attemptedSubmit = true"
+      >
+        Update
+      </button>
+      <button
+        class="btn btn-dark-rounded"
+        type="button"
+        class="btn btn-dark-rounded"
+        type="button"
+        data-dismiss="modal"
+        (click)="close()"
+      >
+        Close
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #healthExpertContent let-modal>
+  <form [formGroup]="healthExpertForm">
+    <div class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="healthExpertExampleModal"
+      >
+        {{ add_Modal_Flag ? "Add" : "Edit" }}
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="close()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form row">
+        <div class="form-group col-md-12">
+          <label for="validationCustom01" class="mb-1">Category Name </label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="categoryname"
+          />
+          <small
+            for="categoryname"
+            class="form-text text-danger"
+            *ngIf="
+              healthExpertForm.controls['categoryname'].errors?.required &&
+              (healthExpertForm.controls['categoryname'].dirty ||
+                healthExpertForm.controls['categoryname'].touched ||
+                (healthExpertForm.controls['categoryname'].untouched &&
+                  attemptedSubmit))
+            "
+          >
+            Category Name required.
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="submit"
+        *ngIf="add_Modal_Flag"
+        class="btn btn-dark-rounded"
+        (click)="onSubmit('healthexpert'); attemptedSubmit = true"
+      >
+        Save
+      </button>
+      <button
+        *ngIf="!add_Modal_Flag"
+        type="submit"
+        class="btn btn-dark-rounded"
+        (click)="update('healthexpert'); attemptedSubmit = true"
+      >
+        Update
+      </button>
+      <button
+        class="btn btn-dark-rounded"
+        type="button"
+        class="btn btn-dark-rounded"
+        type="button"
+        data-dismiss="modal"
+        (click)="close()"
+      >
+        Close
+      </button>
+    </div>
+  </form>
+</ng-template>

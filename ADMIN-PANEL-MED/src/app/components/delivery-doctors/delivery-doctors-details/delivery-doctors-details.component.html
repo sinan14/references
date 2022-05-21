@@ -1,0 +1,475 @@
+<div class="container-fluid innerpage_tab_top">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card-body tab2-card">
+        <br /><br />
+        <button
+          type="button"
+          class="btn btn-dark btn-inverse-dark"
+          (click)="BackRedirectTo()"
+        >
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </button>
+
+        <br /><br /><br />
+        <label>Doctor Details</label>
+        <table style="width: 50%">
+          <tr>
+            <h1>1 Basic Details</h1>
+          </tr>
+          <tr>
+            <td style="width: 50%">
+              <label for="expiration">Full Name</label>
+            </td>
+            <td style="width: 150px">
+              <label>{{ doctor.name }}</label>
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50%">
+              <label for="expiration">Contact Number</label>
+            </td>
+            <td style="width: 150px">
+              <label>{{ doctor.mobile }}</label>
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50%">
+              <label for="expiration">Email ID</label>
+            </td>
+            <td style="width: 150px">
+              <label>{{ doctor.email }}</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="width: 50%">
+              <label for="expiration">Alternative Number</label>
+            </td>
+            <td style="width: 150px">
+              <label *ngIf="doctor.alternativeNumber">{{ doctor.alternativeNumber }}</label>
+              <label *ngIf="!doctor.alternativeNumber" style="color: white;">---</label>
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50%">
+              <label  for="expiration">Land Number</label>
+
+            </td>
+            <td style="width: 150px">
+              <label *ngIf="doctor.landNumber">{{ doctor.landNumber }}</label>
+              <label *ngIf="!doctor.landNumber" style="color: white;">---</label>
+
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50%">
+              <label>Address</label>
+            </td>
+            <td style="width: 150px">
+              <label>{{ doctor.residentialAddress}}</label>
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50%">
+              <label>Created Date</label>
+            </td>
+            <td style="width: 150px">
+              <label>{{ doctor.createdDate }}</label>
+            </td>
+          </tr>
+
+        </table>
+
+        <div class="">
+          <table style="width: 50%">
+            <tr>
+              <h1>2 Registration Details</h1>
+            </tr>
+            <tr>
+              <td>
+                <label style="color: #fff" for="validationCustom0"
+                  >Registration Number</label
+                >
+              </td>
+              <td>
+                <label>{{ doctor.registrationNumber }}</label>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label style="color: #fff" for="validationCustom0"
+                  >Registered Council</label
+                >
+              </td>
+              <td>
+                <label>{{ doctor.registeredCouncil }}</label>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label style="color: #fff" for="validationCustom0"
+                  >Registered Year</label
+                >
+              </td>
+              <td>
+                <label>{{ doctor.registeredYear }}</label>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="">
+          <table style="width: 50%">
+            <tr>
+              <h1>3 Qualification Details</h1>
+            </tr>
+            <ng-container
+              *ngFor="let qual of doctor.qualification; let i = index"
+            >
+              <h2 style="color: white">{{ order.i }}</h2>
+              <tr>
+                <td>
+                  <label style="color: #fff" for="validationCustom0"
+                    >Degree</label
+                  >
+                </td>
+                <td>
+                  <label>{{ qual.degree }}</label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label style="color: #fff" for="validationCustom0"
+                    >College/Institute</label
+                  >
+                </td>
+                <td>
+                  <label>{{ qual.college }}</label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label style="color: #fff" for="validationCustom0"
+                    >Year Of Completion</label
+                  >
+                </td>
+                <td>
+                  <label>{{ qual.completionYear }}</label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label style="color: #fff" for="validationCustom0"
+                    >Year Of Experience</label
+                  >
+                </td>
+                <td>
+                  <label>{{ qual.experience }}</label>
+                </td>
+              </tr>
+            </ng-container>
+          </table>
+        </div>
+
+        <div class="">
+          <table style="width: 50%">
+            <tr>
+              <h1>4 Establishment Details</h1>
+            </tr>
+            <tr>
+              <td>
+                <label style="color: #fff" for="validationCustom0"
+                  >Establishment Name</label
+                >
+              </td>
+              <td>
+                <label *ngIf="doctor.establishmentName">{{ doctor.establishmentName }}</label>
+              <label *ngIf="!doctor.establishmentName" style="color: white;">---</label>
+
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label style="color: #fff" for="validationCustom0"
+                  >Establishment City</label
+                >
+              </td>
+              <td>
+                <label *ngIf="doctor.establishmentCity">{{ doctor.establishmentCity }}</label>
+              <label *ngIf="!doctor.establishmentCity" style="color: white;">---</label>
+
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label style="color: #fff" for="validationCustom0"
+                  >Establishment Locality</label
+                >
+              </td>
+              <td>
+                <label *ngIf="doctor.establishmentLocality">{{ doctor.establishmentLocality }}</label>
+              <label *ngIf="!doctor.establishmentLocality" style="color: white;">---</label>
+
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label style="color: #fff" for="validationCustom0"
+                  >Working From</label
+                >
+              </td>
+              <td>
+                <label *ngIf="doctor.workingFrom">{{ doctor.workingFrom }}</label>
+              <label *ngIf="!doctor.workingFrom" style="color: white;">---</label>
+
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label style="color: #fff" for="validationCustom0"
+                  >Experience Year</label
+                >
+              </td>
+              <td>
+                <label *ngIf="doctor.experienceYear"> {{ doctor.experienceYear }}</label>
+              <label *ngIf="!doctor.experienceYear" style="color: white;">---</label>
+
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="mt-2 row">
+          <h1 style="width: 100%">5 Documentation</h1>
+
+          <div class="form-group col-md-3 pl-0">
+            <a target="_blank" [href]="doctor.aadhar">
+              <div
+                class="btn-dark"
+                style="
+                  margin: 0 auto;
+                  display: block;
+                  text-align: center;
+                  border-radius: 10px;
+                  padding: 15px 10px 10px 10px;
+                  background-color: #014466;
+                "
+              >
+                <img src="{{ doctor.aadhar }}" width="auto" height="80px" />
+
+                <label style="font-size: 12px">Aadhar </label>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="form-group col-md-3 pl-0">
+            <a target="_blank" [href]="doctor.medicalRegCertificate">
+              <div
+                class="btn-dark"
+                style="
+                  margin: 0 auto;
+                  display: block;
+                  text-align: center;
+                  border-radius: 10px;
+                  padding: 15px 10px 10px 10px;
+                  background-color: #014466;
+                "
+              >
+                <img
+                  [src]="doctor.medicalRegCertificate"
+                  width="auto"
+                  height="80px"
+                />
+
+                <label style="font-size: 12px"
+                  >Medical Registration Certificate</label
+                >
+              </div>
+            </a>
+          </div>
+
+          <div *ngIf="establishmentProof" class="form-group col-md-3 pl-0">
+            <a target="_blank" [href]="doctor.establishmentProof">
+              <div
+                class="btn-dark"
+                style="
+                  margin: 0 auto;
+                  display: block;
+                  text-align: center;
+                  border-radius: 10px;
+                  padding: 15px 10px 10px 10px;
+                  background-color: #014466;
+                "
+              >
+                <img
+                  [src]="doctor.establishmentProof"
+                  width="auto"
+                  height="80px"
+                />
+
+                <label style="font-size: 12px"> Proof Of Establishment</label>
+              </div>
+            </a>
+          </div>
+
+          <div *ngIf="showVoterImage" class="form-group col-md-3 pl-0">
+            <a target="_blank" [href]="doctor.voterId">
+              <div
+                class="btn-dark"
+                style="
+                  margin: 0 auto;
+                  display: block;
+                  text-align: center;
+                  border-radius: 10px;
+                  padding: 15px 10px 10px 10px;
+                  background-color: #014466;
+                "
+              >
+                <img src="{{ doctor.voterId }}" width="auto" height="80px" />
+
+                <label style="font-size: 12px"
+                  >Any Other Supporting Document
+                </label>
+              </div></a
+            >
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid ends-->
+
+<!-- <ng-template #exampleModalcontent let-modal>
+  <div *ngIf="update_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.5"
+      class="modal-title f-w-200"
+      id="exampleModal"
+    >
+      Update
+    </h5>
+    <button
+      style="color: white; opacity: 0.5; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="add_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.5"
+      class="modal-title f-w-200"
+      id="exampleModal"
+    >
+      Add
+    </h5>
+    <button
+      style="color: white; opacity: 0.5; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <label>Choose Store</label>
+        <div class="example-wrapper">
+          <kendo-multiselect class="form-control" [data]="listStore">
+          </kendo-multiselect>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <label>Choose Pincode</label>
+        <div class="example-wrapper">
+          <kendo-multiselect class="form-control" [data]="listPincode">
+          </kendo-multiselect>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <label>Commission Per Order</label>
+        <input type="text" class="form-control" value="50" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <label>Credit</label>
+        <input type="text" class="form-control" value="50" />
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-dark-rounded">Save</button>
+    <button
+      class="btn btn-dark-rounded"
+      type="button"
+      class="btn btn-dark-rounded"
+      type="button"
+      data-dismiss="modal"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #AddPincodeContent let-modal>
+  <div class="modal-header">
+    <h5
+      style="color: white; opacity: 0.5"
+      class="modal-title f-w-200"
+      id="AddPincodeExampleModal"
+    >
+      Add
+    </h5>
+    <button
+      style="color: white; opacity: 0.5; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body Main_Category">
+    <div class="row">
+      <div class="col-md-12">
+        <textarea class="form-control" placeholder="Add Pincode"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="mb-0 col-md-4"></div>
+      <div class="mb-0 col-md-4">
+        <button type="button" class="btn btn-dark btn-dark-rounded">
+          Save
+        </button>
+      </div>
+      <div class="mb-0 col-md-4"></div>
+    </div>
+  </div>
+</ng-template> -->

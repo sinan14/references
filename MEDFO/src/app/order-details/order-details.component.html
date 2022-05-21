@@ -1,0 +1,2672 @@
+<div class="dashboard_right_cnt_sec odr_list_sc">
+    <div class="dashboard_right_cnt_head">Order Details</div>
+
+    <div class="odr_dtl_sec" *ngIf="order_detail">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="odr_dtl_sec_head">Order Summary</div>
+                <div class="odr_dtl_summ_box">
+                    <table>
+                        <tr class="or-tr">
+                            <td>Order ID <span>:</span></td>
+                            <td> # {{order_detail.orderId}}</td>
+                        </tr>
+                        <tr class="or-tr">
+                            <td>Delivery Address <span>:</span></td>
+                            <td>{{addressDetails.name}} <br> {{addressDetails.wholeAddress}}</td>
+                        </tr>
+                        <tr class="or-tr">
+                            <td>Order Date <span>:</span></td>
+                            <td> {{order_detail.createdAt}}</td>
+                        </tr>
+                        <tr class="or-tr">
+                            <td>Payment Type <span>:</span></td>
+                            <td> {{order_detail.paymentType | uppercase}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 prcp_rght" *ngIf="order_detail.totalCountOfProductsThatRequirePrescription!=0 || order_detail.prescription.length!=0">
+                <div class="odr_dtl_sec_head" style="
+                color: rgb(5 5 0 / 70%); font-weight: 400;">
+                    Prescription
+                    <a class="odr_nd_hlp">Need help ?</a>
+                </div>
+                <div class="odr_dtl_summ_box" *ngIf="order_detail.prescription.length>0"
+                    style="padding:8px;width: 97%;margin-top: 8px;background-color: #FBFBFB;">
+                    <table>
+                        <tr *ngFor="let i of order_detail.prescription">
+                            <td style="width: 25%;"><img width="50px" src="{{i}}"
+                                    alt=""></td>
+                                    <td> Doctor prescription.jpg</td>
+                            <td><a class="odr_tp_view_btn" href="{{i}}" target="_blank">View</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="" *ngIf="order_detail.prescription.length==0">
+                    <h6>No prescriptions are uploaded</h6>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="order_cmp_sec order-de-p" style="padding-bottom: 0;">
+            <div class="odr_dtl_sec_head">Order Items</div>
+            <div class="order_cmp_sec_box" style="padding-top: 2px;padding-bottom: 0px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 80%;">Item</th>
+                            <th style="text-align: center;">UOM</th>
+                            <th style="text-align: center;">Qty</th>
+                            <th style="text-align: center;">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let i of order_detail.products">
+
+                            <td class="flex-item">
+                                <div routerLink="/product-detail/{{ i.productName }}/{{ i.product_id }}/{{ i.brandName }}/{{ i.type }}" class="odr_dtl_odr_item_box"><img
+                                        [src]="i.image" alt=""></div>
+                                {{i.productName}}
+                            </td>
+                            <td style="text-align: center;">{{i.uomValue}}</td>
+                            <td style="text-align: center;">{{i.quantity}}</td>
+                            <td style="text-align: center;">{{i.specialPrice * i.quantity}}</td>
+                       <br> </tr>
+                        <tr *ngIf="">
+                            <td style="    padding: 13px 40px;"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="order_cmp_sec  order-de-p">
+            <div class="odr_dtl_sec_head">Order Status</div>
+
+            <div class="odr_sts_box_sb_hd" *ngIf="order_detail.orderStatus== 'doctor rejected' ">
+
+                <img src="assets/img/dashboard/cancel_ico.png" alt="" width="20px" >
+                &nbsp;&nbsp;Rejected
+            </div>
+
+
+            <div class="odr_sts_box_sb_hd" *ngIf="order_detail.orderStatus=='pharmacy rejected' " >
+
+                <img src="assets/img/dashboard/cancel_ico.png" alt="" width="20px" >
+                &nbsp;&nbsp;Rejected
+            </div>
+
+            <div class="odr_sts_box_sb_hd" *ngIf="order_detail.orderStatus=='returned' " >
+
+                <i style="background-color: #2ada38;"
+                    class="fa fa-check"></i>
+                &nbsp;&nbsp;Returned
+            </div>
+
+            <div class="odr_sts_box_sb_hd" *ngIf="order_detail.orderStatus=='return approved' " >
+
+                <i style="background-color: #2ada38;"
+                    class="fa fa-check"></i>
+                &nbsp;&nbsp;Return approved
+            </div>
+
+            <div class="odr_sts_box_sb_hd" *ngIf="order_detail.orderStatus=='return picked up' " >
+
+                <i style="background-color: #2ada38;"
+                    class="fa fa-check"></i>
+                &nbsp;&nbsp;Return picked up
+            </div>
+
+
+            <div class="odr_sts_box_sb_hd" *ngIf="order_detail.orderStatus!='cancelled' && order_detail.orderStatus!='rejected' && order_detail.orderStatus== 'doctor rejected'
+            && order_detail.orderStatus=='pharmacy rejected'" >
+                <i style="background-color: #2ada38;"
+                    class="fa fa-check"></i>
+                    {{order_detail.orderStatus | titlecase}}
+            </div>
+
+            <div class="odr_sts_box">
+                <div class="progress-bar">
+                    <div class="progress-step"  [ngClass]="order_detail.orderStatus==='order placed' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Order placed
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.placed}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+
+                    <div class="progress-step" *ngIf="order_detail.orderStatus== 'doctor rejected'"  [ngClass]="order_detail.orderStatus==='doctor rejected' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Rejected
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.doctorRejected}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+
+                    <div class="progress-step" *ngIf="order_detail.orderStatus!= 'doctor rejected' || order_detail.orderStatus==='order confirmed' || order_detail.orderStatus!='cancelled' && order_detail.trackingDates.confirmed!=''"  [ngClass]="order_detail.orderStatus==='order confirmed' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Order confirmed
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.confirmed ? order_detail.trackingDates.confirmed : order_detail.trackingDates.underReview}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+
+
+                    <div class="progress-step" *ngIf="order_detail.orderStatus==='cancelled' || order_detail.trackingDates.confirmed==='' && order_detail.orderStatus!= 'applied for return'" [ngClass]="order_detail.orderStatus==='cancelled' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Order cancelled
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.cancelled}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+
+                    <div class="progress-step " *ngIf="order_detail.orderStatus!='cancelled'" [ngClass]="order_detail.orderStatus==='order under review' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Order under review
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.underReview}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+
+                    <div class="progress-step" *ngIf="order_detail.orderStatus==='cancelled'  && order_detail.trackingDates.underReview==='' && order_detail.orderStatus!= 'applied for return'" [ngClass]="order_detail.orderStatus==='cancelled' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Order cancelled
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.cancelled}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+
+                    <div class="progress-step" *ngIf="order_detail.orderStatus==='pharmacy rejected'" [ngClass]="order_detail.orderStatus==='pharmacy rejected' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            &nbsp;&nbsp;Rejected
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.pharmacyRejected}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+
+
+                    <!-- <div class="progress-step" *ngIf="order_detail.orderStatus==='cancelled' && order_detail.trackingDates.packed===''" [ngClass]="order_detail.orderStatus==='cancelled' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Order cancelled
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.cancelled}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div> -->
+
+                    <div class="progress-step" *ngIf="order_detail.orderStatus!='pharmacy rejected' || order_detail.orderStatus==='order packed'" [ngClass]="order_detail.orderStatus==='order packed' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Order packed
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.packed}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+                    <div class="progress-step " [ngClass]="order_detail.orderStatus==='order shipped' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Order shipped
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.shipped}}</span><br>
+                                <!-- <span *ngIf="order_detail.orderStatus==='order shipped'">Tracking id :{{order_detail.trackingDates.trackingId}}</span> -->
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+
+                    <div class="progress-step" [ngClass]="order_detail.orderStatus==='out for delivery' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Out for delivery
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.outForDelivery}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+                    <div class="progress-step" [ngClass]="order_detail.orderStatus==='delivered' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Order delivered
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.delivered}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+
+                    <div class="progress-step" *ngIf="order_detail.orderStatus==='applied for return'" [ngClass]="order_detail.orderStatus==='applied for return' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Applied for return
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.appliedForReturn}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+                    
+                    <div class="progress-step" *ngIf="order_detail.orderStatus==='returned'" [ngClass]="order_detail.orderStatus==='returned' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Returned
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.returned}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+
+                    <div class="progress-step" *ngIf="order_detail.orderStatus==='return confirmed'" [ngClass]="order_detail.orderStatus==='returned' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Return confirmed
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.returned}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+
+                    <div class="progress-step" *ngIf="order_detail.orderStatus==='return approved'" [ngClass]="order_detail.orderStatus==='return approved' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Return approved
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.returned}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+
+                    <div class="progress-step" *ngIf="order_detail.orderStatus==='return picked up'" [ngClass]="order_detail.orderStatus==='return picked up' ? 'is-active' : '' ">
+                        <div class="step-description">
+                            Return picked up
+                            <div class="step_description_sort">
+                                <span>{{order_detail.trackingDates.returned}}</span>
+                            </div>
+                        </div>
+                        <div class="step-count"></div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="order_detail_return_request" *ngIf="order_detail.isReturned" (click)="redirectRetunrDetailPage(order_detail.orderStatus,order_detail._id)">
+          Return request submitted
+       </div>
+
+       <!-- <div class="order_detail_return_request" *ngIf="order_detail.orderStatus=='returned'"  (click)="redirectRetunrDetailPage(order_detail.orderStatus,order_detail._id)">
+        {{order_detail.orderStatus | titlecase}}
+      </div>
+
+      <div class="order_detail_return_request" *ngIf="order_detail.orderStatus=='rejected'"  (click)="redirectRetunrDetailPage(order_detail.orderStatus,order_detail._id)">
+        {{order_detail.orderStatus | titlecase}}
+      </div> -->
+
+
+        <div class="order_cmp_sec  order-de-p">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="row">
+
+                        <!-- *ngIf="eligibleForCancel && order_detail.orderStatus!='order packed' && order_detail.orderStatus!='order shipped' && order_detail.orderStatus!='out for delivery' && order_detail.orderStatus!='delivered'" -->
+                        <div class="col-md-4" *ngIf="eligibleForCancel && order_detail.orderStatus!='delivered'
+                        && order_detail.orderStatus!='applied for return'
+                        && order_detail.orderStatus!='doctor rejected'
+                        && order_detail.orderStatus!='pharmacy rejected'
+                        && order_detail.orderStatus!='cancelled'">
+                            <a href="#"  data-toggle="modal" data-target="#Cancelorder">
+                                <div class="odr_dtl_box_btn odr_dtl_box_btn_dsb"
+                                   >
+                                    <div class="odr_dtl_box_btn_img"><img
+                                            src="../../../assets/img/order/cancel.png" alt=""></div>
+                                    <span>Cancel</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4"  *ngIf="!eligibleForCancel  && order_detail.orderStatus!='delivered'
+                        && order_detail.orderStatus!='applied for return'  && order_detail.orderStatus!='cancelled'" >
+                            <a (click)="eligibleCancel()">
+                                <div class="odr_dtl_box_btn odr_dtl_box_btn_dsb"
+                                   >
+                                    <div class="odr_dtl_box_btn_img"><img
+                                            src="../../../assets/img/order/cancel.png" alt=""></div>
+                                    <span>Cancel</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4"  *ngIf="order_detail.orderStatus==='cancelled'">
+                            <a (click)="userCancelCLicked()">
+                                <div class="odr_dtl_box_btn odr_dtl_box_btn_dsb"
+                                   >
+                                    <div class="odr_dtl_box_btn_img"><img
+                                            src="../../../assets/img/order/cancel.png" alt=""></div>
+                                    <span>Cancel</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!--  *ngIf="eligibleForReturn && order_detail.orderStatus=='delivered'"  -->
+                        <div class="col-md-4" *ngIf="eligibleForReturn && order_detail.orderStatus=='delivered'">
+                            <a href="#" data-toggle="modal"
+                            data-target="#Return">
+                                <div class="odr_dtl_box_btn" >
+                                    <div class="odr_dtl_box_btn_img"><img
+                                            src="../../../assets/img/order/return.png" alt=""></div>
+                                    <span>Return</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4" *ngIf="!eligibleForReturn">
+                            <a (click)="notEligibleReturnCLick(order_detail.orderStatus,order_detail._id)">
+                                <div class="odr_dtl_box_btn" >
+                                    <div class="odr_dtl_box_btn_img"><img
+                                            src="../../../assets/img/order/return.png" alt=""></div>
+                                    <span>Return</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4" >
+                            <div class="odr_dtl_box_btn">
+                                <div class="odr_dtl_box_btn_img" (click)="generatePDF()"><img
+                                        src="../../../assets/img/order/save_invo.png" alt=""></div>
+                                <span>Download<br>Invoice</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="odr_dtl_sec_head" style="    margin-top: -36px;">Price Details
+                    </div>
+                    <div class="cart_payment_dtl_box odr_dlt_rht" style="margin-top: 0;">
+
+                        <div class="cart_payment_dtl_box_row sub_ttl_odr">
+                            Sub Total
+                            <strong><i class="fa fa-rupee"></i>{{cartDetails.totalCartValue}}</strong>
+                        </div>
+                        <div class="cart_payment_dtl_box_row" *ngIf="cartDetails.couponAppliedDiscount!=0">
+                            Coupon Discount
+                            <strong>(-){{cartDetails.couponAppliedDiscount}}</strong>
+                        </div>
+                        <!-- <div class="cart_payment_dtl_box_row">
+                            Medi cash used
+                            <strong>(-){{cartDetails.medCoinRedeemed}}</strong>
+                        </div> -->
+                        <div class="cart_payment_dtl_box_row" *ngIf="!cartDetails.isThisCartEligibleForFreeDelivery">
+                            Delivery Charge
+                            <strong>(+){{cartDetails.deliveryCharge}}</strong>
+                        </div>
+
+                        <div class="cart_payment_dtl_box_row" *ngIf="cartDetails.isThisCartEligibleForFreeDelivery">
+                            Delivery Charge
+                            <strong> Free</strong>
+                        </div>
+
+                        <div class="cart_payment_dtl_box_row" *ngIf="cartDetails.donationAmount!=0">
+                            Donation Amount
+                            <strong>(+){{cartDetails.donationAmount}}</strong>
+                        </div>
+                        <div class="cart_payment_dtl_box_row" *ngIf="cartDetails.memberDiscount!=0">
+                            Member Discount
+                            <strong>(-){{cartDetails.memberDiscount}}</strong>
+                        </div>
+                        <div class="cart_payment_dtl_box_row" *ngIf="cartDetails.medCoinRedeemed!=0">
+                            MedCoin Redeemed
+                            <strong>(-){{cartDetails.medCoinRedeemed}}</strong>
+                        </div>
+                        <!-- <div class="cart_payment_dtl_box_row" *ngIf="order_detail.paymentType!='cod'">
+                            Paid Online
+                            <strong>(-)50</strong>
+                        </div> -->
+                        <div class="cart_payment_dtl_box_ttl">
+                            Total Payable
+                            <strong> <i class="fa fa-rupee"></i>{{cartDetails.totalAmountToBePaid}}</strong>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <!-------------------------- popup cancel end ----------------------->
+     <!-------------------------- why cancel product ----------------------->
+
+<!-- Modal -->
+<div class="modal fade" id="Cancelorder" role="dialog">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content" style="border: 0;">
+
+<div class="cancelorderpopup">
+<div class="cancel_odr_pop" style="background: #fff 0% 0% no-repeat padding-box;">
+    <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="closeselect" data-dismiss="modal"  id="cancel-reason-popup"
+                    style="background:#338AFE;">&times;</button>
+            </div>
+    </div>
+    <div class="cancel_odr_pop_head new">Why cancelling product ?
+        <span>Please choose a reason for cancelling.</span>
+    </div>
+    <div class="cancel_odr_pop_cnt">
+        <div class="cancel_odr_pop_cnt_mn_hd" style="opacity:0.5;">
+        Select reasons
+
+        </div>
+
+        <div class="row" style="margin-bottom: 0;">
+            <div class="col-md-12">
+               <ul>
+                  <li>
+                    <label class="checkbox-button">
+                        <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReason('Expected delivery time is too long')">
+                        <span class="checkbox-button__control"></span>
+                        <span class="checkbox-button__label">Expected delivery time is too long</span>
+                    </label>
+                  </li>
+
+                  <li>
+                    <label class="checkbox-button">
+                        <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReason('Purchased the product elsewhere')">
+                        <span class="checkbox-button__control"></span>
+                        <span class="checkbox-button__label">Purchased the product elsewhere</span>
+                    </label>
+                  </li>
+
+                  <li>
+                    <label class="checkbox-button">
+                        <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReason('Price for the product has decreased')">
+                        <span class="checkbox-button__control"></span>
+                        <span class="checkbox-button__label">Price for the product has decreased</span>
+                    </label>
+                  </li>
+
+                  <li>
+                    <label class="checkbox-button">
+                        <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReason('Changed my mind')">
+                        <span class="checkbox-button__control"></span>
+                        <span class="checkbox-button__label">Changed my mind</span>
+                    </label>
+                  </li>
+
+                  <li>
+                    <label class="checkbox-button">
+                        <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReason('Changes in adress and phone number')">
+                        <span class="checkbox-button__control"></span>
+                        <span class="checkbox-button__label">Changes in adress and phone number</span>
+                    </label>
+                  </li>
+
+                  <li>
+                    <label class="checkbox-button">
+                        <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReason('Order placed by mistake')">
+                        <span class="checkbox-button__control"></span>
+                        <span class="checkbox-button__label">Order placed by mistake</span>
+                    </label>
+                  </li>
+
+                  <li>
+                    <label class="checkbox-button">
+                        <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReason('Other')">
+                        <span class="checkbox-button__control"></span>
+                        <span class="checkbox-button__label">Other</span>
+                    </label>
+                  </li>
+                </ul>
+            </div>
+        </div>
+            <!-- <div class="cancel_odr_pop_sec_2_cnt_row">
+                <div class="cancel_odr_pop_sec_2_cnt_row_inp">
+                    <div class="form-group">
+                            <label class="checkbox-button">
+                                <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReason('Expected delivery time is too long')">
+                                <span class="checkbox-button__control"></span>
+                                <span class="checkbox-button__label"></span>
+                            </label>
+                            
+                    </div>
+                </div>
+                Expected delivery time is too long
+            </div>
+            <div class="cancel_odr_pop_sec_2_cnt_row">
+                <div class="cancel_odr_pop_sec_2_cnt_row_inp">
+                    <div class="form-group">
+                            <label class="checkbox-button">
+                                <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReason('Purchased the product elsewhere')">
+                                <span class="checkbox-button__control"></span>
+                                <span class="checkbox-button__label"></span>
+                            </label>
+                    </div>
+                </div>
+                Purchased the product elsewhere
+            </div>
+            <div class="cancel_odr_pop_sec_2_cnt_row">
+                <div class="cancel_odr_pop_sec_2_cnt_row_inp">
+                    <div class="form-group">
+                            <label class="checkbox-button">
+                                <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReason('Price for the product has decreased')">
+                                <span class="checkbox-button__control"></span>
+                                <span class="checkbox-button__label"></span>
+                            </label>
+                    </div>
+                </div>
+                Price for the product has decreased
+            </div>
+            <div class="cancel_odr_pop_sec_2_cnt_row">
+                <div class="cancel_odr_pop_sec_2_cnt_row_inp">
+                    <div class="form-group">
+                            <label class="checkbox-button">
+                                <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReason('Changed my mind')">
+                                <span class="checkbox-button__control"></span>
+                                <span class="checkbox-button__label"></span>
+                            </label>
+                    </div>
+                </div>
+                Changed my mind
+            </div>
+            <div class="cancel_odr_pop_sec_2_cnt_row">
+                <div class="cancel_odr_pop_sec_2_cnt_row_inp">
+                    <div class="form-group">
+                            <label class="checkbox-button">
+                                <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReason(' Changes in adress and phone number')">
+                                <span class="checkbox-button__control"></span>
+                                <span class="checkbox-button__label"></span>
+                            </label>
+                    </div>
+                </div>
+                Changes in address and phone number
+            </div>
+            <div class="cancel_odr_pop_sec_2_cnt_row">
+                <div class="cancel_odr_pop_sec_2_cnt_row_inp">
+                    <div class="form-group">
+                            <label class="checkbox-button">
+                                <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReason('Order placed by mistake')">
+                                <span class="checkbox-button__control"></span>
+                                <span class="checkbox-button__label"></span>
+                            </label>
+                    </div>
+                </div>
+                Order placed by mistake
+            </div>
+            <div class="cancel_odr_pop_sec_2_cnt_row">
+                <div class="cancel_odr_pop_sec_2_cnt_row_inp">
+                    <div class="form-group">
+                            <label class="checkbox-button">
+                                <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReason('Other')">
+                                <span class="checkbox-button__control"></span>
+                                <span class="checkbox-button__label"></span>
+                            </label>
+                    </div>
+                </div>
+                Other
+            </div> -->
+        <div class="row" *ngIf="reasonArray=='' && attemptSubmitted">
+            <div class="col-md-12">
+                <h6 class="small-block">Please choose any reason</h6>
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="cancelline">
+
+    <div class="odr_pop2_cnt2">
+
+        <textarea name="" id="" class="odr_pop2_cnt2_txtarea" placeholder="Additional comment" [(ngModel)]="note"></textarea>
+        <div class="row" *ngIf="note==='' && attemptSubmitted">
+            <div class="col-md-12">
+                <h6 class="small-block">Addition comment is required</h6>
+            </div>
+        </div>
+
+        <div class="odr_cnlc_pop_slect">
+            <div class="form-group im">
+                <input type="checkbox" id="fl" (change)="IConfirmChecked($event)">
+                <label class="product_prd_left_box_txt" style="color: #000 !important;" for="fl">I am confirm
+                    that cancel this order</label>
+            </div>
+
+        </div>
+        <div class="row" *ngIf="!ConfirmChecked && attemptSubmitted">
+            <div class="col-md-12">
+                <h6 class="small-block">Please choose this</h6>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <div class="row" *ngIf="!ConfirmChecked && reasonArray=='' && note=='' && attemptSubmitted">
+        <div class="col-md-12">
+            <h6 class="text-center small-block">Please fill these options</h6>
+        </div>
+    </div> -->
+
+    <div class="odr_clc_footer_sec">
+        <div class="row">
+            <div class="col-md-6 col-6">
+                <div class="odr_clc_footer_lft" style="padding-left: 0;" *ngIf="order_detail.paymentType!='cod'">
+                    <span>Refund amount</span>
+                    <i class="fa fa-rupee"></i> {{cancelRefundAmount}}
+                </div>
+
+                <div class="odr_clc_footer_lft" style="padding-left: 0;" *ngIf="order_detail.paymentType==='cod'">
+                    <span>Total payable amount</span>
+                    <i class="fa fa-rupee"></i> {{cancelRefundAmount}}
+                </div>
+
+
+            </div>
+            <div class="col-md-6 col-6">
+                <a (click)="cancelOrder();attemptSubmitted=true;">
+                    <div class="odr_cncl_btn">
+                        Cancel order
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+ <!-- Choose cancel order refund popup (cancel order)-->
+
+ <a style="display:none;" data-toggle="modal" id="display-cancel-success-popup" data-target="#refund_cancel_order_mode">cancel-refund</a>
+  <!-- ----------------------------------Choose a refund mode---------------------------- -->
+  <section class="mode">
+    <div class="container">
+       <!-- Trigger the modal with a button -->
+       <!-- Modal -->
+       <div class="modal fade" id="refund_cancel_order_mode" role="dialog">
+          <div class="modal-dialog" id="mdwidth1" id="mdwidth">
+             <!-- Modal content-->
+             <div class="modal-content bclolor">
+                <div class="row">
+                   <div class="col-md-12">
+                      <button type="button" class="closeselect" data-dismiss="modal" id="dismiss-refund-mode-popup">&times;</button>
+                   </div>
+                </div>
+                <div class="headerpopup">
+                   <div class="row p-3">
+                      <div class="col-md-12">
+                         <h3>Choose a refund mode</h3>
+                         <h5 class="headingre">choose the refund mode</h5>
+                         <hr>
+                      </div>
+                   </div>
+                </div>
+                <div class="modal-body">
+                   <div class="container">
+                      <div class="row">
+                         <div class="col-md-6 text-center" style="padding: 23px 43px;" >
+                            <div class="box3" (click)="paymentMethodSelected('bank')" [ngClass]="payment_Method_Type=='bank' ? 'border-active' : '' ">
+                                <img src="assets/img/cart/atmcard.png" class="img-fluid">
+                            </div>
+                            <label class="medi">Back to source
+                               A/C</label>
+                         </div>
+                         <div class="col-md-6 text-center" style="padding: 23px 43px;" >
+                            <p class="ribbon1">Instant</p>
+                            <div class="box3" (click)="paymentMethodSelected('medcoin')" [ngClass]="payment_Method_Type=='medcoin' ? 'border-active' : '' ">
+                                <img src="assets/img/cart/medcoin.png" class="img-fluid">
+                            </div>
+                            <label class="medi">Medi coin</label>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="modal-footer ftrbox">
+                   <div class="container">
+                      <div class="row">
+                         <div class="col-md-6">
+                            <label class="refundamout">Refund amount</label><br>
+                            <strong style="font-size: 18px;"><i class="fa fa-rupee"></i> {{cancelRefundAmount}}</strong>
+                         </div>
+                         <div class="col-md-6">
+                            <button type="button" class="btn btn-primary Confirm-btn" (click)="confirmCancelOrder()">Confirm</button>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+
+
+
+  <!-------------------------- popup Return ----------------------->
+  <div class="modal fade pr-0" id="Return" role="dialog">
+    <div class="modal-dialog modal-lg" id="btnblueres">
+       <!-- Modal content-->
+       <div class="modal-content bclolor">
+          <div class="row">
+             <div class="col-md-12">
+                <button type="button" class="closeselect" data-dismiss="modal" id="dismiss-refund-return-popup"
+                   style="background:#338AFE;">&times;</button>
+             </div>
+          </div>
+          <div class="modal-header11 pb-0 return-head">
+            <div class="cancel_odr_pop_head" style="padding-left:0px;padding-bottom: 5px;text-align:left;margin-top:12px;margin-left: 0px;border-bottom:0px;">Return order</div>
+
+          </div>
+          <div class="modal- pt-0 pb-5">
+            <div class="cancel_odr_pop_cnt">
+                <hr style="color:#0000001F;  margin: 0;">
+                <div class="cancel_odr_pop_cnt_mn_hd retun-pop-title">
+                    Which product do you want to return
+                    <a>Need help ?</a>
+                </div>
+
+                <div class="cancel_odr_pop_cnt_item_row return-row" *ngFor="let i of returnOrderDetails">
+                    <!-- <div class="cart_item_lst_row_delet">
+                        <div class="form__radio-group">
+                            <input checked="" type="radio" name="size" id="small" class="form__radio-input" (change)="returnRadioButtonChecked($event,i)">
+                            <label class="form__label-radio" for="small">
+                              <span class="form__radio-button"></span>
+                            </label>
+                          </div>
+                    </div>  -->
+                     <div class="cart_item_lst_row_delet">
+
+                        <div class="form-check11 float-right">
+                            <label class="customcheck check-blue">
+                                <input type="checkbox" (change)="returnRadioButtonChecked($event,i)">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="cart_item_lst_row_img return-img"><img src="{{i.image}}" alt="">
+                    </div>
+                    <div class="cart_item_lst_row_contant order-detal-const">
+                        <div class="cart_item_lst_row_contant_name">{{i.productName | titlecase}}</div>
+                        <div class="cart_item_lst_row_contant_cmpny">{{i.brandName | titlecase}}
+                        </div>
+                        <div class="cart_item_lst_row_contant_rate"
+                            style="width:50%; float: right;">
+                            <strong style="font-size: 25px; color: #338AFE;font-weight: 600;"><i
+                                    class="fa fa-rupee"></i> {{i.specialPrice * i.quantity}}</strong>
+                        </div>
+                        <div class="cart_item_lst_row_contant_gram"
+                            style="width:50%; float: left;margin: 9px 0 0 0;">{{i.uomValue}}</div>
+                        <div class="cart_item_lst_row_contant_gram r-margin">
+                            <div class="cart_item_lst_row_contant_gram_hlf_wdt"
+                                style="width:50%; float: left;margin: -9px 0 0 0;">
+                                Qty : <span style="color: #050500;font-weight: 500;">{{i.quantity}}</span>
+                            </div>
+                            <div class="cart_item_lst_row_contant_gram_hlf_wdt" *ngIf="i.eligibleForReturn"
+                                style="text-align: right;">
+                                <i class="elg_cncl_ico"><img src="assets/img/dashboard/forward.png"
+                                        alt=""></i> <span style="color:#11a811">Eligible for
+                                    return </span> : {{i.eligibleDate}}
+                            </div>
+
+                            <div class="cart_item_lst_row_contant_gram_hlf_wdt" *ngIf="!i.eligibleForReturn"
+                                style="text-align: right;">
+                            <span style="color:#FF0000">Not eligible to return</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="odr_cnlc_pop_slect" style="padding: 12px 30px 0 12px;">
+                    <div class="form-group">
+                        <input type="checkbox" id="flt1122" (change)="retunr_CheckBoxOne($event)">
+                        <label class="product_prd_left_box_txt" style="font-size: 12px !important;color: #000 !important;"
+                            for="flt1122">Lorem ipsum dolor sit amet, consectetuer adipiscing
+                            elit, sed diam nonummy nibh euismod tincidunt </label>
+                    </div>
+                </div>
+                <div class="odr_cnlc_pop_slect" style="padding: 12px 30px 0 12px;">
+                    <div class="form-group">
+                        <input type="checkbox" id="flt456" (change)="retunr_CheckBoxTwo($event)">
+                        <label class="product_prd_left_box_txt" style="font-size: 12px !important;color: #000 !important;"
+                            for="flt456">Lorem ipsum dolor sit amet, consectetuer adipiscing
+                            elit, sed diam nonummy nibh euismod tincidunt </label>
+                    </div>
+                </div>
+
+                <!-- <div class="row" *ngIf="!returnCheckBoxOne || !returnCheckBoxTwo && attemptSubmitted">
+                    <div class="col-md-12">
+                        <h6 class="small-block pl-4">Please choose these option</h6>
+                    </div>
+                </div> -->
+
+            </div>
+
+          </div>
+
+
+
+          <div class="modal-footer return-footer">
+             <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="odr_clc_footer_lft" style="padding-left: 15px;">
+                            <span>Refund amount</span>
+                            <i class="fa fa-rupee"></i> {{returnRefundAmount}}
+                            <span *ngIf="returnedProductSelected.length!=0" style="font-size: 10px !important;color: grey !important;">MedPride Member Discounts and Coupon Discounts will be deducted in parallel from the refund amount.</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 retun-button">
+                        <a>
+                            <div *ngIf="returnedProductSelected.length==0 || !returnCheckBoxOne || !returnCheckBoxTwo" class="odr_cncl_btn"style="margin:0; border-radius: 6px;width: 175px;font-size: 13px;" (click)="pickUpAddress();attemptSubmitted = true;">
+                                Continue
+                            </div>
+
+                            <div *ngIf="returnedProductSelected.length!=0 && returnCheckBoxOne && returnCheckBoxTwo" class="odr_cncl_btn"style="border-radius: 6px;width: 175px;font-size: 13px;" data-toggle="modal" data-target="#whyreturenproduct" (click)="pickUpAddress();attemptSubmitted = false;">
+                                Continue
+                            </div>
+
+                            <div style="display: none;" data-toggle="modal" data-target="#whyreturenproduct" id="whyReturnOrderID">Pick</div>
+                        </a>
+                    </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+<div class="modal fade" id="Return1" role="dialog">
+    <div class="cancelorderpopup">
+        <div class="cancel_odr_pop modal-dialog" style="border: 0;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="closeselect" id="dissmiss-pupup-return" data-dismiss="modal"
+                            style="background:#338AFE;">&times;</button>
+                    </div>
+                </div>
+                <div class="cancel_odr_pop_head" style="padding-left:0px;padding-bottom: 5px;text-align:left;margin-top:12px;margin-left: 12px;border-bottom:0px;">Return order</div>
+
+                <div class="cancel_odr_pop_cnt" style="padding: 0 15px 20px 30px;">
+                    <hr style="color:#0000001F;  margin: 0;">
+                    <div class="cancel_odr_pop_cnt_mn_hd retun-pop-title">
+                        Which product do you want to return
+                        <a href="#">Need help ?</a>
+                    </div>
+
+                    <div class="cancel_odr_pop_cnt_item_row" *ngFor="let i of returnOrderDetails">
+                        <div class="cart_item_lst_row_delet">
+                            
+
+                            <div class="form-check11 float-right">
+                                <label class="customcheck">
+                                    <input type="checkbox" (change)="returnRadioButtonChecked($event,i)">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <!-- <div class="form-group">
+                                <input type="radio" name="radio11" id="radio1" class="form__radio-input" (change)="returnRadioButtonChecked($event,i)">
+                                <label class="form__label-radio form__radio-label" for="radio1">
+                                    <span class="form__radio-button"></span>
+                                </label>
+                                <input type="checkbox"  (change)="returnRadioButtonChecked($event,i)">
+                                <label class="" for="flt1"></label>
+                            </div> -->
+                        </div>
+
+                        <div class="cart_item_lst_row_img"><img src="{{i.image}}" alt="">
+                        </div>
+                        <div class="cart_item_lst_row_contant">
+                            <div class="cart_item_lst_row_contant_name">{{i.productName | titlecase}}</div>
+                            <div class="cart_item_lst_row_contant_cmpny">{{i.brandName | titlecase}}
+                            </div>
+                            <div class="cart_item_lst_row_contant_rate"
+                                style="width:50%; float: right;">
+                                <strong style="font-size: 25px; color: #338AFE;font-weight: 600;"><i
+                                        class="fa fa-rupee"></i> {{i.specialPrice * i.quantity}}</strong>
+                            </div>
+                            <div class="cart_item_lst_row_contant_gram uom-v"
+                                style="width:50%; float: left;margin: 9px 0 0 0;">{{i.uomValue}}</div>
+                            <div class="cart_item_lst_row_contant_gram return-ord">
+                                <div class="cart_item_lst_row_contant_gram_hlf_wdt"
+                                    style="width:50%; float: left;margin: -9px 0 0 0;">
+                                    Qty : <span style="color: #050500;font-weight: 500;">{{i.quantity}}</span>
+                                </div>
+                                <div class="cart_item_lst_row_contant_gram_hlf_wdt" *ngIf="i.eligibleForReturn"
+                                    style="text-align: right;">
+                                    <i class="elg_cncl_ico"><img src="assets/img/dashboard/forward.png"
+                                            alt=""></i> <span style="color:#11a811">Eligible for
+                                        return </span> : {{i.eligibleDate}}
+                                </div>
+
+                                <div class="cart_item_lst_row_contant_gram_hlf_wdt" *ngIf="!i.eligibleForReturn"
+                                    style="text-align: right;">
+                                <span style="color:#FF0000">Not eligible to return</span>
+                                </div>
+
+                            </div>
+                            <!-- <div class="cart_item_lst_row_contant_gram" style="text-align: right;">
+                                <a style="font-size: 13px;color: #6d6d6d;text-decoration: underline;"
+                                    href="#">View return policy</a>
+                            </div> -->
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- <div class="cancel_odr_pop_cnt_item_row" style="background-color: #E8E8E8;">
+                        <div class="cart_item_lst_row_delet">
+                            <div class="form__radio-group">
+                            <input type="radio" name="size1" id="aaaa1" class="form__radio-input">
+                                <label class="form__label-radio" for="aaaa1"class="form__radio-label">
+                                    <span class="form__radio-button"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="cart_item_lst_row_img"><img src="assets/img/cart/himalaya11.png"
+                                alt=""></div>
+                        <div class="cart_item_lst_row_contant">
+                            <div class="cart_item_lst_row_contant_name">Himalaya men face wash</div>
+                            <div class="cart_item_lst_row_contant_cmpny">Himalaya healthcare product
+                            </div>
+                            <div class="cart_item_lst_row_contant_rate"
+                                style="width:50%; float: right;">
+                                <strong style="font-size: 25px; color: #338AFE;font-weight: 600;"><i
+                                        class="fa fa-rupee"></i> 100</strong>
+                            </div>
+                            <div class="cart_item_lst_row_contant_gram"
+                                style="width:50%; float: left;margin: 9px 0 0 0;">90 gram</div>
+                            <div class="cart_item_lst_row_contant_gram">
+                                <div class="cart_item_lst_row_contant_gram_hlf_wdt"
+                                    style="width:50%; float: left;margin: -9px 0 0 0;">
+                                    Qty : <span style="color: #050500;font-weight: 500;">2</span>
+                                </div>
+                                <div class="cart_item_lst_row_contant_gram_hlf_wdt"
+                                    style="text-align: right;">
+                                    <span style="color:#FF0000">Not eligible to return</span>
+                                </div>
+                            </div>
+                            <div class="cart_item_lst_row_contant_gram" style="text-align: right;">
+                                <a style="font-size: 13px;color: #6d6d6d;text-decoration: underline;"
+                                    href="#">View return policy</a>
+                            </div>
+
+                        </div>
+
+                    </div> -->
+
+                    <div class="odr_cnlc_pop_slect" style="padding: 12px 30px 0 12px;">
+                        <div class="form-group">
+                            <input type="checkbox" id="flt1122">
+                            <label class="product_prd_left_box_txt" style="font-size: 12px !important;color: #000 !important;"
+                                for="flt1122">Lorem ipsum dolor sit amet, consectetuer adipiscing
+                                elit, sed diam nonummy nibh euismod tincidunt</label>
+                        </div>
+                    </div>
+                    <div class="odr_cnlc_pop_slect" style="padding: 12px 30px 0 12px;">
+                        <div class="form-group">
+                            <input type="checkbox" id="flt456">
+                            <label class="product_prd_left_box_txt" style="font-size: 12px !important;color: #000 !important;"
+                                for="flt456">Lorem ipsum dolor sit amet, consectetuer adipiscing
+                                elit, sed diam nonummy nibh euismod tincidunt </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                    <div class="odr_clc_footer_sec" style="border-radius: 0px;margin: 0 0 23px 0;">
+                    <div class="row">
+                        <div class="col-md-6 col-6">
+                            <div class="odr_clc_footer_lft" style="padding-left: 15px;">
+                                <span>Refund amount</span>
+                                <i class="fa fa-rupee"></i> {{returnRefundAmount}}
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-6">
+                            <a>
+                                <div class="odr_cncl_btn"style="border-radius: 6px;width: 175px;font-size: 13px;" (click)="pickUpAddress()">
+                                    Pickup Address
+                                </div>
+
+                                <div style="display: none;" data-toggle="modal" data-target="#whyreturenproduct" id="whyReturnOrderID">Pick</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-------------------------- popup return end ----------------------->
+
+
+
+<div class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="whyreturenproduct" role="dialog">
+       <div class="modal-dialog" id="btnblueres">
+          <!-- Modal content-->
+          <div class="modal-content bclolor mt-5">
+             <div class="row">
+                <div class="col-md-12">
+                   <button type="button" class="closeselect" data-dismiss="modal" id="dismiss-refund-return"
+                      style="background:#338AFE;">&times;</button>
+                </div>
+             </div>
+             <div class="modal-header11 pt-4 why-return-header">
+                <h3 class="mb-1">Why return product ?</h3>
+                <label>Please choose the correct reason for return</label>
+                <!-- <hr style="margin: 10px 0 8px 0px;"> -->
+             </div>
+             <div class="modal-body why-return-pro ">
+                 <div class="why-tile">
+                <h5 style="color: #000000;opacity: 0.5;margin: 0px 0 15px 15px;">Select reasons</h5>
+                <div class="container">
+                   <div class="row">
+                      <div class="col-md-12">
+                         <ul style="margin-left: -6px;">
+                            <li>
+                               <label class="checkbox-button">
+                                  <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReturnReason('Incorrect product or size ordered')">
+                                  <span class="checkbox-button__control"></span>
+                                  <span class="checkbox-button__label">Incorrect product or size ordered</span>
+                               </label>
+                            </li>
+                            <li>
+                               <label class="checkbox-button">
+                                  <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReturnReason('Product no longer needed')">
+                                  <span class="checkbox-button__control"></span>
+                                  <span class="checkbox-button__label">Product no longer needed</span>
+                               </label>
+                            </li>
+                            <li>
+                               <label class="checkbox-button">
+                                  <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReturnReason('Product does not match description on website or in catalog')">
+                                  <span class="checkbox-button__control"></span>
+                                  <span class="checkbox-button__label">Product does not match description on website
+                                     or in catalog</span>
+                               </label>
+                            </li>
+                            <li>
+                               <label class="checkbox-button">
+                                  <input type="radio" class="checkbox-button__input" id="choice1-1" name="choice1" (change)="selectReturnReason('Company shipped wrong product or size')">
+                                  <span class="checkbox-button__control"></span>
+                                  <span class="checkbox-button__label">Company shipped wrong product or size</span>
+                               </label>
+                            </li>
+                         </ul>
+
+                         <div class="row" *ngIf="returnReason ==='' && attemptSubmitted">
+                            <div class="col-md-12">
+                                <h6 class="small-block">Please choose any option</h6>
+                            </div>
+                        </div>
+
+                      </div>
+                   </div> </div></div>
+                   <!-- <hr style="margin: 14px 0 2px -10px;width: 104%;"> -->
+                   <div class="why-return-text">
+                   <div class="row">
+                    <div class="col-md-12">
+                       <div class="form- mb-3 mt-2">
+                          <!-- <input id="form_name" type="text" name="name" class="form-control aditionalcmd" [(ngModel)]="returnNote"
+                             placeholder="Additional Comment" required="required" data-error="Comment"> -->
+                             <textarea id="form_name" class="odr_pop2_cnt2_txtarea" [(ngModel)]="returnNote"  placeholder="Additional Comment" required="required" rows="4"></textarea>
+                       </div>
+
+                       <div class="row" *ngIf="returnNote ==='' && attemptSubmitted">
+                            <div class="col-md-12">
+                                <h6 class="small-block">Additional comment is required</h6>
+                            </div>
+                        </div>
+                    </div>
+                 </div></div>
+
+                <div class="odr_cnlc_pop_slect">
+                    <div class="form-group im">
+                        <input type="checkbox" id="fl1" (change)="IConfirmChecked($event)">
+                        <label class="product_prd_left_box_txt" style="color: #000 !important;" for="fl1">I am confirm
+                            that to return this product</label>
+                    </div>
+                    <div class="row" *ngIf="!ConfirmChecked && attemptSubmitted">
+                        <div class="col-md-12 mt-3">
+                            <h6 class="small-block">Kindly confirm this</h6>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+             <div class="row">
+                <div class="container">
+                   <div class="col-md-12 mt-2">
+                      <div class="boxa">
+                         <div class="col-md-6 aswin">
+                            <label class="aa">{{addressDetails.name}}</label>
+                         </div>
+                         <div class="col-md-6" style="float: left;">
+                            <div class="col-md-6" style="float: left; padding: 13px 0 0 0;">
+                               <img src="assets/img/cart/home.png" class="img-fluid" width="23px">
+                               <label style="padding:0 10px;">{{addressDetails.type}}</label>
+                            </div>
+                         </div>
+                         <div class="col-md-12" style="float: left;">
+                            <address class="adress11">
+                                {{addressDetails.wholeAddress}} ,   {{addressDetails.mobile}}
+                            </address>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+            </div>
+
+             <div class="modal-footer ftrbox">
+                <div class="container">
+                   <div class="row align-items-center">
+                      <div class="col-md-5">
+                         <label class="refundamout">Refund amount</label><br>
+                         <strong style="font-size: 18px;"><i class="fa fa-rupee"></i> {{returnRefundAmount}}</strong>
+                      </div>
+                      <div class="col-md-7">
+                         <button type="button" class="btn btn-primary Confirm-btn" *ngIf="ConfirmChecked && returnReason!='' && returnNote!=''"
+                          data-toggle="modal" data-target="#refund_mode"  (click)="returnPickup();attemptSubmitted = true;">Continue</button>
+
+
+                         <button type="button" class="btn btn-primary Confirm-btn"  *ngIf="!ConfirmChecked || returnReason==='' || returnNote==''  && attemptSubmitted "
+                          (click)="returnPickup();attemptSubmitted = true;">Continue</button>
+
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+<!--------------------------end why return product ----------------------->
+
+
+
+  <!-- ----------------------------------Choose a refund mode---------------------------- -->
+  <section class="mode">
+    <div class="container">
+       <!-- Trigger the modal with a button -->
+       <!-- Modal -->
+       <div class="modal fade" id="refund_mode" role="dialog">
+          <div class="modal-dialog" id="mdwidth1" id="mdwidth">
+             <!-- Modal content-->
+             <div class="modal-content bclolor">
+                <div class="row">
+                   <div class="col-md-12">
+                      <button type="button" class="closeselect" data-dismiss="modal" id="dismiss-refund-mode-popups-return">&times;</button>
+                   </div>
+                </div>
+                <div class="headerpopup return-pay">
+                   <div class="row p-3">
+                      <div class="col-md-12">
+                         <h3>Choose a refund mode</h3>
+                         <h5 class="headingre">choose the refund mode</h5>
+
+                      </div>
+                   </div>
+                </div>
+                <div class="modal-body">
+                   <div class="container">
+                      <div class="row">
+                         <div class="col-md-6 col-6 text-center refund-order">
+                            <div class="box3" (click)="paymentMethodSelected('bank')" [ngClass]="payment_Method_Type=='bank' ? 'border-active' : '' ">
+                                <img src="assets/img/cart/atmcard.png" class="img-fluid">
+                            </div>
+                            <label class="medi">Back to source
+                               A/C</label>
+                         </div>
+                         <div class="col-md-6 col-6 text-center refund-order">
+                             <p class="ribbon1">Instant</p> 
+                            <div class="box3" (click)="paymentMethodSelected('medcoin')" [ngClass]="payment_Method_Type=='medcoin' ? 'border-active' : '' ">
+                                <img src="assets/img/cart/medcoin.png" class="img-fluid">
+                            </div>
+                            <label class="medi">Medi coin</label>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="modal-footer ftrbox">
+                   <div class="container">
+                      <div class="row">
+                         <div class="col-md-6">
+                            <label class="refundamout">Refund amount</label><br>
+                            <strong style="font-size: 18px;"><i class="fa fa-rupee"></i> {{returnRefundAmount}}</strong>
+                         </div>
+                         <div class="col-md-6">
+                            <button *ngIf="payment_Method_Type=='medcoin' 
+                            || order_detail.paymentType=='razorpay' || (payment_Method_Type!='bank' && order_detail.paymentType!='cod')" type="button" class="btn btn-primary Confirm-btn" (click)="confirmReturnOrder()">Confirm</button>
+                            <button *ngIf="payment_Method_Type=='bank' && order_detail.paymentType==='cod'" type="button" class="btn btn-primary Confirm-btn" data-toggle="modal" data-target="#bankdetail" (click)="confirmReturnOrderBank()">Confirm</button>
+                         </div>
+
+
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+
+ <a style="display:none;" data-toggle="modal" id="display-return-success-popup" data-target="#Returnrequestsubmitted">success</a> 
+<!-- <a  data-toggle="modal" data-target="#bankdetail">bank</a> -->
+  <!-- --------------------------------Return request submitted---------------------- -->
+  <div class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="Returnrequestsubmitted" role="dialog">
+       <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content bclolor">
+             <div class="row">
+                <div class="col-md-12">
+                   <button type="button" class="closeselect" data-dismiss="modal" id="return-success-popup-closed">&times;</button>
+                </div>
+             </div>
+             <div class="main11">
+                <div class="row">
+                   <div class="col-md-12 popper">
+                      <img src="assets/img/cart/popper.png" class="img-fluid poperimg11">
+                      <h3 class="rqust">Return request submitted</h3>
+                      <label>Reference number : 564sdfd5541</label>
+                   </div>
+                </div>
+             </div>
+             <div class="modal-body" style="padding: 0 15px;">
+                <div class="">
+                   <div class="row">
+                      <div class="col-md-12 pickup">
+                         <h5>Pickup date</h5>
+                         <i class="fa fa-clock-o" aria-hidden="true"><span class="date">Date : 20
+                               Dec 2020</span></i>
+                      </div>
+                   </div>
+                </div>
+                <div class="row">
+                   <div class="col-md-12 pickup">
+                      <h5>Please note</h5>
+                      <p class="pleasenote">Lorem Ipsum is simply dummy text of the printing and
+                         typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                         text ever since the 1500s, when an unknown printer took a galley of type
+                         and scrambled it to make a type specimen book.
+                      </p>
+                   </div>
+                </div>
+                <div class="row">
+                   <div class="col-md-12 pickup">
+                      <h5>Next step</h5>
+                      <p>Please check your orders page to track pickup and refund</p>
+                   </div>
+                </div>
+             </div>
+             <div class="pleasenote1">
+                <div class="row">
+                   <div class="col-md-2 float-left track1"> <img src="assets/img/cart/trackorder.png"
+                         class="img-fluid trackorder">
+                   </div>
+                   <div class="col-md-10 float-left pl-0 track2">
+                      <div class="retunbox">
+                         <h5 style="color:#338AFE;font-size: 13px;">Return request submited</h5>
+                      </div>
+                      <div class="retunbox"><label>Our agent will come and pickup <br>the item from
+                            the pickup address</label><img src="assets/img/cart/man.png" class="img-fluid man">
+                      </div>
+                      <div class="retunbox1"><label>Refund will be initiated after the item <br> is
+                            picked up and quality check has <br> passed</label><img src="assets/img/cart/van.png"
+                            class="img-fluid man1">
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+
+
+
+<!--  Invoice Format 
+
+<div class="modal fade" id="print-invoice-popup" role="dialog">
+    <div class="modal-dialog">
+       <div class="modal-content bclolor">
+
+          <div class="modal-body" style="padding: 0 15px;">
+                <div id="invoice">
+                <body style="margin: 10px auto;text-align: center;margin: 0 auto;
+                    width: 650px;font-family: 'Open Sans', sans-serif;
+                    background-color: #e2e2e2;  display: block;">
+
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" style="padding: 0 30px;background-color: #fff; -webkit-box-shadow: 0px 0px 14px -4px rgba(0, 0, 0, 0.2705882353);box-shadow: 0px 0px 14px -4px rgba(0, 0, 0, 0.2705882353);width: 100%;margin-top:30px;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table align="left" border="0" cellpadding="0" cellspacing="0" style="margin-top:30px;text-align: left;" width="100%">
+                                    <tr>
+                                        <td>
+                                            <img src="assets/images/logo.png" width="75" alt="" style="margin-bottom: 30px;">
+                                        </td>
+                                    </tr>
+                               
+                                </table>
+
+                                <table cellpadding="0" cellspacing="0" border="0" align="left" style="width: 100%;margin-top: 1px;    margin-bottom: 10px;">
+                                        <tbody>
+                                            <tr>
+                                            <td align="left" style="padding: 15px;letter-spacing: 0.3px;width: 50%;">
+                                            <h4 style="font-size: 13px;font-weight: 300;"><strong>Name :</strong>{{addressDetails.name}}</h4>
+                                            <h4 style="font-size: 13px;font-weight: 300;"><strong>Payment Type :</strong> {{order_detail.paymentType | uppercase}}</h4></td>
+                                            <td align="right" style="padding: 15px;letter-spacing: 0.3px;width: 50%;">
+                                            <h4 style="font-size: 13px;font-weight: 300;"><strong>Order Time :</strong> {{chnageSecondDateFormat(order_detail.deliveryDate)}}</h4>
+                                            <h4 style="font-size: 13px;font-weight: 300;"><strong>Contact Number :</strong> {{addressDetails.mobile}}</h4></td>
+                                            </tr>
+
+                                            <tr>
+
+                                            <td style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 50%;">
+                                            <h5 style="text-align: left;-size: 14px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">Your Shipping Address</h5>
+                                                <p style="text-align: left;font-weight: normal; font-size: 13px; color: #000000;line-height: 21px;    margin-top: 0;"> {{addressDetails.wholeAddress}} </p>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="order-detail" border="0" cellpadding="0" cellspacing="0"  align="left" style="width: 100%;    margin-bottom: 50px;margin-top:30px;">
+                                    <tr align="left">
+                                        <th  style="padding: 10px;font-size:11px;border: 1px solid #dfdede;border-collapse: collapse;">
+                                        HSN/SKN Code</th>
+                                        <th  style="padding: 10px;font-size:11px;border: 1px solid #dfdede;border-collapse: collapse;">Product</th>
+                                        <th  style="padding: 10px;font-size:11px;border: 1px solid #dfdede;border-collapse: collapse;">
+                                        UOM</th>
+                                        <th  style="padding: 10px;font-size:11px;border: 1px solid #dfdede;border-collapse: collapse;">Quantity </th>
+                                        <th  style="padding: 10px;font-size:11px;border: 1px solid #dfdede;border-collapse: collapse;">Unit Price</th>
+                                        <th  style="padding: 10px;font-size:11px;border: 1px solid #dfdede;border-collapse: collapse;">Total </th>
+                                    </tr>
+                                    <tr *ngFor="let i of order_detail.products">
+
+
+                                        <td style="padding: 10px;border: 1px solid #dfdede;">
+                                        <h5>{{i.skuOrHsnNo}}</h5>
+                                        </td>
+                                        <td style="padding: 10px;border: 1px solid #dfdede;padding-left: 15px;" valign="top" >
+                                            <h5 style="margin-top: 15px; font-size:10px">{{i.productName}}</h5>
+                                        </td>
+                                        <td style="border: 1px solid #dfdede;padding: 10px;" valign="top" >
+                                            <h5 style="font-size: 10px; color:#444;margin-top:15px;    margin-bottom: 0px;">{{i.uomValue}} </h5>
+
+                                        </td>
+                                        <td  style="border: 1px solid #dfdede;padding: 10px;" valign="top" >
+                                            <h5 style="font-size: 10px; color:#444;margin-top:15px"><b>{{i.quantity}}</b></h5>
+                                        </td>
+                                        <td  style="border: 1px solid #dfdede;padding: 10px;" valign="top" >
+                                            <h5 style="font-size: 10px; color:#444;margin-top:15px"><b> {{i.specialPrice}}</b></h5>
+                                        </td>
+                                        <td  style="border:1px solid #dfdede;padding: 10px;" valign="top" >
+                                            <h5 style="font-size: 10px; color:#444;margin-top:15px"><b> {{i.specialPrice * i.quantity}}</b></h5>
+                                        </td>
+                                    </tr><br>
+                                    <tr class="pad-left-right-space " style="margin-bottom: 20px;">
+                                        <td class="m-t-5" colspan="5" align="right">
+                                            <p style="font-size: 13px;">Total Amount : </p>
+                                        </td>
+                                        <td class="m-t-5" colspan="1" align="right" style="font-size: 12px;">
+                                            <p style> <i class="fa fa-rupee"></i> {{cartDetails.totalCartValue}}</p>
+                                        </td> </tr>
+                                    <tr class="pad-left-right-space" style="margin-bottom: 20px;" *ngIf="cartDetails.medCoinRedeemed!=0">
+                                        <td colspan="5" align="right">
+                                            <p style="font-size: 13px;">Medcoin redeemed :</p>
+                                        </td>
+                                        <td colspan="1" align="right" style="font-size: 12px;">
+                                            <p> <i class="fa fa-rupee"></i> {{cartDetails.medCoinRedeemed}}</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="pad-left-right-space" style="margin-bottom: 20px;" *ngIf="cartDetails.memberDiscount!=0">
+                                        <td colspan="5" align="right">
+                                            <p style="font-size: 13px;">Member Discount :</p>
+                                        </td>
+                                        <td colspan="1" align="right" style="font-size: 12px;">
+                                            <p> <i class="fa fa-rupee"></i>{{cartDetails.memberDiscount}}</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="pad-left-right-space" style="margin-bottom: 20px;" *ngIf="cartDetails.couponAppliedDiscount!=0">
+                                        <td colspan="5" align="right">
+                                            <p style="font-size: 13px;">Coupon Discount :</p>
+                                        </td>
+                                        <td colspan="1" align="right" style="font-size: 12px;">
+                                            <p> <i class="fa fa-rupee"></i> {{cartDetails.couponAppliedDiscount}}</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="pad-left-right-space" style="margin-bottom: 20px;" *ngIf="!cartDetails.isThisCartEligibleForFreeDelivery">
+                                        <td colspan="5" align="right">
+                                            <p style="font-size: 13px;">Delivery Charge :</p>
+                                        </td>
+                                        <td colspan="1" align="right" style="font-size: 12px;">
+                                            <p> <i class="fa fa-rupee"></i> {{cartDetails.deliveryCharge}}</p>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="pad-left-right-space" style="margin-bottom: 20px;" *ngIf="cartDetails.isThisCartEligibleForFreeDelivery">
+                                        <td colspan="5" align="right">
+                                            <p style="font-size: 13px;">Delivery Charge :</p>
+                                        </td>
+                                        <td colspan="1" align="right" style="font-size: 12px;">
+                                            <p> Free</p>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="pad-left-right-space " style="margin-bottom: 20px;" *ngIf="cartDetails.donationAmount!=0">
+                                        <td class="m-b-5" colspan="5" align="right">
+                                            <p style="font-size: 13px;">Donation Amount :</p>
+                                        </td>
+                                        <td class="m-b-5" colspan="1" align="right" style="font-size: 12px;">
+                                            <p> <i class="fa fa-rupee"></i> {{cartDetails.donationAmount}}</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="pad-left-right-space ">
+                                        <td class="m-b-5" colspan="5" align="right">
+                                            <p style="font-size: 13px;"><b>Payable Amount :</b></p>
+                                        </td>
+                                        <td class="m-b-5" colspan="1" align="right" style="font-size: 12px;">
+                                            <b> <i class="fa fa-rupee"></i> {{cartDetails.totalAmountToBePaid}}</b>
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                    </table>
+
+                </body>
+                </div>
+          </div>
+
+       </div>
+    </div>
+ </div>
+
+-->
+
+
+
+
+ <div id="bankdetail" class="modal fade sign-up-popup">
+    <div class="modal-dialog mt-1">
+      <div class="modal-content mt-0">
+        <div class="modal-body">
+          <button
+            type="button"
+            id="dismiss_bank_detail_popup"
+            class="close co"
+            data-dismiss="modal"
+            
+          >
+            &times;
+          </button>
+          <div id="myDIV1" >
+            <div class="row">
+              <div class="col-md-6 p-left pl-0 d-flex align-items-center">
+                <img
+                id="sign1"
+                class="sign-owl-img"
+                src="../../assets/images/order/bank.svg"
+                alt="alt"
+              />
+               
+              </div>
+              <div class="col-md-6">
+                <div class="bank-detail">
+                  <h4 class="mt-4 mb-4">Add Bank detail</h4>
+                  
+  
+                  <div class="wrap" style="padding-left: 0px">
+                    <form class="form-horizontal" [formGroup]="bankForm">
+                        <div class="form-group mr-5 ml-5 max-scrol">
+                          <div class="pass">
+                        <label>Customer Name *</label>
+                            <input
+                              type="text"
+                              trim="blur"
+                              class="form-controls"
+                              name="name"
+                              placeholder="Enter your name"
+                              formControlName="name"
+                            />
+                            <small  *ngIf="bankForm.controls['name'].errors?.required && 
+                            (bankForm.controls['name'].dirty ||  
+                            bankForm.controls['name'].touched || 
+                            (bankForm.controls['name'].untouched  && attemptedSubmit ) )"
+                              
+                              class="small-block form-text"
+                              >Customer name is required</small>
+                          </div>
+                          <div class="pass">
+                           <label>Account number *</label>
+                            <input
+                              type="number"
+                              trim="blur"
+                              class="form-controls"
+                              name="email"
+                              #accountno
+                              placeholder="Enter your account number"
+                              formControlName="accountno"
+                            />
+                            <small  *ngIf="bankForm.controls['accountno'].errors?.required && 
+                            (bankForm.controls['accountno'].dirty ||  
+                            bankForm.controls['accountno'].touched || 
+                            (bankForm.controls['accountno'].untouched  && attemptedSubmit ) )"
+                              
+                              class="small-block form-text"
+                              >Account number is required</small>
+                            
+                              <small  *ngIf="bankForm.controls['accountno'].errors?.minlength"
+                              class="small-block form-text"
+                              >Account number should contain atleast 9 numbers</small>
+
+                              <small  *ngIf="bankForm.controls['accountno'].errors?.maxlength"
+                              class="small-block form-text"
+                              >Account number must be  18 numbers long.</small>
+                            
+                          </div>
+                          <div class="pass">
+                            <label>Re-enter Account number *</label>
+                            <input
+                              type="number"
+                              class="form-controls"
+                              name="number"
+                              placeholder="Re-enter account number"
+                              formControlName="re_accountno"
+                              #re_accountno
+                            />
+                            <small  *ngIf="bankForm.controls['re_accountno'].errors?.required && 
+                            (bankForm.controls['re_accountno'].dirty ||  
+                            bankForm.controls['re_accountno'].touched || 
+                            (bankForm.controls['re_accountno'].untouched  && attemptedSubmit ) )"
+                              
+                              class="small-block form-text"
+                              >Re-enter Account number is required</small>
+
+                              <small  *ngIf="bankForm.controls['re_accountno'].errors?.maxlength"
+                              class="small-block form-text"
+                              >Account number must be  12 numbers long.</small>
+
+                              <small  *ngIf="accountno.value != re_accountno.value && bankForm.controls['re_accountno'].touched"
+                                
+                                class="small-block form-text"
+                                >Account Number and Re-enter Account Number must be match.</small>
+
+
+                          </div>
+                          <div class="pass">
+                          <label>Bank IFSC Code *</label>
+                            <input
+                              type="text"
+                              class="form-controls"
+                              name="password"
+                              formControlName="ifsc_code"
+                              placeholder="Enter IFSC Code"
+                              #ifsc_code
+                            />
+                            <small  *ngIf="bankForm.controls['ifsc_code'].errors?.required && 
+                            (bankForm.controls['ifsc_code'].dirty ||  
+                            bankForm.controls['ifsc_code'].touched || 
+                            (bankForm.controls['ifsc_code'].untouched  && attemptedSubmit ) )"
+                              
+                              class="small-block form-text"
+                              >Bank IFSC Code is required</small>
+
+                              <small  *ngIf="bankForm.controls['ifsc_code'].errors?.minlength"
+                              class="small-block form-text"
+                              >IFSC Code should be  11 characters long.</small>
+
+                              <small  *ngIf="bankForm.controls['ifsc_code'].errors?.pattern"
+                              class="small-block form-text"
+                              >Invalid IFSC Code</small>
+
+
+                              <small  *ngIf="checkIFSCCode(ifsc_code.value)"
+                                
+                                class="small-block form-text"
+                                >Bank IFSC Code is required</small>
+
+
+                          </div>
+                          <div class="pass">
+                            <label>Bank Name *</label>
+                              <input
+                               
+                                class="form-controls"
+                                name="password"
+                                formControlName="bank_name"
+                                placeholder="Enter Bank Name"
+                                
+                              />
+                              <small  *ngIf="bankForm.controls['bank_name'].errors?.required && 
+                              (bankForm.controls['bank_name'].dirty ||  
+                              bankForm.controls['bank_name'].touched || 
+                              (bankForm.controls['bank_name'].untouched  && attemptedSubmit ) )"
+                                
+                                class="small-block form-text"
+                                >Bank Name is required</small>
+                            </div>
+
+                            <div class="pass">
+                                <label>Branch Name * </label>
+                                  <input
+                                   
+                                    class="form-controls"
+                                    name="password"
+                                    formControlName="branch_name"
+                                    placeholder="Enter Branch Name"
+                                    
+                                  />
+                                  <small  *ngIf="bankForm.controls['branch_name'].errors?.required && 
+                                  (bankForm.controls['branch_name'].dirty ||  
+                                  bankForm.controls['branch_name'].touched || 
+                                  (bankForm.controls['branch_name'].untouched  && attemptedSubmit ) )"
+                                    
+                                    class="small-block form-text"
+                                    >Branch Name is required</small>
+                                </div>
+
+                            <div class="pass">
+                                <label>Account Type *</label>
+                                    <select  formControlName="account_type"  class="form-controls selectParent">
+                                        <option value="" disabled>Choose account type</option>
+                                        <option value="Savings">Savings</option>
+                                        <option value="Current">Current</option>
+                                    </select>
+                                 
+                                  <small  *ngIf="bankForm.controls['account_type'].errors?.required && 
+                                  (bankForm.controls['account_type'].dirty ||  
+                                  bankForm.controls['account_type'].touched || 
+                                  (bankForm.controls['account_type'].untouched  && attemptedSubmit ) )"
+                                    
+                                    class="small-block form-text"
+                                    >Account Type is required</small>
+                                </div>
+                          <a
+                            style="color: #fff; cursor: pointer"
+                            class="con-otp hand mt-4"
+                            (click)="submitBankDetails(); attemptedSubmit = true"
+                            >Confirm
+                          </a>
+                        </div>
+                      </form>
+                  </div>
+  
+                
+                
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- </ng-template> -->
+         
+  
+          
+        
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+.intro {
+    height: auto;
+    min-height: 100vh;
+    text-align: center;
+    background-color: teal;
+}
+</style>
+
+
+<script type="text/javascript">
+function inVisible(element) {
+    //Checking if the element is
+    //visible in the viewport
+    var WindowTop = $(window).scrollTop();
+    var WindowBottom = WindowTop + $(window).height();
+    var ElementTop = element.offset().top;
+    var ElementBottom = ElementTop + element.height();
+    //animating the element if it is
+    //visible in the viewport
+    if ((ElementBottom <= WindowBottom) && ElementTop >= WindowTop) animate(element);
+}
+
+function animate(element) {
+    //Animating the element if not animated before
+    if (!element.hasClass('ms-animated')) {
+        var maxval = element.data('max');
+        var html = element.html();
+        element.addClass("ms-animated");
+        $({
+            countNum: element.html()
+        }).animate({
+            countNum: maxval
+        }, {
+            //duration 5 seconds
+            duration: 5000,
+            easing: 'linear',
+            step: function () {
+                element.html(Math.floor(this.countNum) + html);
+            },
+            complete: function () {
+                element.html(this.countNum + html);
+            }
+        });
+    }
+}
+//When the document is ready
+$(function () {
+    //This is triggered when the
+    //user scrolls the page
+    $(window).scroll(function () {
+        //Checking if each items to animate are
+        //visible in the viewport
+        $("h2[data-max]").each(function () {
+            inVisible($(this));
+        });
+    })
+});
+</script>
+
+
+
+<script src="../../../assets/plugins\jquery.min.js"></script>
+<script src="../../../assets/plugins\popper.min.js"></script>
+<script src="../../../assets/plugins\bootstrap4\js\bootstrap.min.js"></script>
+
+<script src="../../../assets/plugins\select2\dist\js\select2.full.min.js"></script>
+<script src="../../../assets/plugins\owl-carousel\owl.carousel.min.js"></script>
+<script src="../../../assets/plugins\jquery-bar-rating\dist\jquery.barrating.min.js"></script>
+<script src="../../../assets/plugins\lightGallery\dist\js\lightgallery-all.min.js"></script>
+<script src="../../../assets/plugins\slick\slick\slick.min.js"></script>
+<script type="text/javascript" src="https://www.medfoliotechnologies.com/js/wow.js"></script>
+
+<script src="../../../assets/home\js\script.js" type="be9dfe49072cb4d1912e7519-text/javascript"></script>
+<script src="../../../assets/home\js\output.min.js" type="be9dfe49072cb4d1912e7519-text/javascript"></script>
+
+
+<script src="../../../assets/js/rocket-loader.min.js" data-cf-settings="be9dfe49072cb4d1912e7519-|49" defer=""></script>
+
+<script>
+var hideTimeout = null;
+
+var show = function () {
+    $('.sticky-container').show();
+}
+
+var hide = function () {
+    $('.sticky-container').hide();
+}
+
+$(document).ready(function () {
+
+    $(window).scroll(function (e) {
+        if (hideTimeout) {
+            window.clearTimeout(hideTimeout);
+            hideTimeout = null;
+        }
+        hide();
+
+        window.setTimeout(show, 1000);
+    });
+
+});
+
+
+</script>
+
+
+
+<script>
+
+$(window).ready(function () {
+    setInterval(function () {
+        $('.loader-container').addClass("active")
+    }, 1500);
+
+});
+
+</script>
+<!-- custom code-->
+
+<script src="../../../assets/js\main.js"></script>
+<!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.8.3/TweenMax.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script> -->
+
+<script type="text/javascript">
+
+const items = document.querySelectorAll(".accordion a");
+
+function toggleAccordion() {
+    this.classList.toggle('active');
+    this.nextElementSibling.classList.toggle('active');
+}
+
+items.forEach(item => item.addEventListener('click', toggleAccordion));
+
+</script>
+
+<script>
+wow = new WOW({
+    animateClass: 'animated',
+    offset: 100,
+    callback: function (box) {
+        console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+    }
+});
+wow.init();
+document.getElementById('moar').onclick = function () {
+    var section = document.createElement('section');
+    section.className = 'section--purple wow fadeInDown';
+    this.parentNode.insertBefore(section, this);
+};
+</script>
+
+<script>
+$("#prsnl").click(function () {
+    $("#personal").show();
+    $("#medical").hide();
+    $("#prsnl").addClass('dashboard_right_tab_btn_act');
+    $("#mdcl").removeClass('dashboard_right_tab_btn_act');
+});
+$("#mdcl").click(function () {
+    $("#personal").hide();
+    $("#medical").show();
+    $("#prsnl").removeClass('dashboard_right_tab_btn_act');
+    $("#mdcl").addClass('dashboard_right_tab_btn_act');
+});
+</script>
+
+
+<style>
+    body.modal-open {
+        padding-right: 0 !important;
+    }
+
+    input[type=checkbox] {
+        display: none !important;
+    }
+
+    .profile_sec {
+        padding-top: 10px;
+    }
+
+    .ps-footer--block .ps-block__list li a {
+        opacity: 0.6;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    input[type=checkbox]:checked+label:after {
+        display: none;
+    }
+
+    .accordion {
+        margin: 0px !important;
+        padding: 0 !important;
+        width: 100%;
+        float: left;
+    }
+
+    .accordion-item {
+        width: 100%;
+        float: left;
+        margin-bottom: 10px;
+
+
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .accordion a {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: 100%;
+        border: 0 !important;
+        padding: 0 50px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: #050500 !important;
+        font-size: 13px !important;
+        font-weight: normal !important;
+
+        opacity: 1 !important;
+    }
+
+    .accordion a:hover,
+    .accordion a:hover::after {
+        cursor: pointer;
+        color: #707070;
+    }
+
+    .accordion a:hover {
+        border: 1px solid #707070;
+    }
+
+    .accordion a.active {
+        border: 1px solid #707070;
+    }
+
+    .accordion a::after {
+        font-family: 'FontAwesome';
+        content: "\f105";
+        position: absolute;
+        float: right;
+        right: 1rem;
+        /* font-size: 1rem; */
+        color: #B2B2B2;
+        font-size: 20px;
+        padding: 5px;
+        font-size: 30px;
+        text-align: center;
+        right: 5px;
+        top: 5px;
+        font-size: 20px;
+    }
+
+    .accordion a.active::after {
+        font-family: 'FontAwesome';
+        content: "\f106";
+        color: #707070;
+
+    }
+
+    .accordion .content {
+        opacity: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        clear: both;
+        -webkit-transition: all 0.2s ease 0.15s;
+        transition: all 0.2s ease 0.15s;
+        background: #f3f3f3;
+    }
+
+    .accordion .content p {
+        font-size: 16px;
+        font-weight: 300;
+        padding-left: 30px;
+
+    }
+
+    .accordion .content.active {
+        opacity: 1;
+        max-height: 100%;
+        border: 0 !important;
+        -webkit-transition: all 0.35s ease 0.15s;
+        transition: all 0.35s ease 0.15s;
+        padding: 0;
+    }
+
+    .owl-carousel .owl-dots .owl-dot.active {
+        background-color: #C0C0C0;
+        border-color: #C0C0C0;
+        width: 10px;
+        border-radius: 20px;
+    }
+
+    .ps-header {
+        background-color: #00AAFF;
+        background-image: linear-gradient(#00AAFF, #005BEC);
+
+    }
+
+    .loader-container {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1999;
+        height: 100%;
+        opacity: 1;
+        overflow: hidden;
+        background-color: #fff;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+
+    .loader-container:before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        overflow: hidden;
+    }
+
+    .loader-container:before {
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+
+   
+
+
+    @keyframes b {
+        0% {
+            background-position: 0 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0 50%;
+        }
+    }
+
+    @keyframes workGridItem-onboard {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, -100px, 0) scale3d(0.95, 0.95, 0.95) rotate3d(1, 0.05, 0, 5deg);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateZ(0) scaleX(1) rotate3d(0, 0, 0, 0);
+        }
+    }
+
+    @keyframes spin-it {
+        from {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes will-scale {
+        from {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+        }
+
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
+
+    @keyframes pageTransAnim-onboard {
+        0% {
+            transform: translate3d(-100vw, 0, 0);
+        }
+
+        to {
+            transform: translateZ(0);
+        }
+    }
+
+    .PageTransitions__mainWrapperAnimation--onboard {
+        animation-name: pageTransAnim-onboard;
+        animation-timing-function: 0cubic-bezier 0.4, 0.1, 0.1, 1;
+        animation-duration: 0.75s;
+        animation-fill-mode: backwards;
+    }
+
+    .col-6 {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+        float: left;
+    }
+
+    .c-timeline {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .c-timeline__item {
+        position: relative;
+        padding: 0 2rem 2rem;
+    }
+
+    .c-timeline__item:after,
+    .c-timeline__item:before {
+        content: " ";
+        width: 0.5rem;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -1rem;
+        background-color: #64c2e3;
+    }
+
+    .c-timeline__item:after {
+        transform-origin: top right;
+        transform: scaley(0);
+        transition: transform 1s ease 0.25s;
+    }
+
+    .c-timeline__item.active:after {
+        background-color: #ffff00;
+        transform: scaley(1);
+    }
+
+    .c-timeline__item.active .c-timeline__item-circle {
+        border-color: #ffff00;
+        -webkit-animation: scaleCircle 0.4s forwards;
+        animation: scaleCircle 0.4s forwards;
+    }
+
+    .c-timeline__item:last-child:after,
+    .c-timeline__item:last-child:before {
+        border-radius: 5px;
+        display: none;
+    }
+
+    .c-timeline__item-circle {
+        border-radius: 50%;
+        background: #2296bf;
+        height: 1rem;
+        width: 1rem;
+        display: block;
+        position: absolute;
+        left: -1.7rem;
+        top: 0;
+        border: 0.5rem solid #64c2e3;
+        z-index: 1;
+        transition: border-color 0.5s ease;
+    }
+
+    @-webkit-keyframes scaleCircle {
+        0% {
+            transform: scale(1);
+        }
+
+        33% {
+            transform: scale(1.2);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes scaleCircle {
+        0% {
+            transform: scale(1);
+        }
+
+        33% {
+            transform: scale(1.2);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .c-trigger {
+        position: absolute;
+        top: 2rem;
+        background-color: #ffff00;
+        padding: 1rem;
+        display: block;
+        right: 2rem;
+        color: black;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .pen__container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .pen__heading {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .pen__intro {
+        margin-bottom: 3rem;
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.6);
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .home-hero {
+        width: 100%;
+        position: relative;
+        display: inline-block;
+        height: 80vh;
+    }
+
+    .banner {
+        padding-bottom: 0;
+    }
+
+    .banner__background {
+        min-height: 540px;
+    }
+
+    .home-hero .home-slides {
+        min-height: 580px;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 80px;
+    }
+
+    .banner__background.home {
+
+        -webkit-transition: all 1500ms ease-in-out;
+        -o-transition: all 1500ms ease-in-out;
+        transition: all 1500ms ease-in-out;
+    }
+
+    .home-hero .copy--title h2 {
+        color: #414040;
+    }
+
+    .home-hero .home-slides .owl-item.active .copy--body p {
+        color: #000;
+        opacity: 0.5;
+    }
+
+    .home-hero .copy a {
+        background: rgb(0 0 0 / 30%);
+    }
+
+    .home-hero .copy a:hover {
+        background: rgb(0 0 0 / 50%);
+    }
+
+    @media (max-width: 992px) {
+        .banner__background {
+            min-height: 760px;
+        }
+
+        .home-hero .home-slides {
+            min-height: 800px;
+        }
+
+        .home-hero .home-slides .wrapper-container-el {
+            width: 50%;
+            padding-top: 10%;
+        }
+
+        .container-illu .el-device {
+            height: 80%;
+        }
+
+        .header-slides {
+            padding-top: 0;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .home-hero .home-slides .wrapper-container-el {
+            width: 80%;
+        }
+
+        .home-hero .home-slides {
+            min-height: 700px;
+        }
+
+        .banner__background {
+            min-height: 700px;
+        }
+    }
+
+
+
+    .slide-progress {
+        width: 0;
+        max-width: 100%;
+        height: 6px;
+        background: rgba(0, 0, 0, 0.35);
+        border-radius: 30px;
+    }
+
+    .slide-progress-main {
+        width: 50%;
+        position: var(--relative);
+        z-index: 5555;
+        margin: 10px 0 20px;
+        height: 6px;
+        background: rgba(0, 0, 0, 0.1)
+    }
+
+    .home-hero .home-slides .owl-nav .owl-next span {
+        font-size: 55px;
+        color: #666;
+        line-height: 0;
+    }
+
+    .home-hero .home-slides .owl-nav button {
+        background-color: transparent !important;
+        font: 70px/45px FontAwesome;
+        color: #0000003b;
+        opacity: 0.5;
+    }
+
+    .home-hero .home-slides .owl-nav button:hover {
+        background-color: transparent !important
+    }
+
+    .home-hero .home-slides .owl-nav button.owl-prev {
+        display: block;
+    }
+
+    .home-hero .home-slides .owl-nav .owl-prev span {
+        font-size: 55px;
+        color: #666;
+    }
+
+    .home-hero .home-slides .owl-nav .owl-prev:before {
+        content: '\f104';
+    }
+
+    .home-hero .home-slides .owl-nav .owl-next:before {
+        content: '\f105';
+    }
+
+    .home-hero .home-slides .owl-nav span {
+        display: none;
+    }
+
+    @media (min-width:1280px) {
+        .ps-blog__thumbnail img {
+
+            height: 180px;
+            object-fit: fill;
+        }
+    }
+
+    .blogname p {
+        color: #00AAFF;
+    }
+
+    .blogname a {
+        padding: 0px 4px 0px 4px;
+        color: #000000;
+        opacity: 0.5;
+        font-size: 14px;
+    }
+
+    .ps-blog--latset .ps-blog__content {
+        padding: 20px 20px;
+    }
+
+    .ps-blog--latset .ps-blog__thumbnail img {
+        border-radius: 0px;
+        padding-top: 15px;
+    }
+
+    .share-time a {
+        font-size: 13px;
+    }
+
+    .ps-blog--latset .ps-blog__thumbnail:hover img {
+        transform: none;
+    }
+
+    .blogname {
+        justify-content: end;
+    }
+
+    /*.shadows a:hover {*/
+    /*  font-weight:bold;*/
+    /*}*/
+
+    /*a.shadows:hover {*/
+    /*  font-weight:normal;*/
+    /*  text-shadow:0px 0px 5px white;*/
+    /*}*/
+    /*.ps-footer--block .ps-block__list li a{
+        opacity:0.6;
+        filter:brightness(0.8);
+    }*/
+    .shadows a:hover {
+        color: #ffffff !important;
+        opacity: 1 !important;
+
+        filter: brightness(120%) !important;
+        font-size: 15.05px !important;
+    }
+
+    .ps-social li {
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        .ps-social__link {
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+    }
+
+
+    .progress-bar {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+        background-color: transparent;
+    }
+
+    .progress-step {
+        text-align: center;
+        position: relative;
+    }
+
+    .progress-step:before,
+    .progress-step:after {
+        background-color: #3F3F3F;
+        content: "";
+        height: 2px;
+        position: absolute;
+        z-index: 1;
+        top: 64px;
+    }
+
+    .progress-step:after {
+        left: 0;
+        width: 100%;
+    }
+
+    .progress-step:last-of-type.is-active:after {
+        background-color: #3F3F3F;
+    }
+
+    .progress-step:last-of-type:after {
+        left: 50%;
+        width: 50%;
+        display: none;
+    }
+
+    .progress-step .step-count {
+        background-color: #3F3F3F;
+        height: 15px;
+        width: 15px;
+        float: left;
+        border-radius: 50%;
+        color: white;
+        line-height: 30px;
+        z-index: 100;
+        font-size: 0.8rem;
+        font-weight: 500;
+        position: relative;
+    }
+
+    .progress-step .step-count:before {
+        content: '';
+    }
+
+    .progress-step.is-active .step-description {
+        font-weight: 500;
+    }
+
+    /* .progress-step.is-active:after {
+  background-color: #dad6ce;
+} */
+    .progress-step.is-active~.progress-step .step-count {
+        background-color: #dad6ce;
+    }
+
+    .progress-step.is-active~.progress-step:after {
+        background-color: #dad6ce;
+    }
+
+    .step-description {
+        font-size: 12px;
+        color: #050500;
+        float: left;
+        width: 100%;
+        text-align: left
+    }
+
+    .step_description_sort {
+        font-size: 10px;
+        color: #050500;
+        opacity: 0.5;
+        float: left;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+        min-height: 29px;
+        position: relative;
+    }
+
+    .progress-step.is-active .step-count::after {
+        border: 2px solid #00AAFF;
+        border-radius: 50%;
+        content: '';
+        height: 23px;
+        width: 24px;
+        position: absolute;
+        left: -4px;
+        bottom: -4px;
+    }
+
+    @media (max-width: 1070px) {
+        .progress-bar {
+            display: inline-block;
+        }
+
+        .step-description {
+            padding-left: 50px;
+        }
+
+        .progress-step {
+            width: 100%;
+            float: left;
+            margin-bottom: 30px;
+        }
+
+        .progress-step:after {
+            left: 0;
+            width: 13%;
+            transform: rotate(90deg);
+        }
+
+        .progress-step:before,
+        .progress-step:after {
+            left: -19px;
+            top: 96%;
+            width: 46px !important;
+            ;
+            transform: rotate(90deg);
+        }
+
+        .progress-step:last-child:before {
+            display: none;
+        }
+
+        .progress-step .step-count {
+            position: absolute;
+            top: 14px;
+            left: -3px;
+        }
+    }
+
+    @media (max-width: 991px) {}
+</style>
+
+
+
+

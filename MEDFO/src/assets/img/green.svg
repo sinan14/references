@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" height="42" viewBox="0 0 42 42">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#46ff01"/>
+      <stop offset="1" stop-color="#21d100"/>
+    </radialGradient>
+    <filter id="Path_91525" x="10.948" y="3.841" width="23.052" height="23.061" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_91526" x="3.308" y="11.447" width="23.096" height="23.11" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_91527" x="21.122" y="21.624" width="17.385" height="17.39" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-3"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_91528" x="19.098" y="19.597" width="17.366" height="17.373" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-4"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_38583" data-name="Group 38583" transform="translate(5776.602 3131)">
+    <circle id="Ellipse_1059" data-name="Ellipse 1059" cx="21" cy="21" r="21" transform="translate(-5776.602 -3131)" fill="url(#radial-gradient)"/>
+    <g id="_844219" data-name="844219" transform="translate(-5768.793 -3123.89)">
+      <g id="Group_32988" data-name="Group 32988" transform="translate(7.641 0.23)">
+        <g id="Group_32987" data-name="Group 32987">
+          <g transform="matrix(1, 0, 0, 1, -15.45, -7.34)" filter="url(#Path_91525)">
+            <path id="Path_91525-2" data-name="Path 91525" d="M125.6,1.764a5.231,5.231,0,0,0-7.4,0l-5.122,5.122,7.406,7.406L125.6,9.163a5.237,5.237,0,0,0,0-7.4Zm-5.251,3.027-2.331,2.3-.007.007a.674.674,0,0,1-.939-.966l2.338-2.3.007-.007a.671.671,0,1,1,.933.966Z" transform="translate(-97.63 7.11)" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_32990" data-name="Group 32990" transform="translate(0 7.839)">
+        <g id="Group_32989" data-name="Group 32989">
+          <g transform="matrix(1, 0, 0, 1, -7.81, -14.95)" filter="url(#Path_91526)">
+            <path id="Path_91526-2" data-name="Path 91526" d="M6.682,112.818l-5.156,5.163a5.247,5.247,0,1,0,7.44,7.4l5.129-5.149Z" transform="translate(7.81 -97.87)" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_32992" data-name="Group 32992" transform="translate(17.818 18.016)">
+        <g id="Group_32991" data-name="Group 32991">
+          <g transform="matrix(1, 0, 0, 1, -25.63, -25.13)" filter="url(#Path_91527)">
+            <path id="Path_91527-2" data-name="Path 91527" d="M270.967,263.418l-7.292,7.3a5.2,5.2,0,0,0,7.292-7.3Z" transform="translate(-238.05 -238.29)" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_32994" data-name="Group 32994" transform="translate(15.784 15.989)">
+        <g id="Group_32993" data-name="Group 32993">
+          <g transform="matrix(1, 0, 0, 1, -23.59, -23.1)" filter="url(#Path_91528)">
+            <path id="Path_91528-2" data-name="Path 91528" d="M238.778,233.418a5.206,5.206,0,0,0-4.129,8.373l7.292-7.292a5.146,5.146,0,0,0-3.163-1.081Z" transform="translate(-209.98 -210.32)" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

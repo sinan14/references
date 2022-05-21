@@ -1,0 +1,371 @@
+a{
+  text-decoration: underline !important;
+  cursor: pointer;
+}
+.main-list {
+  max-width: 150%;
+ margin-top: 10px;
+ display: block;
+ padding: 0.5rem 1rem;
+ background-color: #00496E;
+ border-radius: 50px;
+}
+
+/* Accordion styles */
+.tabs {
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+}
+
+.tab {
+  width: 100%;
+  color: white;
+  overflow: hidden;
+  padding-top: 14px;
+  margin-left: 2px;
+  border-radius: 43px;
+  background-color: #00496E;
+  margin: 40px 0 35px 0;
+}
+.tab-label {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  /* Icon */
+}
+.tab-label:hover {
+  //background: #1a252f;
+}
+.tab-label::after {
+  content: "❯";
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  transition: all 0.35s;
+}
+.tab-content {
+  max-height: 0;
+  padding: 0 1em;
+  color: white;
+  width: 100%;
+  background-color: #00496E;
+  transition: all 0.35s;
+}
+.tab-close {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1em;
+  font-size: 0.75em;
+  background: #2c3e50;
+  cursor: pointer;
+}
+.tab-close:hover {
+  background-color: #00496E;
+}
+
+input:checked + .tab-label {
+  background-color: #00496E;
+}
+input:checked + .tab-label::after {
+  transform: rotate(90deg);
+}
+input:checked ~ .tab-content {
+  max-height: 200%;
+  padding: 2em;   
+}
+
+.innerr_table_style table{
+  align-content: left;   
+}
+.innerr_table_style table td{
+  opacity: 0.5 !important;
+}
+
+/*Button CSS*/
+
+
+.btn-answer{
+  background-color: #00496E;
+  border: 1px solid black;
+  border-radius: 10.25em;
+  color: white;
+  opacity: 0.5;
+}
+
+.btn-excel-rounded{
+  float: right;
+  margin-left: 12px;
+  background-color: #014466;
+  border-radius: 7px;
+}
+
+
+.btn{
+  border-radius: 10px;
+  // font-weight: 400;
+}
+
+.btn-dark-rounded{
+  margin-left: 12px;
+  background-color: #043852;
+  border-radius: 10.25em;
+}
+.btn-inverse-dark {
+    background-color: rgba(79, 74, 96, 0.2);
+    background-image: none;
+    border-color: rgba(74, 64, 109, 0);
+  }
+  
+  .btn-inverse-dark:not(.btn-inverse-light) {
+    color: #4f4a60;
+  }
+  
+  .btn-inverse-dark:hover {
+    color: #ffffff;
+    background-color: #4b416b;
+    border-color: #4f4a60;
+  }
+  
+  .btn-inverse-dark.focus, .btn-inverse-dark:focus {
+    box-shadow: 0 0 0 3px rgba(79, 74, 96, 0.5);
+  }
+  
+  .btn-inverse-dark.disabled, .btn-inverse-dark:disabled {
+    color: #4f4a60;
+    background-color: transparent;
+  }
+  
+  .btn-inverse-dark.active, .btn-inverse-dark:active,
+  .show > .btn-inverse-dark.dropdown-toggle {
+    color: #ffffff;
+    background-color: #4f4a60;
+    border-color: #4f4a60;
+  }
+  
+  .btn-dark, .btn-dark:hover {
+    box-shadow: 0 2px 2px 0 rgba(79, 74, 96, 0.14), 0 3px 1px -2px rgba(79, 74, 96, 0.2), 0 1px 5px 0 rgba(79, 74, 96, 0.12);
+      justify-content: right;
+      border-radius: 30px;
+  }
+
+  .btn-green{
+      background-color: #55b629;
+  }
+
+   .btn .btn-dark:hover{
+      background-color: #55b629;
+  }
+  
+  
+.form-control{
+    background: #033147;
+    border: 1px solid #ced4da;
+  }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    
+.modal-body, .modal-header, .modal-footer{
+  background-color: #0b4866;
+  color:#fff;
+  width: 100%;
+  text-align: center;
+  border-bottom: none !important;
+  border-top: none !important;
+}
+
+.modal-header{
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+}
+.modal-footer{
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+justify-content: center;
+}
+
+
+    
+  label{
+      color: whitesmoke;
+  }
+  .data{
+      padding-top: 2%;
+      background-color: #053449;
+      align-content: center;
+      justify-content: center;
+  }
+  
+
+
+  a{
+      color: white;
+  }
+  
+  .icon-data{
+      align-content: center;
+      color:white;
+      position: relative;
+      border-radius: 20px;
+  }
+  
+  .card-data{
+      padding:10px;
+      align-content: center;
+      padding-right: 20px;
+      color:white;
+      position: relative;
+      background-color: #00496e;
+      
+  }
+  
+  .span-data{
+      justify-content: left;
+      background-color: #0a3347;
+      color:white;
+      border-radius: 20px;
+      margin-left: 30px;
+      padding: 4px;
+  }
+  .span-data a {
+      padding-left: 10px;
+  }
+  
+  .reminders-data{
+    margin-top: 2%;
+    background-color: #00496E;
+    color: white;
+    border-radius: 25px;
+    width: 61rem;
+    height: 63px;
+    transition: all 0.35s;
+    margin-left: 10%;
+    justify-content: left;
+    padding: 2%;
+  }
+
+  .reminders-data a span{
+      align-content: center;
+      justify-content: space-between;
+  }
+  
+  
+
+$midnight: #2c3e50;
+$clouds: #ecf0f1;
+// General
+body {
+color: $midnight;
+background: $clouds;
+padding: 0 1em 1em;
+}
+h1 {
+margin: 0;
+line-height: 2;
+text-align: center;
+}
+h2 {
+margin: 0 0 .5em;
+font-weight: normal;
+}
+input {
+position: absolute;
+opacity: 0;
+z-index: -1;
+}
+// Layout
+.row {
+display:flex;
+.col {
+  flex:1;
+  &:last-child {
+    margin-left: 1em;
+  }
+}
+}
+
+
+
+
+/* Accordion styles */
+
+
+.row {
+  display: flex;
+}
+.row .col {
+  flex: 1;
+}
+.row .col:last-child {
+  margin-left: 1em;
+}
+
+
+
+
+
+
+.table{
+  color: #FFFFFF;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+// ----------------new-------------
+
+// .mainbox1 {
+//   background: #00496e !important;
+//   height: 100px;
+//   width: 100%;
+//   border-radius: 84px;
+// }
+// .boxaaa {
+//   height: 100px;
+//   background: antiquewhite;
+//   width: 28%;
+//   margin: 2px 2px;
+// }
+::ng-deep  .tab2-card .nav-tabs .nav-item a {
+        align-content: center !important;
+        color: #FFFFFF;
+        opacity: 0.7;
+
+  }
+
+
+  ::ng-deep  .tab2-card .nav-tabs .nav-item a.nav-link.activeul.justify-content-start.nav.nav-tabs.Qiuz_page .tab2-card .nav-tabs .nav-link {
+    align-content: center !important;
+    color: #FFFFFF;
+    opacity: 0.5 !important;
+}
+::ng-deep   .tab2-card .nav-tabs .nav-item a {
+  // padding: 4px 35px !important;
+  text-decoration: none;
+}
+
+.set-winner{
+  color: yellow;
+  //background-color: #0b4866;
+
+  .kendo-grid table tr td{
+    background-color: cadetblue;
+  }
+}
+
+
+.crown_item{
+  position: absolute;
+  width: 30px;
+  margin-top: -18px;
+  margin-left: -52px;
+}
+
+

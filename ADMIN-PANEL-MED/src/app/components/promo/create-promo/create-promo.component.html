@@ -1,0 +1,504 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid side_innerpage_tab">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class=" tab2-card">
+
+
+                <div class="card-body" *ngIf="disableTab('Create New Promo')">
+
+                    <h5 *ngIf="editable_flag"> Edit Promo </h5>
+                    <h5 *ngIf="viewonly_flag"> View Promo </h5>
+                    <h5 *ngIf="!viewonly_flag && !editable_flag"> Create New Promo </h5>
+
+
+                    <div class="mt-4 row">
+                        <div class="col-md-2 d-flex align-items-center">
+                            <label class="mb-0">Choose Type</label>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- [attr.disabled]="viewonly_flag ? '' : null"  -->
+                            <button [attr.disabled]="viewonly_flag ? '' : null" type="button" (click)="type('Medimall')"
+                                [ngClass]="Type == 'Medimall' ? 'active' : '' "
+                                class="btn btn-dark btn-sm">Medimall</button>
+                            <button [attr.disabled]="viewonly_flag ? '' : null" type="button"
+                                (click)="type('Premium Subscription')"
+                                [ngClass]="Type == 'Premium Subscription' ? 'active' : '' "
+                                class="btn btn-dark btn-sm ml-3">Premium Subscription</button>
+                            <button [attr.disabled]="viewonly_flag ? '' : null" type="button"
+                                (click)="type('Subscription')" [ngClass]="Type == 'Subscription' ? 'active' : '' "
+                                class="btn btn-dark btn-sm ml-3">Subscription</button>
+                            <!-- <div class="tabs" style="text-align: right;padding: 0;">
+                                <input id="tab7" type="radio" name="tabs" checked>
+                                <label for="tab7">Medimall</label>
+                                <input id="tab8" type="radio" name="tabs" >
+                                <label for="tab8">Premium Membership</label>
+                            
+                            </div> -->
+                        </div>
+                        <small for="type" class="form-text text-danger" *ngIf="Promo_Form.controls['type'].errors?.required && 
+                        (Promo_Form.controls['type'].dirty ||  
+                        Promo_Form.controls['type'].touched || 
+                        (Promo_Form.controls['type'].untouched  && submitted ) )">
+                            Type required.
+                        </small>
+                    </div>
+
+
+
+                    <div class="mt-4 row" *ngIf="!premiun_flag">
+                        <div class="col-md-2  d-flex align-items-center">
+                            <label class="mb-0">Customer Type</label>
+                        </div>
+                        <div class="col-md-5" [attr.disabled]="viewonly_flag ? '' : null">
+                            <button [attr.disabled]="viewonly_flag ? '' : null" type="button"
+                                (click)="cust_type('normal')" class="btn btn-dark btn-sm "
+                                [ngClass]="CustType == 'normal' ? 'active' : '' ">Normal
+                                Customer</button>
+                            <button [attr.disabled]="viewonly_flag ? '' : null" type="button"
+                                (click)="cust_type('premium')" class="btn btn-dark btn-sm ml-3"
+                                [ngClass]="CustType == 'premium' ? 'active' : '' ">Premium Customer</button>
+                            <!-- <div class="tabs" style="text-align: right;padding: 0;">
+                                <input id="tab5" type="radio" name="tabs" checked>
+                                <label for="tab5">Normal Customer</label>
+                                <input id="tab6" type="radio" name="tabs" >
+                                <label for="tab6">Premium Customer</label>
+
+                            
+                            </div> -->
+                        </div>
+                        <small for="customerType" class="form-text text-danger" *ngIf="Promo_Form.controls['customerType'].errors?.required && 
+                        (Promo_Form.controls['customerType'].dirty ||  
+                        Promo_Form.controls['customerType'].touched || 
+                        (Promo_Form.controls['customerType'].untouched  && submitted ) )">
+                            Customer Type required.
+                        </small>
+                    </div>
+                    <br>
+
+
+                    <div class="row" *ngIf="medi_flag">
+                        <div class="col-md-2  d-flex align-items-center">
+                            <label class="mb-0">Promo Type</label>
+                        </div>
+
+                        <div class="mt-1 col-md-10" [attr.disabled]="viewonly_flag ? '' : null">
+                            <button [attr.disabled]="viewonly_flag ? '' : null" type="button"
+                                (click)="promo_type('normal')" class="btn btn-dark"
+                                [ngClass]="PromoType == 'normal' ? 'active' : '' ">Normal Order
+                                Promotions</button>
+                            <button [attr.disabled]="viewonly_flag ? '' : null" type="button"
+                                (click)="promo_type('first')" class="btn btn-dark ml-1"
+                                [ngClass]="PromoType == 'first' ? 'active' : '' ">First Order
+                                Promotions</button>
+                            <button [attr.disabled]="viewonly_flag ? '' : null" type="button"
+                                (click)="promo_type('third')" class="btn btn-dark ml-1"
+                                [ngClass]="PromoType == 'third' ? 'active' : '' ">Third Order
+                                Promotions</button>
+                            <button [attr.disabled]="viewonly_flag ? '' : null" type="button"
+                                (click)="promo_type('fifth')" class="btn btn-dark ml-1"
+                                [ngClass]="PromoType == 'fifth' ? 'active' : '' ">Fifth Order
+                                Promotions</button>
+                            <!-- <div class="tabs" style="text-align: right;padding: 0;">
+                                    <input id="tab1" type="radio" name="tabs" checked>
+                                    <label for="tab1">Normal Order Promotions</label>
+                                    <input id="tab2" type="radio" name="tabs" >
+                                    <label for="tab2">First Order Promotions</label>
+                                    <input id="tab3" type="radio" name="tabs" >
+                                    <label for="tab3">Third Order Promotions</label>
+                                    <input id="tab4" type="radio" name="tabs" >
+                                    <label for="tab4">Fifth Order Promotions</label>
+    
+                                
+                                </div> -->
+
+                        </div>
+                        <small for="promotionType" class="form-text text-danger" *ngIf="Promo_Form.controls['promotionType'].errors?.required && 
+                        (Promo_Form.controls['promotionType'].dirty ||  
+                        Promo_Form.controls['promotionType'].touched || 
+                        (Promo_Form.controls['promotionType'].untouched  && submitted ) )">
+                            Promotion Type required.
+                        </small>
+                    </div>
+                    <br>
+                    <form [formGroup]="Promo_Form">
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="validationCustom01" class="mb-1">Promotion Name</label>
+                                <!-- <input class="form-control" id="validationCustom01" type="text" placeholder="Diwali Special" [attr.readonly]="editFlag"> -->
+                                <input formControlName="name" class="form-control" id="validationCustom01" type="text">
+                                <small for="name" class="form-text text-danger" *ngIf="Promo_Form.controls['name'].errors?.required && 
+                        (Promo_Form.controls['name'].dirty ||  
+                        Promo_Form.controls['name'].touched || 
+                        (Promo_Form.controls['name'].untouched  && submitted ) )">
+                                    Promotion Name required.
+                                </small>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="validationCustom02" class="mb-1">Promotion Code</label>
+                                <!-- <input class="form-control" id="validationCustom02" type="text" placeholder="D28734gUHGh" readonly="editFlag"> -->
+                                <input formControlName="code" class="form-control" id="validationCustom02" type="text">
+                                <small for="code" class="form-text text-danger" *ngIf="Promo_Form.controls['code'].errors?.required && 
+                        (Promo_Form.controls['code'].dirty ||  
+                        Promo_Form.controls['code'].touched || 
+                        (Promo_Form.controls['code'].untouched  && submitted ) )">
+                                    Promotion Code required.
+                                </small>
+
+                                <small for="code" class="form-text text-danger"
+                                    *ngIf="Promo_Form.controls['code'].errors?.minlength">
+                                    Should Be Min 5 Characters.
+                                </small>
+
+                                <small for="code" class="form-text text-danger"
+                                    *ngIf="Promo_Form.controls['code'].errors?.maxlength">
+                                    Max 15 Characters.
+                                </small>
+
+                            </div>
+                            <div class="form-group col-md-3">
+                                <div *ngIf="!premiun_flag">
+                                    <label for="validationCustom02" class="mb-1">Choose Category</label>
+                                    <select formControlName="category" class="form-control classic"
+                                        id="validationCustom02" readonly="editFlag">
+                                        <option value="medicine">Medicine</option>
+                                        <option value="healthcare">HealthCare</option>
+                                    </select>
+                                    <small for="category" class="form-text text-danger" *ngIf="Promo_Form.controls['category'].errors?.required && 
+                                    (Promo_Form.controls['category'].dirty ||  
+                                    Promo_Form.controls['category'].touched || 
+                                    (Promo_Form.controls['category'].untouched  && submitted ) )">
+                                        Category required.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3"></div>
+                            <!-- <div class="form-group col-md-3">
+                                <label for="validationCustom02" class="mb-1">Choose Product</label>
+                                    <select class="form-control classic" id="validationCustom02">
+                                        <option>Puma Mask</option>
+                                        <option>Tooth Paste</option>
+                                    </select>
+                            </div> -->
+
+                            <div class="form-group col-md-3">
+                                <label for="validationCustom01" class="mb-1">Date Range From</label>
+                                <!-- <input class="form-control" id="validationCustom01" type="date" placeholder="Diwali Special">  -->
+                                <div class="coc-block">
+                                    <input formControlName="from" class="form-control " id="validationCustom01"
+                                        type="date" min={{today}} (change)="Date_Change()" onkeydown="return false"
+                                        (click)="Date_Click($event)">
+                                </div>
+                                <small for="from" class="form-text text-danger" *ngIf="Promo_Form.controls['from'].errors?.required && 
+                                (Promo_Form.controls['from'].dirty ||  
+                                Promo_Form.controls['from'].touched || 
+                                (Promo_Form.controls['from'].untouched  && submitted ) )">
+                                    From Date required.
+                                </small>
+                            </div>
+                            <div class="col-md-3">
+                                <label  class="mb-1">To</label>
+                                <input formControlName="to" class="form-control" id="validationCustom02" type="date"
+                                    min={{temp_dt}} (change)="Date_Change_To()" onkeydown="return false">
+                                <small for="to" class="form-text text-danger" *ngIf="Promo_Form.controls['to'].errors?.required && 
+                                    (Promo_Form.controls['to'].dirty ||  
+                                    Promo_Form.controls['to'].touched || 
+                                    (Promo_Form.controls['to'].untouched  && submitted ) )">
+                                    To Date required.
+                                </small>
+                            </div>
+                            <!-- <div class="form-group col-md-2">
+                            <label for="validationCustom02" class="mb-1">Day</label>
+                            <input class="form-control" id="validationCustom02" type="date" placeholder="ere54e646">
+                        </div> -->
+                            <!-- (input)="Percentage_Check($event)" -->
+                            <div class="form-group col-md-3">
+                                <label for="validationCustom02" class="mb-1">Percentage(%)</label>
+                                <input formControlName="percentage" class="form-control" id="validationCustom02"
+                                    type="text">
+                                <small for="percentage" class="form-text text-danger" *ngIf="Promo_Form.controls['percentage'].errors?.required && 
+                                (Promo_Form.controls['percentage'].dirty ||  
+                                Promo_Form.controls['percentage'].touched || 
+                                (Promo_Form.controls['percentage'].untouched  && submitted ) )">
+                                    Percentage required.
+                                </small>
+                                <small for="percentage" class="form-text text-danger"
+                                    *ngIf="Promo_Form.controls['percentage'].errors?.max">
+                                    Percentage Error.
+                                </small>
+                                <small for="percentage" class="form-text text-danger"
+                                    *ngIf="Promo_Form.controls['percentage'].errors?.min">
+                                    Percentage Should Be More Than 0.
+                                </small>
+                                <small for="percentage" class="form-text text-danger"
+                                    *ngIf="Promo_Form.controls['percentage'].errors?.pattern">
+                                    Letters Not Allowed.
+                                </small>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!-- (keyup)="Min_Amt($event)" -->
+                                <label for="validationCustom02" class="mb-1">Minimum Purchase Amount</label>
+                                <input formControlName="purchaseAmount" class="form-control" id="validationCustom02"
+                                    type="text">
+                                <small for="purchaseAmount" class="form-text text-danger" *ngIf="Promo_Form.controls['purchaseAmount'].errors?.required && 
+                                (Promo_Form.controls['purchaseAmount'].dirty ||  
+                                Promo_Form.controls['purchaseAmount'].touched || 
+                                (Promo_Form.controls['purchaseAmount'].untouched  && submitted ) )">
+                                    Minimum Purchase Amount required.
+                                </small>
+                                <small for="purchaseAmount" class="form-text text-danger"
+                                    *ngIf="Promo_Form.controls['purchaseAmount'].errors?.min">
+                                    Minimum Purchase Amount Should Be More Than 0.
+                                </small>
+                                <small for="purchaseAmount" class="form-text text-danger"
+                                    *ngIf="Promo_Form.controls['purchaseAmount'].errors?.pattern">
+                                    Letters Not Allowed.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="validationCustom01" class="mb-1">Maximum Amount</label>
+                                <!-- (keyup)="Max_Amt($event)" -->
+                                <input formControlName="maximumAmount" class="form-control" id="validationCustom01"
+                                    type="text">
+                                <small for="maximumAmount" class="form-text text-danger" *ngIf="Promo_Form.controls['maximumAmount'].errors?.required && 
+                                (Promo_Form.controls['maximumAmount'].dirty ||  
+                                Promo_Form.controls['maximumAmount'].touched || 
+                                (Promo_Form.controls['maximumAmount'].untouched  && submitted ) )">
+                                    Maximum Amount required.
+                                </small>
+                                <small for="maximumAmount" class="form-text text-danger"
+                                    *ngIf="Promo_Form.controls['maximumAmount'].errors?.min">
+                                    Maximum Amount Should Be More Than 0.
+                                </small>
+                                <small for="maximumAmount" class="form-text text-danger"
+                                    *ngIf="Promo_Form.controls['maximumAmount'].errors?.pattern">
+                                    Letters Not Allowed.
+                                </small>
+
+
+                                <!-- <small for="maximumAmount" *ngIf="Promo_Form.controls['maximumAmount'].errors?.max"
+                                    class="form-text text-danger">
+                                    Minimum Purchase Amount Should be Less Than {{Pur_Amt}}.
+                                </small> -->
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="validationCustom02" class="mb-1">Maximum No.of Use</label>
+                                <input formControlName="maximumUser" class="form-control" id="validationCustom02"
+                                    (keyup)="Min_Use()" type="text">
+                                <small for="maximumUser" class="form-text text-danger" *ngIf="Promo_Form.controls['maximumUser'].errors?.required && 
+                                (Promo_Form.controls['maximumUser'].dirty ||  
+                                Promo_Form.controls['maximumUser'].touched || 
+                                (Promo_Form.controls['maximumUser'].untouched  && submitted ) )">
+                                    Maximum No.of Use required.
+                                </small>
+                                <small for="maximumUser" class="form-text text-danger"
+                                    *ngIf="Promo_Form.controls['maximumUser'].errors?.min">
+                                    Maximum No.of Use Should Be More Than 0.
+                                </small>
+                                <small for="maximumUser" class="form-text text-danger"
+                                    *ngIf="Promo_Form.controls['maximumUser'].errors?.pattern">
+                                    Letters Not Allowed.
+                                </small>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="validationCustom02" class="mb-1">Number per User</label>
+                                <input formControlName="numberPerUser" class="form-control" id="validationCustom02"
+                                    (keyup)="Min_Use()" type="text">
+                                <small for="numberPerUser" class="form-text text-danger" *ngIf="Promo_Form.controls['numberPerUser'].errors?.required && 
+                                (Promo_Form.controls['numberPerUser'].dirty ||  
+                                Promo_Form.controls['numberPerUser'].touched || 
+                                (Promo_Form.controls['numberPerUser'].untouched  && submitted ) )">
+                                    Number per User required.
+                                </small>
+                                <small for="numberPerUser" class="form-text text-danger"
+                                    *ngIf="Promo_Form.controls['numberPerUser'].errors?.min">
+                                    Number per User Should Be More Than 0.
+                                </small>
+                                <small for="numberPerUser" class="form-text text-danger"
+                                    *ngIf="Promo_Form.controls['numberPerUser'].errors?.pattern">
+                                    Letters Not Allowed.
+                                </small>
+                                <small for="numberPerUser" *ngIf="Promo_Form.controls['numberPerUser'].errors?.max"
+                                    class="form-text text-danger">
+                                    Number per User Should Be Less Than {{Max_Disc}}.
+                                </small>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="form-group col-md-8">
+                                <label for="validationCustom02" class="mb-1">Terms & Conditions</label>
+                                <!-- <textarea formControlName="termsAndCondition" class="form-control" rows="6"
+                                    *ngIf="viewonly_flag"></textarea> -->
+                                    <!-- <p [innerHTML]="Text_Editorvalue" *ngIf="viewonly_flag"></p> -->
+
+                                    <div *ngIf="viewonly_flag" [innerHtml]="Text_Editorvalue"></div>
+
+                                <kendo-editor [value]="Text_Editorvalue" style="height: 370px;"
+                                    [(ngModel)]="Text_Editorvalue" name="Text_Editorvalue" formControlName="termsAndCondition"
+                                    *ngIf="!viewonly_flag">
+
+
+
+                                    <kendo-toolbar>
+                                        <kendo-toolbar-buttongroup>
+                                            <kendo-toolbar-button kendoEditorUndoButton></kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorRedoButton></kendo-toolbar-button>
+                                        </kendo-toolbar-buttongroup>
+                                        <kendo-toolbar-buttongroup>
+                                            <kendo-toolbar-button kendoEditorBoldButton></kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorItalicButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorUnderlineButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorStrikethroughButton>
+                                            </kendo-toolbar-button>
+                                        </kendo-toolbar-buttongroup>
+                                        <kendo-toolbar-buttongroup>
+                                            <kendo-toolbar-button kendoEditorSubscriptButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorSuperscriptButton>
+                                            </kendo-toolbar-button>
+                                        </kendo-toolbar-buttongroup>
+                                        <kendo-toolbar-buttongroup>
+                                            <kendo-toolbar-button kendoEditorAlignLeftButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorAlignCenterButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorAlignRightButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorAlignJustifyButton>
+                                            </kendo-toolbar-button>
+                                        </kendo-toolbar-buttongroup>
+                                        <kendo-toolbar-dropdownlist kendoEditorFormat>
+                                        </kendo-toolbar-dropdownlist>
+                                        <kendo-toolbar-dropdownlist kendoEditorFontSize>
+                                        </kendo-toolbar-dropdownlist>
+                                        <kendo-toolbar-dropdownlist kendoEditorFontFamily>
+                                        </kendo-toolbar-dropdownlist>
+                                        <kendo-toolbar-colorpicker kendoEditorForeColor>
+                                        </kendo-toolbar-colorpicker>
+                                        <kendo-toolbar-colorpicker kendoEditorBackColor view="gradient">
+                                        </kendo-toolbar-colorpicker>
+                                        <kendo-toolbar-buttongroup>
+                                            <kendo-toolbar-button kendoEditorInsertUnorderedListButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorInsertOrderedListButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorIndentButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorOutdentButton>
+                                            </kendo-toolbar-button>
+                                        </kendo-toolbar-buttongroup>
+                                        <!-- <kendo-toolbar-buttongroup>
+                                            <kendo-toolbar-button kendoEditorCreateLinkButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorUnlinkButton>
+                                            </kendo-toolbar-button>
+                                        </kendo-toolbar-buttongroup> -->
+                                        <!-- <kendo-editor-insert-table-button></kendo-editor-insert-table-button> -->
+                                        <!-- <kendo-toolbar-buttongroup>
+                                            <kendo-toolbar-button kendoEditorAddColumnBeforeButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorAddColumnAfterButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorAddRowBeforeButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorAddRowAfterButton>
+                                            </kendo-toolbar-button>
+                                        </kendo-toolbar-buttongroup> -->
+                                        <!-- <kendo-toolbar-buttongroup>
+                                            <kendo-toolbar-button kendoEditorDeleteColumnButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorDeleteRowButton>
+                                            </kendo-toolbar-button>
+                                            <kendo-toolbar-button kendoEditorDeleteTableButton>
+                                            </kendo-toolbar-button>
+                                        </kendo-toolbar-buttongroup> -->
+                                        <!-- <kendo-toolbar-button kendoEditorInsertFileButton>
+                                        </kendo-toolbar-button> -->
+                                        <!-- <kendo-toolbar-button kendoEditorInsertImageButton>
+                                        </kendo-toolbar-button> -->
+                                        <!-- <kendo-toolbar-button kendoEditorViewSourceButton>
+                                        </kendo-toolbar-button> -->
+                                        <!-- <kendo-toolbar-button kendoEditorCleanFormattingButton>
+                                        </kendo-toolbar-button> -->
+
+                                        <!-- <kendo-toolbar-button text="Upload Image" (click)="open()">
+                                      </kendo-toolbar-button> -->
+                                    </kendo-toolbar>
+
+
+                                </kendo-editor>
+                                <!-- class="form-control" -->
+
+                                <!-- <kendo-editor #editor name="Text_Editorvalue" id="editor" [iframe]="false"
+                                    class="mt-4 form-control  editors" formControlName="termsAndCondition"
+                                    style="height: 450px;background-color: #043954;color: white;">
+
+                                </kendo-editor> -->
+
+                                <small for="termsAndCondition" class="form-text text-danger" *ngIf="Promo_Form.controls['termsAndCondition'].errors?.required && 
+                                (Promo_Form.controls['termsAndCondition'].dirty ||  
+                                Promo_Form.controls['termsAndCondition'].touched || 
+                                (Promo_Form.controls['termsAndCondition'].untouched  && submitted ) )">
+                                    Terms & Conditions required.
+                                </small>
+                            </div>
+                            <div class="mt-3 col-md-4">
+                                <div class="span-data">
+                                    <div class="upload-btn-wrapper ">
+                                        <i *ngIf="!image_URL" class="icon fa fa-upload"></i>
+                                        <!-- <i *ngIf="image_URL == ''" class="icon fa fa-upload"></i> -->
+                                        <img *ngIf="image_URL != ''" [src]="image_URL" width="100%" class="image-icon">
+                                        <small *ngIf="!image_URL" style="font-size: 14px;
+                                        color: white;
+                                        opacity: 0.7;">Image</small>
+                                        <input [attr.disabled]="viewonly_flag ? '' : null" type="file" name="myfile"
+                                            (change)="onChange($event,'179','158')" />
+                                    </div>
+                                    <!-- <small for="image" class="form-text text-danger" *ngIf="Promo_Form.controls['image'].errors?.required && 
+                                    (Promo_Form.controls['image'].dirty ||  
+                                    Promo_Form.controls['image'].touched || 
+                                    (Promo_Form.controls['image'].untouched  && submitted ) )">
+                                    Image required.
+                                    </small> -->
+                                </div>
+                                <label>179 X 158</label>
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+                    <div class="mt-3 row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button *ngIf="!viewonly_flag && !editable_flag && editPermFlag" style="width:150px;align-content: center;"
+                                type="button" class="btn btn-dark btn-dark-rounded" (click)="Create()">Create<div
+                                    *ngIf="submitted && addLoading" class="spinner-border" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div></button>
+                            <button *ngIf="editable_flag && editPermFlag" style="width:150px;align-content: center;" type="button"
+                                class="btn btn-dark btn-dark-rounded" (click)="Update()">Update <div
+                                    *ngIf="submitted && addLoading" class="spinner-border" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div></button>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

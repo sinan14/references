@@ -1,0 +1,161 @@
+.form-control{
+    background: #052a3d;
+    color: #fff;
+   opacity: 0.7;
+  }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+label{
+  color: white;
+ opacity: 0.7;
+}
+.k-grid-header {
+  padding: 0px !important;
+}
+
+td {
+  color: white;
+  opacity: 0.7;
+}
+
+
+i{
+  cursor: pointer;
+  font-size: 18px;
+}
+
+
+.btn{
+  color: #99b2bf ;
+  font-weight: 400;
+}
+
+.card{
+  border-radius: 16px;
+  padding: 27px;
+  background-color: #00496E;
+}
+
+.btn-dark-rounded{
+  margin-left: 12px;
+  background-color: #00283d;
+  border: unset;
+  border-radius: 10.25em;
+  }
+
+  .btn-inverse-dark{
+    background-color: #00496E;
+    background-image: none;
+    border: unset;
+    border-radius: 10.25em;
+  }
+
+  .btn-sm{
+    padding: 0.5rem 1.5rem;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    line-height: 12px;
+    text-transform: capitalize;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.3s ease-in-out;
+    background-color: #00283d;
+  }
+
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 15px;
+    color: white !important;
+    //opacity: 0.5 !important;
+  }
+  
+  .icon {
+    border: 0px solid gray;
+    background-color: transparent;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 60px;
+    font-weight: bold;
+    border-radius: 1.25em;
+    align-content: center;
+  }
+
+  
+.modal-body, .modal-header, .modal-footer{
+  background-color: #0b4866;
+  color:#fff;
+  width: 100%;
+  border-bottom: none !important;
+  border-top: none !important;
+  .form-control{
+    background: #0b4866;
+    color: #fff;
+   opacity: 0.7;
+    border: 1px solid white;
+  }
+}
+
+.modal-header{
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+}
+.modal-footer{
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+}
+
+
+
+/* Libary CSS */
+.shell {
+  position: relative;
+  line-height: 1;
+  span {
+  position: absolute;
+  left: 3px;
+  top: 1px;
+  color: red;
+  pointer-events: none;
+  z-index: -1;
+    i { /* any of these 3 will work */
+        color: transparent;
+        opacity: 0;
+        visibility: hidden;
+    }
+  }
+}
+
+input.masked,
+.shell span {
+  font-size: 16px;
+  font-family: monospace;
+  padding-right: 10px;
+  background-color: transparent;
+  text-transform: uppercase;
+}
+
+/* Look and feel (not lib specific) */
+
+li {
+  line-height: 4;
+  font-family: helvetica;
+  list-style-type: none;
+  //border-bottom: 1px solid #ccc;
+}
+label { 
+  display: inline-block;
+  //width: 14em;
+  width: 45%;
+}
+input {
+  border: none;
+  
+}
+

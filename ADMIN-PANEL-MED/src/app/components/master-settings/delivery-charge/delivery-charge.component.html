@@ -1,0 +1,155 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="kendo_table  master-demo">
+                <div class="card-body master_Tab" style="background:transparent;font-weight: lighter;">
+                    <h6 style="margin-bottom: 4%;">Delivery Charge & Time</h6>
+                    <div class="btn-popup pull-right">
+                    </div>
+                    <div class="table-responsive " *ngIf="disableTab('Delivery Charge & Time')">
+
+                        <kendo-grid [kendoGridBinding]="DELIV_CHARGE_GET_ARRAY" [filterable]="true"  [sortable]="true">
+                            <kendo-grid-column field="level" title="Level" width="20">
+
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell placeholder="search"
+                                        [showOperators]="false" [column]="column" title="Sl. No"
+                                        [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+
+                                <!-- <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                </ng-template> -->
+                                <!-- <ng-template kendoGridFilterCellTemplate let-filter let-column="column"> -->
+                                <!-- </ng-template> -->
+                                <!-- <kendo-grid-string-filter-cell [showOperators]="false" [column]="column" title="Level"
+                                    [filter]="filter">
+                                </kendo-grid-string-filter-cell> -->
+                                <!-- </ng-template> -->
+                            </kendo-grid-column>
+                            <kendo-grid-column field="DeliveryTime" title="Delivery Time" width="30">
+
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell placeholder="search"
+                                        [showOperators]="false" [column]="column" title="Sl. No"
+                                        [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+                                <!-- <ng-template kendoGridFilterCellTemplate let-filter let-column="column"> -->
+                                <!-- <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                </ng-template> -->
+                                <!-- <kendo-grid-string-filter-cell [showOperators]="false" [column]="column"
+                                        title="Delivery Time" [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template> -->
+                            </kendo-grid-column>
+
+                            <kendo-grid-column field="charge" title="Charge(s)" width="30">
+
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell placeholder="search"
+                                        [showOperators]="false" [column]="column" title="Sl. No"
+                                        [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+                                <!-- <ng-template kendoGridFilterCellTemplate let-filter let-column="column"> -->
+                                <!-- <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                </ng-template> -->
+                                <!-- <kendo-grid-string-filter-cell [showOperators]="false" [column]="column"
+                                        title="Charge" [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template> -->
+                            </kendo-grid-column>
+
+                            <kendo-grid-command-column title="Action" width="20"  class="text-center">
+                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+
+                                    <button type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal"
+                                        data-original-title="test" data-target="#DeliveryExampleModal"
+                                        (click)="open(DeliveryContent,'edit',dataItem)" *ngIf="editFlag">Edit</button>
+
+
+                                </ng-template>
+                            </kendo-grid-command-column>
+                        </kendo-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+<ng-template #DeliveryContent let-modal>
+    <form [formGroup]="DeliveryChargeUpdateForm">
+
+
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="DeliveryExampleModal">Update</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="DeliveryExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="mt-2 row">
+                <div class="col-md-12">
+                    <label>Level</label>
+                    <input type="text" formControlName='level' class="form-control" value="3 hr" disabled>
+                    <small for="level" class="form-text text-danger" *ngIf="DeliveryChargeUpdateForm.controls['level'].errors?.required && 
+                    (DeliveryChargeUpdateForm.controls['level'].dirty ||  
+                    DeliveryChargeUpdateForm.controls['level'].touched || 
+                    (DeliveryChargeUpdateForm.controls['level'].untouched  && attemptedSubmit ) )">
+                        Level required.
+                    </small>
+                </div>
+            </div>
+            <div class="mt-2 row">
+                <div class="col-md-12">
+                    <label>Delivery Time</label>
+                    <input type="number" formControlName='DeliveryTime' class="form-control" name="delivery" value="3 hr">
+                    <small for="DeliveryTime" class="form-text text-danger" *ngIf="DeliveryChargeUpdateForm.controls['DeliveryTime'].errors?.required && 
+                    (DeliveryChargeUpdateForm.controls['DeliveryTime'].dirty ||  
+                    DeliveryChargeUpdateForm.controls['DeliveryTime'].touched || 
+                    (DeliveryChargeUpdateForm.controls['DeliveryTime'].untouched  && attemptedSubmit ) )">
+                        Delivery Time required.
+                    </small>
+                </div>
+            </div>
+
+            <div class="mt-2 row">
+                <div class="col-md-12">
+                    <label>Charge(s)</label>
+                    <input type="text" formControlName='charge' class="form-control" name="charge" value="75">
+                    <small for="charge" class="form-text text-danger" *ngIf="DeliveryChargeUpdateForm.controls['charge'].errors?.required && 
+                    (DeliveryChargeUpdateForm.controls['charge'].dirty ||  
+                    DeliveryChargeUpdateForm.controls['charge'].touched || 
+                    (DeliveryChargeUpdateForm.controls['charge'].untouched  && attemptedSubmit ) )">
+                        Charge required.
+                    </small>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <!-- <button class="btn btn-dark btn-dark-rounded" type="button" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Close</button> -->
+            <button style="width:150px" type="button" class="btn btn-dark btn-dark-rounded" (click)="Update()">{{
+                addLoading ?
+                "Updating..."
+                : "Update" }}</button>
+            <!-- <button type="button" class="btn  btn-dark btn-dark-rounded" (click)="Update()">Update</button> -->
+        </div>
+    </form>
+</ng-template>

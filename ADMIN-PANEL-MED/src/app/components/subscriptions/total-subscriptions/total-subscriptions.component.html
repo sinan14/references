@@ -1,0 +1,1193 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid kendo_table " style="padding-left: 30px;">
+    <div class="row">
+        <div class="col-md-12 subscrpton_pg_main">
+            <div class="kendo_table master-demo">
+            <div class="tab2-card">
+                <div class="card-body tab2-card add_inventory_tab">
+                    <div class="row prem_topbanner">
+                        <div class="col-md-4" (click)="autoselectedTab('active')"><a style="font-size: 14px;color: white;opacity: 0.5;border-bottom: 1px solid #fff;cursor: pointer;">Total Active Subscription(s) </a> <span style="font-size:30px;"> {{active_subscription_count}}</span></div>
+                        <div class="col-md-4" (click)="autoselectedTab('inactive')"><a style="font-size: 14px;color: white;opacity: 0.5;border-bottom: 1px solid #fff;cursor: pointer;">Total Inactive Subscription(s)</a>  <span style="font-size:30px;"> {{inactive_subscription_count}}</span></div>
+                    
+                    </div>
+                    <ngb-tabset class="tab-coupon"   #t="ngbTabset" [activeId]="selectedTab">
+
+
+                        <ngb-tab title="Subscription(s)"  id="tab1">
+                            <ng-template ngbTabContent>                                                                                                                                        
+                                <div class="tab-pane fade active show" id="account" role="tabpanel"  aria-labelledby="account-tab">
+
+                                    <br><br>
+                                    <ng-template #template let-anchor>
+                                        <span>{{ anchor.nativeElement.innerText }}</span>
+                                    </ng-template>
+                                                <kendo-grid [kendoGridBinding]="subscriptionList" [filterable]="true"  [sortable]="true">
+
+
+                                                    <kendo-grid-column field="siNo" title="Sl.No" width="10">
+                                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                            <kendo-grid-string-filter-cell
+                                                                placeholder="search"
+                                                                [showOperators]="false"
+                                                                [column]="column"
+                                                                title="Parent Store"
+                                                                [filter]="filter">
+                                                            </kendo-grid-string-filter-cell>
+                                                        </ng-template>
+                                                        
+                                                    </kendo-grid-column>
+
+
+                                                    <kendo-grid-column field="subscriptionIdString" title="ID" width="20">
+                                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                            <a  style="cursor: pointer;" data-toggle="modal" data-original-title="test"
+                                                                        data-target="#ViewComplaintexampleModal" (click)="open(content,dataItem)">{{dataItem.subscriptionIdString}}</a>
+                                                            <span><h6 style="font-size: 10px;color: white;opacity: 0.5;">{{dataItem.createdAt}}</h6></span>
+                                                    </ng-template>
+                                                        
+                                                    </kendo-grid-column>
+
+                                                    <kendo-grid-column field="userName" title="Name" width="20">
+                                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                            <a  style="cursor: pointer;"routerLink="/customer-details/cust/{{dataItem.customerId}}" >{{dataItem.userName}}</a>
+                                                    </ng-template>
+                                                        
+                                                    </kendo-grid-column>
+
+                                                    <kendo-grid-column field="phoneNumber" title="Contact No" width="20">
+                                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                            <a style="text-decoration: none !important;" routerLink="#">{{dataItem.phoneNumber}}</a>
+                                                            <img src="assets/images/file-icons/icon-phone-call.svg" width="30px" height="15px">
+                                                        </ng-template>
+                                                        
+                                                    </kendo-grid-column>
+                                                    
+                                                    <kendo-grid-column field="noOfItems" title="No. of items" width="20" [filterable]="true">
+                                                        <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                            <button type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                                                data-target="#ItemListExampleModal" (click)="openList(ItemListContent,dataItem.products)" style="cursor: pointer;">{{dataItem.noOfItems}}</button>
+
+                                                       
+                                                        </ng-template>
+                                                    </kendo-grid-column>
+
+                                                    <kendo-grid-column field="amount" title="Amount" width="20">
+                                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                            <kendo-grid-string-filter-cell
+                                                                placeholder="search"
+                                                                [showOperators]="false"
+                                                                [column]="column"
+                                                                title="Parent Store"
+                                                                [filter]="filter">
+                                                            </kendo-grid-string-filter-cell>
+                                                        </ng-template>
+                                                        
+                                                    </kendo-grid-column>
+
+                                                
+
+                                                    <kendo-grid-column field="nextDeliveryDate" title="Date of Delivery" width="20">
+                                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                            <kendo-grid-string-filter-cell
+                                                                placeholder="search"
+                                                                [showOperators]="false"
+                                                                [column]="column"
+                                                                title="Parent Store"
+                                                                [filter]="filter">
+                                                            </kendo-grid-string-filter-cell>
+                                                        </ng-template>
+                                                        
+                                                    </kendo-grid-column>
+
+                                                    <kendo-grid-column field="prescription" title="Prescription" width="20" [filterable]="true">
+                                                        <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                           <div class="row" *ngIf="dataItem.prescription.length>0">
+                                                               <div class="col-md-2" *ngFor="let i of dataItem.prescription">
+                                                                <a target="_blank" [href]="i">
+                                                                    <img src={{i}} alt="img" width="30px">
+                                                                </a>    
+                                                               </div>
+                                                           </div>
+
+                                                           <div *ngIf="dataItem.prescription.length===0">-----</div>
+
+                                                       
+                                                        </ng-template>
+                                                    </kendo-grid-column>
+
+                                                    <kendo-grid-command-column title="Status" width="20"  class="text-center">
+                                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                             
+                                                            <i class="fa fa-pencil-square-o" kendoTooltip title="Remarks" style="cursor: pointer;font-size: 16px;" data-toggle="modal tooltip" data-original-title="test" data-target="#RemarksExampleModal" (click)="openRemarks(RemarksContent,dataItem.subscriptionId,dataItem.remarks)"></i>
+
+                                                            &nbsp;&nbsp;<i *ngIf="dataItem.prescriptionRequired" class="fa fa-file-text-o" kendoTooltip title="Prescription Awaited" style="cursor: pointer;font-size: 16px;" (click)="move_to_prescription_awaited(dataItem.subscriptionId)"></i>
+
+                                                            &nbsp;&nbsp;<i *ngIf="dataItem.prescriptionRequired" class="fa fa-file-o" kendoTooltip title="Review Pending" style="cursor: pointer;font-size: 16px;" (click)="move_to_review_pending(dataItem.subscriptionId)"></i>
+                                                                        
+                                                            &nbsp;&nbsp;<i class="fa fa-archive"  style="cursor: pointer;font-size: 16px;"  kendoTooltip title="Packing Pending"  (click)="move_to_packing_pending(dataItem.subscriptionId)"></i>
+                                                    </ng-template>
+                                                    </kendo-grid-command-column>
+
+
+
+                                                    
+                                                </kendo-grid>
+
+                                  
+                                </div>
+
+                                <div class="pagination">
+                                    <!-- <ngb-pagination [collectionSize]={{TotalRecords}} [(page)]={{CurrentPage}} [maxSize]={{PageSize}} [rotate]="true"
+                                              [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+                                    <button *ngIf="hasPrevPage" (click)="onPageChange(1,'tab1')">First</button>
+                                    <button *ngIf="hasPrevPage" (click)="onPageChange(current_page - 1,'tab1')">
+                                      Prev
+                                    </button>
+                                    <button *ngIf="hasPrevPage" (click)="onPageChange(current_page - 1,'tab1')">
+                                      {{ current_page - 1 }}
+                                    </button>
+                                    <button style="color: yellow">{{ current_page }}</button>
+                                    <button *ngIf="hasNextPage" (click)="onPageChange(current_page + 1,'tab1')">
+                                      {{ current_page + 1 }}
+                                    </button>
+                                    <button *ngIf="hasNextPage" (click)="onPageChange(current_page + 1,'tab1')">
+                                      Next
+                                    </button>
+                                    <button *ngIf="hasNextPage" (click)="onPageChange(total_page,'tab1')">
+                                      Last
+                                    </button>
+                                  </div>
+                            </ng-template>
+                        </ngb-tab>
+
+
+                        <ngb-tab title="Awaited Payments"  id="tab2">
+                            <ng-template ngbTabContent>                                                                                                                                        
+                                <div class="tab-pane fade active show" id="account" role="tabpanel"  aria-labelledby="account-tab">
+
+                                    <br><br>
+                                    <ng-template #template let-anchor>
+                                        <span>{{ anchor.nativeElement.innerText }}</span>
+                                    </ng-template>
+                                     <div kendoTooltip
+                                        showOn="none"
+                                        [tooltipTemplate]="template"
+                                        filter=".k-grid td"
+                                        (mouseover)="showTooltip($event)">
+                                                <kendo-grid [kendoGridBinding]="awaitedPaymentList" [filterable]="true"  [sortable]="true">
+
+
+                                                    <kendo-grid-column field="siNo" title="Sl.No" width="10">
+                                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                            <kendo-grid-string-filter-cell
+                                                                placeholder="search"
+                                                                [showOperators]="false"
+                                                                [column]="column"
+                                                                title="Parent Store"
+                                                                [filter]="filter">
+                                                            </kendo-grid-string-filter-cell>
+                                                        </ng-template>
+                                                        
+                                                    </kendo-grid-column>
+
+
+                                                    <kendo-grid-column field="subscriptionIdString" title="ID" width="20">
+                                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                            <a  style="cursor: pointer;" data-toggle="modal" data-original-title="test"
+                                                                        data-target="#ViewComplaintexampleModal" (click)="open(viewSubscriptionContent,dataItem)">{{dataItem.subscriptionIdString}}</a>
+                                                            <span><h6 style="font-size: 10px;color: white;opacity: 0.5;">{{dataItem.createdAt}}</h6></span>
+                                                    </ng-template>
+                                                        
+                                                    </kendo-grid-column>
+
+                                                    <kendo-grid-column field="userName" title="Name" width="20">
+                                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                            <a  style="cursor: pointer;"routerLink="/customer-details/cust/{{dataItem.customerId}}" >{{dataItem.userName}}</a>
+                                                    </ng-template>
+                                                        
+                                                    </kendo-grid-column>
+
+                                                    <kendo-grid-column field="phoneNumber" title="Contact No" width="20">
+                                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                            <a style="text-decoration: none !important;" routerLink="#">{{dataItem.phoneNumber}}</a>
+                                                            <img src="assets/images/file-icons/icon-phone-call.svg" width="30px" height="20px">
+                                                        </ng-template>
+                                                        
+                                                    </kendo-grid-column>
+                                                    
+                                                    <kendo-grid-column field="noOfItems" title="No. of items" width="20" [filterable]="true">
+                                                        <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                            <button type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                                                data-target="#ItemListExampleModal" (click)="openList(ItemListContent,dataItem.products)" style="cursor: pointer;">{{dataItem.noOfItems}}</button>
+
+                                                       
+                                                        </ng-template>
+                                                    </kendo-grid-column>
+
+                                                    <kendo-grid-column field="amount" title="Amount" width="20">
+                                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                            <kendo-grid-string-filter-cell
+                                                                placeholder="search"
+                                                                [showOperators]="false"
+                                                                [column]="column"
+                                                                title="Parent Store"
+                                                                [filter]="filter">
+                                                            </kendo-grid-string-filter-cell>
+                                                        </ng-template>
+                                                        
+                                                    </kendo-grid-column>
+
+                                                
+
+                                                    <kendo-grid-column field="nextDeliveryDate" title="Date of Delivery" width="20">
+                                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                            <kendo-grid-string-filter-cell
+                                                                placeholder="search"
+                                                                [showOperators]="false"
+                                                                [column]="column"
+                                                                title="Parent Store"
+                                                                [filter]="filter">
+                                                            </kendo-grid-string-filter-cell>
+                                                        </ng-template>
+                                                        
+                                                    </kendo-grid-column>
+
+                                                    <kendo-grid-column field="prescription" title="Prescription" width="20" [filterable]="true">
+                                                        <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                            <div class="row" *ngIf="dataItem.prescription.length>0">
+                                                                <div class="col-md-2" *ngFor="let i of dataItem.prescription">
+                                                                 <a target="_blank" [href]="i">
+                                                                     <img src={{i}} alt="img" width="30px">
+                                                                 </a>    
+                                                                </div>
+                                                            </div>
+ 
+                                                            <div *ngIf="dataItem.prescription.length===0">-----</div>
+
+                                                       
+                                                        </ng-template>
+                                                    </kendo-grid-column>
+
+                                                    <kendo-grid-command-column title="Status" width="20">
+                                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                             
+                                                            <i class="fa fa-pencil-square-o" kendoTooltip title="Remarks" style="cursor: pointer;font-size: 16px;" data-toggle="modal tooltip" data-original-title="test" data-target="#RemarksExampleModal" (click)="openRemarks(RemarksContent,dataItem.subscriptionId,dataItem.remarks)"></i>
+
+                                                            &nbsp;&nbsp;<i class="fa fa-file-text-o" kendoTooltip title="Prescription Awaited" style="cursor: pointer;font-size: 16px;"  (click)="move_to_prescription_awaited(dataItem.subscriptionId)"></i>
+
+                                                            &nbsp;&nbsp;<i class="fa fa-file-o" kendoTooltip title="Review Pending" style="cursor: pointer;font-size: 16px;"  (click)="move_to_review_pending(dataItem.subscriptionId)"></i>
+                                                                        
+                                                            &nbsp;&nbsp;<i class="fa fa-archive"  style="cursor: pointer;font-size: 16px;"  kendoTooltip title="Packing Pending"   (click)="move_to_packing_pending(dataItem.subscriptionId)"></i>
+                                                    </ng-template>
+                                                    </kendo-grid-command-column>
+
+
+
+                                                    
+                                                </kendo-grid>
+                                    </div>
+                                    
+
+                                  
+                                </div>
+
+                                <div class="pagination">
+                                    <!-- <ngb-pagination [collectionSize]={{TotalRecords}} [(page)]={{CurrentPage}} [maxSize]={{PageSize}} [rotate]="true"
+                                              [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+                                    <button *ngIf="hasPrevPage1" (click)="onPageChange(1,'tab2')">First</button>
+                                    <button *ngIf="hasPrevPage1" (click)="onPageChange(current_page1 - 1,'tab2')">
+                                      Prev
+                                    </button>
+                                    <button *ngIf="hasPrevPage1" (click)="onPageChange(current_page1 - 1,'tab2')">
+                                      {{ current_page1 - 1 }}
+                                    </button>
+                                    <button style="color: yellow">{{ current_page1 }}</button>
+                                    <button *ngIf="hasNextPage1" (click)="onPageChange(current_page1 + 1,'tab2')">
+                                      {{ current_page1 + 1 }}
+                                    </button>
+                                    <button *ngIf="hasNextPage1" (click)="onPageChange(current_page1 + 1,'tab2')">
+                                      Next
+                                    </button>
+                                    <button *ngIf="hasNextPage1" (click)="onPageChange(total_page1,'tab2')">
+                                      Last
+                                    </button>
+                                  </div>
+                            </ng-template>
+                        </ngb-tab>
+
+
+
+                        <ngb-tab title="Converted Orders"  id="tab3">
+                            <ng-template ngbTabContent>                                                                                                                                        
+                                        <br><br>
+                                        <kendo-grid [kendoGridBinding]="convertedOrderSubscriptionList" [filterable]="true"  [sortable]="true">
+
+
+                                            <kendo-grid-column field="siNo" title="Sl.No" width="10">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+
+                                            <kendo-grid-column field="subscriptionIdString" title="ID" width="20">
+                                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                    <a  style="cursor: pointer;" data-toggle="modal" data-original-title="test"
+                                                                data-target="#ViewComplaintexampleModal" (click)="open(viewSubscriptionContent,dataItem)">{{dataItem.subscriptionIdString}}</a>
+                                                    <span><h6 style="font-size: 10px;color: white;opacity: 0.5;">{{dataItem.createdAt}}</h6></span>
+                                            </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="userName" title="Name" width="20">
+                                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                    <a  style="cursor: pointer;"routerLink="/customer-details/cust/{{dataItem.customerId}}" >{{dataItem.userName}}</a>
+                                            </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="phoneNumber" title="Contact No" width="20">
+                                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                    <a style="text-decoration: none !important;" routerLink="#">{{dataItem.phoneNumber}}</a>
+                                                    <img src="assets/images/file-icons/icon-phone-call.svg" width="30px" height="20px">
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+                                            
+                                            <kendo-grid-column field="noOfItems" title="No. of items" width="20" [filterable]="true">
+                                                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                    <button type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                                        data-target="#ItemListExampleModal" (click)="openList(ItemListContent,dataItem.products)" style="cursor: pointer;">{{dataItem.noOfItems}}</button>
+
+                                               
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="amount" title="Amount" width="20">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                        
+
+                                            <kendo-grid-column field="nextDeliveryDate" title="Date of Delivery" width="20">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+
+                                            <kendo-grid-column field="prescription" title="Prescription" width="20" [filterable]="true">
+                                                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                    <div class="row" *ngIf="dataItem.prescription.length>0">
+                                                        <div class="col-md-2" *ngFor="let i of dataItem.prescription">
+                                                         <a target="_blank" [href]="i">
+                                                             <img src={{i}} alt="img" width="30px">
+                                                         </a>    
+                                                        </div>
+                                                    </div>
+
+                                                    <div *ngIf="dataItem.prescription.length===0">-----</div>
+
+                                               
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-command-column title="Status" width="10">
+                                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                     
+                                                    <i class="fa fa-pencil-square-o" kendoTooltip title="Remarks" style="cursor: pointer;font-size: 16px;" data-toggle="modal tooltip" data-original-title="test" data-target="#RemarksExampleModal" (click)="open(RemarksContent,'')"></i>
+    
+                                            </ng-template>
+                                            </kendo-grid-command-column>
+
+
+                                            
+                                        </kendo-grid>
+                                        <div class="pagination">
+                                            <!-- <ngb-pagination [collectionSize]={{TotalRecords}} [(page)]={{CurrentPage}} [maxSize]={{PageSize}} [rotate]="true"
+                                                      [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+                                            <button *ngIf="hasPrevPage2" (click)="onPageChange(1,'tab3')">First</button>
+                                            <button *ngIf="hasPrevPage2" (click)="onPageChange(current_page2 - 1,'tab3')">
+                                              Prev
+                                            </button>
+                                            <button *ngIf="hasPrevPage2" (click)="onPageChange(current_page2 - 1,'tab3')">
+                                              {{ current_page2 - 1 }}
+                                            </button>
+                                            <button style="color: yellow">{{ current_page2 }}</button>
+                                            <button *ngIf="hasNextPage2" (click)="onPageChange(current_page2 + 1,'tab3')">
+                                              {{ current_page2 + 1 }}
+                                            </button>
+                                            <button *ngIf="hasNextPage2" (click)="onPageChange(current_page2 + 1,'tab3')">
+                                              Next
+                                            </button>
+                                            <button *ngIf="hasNextPage2" (click)="onPageChange(total_page2,'tab3')">
+                                              Last
+                                            </button>
+                                          </div>
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab title="Active subscription(s)"  id="tab4">
+                            <ng-template ngbTabContent>                                                                                                                                        
+                                        <br><br>
+                                        <kendo-grid [kendoGridBinding]="activeSubscriptionList" [filterable]="true"  [sortable]="true">
+
+
+                                            <kendo-grid-column field="siNo" title="Sl.No" width="10">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+
+                                            <kendo-grid-column field="subscriptionIdString" title="ID" width="20">
+                                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                    <a  style="cursor: pointer;"  data-toggle="modal" data-original-title="test"
+                                                    data-target="#ViewComplaintexampleModal" (click)="open(viewSubscriptionContent,dataItem)">{{dataItem.subscriptionIdString}}</a>
+                                                    <span><h6 style="font-size: 10px;color: white;opacity: 0.5;">{{dataItem.createdAt}}</h6></span>
+                                            </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="userName" title="Name" width="20">
+                                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                    <a  style="cursor: pointer;"routerLink="/customer-details/cust/{{dataItem.customerId}}" >{{dataItem.userName}}</a>
+                                            </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="phoneNumber" title="Contact No" width="20">
+                                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                    <a style="text-decoration: none !important;" routerLink="#">{{dataItem.phoneNumber}}</a>
+                                                    <img src="assets/images/file-icons/icon-phone-call.svg" width="30px" height="20px">
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+                                            
+                                            <kendo-grid-column field="noOfItems" title="No. of items" width="20" [filterable]="true">
+                                                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                    <button type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                                        data-target="#ItemListExampleModal" (click)="openList(ItemListContent,dataItem.products)" style="cursor: pointer;">{{dataItem.noOfItems}}</button>
+
+                                               
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="amount" title="Amount" width="20">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                        
+
+                                            <kendo-grid-column field="nextDeliveryDate" title="Date of Delivery" width="20">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="prescription" title="Prescription" width="20" [filterable]="true">
+                                                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                    <div class="row" *ngIf="dataItem.prescription.length>0">
+                                                        <div class="col-md-2" *ngFor="let i of dataItem.prescription">
+                                                         <a target="_blank" [href]="i">
+                                                             <img src={{i}} alt="img" width="30px">
+                                                         </a>    
+                                                        </div>
+                                                    </div>
+
+                                                    <div *ngIf="dataItem.prescription.length===0">-----</div>
+
+                                               
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-command-column title="Status" width="30">
+                                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                    <button type="button" class="btn btn-dark btn-dark-rounded" style="cursor: pointer;" (click)="inActiveSubscription(dataItem.subscriptionId)">In-activate</button>
+                                            </ng-template>
+                                            </kendo-grid-command-column>
+
+
+                                            
+                                        </kendo-grid>
+                                        <div class="pagination">
+                                            <!-- <ngb-pagination [collectionSize]={{TotalRecords}} [(page)]={{CurrentPage}} [maxSize]={{PageSize}} [rotate]="true"
+                                                      [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+                                            <button *ngIf="hasPrevPage3" (click)="onPageChange(1,'tab4')">First</button>
+                                            <button *ngIf="hasPrevPage3" (click)="onPageChange(current_page3 - 1,'tab4')">
+                                              Prev
+                                            </button>
+                                            <button *ngIf="hasPrevPage3" (click)="onPageChange(current_page3 - 1,'tab4')">
+                                              {{ current_page3 - 1 }}
+                                            </button>
+                                            <button style="color: yellow">{{ current_page3 }}</button>
+                                            <button *ngIf="hasNextPage3" (click)="onPageChange(current_page3 + 1,'tab4')">
+                                              {{ current_page3 + 1 }}
+                                            </button>
+                                            <button *ngIf="hasNextPage3" (click)="onPageChange(current_page3 + 1,'tab4')">
+                                              Next
+                                            </button>
+                                            <button *ngIf="hasNextPage3" (click)="onPageChange(total_page3,'tab4')">
+                                              Last
+                                            </button>
+                                          </div>
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab title="Inactive subscription(s)"  id="tab5">
+                            <ng-template ngbTabContent>                                                                                                                                        
+                                        <br><br>
+                                        <kendo-grid [kendoGridBinding]="inactiveSubscriptionList" [filterable]="true"  [sortable]="true">
+
+
+                                            <kendo-grid-column field="siNo" title="Sl.No" width="10">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+
+                                            <kendo-grid-column field="subscriptionIdString" title="ID" width="20">
+                                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                    <a  style="cursor: pointer;"  data-toggle="modal" data-original-title="test"
+                                                    data-target="#ViewComplaintexampleModal" (click)="open(viewSubscriptionContent,dataItem)">{{dataItem.subscriptionIdString}}</a>
+                                                    <span><h6 style="font-size: 10px;color: white;opacity: 0.5;">{{dataItem.createdAt}}</h6></span>
+                                            </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="userName" title="Name" width="20">
+                                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                    <a  style="cursor: pointer;"routerLink="/customer-details/cust/{{dataItem.customerId}}" >{{dataItem.userName}}</a>
+                                            </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="phoneNumber" title="Contact No" width="20">
+                                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                    <a style="text-decoration: none !important;" routerLink="#">{{dataItem.phoneNumber}}</a>
+                                                    <img src="assets/images/file-icons/icon-phone-call.svg" width="30px" height="20px">
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+                                            
+                                            <kendo-grid-column field="noOfItems" title="No. of items" width="20" [filterable]="true">
+                                                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                    <button type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                                        data-target="#ItemListExampleModal" (click)="openList(ItemListContent,dataItem.products)" style="cursor: pointer;">{{dataItem.noOfItems}}</button>
+
+                                               
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="amount" title="Amount" width="20">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                        
+
+                                            <kendo-grid-column field="nextDeliveryDate" title="Date of Delivery" width="20">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="prescription" title="Prescription" width="20" [filterable]="true">
+                                                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                    <div class="row" *ngIf="dataItem.prescription.length>0">
+                                                        <div class="col-md-2" *ngFor="let i of dataItem.prescription">
+                                                         <a target="_blank" [href]="i">
+                                                             <img src={{i}} alt="img" width="30px">
+                                                         </a>    
+                                                        </div>
+                                                    </div>
+
+                                                    <div *ngIf="dataItem.prescription.length===0">-----</div>
+
+                                               
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-command-column title="Status" width="20">
+                                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                   
+                                                    <button type="button" class="btn btn-dark btn-dark-rounded" style="cursor: pointer;" (click)="inActiveSubscription(dataItem.subscriptionId)">Activate</button>
+                                            </ng-template>
+                                            </kendo-grid-command-column>
+
+
+                                            
+                                        </kendo-grid>
+                                        <div class="pagination">
+                                            <!-- <ngb-pagination [collectionSize]={{TotalRecords}} [(page)]={{CurrentPage}} [maxSize]={{PageSize}} [rotate]="true"
+                                                      [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+                                            <button *ngIf="hasPrevPage4" (click)="onPageChange(1,'tab5')">First</button>
+                                            <button *ngIf="hasPrevPage4" (click)="onPageChange(current_page4 - 1,'tab5')">
+                                              Prev
+                                            </button>
+                                            <button *ngIf="hasPrevPage4" (click)="onPageChange(current_page4 - 1,'tab5')">
+                                              {{ current_page4 - 1 }}
+                                            </button>
+                                            <button style="color: yellow">{{ current_page4 }}</button>
+                                            <button *ngIf="hasNextPage4" (click)="onPageChange(current_page4 + 1,'tab5')">
+                                              {{ current_page4 + 1 }}
+                                            </button>
+                                            <button *ngIf="hasNextPage4" (click)="onPageChange(current_page4 + 1,'tab5')">
+                                              Next
+                                            </button>
+                                            <button *ngIf="hasNextPage4" (click)="onPageChange(total_page4,'tab5')">
+                                              Last
+                                            </button>
+                                          </div>
+                            </ng-template>
+                        </ngb-tab>
+
+
+                        
+
+
+
+                    </ngb-tabset>
+                    
+                </div>
+            </div></div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+
+
+<ng-template #content let-modal>
+ 
+    <div class="modal-body" style="border-radius: 15px 15px 0px 0px; width:850px" *ngIf="single_subscriptionList">
+            <div class="mt-2 row">
+                    <div class="form-group col-md-6 ">
+                        <h6 for="validationCustom02" class="mb-0">Name :<span style="color: white;">  {{single_subscriptionList.userName}}</span></h6>
+                    </div>
+                    <div class="col-md-6 ">
+                        <h6 for="validationCustom02" class="mb-0">Subscription ID : <span style="color: white;">  {{single_subscriptionList.subscriptionIdString}}</span></h6>
+                    </div>
+            </div>
+
+            <div class="mt-2 row">
+                <div class="form-group col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0 d-flex">Address :<span style="color: white;    width: 275px;">{{single_subscriptionList.address.name}}  ,   {{single_subscriptionList.address.wholeAddress}}</span></h6>
+                </div>
+                <div class="col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">Mobile Number : <span style="color: white;">   {{single_subscriptionList.phoneNumber}}</span> 
+                        <img src="assets/images/file-icons/icon-phone-call.svg" style="width: 17px !important; height: auto !important; margin-left: 10px; margin-top: 0px;"></h6>
+                </div>
+                <div class="col-md-2">
+                    
+                </div>
+            </div>
+
+            <div class="mt-2 row">
+                <div class="form-group col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">Payment Type :<span style="color: white;">  {{single_subscriptionList.paymentType | uppercase}}</span></h6>
+                </div>
+
+                <div class="form-group col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">Interval :<span style="color: white;">  {{single_subscriptionList.interval}} days</span></h6>
+                </div>
+               
+            </div>
+
+            <div class="mt-2 row">
+                <div class="form-group col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">First delivery date :<span style="color: white;">  {{single_subscriptionList.firstDeliveryDate}}</span></h6>
+                </div>
+
+                <div class="col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">Previous delivery date : <span style="color: white;">  {{single_subscriptionList.previousDate}}</span></h6>
+                </div>
+               
+               
+            </div>
+
+            
+            <div class="mt-2 row">
+                 
+                <div class="form-group col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">Next delivery date :<span style="color: white;">  {{single_subscriptionList.nextDeliveryDate}}</span></h6>
+                </div>
+
+                <div class="col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">First Order ID : <span style="color: white;">  {{single_subscriptionList.originalOrderId}}</span></h6>
+                </div>
+            </div>
+
+           
+
+        
+
+            <div class="row innerr_table_style">
+                <div class=" table-sorter-wrapper  table-responsive total-sub-pop" style="border-radius:unset;margin-top:20px">
+                    <form action="#" class="invoice-repeater" #subscriptionForm="ngForm">
+                        <div class="row" style="justify-content: right;">
+                            <div class="col-md-12">
+                                <button  type="button" class="btn" style="background-color: #01151f !important; font-size: 11px;color:#fff;width:150px;padding:5px 0px;margin: 0px 7px;border-radius: 15px;width: 70px;
+                                margin: 4px 5px !important;float: right;" (click)="addForm()">+Add</button> 
+                        
+                            </div>
+                           </div>
+                        <table id="sortable-table-2" class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th class="sortStyle">Sl.No<i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">HSN<i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Items<i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">UOM<i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Quantity<i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Amount<i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Total<i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle"><i class="mdi mdi-chevron-down"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr *ngFor="let i of single_subscriptionList.products;let k=index;">
+                                <td style="padding: 8px;">{{k+1}}</td>
+                                <td style="padding: 8px;">{{i.uomValue}}</td>
+                                <td style="padding: 8px;">{{i.productName}}</td>
+                                <td style="padding: 8px;">{{i.uomValue}}</td>
+                                <td style="padding: 8px;">
+                                    <input type="text" class="form-control" value="{{i.quantity}}">
+                                </td>
+                                <td style="padding: 8px;"><i class="fa fa-inr" aria-hidden="true"></i>{{i.specialPrice}}</td>
+                                <td style="padding: 8px;width:10px;"><i class="fa fa-inr" aria-hidden="true"></i>{{i.quantity * i.specialPrice}}</td>
+                                <td> 
+                                    <button type="button" class="btn" style="color:#fff;" >X</button>
+                                </td>
+                            </tr> -->
+
+
+                            <tr *ngFor="let formOption of formArray; let i = index; trackBy: trackByFn ">
+                                <td style="padding: 8px;">
+                                    {{i+1}}
+                                </td>
+                                <td style="padding: 8px;">
+                                    <!-- <input type="text" class="form-control"   [(ngModel)]="formOption.hsn"
+                                    name="formOption{{i}}.hsn"
+                                    #hsn="ngModel"
+                                    id="formOption{{i}}.hsn" required> -->
+                                    {{formOption.hsn}}
+                                </td>
+                                <td style="padding: 8px;">
+                                    <kendo-dropdownlist class="form-control" [data]="formOption.productDropdownList"
+                                        textField='productName' valueField='product_id' [valuePrimitive]="true"
+                                        [(ngModel)]="formOption.items" name="formOption{{i}}.items"
+                                        id="formOption{{i}}.items" required [filterable]="true"
+                                        (filterChange)="Search_Medicine($event,i)"
+                                        (valueChange)="selectProductDropdown($event,i,formOption)" style="width: 200px;height: auto;">
+                                    </kendo-dropdownlist>
+                                    <!-- <select class="form-control"   [(ngModel)]="formOption.items"
+                                    name="formOption{{i}}.items"
+                                    #items="ngModel"
+                                    id="formOption{{i}}.items" required>
+                                        <option *ngFor="let i of productDropdownList" [value]="i.product_id">{{i.productName}}</option>
+                                    </select> -->
+                                </td>
+                                <td style="padding: 8px;">
+                                    <select class="form-control"   [(ngModel)]="formOption.uom" (change)="selectUOMValue($event,formOption,i)"
+                                    name="formOption{{i}}.uom"
+                                    #uom="ngModel"
+                                    id="formOption{{i}}.uom" required>
+                                        <option *ngFor="let p of formOption.uomDropdownList" [value]="p.variantId">{{p.uomValue}}</option>
+                                    </select>
+                                </td>
+                                <td style="padding: 8px;">
+                                    <input type="number" class="form-control"   [(ngModel)]="formOption.quantity" (keyup)="changeQuantity($event,formOption,i)"
+                                    name="formOption{{i}}.quantity"
+                                    #quantity="ngModel"
+                                    id="formOption{{i}}.quantity" required max="100" min="1">
+                                </td>
+                                <td style="padding: 8px;">
+                                    <!-- <input type="text" class="form-control"   [(ngModel)]="formOption.amount"
+                                    name="formOption{{i}}.amount"
+                                    #amount="ngModel"
+                                    id="formOption{{i}}.amount" required> -->
+                                    {{formOption.amount}}
+                                </td>
+                                <td style="padding: 8px;">
+                                    <!-- <input type="text" class="form-control"   [(ngModel)]="formOption.total"
+                                    name="formOption{{i}}.total"
+                                    #total="ngModel"
+                                    id="formOption{{i}}.total" required> -->
+                                    {{formOption.total}}
+                                </td>
+                                <td> 
+                                    <button type="button" class="btn" style="color:#fff;" (click)="removeForm(i)">X</button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;">Total Amount</td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;width:10px;"><i class="fa fa-inr" aria-hidden="true"></i> {{single_subscriptionList.amount}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;">Apply Promo</td>
+                                <td style="padding: 8px;"> <input type="text" class="form-control" (keyup)="changePromocodeValue($event)" value="{{couponCode}}"></td>
+                                <td  style="padding: 8px;">
+                                    <button *ngIf="couponValue==0" type="button" class="btn" style="color:#fff;width:165px;" (click)="applyPromocode()">Apply</button>
+                                    <button *ngIf="couponValue!=0"  type="button" class="btn" style="color:#fff" (click)="removePromocode()">X</button>
+                                </td>
+                                <td style="padding: 8px;width:10px;">
+                                    <i class="fa fa-inr" aria-hidden="true"></i> {{couponValue}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td *ngIf="single_subscriptionList.medCoinCount==null" style="padding: 8px;"><button type="button" class="btn" style="color:#fff;width:165px;" (click)="applyMedcoinValue()">Apply Medcoin</button></td>
+                                <td *ngIf="single_subscriptionList.medCoinCount!=null" style="padding: 8px;">Applied Medcoin</td>
+                                <td style="padding: 8px;width:10px;">
+                                    <input type="number" class="form-control" min="1" max="{{maxMedcoinUse}}" (keyup)="changeMedcoinValue($event)" value="{{medcoinValue}}">
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <button *ngIf="medcoinValue!=0" type="button" class="btn" style="color:#fff;" (click)="removeMedcoinValue()">X</button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;">Final Amount</td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;width:10px;"><i class="fa fa-inr" aria-hidden="true"></i> {{finalAmount}}</td>
+                            </tr>
+                        
+                            
+                        </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+    </div>
+
+
+    <div class="modal-footer" style=" width:850px; border-top: 1px solid #013550; border-radius: 0px 0px 15px 15px;">
+        <div class="row">
+            <button *ngIf="single_subscriptionList.paymentType!='cod'" type="button" class="btn mr-2" style="background-color: #01151f !important; font-size: 11px;color:#fff;width:150px;padding:5px 0px; border-radius: 15px;" (click)="sendPaymentLink(single_subscriptionList.subscriptionId)">Send Payment Link</button>
+            <button type="button" class="btn mr-2" style="background-color: #01151f !important; font-size: 11px;color:#fff;width:150px;padding:5px 0px;margin: 0px 7px;border-radius: 15px;" *ngIf="single_subscriptionList.paymentType==='razorpay'" (click)="move_to_prescription_awaited(single_subscriptionList.subscriptionId)">Convert to COD Order</button>
+            <button type="button" class="btn mr-2" style="background-color: #01151f !important; font-size: 11px;color:#fff;width:150px;padding:5px 0px;margin: 0px 7px;border-radius: 15px;" *ngIf="single_subscriptionList.paymentType==='cod'" (click)="covert_cod_to_online_payment(single_subscriptionList.subscriptionId)">Convert to Online Payment</button>
+            <button type="button" class="btn" style="background-color: #01151f !important; font-size: 11px;color:#fff;width:150px;padding:5px 0px; border-radius: 15px;" (click)="inActiveSubscription(single_subscriptionList.subscriptionId)">Inactive Subscription</button>
+            
+        </div>
+    </div>
+    <div class="modal-footer" style=" width:850px; padding: 0; border: unset; background-color: unset;">
+                <button style="width: 100%; background: #0b4866 !important; border: unset !important; color: #fff; height: 46px; border-radius: 30px; margin-top: 14px; font-size: 15px;" type="submit" class=" btn-dark form-control" data-dismiss="modal"
+                (click)="confirmSubscription()">Confirm</button>
+    </div>
+
+    
+</ng-template>
+
+
+
+
+
+
+<ng-template #ItemListContent let-modal>
+    <div class="modal-header ">
+        <h6 class="modal-title f-w-600" id="ItemListExampleModal"></h6>
+        <button style="color: white;opacity: 0.5;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="row">
+
+            <table class="table table-striped">
+                <thead style="color: white;font-size: 20px;background-color: #032536;" class="">
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>UOM</th>
+                    <th>Quantity</th>
+                </thead>
+                <tbody style="color: white;opacity: 0.5;">
+                    <tr *ngFor="let i of productList;let k=index;">
+                        <td>{{k+1}}</td>
+                        <td>{{i.productName}}</td>
+                        <td>{{i.uomValue}}</td>
+                        <td>{{i.quantity}}</td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+           
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+       
+    </div>
+</ng-template>
+
+
+<ng-template #RemarksContent let-modal>
+    <div class="modal-header ">
+        <h6 class="modal-title f-w-600" id="RemarksExampleModal"></h6>
+        <button style="color: white;opacity: 0.5;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="row">
+                <div class="col-md-12">
+                    <label>Remarks</label>
+                    <textarea class="form-control" [(ngModel)]="remarks"></textarea>
+                </div>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dark btn-dark-rounded" (click)="saveRemarks();attemptSubmitted=true;">Save</button>
+        <button class="btn btn-dark btn-dark-rounded" type="button" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Close</button>
+    </div>
+</ng-template>
+
+
+<!-- View Single Subscription -->
+
+<ng-template #viewSubscriptionContent let-modal>
+ 
+    <div class="modal-body" style="border-radius: 15px 15px 0px 0px;" *ngIf="single_subscriptionList">
+            <div class="mt-2 row">
+                    <div class="form-group col-md-6 ">
+                        <h6 for="validationCustom02" class="mb-0">Name :<span style="color: white;">  {{single_subscriptionList.userName}}</span></h6>
+                    </div>
+                    <div class="col-md-6 ">
+                        <h6 for="validationCustom02" class="mb-0">Subscription ID : <span style="color: white;">  {{single_subscriptionList.subscriptionIdString}}</span></h6>
+                    </div>
+            </div>
+
+            <div class="mt-2 row">
+                <div class="form-group col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">Address :<span style="color: white;">   {{single_subscriptionList.address.name}}  ,   {{single_subscriptionList.address.wholeAddress}}</span></h6>
+                </div>
+                <div class="col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">Mobile Number : <span style="color: white;">   {{single_subscriptionList.phoneNumber}}</span> 
+                        <img src="assets/images/file-icons/icon-phone-call.svg" style="width: 17px !important; height: auto !important; margin-left: 10px; margin-top: 0px;"></h6>
+                </div>
+                <div class="col-md-2">
+                    
+                </div>
+            </div>
+
+            <div class="mt-2 row">
+                <div class="form-group col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">Payment Type :<span style="color: white;">  {{single_subscriptionList.paymentType | uppercase}}</span></h6>
+                </div>
+
+                <div class="form-group col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">Interval :<span style="color: white;">  {{single_subscriptionList.interval}} days</span></h6>
+                </div>
+               
+            </div>
+
+            <div class="mt-2 row">
+                <div class="form-group col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">First delivery date :<span style="color: white;">  {{single_subscriptionList.firstDeliveryDate}}</span></h6>
+                </div>
+
+                <div class="col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">Previous delivery date : <span style="color: white;">  {{single_subscriptionList.previousDate}}</span></h6>
+                </div>
+               
+               
+            </div>
+
+            
+            <div class="mt-2 row">
+                 
+                <div class="form-group col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">Next delivery date :<span style="color: white;">  {{single_subscriptionList.nextDeliveryDate}}</span></h6>
+                </div>
+
+                <div class="col-md-6 ">
+                    <h6 for="validationCustom02" class="mb-0">First Order ID : <span style="color: white;">  {{single_subscriptionList.originalOrderId}}</span></h6>
+                </div>
+            </div>
+
+
+
+        
+
+            <div class="row innerr_table_style">
+                <div class=" table-sorter-wrapper  table-responsive " style="border-radius:unset;margin-top:20px">
+                    <form action="#" class="invoice-repeater" #subscriptionForm="ngForm">
+                        <table id="sortable-table-2" class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th class="sortStyle">Sl.No<i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">HSN<i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Items<i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">UOM<i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Quantity<i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Amount<i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Total<i class="mdi mdi-chevron-down"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let i of single_subscriptionList.products;let k=index;">
+                                <td style="padding: 8px;">{{k+1}}</td>
+                                <td style="padding: 8px;">{{i.uomValue}}</td>
+                                <td style="padding: 8px;">{{i.productName}}</td>
+                                <td style="padding: 8px;">{{i.uomValue}}</td>
+                                <td style="padding: 8px;">
+                                   {{i.quantity}}
+                                </td>
+                                <td style="padding: 8px;">{{i.specialPrice}}</td>
+                                <td style="padding: 8px;width:10px;">{{i.quantity * i.specialPrice}}</td>
+                               
+                            </tr>
+
+
+                            
+                            <tr>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;">Total Amount</td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;width:10px;"><i class="fa fa-inr" aria-hidden="true"></i> {{single_subscriptionList.amount}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;">Applied Promo</td>
+                                <td style="padding: 8px;"> {{couponCode}}</td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;width:10px;">
+                                    <i class="fa fa-inr" aria-hidden="true"></i> {{couponValue}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;">Medcoin</td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;width:10px;">
+                                    <i class="fa fa-inr" aria-hidden="true"></i> {{medcoinValue}}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;">Final Amount</td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;"></td>
+                                <td style="padding: 8px;width:10px;"><i class="fa fa-inr" aria-hidden="true"></i> {{finalAmount}}</td>
+                            </tr>
+                        
+                            
+                        </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+    </div>
+
+
+   
+    <div class="modal-footer" style="padding: 0; border: unset; background-color: unset;">
+                <button style="width: 100%; background: #0b4866 !important; border: unset !important; color: #fff; height: 46px; border-radius: 30px; margin-top: 14px; font-size: 15px;" type="submit" class=" btn-dark form-control" data-dismiss="modal"
+                (click)="modal.dismiss('Cross click')">Close</button>
+    </div>
+
+    
+</ng-template>

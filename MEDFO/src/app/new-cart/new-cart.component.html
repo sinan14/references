@@ -1,0 +1,2929 @@
+<div class="ps-page">
+  <app-header></app-header>
+</div>
+<!-- Google Tag Manager (noscript) -->
+<noscript
+  ><iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-W32L424"
+    height="0"
+    width="0"
+    style="display: none; visibility: hidden"
+  ></iframe
+></noscript>
+<!-- End Google Tag Manager (noscript) →-->
+
+<section
+  class="inner_new_page_container"
+  style="overflow: hidden; background-color: #f7f7f7; margin-top: 10%"
+>
+  <div class="container">
+    <div class="cart_page_head">My Cart</div>
+    <div class="cart_page_top_btn_row">
+      <div class="cart_page_top_btn cart_page_top_btn_act">Medicart</div>
+      <!-- <div class="cart_page_top_btn">Subscription</div> -->
+      <!-- <button class="btn11" onclick="myFunction()"> -->
+      <button class="btn11">
+        <div class="cart_page_top_btn">Subscription</div>
+      </button>
+      <div id="myDIV">
+        <!--------------------- Upload Prescription ------------------->
+        <button
+          type="button"
+          class="btn btn-info btn-lg"
+          data-toggle="modal"
+          id="popup-upload-prescription"
+          data-target="#myUpload"
+        >
+          Upload Prescription
+        </button>
+        <!-- Trigger the modal with a button -->
+
+        <button
+          data-toggle="modal"
+          id="popup-add-address"
+          data-target="#myaddress"
+          type="button"
+          class="btn btn-info btn-lg"
+        >
+          Add Address
+        </button>
+
+        <!-- -----------------------------------select address---------------------------- -->
+
+        <button
+          data-toggle="modal"
+          id="popup-select-address"
+          data-target="#selectaddress"
+          type="button"
+          class="btn btn-info btn-lg"
+        >
+          Select address
+        </button>
+
+        <!-- ----------------------------------Choose a refund mode---------------------------- -->
+        <button
+          type="button"
+          class="btn btn-info btn-lg"
+          data-toggle="modal"
+          id="popup4" data-target="#Returnrequestsubmitted"
+          data-target="#refund"
+        >
+          Choose a refund mode
+        </button>
+        <!-- Return request submitted -->
+        <button
+          type="button"
+          class="btn btn-info btn-lg"
+          data-toggle="modal"
+          id="popup5"
+         
+        >
+          Return request submitted
+        </button>
+        <!-------- WHY RETURN PRODUCT------->
+        <button
+          type="button"
+          class="btn btn-info btn-lg mt-2"
+          data-toggle="modal"
+          id="popup6"
+          data-target="#whyreturenproduct"
+        >
+          WHY RETURN PRODUCT
+        </button>
+        <!-------- Change password------->
+        <button
+          type="button"
+          class="btn btn-info btn-lg mt-2"
+          data-toggle="modal"
+          id="popup7"
+          data-target="#Changepassword"
+        >
+          Change password
+        </button>
+        <!-------- Reason for not completing------->
+        <button
+          type="button"
+          class="btn btn-info btn-lg mt-2"
+          data-toggle="modal"
+          id="popup8"
+          data-target="#Reasonfornotcompleting"
+        >
+          Reason for not completing
+        </button>
+        <!-------- Review subscription------->
+        <button
+          type="button"
+          class="btn btn-info btn-lg mt-2"
+          data-toggle="modal"
+          id="popup9"
+          data-target="#Reviewsubscription"
+        >
+          Review Subscription
+        </button>
+      </div>
+      <!----------------------- Review subscription ----------------------->
+
+      <div id="Reviewsubscription" class="modal fade pr-0" role="dialog">
+        <div class="modal-dialog" id="mdrevew111">
+          <!-- Modal content-->
+          <!-- ------- Review subscription ----------->
+          <div class="modal-content mdw1">
+            <div class="row">
+              <div class="col-md-12">
+                <button
+                  id="dismiss-review-subscription"
+                  type="button"
+                  class="closeselect"
+                  data-dismiss="modal"
+                >
+                  &times;
+                </button>
+              </div>
+            </div>
+            <div class="modal-body" style="width: 100%">
+              <h4 class="subscription-review">Review subscription</h4>
+              <section class="review-order-section">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-12 float-right">
+                      <div class="cart_item_lst_row">
+                        <!--<div class="cart_item_lst_dicount" style="top: 0 !important;">50%-->
+                        <!--   <span>Discount</span>-->
+                        <!--</div>-->
+                        <div class="ribbon">50% Discount</div>
+                        <div class="cart_item_lst_row_img" style="top: 0">
+                          <img src="assets/img/cart/prd1.png" alt="" />
+                        </div>
+                        <div
+                          class="cart_item_lst_row_contant"
+                          style="margin-left: 15px; margin-top: 39px"
+                        >
+                          <div
+                            class="cart_item_lst_row_contant_name"
+                            style="margin: 0 0 5px 0"
+                          >
+                            Himalaya men face wash
+                          </div>
+                          <div
+                            class="cart_item_lst_row_contant_cmpny"
+                            style="margin: 0 0 8px 0"
+                          >
+                            Himalaya healthcare pruduct
+                          </div>
+                          <div class="cart_item_lst_row_contant_gram">
+                            90 gram
+                          </div>
+                          <div
+                            class="cart_item_lst_row_contant_rate"
+                            style="text-align: right"
+                          >
+                            <div
+                              class="cart_item_lst_row_contant_rate crosswith11"
+                            >
+                              <span> <i class="fa fa-rupee"></i> 199 </span>
+                            </div>
+                            <strong style="float: right"
+                              ><i class="fa fa-rupee"></i> 100</strong
+                            >
+                            <div
+                              class="xart_lst_qty_box dropdown"
+                              style="left: -11px; height: 36px"
+                            >
+                              <button
+                                class="btn dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                              >
+                                Qty 2
+                              </button>
+                              <div
+                                class="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton"
+                              >
+                                <a class="dropdown-item" href="#">1</a>
+                                <a class="dropdown-item" href="#">2</a>
+                                <a class="dropdown-item" href="#">3</a>
+                                <a class="dropdown-item" href="#">4</a>
+                                <a class="dropdown-item" href="#">5</a>
+                                <a class="dropdown-item" href="#">6</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cart_item_lst_row">
+                        <div class="ribbon">50% Discount</div>
+                        <div class="cart_item_lst_row_img">
+                          <img src="assets/img/cart/prd2.png" alt="" />
+                        </div>
+                        <div
+                          class="cart_item_lst_row_contant"
+                          style="margin-left: 15px; margin-top: 39px"
+                        >
+                          <div
+                            class="cart_item_lst_row_contant_name"
+                            style="margin: 0 0 5px 0"
+                          >
+                            Himalaya men face wash
+                          </div>
+                          <div
+                            class="cart_item_lst_row_contant_cmpny"
+                            style="margin: 0 0 8px 0"
+                          >
+                            Himalaya healthcare pruduct
+                          </div>
+                          <div class="cart_item_lst_row_contant_gram">
+                            90 gram
+                          </div>
+                          <div
+                            class="cart_item_lst_row_contant_rate"
+                            style="text-align: right"
+                          >
+                            <div
+                              class="cart_item_lst_row_contant_rate crosswith11"
+                            >
+                              <span> <i class="fa fa-rupee"></i> 199 </span>
+                            </div>
+                            <strong style="float: right"
+                              ><i class="fa fa-rupee"></i> 100</strong
+                            >
+                            <div
+                              class="xart_lst_qty_box dropdown"
+                              style="left: -11px; height: 36px"
+                            >
+                              <button
+                                class="btn dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                              >
+                                Qty 2
+                              </button>
+                              <div
+                                class="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton"
+                              >
+                                <a class="dropdown-item" href="#">1</a>
+                                <a class="dropdown-item" href="#">2</a>
+                                <a class="dropdown-item" href="#">3</a>
+                                <a class="dropdown-item" href="#">4</a>
+                                <a class="dropdown-item" href="#">5</a>
+                                <a class="dropdown-item" href="#">6</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="ftr-box">
+                          <div class="ftr1 float-left">
+                            <label
+                              style="
+                                font-size: 10px;
+                                color: #00aaff;
+                                float: left;
+                              "
+                              >Total amount</label
+                            >
+                            <strong style="font-size: 22px"
+                              ><i class="fa fa-rupee"></i>250</strong
+                            >
+                          </div>
+                          <div class="ftr11 float-right">
+                            <button
+                              type="button"
+                              class="btn btn-primary Profile"
+                            >
+                              Confirm subscription
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 float-right">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="bb1">
+                            <label>First delivery date</label>
+                            <hr />
+                            <label style="color: #00aaff; font-weight: 700"
+                              >12 Dec 2020</label
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="bb1">
+                            <label>First delivery date</label>
+                            <hr />
+                            <label style="color: #00aaff; font-weight: 700"
+                              >12 Dec 2020</label
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="listing-review" style="margin-bottom: 15px">
+                        <div class="f-review">
+                          <ul style="font-size: 13px">
+                            <li style="padding-top: 11px">MRP</li>
+                            <li style="padding-top: 11px">
+                              <i class="fa fa-rupee"></i> 100
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="f-review">
+                          <ul>
+                            <li>Delivery charge</li>
+                            <li
+                              style="
+                                color: #000000;
+                                opacity: 0.7;
+                                font-weight: 300;
+                              "
+                            >
+                              Free
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="f-review">
+                          <ul>
+                            <li>Subscription Discount</li>
+                            <li>-50</li>
+                          </ul>
+                        </div>
+                        <div class="f-review">
+                          <ul>
+                            <li>Total amount to pay on next delivery</li>
+                            <li class="oneeighty">
+                              <i class="fa fa-rupee"></i> 180
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="f-review-blue">
+                          <ul>
+                            <li style="color: #00aaff; font-weight: 600">
+                              Total savings
+                            </li>
+                            <li style="color: #00aaff; font-weight: 600">
+                              <i class="fa fa-rupee"></i> 150
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="review-del">
+                        <div class="f-del">
+                          <ul>
+                            <li style="width: 67%">
+                              <a href="#">Delivery to Home - 673504</a>
+                              <p>
+                                1 st street, second road mathikere
+                                <br />Bangalore 686598
+                              </p>
+                            </li>
+                            <li>
+                              <a href="#" class="change"
+                                >Change <i class="fa fa-angle-right"></i
+                              ></a>
+                            </li>
+                          </ul>
+                          <p>Delivery in 3 Hours</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!----------------------- Review subscription ----------------------->
+      <!-- </div> -->
+
+      <!---------------------- Reason For not completing-------------->
+      <!-- Modal -->
+      <div class="modal fade" id="Reasonfornotcompleting" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="row">
+              <div class="col-md-12">
+                <button
+                  id="dismiss-reason-for-not-completing"
+                  type="button"
+                  class="closeselect"
+                  data-dismiss="modal"
+                >
+                  &times;
+                </button>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div class="reasonmain">
+                <h3 style="margin-bottom: 0px; margin-top: 0px">
+                  Reason for not completing
+                </h3>
+                <label class="pleasechoose1"
+                  >Please choose the correct reason for leaving</label
+                >
+                <hr style="width: 112%; margin: 0 0 0 -26px" />
+                <div class="modal-body">
+                  <div class="">
+                    <div class="row">
+                      <div class="col-md-12 p-0">
+                        <h5
+                          style="
+                            color: #000000;
+                            opacity: 0.5;
+                            margin: 5px 0 17px 3px;
+                          "
+                        >
+                          Select reasons
+                        </h5>
+                        <ul>
+                          <li>
+                            <label class="checkbox-button">
+                              <input
+                                type="checkbox"
+                                class="checkbox-button__input"
+                                id="choice1-1"
+                                name="choice1"
+                              />
+                              <span
+                                class="checkbox-button__control"
+                                checked
+                              ></span>
+                              <span class="checkbox-button__label"
+                                >The website did not meet the expectations</span
+                              >
+                            </label>
+                          </li>
+                          <li>
+                            <label class="checkbox-button">
+                              <input
+                                type="checkbox"
+                                class="checkbox-button__input"
+                                id="choice1-1"
+                                name="choice1"
+                              />
+                              <span class="checkbox-button__control"></span>
+                              <span class="checkbox-button__label"
+                                >I am not willing to share my details</span
+                              >
+                            </label>
+                          </li>
+                          <li>
+                            <label class="checkbox-button">
+                              <input
+                                type="checkbox"
+                                class="checkbox-button__input"
+                                id="choice1-1"
+                                name="choice1"
+                              />
+                              <span class="checkbox-button__control"></span>
+                              <span class="checkbox-button__label"
+                                >The questions were inappropriate</span
+                              >
+                            </label>
+                          </li>
+                          <li>
+                            <label class="checkbox-button">
+                              <input
+                                type="checkbox"
+                                class="checkbox-button__input"
+                                id="choice1-1"
+                                name="choice1"
+                              />
+                              <span class="checkbox-button__control"></span>
+                              <span class="checkbox-button__label"
+                                >I’ll do it later</span
+                              >
+                            </label>
+                          </li>
+                          <li>
+                            <label class="checkbox-button">
+                              <input
+                                type="checkbox"
+                                class="checkbox-button__input"
+                                id="choice1-1"
+                                name="choice1"
+                              />
+                              <span class="checkbox-button__control"></span>
+                              <span class="checkbox-button__label"
+                                >Technical issues</span
+                              >
+                            </label>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <hr style="width: 112%; margin: 0 0 0 -26px" />
+                  <div class="">
+                    <div class="row">
+                      <div class="col-md-12 text-center p-0">
+                        <div class="form-group">
+                          <input
+                            id="form_name"
+                            type="text"
+                            name="name"
+                            class="form-control aditionalcmd1"
+                            placeholder="Additional Comments"
+                            required="required"
+                            data-error="Comment"
+                          />
+                        </div>
+                        <button type="button" class="btn btn-primary Profile">
+                          Complete Profile
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!----------------------- Reason For not completing close  -------------->
+      <!-- </div> -->
+      <!-------------------------------- Change password------------------>
+      <!-- Modal -->
+      <div class="modal fade" id="Changepassword" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div
+            class="modal-content"
+            style="width: 85%; padding: 0 9px"
+            id="changewidth"
+          >
+            <div class="row">
+              <div class="col-md-12">
+                <button
+                  id="dismiss-change-password"
+                  type="button"
+                  class="closeselect"
+                  data-dismiss="modal"
+                >
+                  &times;
+                </button>
+              </div>
+            </div>
+            <div class="modal-body text-center Login11">
+              <div class="row">
+                <div class="container">
+                  <h5 style="margin: 0 0 20px 0; font-weight: 600">
+                    Change password
+                  </h5>
+
+                  <div class="form-group">
+                    <input
+                      id="form_name"
+                      type="text"
+                      name="name"
+                      class="form-control newpass"
+                      placeholder="Current password / OTP"
+                      required="required"
+                      data-error="name"
+                      style="
+                        border-radius: 6px;
+                        opacity: 0.5;
+                        border: 1px solid #cccccc;
+                      "
+                    />
+                    <input
+                      id="form_name"
+                      type="text"
+                      name="name"
+                      class="form-control newpass"
+                      placeholder="New password"
+                      required="required"
+                      data-error="name"
+                      style="
+                        border-radius: 6px;
+                        opacity: 0.5;
+                        border: 1px solid #cccccc;
+                      "
+                    />
+                    <input
+                      id="form_name"
+                      type="text"
+                      name="name"
+                      class="form-control newpass"
+                      placeholder="Confirm password"
+                      required="required"
+                      data-error="name"
+                      style="
+                        border-radius: 6px;
+                        opacity: 0.5;
+                        border: 1px solid #cccccc;
+                      "
+                    />
+                  </div>
+                  <button type="button" class="btn btn-primary update">
+                    Update
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!----------------------- Change password close------------------>
+
+      <!-- </div> -->
+      <!----------------- WHY RETURN PRODUCT------------------------>
+      <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="whyreturenproduct" role="dialog">
+          <div class="modal-dialog" id="btnblueres">
+            <!-- Modal content-->
+            <div class="modal-content bclolor">
+              <div class="row">
+                <div class="col-md-12">
+                  <button
+                    type="button"
+                    class="closeselect"
+                    id="dismiss-why-return-product"
+                    data-dismiss="modal"
+                    style="background: #338afe"
+                  >
+                    &times;
+                  </button>
+                </div>
+              </div>
+              <div class="modal-header11">
+                <h3 class="mb-1">Why return product ?</h3>
+                <label>Please choose the correct reason for return</label>
+                <hr style="margin: 15px 0 8px 0px" />
+              </div>
+              <div class="modal-body">
+                <h5
+                  style="color: #000000; opacity: 0.5; margin: 0px 0 15px 0px"
+                >
+                  Select reasons
+                </h5>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <ul>
+                        <li>
+                          <label class="checkbox-button">
+                            <input
+                              type="checkbox"
+                              class="checkbox-button__input"
+                              id="choice1-1"
+                              name="choice1"
+                            />
+                            <span class="checkbox-button__control"></span>
+                            <span class="checkbox-button__label"
+                              >Incorrect product or size ordered</span
+                            >
+                          </label>
+                        </li>
+                        <li>
+                          <label class="checkbox-button">
+                            <input
+                              type="checkbox"
+                              class="checkbox-button__input"
+                              id="choice1-1"
+                              name="choice1"
+                            />
+                            <span class="checkbox-button__control"></span>
+                            <span class="checkbox-button__label"
+                              >Product no longer needed</span
+                            >
+                          </label>
+                        </li>
+                        <li>
+                          <label class="checkbox-button">
+                            <input
+                              type="checkbox"
+                              class="checkbox-button__input"
+                              id="choice1-1"
+                              name="choice1"
+                            />
+                            <span class="checkbox-button__control"></span>
+                            <span class="checkbox-button__label"
+                              >Product does not match description on website or
+                              in catalog</span
+                            >
+                          </label>
+                        </li>
+                        <li>
+                          <label class="checkbox-button">
+                            <input
+                              type="checkbox"
+                              class="checkbox-button__input"
+                              id="choice1-1"
+                              name="choice1"
+                            />
+                            <span class="checkbox-button__control"></span>
+                            <span class="checkbox-button__label"
+                              >Company shipped wrong product or size</span
+                            >
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <hr style="margin: 14px 0 2px -10px; width: 104%" />
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input
+                          id="form_name"
+                          type="text"
+                          name="name"
+                          class="form-control aditionalcmd"
+                          placeholder="Additional Comment"
+                          required="required"
+                          data-error="Comment"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row mb-1">
+                    <div class="col-md-12">
+                      <ul>
+                        <li>
+                          <label for="muhRadio1"
+                            ><input
+                              class="incorrect1"
+                              type="radio"
+                              name="muhRadio"
+                              value=""
+                            /><span class="in11"
+                              >I am confirm that cancel this order</span
+                            >
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer ftrbox">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <label class="refundamout">Refund amount</label><br />
+                      <strong style="font-size: 18px"
+                        ><i class="fa fa-rupee"></i> 100</strong
+                      >
+                    </div>
+                    <div class="col-md-7">
+                      <button type="button" class="btn btn-primary Confirm-btn">
+                        Pickup Address
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!----------------- WHY RETURN PRODUCT close------------------------>
+
+      <!-- ----------------Return request submitted---------------- -->
+      <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="Returnrequestsubmitted" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content bclolor">
+              <div class="row">
+                <div class="col-md-12">
+                  <button
+                    type="button"
+                    class="closeselect"
+                    data-dismiss="modal"
+                  >
+                    &times;
+                  </button>
+                </div>
+              </div>
+              <div class="main11">
+                <div class="row">
+                  <div class="col-md-12 popper">
+                    <img
+                      src="assets/img/cart/popper.png"
+                      class="img-fluid poperimg11"
+                    />
+                    <h3 class="rqust">Return request submitted</h3>
+                    <label>Reference number : 564sdfd5541</label>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-body" style="padding: 0 15px">
+                <div class="">
+                  <div class="row">
+                    <div class="col-md-12 pickup">
+                      <h5>Pickup date</h5>
+                      <i class="fa fa-clock-o" aria-hidden="true"
+                        ><span class="date">Date : 20 Dec 2020</span></i
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 pickup">
+                    <h5>Please note</h5>
+                    <p class="pleasenote">
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the industry's
+                      standard dummy text ever since the 1500s, when an unknown
+                      printer took a galley of type and scrambled it to make a
+                      type specimen book.
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 pickup">
+                    <h5>Next step</h5>
+                    <p>
+                      Please check your orders page to track pickup and refund
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="pleasenote1">
+                <div class="row">
+                  <div class="col-md-2 float-left track1">
+                    <img
+                      src="assets/img/cart/trackorder.png"
+                      class="img-fluid trackorder"
+                    />
+                  </div>
+                  <div class="col-md-10 float-left pl-0 track2">
+                    <div class="retunbox">
+                      <h5 style="color: #338afe; font-size: 13px">
+                        Return request submited
+                      </h5>
+                    </div>
+                    <div class="retunbox">
+                      <label
+                        >Our agent will come and pickup <br />the item from the
+                        pickup address</label
+                      ><img
+                        src="assets/img/cart/man.png"
+                        class="img-fluid man"
+                      />
+                    </div>
+                    <div class="retunbox1">
+                      <label
+                        >Refund will be initiated after the item <br />
+                        is picked up and quality check has <br />
+                        passed</label
+                      ><img
+                        src="assets/img/cart/van.png"
+                        class="img-fluid man1"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -----------------Return request submitted close ----------------- -->
+
+      <!-- ------------------------Choose a refund mode------------- -->
+      <section class="mode">
+        <div class="container">
+          <!-- Trigger the modal with a button -->
+          <!-- Modal -->
+          <div class="modal fade" id="refund" role="dialog">
+            <div class="modal-dialog" id="mdwidth1" id="mdwidth">
+              <!-- Modal content-->
+              <div class="modal-content bclolor">
+                <div class="row">
+                  <div class="col-md-12">
+                    <button
+                      type="button"
+                      class="closeselect"
+                      data-dismiss="modal"
+                      id="dismiss-refund"
+                    >
+                      &times;
+                    </button>
+                  </div>
+                </div>
+                <div class="headerpopup">
+                  <div class="row p-3">
+                    <div class="col-md-12">
+                      <h3>Choose a refund mode</h3>
+                      <h5 class="headingre">choose the refund mode</h5>
+                      <hr />
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-body">
+                  <div class="container">
+                    <div class="row">
+                      <div
+                        class="col-md-6 text-center"
+                        style="padding: 23px 43px"
+                      >
+                        <div class="box3">
+                          <img
+                            src="assets/img/cart/atmcard.png"
+                            class="img-fluid"
+                          />
+                        </div>
+                        <label class="medi">Back to source A/C</label>
+                      </div>
+                      <div
+                        class="col-md-6 text-center"
+                        style="padding: 23px 43px"
+                      >
+                        <p class="ribbon1">Instant</p>
+                        <div class="box3">
+                          <img
+                            src="assets/img/cart/medcoin.png"
+                            class="img-fluid"
+                          />
+                        </div>
+                        <label class="medi">Medi coin</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer ftrbox">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="refundamout">Refund amount</label><br />
+                        <strong style="font-size: 18px"
+                          ><i class="fa fa-rupee"></i> 100</strong
+                        >
+                      </div>
+                      <div class="col-md-6">
+                        <button
+                          type="button"
+                          class="btn btn-primary Confirm-btn"
+                        >
+                          Confirm
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- </div> -->
+      </section>
+      <!-- ------------Choose a refund mode close ------------------- -->
+
+      <!-------------------------------select address------------------ -->
+      <section>
+        <div class="container">
+          <div class="row">
+            <!-- Trigger the modal with a button -->
+            <!-- Modal -->
+            <div class="modal fade" id="selectaddress" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content" style="background: #f7f7f7">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <button
+                        type="button"
+                        class="closeselect"
+                        data-dismiss="modal"
+                        id="dismiss-select-address"
+                      >
+                        &times;
+                      </button>
+                    </div>
+                  </div>
+                  <div class="modal-body">
+                    <h3 class="select-address text-center">Select address</h3>
+                    <hr />
+                    <div class="row selroww">
+                      <div class="col-md-12">
+                        <div class="addnew" style="width: 100%">
+                          <div class="col-md-3 addnew1" style="float: left">
+                            <img
+                              class="locationicon"
+                              src="assets/img/cart/Icon material-location-on.svg"
+                              style="
+                                background: #e7e8e7;
+                                width: 28px;
+                                padding: 6px;
+                                border-radius: 100%;
+                                height: 28px;
+                              "
+                            />
+                          </div>
+                          <div
+                            (click)="navigateToAddForm(0)"
+                            class="col-md-9 addnew1"
+                            style="float: left"
+                          >
+                            <label class="addneww">Add new address </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <form>
+                      <ng-container
+                        *ngFor="let address of userAddresses; let i = index"
+                      >
+                        <div class="row">
+                          <div class="container">
+                            <div class="col-md-12">
+                              <div class="boxa">
+                                <div class="col-md-6 aswin">
+                                  <label class="aa">{{ address.name }}</label>
+                                </div>
+                                <div class="col-md-6" style="float: left">
+                                  <div
+                                    class="col-md-6"
+                                    style="float: left; padding: 13px 0 0 0"
+                                  >
+                                    <img
+                                      *ngIf="address.type === 'home'"
+                                      src="assets/img/cart/home.png"
+                                      class="img-fluid"
+                                      width="23px"
+                                    />
+                                    <img
+                                      *ngIf="address.type === 'office'"
+                                      src="assets/img/cart/office.png"
+                                      class="img-fluid"
+                                      width="23px"
+                                    />
+                                    <img
+                                      *ngIf="address.type === 'other'"
+                                      src="assets/img/cart/other.png"
+                                      class="img-fluid"
+                                      width="23px"
+                                    />
+                                    <label style="padding: 0 10px">{{
+                                      address.type
+                                    }}</label>
+                                  </div>
+                                  <div class="col-md-6" style="float: right">
+                                    <div class="radioaa">
+                                      <input
+                                        class="rrb"
+                                        type="radio"
+                                        name="addressStatus"
+                                        [checked]="address.isDisabled == false"
+                                        (change)="changeAddressStatus(i)"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-12" style="float: left">
+                                  <address class="adress11">
+                                    {{ address.street }}, {{ address.house
+                                    }}<br />
+                                    {{ address.landmark }} {{ address.pincode
+                                    }}<br />
+                                    {{ address.mobile }}<br />
+                                  </address>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="dltaa">
+                                    <img
+                                      (click)="deleteUserAddress(i)"
+                                      src="assets/img/cart/delete.png"
+                                    /><label>Delete</label>
+                                  </div>
+                                  <div
+                                    (click)="editUserAddress(i)"
+                                    class="edit"
+                                  >
+                                    <img
+                                      src="assets/img/cart/edit.svg"
+                                    />&nbsp;&nbsp;<label>Edit address</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </form>
+                    <div class="row mb-3">
+                      <div class="col-md-2"></div>
+                      <div class="col-md-8">
+                        <button
+                          (click)="closeSelectAddress()"
+                          id="close-select-address"
+                          type="button"
+                          class="btn btn-primary Continue-btn"
+                        >
+                          Continue
+                        </button>
+                      </div>
+                      <div class="col-md-2"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-------------------------------select address------------------ -->
+
+      <!--   clsoe    popup----------- -->
+      <section>
+        <div class="container">
+          <!-- add address -->
+          <div class="row">
+            <!-- Modal  add address-->
+            <div class="modal fade" id="myaddress" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content mainaddress">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <button
+                        type="button"
+                        class="close"
+                        id="dismiss-add-address"
+                        data-dismiss="modal"
+                      >
+                        &times;
+                      </button>
+                    </div>
+                  </div>
+                  <div class="modal-header aaa"></div>
+                  <!-- add address -->
+                  <div class="modal-body">
+                    <h3 class="text-center">Add Address</h3>
+                    <form [formGroup]="newAddressForm">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="form_name">Firstname *</label>
+                            <input
+                              id="form_name"
+                              formControlName="name"
+                              type="text"
+                              name="name"
+                              class="form-control"
+                              placeholder="Enter your Name"
+                              required="required"
+                              data-error="name"
+                            />
+                            <small
+                              class="form-text small-block"
+                              *ngIf="isValidnewUserAddress('name')"
+                            >
+                              name cannot be empty
+                            </small>
+                          </div>
+                          <div class="form-group">
+                            <label for="form_phone">Phone</label>
+                            <input
+                              id="form_phone"
+                              type="tel"
+                              name="phone"
+                              formControlName="mobile"
+                              class="form-control"
+                              placeholder="Please enter your phone"
+                            />
+
+                            <small
+                              class="form-text small-block"
+                              *ngIf="isValidnewUserAddress('mobile')"
+                            >
+                              enter valid number
+                            </small>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="form_phone">Pincode</label>
+                                <input
+                                  id="form_name"
+                                  type="text"
+                                  name="name"
+                                  formControlName="pincode"
+                                  class="form-control"
+                                  placeholder="Enter your pin"
+                                  required="required"
+                                  data-error="Pincode"
+                                />
+
+                                <small
+                                  class="form-text small-block"
+                                  *ngIf="isValidnewUserAddress('pincode')"
+                                >
+                                  enter valid pincode
+                                </small>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <button
+                                type="button"
+                                class="btn btn-primary btn-address"
+                              >
+                                <img
+                                  src="assets/img/cart/location.png"
+                                  class="img-fluid iconslocation"
+                                />Current location
+                              </button>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="form_phone"
+                              >House number & Building name</label
+                            >
+                            <input
+                              id="form_phone"
+                              formControlName="house"
+                              type="tel"
+                              name="phone"
+                              class="form-control"
+                              placeholder="Enter your details"
+                            />
+                            <small
+                              class="form-text small-block"
+                              *ngIf="isValidnewUserAddress('house')"
+                            >
+                              this field is mandatory
+                            </small>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="form_phone"
+                              >Road name, Area, Street</label
+                            >
+                            <input
+                              id="form_name"
+                              formControlName="street"
+                              type="text"
+                              name="name"
+                              class="form-control"
+                              placeholder="Enter your Details"
+                              required="required"
+                              data-error="Details"
+                            />
+                            <small
+                              class="form-text small-block"
+                              *ngIf="isValidnewUserAddress('name')"
+                            >
+                              this field is mandatory
+                            </small>
+                          </div>
+                          <div class="form-group">
+                            <label for="form_phone">Landmark</label>
+                            <input
+                              id="form_name"
+                              formControlName="landmark"
+                              type="text"
+                              name="name"
+                              class="form-control"
+                              placeholder="Enter your Landmark"
+                              required="required"
+                              data-error="Landmark"
+                            />
+                            <small
+                              class="form-text small-block"
+                              *ngIf="isValidnewUserAddress('landmark')"
+                            >
+                              this field is mandatory
+                            </small>
+                          </div>
+                          <div class="form-group">
+                            <label for="form_phone">State</label>
+                            <select
+                              class="form-control"
+                              formControlName="state"
+                            >
+                              <option
+                                class="hidden"
+                                [disabled]="true"
+                                [selected]="true"
+                              >
+                                state *
+                              </option>
+                              <ng-container *ngFor="let state of states">
+                                <option [value]="state">
+                                  {{ state }}
+                                </option>
+                              </ng-container>
+                            </select>
+                            <!-- <input
+                              id="form_name"
+                              type="text"
+                              name="name"
+                              class="form-control"
+                              placeholder="Choose your State"
+                              required="required"
+                              data-error="State"
+                            /> -->
+                            <small
+                              class="form-text small-block"
+                              *ngIf="isValidnewUserAddress('state')"
+                            >
+                              this field is mandatory
+                            </small>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4  add-type">
+                              <label for="home1">
+                                <button
+                                  type="button"
+                                  class="btn btn-light light-home"
+                                >
+                                  <input
+                                    formControlName="type"
+                                    id="home1"
+                                    [checked]="
+                                      newAddressForm.get('type').value == 'home'
+                                    "
+                                    value="home"
+                                    type="radio"
+                                  />
+                                  <img
+                                    src="assets/img/cart/home.png"
+                                    class="img-fluid iconshm"
+                                    width="48px"
+                                    height="49px"
+                                  />
+                                  <p class="office">Home</p>
+                                </button>
+                              </label>
+                            </div>
+                            <div class="col-md-4  add-type">
+                              <label for="office1">
+                                <button
+                                  type="button"
+                                  class="btn btn-light light-home"
+                                >
+                                  <input
+                                    formControlName="type"
+                                    id="office1"
+                                    [checked]="
+                                      newAddressForm.get('type').value ==
+                                      'office'
+                                    "
+                                    value="office"
+                                    type="radio"
+                                  />
+                                  <img
+                                    src="assets/img/cart/office.png"
+                                    class="img-fluid iconshm"
+                                    width="44px"
+                                    height="43px"
+                                  />
+                                  <p class="office">Office</p>
+                                </button>
+                              </label>
+                            </div>
+                            <div class="col-md-4  add-type">
+                              <label for="other1">
+                                <button
+                                  type="button"
+                                  class="btn btn-light light-home"
+                                >
+                                  <input
+                                    formControlName="type"
+                                    id="other1"
+                                    [checked]="
+                                      newAddressForm.get('type').value ==
+                                      'other'
+                                    "
+                                    value="other"
+                                    type="radio"
+                                  />
+                                  <img
+                                    src="assets/img/cart/other.png"
+                                    class="img-fluid iconshm"
+                                    width="44px"
+                                    height="43px"
+                                  />
+                                  <p class="office">Other</p>
+                                </button>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4 save1">
+                          <button
+                            type="button"
+                            class="btn btn-primary saveandcontinue"
+                            (click)="onSubmitAddress()"
+                          >
+                            Save & Continue
+                          </button>
+                        </div>
+                        <div class="col-md-4"></div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- add address -->
+          <!-- </section> -->
+          <!-------------------------------- Upload Prescription -------->
+          <div class="modal fade" id="myUpload" role="dialog">
+            <div class="modal-dialog">
+              <!------------ Modal content Upload pres-------------------------->
+              <div class="modal-content" style="padding: 0 7px">
+                <div class="close1">
+                  <button
+                    type="button"
+                    id="dismiss-upload-prescription"
+                    class="closea"
+                    data-dismiss="modal"
+                  >
+                    &times;
+                  </button>
+                </div>
+                <h6 class="uph">Upload Prescription</h6>
+                <div class="modal-header">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-12 caret">
+                        <a
+                          href="#myModal1"
+                          data-toggle="modal"
+                          data-target="#myModal1"
+                        >
+                          <h6>2 Items in cart need a priscription</h6>
+                        </a>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="box11">
+                          <div class="radio">
+                            <input
+                              type="radio"
+                              id="html"
+                              name="fav_language"
+                              value="I have a Prescription"
+                              checked
+                            />
+                            <label for="html">I have a Prescription</label>
+                          </div>
+                          <div class="bgallerymain1">
+                            <div class="col-md-4 float-left text-center p-0">
+                              <div class="gallery1">
+                                <img
+                                  src="assets/img/cart/icon12.png"
+                                  class="img-fluid"
+                                />
+                              </div>
+                              Camera
+                            </div>
+                            <div class="col-md-4 float-left text-center p-0">
+                              <div class="gallery1">
+                                <img
+                                  src="assets/img/cart/icon11.png"
+                                  class="img-fluid"
+                                />
+                              </div>
+                              Gallery
+                            </div>
+                            <div class="col-md-4 float-left text-center p-0">
+                              <div class="gallery1">
+                                <img
+                                  src="assets/img/cart/icon13.png"
+                                  class="img-fluid"
+                                />
+                              </div>
+                              Health data
+                            </div>
+                          </div>
+                          <div class="row" id="respon1">
+                            <div class="box99">
+                              <div class="accordion">
+                                <div class="accordion-item giving11">
+                                  <a class="box991">
+                                    <p class="priscription">
+                                      Prescription should contain<img
+                                        src="assets/img/cart/prescription.png"
+                                        class="img-fluid imgpre"
+                                      />
+                                    </p>
+                                  </a>
+                                  <div class="content give244">
+                                    <div class="maninPrescription text-center">
+                                      <div class="row newbox">
+                                        <div class="col-md-12">
+                                          <div class="box22">
+                                            <h3>Prescription Guide</h3>
+                                            <ul class="prec">
+                                              <li>
+                                                Upload Clear Prescription Image
+                                              </li>
+                                              <li>
+                                                Below mentioned points should be
+                                                part of valid Prescription
+                                              </li>
+                                            </ul>
+                                            <div class="row">
+                                              <div class="col-md-8 doctor">
+                                                <img
+                                                  src="assets/img/cart/doctor.png"
+                                                  class="img-fluid"
+                                                />
+                                              </div>
+                                              <div class="col-md-4 doctor">
+                                                <label class="docp"
+                                                  >Doctor Details</label
+                                                >
+                                                <label class="docp"
+                                                  >Patient Details</label
+                                                >
+                                                <label class="docp"
+                                                  >Medicine Details</label
+                                                >
+                                                <label class="docp sign sign1"
+                                                  >Doctor Sign</label
+                                                >
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mt-2">
+                          <div class="col-md-12">
+                            <div class="box12">
+                              <div class="radio">
+                                <input
+                                  type="radio"
+                                  id="css"
+                                  name="fav_language"
+                                  value="I don't have a Prescription"
+                                />
+                                <label for="css"
+                                  >I don't have a Prescription</label
+                                >
+                              </div>
+                              <div class="col-md-12 gallery11">
+                                <p>
+                                  Get a consultation<span class="p1">199</span
+                                  ><span class="p2">Free</span
+                                  ><img
+                                    src="assets/img/cart/prescription.png"
+                                    class="img-fluid imgpre1"
+                                  />
+                                </p>
+                              </div>
+                              <p class="priscription">
+                                You will receive a call within 6 hours
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12 text-center">
+                            <button
+                              type="button"
+                              class="btn btn-primary Continue1"
+                            >
+                              Continue with prescription
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- upload prescription close -->
+                    <!-- -----------------------------------------------------The Modal2 ---------------------------->
+                    <div class="modal fade" id="myModal1">
+                      <div class="modal-dialog">
+                        <div class="modal-header btn2">
+                          <button
+                            type="button"
+                            class="close11"
+                            data-dismiss="modal"
+                          >
+                            ×
+                          </button>
+                        </div>
+                        <div class="modal-content1">
+                          <!-- Modal Header -->
+                          <!-- Modal body -->
+                          <div class="modal-body2">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="cart_item_lst_row">
+                                  <div class="cart_item_lst_row_delet">
+                                    <img
+                                      src="assets/img/cart/delete.png"
+                                      alt=""
+                                    />
+                                  </div>
+                                  <div class="cart_item_lst_row_rx">
+                                    <img src="assets/img/cart/rx.png" alt="" />
+                                  </div>
+                                  <div class="cart_item_lst_dicount">
+                                    50% <span>Discount</span>
+                                  </div>
+                                  <div class="cart_item_lst_row_img">
+                                    <img
+                                      src="assets/img/cart/prd1.png"
+                                      alt=""
+                                    />
+                                  </div>
+                                  <div class="cart_item_lst_row_contant">
+                                    <div class="cart_item_lst_row_contant_name">
+                                      Himalaya men face wash
+                                    </div>
+                                    <div
+                                      class="cart_item_lst_row_contant_cmpny"
+                                    >
+                                      Himalaya healthcare pruduct
+                                    </div>
+                                    <div class="cart_item_lst_row_contant_gram">
+                                      90 gram
+                                    </div>
+                                    <div class="cart_item_lst_row_contant_rate">
+                                      <!-- <span class="one99">
+            <i class="fa fa-rupee"></i> 199
+            </span> -->
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-md-6 offset-md-6 qtysection"
+                                  ></div>
+                                  <div class="col-md-6 qtysection">
+                                    <button
+                                      type="button"
+                                      class="btn btn-primary qtybtn"
+                                    >
+                                      Qty 2 <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <strong
+                                      ><i class="fa fa-rupee"></i> 100</strong
+                                    >
+                                  </div>
+                                </div>
+                                <div class="cart_item_lst_row">
+                                  <div class="cart_item_lst_row_delet">
+                                    <img
+                                      src="assets/img/cart/delete.png"
+                                      alt=""
+                                    />
+                                  </div>
+                                  <div class="cart_item_lst_row_rx">
+                                    <img src="assets/img/cart/rx.png" alt="" />
+                                  </div>
+                                  <div class="cart_item_lst_dicount">
+                                    50% <span>Discount</span>
+                                  </div>
+                                  <div class="cart_item_lst_row_img">
+                                    <img
+                                      src="assets/img/cart/prd2.png"
+                                      alt=""
+                                    />
+                                  </div>
+                                  <div class="cart_item_lst_row_contant">
+                                    <div class="cart_item_lst_row_contant_name">
+                                      Himalaya men face wash
+                                    </div>
+                                    <div
+                                      class="cart_item_lst_row_contant_cmpny"
+                                    >
+                                      Himalaya healthcare pruduct
+                                    </div>
+                                    <div class="cart_item_lst_row_contant_gram">
+                                      90 gram
+                                    </div>
+                                    <div class="cart_item_lst_row_contant_rate">
+                                      <!-- <span class="one99">
+            <i class="fa fa-rupee"></i> 199
+            </span> -->
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-md-6 offset-md-6 qtysection"
+                                  ></div>
+                                  <div class="col-md-6 qtysection">
+                                    <button
+                                      type="button"
+                                      class="btn btn-primary qtybtn"
+                                    >
+                                      Qty 2 <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <strong class="font"
+                                      ><i class="fa fa-rupee"></i> 100</strong
+                                    >
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- ---------------------------POPUP CLOSE------------------------------------------------------------------ -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- </section> -->
+          <div class="cart_page_top_wishlist_btn">
+            Wishlist <i class="fa fa-heart"></i>
+            <div class="cart_page_top_count">2+</div>
+          </div>
+          <!-- </div> -->
+          <!-- </div> -->
+          <section class="cart_listing_sec">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="cart_item_lst_row">
+                    <div class="cart_item_lst_row_delet">
+                      <img src="assets/img/cart/delete.png" alt="" />
+                    </div>
+                    <div class="cart_item_lst_row_rx">
+                      <img src="assets/img/cart/rx.png" alt="" />
+                    </div>
+                    <div class="cart_item_lst_dicount">
+                      50% <span>Discount</span>
+                    </div>
+                    <div class="cart_item_lst_row_img">
+                      <img src="assets/img/cart/prd1.png" alt="" />
+                    </div>
+                    <div class="cart_item_lst_row_contant">
+                      <div class="cart_item_lst_row_contant_name">
+                        Himalaya men face wash
+                      </div>
+                      <div class="cart_item_lst_row_contant_cmpny">
+                        Himalaya healthcare pruduct
+                      </div>
+                      <div class="cart_item_lst_row_contant_gram">90 gram</div>
+                      <div class="cart_item_lst_row_contant_rate">
+                        <span> <i class="fa fa-rupee"></i> 199 </span>
+                        <strong><i class="fa fa-rupee"></i> 100</strong>
+                        <div class="xart_lst_qty_box dropdown">
+                          <button
+                            class="btn dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            Qty <i class="fa fa-angle-down"></i>
+                          </button>
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton"
+                          >
+                            <a class="dropdown-item" href="#">1</a>
+                            <a class="dropdown-item" href="#">2</a>
+                            <a class="dropdown-item" href="#">3</a>
+                            <a class="dropdown-item" href="#">4</a>
+                            <a class="dropdown-item" href="#">5</a>
+                            <a class="dropdown-item" href="#">6</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cart_item_lst_row">
+                    <div class="cart_item_lst_row_delet">
+                      <img src="assets/img/cart/delete.png" alt="" />
+                    </div>
+                    <div class="cart_item_lst_row_rx">
+                      <img src="assets/img/cart/rx.png" alt="" />
+                    </div>
+                    <div class="cart_item_lst_dicount">
+                      50% <span>Discount</span>
+                    </div>
+                    <div class="cart_item_lst_row_img">
+                      <img src="assets/img/cart/prd2.png" alt="" />
+                    </div>
+                    <div class="cart_item_lst_row_contant">
+                      <div class="cart_item_lst_row_contant_name">
+                        Himalaya men face wash
+                      </div>
+                      <div class="cart_item_lst_row_contant_cmpny">
+                        Himalaya healthcare pruduct
+                      </div>
+                      <div class="cart_item_lst_row_contant_gram">90 gram</div>
+                      <div class="cart_item_lst_row_contant_rate">
+                        <span> <i class="fa fa-rupee"></i> 199 </span>
+                        <strong><i class="fa fa-rupee"></i> 100</strong>
+                        <div class="xart_lst_qty_box dropdown">
+                          <button
+                            class="btn dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            Qty <i class="fa fa-angle-down"></i>
+                          </button>
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton"
+                          >
+                            <a class="dropdown-item" href="#">1</a>
+                            <a class="dropdown-item" href="#">2</a>
+                            <a class="dropdown-item" href="#">3</a>
+                            <a class="dropdown-item" href="#">4</a>
+                            <a class="dropdown-item" href="#">5</a>
+                            <a class="dropdown-item" href="#">6</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="#">
+                    <div class="addmore_cart_btn">
+                      <span>Add more</span> <i class="fa fa-plus"></i>
+                    </div>
+                  </a>
+                  <div class="handpick_slide_sec">
+                    <div class="handpick_slide_sec_head">Hand pick</div>
+                    <div class="handpick_slide_sec_src">
+                      <div class="container">
+                        <div class="ps-section__carousel">
+                          <div
+                            class="owl-carousel"
+                            style="width: 100%; margin: 0"
+                            data-owl-auto="true"
+                            data-owl-loop="true"
+                            data-owl-speed="15000"
+                            data-owl-gap="0"
+                            data-owl-nav="false"
+                            data-owl-dots="false"
+                            data-owl-item="4"
+                            data-owl-item-xs="1"
+                            data-owl-item-sm="2"
+                            data-owl-item-md="2"
+                            data-owl-item-lg="4"
+                            data-owl-item-xl="4"
+                            data-owl-duration="1000"
+                            data-owl-mousedrag="on"
+                          >
+                            <div
+                              class="ps-section__product wow fadeInUp"
+                              data-wow-delay="0.1s"
+                            >
+                              <div class="ps-product ps-product--standard">
+                                <div class="ps-product__thumbnail shopby">
+                                  <a class="ps-product__image" href="#">
+                                    <div class="prd_dtl_also_scr_img">
+                                      <div class="prd_discount_coupon">
+                                        45% <span>Discount</span>
+                                      </div>
+                                      <img
+                                        src="assets/img/product_details/rcprd1.png"
+                                        alt="alt"
+                                      />
+                                    </div>
+                                    <div class="prd_sub_name">
+                                      Himalaya men face wash
+                                    </div>
+                                    <div class="prd_sub_rate">
+                                      <i class="fa fa-rupee"></i>100
+                                      <span>100</span>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="ps-section__product wow fadeInUp"
+                              data-wow-delay="0.1s"
+                            >
+                              <div class="ps-product ps-product--standard">
+                                <div class="ps-product__thumbnail shopby">
+                                  <a class="ps-product__image" href="#">
+                                    <div class="prd_dtl_also_scr_img">
+                                      <div class="prd_discount_coupon">
+                                        45% <span>Discount</span>
+                                      </div>
+                                      <img
+                                        src="assets/img/product_details/rcprd2.png"
+                                        alt="alt"
+                                      />
+                                    </div>
+                                    <div class="prd_sub_name">
+                                      Himalaya men face wash
+                                    </div>
+                                    <div class="prd_sub_rate">
+                                      <i class="fa fa-rupee"></i>100
+                                      <span>100</span>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="ps-section__product wow fadeInUp"
+                              data-wow-delay="0.1s"
+                            >
+                              <div class="ps-product ps-product--standard">
+                                <div class="ps-product__thumbnail shopby">
+                                  <a class="ps-product__image" href="#">
+                                    <div class="prd_dtl_also_scr_img">
+                                      <div class="prd_discount_coupon">
+                                        45% <span>Discount</span>
+                                      </div>
+                                      <img
+                                        src="assets/img/product_details/rcprd3.png"
+                                        alt="alt"
+                                      />
+                                    </div>
+                                    <div class="prd_sub_name">
+                                      Himalaya men face wash
+                                    </div>
+                                    <div class="prd_sub_rate">
+                                      <i class="fa fa-rupee"></i>100
+                                      <span>100</span>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="ps-section__product wow fadeInUp"
+                              data-wow-delay="0.1s"
+                            >
+                              <div class="ps-product ps-product--standard">
+                                <div class="ps-product__thumbnail shopby">
+                                  <a class="ps-product__image" href="#">
+                                    <div class="prd_dtl_also_scr_img">
+                                      <div class="prd_discount_coupon">
+                                        45% <span>Discount</span>
+                                      </div>
+                                      <img
+                                        src="assets/img/product_details/rcprd1.png"
+                                        alt="alt"
+                                      />
+                                    </div>
+                                    <div class="prd_sub_name">
+                                      Himalaya men face wash
+                                    </div>
+                                    <div class="prd_sub_rate">
+                                      <i class="fa fa-rupee"></i>100
+                                      <span>100</span>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="ps-section__product wow fadeInUp"
+                              data-wow-delay="0.1s"
+                            >
+                              <div class="ps-product ps-product--standard">
+                                <div class="ps-product__thumbnail shopby">
+                                  <a class="ps-product__image" href="#">
+                                    <div class="prd_dtl_also_scr_img">
+                                      <div class="prd_discount_coupon">
+                                        45% <span>Discount</span>
+                                      </div>
+                                      <img
+                                        src="assets/img/product_details/rcprd2.png"
+                                        alt="alt"
+                                      />
+                                    </div>
+                                    <div class="prd_sub_name">
+                                      Himalaya men face wash
+                                    </div>
+                                    <div class="prd_sub_rate">
+                                      <i class="fa fa-rupee"></i>100
+                                      <span>100</span>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="ps-section__product wow fadeInUp"
+                              data-wow-delay="0.1s"
+                            >
+                              <div class="ps-product ps-product--standard">
+                                <div class="ps-product__thumbnail shopby">
+                                  <a class="ps-product__image" href="#">
+                                    <div class="prd_dtl_also_scr_img">
+                                      <div class="prd_discount_coupon">
+                                        45% <span>Discount</span>
+                                      </div>
+                                      <img
+                                        src="assets/img/product_details/rcprd3.png"
+                                        alt="alt"
+                                      />
+                                    </div>
+                                    <div class="prd_sub_name">
+                                      Himalaya men face wash
+                                    </div>
+                                    <div class="prd_sub_rate">
+                                      <i class="fa fa-rupee"></i>100
+                                      <span>100</span>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="ps-section__product wow fadeInUp"
+                              data-wow-delay="0.1s"
+                            >
+                              <div class="ps-product ps-product--standard">
+                                <div class="ps-product__thumbnail shopby">
+                                  <a class="ps-product__image" href="#">
+                                    <div class="prd_dtl_also_scr_img">
+                                      <div class="prd_discount_coupon">
+                                        45% <span>Discount</span>
+                                      </div>
+                                      <img
+                                        src="assets/img/product_details/rcprd1.png"
+                                        alt="alt"
+                                      />
+                                    </div>
+                                    <div class="prd_sub_name">
+                                      Himalaya men face wash
+                                    </div>
+                                    <div class="prd_sub_rate">
+                                      <i class="fa fa-rupee"></i>100
+                                      <span>100</span>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cart_banner_sec">
+                    <img src="assets/img/cart/cart_banner.jpg" alt="" />
+                  </div>
+                  <div class="cart_footer_btm_line">
+                    <hr />
+                  </div>
+                  <div class="cart_btm_feature_box_sec">
+                    <div class="cart_btm_feature_box ftr_bxt_1">
+                      <div class="cart_btm_feature_box_ico">
+                        <img src="assets/img/cart/sec.png" alt="" />
+                      </div>
+                      <div class="cart_btm_feature_box_head">
+                        <div class="cart_btm_feature_box_head_ico">
+                          <img src="assets/img/cart/ft1.png" alt="" />
+                        </div>
+                        Easy<br />
+                        Returen
+                      </div>
+                      <div class="cart_btm_feature_box_cnt">
+                        consectetuer adipiscing elit, sed diam nonummy nibh
+                        euismod tincidunt
+                      </div>
+                    </div>
+                    <div
+                      class="cart_btm_feature_box ftr_bxt_2"
+                      style="max-width: 36%"
+                    >
+                      <div class="cart_btm_feature_box_ico">
+                        <img src="assets/img/cart/sec.png" alt="" />
+                      </div>
+                      <div class="cart_btm_feature_box_head">
+                        <div class="cart_btm_feature_box_head_ico">
+                          <img src="assets/img/cart/ft2.png" alt="" />
+                        </div>
+                        100% Authentic<br />
+                        Product
+                      </div>
+                      <div class="cart_btm_feature_box_cnt">
+                        consectetuer adipiscing elit, sed diam nonummy nibh
+                        euismod tincidunt
+                      </div>
+                    </div>
+                    <div
+                      class="cart_btm_feature_box ftr_bxt_3"
+                      style="margin: 0"
+                    >
+                      <div class="cart_btm_feature_box_ico">
+                        <img src="assets/img/cart/sec.png" alt="" />
+                      </div>
+                      <div class="cart_btm_feature_box_head">
+                        <div class="cart_btm_feature_box_head_ico">
+                          <img src="assets/img/cart/ft3.png" alt="" />
+                        </div>
+                        Secure<br />
+                        Payment
+                      </div>
+                      <div class="cart_btm_feature_box_cnt">
+                        consectetuer adipiscing elit, sed diam nonummy nibh
+                        euismod tincidunt
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="cart_right_sec">
+                    <div class="apply_coupon_sec">
+                      <div class="apply_coupon_sec_ico">
+                        <img src="assets/img/cart/apply_off.png" alt="" />
+                      </div>
+                      <span>Apply Coupon Code</span>
+                      <div class="apply_coupon_arrow_ico">
+                        <i class="fa fa-angle-right"></i>
+                      </div>
+                    </div>
+                    <div class="exp_amt_pay_sec">
+                      <div class="exp_amt_pay_box">
+                        <i class="fa fa-rupee"></i> 250
+                        <span>Expected amount to paid</span>
+                        <a href="#">
+                          <div class="exp_amt_pay_box_btn">Add Address</div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="cart_payment_dtl_box_head">Payment details</div>
+                    <div class="cart_payment_dtl_box">
+                      <div class="cart_payment_dtl_box_row">
+                        Cart value
+                        <strong><i class="fa fa-rupee"></i>250</strong>
+                      </div>
+                      <div class="cart_payment_dtl_box_row">
+                        Delivery charge
+                        <span><i class="fa fa-rupee"></i>40</span>
+                      </div>
+                      <div class="cart_payment_dtl_box_row">
+                        Medcoin redeemed
+                        <strong><i class="fa fa-rupee"></i>-50</strong>
+                      </div>
+                      <div class="cart_payment_dtl_box_row">
+                        Donate to
+                        <strong
+                          style="float: none; font-weight: 600; color: #000"
+                          ><i class="fa fa-rupee"></i>10
+                        </strong>
+                        10 Medimall India Foundation
+                        <a style="color: #00aaff" href="#">Remove</a>
+                        <strong><i class="fa fa-rupee"></i>-50</strong>
+                      </div>
+                      <div class="cart_payment_dtl_box_row">
+                        Coupon Applied
+                        <strong
+                          ><img src="assets/img/cart/cpn.png" alt="" />
+                          <i class="fa fa-rupee"></i>-50</strong
+                        >
+                      </div>
+                      <div class="cart_payment_dtl_box_ttl">
+                        Total Amount to be paid
+                        <strong><i class="fa fa-rupee"></i> 100</strong>
+                      </div>
+                    </div>
+                    <div class="cart_savethis_odr_sec">
+                      <div class="accordion">
+                        <div class="accordion-item">
+                          <a>
+                            <div class="accordion_left_ico">
+                              <img src="assets/img/cart/rupe_ico.png" alt="" />
+                            </div>
+                            Total Savings of <i class="fa fa-rupee"></i> 25 on
+                            this Order
+                          </a>
+                          <div class="content active">
+                            <p>
+                              MRP Discount 10 %
+                              <span><i class="fa fa-rupee"></i> 25</span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cart_right_an_box">
+                      <div class="cart_right_an_box_txt">
+                        <div class="cart_right_an_box_txt_ico">
+                          <img src="assets/img/cart/thank.png" alt="" />
+                        </div>
+                        Thank you for your kind donating
+                        <span><i class="fa fa-rupee"></i> 10</span> to Medimall
+                        Charitable Trust, Each thought counts.
+                      </div>
+                      <a class="read_trms" href="#">T&C</a>
+                      <div class="cart_right_an_box_txt_bx">
+                        <div class="cart_right_an_box_txt_bx_ico">
+                          <img src="assets/img/cart/rght1.png" alt="" />
+                        </div>
+                        <span
+                          >Support us in providing better healthcare in rural
+                          villages.</span
+                        >
+                      </div>
+                      <div class="cart_right_an_box_txt_bx">
+                        <div class="cart_right_an_box_txt_bx_ico">
+                          <img src="assets/img/cart/rght2.png" alt="" />
+                        </div>
+                        <span
+                          >Enrich the rural lives with improved<br />
+                          <strong style="font-weight: 500; color: #242424">
+                            medical assistance..</strong
+                          ></span
+                        >
+                      </div>
+                      <div class="cart_right_an_box_txt_bx">
+                        <div class="cart_right_an_box_txt_bx_ico">
+                          <img src="assets/img/cart/rght3.png" alt="" />
+                        </div>
+                        <span
+                          >Aid us to ensure a healthier society for the next
+                          generation.</span
+                        >
+                      </div>
+                    </div>
+                    <div class="additional_note_sec">
+                      <div class="additional_note_head">
+                        <div class="additional_note_head">Additional note</div>
+                        <div class="additional_note_txtarea">
+                          <textarea
+                            name=""
+                            id=""
+                            placeholder="Enter text here"
+                          ></textarea>
+                        </div>
+                        <ul class="cart_right_an_box_list">
+                          <li>
+                            <div class="cart_right_an_box_list_ico">
+                              <span style="font-size: 30px; color: #8c8c8c"
+                                >&#8226;</span
+                              >
+                            </div>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing
+                            elit, sed diam nonummy nibh euismod tincidunt ut
+                            laoreet dolore magna aliquam erat volutpat. Ut wisi
+                            lobortis nisl ut aliquip ex ea
+                          </li>
+                          <li>
+                            <div class="cart_right_an_box_list_ico">
+                              <span style="font-size: 30px; color: #8c8c8c"
+                                >&#8226;</span
+                              >
+                            </div>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing
+                            elit, sed diam nonummy nibh euismod tincidunt ut
+                            laoreet dolore magna aliquam erat volutpat. Ut wisi
+                            lobortis nisl ut aliquip ex ea
+                          </li>
+                          <li>
+                            <div class="cart_right_an_box_list_ico">
+                              <span style="font-size: 30px; color: #8c8c8c"
+                                >&#8226;</span
+                              >
+                            </div>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing
+                            elit, sed diam nonummy nibh euismod tincidunt ut
+                            laoreet dolore magna aliquam erat volutpat. Ut wisi
+                            lobortis nisl ut aliquip ex ea
+                          </li>
+                          <li>
+                            <div class="cart_right_an_box_list_ico">
+                              <input
+                                style="display: block; margin-top: 12px"
+                                type="checkbox"
+                              />
+                            </div>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing
+                            elit, sed diam nonummy nibh euismod tincidunt ut
+                            laoreet dolore magna aliquam erat volutpat. Ut wisi
+                            enim ad minim veniam,
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- </section> -->
+
+          <footer class="ps-footer ps-footer--5" style="padding-top: 40px">
+            <app-footer></app-footer>
+          </footer>
+
+          <!--Right Side Buttons Start-->
+          <div class="sticky-container">
+            <ul class="sticky">
+              <li>
+                <img src="assets/img/phone-call.svg" />
+                <!--<i class="icon-telephone"></i>-->
+                <p>Call</p>
+              </li>
+              <li>
+                <i class="fa fa-whatsapp"></i>
+                <p>Whatsapp</p>
+              </li>
+            </ul>
+          </div>
+          <!--Right Side Buttons End-->
+          <div class="ps-search">
+            <div class="ps-search__content ps-search--mobile">
+              <a class="ps-search__close" href="under.html" id="close-search"
+                ><i class="icon-cross"></i
+              ></a>
+              <h3>Search</h3>
+              <form action="do_action" method="post">
+                <div class="ps-search-table">
+                  <div class="input-group">
+                    <input
+                      class="form-control ps-input"
+                      type="text"
+                      placeholder="Search for products"
+                    />
+                    <div class="input-group-append">
+                      <a href="under.html"><i class="fa fa-search"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="ps-search__result">
+                <div class="ps-search__item">
+                  <div class="ps-product ps-product--horizontal">
+                    <div class="ps-product__thumbnail">
+                      <a class="ps-product__image" href="under.html">
+                        <figure>
+                          <img src="assets/img\png\smade.png" alt="alt" />
+                        </figure>
+                      </a>
+                    </div>
+                    <div class="ps-product__content">
+                      <h5 class="ps-product__title">
+                        <a
+                          >3-layer <span class="hightlight">mask</span> with an
+                          elastic band (1 piece)</a
+                        >
+                      </h5>
+                      <p class="ps-product__desc">
+                        Study history up to 30 days Up to 5 users simultaneously
+                        Has HEALTH certificate
+                      </p>
+                      <div class="ps-product__meta">
+                        <span class="ps-product__price">$38.24</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ps-search__item">
+                  <div class="ps-product ps-product--horizontal">
+                    <div class="ps-product__thumbnail">
+                      <a class="ps-product__image" href="under.html">
+                        <!--<figure><img src="assets/img\products\033.jpg" alt="alt"></figure>-->
+                      </a>
+                    </div>
+                    <div class="ps-product__content">
+                      <h5 class="ps-product__title">
+                        <a
+                          >3 Layer Disposable Protective Face
+                          <span class="hightlight">mask</span>s</a
+                        >
+                      </h5>
+                      <p class="ps-product__desc">
+                        Study history up to 30 days Up to 5 users simultaneously
+                        Has HEALTH certificate
+                      </p>
+                      <div class="ps-product__meta">
+                        <span class="ps-product__price sale">$14.52</span
+                        ><span class="ps-product__del">$17.24</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ps-search__item">
+                  <div class="ps-product ps-product--horizontal">
+                    <div class="ps-product__thumbnail">
+                      <a class="ps-product__image" href="under.html">
+                        <figure>
+                          <img src="assets/img\png\smade.png" alt="alt" />
+                        </figure>
+                      </a>
+                    </div>
+                    <div class="ps-product__content">
+                      <h5 class="ps-product__title">
+                        <a
+                          >3-Ply Ear-Loop Disposable Blue Face
+                          <span class="hightlight">mask</span></a
+                        >
+                      </h5>
+                      <p class="ps-product__desc">
+                        Study history up to 30 days Up to 5 users simultaneously
+                        Has HEALTH certificate
+                      </p>
+                      <div class="ps-product__meta">
+                        <span class="ps-product__price sale">$14.99</span
+                        ><span class="ps-product__del">$38.24</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ps-search__item">
+                  <div class="ps-product ps-product--horizontal">
+                    <div class="ps-product__thumbnail">
+                      <a class="ps-product__image" href="under.html">
+                        <!--<figure><img src="assets/img\products\050.jpg" alt="alt"></figure>-->
+                      </a>
+                    </div>
+                    <div class="ps-product__content">
+                      <h5 class="ps-product__title">
+                        <a
+                          >Disposable Face
+                          <span class="hightlight">mask</span> for Unisex</a
+                        >
+                      </h5>
+                      <p class="ps-product__desc">
+                        Study history up to 30 days Up to 5 users simultaneously
+                        Has HEALTH certificate
+                      </p>
+                      <div class="ps-product__meta">
+                        <span class="ps-product__price sale">$8.15</span
+                        ><span class="ps-product__del">$12.24</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ps-menu--slidebar">
+            <div class="ps-menu__content">
+              <div id="close-menu" class="overlay_mob_menu"></div>
+              <div class="mobile_menu_sec">
+                <a href="#">
+                  <div class="mobile_menu_sec_head">
+                    Login / Sign Up
+                    <span><i class="fa fa-angle-right"></i></span>
+                  </div>
+                </a>
+                <div class="mobile_menu_sec_banner">
+                  <div class="mobile_menu_banner_left_txt">
+                    <strong>Exciting offers are Waiting for you</strong>
+                    <span>Get flat 74% Off on Medimall App</span>
+                    <div class="mobile_menu_banner_btm_sec">
+                      <a href="#">
+                        <div class="mobile_menu_banner_btm_btn">
+                          <img src="assets/img/menu/appstore.png" alt="" />
+                        </div>
+                      </a>
+                      <a href="#">
+                        <div class="mobile_menu_banner_btm_btn">
+                          <img class="" src="assets/img/menu/playstore.png" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mobile_menu_banner_right_img_sec">
+                    <img src="assets/img/menu/bann_img.png" alt="" />
+                  </div>
+                </div>
+                <div class="mobile_menu_mn_1 mn_bdr_btm">
+                  <a href="#">
+                    <div class="mobile_menu_mn_ico">
+                      <img src="assets/img/menu/home.png" alt="" />
+                    </div>
+                    <div class="mobile_menu_mn_text">Home</div>
+                  </a>
+                </div>
+                <div class="mobile_menu_mn_1">
+                  <a
+                    href="#"
+                    class="dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <div class="mob_btn_left_ico">
+                      <img src="assets/img/menu/odr_top1.png" alt="" />
+                    </div>
+                    <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+                      <img src="assets/img/menu/order_med.png" alt="" />
+                    </div>
+                    <div class="mobile_menu_mn_text">
+                      Order Medicine<br />
+                      <span
+                        >A home where you will find that healing touch that will
+                        cure all your health</span
+                      >
+                    </div>
+                  </a>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+                <div class="mobile_menu_mn_1">
+                  <a
+                    href="#"
+                    class="dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton1"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <div class="mob_btn_left_ico">
+                      <img src="assets/img/menu/odr_top2.png" alt="" />
+                    </div>
+                    <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+                      <img src="assets/img/menu/order_heal.png" alt="" />
+                    </div>
+                    <div class="mobile_menu_mn_text">
+                      Order Healthcare Products<br />
+                      <span
+                        >A home where you will find that healing touch that will
+                        cure all your health</span
+                      >
+                    </div>
+                  </a>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton1"
+                  >
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+                <div
+                  class="mobile_menu_mn_1 mn_bdr_btm"
+                  style="padding-right: 50px; margin-bottom: 10px"
+                >
+                  <a href="#">
+                    <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+                      <img src="assets/img/menu/offer.png" alt="" />
+                    </div>
+                    <div class="mobile_menu_mn_text">
+                      Offers<br />
+                      <span
+                        >A home where you will find that healing touch that will
+                        cure all your health</span
+                      >
+                    </div>
+                    <div class="mob_mn_new_btn">NEW</div>
+                  </a>
+                </div>
+                <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+                  <a
+                    href="#"
+                    class="dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton2"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+                      <img src="assets/img/menu/account.png" alt="" />
+                    </div>
+                    <div class="mobile_menu_mn_text">
+                      MY Account<br />
+                      <span
+                        >A home where you will find that healing touch that will
+                        cure all your health</span
+                      >
+                    </div>
+                  </a>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton2"
+                  >
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+                <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+                  <a href="#">
+                    <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+                      <img src="assets/img/menu/orders.png" alt="" />
+                    </div>
+                    <div class="mobile_menu_mn_text">
+                      My Orders<br />
+                      <span
+                        >A home where you will find that healing touch that will
+                        cure all your health</span
+                      >
+                    </div>
+                  </a>
+                </div>
+                <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+                  <a href="#">
+                    <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+                      <img src="assets/img/menu/medfill.png" alt="" />
+                    </div>
+                    <div class="mobile_menu_mn_text">
+                      Med Refill<br />
+                      <span
+                        >A home where you will find that healing touch that will
+                        cure all your health</span
+                      >
+                    </div>
+                  </a>
+                </div>
+                <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+                  <a href="#">
+                    <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+                      <img src="assets/img/menu/membership.png" alt="" />
+                    </div>
+                    <div class="mobile_menu_mn_text">
+                      Medpride Membership<br />
+                      <span
+                        >A home where you will find that healing touch that will
+                        cure all your health</span
+                      >
+                    </div>
+                  </a>
+                </div>
+                <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+                  <a href="#">
+                    <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+                      <img src="assets/img/menu/health_vault.png" alt="" />
+                    </div>
+                    <div class="mobile_menu_mn_text">
+                      Health Vault<br />
+                      <span
+                        >A home where you will find that healing touch that will
+                        cure all your health</span
+                      >
+                    </div>
+                  </a>
+                </div>
+                <div
+                  class="mobile_menu_mn_1 mn_bdr_btm"
+                  style="
+                    padding: 5px 15px;
+                    margin-bottom: 10px;
+                    padding-bottom: 15px;
+                  "
+                >
+                  <a href="#">
+                    <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+                      <img src="assets/img/menu/wallet.png" alt="" />
+                    </div>
+                    <div class="mobile_menu_mn_text">
+                      Wallet<br />
+                      <span
+                        >A home where you will find that healing touch that will
+                        cure all your health</span
+                      >
+                    </div>
+                  </a>
+                </div>
+                <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+                  <a href="#">
+                    <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+                      <img src="assets/img/menu/refer_earn.png" alt="" />
+                    </div>
+                    <div class="mobile_menu_mn_text">
+                      Refer and Earn<br />
+                      <span
+                        >A home where you will find that healing touch that will
+                        cure all your health</span
+                      >
+                    </div>
+                  </a>
+                </div>
+                <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+                  <a href="#">
+                    <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+                      <img src="assets/img/menu/conact_us.png" alt="" />
+                    </div>
+                    <div class="mobile_menu_mn_text">
+                      Contact Us<br />
+                      <span
+                        >A home where you will find that healing touch that will
+                        cure all your health</span
+                      >
+                    </div>
+                  </a>
+                </div>
+                <div
+                  class="mobile_menu_mn_1 mn_bdr_btm"
+                  style="padding: 5px 15px; padding-bottom: 30px"
+                >
+                  <a href="#">
+                    <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+                      <img src="assets/img/menu/faq.png" alt="" />
+                    </div>
+                    <div class="mobile_menu_mn_text">
+                      FAQ<br />
+                      <span
+                        >A home where you will find that healing touch that will
+                        cure all your health</span
+                      >
+                    </div>
+                  </a>
+                </div>
+                <div class="mobile_menu_mn_1 mn_bdr_btm"></div>
+              </div>
+            </div>
+          </div>
+          <button class="btn scroll-top">
+            <i class="fa fa-angle-double-up"></i>
+          </button>
+          <div class="ps-preloader" id="preloader">
+            <div class="ps-preloader-section ps-preloader-left"></div>
+            <div class="ps-preloader-section ps-preloader-right"></div>
+          </div>
+        </div>
+      </section>
+      <!-- -------------------   address popup   ---------------------- -->
+
+      <!----------------------------progress----------------->
+    </div>
+  </div>
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+  .intro {
+    height: auto;
+    min-height: 100vh;
+    text-align: center;
+    background-color: teal;
+  }
+</style>
+
+<script type="text/javascript">
+  function inVisible(element) {
+    //Checking if the element is
+    //visible in the viewport
+    var WindowTop = $(window).scrollTop();
+    var WindowBottom = WindowTop + $(window).height();
+    var ElementTop = element.offset().top;
+    var ElementBottom = ElementTop + element.height();
+    //animating the element if it is
+    //visible in the viewport
+    if (ElementBottom <= WindowBottom && ElementTop >= WindowTop)
+      animate(element);
+  }
+
+  function animate(element) {
+    //Animating the element if not animated before
+    if (!element.hasClass("ms-animated")) {
+      var maxval = element.data("max");
+      var html = element.html();
+      element.addClass("ms-animated");
+      $({
+        countNum: element.html(),
+      }).animate(
+        {
+          countNum: maxval,
+        },
+        {
+          //duration 5 seconds
+          duration: 5000,
+          easing: "linear",
+          step: function () {
+            element.html(Math.floor(this.countNum) + html);
+          },
+          complete: function () {
+            element.html(this.countNum + html);
+          },
+        }
+      );
+    }
+  }
+  //When the document is ready
+  $(function () {
+    //This is triggered when the
+    //user scrolls the page
+    $(window).scroll(function () {
+      //Checking if each items to animate are
+      //visible in the viewport
+      $("h2[data-max]").each(function () {
+        inVisible($(this));
+      });
+    });
+  });
+</script>
+
+<script src="../../../assets/plugins\jquery.min.js"></script>
+<script src="../../../assets/plugins\popper.min.js"></script>
+<script src="../../../assets/plugins\bootstrap4\js\bootstrap.min.js"></script>
+
+<script src="../../../assets/plugins\select2\dist\js\select2.full.min.js"></script>
+<script src="../../../assets/plugins\owl-carousel\owl.carousel.min.js"></script>
+<script src="../../../assets/plugins\jquery-bar-rating\dist\jquery.barrating.min.js"></script>
+<script src="../../../assets/plugins\lightGallery\dist\js\lightgallery-all.min.js"></script>
+<script src="../../../assets/plugins\slick\slick\slick.min.js"></script>
+<script
+  type="text/javascript"
+  src="https://www.medfoliotechnologies.com/js/wow.js"
+></script>
+
+<script
+  src="../../../assets/home\js\script.js"
+  type="be9dfe49072cb4d1912e7519-text/javascript"
+></script>
+<script
+  src="../../../assets/home\js\output.min.js"
+  type="be9dfe49072cb4d1912e7519-text/javascript"
+></script>
+
+<script
+  src="../../../assets/js/rocket-loader.min.js"
+  data-cf-settings="be9dfe49072cb4d1912e7519-|49"
+  defer=""
+></script>
+
+<script>
+  var hideTimeout = null;
+
+  var show = function () {
+    $(".sticky-container").show();
+  };
+
+  var hide = function () {
+    $(".sticky-container").hide();
+  };
+
+  $(document).ready(function () {
+    $(window).scroll(function (e) {
+      if (hideTimeout) {
+        window.clearTimeout(hideTimeout);
+        hideTimeout = null;
+      }
+      hide();
+
+      window.setTimeout(show, 1000);
+    });
+  });
+</script>
+
+<script>
+  $(window).ready(function () {
+    setInterval(function () {
+      $(".loader-container").addClass("active");
+    }, 1500);
+  });
+</script>
+<!-- custom code-->
+
+<script src="../../../assets/js\main.js"></script>
+<!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.8.3/TweenMax.min.js"></script>
+       <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+       <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script> -->
+
+<script type="text/javascript">
+  const items = document.querySelectorAll(".accordion a");
+
+  function toggleAccordion() {
+    this.classList.toggle("active");
+    this.nextElementSibling.classList.toggle("active");
+  }
+
+  items.forEach((item) => item.addEventListener("click", toggleAccordion));
+</script>
+
+<script>
+  wow = new WOW({
+    animateClass: "animated",
+    offset: 100,
+    callback: function (box) {
+      console.log("WOW: animating <" + box.tagName.toLowerCase() + ">");
+    },
+  });
+  wow.init();
+  document.getElementById("moar").onclick = function () {
+    var section = document.createElement("section");
+    section.className = "section--purple wow fadeInDown";
+    this.parentNode.insertBefore(section, this);
+  };
+</script>

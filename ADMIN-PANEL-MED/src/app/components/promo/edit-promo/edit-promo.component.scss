@@ -1,0 +1,233 @@
+h5,h6,label{
+    color: #6a818d;
+  }
+  .span-data{
+      margin-left: 20px;
+      display: flex;
+      justify-content: space-around;
+  }
+  
+  
+  
+  .card-data{
+      background-color: #13445c;
+      padding:10px;
+      padding: 40px;
+      align-content: center;
+      border-radius: 10px;
+  }
+  
+  /*Button CSS*/
+  
+  
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+  
+  
+    .form-group .file-upload-default {
+      visibility: hidden;
+      position: absolute;
+    }
+    
+    .form-group .file-upload-info {
+      background: transparent;
+    }
+  
+  
+    .btn{
+      
+      font-weight: 300;
+    }
+    .btn-dark{
+        
+      border-radius: 5px;
+      background-color: #014466;
+      color: #7c9fb0;
+    }
+  
+    .btn-dark:active{
+        
+      background-color: none;
+      border-color: 1px solid #014466;
+    }
+  
+    .btn-dark-rounded{
+      margin-left: 12px;
+      background-color: #033752;
+      border-radius: 10.25em;
+    }
+  
+  
+    .btn-inverse-dark{
+        background-color: #0b4866;
+        background-image: none;
+        border-color: rgba(79, 74, 96, 0);
+      }
+      
+    
+      
+      hr{
+          margin-top: 0.5rem;
+          margin-bottom: 0.5rem;
+      }
+  
+          
+    .form-control{
+      background: #093d57;
+    }
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+  
+      .modal-body, .modal-header, .modal-footer{
+        
+        background-color: #0b4866;
+    }
+    label{
+        color: wheat;
+    }
+  .card-body{
+      
+      border-radius: 15px;
+  }
+  
+  
+  
+  
+  
+    .row-data{
+      background: #093d57;
+      padding-top: 15px;
+      border-radius: 10px;
+      justify-content: center;
+      padding-right: 30px;
+    }
+  
+  
+    .img-move-wrapper {
+      position:relative;
+      overflow:hidden;
+      max-width:1140px;
+      margin:0 auto;
+    }
+  
+    //Select List Style CSS
+    select {
+  
+      /* styling */
+      background-color: white;
+      border: thin solid blue;
+      border-radius: 4px;
+      display: inline-block;
+      font: inherit;
+      line-height: 1.5em;
+      padding: 0.5em 3.5em 0.5em 1em;
+    
+      /* reset */
+    
+      margin: 0;      
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+    
+    
+    /* arrows */
+    
+    select.classic {
+      background-image:
+        linear-gradient(45deg, transparent 50%, #042b3f 50%),
+        linear-gradient(135deg, #042b3f 50%, transparent 50%),
+        linear-gradient(to right, white, white);
+      background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        100% 0;
+      background-size:
+        5px 5px,
+        5px 5px,
+        3.5em 2.5em;
+      background-repeat: no-repeat;
+    }
+  
+   
+    
+    select:-moz-focusring {
+      color: transparent;
+      text-shadow: 0 0 0 #000;
+    }
+    
+  
+  //Date Styling CSS
+  
+  [type="date"] {
+    background:#052a3d  url('../../../../assets/images/calendar-icon.svg')  90% 45% no-repeat  ;
+    background-size:1em auto, 100% 100%;
+    color: grey;
+    border-radius: 18px;
+  }
+  [type="date"]::-webkit-inner-spin-button {
+    display: none;
+    background:#fff;
+  }
+  [type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
+  
+  
+  
+  
+  /* CSS Tabs*/
+  .tabs {
+    max-width: 100%;
+    //margin-top: 20px;
+    padding: 0 20px;
+    }
+    .tabs input {
+    display: none;
+    }
+    .tabs label {
+      border: unset;
+      border-width: unset;
+      background-color: #0e6e9e;
+      padding: 9px;
+      width: 200px;
+      border-radius: 4px;
+      margin: 0px 8px;
+      background-color: #00496e;
+      text-align:center;
+    }
+    .tabs label:hover {
+    cursor: pointer;
+    }
+    
+    .tabs input:checked + label {
+      border: unset;
+      border-width: unset;
+      background-color: #0e6e9e;
+      padding: 9px;
+      width: 200px;
+      border-radius: 4px;
+      margin: 0px 8px;
+    }
+    .tabs #tab1:checked ~ .content #content1,
+    .tabs #tab2:checked ~ .content #content2,
+    .tabs #tab3:checked ~ .content #content3,
+    .tabs #tab4:checked ~ .content #content4, 
+    .tabs #tab5:checked ~ .content #content5 {
+    display: block;
+    }
+    .tabs .content > div {
+    display: none;
+    padding-top: 20px;
+    text-align: center;
+    /*height: 192px;*/
+    overflow: none;
+    }
+  
+  
+    

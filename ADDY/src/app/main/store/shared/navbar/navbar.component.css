@@ -1,0 +1,23 @@
+
+header {
+    background: var(--white);
+    border-radius: 0px 0px 24px 24px;
+    padding: 10px 0 20px;
+    position: relative;
+}
+header .right ul {
+    margin: 0;
+}
+header .right ul li {
+    list-style: none;
+    float: right;
+    margin-left: 20px;
+    font-size: 24px;
+    margin-top: 7px;
+}
+a {
+    color: var(--black);
+}
+a:hover {
+    text-decoration: none;
+}

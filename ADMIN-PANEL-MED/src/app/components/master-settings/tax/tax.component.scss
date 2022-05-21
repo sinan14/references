@@ -1,0 +1,306 @@
+.card-body {
+  color: whitesmoke;
+}
+.span-data {
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+i,
+h6,
+label {
+  color: white;
+  opacity: 0.5;
+}
+h5 {
+  font-size: 14px;
+  font-family: "Poppins", sans-serif !important;
+}
+h6 {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif !important;
+}
+.card-data {
+  background-color: #13445c;
+  padding: 10px;
+  padding: 40px;
+  align-content: center;
+  border-radius: 10px;
+}
+
+/*Button CSS*/
+
+.form-control {
+  background: #014466;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group-append,
+.input-group-prepend {
+  color: #aaa7a7;
+  width: auto;
+  border: none;
+}
+
+.input-group-append .input-group-text,
+.input-group-prepend .input-group-text {
+  background-color: #014466;
+  border-color: #3d3f4e;
+  padding: 0.875rem 0.75rem;
+  color: #aaa7a7;
+}
+
+.form-group .file-upload-default {
+  visibility: hidden;
+  position: absolute;
+}
+
+.form-group .file-upload-info {
+  background: transparent;
+}
+
+.btn {
+  color: #99b2bf;
+  font-weight: 400;
+}
+
+.btn-dark-rounded {
+  margin-left: 12px;
+  background-color: #00283d;
+  border: unset;
+  border-radius: 10.25em;
+}
+
+.btn-inverse-dark {
+  background-color: #0b4866;
+  background-image: none;
+  border: unset;
+  border-radius: 10.25em;
+}
+
+hr {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  background: #093d57;
+  border: none;
+  color: #99b2bf;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.modal-body,
+.modal-header,
+.modal-footer {
+  background-color: #0b4866;
+  color: #fff;
+  width: 100%;
+  border-bottom: none !important;
+  border-top: none !important;
+  label {
+    color: white;
+    opacity: 0.5;
+  }
+}
+
+.modal-header {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.modal-footer {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+label {
+  color: wheat;
+}
+.card-body {
+  border-radius: 15px;
+}
+
+/*Image Upload CSS*/
+.image-data {
+  background-color: #043954;
+  padding: 30px;
+  align-content: center;
+  border-radius: 10px;
+  padding-right: 113px;
+  color: white;
+  opacity: 0.5;
+  /*position: relative;
+  margin-left: 1rem;*/
+}
+
+.icon-style {
+  font-size: 100%;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 50%;
+}
+
+.upload-btn-wrapper :hover i {
+  -webkit-transition-delay: 0.05s;
+  transition-delay: 0.05s;
+  -webkit-transition-duration: 0.35s;
+  transition-duration: 0.35s;
+}
+
+.icon {
+  border: 0px solid gray;
+  color: white;
+  opacity: 0.5;
+  background-color: transparent;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+/* styling */
+/* arrows */
+select {
+  color: #99b2bf;
+  //opacity: 0.5;
+  background-color: white;
+  //border: thin solid white;
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+select option {
+  color: #99b2bf;
+  opacity: 0.5;
+}
+
+select ::placeholder,
+select::selection {
+  color: #99b2bf;
+  opacity: 0.5;
+}
+
+// select.classic {
+//   background-image:
+//     linear-gradient(45deg, transparent 50%, #042b3f 50%),
+//     linear-gradient(135deg, #042b3f 50%, transparent 50%),
+//     linear-gradient(to right, white, white);
+//   background-position:
+//     calc(100% - 20px) calc(1em + 2px),
+//     calc(100% - 15px) calc(1em + 2px),
+//     100% 0;
+//     background-size: 6px 6px, 6px 6px, 2.5em 2.5em;
+//   background-repeat: no-repeat;
+// }
+
+// select:-moz-focusring {
+//   color: white;
+//   text-shadow: 0 0 0 white;
+//   opacity: 0.5;
+// }
+
+input {
+  border: none;
+  //box-shadow: none;
+}
+
+/*Toggle Switch*/
+.toggle-switch {
+  --clr-checked: #df2;
+  --clr-unchecked: #aaaaaa;
+  --clr-focus: var(--clr-checked);
+  --clr-background-checked: #ffffff;
+  --clr-background-unchecked: #ffffff;
+  --transition-length: 200ms;
+  --transition: cubic-bezier(0.76, 0.08, 0.54, 1.4);
+  --size-height: 1.5em;
+  --size-width: 3em;
+  --size-gap: 0.2em;
+  --size-focus: var(--size-gap);
+  --size-shadow: var(--size-gap);
+  appearance: none;
+  outline: none;
+  position: relative;
+  cursor: pointer;
+  width: var(--size-width);
+  height: var(--size-height);
+  border-radius: calc(var(--size-height) / 2);
+  background: var(--clr-background-unchecked);
+  //box-shadow: inset 0 0 calc(var(--size-height) / 4) var(--clr-shadow);
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: var(--size-gap);
+    left: var(--size-gap);
+    bottom: var(--size-gap);
+    width: calc(var(--size-height) - (var(--size-gap) * 2));
+    border-radius: 50%;
+    background: var(--clr-unchecked);
+    box-shadow: inset 0 0 calc(var(--size-height) / 4) var(--clr-highlight),
+      0 0 var(--size-shadow) 0 var(--clr-shadow);
+    transition: left var(--transition-length) var(--transition);
+    //background var(--transition-length) var(--transition);
+  }
+
+  &:checked::after {
+    left: calc(var(--size-width) - var(--size-height) + var(--size-gap));
+    background: var(--clr-checked);
+  }
+}
+
+.toggle-switch.tight {
+  --clr-checked: #3df;
+  --clr-unchecked: #aaaaaa;
+  --clr-background-checked: #ffffff;
+  --clr-background-hover: #27afcc;
+  --transition-length: 150ms;
+  --size-width: 2.65em;
+  --size-height: 1.8em;
+  --size-gap: 0.1em;
+  --size-focus: 0.15em;
+  //--size-shadow: 0.2em;
+}
+
+.toggle-switch.oversize {
+  --clr-checked: #00b4ff;
+  --clr-unchecked: #aaaaaa;
+  --clr-focus: #eba;
+  --clr-shadow: #ffffff;
+  --clr-highlight: #ffffff;
+  --size-width: 2.5em;
+  --size-height: 1em;
+  --size-gap: -0.2em;
+  --size-focus: 0.22em;
+  //--size-shadow: 0.2em
+}
+
+.innerr_table_style .table-responsive table tr td {
+  border: none !important;
+}
+.help-block {
+  color: #ec5362 !important;
+  font-size: medium;
+}

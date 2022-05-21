@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+
+<body class="customer">  
+
+    <!--====== APPIE PAGE TITLE PART START ======-->
+    <div class="desktop">
+    <div class="appie-page-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12  text-center">
+                    <div class="appie-page-title-item">
+                        <div class="mob-view">
+                        <h6>Welcome to</h6>
+                        <nav aria-label="breadcrumb">
+                           <img src="assets/images/whitelogo.svg" class="logos">
+                        </nav>
+                        <div class="profile-pic">
+                            <span class="pro-verify"><i class="fa fa-check"></i></span>
+                            <img src="assets/images/pro.svg">
+                            <h5>James Harper</h5>
+                        </div>
+                        <div class="profile-content">
+                            <p>Requesting your full address for<br>sending consigment through addy</p>
+                            <p style="margin-bottom: 10px;">Whats being send</p>
+                            <button class="packet-btn">1 packet Apple</button>
+                            <div class="img-radio-div" style="width: 100%;">
+                                <ul>
+                                  <li><input type="radio" name="test" id="cb1" />
+                                    <label for="cb1"><img src="assets/images/pro1.png" /></label>
+                                  </li>
+                                  <li><input type="radio" name="test" id="cb2" />
+                                    <label for="cb2"><img src="assets/images/pro2.png" /></label>
+                                  </li>
+                                  <li><input type="radio" name="test" id="cb3" />
+                                    <label for="cb3"><img src="assets/images/pro3.png" /></label>
+                                  </li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        </div>
+                        <div class="profile-content">
+                          <button type="button" (click)="gotohome()"     class="btn  btn-lg blueButton btn-border mt-20">No, I will decide it later.</button>
+                          <button type="button" (click)="gotoAddressForm()"    class="btn  btn-lg white-button mb-20">Accept & fill the address</button>
+
+                            <!-- <a class="blue-button btn-border mt-20" (click)="gotohome()"  >No, I will decide it later.</a> -->
+                            <!-- <a  class="white-button mb-20" (click)="gotoAddressForm()"  >Accept & fill the address</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--====== APPIE PAGE TITLE PART ENDS ======-->
+
+       
+
+      
+<!-- <script type="text/javascript">
+    function deselectableRadios(rootElement) {
+  if(!rootElement) rootElement = document;
+  if(!window.radioChecked) window.radioChecked = {};
+  window.radioClick = function(e) {
+    const obj = e.target, name = obj.name || "unnamed";
+    if(e.keyCode) return obj.checked = e.keyCode!=32;
+    obj.checked = window.radioChecked[name] != obj;
+    window.radioChecked[name] = obj.checked ? obj : null;
+  }
+  rootElement.querySelectorAll("input[type='radio']").forEach( radio => {
+    radio.setAttribute("onclick", "radioClick(event)");
+    radio.setAttribute("onkeyup", "radioClick(event)");
+  });
+}
+
+deselectableRadios();
+</script>    -->
+
+
+    
+
+</body>
+

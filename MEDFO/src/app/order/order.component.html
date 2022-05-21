@@ -1,0 +1,972 @@
+<div class="ps-page">
+  <app-header></app-header>
+</div>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript
+  ><iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-W32L424"
+    height="0"
+    width="0"
+    style="display: none; visibility: hidden"
+  ></iframe
+></noscript>
+<!-- End Google Tag Manager (noscript) →-->
+<section class="inner_new_page_container" style="overflow: hidden">
+  <div class="category_banner_cnt">
+    <img
+      src=""
+      alt=""
+      style="object-fit: cover; height: inherit; width: inherit"
+    />
+  </div>
+
+  <!-- <section class="breadcrumbs_sec">
+ <div class="container" >
+       
+     </div>
+ </section> -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.0.47/jquery.fancybox.min.css"
+  />
+
+  <div class="ps-post ps-post--sidebar">
+    <section class="ps-whoweare franchise_banner order_bnn ps-about--video">
+      <div class="">
+        <div class="ps-banner who-we">
+          <div class="container adj">
+            <!--<div class="order_page_top_search_box">
+                                
+                                    <div class="order_page_top_search_box_inp">
+                                        <input type="text" class="order_page_top_search_box_input" placeholder="Search Your Medicine Here">
+                                        <div class="order_page_search_box_btn"><img src="assets/img/order/search.png" alt=""></div>
+                                    </div>
+                                </div>
+                              
+                            </div>-->
+            <!--------------------------------------------------------------------------->
+
+            <div class="buy_medicine_bann_sec">
+              <div class="buy_med_head">
+                Buy Medicines
+                <span>Online</span>
+              </div>
+
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="buy_medicine_bann_left_bx">
+                    <a
+                      data-toggle="modal"
+                      id="popup-upload-prescription"
+                      data-target="#myUpload"
+                      style="display: none"
+                    >
+                    </a>
+                    <a (click)="openLoginScreen()" style="cursor: pointer">
+                      <div class="buy_medicine_bann_left_cnt_row">
+                        <div class="buy_medicine_bann_left_cnt_ico">
+                          <img
+                            style="cursor: pointer"
+                            class="resize"
+                            src="assets/img/order/upload.png"
+                            alt=""
+                          />
+                        </div>
+                        <span style="cursor: pointer">Upload Prescription</span>
+                        <i
+                        
+                          class="fa fa-angle-right"
+                        ></i>
+                      </div>
+                    </a>
+                    <a style="cursor: pointer">
+                      <div
+                        class="buy_medicine_bann_left_cnt_row"
+                        (click)="dontHaveOrder()"
+                        [style.borderWidth.px]="border1"
+                      >
+                        <div class="buy_medicine_bann_left_cnt_ico">
+                          <img
+                            class="resize"
+                            style="cursor: pointer"
+                            src="assets/img/order/dnt_presc.png"
+                            alt=""
+                          />
+                        </div>
+
+                        Don't Have a Prescription?
+                        <i
+                          id="orderArrow"
+                         
+                          class="{{ arrow }}"
+                        ></i></div
+                    ></a>
+                    <a *ngIf="hide">
+                      <div
+                        class="buy_medicine_bann_left_cnt_row"
+                        style="border: 0"
+                      >
+                        <div class="buy_medicine_bann_left_cnt_ico">
+                          <img
+                            class="resizes"
+                            src="assets/img/order/call.png"
+                            alt=""
+                          />
+                        </div>
+
+                        <span (click)="callNow()"
+                          >+ 91 {{ whatsappNumber }}
+                        </span>
+
+                        <br />
+                        &nbsp; &nbsp;
+                        <span (click)="callNow()">Call to Order </span>
+                      </div></a
+                    >
+                  </div>
+
+                  <div class="buy_medicine_bann_left_bx">
+                    <a>
+                      <!-- ! use this div only in mobile adn tablet using proper css -->
+
+                      <div
+                        (click)="openWhatsApp()"
+                        class="buy_medicine_bann_left_cnt_row"
+                        style="border: 0"
+                      >
+                        <div class="buy_medicine_bann_left_cnt_ico">
+                          <img
+                            class="resizes"
+                            src="assets/img/order/whats.png"
+                            alt=""
+                          />
+                        </div>
+                        <span style="color: rgb(41 41 41 / 60%)"
+                          >Send a Hi to Place Order</span
+                        ><br />
+                        &nbsp; &nbsp; + 91 {{ whatsappNumber }}
+                      </div>
+                      <!-- ! use this div only in desktops using proper css -->
+                      <div
+                        (click)="openWhatsApp()"
+                        class="buy_medicine_bann_left_cnt_row"
+                        style="border: 0; display: none"
+                      >
+                        <div class="buy_medicine_bann_left_cnt_ico">
+                          <img
+                            class="resize"
+                            src="assets/img/order/whats.png"
+                            alt=""
+                          />
+                        </div>
+                        <span style="color: rgb(41 41 41 / 60%)"
+                          >Send a Hi to Place Order</span
+                        ><br />
+                        &nbsp; &nbsp; + 91 {{ whatsappNumber }}
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-md-7">
+                  <div class="odrmdc_head">
+                    Order Medicines Online Like a Pro
+                  </div>
+                  <div class="odr_banner_sec">
+                    <div class="row">
+                      <div
+                        class="col-md-7 col-12"
+                        style="
+                          display: flex;
+                          align-items: center;
+                          justify-content: flex-end;
+                        "
+                      >
+                        <div class="odr_banner_txt">
+                          How to Order <br />
+                          Medicines on<br />
+                          Medimall?
+                        </div>
+                      </div>
+                      <div class="col-md-5 col-12">
+                        <div class="odr_banner_img">
+                          <img src="assets/img/order/banner_phone.png" alt="" />
+                          <a
+                            data-fancybox="video-gallery"
+                            class="how_to"
+                            [href]="vimeoVideoHOwTo"
+                            target="_blank"
+                          >
+                            <div class="vedio">
+                              <div class="ps-banner__video">
+                                <i class="fa fa-play"></i>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!---------------------------------------------------------------------------->
+
+            <div class="row">
+              <!-- <img src="assets/img/leadership/circ.png" class="cir1 rotate"> -->
+              <img
+                src="assets/img/leadership/ldot.png"
+                class="dpres floatings"
+              />
+              <img
+                src="assets/img/leadership/ldot1.png"
+                class="dpres1 floatings"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="odr_offfers_pay_sec">
+      <!-- <h3 class="headings">
+              <img
+                src="assets/img/png/offer.png"
+                width="30"
+                class="rotate"
+              />Offers From Our Payment Partners
+            </h3> -->
+      <div class="ps-section__carousel">
+        <div
+          id="paymentOffers"
+          class="owl-carousel"
+          data-owl-auto="true"
+          data-owl-loop="true"
+          data-owl-speed="13000"
+          data-owl-gap="0"
+          data-owl-nav="false"
+          data-owl-dots="false"
+          data-owl-item="6"
+          data-owl-item-xs="2"
+          data-owl-item-sm="2"
+          data-owl-item-md="5"
+          data-owl-item-lg="6"
+          data-owl-item-xl="6"
+          data-owl-duration="1000"
+          data-owl-mousedrag="on"
+        >
+          <ng-container class="my-carousel" *ngFor="let slide of offerSlider">
+            <div class="ps-section__product wow fadeInUp" data-wow-delay="0.1s">
+              <div class="ps-product ps-product--standard">
+                <div class="ps-product__thumbnail offers">
+                  <div
+                    class="ps-product__image off"
+                    (click)="sliderDirection(slide)"
+                  >
+                    <img src="{{ slide.image }}" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </section>
+
+    <!--  <section class="odr_offfers_pay_sec">
+            <div class="">
+                <h3 class="headings"><img src="assets/img/png/offer.png" width="30" class="rotate"> &nbsp; Offers From Our Payment Partners</h3>
+                    <div class="ps-section__carousel">
+                        <div class="owl-carousel" data-owl-auto="false" data-owl-loop="true" data-owl-speed="13000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="false" data-owl-item="4" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="4" data-owl-item-lg="4" data-owl-item-xl="4" data-owl-duration="1000" data-owl-mousedrag="on">
+                            <div class="ps-section__product">
+                                <div class="ps-product ps-product--standard ">
+                                    <div class="ps-product__thumbnail offers">
+                                        <div class="ps-product__image off"> <img src="assets/img/png/offers.png">
+                                            <div class="rows">
+                                                <div class="imgd pull-left"> <img src="assets/img\png\of.svg" alt="alt"> </div>-->
+    <!--col-md-4-->
+    <!--<div class="imgc">
+                                                    <h3>Get extra 10% off on Medimall</h3>
+                                                    <p>Get extra 10% off on PharmEasy Labtests/ packages.Minimum order value is Rs 899  </p>
+                                                     <div class="tcdiv"><a href="" class="tc">T&C</a></div>
+                                                     <div class="code">
+                                                        <ul>
+                                                            <li ></li>
+                                                             <li ><span style="opacity:0.7">Copy code</span>
+                                                              <div class="tooltip">
+                                                                <input type="text"  style="display: none;">
+                                                                 <button class="btn" >
+                                                                    <i class="icon-files"></i>
+                                                                    <span class="tooltiptext" >MEDI254</span>
+                                                                  </button>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    </div>-->
+    <!--col-md-8-->
+    <!--</div>-->
+    <!--row-->
+    <!--  </div>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                            
+                          
+                        </div>
+                    </div>
+            </div>
+        </section>-->
+
+    <section class="howto_place_order">
+      <div class="how_to_plce_odr_head">How to Place an Order</div>
+      <div class="container">
+        <div id="how_to" class="owl-carousel">
+          <div class="item">
+            <div class="howto_place_order_box">
+              <img src="assets/img/order/place_holder_img.png" alt="" />
+            </div>
+          </div>
+          <div class="item">
+            <div class="howto_place_order_box">
+              <img src="assets/img/order/place_holder_img.png" alt="" />
+            </div>
+          </div>
+          <div class="item">
+            <div class="howto_place_order_box">
+              <img src="assets/img/order/place_holder_img.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="odr_our_three_sec">
+      <div class="odr_our_three_sec_head">Our Three Step Quality Checking</div>
+
+      <div class="container">
+        <div class="odr_our_three_sec_cnt">
+          <div class="odr_our_three_sec_cnt_img mob_show">
+            <img src="assets/img/order/quality.png" alt="" />
+          </div>
+          <div class="row three-step-row">
+            <div class="col-md-4">
+              <div class="odr_our_three_sec_cnt_txt txt_right odr_thr_vl_img1">
+                <strong>Prescription Validation</strong>
+                The accuracy and validity of the prescription are verified by
+                our expert team.
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="odr_our_three_sec_cnt_img mob_hide">
+                <img src="assets/img/order/quality.png" alt="" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="odr_our_three_sec_cnt_txt odr_thr_vl_img2">
+                <strong>Product Checking</strong>
+                The Products are hand picked based on the prescription.
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="odr_our_three_sec_cnt_txt txt_cntr">
+                <strong>Quality Checking</strong>
+                The quality of the product are ensured by checking<br />
+                the expiry, mode of storing, and sanitation.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="odr_faq_sec">
+      <div class="odr_our_three_sec_head">Frequently Asked Questions</div>
+      <div class="container">
+        <div class="odr_faq_sans_box">
+          <div class="odr_faq_sans_box_ico" style="top: 33px">
+            <img src="assets/img/order/faq1.png" alt="" />
+          </div>
+          <div class="odr_faq_sans_box_head">
+            Is buying medicines online safe?
+          </div>
+          <div class="odr_faq_sans_box_cnt">
+            Absolutely, your medicine orders go through our three-step quality
+            checking process to ensure that they are of top quality.
+          </div>
+        </div>
+
+        <div class="odr_faq_sans_box">
+          <div class="odr_faq_sans_box_ico" style="top: 20px">
+            <img src="assets/img/order/faq2.png" alt="" />
+          </div>
+          <div class="odr_faq_sans_box_head" style="margin-bottom: 10px">
+            What makes us your perfect health companion
+          </div>
+          <div class="odr_faq_sans_box_cnt">
+            <span class="odr_faq_sans_tag">Used by 10k+ customers</span>
+            <span class="odr_faq_sans_tag"
+              >Express delivery in 3 Hours for selected Pincode.</span
+            >
+            <span class="odr_faq_sans_tag">Delivery in 24-48* hours</span>
+            <span class="odr_faq_sans_tag"
+              >3-step quality-checked products</span
+            >
+            <span class="odr_faq_sans_tag"
+              >Over 1L+ medicines and healthcare products for you to choose
+              from</span
+            >
+            <span class="odr_faq_sans_tag"
+              >Medpride Premium Subscription with exclusive benefits</span
+            >
+            <span class="odr_faq_sans_tag">Cash-on-delivery available</span>
+            <span class="odr_faq_sans_tag"
+              >We deliver in 20k+ pin codes across India.</span
+            >
+            <span class="odr_faq_sans_tag"
+              >MedFill: Scheduled refill services</span
+            >
+            <span class="odr_faq_sans_tag"
+              >An expert team of experienced pharmacists and healthcare
+              professionals</span
+            >
+            <span class="odr_faq_sans_tag"
+              >Exciting deals and e-wallet cashback</span
+            >
+          </div>
+        </div>
+
+        <div class="odr_faq_sans_box">
+          <div class="odr_faq_sans_box_ico">
+            <img src="assets/img/order/faq3.png" alt="" />
+          </div>
+          <div class="odr_faq_sans_box_head">How to place an order?</div>
+          <div class="odr_faq_sans_box_cnt">
+            <ol>
+              <li>
+                <strong>Search for a Product</strong>
+                Your desired products at your fingertips. Choose your product or
+                medicines and easily check the availability, ingredients, and
+                expiry dates.
+              </li>
+              <li>
+                <strong>Click to Order </strong>
+                Cart your essentials and click to order. If you have carted any
+                prescribed medicines, you will be given an option to upload the
+                prescription. If you don’t have one, you can easily consult our
+                doctors at the comfort of your home and get a prescription. Then
+                you can proceed with your order and choose your shipping
+                address.
+              </li>
+              <li>
+                <strong>Click to Order</strong>
+                Cart your essentials and click to order. If you have carted any
+                prescribed medicines, you will be given an option to upload the
+                prescription. If you don’t have one, you can easily consult our
+                doctors at the comfort of your home and get a prescription. Then
+                you can proceed with your order and choose your shipping
+                address.
+              </li>
+              <li>
+                <strong>Choose Your Payment</strong>
+                Once you have chosen the shipping address, you’ll have to select
+                your payment method. For payment, you can either use cards, UPI
+                apps, net banking, or pay on delivery. After you make your
+                payment, we will confirm your order and notify you of the
+                delivery date.
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="odr_faq_sans_box">
+          <div class="odr_faq_sans_box_ico" style="top: 33px">
+            <img src="assets/img/order/faq4.png" alt="" />
+          </div>
+          <div class="odr_faq_sans_box_head">
+            What kind of covid safety precaution do we follow?
+          </div>
+          <div class="odr_faq_sans_box_cnt">
+            All of the products are properly sanitized and disinfected before
+            shipping.
+          </div>
+        </div>
+
+        <div class="odr_faq_sans_box">
+          <div class="odr_faq_sans_box_ico">
+            <img src="assets/img/order/faq5.png" alt="" />
+          </div>
+          <div class="odr_faq_sans_box_head">
+            Is buying medicines online legal?
+          </div>
+          <div class="odr_faq_sans_box_cnt">
+            Online pharmacies do not fall under specific laws and regulations
+            dealing with the condition of their working although they are
+            regulated by some clauses of the IT act 2000. This act regulates
+            some legal aspects of selling medicines online. <br /><br />
+            Even though buying non-prescription medicines and healthcare are
+            legal. But for ordering prescribed medicines, you need to upload a
+            prescription from a doctor prior to ordering and follow other
+            clauses as per the law.
+          </div>
+        </div>
+
+        <div class="odr_faq_sans_box">
+          <div class="odr_faq_sans_box_ico" style="top: 33px">
+            <img src="assets/img/order/faq6.png" alt="" />
+          </div>
+          <div class="odr_faq_sans_box_head">
+            Can I buy medicine without a prescription?
+          </div>
+          <div class="odr_faq_sans_box_cnt">
+            You can buy non-prescription medicine and healthcare without the
+            need for a prescription. But to order prescribed medicines you need
+            to upload a prescription.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lap pres">
+      <div class="last">
+        <div class="container">
+          <div class="row">
+            <div></div>
+            <div class="col-md-5 ll">
+              <img src="assets/img/png/blog/last.png" />
+            </div>
+            <div class="col-md-7 pressbot">
+              <div class="lastdownp">
+                <h3>Download the App for Free</h3>
+                <div>
+                  <a href=""><img src="assets/img/png/play1.png" /></a>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.medfolio.medimall"
+                    target="_blank"
+                    ><img src="assets/img/png/play.png"
+                  /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mobile mm">
+      <div class="">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <img src="assets/img/png/blog/last.png" class="mmimg" />
+            </div>
+            <div class="col-md-7">
+              <img src="assets/img/png/press/give.png" class="" />
+              <div class="">
+                <h3 class="text-center">Download the App for Free</h3>
+                <div class="d-flex justify-content-between">
+                  <a href=""><img src="assets/img/png/play1.png" /></a>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.medfolio.medimall"
+                    target="_blank"
+                    ><img src="assets/img/png/play.png"
+                  /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <button class="btn scroll-top"><i class="fa fa-angle-double-up"></i></button>
+  <div class="ps-preloader" id="preloader"></div>
+
+  <!-- <footer class="ps-footer ps-footer--5" style="padding-top: 1px;">
+         
+            <app-footer></app-footer>
+        </footer>
+         -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style type="text/css">
+    .intro {
+      height: auto;
+      min-height: 100vh;
+      text-align: center;
+      background-color: teal;
+    }
+  </style>
+
+  <script
+    data-cfasync="false"
+    src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+  ></script>
+  <script src="plugins\jquery.min.js"></script>
+  <script src="plugins\popper.min.js"></script>
+  <script src="plugins\bootstrap4\js\bootstrap.min.js"></script>
+  <script src="plugins\select2\dist\js\select2.full.min.js"></script>
+  <script src="plugins\owl-carousel\owl.carousel.min.js"></script>
+  <script src="plugins\jquery-bar-rating\dist\jquery.barrating.min.js"></script>
+  <script src="plugins\lightGallery\dist\js\lightgallery-all.min.js"></script>
+  <script src="plugins\slick\slick\slick.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#how_to").owlCarousel({
+        loop: true,
+        margin: 0,
+        dots: true,
+        nav: false,
+        items: 1,
+      });
+
+      $("#review").owlCarousel({
+        loop: true,
+        margin: 25,
+        dots: false,
+        nav: false,
+        items: 2,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          600: {
+            items: 1,
+          },
+          1000: {
+            items: 2,
+          },
+        },
+      });
+
+      $("#affliate_voice").owlCarousel({
+        items: 1,
+
+        loop: true,
+
+        pullDrag: false,
+        dots: true,
+        autoplay: true,
+        margin: 25,
+        nav: true,
+        navText: [
+          "<i class='fa fa-chevron-left'></i>",
+          "<i class='fa fa-chevron-right'></i>",
+        ],
+      });
+    });
+  </script>
+
+  <script>
+    (function ($) {
+      "use strict";
+
+      $(function () {
+        var header = $(".start-style");
+        $(window).scroll(function () {
+          var scroll = $(window).scrollTop();
+
+          if (scroll >= 10) {
+            header.removeClass("start-style").addClass("scroll-on");
+          } else {
+            header.removeClass("scroll-on").addClass("start-style");
+          }
+        });
+      });
+
+      //Animation
+
+      $(document).ready(function () {
+        $("body.hero-anime").removeClass("hero-anime");
+      });
+
+      //Menu On Hover
+
+      $("body").on("mouseenter mouseleave", ".nav-item", function (e) {
+        if ($(window).width() > 750) {
+          var _d = $(e.target).closest(".nav-item");
+          _d.addClass("show");
+          setTimeout(function () {
+            _d[_d.is(":hover") ? "addClass" : "removeClass"]("show");
+          }, 1);
+        }
+      });
+
+      //Switch light/dark
+
+      $("#switch").on("click", function () {
+        if ($("body").hasClass("dark")) {
+          $("body").removeClass("dark");
+          $("#switch").removeClass("switched");
+        } else {
+          $("body").addClass("dark");
+          $("#switch").addClass("switched");
+        }
+      });
+    })(jQuery);
+  </script>
+
+  <!-- custom code-->
+  <script src="js\main.js"></script>
+
+  <!-------------------------------- Upload Prescription -------->
+  <div class="modal fade" id="myUpload" role="dialog">
+    <div class="modal-dialog">
+      <!------------ Modal content Upload pres-------------------------->
+      <div class="modal-content" style="padding: 0 7px">
+        <div class="close1">
+          <button
+            type="button"
+            id="dismiss-upload-prescription"
+            class="closea"
+            data-dismiss="modal"
+          >
+            &times;
+          </button>
+        </div>
+        <h5 class="uph">Upload Prescription</h5>
+        <div class="modal-header">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="box11">
+                  <div class="row justify-content-center bgallerymain1">
+                    <div class="col-md-4 float-left text-center p-0 mobile">
+                      <div class="gallery1">
+                        <!-- (click)="uploadPrescritpion($event,'camera')" -->
+                        <img
+                          src="assets/img/cart/icon12.png"
+                          class="img-fluid"
+                        />
+                        <input
+                          class="input-file"
+                          type="file"
+                          accept="image/*"
+                          capture="camera"
+                          (change)="uploadPrescritpion($event, 'camera')"
+                        />
+                      </div>
+                      Camera
+                    </div>
+                    <div class="col-md-4 float-left text-center p-0">
+                      <div class="gallery1">
+                        <!-- (click)="uploadPrescritpion($event,'gallery')" -->
+                        <!-- <img *ngIf="Upload_Image" src={{Upload_Image}} class="img-fluid" /> -->
+                        <img
+                          src="assets/img/cart/icon11.png"
+                          class="img-fluid"
+                        />
+                        <input
+                          class="input-file"
+                          type="file"
+                          accept="image/*,application/pdf"
+                          capture="user"
+                          formControlName="gallery"
+                          (change)="uploadPrescritpion($event, 'gallery')"
+                        />
+                      </div>
+                      Gallery
+                    </div>
+                    <div class="col-md-4 float-left text-center p-0">
+                      <!-- (click)="uploadPrescritpion($event,'healthdata')" -->
+                      <div class="gallery1" (click)="Get_Health_Vault_Data()">
+                        <!-- data-toggle="modal" -->
+                        <!-- data-target="#health_data_pop_up" -->
+                        <img
+                          src="assets/img/cart/icon13.png"
+                          class="img-fluid"
+                        />
+                        <!-- <input class="input-file" type="file" accept="image/*,application/pdf" formControlName="healthdata" (change)="uploadPrescritpion($event,'healthdata')"> -->
+                      </div>
+                      Health data
+                    </div>
+                  </div>
+
+                  <div class="row" *ngIf="prescriptionImageURLArray.length">
+                    <div
+                      class="col-md-3 gallery-ad-img mt-2"
+                      *ngFor="let j of prescriptionImageURLArray"
+                    >
+                      <button
+                        type="button"
+                        class="sub-pop-close"
+                        style="cursor: pointer"
+                        (click)="removePrescription(j)"
+                      >
+                        ×
+                      </button>
+                      <img src="{{ j }}" width="100%" />
+                    </div>
+                  </div>
+
+
+                  <div *ngIf="imageLoading" class="lod">
+                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                  </div>
+
+                  <div class="row" *ngIf="prescriptionImageURLArray.length">
+                    <div class="col-md-12">
+                      <h5 class="mt-2">Prescription Attached By You</h5>
+                      <h6 style="color: rgb(41 41 41 / 60%);">Check your prescription before submitting it or reupload it.</h6>
+                    </div>
+                  </div>
+
+                  <a
+                    class="text-center box991 pescription-add"
+                    style="cursor: pointer"
+                    (click)="prescriptionGuidClick()"
+                  >
+                    <p class="priscription mt-4" style="text-align: center !important;">
+                      Prescription should contains<img
+                        src="assets/img/cart/prescription.png"
+                        class="img-fluid imgpre"
+                      />
+                    </p>
+                  </a>
+                </div>
+                
+
+                <div class="row" id="respon1">
+                  <div class="box99" style="margin-bottom: 0px">
+                    <div class="text-center">
+                      <div class="accordion-item giving11">
+                        <div
+                          class="give244 cart-subscrp"
+                          *ngIf="containGuidFlag"
+                        >
+                          <div class="maninPrescription text-center">
+                            <div class="row newbox">
+                              <div class="col-md-12 p-0">
+                                <div class="box22">
+                                  <h3>Prescription Guide</h3>
+                                  <ul class="prec">
+                                    <li>Upload Clear Prescription Image</li>
+                                    <li>
+                                      Below mentioned points should be part of
+                                      valid Prescription
+                                    </li>
+                                  </ul>
+                                  <div class="row">
+                                    <div class="col-md-8 doctor">
+                                      <img
+                                        src="assets/img/cart/doctor.png"
+                                        class="img-fluid"
+                                      />
+                                    </div>
+                                    <div class="col-md-4 doctor">
+                                      <label class="docp">Doctor Details</label>
+                                      <label class="docp"
+                                        >Patient Details</label
+                                      >
+                                      <label class="docp"
+                                        >Medicine Details</label
+                                      >
+                                      <label class="docp sign sign1"
+                                        >Doctor Sign</label
+                                      >
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngIf="Health_Vault_Array.length && healthdataClicked">
+                  <ng-container *ngFor="let data of Health_Vault_Array">
+                    <div class="row">
+                      <div class="container">
+                        <div class=" mb-2 col-md-12 p-0">
+                          <div class="boxa">
+                            <div class="form-check11 float-right">
+                              <label class="customcheck">
+                                <input
+                                  type="checkbox"
+                                  (change)="Select_Health_Data($event, data)"
+                                  [checked]="data.checkedFlag ? true : false"
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                            </div>
+
+                            <!-- <div class="radioaa">
+                                <input class="rrb" type="radio" name="addressStatus"
+                                  (click)="Select_Health_Data(data)" />
+                              </div> -->
+                            <!-- Health_Data_Continue_Click -->
+                            <!-- (click)="selectHealthVault(hv.prescription)" -->
+                            <div class="col-md-8 float-left labresult">
+                              <h5>{{ data.category }}</h5>
+                              <label
+                                >Patient Name<span class="saron"></span>:
+                                {{ data.patientName }}</label
+                              >
+                              <label
+                                >Date <span class="sarondate"></span>:
+                                {{ data.date }}</label
+                              >
+                            </div>
+
+                            <div
+                              class="
+                                col-md-4
+                                float-left
+                                text-center
+                                subimageanddiscription
+                              "
+                            >
+                              <!-- <a target="_blank" [href]="hv.prescription"> -->
+                              <img
+                                [src]="data.prescription"
+                                class="img-fluid"
+                              />
+                              <!-- </a> -->
+                              <!-- <label class="subhvl">Subscription ID</label> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <button
+                      type="button"
+                      class="btn btn-primary Continue1"
+                      (click)="Continue_Prescription_Click()"
+                    >
+                      <span
+                        *ngIf="addLoading"
+                        class="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      {{ addLoading ? "Uploading..." : "Upload prescription" }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- upload prescription close -->
+            <!-- -----------------------------------------------------The Modal2 ---------------------------->
+
+            <!-- ---------------------------POPUP CLOSE------------------------------------------------------------------ -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-------------------------------- Upload Prescription -------->
+</section>

@@ -1,0 +1,152 @@
+<body style="margin: 10px auto;text-align: center;margin: 0 auto;
+font-family: 'Open Sans', sans-serif; display: block;">
+
+<table align="center" border="0" cellpadding="0" cellspacing="0" style="padding: 0 30px;background-color: #fff; width: 100%;margin-top:30px;">
+<tbody>
+    <tr>
+        <td>
+            <table align="left" border="0" cellpadding="0" cellspacing="0" style="margin-top:30px;text-align: left;" width="100%">
+                <tr>
+                    <td>
+                        <img src="http://143.110.240.107:8000/logo/logoblue.png" width="75" alt="" style="margin-bottom: 30px;">
+                    </td>
+                </tr>                            
+            <!-- <tr>
+                    <td>
+                        <img src="localhost:4200/assets/images/logo.png">
+                    </td>
+                </tr>  -->
+            </table>
+        
+            <table cellpadding="0" cellspacing="0" border="0" align="left" style="width: 100%;margin-top: 1px;    margin-bottom: 10px;">
+                    <tbody>
+                        <tr>
+                        <td align="left" style="padding: 15px;letter-spacing: 0.3px;width: 50%;">
+                        <h4 style="font-size: 13px;font-weight: 300;"><strong>Name : </strong>{{userDetails.name}}</h4>
+                        <h4 style="font-size: 13px;font-weight: 300;"><strong>Payment Type : </strong> {{paymentType}}</h4>
+                        <h4 style="font-size: 13px;font-weight: 300;"><strong>Order Id : </strong> {{orderId}}</h4></td>
+                    </td>
+                        
+                        <td align="right" style="padding: 15px;letter-spacing: 0.3px;width: 50%;">
+                        <h4 style="font-size: 13px;font-weight: 300;"><strong>Order Time : </strong> {{createdAt}}</h4>
+                        <h4 style="font-size: 13px;font-weight: 300;"><strong>Contact Number : </strong> {{userDetails.phone}}</h4></td>
+                        </tr>
+
+                        <tr>
+                        
+                        <td style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 50%;">
+                        <h5 style="text-align: left;-size: 14px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">Your Shipping Address</h5>
+                        <p style="text-align: left;font-weight: normal; font-size: 13px; color: #000000;line-height: 21px;    margin-top: 0;"> {{address.name}},</p>
+                            <p style="text-align: left;font-weight: normal; font-size: 13px; color: #000000;line-height: 21px;    margin-top: 0;"> {{address.wholeAddress}}</p>
+                            <p style="text-align: left;font-weight: normal; font-size: 13px; color: #000000;line-height: 21px;    margin-top: 0;"> {{address.mobile}}</p>
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+            <table class="order-detail" border="0" cellpadding="0" cellspacing="0"  align="left" style="width: 100%;    margin-bottom: 50px;margin-top:30px;">
+                <tr align="left">
+                    <th  style="padding: 10px;font-size:11px;border: 1px solid #dfdede;border-collapse: collapse;">
+                    HSN/SKN Code</th>
+                    <th  style="padding: 10px;font-size:11px;border: 1px solid #dfdede;border-collapse: collapse;">Product</th>
+                    <th  style="padding: 10px;font-size:11px;border: 1px solid #dfdede;border-collapse: collapse;">
+                    UOM</th>
+                    <th  style="padding: 10px;font-size:11px;border: 1px solid #dfdede;border-collapse: collapse;">Quantity </th>
+                    <th  style="padding: 10px;font-size:11px;border: 1px solid #dfdede;border-collapse: collapse;">Unit Price</th>
+                    <th  style="padding: 10px;font-size:11px;border: 1px solid #dfdede;border-collapse: collapse;">Total </th>
+                </tr>
+                  {{#each products}}
+                <tr>
+
+                
+                    <td style="padding: 10px;border: 1px solid #dfdede;">
+                    <h5>{{this.skuOrHsnNo}}</h5>
+                    </td>
+                    <td style="padding: 10px;border: 1px solid #dfdede;padding-left: 15px;" valign="top" >
+                        <h5 style="margin-top: 15px; font-size:10px">{{this.productName}}</h5>
+                    </td>
+                    <td style="border: 1px solid #dfdede;padding: 10px;" valign="top" >
+                        <h5 style="font-size: 10px; color:#444;margin-top:15px;    margin-bottom: 0px;">{{this.uomValue}} </h5>
+                                                        
+                    </td>
+                    <td  style="border: 1px solid #dfdede;padding: 10px;" valign="top" >
+                        <h5 style="font-size: 10px; color:#444;margin-top:15px"><b>{{this.quantity}}</b></h5>                  
+                    </td>
+                    <td  style="border: 1px solid #dfdede;padding: 10px;" valign="top" >
+                        <h5 style="font-size: 10px; color:#444;margin-top:15px"><b> {{this.specialPrice}}</b></h5>                  
+                    </td>
+                    <td  style="border:1px solid #dfdede;padding: 10px;" valign="top" >
+                        <h5 style="font-size: 10px; color:#444;margin-top:15px"><b> {{this.price}}</b></h5>                  
+                    </td>
+                </tr><br>
+                 {{/each}}
+
+                <tr class="pad-left-right-space " style="line-height: 2;">
+                    <td class="m-t-5" colspan="5" align="right">
+                        <p style="font-size: 13px;">Total Amount : </p>
+                    </td>
+                    <td class="m-t-5" colspan="1" align="right" style="font-size: 12px;">
+                        <p style> <i class="fa fa-rupee"></i> {{cartDetails.totalCartValue}}</p>
+                    </td> </tr>
+                <tr class="pad-left-right-space" style="line-height: 2;">
+                    <td colspan="5" align="right">
+                        <p style="font-size: 13px;">Medcoin redeemed :</p>
+                    </td>
+                    <td colspan="1" align="right" style="font-size: 12px;">
+                        <p> <i class="fa fa-rupee"></i> {{cartDetails.medCoinRedeemed}}</p>
+                    </td>
+                </tr>
+                <tr class="pad-left-right-space" style="line-height: 2;" >
+                    <td colspan="5" align="right">
+                        <p style="font-size: 13px;">Member Discount :</p>
+                    </td>
+                    <td colspan="1" align="right" style="font-size: 12px;">
+                        <p> <i class="fa fa-rupee"></i>{{cartDetails.memberDiscount}}</p>
+                    </td>
+                </tr>
+
+                <tr class="pad-left-right-space" style="line-height: 2;" >
+                    <td colspan="5" align="right">
+                        <p style="font-size: 13px;">Coupon Discount :</p>
+                    </td>
+                    <td colspan="1" align="right" style="font-size: 12px;">
+                        <p> <i class="fa fa-rupee"></i>{{cartDetails.couponAppliedDiscount}}</p>
+                    </td>
+                </tr>
+               
+                <tr class="pad-left-right-space" style="line-height: 2;" >
+                    <td colspan="5" align="right">
+                        <p style="font-size: 13px;">Delivery Charge :</p>
+                    </td>
+                    <td colspan="1" align="right" style="font-size: 12px;">
+                        <p> <i class="fa fa-rupee"></i> {{cartDetails.deliveryCharge}}</p>
+                    </td>
+                </tr>
+
+               
+
+                <tr class="pad-left-right-space " style="line-height: 2;" >
+                    <td class="m-b-5" colspan="5" align="right">
+                        <p style="font-size: 13px;">Donation Amount :</p>
+                    </td>
+                    <td class="m-b-5" colspan="1" align="right" style="font-size: 12px;">
+                        <p> <i class="fa fa-rupee"></i> {{cartDetails.donationAmount}}</p>
+                    </td>
+                </tr>
+                <tr class="pad-left-right-space "  style="line-height: 2;">
+                    <td class="m-b-5" colspan="5" align="right">
+                        <p style="font-size: 13px;"><b>Payable Amount :</b></p>
+                    </td>
+                    <td class="m-b-5" colspan="1" align="right" style="font-size: 12px;">
+                        <b> <i class="fa fa-rupee"></i> {{cartDetails.totalAmountToBePaid}}</b>
+                    </td>
+                </tr>
+            
+            </table>
+            
+        </td>
+    </tr>
+</tbody>            
+</table>
+
+</body>

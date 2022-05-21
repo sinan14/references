@@ -1,0 +1,581 @@
+/* You can add global styles to this file, and also import other style files */
+.ProseMirror p {
+  color: white;
+  opacity: 0.7;
+  font-family: "Poppins", sans-serif !important;
+}
+.swal2-popup {
+  display: none;
+  position: relative;
+  box-sizing: border-box;
+  grid-template-columns: minmax(0,100%);
+  width: 25em;
+  max-width: 100%;
+  padding: 0 0 1.25em;
+  border: none;
+  border-radius: 5px;
+  background: #fff;
+  color: #545454;
+  font-family: inherit;
+  font-size: 1rem;
+}
+  
+.add_inventory_tab .nav-tabs .nav-link{
+    background: #0B364C !important;
+    display: inline-block;
+      padding: 15px 35px !important;
+      border-radius: 7px !important;    
+      box-shadow: -5px 2px 5px rgb(0 0 0 / 50%) !important;
+  }
+  
+  .add_inventory_tab .nav-tabs .nav-link.active{
+    background-color: #064e72 !important;
+  }
+
+  .master_Tab .nav-tabs .nav-link.active{
+    background-color: #064e72 !important;
+  }
+
+  .Brand_tab .nav-tabs .nav-link.active{
+    background-color: #064e72 !important;
+  }
+
+  .Brand_tab .nav-link{
+    background: #08374e !important;
+    display: inline-block;
+    padding: 15px 45px !important;
+    border-radius: 7px !important;    
+    box-shadow: -5px 2px 5px rgb(0 0 0 / 50%) !important;
+  }
+
+  .explore_mastertab .nav-link{
+    background: #0B364C !important;
+    display: inline-block;
+    padding: 15px 55px !important;
+    border-radius: 7px !important;    
+    box-shadow: -5px 2px 5px rgb(0 0 0 / 50%) !important;
+  }
+
+  .explore_mastertab .nav-tabs .nav-link.active{
+    background-color: #064e72 !important;
+  }
+
+  .innerr_table_style table th span {
+    color: white;
+    opacity: 1;
+    font-weight: 300;
+}
+  /* Article Tabs Styling*/
+
+  .article_main .nav-tabs .nav-link{
+    background: #014466 !important; 
+    padding: 15px 23px !important;
+  }
+  .article_main .nav-tabs .nav-link.active{
+    background-color: #064e72 !important;
+  }
+  .article_main .tab-content{
+    background: #014466 !important; 
+    padding: 25px !important; 
+    border-radius: 0px 15px 15px 15px;}
+
+
+/*Master Settings -  Delivery Boys CSS Styling */
+
+
+    .deliveryBoy_tab .nav-tabs .nav-link{
+      background: #0B364C !important;
+    display: inline-block;
+    padding: 15px 33px !important;
+    border-radius: 7px !important;    
+    box-shadow: -5px 2px 5px rgb(0 0 0 / 50%) !important;
+    }
+    
+    .deliveryBoy_tab .nav-tabs .nav-link.active{
+      background-color: #064e72 !important;
+    }
+
+
+/* Health Videos Tabs Styling*/
+  .healthvedios_main .nav-tabs .nav-link{
+    background: #014466 !important; 
+    padding: 15px 40px !important;
+  }
+
+  .healthvedios_main .nav-tabs .nav-link.active{
+    background-color: #064e72 !important;
+  }
+
+  .healthvedios_main .tab-content{
+    background: #014466 !important; 
+    padding: 25px !important; 
+    border-radius: 0px 15px 15px 15px;}
+
+
+
+      /* Orders Management Tabs Styling*/
+
+  .orders_main .nav-tabs .nav-link{
+    background: #014466 !important; 
+    padding: 15px 8px !important;
+  }
+  .orders_main .nav-tabs .nav-link.active{
+    background-color: #064e72 !important;
+  }
+
+  
+.kendo_table .table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #014466;
+  padding-top:0px;
+  padding-bottom: 0px;
+  border-radius: 25px 25px 25px;
+  //box-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
+}
+
+.kendo_table{
+  .k-i-filter::before{
+    visibility: hidden;
+  }
+  
+}
+
+
+.kendo_table{
+
+  // .k-grid .k-grid-content td {
+  //   white-space: nowrap;
+  //   overflow: hidden;
+  //   text-overflow: ellipsis;
+  // }
+
+  .k-grid-header{
+    padding: 0px 0px 0px 0px !important;
+  }
+  .k-grid-footer{
+    padding: 0px 0px 0px 0px !important;
+  }
+
+  
+.k-grid-pager {
+  background: #013550 !important;
+  .k-icon{
+    color: white !important;
+  }
+}
+
+.k-pager-wrap {
+  background: #013550 !important;
+}
+}
+
+
+// .k-pager-numbers .k-link{
+//   color: black !important;
+// }
+
+
+.kendo_table table{
+ // border: 1px solid #013550;
+  background: #014466;
+}
+.kendo_table table tr td {
+      padding: 0.76rem;
+      vertical-align: super;
+     // border:1px solid #00334d;
+      //color:#b3e2f9;
+      font-weight: lighter;
+      color: #ffffffba;
+      font-size: 12px;
+      padding: 12px 10px;
+      padding-left: 25px;
+}
+
+
+.kendo_table table th{
+  border-top: 1px solid #013550;
+  border-bottom: 1px solid #013550;
+  background: #013550;
+  font-weight: lighter;
+  color: #FFFFFF;
+  font-size: 13px;
+  text-align: center;
+}
+
+.kendo_table table tr th .form-control{
+  font-size: 10.5px !important;
+  padding-top: -10px;
+  width: 90% !important;
+  height: 40% !important;
+}
+
+
+
+.gym_side_innerpage_tab{
+  margin-top: 30px;
+  float: left;
+}
+.gym_side_innerpage_tab ul{
+  width: 19%;
+  float: left;
+  border-radius: 11px;
+  overflow: hidden;
+  margin-right: 1%;
+}
+.gym_side_innerpage_tab ul li{
+  float:left;
+  width: 100%;
+  border-radius: unset;
+  border: unset;
+}
+.gym_side_innerpage_tab ul li a,.gym_side_innerpage_tab ul li a.active,.gym_side_innerpage_tab ul li a:hover{
+border-radius: unset;
+  border: unset;box-shadow: unset !important;
+}
+.gym_side_innerpage_tab ul li a{
+  border-top: 1px solid #042b3f !important;
+  padding: 13px;
+  margin: 0 !important;
+}
+.gym_side_innerpage_tab ul li a.active,.gym_side_innerpage_tab ul li a:hover{
+  background:#011f2f !important;
+}
+.gym_side_innerpage_tab .tab-content{
+  width: 79%;
+  float: left;  
+  padding-left: 20px;
+ // margin-left:1%;  
+}
+
+.float-name{
+  width: 75%;
+  float: left;
+}
+// Kendo List View
+
+.kendo_listView{
+  .k-input{
+    
+    background: #0b4866;
+  }
+  .k-calendar-infinite .k-calendar-header {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding: 0px 12px;
+    background: #0b4866;
+}
+.btn-dark-rounded{
+  margin-left: 12px;
+  background-color: #0b4866;
+  border-radius: 10.25em;
+}
+
+.k-listview {
+  font-family: "Poppins";
+  height: 100%;
+  background-color: #014466;
+}
+.header {
+  display: flex;
+  padding: 12px;
+  align-items: center;
+}
+.title {
+  color: white;
+  opacity: 0.5;
+  flex: 1;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.product {
+  display: inline-block;
+  width: 100%;
+  align-items: center;
+  color: white;
+  padding: 12px;
+  //border-bottom-width: 1px;
+  //border-bottom-color: #ebebeb;
+  //border-bottom-style: solid;
+}
+.description {
+  flex: 1;
+}
+.category-name {
+  font-size: 12px;
+}
+.product-name {
+  font-size: 16px;
+}
+.product-name,
+.price {
+  height: auto;
+  font-weight: bold;
+}
+
+}
+
+
+
+/* Side Bar Tab (sudebar inner page)*/
+
+
+.orderside_innerpage_tab{
+  margin-top: 30px;
+  float: left;
+}
+.orderside_innerpage_tab ul{
+  width: 19%;
+  float: left;
+  border-radius: 11px;
+  overflow: hidden;
+  margin-right: 1%;
+}
+.orderside_innerpage_tab ul li{
+  float:left;
+  width: 100%;
+  border-radius: unset;
+  border: unset;
+}
+.orderside_innerpage_tab ul li a,.orderside_innerpage_tab ul li a.active,.orderside_innerpage_tab ul li a:hover{
+border-radius: unset;
+  border: unset;box-shadow: unset !important;
+}
+.orderside_innerpage_tab ul li a{
+  border-top: 1px solid #042b3f !important;
+  padding: 13px;
+  margin: 0 !important;
+}
+.orderside_innerpage_tab ul li a.active,.orderside_innerpage_tab ul li a:hover{
+  background:#011f2f !important;
+}
+.orderside_innerpage_tab .tab-content{
+  width: 79%;
+  float: left;  
+ // margin-left:1%;  
+}
+
+
+
+/*kendo Customer Relation Table*/
+
+.kendo_customer_table table{
+  // border: 1px solid #013550;
+   //background: #014466;
+   .k-i-filter::before{
+    visibility: hidden;
+  }
+  .k-grid-header{
+    background-color: #00496e;
+  }
+ }
+
+ .kendo_customer_table table tr td:nth-child(2) {
+    border-radius: 0px 0px 0px 15px;
+ }
+ .kendo_customer_table table tr td:last-child {
+  border-radius: 0px 0px 15px 0px;
+}
+ .kendo_customer_table table tr td {
+   
+      background-color: #042b3f;
+       padding: 0.76rem;
+       vertical-align: top;
+      // border:1px solid #00334d;
+       //color:#b3e2f9;
+       font-weight: lighter;
+       color: #FFFFFF;
+       opacity: 0.8;
+       font-size: 12px;
+       padding: 12px 10px;
+       //text-align: center;
+ }
+ .kendo_customer_table table th{
+   //border-top: 1px solid #013550;
+   //border-bottom: 1px solid #013550;
+    background-color: #00496e;
+   font-weight: lighter;
+   color: #FFFFFF;
+   font-size: 12px;
+   text-align: center;
+ }
+ .kendo_customer_table table tr.k-filter-row{
+   
+  background-color: #00496e;
+ }
+
+ .kendo_customer_table table tr th:first-child {
+  background: #042b3f!important;
+ }
+ .kendo_customer_table table tr td:first-child {
+  background: #042b3f!important;
+ }
+ 
+ .kendo_customer_table table tr th .form-control{
+   font-size: 10.5px !important;
+   padding-top: -10px;
+   width: 90% !important;
+   height: 40% !important;
+ }
+ .kendo_customer_table table tr th:first-child{
+  background-color: #00496e;
+}
+ .kendo_customer_table table tr th:nth-child(2){
+  border-radius: 15px 0px 0px 0px;
+}
+.kendo_customer_table table tr th:last-child{
+  border-radius: 0px 15px 0px 0px;
+}
+
+
+//kendo css
+
+.k-grid table tbody tr:hover {
+  background-color: transparent  !important;
+}
+.k-multiselect .k-multiselect-wrap, .k-dropdowntree .k-multiselect-wrap {
+  background-color: #033752 !important;
+}
+.k-multiselect .k-multiselect-wrap, .k-dropdowntree .k-multiselect-wrap .k-button {
+  background-color: transparent !important;
+}
+.k-toolbar {
+ background-color: #00496e !important;
+
+}
+
+.k-upload .k-upload-button {
+  background-color: transparent !important;
+}
+.k-multiselect .k-multiselect-wrap .k-button, .k-dropdowntree .k-multiselect-wrap .k-button{
+  
+  background-color: transparent !important;
+}
+
+.k-dropdowntree{
+  background-color:  white !important;
+}
+.modal-header .close{
+  text-shadow:  hidden !important;
+}
+
+.text-danger{
+  color: #e34f4f !important;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.k-input{
+  color: white !important;
+}
+
+.k-popup{
+  background-color: white !important;
+}
+
+.k-tooltip{
+  background-color: black !important;
+}
+
+// .k-button-primary, .k-button.k-primary{
+//  background-color: #00496e ;
+// } 
+.k-content{
+  .form-control{
+    background-color: #00496e;
+  }
+}
+
+.k-upload {
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #424242;
+  background-color: #124d73 !important;
+}
+
+
+// .k-editor .k-editor-content { /* target the content area */
+//   height: 300px;
+//   color: white !important;
+// }
+
+
+a.play-button i {
+  margin-right: 0px !important;
+}
+.span-data2 {
+    background-color: #014466;
+    height: 140px;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.Qiuz_page .tab2-card .nav-tabs .nav-link.active{
+  background-color: rgb(4 43 63 / 50%);
+}
+.Qiuz_page .tab2-card .nav-tabs .nav-item {
+  width: 33.33%;
+}
+
+.Qiuz_page .tab2-card .nav-tabs .nav-link{
+  //padding: 19px 115px 19px 115px;
+  padding: 18px 50px 18px 50px;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  margin: 10px;
+  color: white;
+  opacity: 0.7;
+  background-color: #042b3f;
+  box-shadow: 4px 4px 9px #00000026;
+  border-radius: 44px;
+  opacity: 0.8;
+}
+.Qiuz_page .tab2-card .nav-tabs .nav-link .nav-item a li{
+  color: white;
+  opacity: 0.7;
+}
+.Qiuz_page .tab2-card .nav-tabs{
+  width: auto;
+  align-content: center;
+}
+.Qiuz_page .tab-content{
+    float: left;
+    width: 100%;
+}
+
+
+.popup-images-ht{
+  height: 200px;
+    object-fit: contain;
+}
+
+.popup-images-hts{
+  height: 120px;
+    object-fit: contain;
+}
+
+.d-flex-pop-img{
+  height: 185px;
+    display: flex;
+    align-items: center;
+}
+.alert-no-found {
+  font-size: 25px;
+  color: white;
+  opacity: 1;
+}
+.k-icon {
+  color: white;
+}
+
+// .k-button, .k-button-secondary {
+//   color: #424242 !important;
+//   background-color: #f5f5f5;
+//   background-image: linear-gradient(transparent,rgba(0,0,0,.02));
+// }

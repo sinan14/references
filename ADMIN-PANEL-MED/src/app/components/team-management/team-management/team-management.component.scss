@@ -1,0 +1,144 @@
+a{
+  color: white;
+  font-size: 15px;
+}
+label{
+    color: white ;
+    opacity: 0.5;
+}
+.img_circle{
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+  // margin-left: 120px;
+  // margin-top: 16px;
+  // margin-bottom: -125px;
+}
+
+.edit-box{
+  position: absolute;
+  right: 0;
+}
+
+.img-box{
+  position: relative;
+  cursor: pointer;
+}
+
+.edit-icon{
+  color: white;
+  opacity: 0.5;
+  font-size: 14px;
+  padding: 6px;
+  margin: 3px;
+  cursor: pointer;
+}
+
+
+.card-data{
+  background-color: #00496e;
+  padding:10px;
+  padding: 40px;
+  align-content: center;
+  border-radius: 10px;
+  padding-right: 20px;
+  color:white;
+  position: relative;
+}
+
+.span-data{
+  justify-content: space-between;
+  background-color: #0a3347;
+  color:white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 75px;
+  font-weight: 5em;
+  float: right;
+}
+
+
+
+
+/*Button CSS*/
+
+.btn{
+  color: #99b2bf ;
+  font-weight: 400;
+}
+
+.btn-dark-rounded{
+  margin-left: 12px;
+  background-color: #00283d;
+  border: unset;
+  border-radius: 10.25em;
+  }
+
+  
+  .form-control{
+    color: white;
+    opacity: 0.5;
+    background: #00496E;
+    border: none;
+    border: 1px solid #Fff;
+  }
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.modal-body, .modal-header, .modal-footer{
+    background-color: #00496E;
+    color:#fff;
+    width: 100%;
+    border-bottom: none !important;
+    border-top: none !important;
+}
+
+.modal-header{
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.modal-footer{
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+
+
+ /* styling */
+  /* arrows */
+  select{
+    color: #99b2bf ;
+    //opacity: 0.5;
+    background-color: white;
+    //border: thin solid white;
+    border-radius: 4px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 1em;
+    margin: 0;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  select option{
+    color: #99b2bf ;
+    opacity: 0.5;
+  }
+
+  select ::placeholder,select::selection{
+    color: #99b2bf ;
+    opacity: 0.5;
+  }
+  input{
+    border: none;
+    //box-shadow: none;
+  }
+::-webkit-input-placeholder {
+  font-size: 12px;
+}
+
+
+

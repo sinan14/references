@@ -1,0 +1,93 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid kendo_table">
+    <div class="card-body" *ngIf="disableTab('Favourite')">
+
+
+        <label>Favourites</label>
+        <br><br>
+        <input type="text" (keyup)="Search_Function($event)">
+        <div class="table-responsive kendo_table  vendor-list ">
+            <!-- <ng2-smart-table  [settings]="settings" [source]="vendors"></ng2-smart-table> -->
+
+
+
+
+            <kendo-grid [kendoGridBinding]="Favourites" [sortable]="true" >
+
+                <kendo-grid-column field="image" title="" width="20" [filterable]="false">
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <img class="img-fluid" src={{dataItem.image}}>
+                    </ng-template>
+                </kendo-grid-column>
+
+
+                <kendo-grid-column field="productId" title="Product ID" width="20">
+                </kendo-grid-column>
+
+
+
+                <kendo-grid-column field="name" title="Name" width="30">
+                </kendo-grid-column>
+
+
+                <kendo-grid-column field="categories" title="Category" width="30">
+                </kendo-grid-column>
+
+                <kendo-grid-column field="brand" title="Brand" width="20">
+                </kendo-grid-column>
+
+                <kendo-grid-column field="count" title="Count" width="20">
+                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                    </ng-template>
+                </kendo-grid-column>
+
+
+                <kendo-grid-command-column title="Action" width="30">
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+
+                        <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="editFlag"
+                            (click)="Edit(dataItem._id)">EDIT</button>
+                        &nbsp;&nbsp;<input type="checkbox" class="toggle-switch oversize" id="toggle3"
+                            [checked]="!dataItem.isDisabled" *ngIf="editFlag"
+                            (change)="Deactivate_FAVOURITES($event, dataItem._id)">
+
+                    </ng-template>
+                </kendo-grid-command-column>
+
+
+
+
+            </kendo-grid>
+
+        </div>
+
+        <div class="pagination">
+            <!-- <ngb-pagination [collectionSize]={{TotalRecords}} [(page)]={{CurrentPage}} [maxSize]={{PageSize}} [rotate]="true"
+                                            [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+
+            <button *ngIf="hasPrevPage" (click)="onPageChangeLow(1)">
+                First
+            </button>
+            <button *ngIf="hasPrevPage" (click)="onPageChangeLow(current_page - 1)">
+                Prev
+            </button>
+            <button *ngIf="hasPrevPage" (click)="onPageChangeLow(current_page - 1)">
+                {{ current_page - 1 }}
+            </button>
+            <!-- *ngIf="hasPrevPage" -->
+            <button style="color: yellow">{{ current_page}}</button>
+            <button *ngIf="hasNextPage" (click)="onPageChangeLow(current_page + 1)">
+                {{ current_page + 1 }}
+            </button>
+            <button *ngIf="hasNextPage" (click)="onPageChangeLow(current_page + 1)">
+                Next
+            </button>
+            <button *ngIf="hasNextPage" (click)="onPageChangeLow(total_page)">
+                Last
+            </button>
+        </div>
+
+
+    </div>
+</div>
+<!-- Container-fluid Ends-->

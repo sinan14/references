@@ -1,0 +1,256 @@
+<div class="container-fluid Qiuz_page">
+    <div class="card-body tab2-card">
+        <div class="col-md-12">
+
+
+                <div class="row">
+                    <div class="col-md-10"></div>
+                    <div class="col-md-2">
+                        &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-dark-rounded btn-green">POS Sale</button>
+                    </div>
+                </div>
+
+
+                <div class="main-list">
+                    <ngb-tabset class="tab-coupon">
+                        <ngb-tab>
+                            <ng-template  ngbTabTitle>Counter Sales
+                                <ng-template ngbTabContent>
+                                    <div class="tab-pane fade active show innerr_table_style" id="account" role="tabpanel"
+                                            aria-labelledby="account-tab">
+
+
+
+
+
+
+
+                                    </div>
+                                </ng-template>
+                            </ng-template>
+                        </ngb-tab>
+
+
+                        <ngb-tab title="Online Sales">
+                            <ng-template ngbTabContent>
+
+
+
+
+                            </ng-template>
+                        </ngb-tab>
+
+
+                        <ngb-tab title="Total Sales">
+                            <ng-template ngbTabContent>
+
+
+
+
+                            </ng-template>
+                        </ngb-tab>
+
+                    </ngb-tabset>
+                </div>
+
+
+                <div class="mt-3 med_coin_table_bg row" >
+                    <div class="col-md-8 med_coin_table_bg">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label style="opacity: 0.5;" for="validationCustom0" class="">Start Date </label>
+                            </div>
+                            <div class="col-md-3">
+                                    <input class="form-control " id="validationCustom01" type="text" placeholder="Start Date">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label  style="opacity: 0.5;" >End date</label>
+                            </div>
+                            <div class="col-md-3">
+                                 <input class="form-control " id="validationCustom01" type="text" placeholder="End Date">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 col-md-4">
+                        &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-green">Find</button>
+                    </div>
+                </div>
+
+
+
+                <br><br>
+                <div class="mt-2 prem_topbanner table-responsive" style="border-radius: 8px 8px 8px 8px;padding: 20px 20px 80px 20px;">
+                    <div class="row" style="border-bottom: 1px solid black;">
+                        <div class="col-md-4">
+                            <label>New Sale</label>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-dark btn-sm" (click)="redirectTo('sales-return-report')">Sales Report</button>
+                            &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-green btn-sm" (click)="redirectTo('pos')">POS Sale</button>
+                        </div>
+                    </div>
+
+                    <div class="mt-2 row">
+                        <div class="col-md-4">
+                            <label>Show</label>&nbsp;&nbsp;
+                             <select class="form-select-control">
+                                <option hidden>10</option>
+                            </select>&nbsp;&nbsp;
+                            <label>Entries</label>
+                        </div>
+
+                        <div class="pl-0 col-md-5">
+                            <button type="button" class="btn btn-blue btn-sm">Copy</button>
+                            &nbsp;&nbsp;<button type="button" class="btn btn-blue btn-sm">SCV</button>
+                            &nbsp;&nbsp;<button type="button" class="btn btn-blue btn-sm">Excel</button>
+                            &nbsp;&nbsp;<button type="button" class="btn btn-blue btn-sm">PDF</button>
+                            &nbsp;&nbsp;<button type="button" class="btn btn-blue btn-sm">Print</button>
+                        </div>
+                    </div>
+
+                    <table id="sortable-table-2" class="table table-bordered">
+                        <thead class="" style="height: 100%;">
+                            <tr>
+                                <th  rowspan="2"><label style="color: white;opacity: 0.5;"></label></th>
+                                <th  rowspan="2"><label style="color: white;opacity: 0.5;">Invoice No</label></th>
+                                <th  rowspan="2"><label style="color: white;opacity: 0.5;">Sale by</label></th>
+                                <th  rowspan="2"><label style="color: white;opacity: 0.5;">Customer Name</label></th>
+                                <th  rowspan="2"><label style="color: white;opacity: 0.5;">Date</label></th>
+                                <th  rowspan="2"><label style="color: white;opacity: 0.5;">Total Amount</label></th>
+                                <th  rowspan="2"><label style="color: white;opacity: 0.5;">Action</label></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>1</td>
+                                <td>1000</td>
+                                <td>Admin User</td>
+                                <td>Aswin Vinod</td>
+                                <td>01-05-2021</td>
+                                <td>000000</td>
+                                <td>
+                                    <span>
+                                        <img src="assets/images/pos/icon-edit.svg" width="15px">
+                                    </span>&nbsp;
+                                    <span><img src="assets/images/pos/icon-download.svg" width="15px"></span>&nbsp;
+                                    <span> <img src="assets/images/pos/delete.svg" width="15px"></span>&nbsp;
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>2000</td>
+                                <td>Admin User</td>
+                                <td>Aswin Vinod</td>
+                                <td>01-05-2021</td>
+                                <td>000000</td>
+                                <td>
+                                    <span>
+                                        <img src="assets/images/pos/icon-edit.svg" width="15px">
+                                    </span>&nbsp;
+                                    <span><img src="assets/images/pos/icon-download.svg" width="15px"></span>&nbsp;
+                                    <span> <img src="assets/images/pos/delete.svg" width="15px"></span>&nbsp;
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>3</td>
+                                <td>3000</td>
+                                <td>Admin User</td>
+                                <td>Aswin Vinod</td>
+                                <td>01-05-2021</td>
+                                <td>000000</td>
+                                <td>
+                                    <span>
+                                        <img src="assets/images/pos/icon-edit.svg" width="15px">
+                                    </span>&nbsp;
+                                    <span><img src="assets/images/pos/icon-download.svg" width="15px"></span>&nbsp;
+                                    <span> <img src="assets/images/pos/delete.svg" width="15px"></span>&nbsp;
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>4</td>
+                                <td>4000</td>
+                                <td>Admin User</td>
+                                <td>Aswin Vinod</td>
+                                <td>01-05-2021</td>
+                                <td>000000</td>
+                                <td>
+                                    <span>
+                                        <img src="assets/images/pos/icon-edit.svg" width="15px">
+                                    </span>&nbsp;
+                                    <span><img src="assets/images/pos/icon-download.svg" width="15px"></span>&nbsp;
+                                    <span> <img src="assets/images/pos/delete.svg" width="15px"></span>&nbsp;
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>5</td>
+                                <td>5000</td>
+                                <td>Admin User</td>
+                                <td>Aswin Vinod</td>
+                                <td>01-05-2021</td>
+                                <td>000000</td>
+                                <td>
+                                    <span>
+                                        <img src="assets/images/pos/icon-edit.svg" width="15px">
+                                    </span>&nbsp;
+                                    <span><img src="assets/images/pos/icon-download.svg" width="15px"></span>&nbsp;
+                                    <span> <img src="assets/images/pos/delete.svg" width="15px"></span>&nbsp;
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>6</td>
+                                <td>6000</td>
+                                <td>Admin User</td>
+                                <td>Aswin Vinod</td>
+                                <td>01-05-2021</td>
+                                <td>000000</td>
+                                <td>
+                                    <span>
+                                        <img src="assets/images/pos/icon-edit.svg" width="15px">
+                                    </span>&nbsp;
+                                    <span><img src="assets/images/pos/icon-download.svg" width="15px"></span>&nbsp;
+                                    <span> <img src="assets/images/pos/delete.svg" width="15px"></span>&nbsp;
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>7</td>
+                                <td>7000</td>
+                                <td>Admin User</td>
+                                <td>Aswin Vinod</td>
+                                <td>01-05-2021</td>
+                                <td>000000</td>
+                                <td>
+                                    <span>
+                                        <img src="assets/images/pos/icon-edit.svg" width="15px">
+                                    </span>&nbsp;
+                                    <span><img src="assets/images/pos/icon-download.svg" width="15px"></span>&nbsp;
+                                    <span> <img src="assets/images/pos/delete.svg" width="15px"></span>&nbsp;
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+        </div>
+
+
+    </div>
+
+
+</div>

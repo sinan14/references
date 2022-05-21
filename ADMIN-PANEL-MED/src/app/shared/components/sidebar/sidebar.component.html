@@ -1,0 +1,420 @@
+<!--<div class="main-header-left d-none d-lg-block" style="background-color: #014466">
+  <div class="logo-wrapper">
+    <a [routerLink]="'/dashboard/default'"><img class="blur-up lazyloaded" src="assets/images/dashboard/logo-new.png" alt=""></a>
+  </div> 
+</div> -->
+<div class="sidebar custom-scrollbar">
+  <!-- <div class="sidebar-user text-center">
+    <div><img class="img-60 rounded-circle" src="assets/images/dashboard/man.png" alt="#">
+    </div>
+    <h6 class="mt-3 f-14">JOHN</h6>
+    <p>general manager.</p>
+  </div> -->
+  <ul
+    class="sidebar-menu"
+    style="background-color: #014466; border-radius: 15px"
+  >
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="dashboard"
+      position="right"
+      *ngIf="user.isAdmin"
+    >
+      <a routerLink="/dashboard" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-home.png"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+        <!-- <span class="nav-text">
+                      Dashboard
+                  </span> -->
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="master-settings"
+      position="right"
+      *ngIf="setPermission('master-settings')"
+    >
+      <a routerLink="/master-settings" routerLinkActive="active">
+        <app-feather-icons
+          [icon]="'settings'"
+          style="color: white; width: 24px; height: 24px"
+        ></app-feather-icons>
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="delivery-boys"
+      position="right"
+      *ngIf="setPermission('delivery-boys')"
+    >
+      <a routerLink="/delivery-boys" routerLinkActive="active">
+        <img
+          src="assets/images/customer/boy.png"
+          width="26px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="doctors"
+      position="right"
+      *ngIf="setPermission('doctors')"
+    >
+      <a routerLink="/delivery-doctors" routerLinkActive="active">
+        <img
+          src="assets/images/customer/doc.svg"
+          width="26px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="prescriptions"
+      position="right"
+      *ngIf="setPermission('prescription')"
+    >
+      <a routerLink="/prescriptions" routerLinkActive="active">
+        <img
+          src="assets/images/customer/prescription.svg"
+          width="26px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="suggested-product"
+      position="right"
+      *ngIf="setPermission('suggested-product')"
+    >
+      <a routerLink="/suggested-product" routerLinkActive="active">
+        <img
+          src="assets/images/customer/new.png"
+          width="23px"
+          height="23px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="Customer Relation"
+      position="right"
+      *ngIf="setPermission('Customer Relation')"
+    >
+      <a routerLink="/customer-relation/customers" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-customerdb.png"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="promo"
+      position="right"
+      *ngIf="setPermission('promo')"
+    >
+      <a routerLink="/promo" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-promo.png"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="orders"
+      position="right"
+      *ngIf="setPermission('orders')"
+    >
+      <a routerLink="/orders" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-cart.png"
+          width="22px"
+          height="22px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="inventory"
+      position="right"
+      *ngIf="setPermission('inventory')"
+    >
+      <a routerLink="/inventory" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-inventory.svg"
+          width="22px"
+          height="22px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="ads"
+      position="right"
+      *ngIf="setPermission('ads')"
+    >
+      <a routerLink="/ads" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-ads.svg"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="FolioFit"
+      position="right"
+      *ngIf="setPermission('foliofit')"
+    >
+      <a routerLink="/fitness-wellness" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-fitness.svg"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="Medfeed"
+      position="right"
+      *ngIf="setPermission('medfeed')"
+    >
+      <a routerLink="/explore" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-article.svg"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="premium"
+      position="right"
+      *ngIf="setPermission('premium')"
+    >
+      <a routerLink="/premium" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-premium.svg"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="subscriptions"
+      position="right"
+      *ngIf="setPermission('subscriptions')"
+    >
+      <a routerLink="/subscriptions" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-subscription.svg"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="medcoin"
+      position="right"
+      *ngIf="setPermission('medcoin')"
+    >
+      <a routerLink="/medcoin" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-medcoin-dash.svg"
+          width="32px"
+          height="32px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="user-management"
+      position="right"
+      *ngIf="setPermission('user-management')"
+    >
+      <a routerLink="/user-management" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-userinterface.png"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="medimall-report"
+      position="right"
+      *ngIf="setPermission('medimall-report')"
+    >
+      <a routerLink="/medimall-report" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-medi-report.svg"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="#"
+      position="right"
+      *ngIf="setPermission('#')"
+    >
+      <a routerLink="#" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-bag.svg"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="#"
+      position="right"
+      *ngIf="setPermission('#')"
+    >
+      <a routerLink="#" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-api.svg"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="#"
+      position="right"
+      *ngIf="setPermission('#')"
+    >
+      <a routerLink="#" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-gmail.svg"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="#"
+      position="right"
+      *ngIf="setPermission('#')"
+    >
+      <a routerLink="#" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/new.svg"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="complaints"
+      position="right"
+      *ngIf="setPermission('complaints')"
+    >
+      <a routerLink="/complaints" routerLinkActive="active">
+        <img
+          src="assets/images/dashboard/icon-complaint.svg"
+          width="24px"
+          height="24px"
+          class="menu-icon"
+        />
+      </a>
+    </li>
+
+    <li
+      class="menu-item"
+      kendoTooltip
+      title="POS"
+      position="right"
+      *ngIf="setPermission('POS')"
+    >
+      <a routerLink="/pos" routerLinkActive="active">
+        <label style="color: white">POS</label>
+      </a>
+    </li>
+  </ul>
+</div>

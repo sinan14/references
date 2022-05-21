@@ -1,0 +1,742 @@
+<div class="text-center mt-3" *ngIf="loading">
+  <br /><br />
+  <div
+    class="spinner-border text-light"
+    style="width: 3rem; height: 3rem"
+    role="status"
+  >
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div
+  class="container-fluid helth_exprt_main"
+  style="font-family: Poppins !important"
+>
+  <div class="tab2-card">
+    <div class="card-body col-sm-12" style="float: left; margin-top: 30px">
+      <h6 style="color: white; opacity: 0.5" *ngIf="!disabledFlag">
+        {{ editMode ? "Edit Article" : "Create New Article" }}
+      </h6>
+      <h6 style="color: white; opacity: 0.5">
+        {{ disabledFlag ? "View Article" : "" }}
+      </h6>
+
+      <form [formGroup]="createArticleForm">
+        <div class="Create_artcl_main">
+          <!-- <br/>
+                    <label>Choose Category</label> <sup class="text-danger">*</sup>
+                    <div class="scroll-container hide-scrollbar">
+                      <div class=" col-md-2" *ngFor="let i of articleCategoryList">
+                            <div class="span-data"  >  
+                                <label [ngClass]="selectedCategory === i._id   ? 'active' : '' ">
+                                  <input type="checkbox" formControlName="categoryname" (change)="selectCategory(i._id,i.name)"> 
+                                  {{i.name}}
+                                </label>
+                          </div>
+                      </div>
+                    </div> -->
+
+          <!-- <div class="scroll-container hide-scrollbar">
+                      <div class=" col-md-2" *ngFor="let i of articleCategoryList">
+                          <div class="span-data" >  
+                                <a for="validationCustom0"   routerLink="#" [ngClass]="selectedCategory === i._id   ? 'active' : '' "    (click)="selectCategory(i._id,i.name)" > {{i.name}}</a>
+                             
+                          </div>
+                      </div>
+                    </div> -->
+
+          <div class="mt-2 row">
+            <div class="col-md-4">
+              <label>Choose Sub Category</label>
+              <sup class="text-danger">*</sup>
+              <kendo-multiselect
+                #multiselect
+                id="multiselect"
+                class="form-control"
+                formControlName="categoryname"
+                [data]="articleCategoryList"
+                [filterable]="true"
+                textField="name"
+                valueField="_id"
+                [autoClose]="false"
+                [checkboxes]="false"
+                [(ngModel)]="selectedSubCategoryValues"
+                [placeholder]="'-- Choose Category --'"
+                (valueChange)="selectChangeSubCategory($event)"
+                (filterChange)="handleFilterSubCategory($event)"
+              >
+              </kendo-multiselect>
+              <small
+                for="categoryname"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['categoryname'].errors?.required &&
+                  (createArticleForm.controls['categoryname'].dirty ||
+                    createArticleForm.controls['categoryname'].touched ||
+                    (createArticleForm.controls['categoryname'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Sub Category required.
+              </small>
+            </div>
+
+            <div class="col-md-4">
+              <label>Article Heading</label> <sup class="text-danger">*</sup>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="heading"
+              />
+              <small
+                for="heading"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['heading'].errors?.required &&
+                  (createArticleForm.controls['heading'].dirty ||
+                    createArticleForm.controls['heading'].touched ||
+                    (createArticleForm.controls['heading'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Article Heading required.
+              </small>
+            </div>
+
+            <div class="col-md-4">
+              <label>Article Read Time (In Minutes)</label>
+              <sup class="text-danger">*</sup>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="readtime"
+              />
+              <sub><small style="opacity: 0.7">(Eg: 10 min)</small></sub>
+              <small
+                for="heading"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['readtime'].errors?.required &&
+                  (createArticleForm.controls['readtime'].dirty ||
+                    createArticleForm.controls['readtime'].touched ||
+                    (createArticleForm.controls['readtime'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Article Read Time required.
+              </small>
+            </div>
+
+            <!-- <div class="mt-4 col-md-2 check-initial">
+                                  <label>Verified By</label> 
+                                  <input type="checkbox"  name="verified" formControlName="verified"  (change)="onChangeCheckBox($event.target.checked,'verified_by')"  >
+                                  <small for="verified" class="form-text text-danger" 
+                                  *ngIf="createArticleForm.controls['verified'].errors?.required && 
+                                  (createArticleForm.controls['verified'].dirty ||  
+                                  createArticleForm.controls['verified'].touched || 
+                                  (createArticleForm.controls['verified'].untouched  && attemptedSubmit ) )">
+                                  Verified By required.
+                                  </small>
+                              </div> -->
+          </div>
+
+          <div class="mt-2 row">
+            <div class="col-md-4">
+              <label>Meta Title</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="metatitle"
+              />
+              <small
+                for="metatitle"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['metatitle'].errors?.required &&
+                  (createArticleForm.controls['metatitle'].dirty ||
+                    createArticleForm.controls['metatitle'].touched ||
+                    (createArticleForm.controls['metatitle'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Meta Title required.
+              </small>
+            </div>
+            <div class="col-md-4">
+              <label>Meta Description</label>
+              <textarea
+                class="form-control"
+                formControlName="metadescription"
+              ></textarea>
+              <small
+                for="metadescription"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['metadescription'].errors
+                    ?.required &&
+                  (createArticleForm.controls['metadescription'].dirty ||
+                    createArticleForm.controls['metadescription'].touched ||
+                    (createArticleForm.controls['metadescription'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Meta Description required.
+              </small>
+            </div>
+
+            <div class="mt-4 col-md-4 check-initial">
+              <label>Verified By</label>
+              <input
+                type="checkbox"
+                name="verified"
+                formControlName="verified"
+                (change)="
+                  onChangeCheckBox($event.target.checked, 'verified_by')
+                "
+              />
+              <small
+                for="verified"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['verified'].errors?.required &&
+                  (createArticleForm.controls['verified'].dirty ||
+                    createArticleForm.controls['verified'].touched ||
+                    (createArticleForm.controls['verified'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Verified By required.
+              </small>
+            </div>
+          </div>
+
+          <div class="mt-2 row">
+            <div class="col-md-12">
+              <label></label>
+              <div class="image-data">
+                <div class="upload-btn-wrapper">
+                  <img
+                    [src]="
+                      image_URL
+                        ? image_URL
+                        : 'assets/images/file-icons/icon-image-upload.svg'
+                    "
+                    width="180px"
+                    height="10%"
+                  /><br />Article Image <sup class="text-danger">*</sup>
+                  <input
+                    type="file"
+                    name="myfile"
+                    class="input-type"
+                    formControlName="image"
+                    accept="image/*"
+                    (change)="onChange($event, '', '')"
+                  />
+                </div>
+              </div>
+              <small
+                for="heading"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['image'].errors?.required &&
+                  (createArticleForm.controls['image'].dirty ||
+                    createArticleForm.controls['image'].touched ||
+                    (createArticleForm.controls['image'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Image required.
+              </small>
+            </div>
+
+            <!-- <small style="margin-left: 90%;opacity: 0.7;" for="validationCustom0" class="pt-0">Size : 1076 x 444</small> -->
+          </div>
+
+          <br />
+          <div class="mt-2 row">
+            <div class="col-md-6 form-group">
+              <label>Related Articles</label>
+              <div class="example-wrapper">
+                <kendo-multiselect
+                  #multiselect
+                  id="multiselect"
+                  class="form-control"
+                  formControlName="related_articles"
+                  [data]="articleList"
+                  [filterable]="true"
+                  textField="heading"
+                  valueField="_id"
+                  [autoClose]="false"
+                  [checkboxes]="false"
+                  [(ngModel)]="selectedArticle"
+                  [placeholder]="'-- Select Article --'"
+                  (valueChange)="handleArticleChange($event)"
+                  (filterChange)="handleArticleFilter($event)"
+                >
+                </kendo-multiselect>
+              </div>
+              <small
+                for="related_articles"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['related_articles'].errors
+                    ?.required &&
+                  (createArticleForm.controls['related_articles'].dirty ||
+                    createArticleForm.controls['related_articles'].touched ||
+                    (createArticleForm.controls['related_articles'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Related Articles required.
+              </small>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label>Related Products</label>
+              <div class="example-wrapper">
+                <kendo-multiselect
+                  #multiselect
+                  id="multiselect"
+                  class="form-control"
+                  formControlName="related_products"
+                  [data]="productsList"
+                  [filterable]="true"
+                  textField="name"
+                  valueField="_id"
+                  [autoClose]="false"
+                  [checkboxes]="false"
+                  [(ngModel)]="selectedProduct"
+                  [placeholder]="'-- Select Products --'"
+                  (valueChange)="handleProductChange($event)"
+                  (filterChange)="handleProductFilter($event)"
+                >
+                </kendo-multiselect>
+              </div>
+              <small
+                for="heading"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['related_products'].errors
+                    ?.required &&
+                  (createArticleForm.controls['related_products'].dirty ||
+                    createArticleForm.controls['related_products'].touched ||
+                    (createArticleForm.controls['related_products'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Related Products required.
+              </small>
+            </div>
+
+            <div class="mt-2 col-md-6 form-group">
+              <label>Tagged Categories</label>
+              <div class="example-wrapper">
+                <kendo-multiselect
+                  #multiselect
+                  id="multiselect"
+                  class="form-control"
+                  formControlName="categories"
+                  [data]="taggedCategories"
+                  [filterable]="true"
+                  textField="name"
+                  valueField="_id"
+                  [autoClose]="false"
+                  [checkboxes]="false"
+                  [(ngModel)]="selectedTaggedCategory"
+                  [placeholder]="'-- Select Products --'"
+                  (valueChange)="handleCategoryChange($event)"
+                  (filterChange)="handleCategoryFilter($event)"
+                >
+                </kendo-multiselect>
+              </div>
+              <small
+                for="categories"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['categories'].errors?.required &&
+                  (createArticleForm.controls['categories'].dirty ||
+                    createArticleForm.controls['categories'].touched ||
+                    (createArticleForm.controls['categories'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Tagged Categories required.
+              </small>
+            </div>
+
+            <div class="mt-2 col-md-6 form-group">
+              <label>Reviewed By</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="reviewedby"
+              />
+              <small
+                for="reviewedby"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['reviewedby'].errors?.required &&
+                  (createArticleForm.controls['reviewedby'].dirty ||
+                    createArticleForm.controls['reviewedby'].touched ||
+                    (createArticleForm.controls['reviewedby'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Reviewed By required.
+              </small>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label>Author Name</label> <sup class="text-danger">*</sup>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="authorname"
+              />
+              <small
+                for="heading"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['authorname'].errors?.required &&
+                  (createArticleForm.controls['authorname'].dirty ||
+                    createArticleForm.controls['authorname'].touched ||
+                    (createArticleForm.controls['authorname'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Author Name required.
+              </small>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label>Designation</label> <sup class="text-danger">*</sup>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="designation"
+              />
+              <small
+                for="heading"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['designation'].errors?.required &&
+                  (createArticleForm.controls['designation'].dirty ||
+                    createArticleForm.controls['designation'].touched ||
+                    (createArticleForm.controls['designation'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Designation required.
+              </small>
+            </div>
+
+            <div class="mt-4 col-md-3 check-initial">
+              <label>Trending</label>
+              <input
+                type="checkbox"
+                name="trending"
+                formControlName="trending"
+                (change)="onChangeCheckBox($event.target.checked, 'trending')"
+              />
+              <small
+                for="heading"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['trending'].errors?.required &&
+                  (createArticleForm.controls['trending'].dirty ||
+                    createArticleForm.controls['trending'].touched ||
+                    (createArticleForm.controls['trending'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Trending required.
+              </small>
+            </div>
+
+            <div class="mt-4 col-md-3 check-initial">
+              <label>Newest</label>
+              <input
+                type="checkbox"
+                name="newest"
+                formControlName="newest"
+                (change)="onChangeCheckBox($event.target.checked, 'newest')"
+              />
+              <small
+                for="heading"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['newest'].errors?.required &&
+                  (createArticleForm.controls['newest'].dirty ||
+                    createArticleForm.controls['newest'].touched ||
+                    (createArticleForm.controls['newest'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Newest required.
+              </small>
+            </div>
+
+            <div class="mt-4 col-md-3 check-initial">
+              <label>Home Page MainArticle</label>
+              <input
+                type="checkbox"
+                name="homepage_mainarticle"
+                formControlName="homepage_main"
+                (change)="
+                  onChangeCheckBox($event.target.checked, 'homepage_main')
+                "
+              />
+              <small
+                for="heading"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['homepage_main'].errors
+                    ?.required &&
+                  (createArticleForm.controls['homepage_main'].dirty ||
+                    createArticleForm.controls['homepage_main'].touched ||
+                    (createArticleForm.controls['homepage_main'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Home Page MainArticle required.
+              </small>
+            </div>
+
+            <div class="mt-4 col-md-3 check-initial">
+              <label>Home Page SubArticle</label>
+              <input
+                type="checkbox"
+                name="homepage_subarticle"
+                formControlName="homepage_sub"
+                (change)="
+                  onChangeCheckBox($event.target.checked, 'homepage_sub')
+                "
+              />
+              <small
+                for="heading"
+                class="form-text text-danger"
+                *ngIf="
+                  createArticleForm.controls['homepage_sub'].errors?.required &&
+                  (createArticleForm.controls['homepage_sub'].dirty ||
+                    createArticleForm.controls['homepage_sub'].touched ||
+                    (createArticleForm.controls['homepage_sub'].untouched &&
+                      attemptedSubmit))
+                "
+              >
+                Home Page SubArticle required.
+              </small>
+            </div>
+          </div>
+
+          <!-- <div class="col-xl-8 col-md-7 editor-space">
+                              <ck-editor id="editor1" name="editor1" cols="30" rows="10" language="en"
+                                  [fullPage]="true"></ck-editor>
+                          </div> -->
+
+          <label class="mt-4">Description</label>
+          <sup class="text-danger">*</sup>
+          <kendo-editor
+            [iframe]="true"
+            [(ngModel)]="value"
+            name="value"
+            id="editor"
+            *ngIf="!editorEnable"
+            [pasteCleanupSettings]="pasteCleanupSettings"
+            #editor
+            class=""
+            formControlName="description"
+            style="height: 450px; background-color: #fafafa85; color: white"
+          >
+            <kendo-toolbar>
+              <kendo-toolbar-buttongroup>
+                <kendo-toolbar-button
+                  kendoEditorUndoButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorRedoButton
+                ></kendo-toolbar-button>
+              </kendo-toolbar-buttongroup>
+              <kendo-toolbar-buttongroup>
+                <kendo-toolbar-button
+                  kendoEditorBoldButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorItalicButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorUnderlineButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorStrikethroughButton
+                ></kendo-toolbar-button>
+              </kendo-toolbar-buttongroup>
+              <kendo-toolbar-buttongroup>
+                <kendo-toolbar-button
+                  kendoEditorSubscriptButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorSuperscriptButton
+                ></kendo-toolbar-button>
+              </kendo-toolbar-buttongroup>
+              <kendo-toolbar-buttongroup>
+                <kendo-toolbar-button
+                  kendoEditorAlignLeftButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorAlignCenterButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorAlignRightButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorAlignJustifyButton
+                ></kendo-toolbar-button>
+              </kendo-toolbar-buttongroup>
+              <kendo-toolbar-dropdownlist
+                kendoEditorFormat
+              ></kendo-toolbar-dropdownlist>
+              <kendo-toolbar-dropdownlist
+                kendoEditorFontSize
+              ></kendo-toolbar-dropdownlist>
+              <kendo-toolbar-dropdownlist
+                kendoEditorFontFamily
+              ></kendo-toolbar-dropdownlist>
+              <kendo-toolbar-colorpicker
+                kendoEditorForeColor
+              ></kendo-toolbar-colorpicker>
+              <kendo-toolbar-colorpicker
+                kendoEditorBackColor
+                view="gradient"
+              ></kendo-toolbar-colorpicker>
+              <kendo-toolbar-buttongroup>
+                <kendo-toolbar-button
+                  kendoEditorInsertUnorderedListButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorInsertOrderedListButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorIndentButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorOutdentButton
+                ></kendo-toolbar-button>
+              </kendo-toolbar-buttongroup>
+              <kendo-toolbar-buttongroup>
+                <kendo-toolbar-button
+                  kendoEditorCreateLinkButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorUnlinkButton
+                ></kendo-toolbar-button>
+              </kendo-toolbar-buttongroup>
+              <kendo-editor-insert-table-button></kendo-editor-insert-table-button>
+              <kendo-toolbar-buttongroup>
+                <kendo-toolbar-button
+                  kendoEditorAddColumnBeforeButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorAddColumnAfterButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorAddRowBeforeButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorAddRowAfterButton
+                ></kendo-toolbar-button>
+              </kendo-toolbar-buttongroup>
+              <kendo-toolbar-buttongroup>
+                <kendo-toolbar-button
+                  kendoEditorDeleteColumnButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorDeleteRowButton
+                ></kendo-toolbar-button>
+                <kendo-toolbar-button
+                  kendoEditorDeleteTableButton
+                ></kendo-toolbar-button>
+              </kendo-toolbar-buttongroup>
+              <kendo-toolbar-button
+                kendoEditorInsertFileButton
+              ></kendo-toolbar-button>
+              <kendo-toolbar-button kendoEditorInsertImageButton>
+              </kendo-toolbar-button>
+              <kendo-toolbar-button
+                kendoEditorViewSourceButton
+              ></kendo-toolbar-button>
+              <kendo-toolbar-button
+                kendoEditorCleanFormattingButton
+              ></kendo-toolbar-button>
+
+              <!-- <kendo-toolbar-button text="Upload Image" (click)="open()">
+                                  </kendo-toolbar-button> -->
+            </kendo-toolbar>
+          </kendo-editor>
+
+          <!-- <my-dialog #upload [editor]="editor"></my-dialog> -->
+
+          <small
+            for="description"
+            class="form-text text-danger"
+            *ngIf="
+              createArticleForm.controls['description'].errors?.required &&
+              (createArticleForm.controls['description'].dirty ||
+                createArticleForm.controls['description'].touched ||
+                (createArticleForm.controls['description'].untouched &&
+                  attemptedSubmit))
+            "
+          >
+            Description required.
+          </small>
+
+          <p [innerHTML]="value" *ngIf="editorEnable"></p>
+
+          <div class="btn-popup row">
+            <div
+              class="col-md-12"
+              style="text-align: center"
+              *ngIf="!editMode && !disabledFlag"
+            >
+              <button
+                (click)="save(); attemptedSubmit = true"
+                style="width: 200px; margin-top: 20px"
+                type="button"
+                class="btn btn-dark btn-dark-rounded"
+              >
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                  *ngIf="loading"
+                ></span>
+                {{ addLoading ? "Uploading..." : "Upload" }}
+              </button>
+            </div>
+
+            <div
+              class="col-md-12"
+              style="text-align: center"
+              *ngIf="editMode && !disabledFlag"
+            >
+              <button
+                (click)="updateArticle()"
+                style="width: 200px; margin-top: 20px"
+                type="button"
+                class="btn btn-dark btn-dark-rounded"
+              >
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                  *ngIf="loading"
+                ></span>
+                {{ addLoading ? "Updating..." : "Update" }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

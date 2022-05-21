@@ -1,0 +1,124 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="kendo_table master-demo">
+                <div class="card-body explore_mastertab tab2-card" *ngIf="disableTab('Category')">
+                    <h6>{{categoryName | titlecase}} -> {{subcategoryName | titlecase}}</h6>
+                   
+
+                                            <div class="btn-popup ">
+                                                <button type="button" class="btn btn-dark btn-inverse-dark" (click)="BackRedirectTo()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+
+
+
+                                                <button type="button" class="btn btn-dark btn-inverse-dark pull-right" data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModalLabel" (click)="open(content,'add','')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;"> Add New</button>
+                                             
+                                            </div>
+        
+                                                    <div class="table-responsive ">
+                                                        <kendo-grid [kendoGridBinding]="subsubHealthcareCategoryList" [filterable]="true"  [sortable]="true">
+
+                                                            <kendo-grid-column field="title" title="Sub Sub-Category" width="30">
+                                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                                    <kendo-grid-string-filter-cell
+                                                                        placeholder="search"
+                                                                        [showOperators]="false"
+                                                                        [column]="column"
+                                                                        title="Parent Store"
+                                                                        [filter]="filter">
+                                                                    </kendo-grid-string-filter-cell>
+                                                                </ng-template>
+                                                                
+                                                            </kendo-grid-column>
+    
+                                                        
+                                                            
+                                                            <kendo-grid-column field="image" title="Image" width="20" [filterable]="false">
+                                                                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                                    <img class="flag" [src]="dataItem.image" width="40" />
+                                                                </ng-template>
+                                                            </kendo-grid-column>
+                                                         
+                    
+                                                                <kendo-grid-command-column title="Action" width="40"  class="text-center">
+                                                                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                                        <button type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                                                        data-target="#exampleModalLabel" (click)="open(content,'edit',dataItem._id)"  *ngIf="editFlag">Edit</button>
+                                                                        
+                                                                        &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-dark-rounded"  *ngIf="deleteFlag" (click)="delete(dataItem._id)">Delete</button>
+    
+                                                                        &nbsp;&nbsp;<input type="checkbox" class="toggle-switch oversize" id="toggle3" [checked]="!dataItem.isDisabled"  *ngIf="editFlag" (change)="statusChange($event,dataItem._id)">
+                                                                    </ng-template>
+                                                                </kendo-grid-command-column>
+    
+                                                          </kendo-grid>
+                                                    </div>
+        
+                                  
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+<ng-template #content let-modal>
+ <form [formGroup]="subsubCatgeoryForm">
+    <div  class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="exampleModalLabel">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="form row">
+            <div class="form-group col-md-12">
+                <label for="validationCustom01" class="mb-1">Choose Image</label>
+                <div class="image-data">
+                    <div class="upload-btn-wrapper ">
+                        <i class="icon fa fa-upload"  *ngIf="image_URL === ''" ></i>
+                        <img *ngIf="image_URL != ''"  src="{{image_URL}}" width="100%" class="image-icon">
+                        <input type="file" name="myfile" class="input-type"  (change)="onChangeImage($event,'200','200')"/>
+                    </div>
+                </div>
+                <span class="pull-right">200px X 200px</span>
+                <small for="image" class="form-text text-danger" 
+                *ngIf="image_URL === ''  && attemptedSubmit">
+                Image required.
+                </small>
+            </div>
+        </div>
+
+
+            <div class="form row">
+                <div class="form-group mb-0 col-md-12">
+                    <label for="validationCustom02" class="mb-1">Sub Sub-Category Name</label>
+                    <input class="form-control" id="validationCustom02" type="text" formControlName="subsubcategoryname">
+                    <small for="subcategoryname" class="form-text text-danger" 
+                    *ngIf="subsubCatgeoryForm.controls['subsubcategoryname'].errors?.required && 
+                    (subsubCatgeoryForm.controls['subsubcategoryname'].dirty ||  
+                    subsubCatgeoryForm.controls['subsubcategoryname'].touched || 
+                    (subsubCatgeoryForm.controls['subsubcategoryname'].untouched  && attemptedSubmit ) )">
+                       Sub Sub Category Name required.
+                </small>
+                </div>
+            </div>
+
+    </div>
+    <div class="modal-footer">
+        <div class="modal-footer">
+            <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+                (click)="modal.dismiss('Cross click')">Close</button>
+            <button *ngIf="add_Modal_Flag" type="button" class="btn btn-dark-rounded"  (click)="save();attemptedSubmit = true;">{{ addLoading ? "Saving..." : "Save" }}</button>
+            <button *ngIf="!add_Modal_Flag" type="button" class="btn btn-dark-rounded"  (click)="update();attemptedSubmit = true;">{{ addLoading ? "Updating..." : "Update" }}</button>
+        </div>
+    </div>
+</form>
+</ng-template>

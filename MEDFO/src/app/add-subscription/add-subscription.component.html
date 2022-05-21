@@ -1,0 +1,359 @@
+
+
+<div style=" background: #f7f7f7;">
+<div class="ps-page">
+    <app-header></app-header>
+  </div>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W32L424" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) →-->
+  
+
+
+<section class="inner_new_page_container" style="overflow: hidden;background-color: #F7F7F7;">
+
+    <div class="cart_subcsr_head">
+        <div class="container">
+          <div class="cart_page_head" style="margin: 20px 0; ">Adding Subscription</div>
+            <div class="row">
+                <!-- <div class="col-6">
+                    <div class="cart_page_head mb-0">
+                        <h3 style="margin:0;">Adding Subscription</h3>
+                    </div>
+                </div> -->
+                <div class="col-6">
+                    <div class="cart_page_top_wishlist_btn" (click)="redirectToWishListPage()" *ngIf="token"> <i class="fa fa-heart" ></i>
+                        <div class="cart_page_top_count" *ngIf="wishListCount>2">{{wishListCount - 2}}+</div>
+                        <div class="cart_page_top_count" *ngIf="wishListCount<2">{{wishListCount}}</div>
+                        <div class="cart_page_top_count" *ngIf="wishListCount<=1">{{wishListCount}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <section class="cart_listing_sec" style="padding-top:1px !important">
+
+
+
+        <div class="container">
+            <div class="row  mb-2">
+                <div class="col-md-8 col-sm-12" id="responsivescubpro" style="padding: 0px 48px 0px 16px;">
+
+
+
+                    <div class="cart_item_lst_row crt_sub_lst" style="padding: 15px 20px 15px 20px;" *ngFor="let i of cartList">
+                        <div class="form-check11 float-right">
+                            <label class="customcheck" *ngIf="i.subscriptionadded">
+                                <input type="checkbox" (change)="addSubscriptionCheckBox($event,i)" [checked]="i.subscriptionadded">
+                                <span class="checkmark"></span>
+                            </label>
+
+                            <label class="customcheck" *ngIf="!i.subscriptionadded">
+                              <input type="checkbox" (change)="addSubscriptionCheckBox($event,i)">
+                              <span class="checkmark"></span>
+                          </label>
+
+                        </div>
+
+                        <div class="cart_item_lst_row_img add-sub-imgs" id="responsive11" style=""><img src="{{i.image}}" alt=""
+                                class="img fluid carsubscription"></div>
+                        <div class="cart_item_lst_row_contant add-sub-content">
+                            <div class="cart_item_lst_row_contant_name">{{i.productName | titlecase}}</div>
+                            <div class="cart_item_lst_row_contant_cmpny">{{i.brandName | titlecase}}</div>
+                            <div class="cart_item_lst_row_contant_gram cart_sub_grm_sc dflex-add-sub">
+                              <div class="add-gram">
+
+                                <span>{{i.uomValue}}</span>
+
+                                <p>Qty : <span>{{i.quantity}}</span></p></div>
+
+                                <div class="cart_item_lst_row_contant_rate">
+
+                                    <strong style="color: #00A7FB; float: right; font-weight: 400;"><i class="fa fa-rupee"></i>
+                                        {{i.specialPrice  * i.quantity}}</strong><br>
+                                    <p class="deliveryl">Delivery : <b style="color: black; opacity: 1;font-weight: 400;"> {{cartDetails.deliveryDate | date}}</b></p>
+                                </div>
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="col-md-4 col-sm-12">
+                    
+                  <section class="testimonial">
+                        <div class ="container" style="background-image: url('assets/img/cart/Rectanglecar1.png');">
+                            <div class="carbox">
+                                <img src="assets/img/cart/car1.png" alt="car"
+                                              >
+                                                
+                                    <p class="carpgh" id="carpgh"> Next Delivery Date On <span class="cspan">{{nextDeliveryDate}}</span></p>
+                            </div>
+                        
+                        </div>
+                    </section>
+                
+                    <form [formGroup]="intervalForm">
+                        <div class="box10 mt-3">
+                            <h5 style="">Choose Your Delivery Interval</h5>
+                            <p style="font-size: 12px;margin: 0px 0 17px 0px;">Want to repeat this order? Choose a delivery
+                                interval.</p>
+                                
+                                <div class="repeatevery">
+                                    <label>Repeat Every</label>
+                                        <div class="rep11">
+                                        <label class="customradio">
+
+                                            <input type="radio"  name="radio" id="radio" value="30" formControlName="interval"  checked>
+                                            <span class="checkmark1"></span>
+
+                                        </label>
+                                    
+                                    </div>
+                                    
+                                    <span class="radiotextsty">30&nbsp; Days</span>
+                                
+                                </div>
+                                <div class="repeatevery">
+                                    <label>Repeat Every</label>
+                                        <div class="rep11">
+                                        <label class="customradio">
+
+                                            <input type="radio"  name="radio" id="radio" value="45" formControlName="interval">
+                                            <span class="checkmark1"></span>
+
+                                        </label>
+                                    
+                                    </div>
+                                    <span class="radiotextsty">45&nbsp; Days</span>
+                                
+                                </div>
+                                <div class="repeatevery">
+                                    <label>Repeat Every</label>
+                                        <div class="rep11">
+                                        <label class="customradio">
+
+                                            <input type="radio"  name="radio" id="radio" value="60" formControlName="interval">
+                                            <span class="checkmark1"></span>
+
+                                        </label>
+                                    
+                                    </div>
+                                    <span class="radiotextsty">60&nbsp; Days</span>
+                                
+                                </div>
+                                <div class="repeatevery">
+                                    <label>Repeat Every</label>
+                                        <div class="rep11">
+                                        <label class="customradio">
+
+                                            <input type="radio"  name="radio" id="radio" value="90" formControlName="interval">
+                                            <span class="checkmark1"></span>
+
+                                        </label>
+                                    
+                                    </div>
+                                    <span class="radiotextsty">90&nbsp; Days</span>
+                            
+                                </div>
+
+                                <small for="interval" class="form-text text-danger" 
+                                *ngIf="intervalForm.controls['interval'].errors?.required && 
+                                (intervalForm.controls['interval'].dirty ||  
+                                intervalForm.controls['interval'].touched || 
+                                (intervalForm.controls['interval'].untouched  && attemptedSubmit ) )">
+                                Choose Your Delivery Interval
+                                </small>
+
+                                <!-- <small class="form-text text-danger" *ngIf="!checkBoxUsed && attemptedSubmit">Choose any product</small> -->
+
+                              
+                            
+
+                        </div>
+                        <button type="button" class="btn btn-primary c-Subscription" (click)="confirmSubscription();attemptedSubmit=true;">Confirm Subscription</button>
+
+                    </form>
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+<footer class="ps-footer ps-footer--5" style="padding-top: 40px;">
+
+    <app-footer></app-footer>
+</footer>
+
+</div>
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style type="text/css">
+    .intro {
+      height: auto;
+      min-height: 100vh;
+      text-align: center;
+      background-color: teal;
+    }
+  </style>
+  
+  
+  <script type="text/javascript">
+    function inVisible(element) {
+      //Checking if the element is
+      //visible in the viewport
+      var WindowTop = $(window).scrollTop();
+      var WindowBottom = WindowTop + $(window).height();
+      var ElementTop = element.offset().top;
+      var ElementBottom = ElementTop + element.height();
+      //animating the element if it is
+      //visible in the viewport
+      if ((ElementBottom <= WindowBottom) && ElementTop >= WindowTop) animate(element);
+    }
+  
+    function animate(element) {
+      //Animating the element if not animated before
+      if (!element.hasClass('ms-animated')) {
+        var maxval = element.data('max');
+        var html = element.html();
+        element.addClass("ms-animated");
+        $({
+          countNum: element.html()
+        }).animate({
+          countNum: maxval
+        }, {
+          //duration 5 seconds
+          duration: 5000,
+          easing: 'linear',
+          step: function () {
+            element.html(Math.floor(this.countNum) + html);
+          },
+          complete: function () {
+            element.html(this.countNum + html);
+          }
+        });
+      }
+    }
+    //When the document is ready
+    $(function () {
+      //This is triggered when the
+      //user scrolls the page
+      $(window).scroll(function () {
+        //Checking if each items to animate are 
+        //visible in the viewport
+        $("h2[data-max]").each(function () {
+          inVisible($(this));
+        });
+      })
+    });
+  </script>
+  
+  
+  
+  <script src="../../../assets/plugins\jquery.min.js"></script>
+  <script src="../../../assets/plugins\popper.min.js"></script>
+  <script src="../../../assets/plugins\bootstrap4\js\bootstrap.min.js"></script>
+  
+  <script src="../../../assets/plugins\select2\dist\js\select2.full.min.js"></script>
+  <script src="../../../assets/plugins\owl-carousel\owl.carousel.min.js"></script>
+  <script src="../../../assets/plugins\jquery-bar-rating\dist\jquery.barrating.min.js"></script>
+  <script src="../../../assets/plugins\lightGallery\dist\js\lightgallery-all.min.js"></script>
+  <script src="../../../assets/plugins\slick\slick\slick.min.js"></script>
+  <script type="text/javascript" src="https://www.medfoliotechnologies.com/js/wow.js"></script>
+  
+  <script src="../../../home\js\script.js" type="be9dfe49072cb4d1912e7519-text/javascript"></script>
+  <script src="../../../home\js\output.min.js" type="be9dfe49072cb4d1912e7519-text/javascript"></script>
+  
+  
+  <script src="../../../js/rocket-loader.min.js" data-cf-settings="be9dfe49072cb4d1912e7519-|49" defer=""></script>
+  
+  <script>
+    var hideTimeout = null;
+  
+    var show = function () {
+      $('.sticky-container').show();
+    }
+  
+    var hide = function () {
+      $('.sticky-container').hide();
+    }
+  
+    $(document).ready(function () {
+  
+      $(window).scroll(function (e) {
+        if (hideTimeout) {
+          window.clearTimeout(hideTimeout);
+          hideTimeout = null;
+        }
+        hide();
+  
+        window.setTimeout(show, 1000);
+      });
+  
+    });
+  
+  
+  </script>
+  
+  
+  
+  <script>
+  
+    $(window).ready(function () {
+      setInterval(function () {
+        $('.loader-container').addClass("active")
+      }, 1500);
+  
+    });
+  
+  </script>
+  <!-- custom code-->
+  
+  <script src="../../../js\main.js"></script>
+  <!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.8.3/TweenMax.min.js"></script>
+                  <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+                  <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script> -->
+  
+  <script type="text/javascript">
+  
+    const items = document.querySelectorAll(".accordion a");
+  
+    function toggleAccordion() {
+      this.classList.toggle('active');
+      this.nextElementSibling.classList.toggle('active');
+    }
+  
+    items.forEach(item => item.addEventListener('click', toggleAccordion));
+  
+  </script>
+  
+  <script>
+    wow = new WOW({
+      animateClass: 'animated',
+      offset: 100,
+      callback: function (box) {
+        console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+      }
+    });
+    wow.init();
+    document.getElementById('moar').onclick = function () {
+      var section = document.createElement('section');
+      section.className = 'section--purple wow fadeInDown';
+      this.parentNode.insertBefore(section, this);
+    };
+  </script>

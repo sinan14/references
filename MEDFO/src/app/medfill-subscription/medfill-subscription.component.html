@@ -1,0 +1,1722 @@
+
+
+<div class="mt-2">
+  <div class="medfill-head">Medfill Subscription</div>
+
+  <div class="tabbed">
+    <ul class="tabsdiv">
+      <li>
+        <a  (click)="Show_Div_Section('active')">
+          <div
+            id="prsnl"
+            class="dashboard_right_tab_btn"
+            [ngClass]="showActiveFlag ? 'dashboard_right_tab_btn_act' : ''"
+          >
+            Active
+          </div>
+        </a>
+      </li>
+
+      <li>
+        <a (click)="Show_Div_Section('inactive')">
+          <div id="mdcl" class="dashboard_right_tab_btn" 
+          [ngClass]="showInactiveFlag ? 'dashboard_right_tab_btn_act' : ''">Inactive</div>
+        </a>
+      </li>
+    </ul>
+    <br />
+
+    <section *ngIf="showActiveFlag" id="personal">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box9" *ngFor="let i of active_subscriptionList">
+            <div class="col-md-6 float-left">
+              <div class="d-flex align-items-center">
+                <label class="sublab"> Subscription ID </label>
+                <label class="sub1">: {{i.subscriptionId}}</label>
+              </div>
+              <div class="d-flex align-items-center">
+                <label class="sublab"> Delivery Interval </label>
+                <button type="button" class="btn btn-primary daybtn">
+                  {{i.interval}} Days </button>
+              </div>
+              <div class="d-flex align-items-center">
+                <label class="sublab"> Patient Name </label>
+                <label  class="sub1">{{i.address.name}}</label>
+              </div>
+              <div class="d-flex align-items-center">
+                <label class="sublab"> First Delivery Date </label>
+                <button type="button" class="btn btn-outline-primary daybtn1">
+                  {{i.firstDeliveryDate}}</button>
+              </div>
+              <div class="d-flex align-items-center">
+                <label class="sublab"> Next Delivery Date </label>
+                <button type="button" class="btn btn-outline-primary daybtn1">
+                  {{i.nextDeliveryDate}}</button>
+              </div>
+              <div class="d-flex">
+                <label class="sublab"> Delivery Address </label>
+                <p class="street">
+                  {{i.address.wholeAddress}}
+                </p>
+              </div>
+
+            </div>
+            <!-- <div class="col-md-2 float-left" id="resmd2">
+              <label class="sublab"> Subscription ID </label>
+              <label class="sublab" style="margin: 22px 0px 0 -6px">
+                Delivery Interval</label
+              >
+              <label class="sublab" style="margin: 23px 0px 0 -6px"
+                >Patient Name
+              </label>
+              <label class="sublab1">First Delivery Date</label>
+              <label class="sublab1">Next Delivery Date</label>
+              <label class="sublab2">Delivery Address&nbsp;&nbsp;:</label>
+            </div>
+
+            <div class="col-md-4 float-left" id="resm6">
+              <label class="sub1">: {{i.subscriptionId}}</label>
+              <a
+                ><button type="button" class="btn btn-primary daybtn">
+                  {{i.interval}} Days
+                </button></a
+              >
+              <p class="sub1">: {{i.address.name}}</p>
+              <button type="button" class="btn btn-outline-primary daybtn1">
+               {{i.firstDeliveryDate}}</button
+              >
+              <button type="button" class="btn btn-outline-primary daybtn1">
+                {{i.nextDeliveryDate}}</button
+              >
+              <p class="street">
+                {{i.address.wholeAddress}}
+              </p>
+            </div> -->
+
+            <div class="col-md-6 float-left p-0">
+              <div  class="table-med"  *ngIf="i.products">
+              <table
+                class="table"
+                style="text-align: center; margin: 8px 0 0 0"
+              >
+                <thead class="thead-light iqtya">
+                  <tr>
+                    <th
+                      scope="col"
+                      style="text-align: left;
+                        border-radius: 9px 0px 0px 10px;
+                        border-bottom: 0px;
+                        border-top: 0;
+                        padding: 0 19px 7px 19px;
+                        font-weight: 600;
+                        color: #000;
+                      "
+                    >
+                      Item
+                    </th>
+                    <th
+                    scope="col"
+                    style="
+                      border-bottom: 0px;
+                      border-top: 0;
+                      font-weight: 600;
+                      color: #000;
+                    "
+                  >
+                    UOM
+                  </th>
+
+                    <th
+                      scope="col"
+                      style="
+                        border-bottom: 0px;
+                        border-top: 0;
+                        font-weight: 600;
+                        color: #000;
+                      "
+                    >
+                      Qty
+                    </th>
+                    <th
+                      scope="col"
+                      style="
+                        border-bottom: 0px;
+                        border-top: 0;
+                        font-weight: 600;
+                        color: #000;
+                      "
+                    >
+                      Amount
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody class="ttablehover">
+                  <tr *ngFor="let prod of i.products">
+                    <td  class="item-td" width="50%" style="border-top: 0;text-align: left;">{{prod.productName}}</td>
+                    <td  width="20%" style="border-top: 0">{{prod.uomValue}}</td>
+                    <td  width="10%" style="border-top: 0">{{prod.quantity}}</td>
+                    <td class="rspleft">
+                      <i class="fa fa-rupee" style="font-size: 13px"></i> {{prod.specialPrice * prod.quantity}}
+                    </td>
+                  </tr>
+                 
+
+                  <tr style="border-top: 1px solid #dee2e6;">
+                    <td
+                      style="text-align: left;
+                        padding: 6px 0 0 19px;
+                        border-top: 0;
+                        color: #050500;
+                        opacity: 0.6;
+                      "
+                    >
+                     
+                      Sub Total
+                    </td>
+                    <td></td>
+                    <td colspan="2" class="rspleft1">
+                      <strong
+                        ><i class="fa fa-rupee" style="font-size: 13px"></i>
+                        {{i.cartDetails.totalCartValue}}</strong
+                      >
+                    </td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+              <table  style="width: 100%;">
+                <tr class="d-flex" style="justify-content: space-between;">
+                  <td colspan="2" style="border: 0px" *ngIf="i.prescription.length!=0">
+                    <button (click)="viewImage(i)"
+                      type="button"
+                      id="daybtnres"
+                      class="btn btn-primary daybtn"
+                      style="
+                        height: 35px;
+                        font-size: 14px;
+                        float: right;
+                        margin: 14px 0 0 14px;
+                      "
+                      
+                      data-toggle="modal" id="popup-uploaded-prescription" data-target="#prescriptionlist"
+                    >
+                      View
+                    </button>
+                  </td>
+                  <td colspan="2"  style="border: 0px" *ngIf="i.prescription.length==0">
+                    <button (click)="viewImage(i)"
+                      type="button"
+                      id="daybtnres"
+                      class="btn btn-primary daybtn"
+                      style="
+                        height: 35px;
+                        font-size: 14px;
+                        float: right;
+                        margin: 14px 0 0 14px;
+                      "
+                    >
+                      View
+                    </button>
+                  </td>
+                  <td style="border: 0px">
+                    <button (click)="getSubsciprtionId(i._id)"
+                      type="button"
+                      id="daybtnres"
+                      class="btn btn-primary daybtn"
+                      style=" height: 35px; font-size: 14px"
+                      data-toggle="modal" id="popup-upload-prescription" data-target="#myUpload"
+                    >
+                      Upload Prescription
+                    </button>
+                  </td>
+                  <td style="border: 0px">
+                    <button
+                    (click)="changeStatus(i._id,'disable')"
+                      type="button"
+                      id="daybtnres"
+                      class="btn btn-primary daybtn"
+                      style="
+                       
+                        height: 35px;
+                        font-size: 14px;
+                        border-radius: 6px 0 0 6px;
+                      "
+                    >
+                      Disable
+                    </button>
+                  </td>
+                </tr>
+              </table>
+              <div>
+                
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section  *ngIf="showInactiveFlag" id="medical">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box9" *ngFor="let i of inActive_subscriptionList">
+            <div class="col-md-6 float-left">
+              <div class="d-flex align-items-center">
+                <label class="sublab"> Subscription ID </label>
+                <label class="sub1">: {{i.subscriptionId}}</label>
+              </div>
+              <div class="d-flex align-items-center">
+                <label class="sublab"> Delivery Interval </label>
+                <button type="button" class="btn btn-primary daybtn">
+                  {{i.interval}} Days </button>
+              </div>
+              <div class="d-flex align-items-center">
+                <label class="sublab"> Patient Name </label>
+                <label  class="sub1">{{i.address.name}}</label>
+              </div>
+              <div class="d-flex align-items-center">
+                <label class="sublab"> First Delivery Date </label>
+                <button type="button" class="btn btn-outline-primary daybtn1">
+                  {{i.firstDeliveryDate}}</button>
+              </div>
+              <div class="d-flex align-items-center">
+                <label class="sublab"> Next Delivery Date </label>
+                <button type="button" class="btn btn-outline-primary daybtn1">
+                  {{i.nextDeliveryDate}}</button>
+              </div>
+              <div class="d-flex">
+                <label class="sublab"> Delivery Address </label>
+                <p class="street">
+                  {{i.address.wholeAddress}}
+                </p>
+              </div>
+
+            </div>
+
+
+            <!-- <div class="col-md-2 float-left" id="resmd2">
+              <label class="sublab"> Subscription ID </label>
+              <label class="sublab" style="margin: 22px 0px 0 -6px">
+                Delivery Interval</label
+              >
+              <label class="sublab" style="margin: 23px 0px 0 -6px"
+                >Patient Name
+              </label>
+              <label class="sublab1">First Delivery Date</label>
+              <label class="sublab1">Next Delivery Date</label>
+              <label class="sublab2">Delivery Address&nbsp;&nbsp;:</label>
+            </div>
+
+            <div class="col-md-4 float-left" id="resm6">
+              <label class="sub1">: {{i.subscriptionId}}</label><br />
+              <a
+                ><button type="button" class="btn btn-primary daybtn">
+                  {{i.interval}} Days
+                </button></a
+              ><br />
+              <p class="sub1">:  {{i.address.name}}</p>
+              <button type="button" class="btn btn-outline-primary daybtn1">
+                {{i.firstDeliveryDate}}</button
+               ><br />
+               <button type="button" class="btn btn-outline-primary daybtn1">
+                 {{i.nextDeliveryDate}}</button
+               ><br />
+               <p class="street">
+                 {{i.address.wholeAddress}}
+               </p>
+            </div> -->
+
+            <div class="col-md-6 float-left p-0" *ngIf="i.products">
+              <table
+                class="table"
+                style="text-align: center; margin: 8px 0 0 0"
+              >
+                <thead class="thead-light iqtya">
+                  <tr>
+                    <th
+                      scope="col"
+                      style="text-align: left;
+                        border-radius: 9px 0px 0px 10px;
+                        border-bottom: 0px;
+                        border-top: 0;
+                        padding: 0 19px 7px 19px;
+                        font-weight: 600;
+                        color: #000;
+                      "
+                    >
+                      Item
+                    </th>
+                    <th
+                    scope="col"
+                    style="
+                      border-bottom: 0px;
+                      border-top: 0;
+                      font-weight: 600;
+                      color: #000;
+                    "
+                  >
+                  UOM
+                  </th>
+                    <th
+                      scope="col"
+                      style="
+                        border-bottom: 0px;
+                        border-top: 0;
+                        font-weight: 600;
+                        color: #000;
+                      "
+                    >
+                      Qty
+                    </th>
+                    <th
+                      scope="col"
+                      style="
+                        border-bottom: 0px;
+                        border-top: 0;
+                        font-weight: 600;
+                        color: #000;
+                      "
+                    >
+                      Amount
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody class="ttablehover">
+                  <tr *ngFor="let prod of i.products">
+                    <td   class="item-td" width="50%"  style="border-top: 0;text-align: left;">{{prod.productName}}</td>
+                    <td  width="20%"  style="border-top: 0">{{prod.uomValue}}</td>
+                    <td  width="10%"  style="border-top: 0">{{prod.quantity}}</td>
+                    <td  class="rspleft">
+                      <i class="fa fa-rupee" style="font-size: 13px"></i> {{prod.specialPrice * prod.quantity}}
+                    </td>
+                  </tr>
+                 
+
+                  <tr  style="border-top: 1px solid #dee2e6;">
+                    <td
+                      style="text-align: left;
+                        padding: 6px 0 0 19px;
+                        border-top: 0;
+                        color: #050500;
+                        opacity: 0.6;
+                      "
+                    >
+                      
+                      Sub Total
+                    </td>
+                    <td></td>
+                    <td colspan="2" class="rspleft1">
+                      <strong
+                        ><i class="fa fa-rupee" style="font-size: 13px"></i>
+                        {{i.cartDetails.totalCartValue}}</strong
+                      >
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              <table style="width: 100%;">
+                <tr  class="d-flex" style="justify-content: space-between;">
+                  <td colspan="2" style="border: 0px" *ngIf="i.prescription.length!=0">
+                    <button (click)="viewImage(i)"
+                      type="button"
+                      id="daybtnres"
+                      class="btn btn-primary daybtn"
+                      style="
+                        
+                        height: 35px;
+                        font-size: 14px;
+                        float: right;
+                        margin: 15px 0 0 14px;
+                      "
+                      
+                      data-toggle="modal" id="popup-uploaded-prescription" data-target="#prescriptionlist"
+                    >
+                      View
+                    </button>
+                  </td>
+                  <td colspan="2"  style="border: 0px" *ngIf="i.prescription.length==0">
+                    <button (click)="viewImage(i)"
+                      type="button"
+                      id="daybtnres"
+                      class="btn btn-primary daybtn"
+                      style="
+                        height: 35px;
+                        font-size: 14px;
+                        float: right;
+                        margin: 15px 0 0 14px;
+                      "
+                    >
+                      View
+                    </button>
+                  </td>
+                  <td style="border: 0px">
+                    <button (click)="getSubsciprtionId(i._id)"
+                      type="button"
+                      id="daybtnres"
+                      class="btn btn-primary daybtn"
+                      style="height: 35px; font-size: 14px"
+                      data-toggle="modal" id="popup-upload-prescription" data-target="#myUpload"
+                    >
+                      Upload Prescription
+                    </button>
+                  </td>
+                  <td style="border: 0px">
+                    <button
+                    (click)="changeStatus(i._id,'enable')"
+                      type="button"
+                      id="daybtnres"
+                      class="btn btn-primary daybtn1"
+                      style="
+                       height: 35px;
+                        font-size: 14px;
+                        border-radius: 6px 0 0 6px;
+                      "
+                    >
+                      Activate
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h6 class="text-center" *ngIf="active_subscriptionList.length==0 && inActive_subscriptionList.length==0">No data found.</h6>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css">
+      .intro {
+        height: auto;
+        min-height: 100vh;
+        text-align: center;
+        background-color: teal;
+      }
+    </style>
+
+    <script type="text/javascript">
+      function inVisible(element) {
+        //Checking if the element is
+        //visible in the viewport
+        var WindowTop = $(window).scrollTop();
+        var WindowBottom = WindowTop + $(window).height();
+        var ElementTop = element.offset().top;
+        var ElementBottom = ElementTop + element.height();
+        //animating the element if it is
+        //visible in the viewport
+        if (ElementBottom <= WindowBottom && ElementTop >= WindowTop)
+          animate(element);
+      }
+
+      function animate(element) {
+        //Animating the element if not animated before
+        if (!element.hasClass("ms-animated")) {
+          var maxval = element.data("max");
+          var html = element.html();
+          element.addClass("ms-animated");
+          $({
+            countNum: element.html(),
+          }).animate(
+            {
+              countNum: maxval,
+            },
+            {
+              //duration 5 seconds
+              duration: 5000,
+              easing: "linear",
+              step: function () {
+                element.html(Math.floor(this.countNum) + html);
+              },
+              complete: function () {
+                element.html(this.countNum + html);
+              },
+            }
+          );
+        }
+      }
+      //When the document is ready
+      $(function () {
+        //This is triggered when the
+        //user scrolls the page
+        $(window).scroll(function () {
+          //Checking if each items to animate are
+          //visible in the viewport
+          $("h2[data-max]").each(function () {
+            inVisible($(this));
+          });
+        });
+      });
+    </script>
+
+    <script src="../../../assets/plugins\jquery.min.js"></script>
+    <script src="../../../assets/plugins\popper.min.js"></script>
+    <script src="../../../assets/plugins\bootstrap4\js\bootstrap.min.js"></script>
+
+    <script src="../../../assets/plugins\select2\dist\js\select2.full.min.js"></script>
+    <script src="../../../assets/plugins\owl-carousel\owl.carousel.min.js"></script>
+    <script src="../../../assets/plugins\jquery-bar-rating\dist\jquery.barrating.min.js"></script>
+    <script src="../../../assets/plugins\lightGallery\dist\js\lightgallery-all.min.js"></script>
+    <script src="../../../assets/plugins\slick\slick\slick.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://www.medfoliotechnologies.com/js/wow.js"
+    ></script>
+
+    <script
+      src="../../../assets/home\js\script.js"
+      type="be9dfe49072cb4d1912e7519-text/javascript"
+    ></script>
+    <script
+      src="../../../assets/home\js\output.min.js"
+      type="be9dfe49072cb4d1912e7519-text/javascript"
+    ></script>
+
+    <script
+      src="../../../assets/js/rocket-loader.min.js"
+      data-cf-settings="be9dfe49072cb4d1912e7519-|49"
+      defer=""
+    ></script>
+
+    <script>
+      var hideTimeout = null;
+
+      var show = function () {
+        $(".sticky-container").show();
+      };
+
+      var hide = function () {
+        $(".sticky-container").hide();
+      };
+
+      $(document).ready(function () {
+        $(window).scroll(function (e) {
+          if (hideTimeout) {
+            window.clearTimeout(hideTimeout);
+            hideTimeout = null;
+          }
+          hide();
+
+          window.setTimeout(show, 1000);
+        });
+      });
+    </script>
+
+    <script>
+      $(window).ready(function () {
+        setInterval(function () {
+          $(".loader-container").addClass("active");
+        }, 1500);
+      });
+    </script>
+    <!-- custom code-->
+
+    <script src="../../../assets/js\main.js"></script>
+    <!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.8.3/TweenMax.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script> -->
+
+    <script type="text/javascript">
+      const items = document.querySelectorAll(".accordion a");
+
+      function toggleAccordion() {
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("active");
+      }
+
+      items.forEach((item) => item.addEventListener("click", toggleAccordion));
+    </script>
+
+    <script>
+      wow = new WOW({
+        animateClass: "animated",
+        offset: 100,
+        callback: function (box) {
+          console.log("WOW: animating <" + box.tagName.toLowerCase() + ">");
+        },
+      });
+      wow.init();
+      document.getElementById("moar").onclick = function () {
+        var section = document.createElement("section");
+        section.className = "section--purple wow fadeInDown";
+        this.parentNode.insertBefore(section, this);
+      };
+    </script>
+
+    <script>
+      $("#medical").hide();
+      $("#tabsdiv li a").click(function () {
+        $("#prsnl").click(function () {
+          $("#personal").show();
+          $("#medical").hide();
+          $("#prsnl").addClass("dashboard_right_tab_btn_act");
+          $("#mdcl").removeClass("dashboard_right_tab_btn_act");
+        });
+        $("#mdcl").click(function () {
+          $("#personal").hide();
+          $("#medical").show();
+          $("#prsnl").removeClass("dashboard_right_tab_btn_act");
+          $("#mdcl").addClass("dashboard_right_tab_btn_act");
+        });
+      });
+      // $(".mob_prf_mn_sec").click(function(){
+      //     $(".mob_mn_sec").show();
+      // });
+      // $(".dashmob_mn_sec_cls").click(function(){
+      //     $(".mob_mn_sec").hide();
+      // });
+    </script>
+
+    <script>
+      (function () {
+        // Get relevant elements and collections
+        const tabbed = document.querySelector(".tabbed");
+        const tablist = tabbed.querySelector("ul");
+        const tabs = tablist.querySelectorAll("a");
+        const panels = tabbed.querySelectorAll('[id^="section"]');
+
+        // The tab switching function
+        const switchTab = (oldTab, newTab) => {
+          newTab.focus();
+          // Make the active tab focusable by the user (Tab key)
+          newTab.removeAttribute("tabindex");
+          // Set the selected state
+          newTab.setAttribute("aria-selected", "true");
+          oldTab.removeAttribute("aria-selected");
+          oldTab.setAttribute("tabindex", "-1");
+          // Get the indices of the new and old tabs to find the correct
+          // tab panels to show and hide
+          let index = Array.prototype.indexOf.call(tabs, newTab);
+          let oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
+          panels[oldIndex].hidden = true;
+          panels[index].hidden = false;
+        };
+
+        // Add the tablist role to the first <ul> in the .tabbed container
+        tablist.setAttribute("role", "tablist");
+
+        // Add semantics are remove user focusability for each tab
+        Array.prototype.forEach.call(tabs, (tab, i) => {
+          tab.setAttribute("role", "tab");
+          tab.setAttribute("id", "tab" + (i + 1));
+          tab.setAttribute("tabindex", "-1");
+          tab.parentNode.setAttribute("role", "presentation");
+
+          // Handle clicking of tabs for mouse users
+          tab.addEventListener("click", (e) => {
+            e.preventDefault();
+            let currentTab = tablist.querySelector("[aria-selected]");
+            if (e.currentTarget !== currentTab) {
+              switchTab(currentTab, e.currentTarget);
+            }
+          });
+
+          // Handle keydown events for keyboard users
+          tab.addEventListener("keydown", (e) => {
+            // Get the index of the current tab in the tabs node list
+            let index = Array.prototype.indexOf.call(tabs, e.currentTarget);
+            // Work out which key the user is pressing and
+            // Calculate the new tab's index where appropriate
+            let dir =
+              e.which === 37
+                ? index - 1
+                : e.which === 39
+                ? index + 1
+                : e.which === 40
+                ? "down"
+                : null;
+            if (dir !== null) {
+              e.preventDefault();
+              // If the down key is pressed, move focus to the open panel,
+              // otherwise switch to the adjacent tab
+              dir === "down"
+                ? panels[i].focus()
+                : tabs[dir]
+                ? switchTab(e.currentTarget, tabs[dir])
+                : void 0;
+            }
+          });
+        });
+
+        // Add tab panel semantics and hide them all
+        Array.prototype.forEach.call(panels, (panel, i) => {
+          panel.setAttribute("role", "tabpanel");
+          panel.setAttribute("tabindex", "-1");
+          let id = panel.getAttribute("id");
+          panel.setAttribute("aria-labelledby", tabs[i].id);
+          panel.hidden = true;
+        });
+
+        // Initially activate the first tab and reveal the first tab panel
+        tabs[0].removeAttribute("tabindex");
+        tabs[0].setAttribute("aria-selected", "true");
+        panels[0].hidden = false;
+      })();
+    </script>
+
+    <style>
+      body.modal-open {
+        padding-right: 0 !important;
+      }
+
+      input[type="checkbox"] {
+        display: none !important;
+      }
+
+      .profile_sec {
+        padding-top: 10px;
+      }
+
+      .ps-footer--block .ps-block__list li a {
+        opacity: 0.6;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      input[type="checkbox"]:checked + label:after {
+        display: none;
+      }
+
+      .accordion {
+        margin: 0px !important;
+        padding: 0 !important;
+        width: 100%;
+        float: left;
+      }
+
+      .accordion-item {
+        width: 100%;
+        float: left;
+        margin-bottom: 10px;
+
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+
+      .accordion a {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: 100%;
+        border: 0 !important;
+        padding: 0 50px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: #050500 !important;
+        font-size: 13px !important;
+        font-weight: normal !important;
+
+        opacity: 1 !important;
+      }
+
+      .accordion a:hover,
+      .accordion a:hover::after {
+        cursor: pointer;
+        color: #707070;
+      }
+
+      .accordion a:hover {
+        border: 1px solid #707070;
+      }
+
+      .accordion a.active {
+        border: 1px solid #707070;
+      }
+
+      .accordion a::after {
+        font-family: "FontAwesome";
+        content: "\f105";
+        position: absolute;
+        float: right;
+        right: 1rem;
+        /* font-size: 1rem; */
+        color: #b2b2b2;
+        font-size: 20px;
+        padding: 5px;
+        font-size: 30px;
+        text-align: center;
+        right: 5px;
+        top: 5px;
+        font-size: 20px;
+      }
+
+      .accordion a.active::after {
+        font-family: "FontAwesome";
+        content: "\f106";
+        color: #707070;
+      }
+
+      .accordion .content {
+        opacity: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        clear: both;
+        -webkit-transition: all 0.2s ease 0.15s;
+        transition: all 0.2s ease 0.15s;
+        background: #f3f3f3;
+      }
+
+      .accordion .content p {
+        font-size: 16px;
+        font-weight: 300;
+        padding-left: 30px;
+      }
+
+      .accordion .content.active {
+        opacity: 1;
+        max-height: 100%;
+        border: 0 !important;
+        -webkit-transition: all 0.35s ease 0.15s;
+        transition: all 0.35s ease 0.15s;
+        padding: 0;
+      }
+
+      .owl-carousel .owl-dots .owl-dot.active {
+        background-color: #c0c0c0;
+        border-color: #c0c0c0;
+        width: 10px;
+        border-radius: 20px;
+      }
+
+      .ps-header {
+        background-color: #00aaff;
+        background-image: linear-gradient(#00aaff, #005bec);
+      }
+
+      .loader-container {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1999;
+        height: 100%;
+        opacity: 1;
+        overflow: hidden;
+        background-color: #fff;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+      }
+
+      .loader-container:before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        overflow: hidden;
+      }
+
+      .loader-container:before {
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+      }
+
+      .loader-container.active {
+        /* animation: slideBgTop 1.75s forwards;
+      -webkit-animation: slideBgTop 1.75s forwards;
+      -webkit-animation-delay: 0.5s;
+      animation-delay: 0.5s; */
+      }
+
+      @keyframes b {
+        0% {
+          background-position: 0 50%;
+        }
+
+        50% {
+          background-position: 100% 50%;
+        }
+
+        100% {
+          background-position: 0 50%;
+        }
+      }
+
+      @keyframes workGridItem-onboard {
+        0% {
+          opacity: 0;
+          transform: translate3d(0, -100px, 0) scale3d(0.95, 0.95, 0.95)
+            rotate3d(1, 0.05, 0, 5deg);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateZ(0) scaleX(1) rotate3d(0, 0, 0, 0);
+        }
+      }
+
+      @keyframes spin-it {
+        from {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes will-scale {
+        from {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        }
+
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @keyframes pageTransAnim-onboard {
+        0% {
+          transform: translate3d(-100vw, 0, 0);
+        }
+
+        to {
+          transform: translateZ(0);
+        }
+      }
+
+      .PageTransitions__mainWrapperAnimation--onboard {
+        animation-name: pageTransAnim-onboard;
+        animation-timing-function: 0cubic-bezier 0.4, 0.1, 0.1, 1;
+        animation-duration: 0.75s;
+        animation-fill-mode: backwards;
+      }
+
+      .col-6 {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+        float: left;
+      }
+
+      .c-timeline {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .c-timeline__item {
+        position: relative;
+        padding: 0 2rem 2rem;
+      }
+
+      .c-timeline__item:after,
+      .c-timeline__item:before {
+        content: " ";
+        width: 0.5rem;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -1rem;
+        background-color: #64c2e3;
+      }
+
+      .c-timeline__item:after {
+        transform-origin: top right;
+        transform: scaley(0);
+        transition: transform 1s ease 0.25s;
+      }
+
+      .c-timeline__item.active:after {
+        background-color: #ffff00;
+        transform: scaley(1);
+      }
+
+      .c-timeline__item.active .c-timeline__item-circle {
+        border-color: #ffff00;
+        -webkit-animation: scaleCircle 0.4s forwards;
+        animation: scaleCircle 0.4s forwards;
+      }
+
+      .c-timeline__item:last-child:after,
+      .c-timeline__item:last-child:before {
+        border-radius: 5px;
+        display: none;
+      }
+
+      .c-timeline__item-circle {
+        border-radius: 50%;
+        background: #2296bf;
+        height: 1rem;
+        width: 1rem;
+        display: block;
+        position: absolute;
+        left: -1.7rem;
+        top: 0;
+        border: 0.5rem solid #64c2e3;
+        z-index: 1;
+        transition: border-color 0.5s ease;
+      }
+
+      @-webkit-keyframes scaleCircle {
+        0% {
+          transform: scale(1);
+        }
+
+        33% {
+          transform: scale(1.2);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes scaleCircle {
+        0% {
+          transform: scale(1);
+        }
+
+        33% {
+          transform: scale(1.2);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .c-trigger {
+        position: absolute;
+        top: 2rem;
+        background-color: #ffff00;
+        padding: 1rem;
+        display: block;
+        right: 2rem;
+        color: black;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .pen__container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .pen__heading {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .pen__intro {
+        margin-bottom: 3rem;
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.6);
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .home-hero {
+        width: 100%;
+        position: relative;
+        display: inline-block;
+        height: 80vh;
+      }
+
+      .banner {
+        padding-bottom: 0;
+      }
+
+      .banner__background {
+        min-height: 540px;
+      }
+
+      .home-hero .home-slides {
+        min-height: 580px;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 80px;
+      }
+
+      .banner__background.home {
+        -webkit-transition: all 1500ms ease-in-out;
+        -o-transition: all 1500ms ease-in-out;
+        transition: all 1500ms ease-in-out;
+      }
+
+      .home-hero .copy--title h2 {
+        color: #414040;
+      }
+
+      .home-hero .home-slides .owl-item.active .copy--body p {
+        color: #000;
+        opacity: 0.5;
+      }
+
+      .home-hero .copy a {
+        background: rgb(0 0 0 / 30%);
+      }
+
+      .home-hero .copy a:hover {
+        background: rgb(0 0 0 / 50%);
+      }
+
+      @media (max-width: 992px) {
+        .banner__background {
+          min-height: 760px;
+        }
+
+        .home-hero .home-slides {
+          min-height: 800px;
+        }
+
+        .home-hero .home-slides .wrapper-container-el {
+          width: 50%;
+          padding-top: 10%;
+        }
+
+        .container-illu .el-device {
+          height: 80%;
+        }
+
+        .header-slides {
+          padding-top: 0;
+        }
+      }
+
+      @media (max-width: 500px) {
+        .home-hero .home-slides .wrapper-container-el {
+          width: 80%;
+        }
+
+        .home-hero .home-slides {
+          min-height: 700px;
+        }
+
+        .banner__background {
+          min-height: 700px;
+        }
+      }
+
+      .slide-progress {
+        width: 0;
+        max-width: 100%;
+        height: 6px;
+        background: rgba(0, 0, 0, 0.35);
+        border-radius: 30px;
+      }
+
+      .slide-progress-main {
+        width: 50%;
+        position: var(--relative);
+        z-index: 5555;
+        margin: 10px 0 20px;
+        height: 6px;
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      .home-hero .home-slides .owl-nav .owl-next span {
+        font-size: 55px;
+        color: #666;
+        line-height: 0;
+      }
+
+      .home-hero .home-slides .owl-nav button {
+        background-color: transparent !important;
+        font: 70px/45px FontAwesome;
+        color: #0000003b;
+        opacity: 0.5;
+      }
+
+      .home-hero .home-slides .owl-nav button:hover {
+        background-color: transparent !important;
+      }
+
+      .home-hero .home-slides .owl-nav button.owl-prev {
+        display: block;
+      }
+
+      .home-hero .home-slides .owl-nav .owl-prev span {
+        font-size: 55px;
+        color: #666;
+      }
+
+      .home-hero .home-slides .owl-nav .owl-prev:before {
+        content: "\f104";
+      }
+
+      .home-hero .home-slides .owl-nav .owl-next:before {
+        content: "\f105";
+      }
+
+      .home-hero .home-slides .owl-nav span {
+        display: none;
+      }
+
+      @media (min-width: 1280px) {
+        .ps-blog__thumbnail img {
+          height: 180px;
+          object-fit: fill;
+        }
+      }
+
+      .blogname p {
+        color: #00aaff;
+      }
+
+      .blogname a {
+        padding: 0px 4px 0px 4px;
+        color: #000000;
+        opacity: 0.5;
+        font-size: 14px;
+      }
+
+      .ps-blog--latset .ps-blog__content {
+        padding: 20px 20px;
+      }
+
+      .ps-blog--latset .ps-blog__thumbnail img {
+        border-radius: 0px;
+        padding-top: 15px;
+      }
+
+      .share-time a {
+        font-size: 13px;
+      }
+
+      .ps-blog--latset .ps-blog__thumbnail:hover img {
+        transform: none;
+      }
+
+      .blogname {
+        justify-content: end;
+      }
+
+      /*.shadows a:hover {*/
+      /*  font-weight:bold;*/
+      /*}*/
+
+      /*a.shadows:hover {*/
+      /*  font-weight:normal;*/
+      /*  text-shadow:0px 0px 5px white;*/
+      /*}*/
+      /*.ps-footer--block .ps-block__list li a{
+        opacity:0.6;
+        filter:brightness(0.8);
+    }*/
+      .shadows a:hover {
+        color: #ffffff !important;
+        opacity: 1 !important;
+
+        filter: brightness(120%) !important;
+        font-size: 15.05px !important;
+      }
+
+      .ps-social li {
+        margin: 0;
+      }
+
+      @media (max-width: 768px) {
+        .ps-social__link {
+          margin-bottom: 5px;
+          display: inline-block;
+        }
+      }
+
+      .progress-bar {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+        background-color: transparent;
+      }
+
+      .progress-step {
+        text-align: center;
+        position: relative;
+      }
+
+      .progress-step:before,
+      .progress-step:after {
+        background-color: #3f3f3f;
+        content: "";
+        height: 2px;
+        position: absolute;
+        z-index: 1;
+        top: 67px;
+      }
+
+      .progress-step:after {
+        left: 0;
+        width: 100%;
+      }
+
+      .progress-step:last-of-type.is-active:after {
+        background-color: #3f3f3f;
+      }
+
+      .progress-step:last-of-type:after {
+        left: 50%;
+        width: 50%;
+        display: none;
+      }
+
+      .progress-step .step-count {
+        background-color: #3f3f3f;
+        height: 15px;
+        width: 15px;
+        float: left;
+        border-radius: 50%;
+        color: white;
+        line-height: 30px;
+        z-index: 100;
+        font-size: 0.8rem;
+        font-weight: 500;
+        position: relative;
+      }
+
+      .progress-step .step-count:before {
+        content: "";
+      }
+
+      .progress-step.is-active .step-description {
+        font-weight: 500;
+      }
+
+      /* .progress-step.is-active:after {
+  background-color: #dad6ce;
+} */
+      .progress-step.is-active ~ .progress-step .step-count {
+        background-color: #dad6ce;
+      }
+
+      .progress-step.is-active ~ .progress-step:after {
+        background-color: #dad6ce;
+      }
+
+      .step-description {
+        font-size: 14px;
+        color: #050500;
+        float: left;
+        width: 100%;
+        text-align: left;
+      }
+
+      .step_description_sort {
+        font-size: 10px;
+        color: #050500;
+        opacity: 0.5;
+        float: left;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+        min-height: 29px;
+        position: relative;
+      }
+
+      .progress-step.is-active .step-count::after {
+        border: 2px solid #00aaff;
+        border-radius: 50%;
+        content: "";
+        height: 23px;
+        width: 24px;
+        position: absolute;
+        left: -4px;
+        bottom: -4px;
+      }
+
+      @media (max-width: 1070px) {
+        .progress-bar {
+          display: inline-block;
+        }
+
+        .step-description {
+          padding-left: 50px;
+        }
+
+        .progress-step {
+          width: 100%;
+          float: left;
+          margin-bottom: 30px;
+        }
+
+        .progress-step:after {
+          left: 0;
+          width: 13%;
+          transform: rotate(90deg);
+        }
+
+        .progress-step:before,
+        .progress-step:after {
+          left: -19px;
+          top: 96%;
+          width: 46px !important;
+          transform: rotate(90deg);
+        }
+
+        .progress-step:last-child:before {
+          display: none;
+        }
+
+        .progress-step .step-count {
+          position: absolute;
+          top: 14px;
+          left: -3px;
+        }
+      }
+
+      @media (max-width: 991px){
+.inner_new_page_container.medfill { 
+  margin-top: 15%;
+}}
+    </style>
+  </div>
+</div>
+
+
+
+<!-------------------------------- Upload Prescription -------->
+<div class="modal fade" id="myUpload" role="dialog">
+  <div class="modal-dialog">
+    <!------------ Modal content Upload pres-------------------------->
+    <div class="modal-content" style="padding: 0 7px">
+      <div class="close1">
+        <button type="button" id="dismiss-upload-prescription" class="closea" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+      <h5 class="uph">Upload Prescription</h5>
+      <div class="modal-header">
+        <div class="container">
+         
+          <div class="row" >
+              <div class="col-md-12">
+                <div class="box11">
+                
+                  <div class="row justify-content-center bgallerymain1">
+                    <div class="col-md-4 float-left text-center p-0 mobile">
+                      <div class="gallery1">
+                        <!-- (click)="uploadPrescritpion($event,'camera')" -->
+                        <img src="assets/img/cart/icon12.png" class="img-fluid"/>
+                        <input class="input-file" type="file" accept="image/*" capture="camera" (change)="uploadPrescritpion($event,'camera')">
+                      </div>
+                      Camera
+                    </div>
+                    <div class="col-md-4 float-left text-center p-0">
+                      <div class="gallery1">
+                        <!-- (click)="uploadPrescritpion($event,'gallery')" -->
+                        <!-- <img *ngIf="Upload_Image" src={{Upload_Image}} class="img-fluid" /> -->
+                        <img src="assets/img/cart/icon11.png" class="img-fluid" />
+                        <input class="input-file" type="file" accept="image/*,application/pdf" capture="user"
+                           (change)="uploadPrescritpion($event,'gallery')">
+                      </div>
+                      Gallery
+                    </div>
+                    <div class="col-md-4 float-left text-center p-0">
+                      <!-- (click)="uploadPrescritpion($event,'healthdata')" -->
+                      <div class="gallery1" (click)="Get_Health_Vault_Data()">
+                        <!-- data-toggle="modal" -->
+                        <!-- data-target="#health_data_pop_up" -->
+                        <img  src="assets/img/cart/icon13.png" class="img-fluid"  />
+                        <!-- <input class="input-file" type="file" accept="image/*,application/pdf" formControlName="healthdata" (change)="uploadPrescritpion($event,'healthdata')"> -->
+                      </div>
+                      Health data
+                    </div>
+                  </div>
+
+
+                  <div class="row mb-4  justify-content-center" *ngIf="prescriptionImageURLArray.length">
+                    <div class="col-md-3 col-6 gallery-ad-img mt-2" *ngFor="let j of prescriptionImageURLArray">
+                      <button type="button" class="sub-pop-close" style="cursor: pointer;" (click)="removePrescription(j)">
+                        ×
+                      </button>
+                        <img src="{{j}}" width="100%"/>
+                    </div>
+                  </div>
+                  <div *ngIf="imageLoading" class="lod">
+                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                  </div>
+               
+                  <a class="box991 pescription-add" style="cursor: pointer;" (click)="prescriptionGuidClick()">
+                    <p class="priscription mt-4">
+                      Prescription should contains<img src="assets/img/cart/prescription.png"
+                        class="img-fluid imgpre" />
+                    </p>
+                  </a>
+               
+                </div>
+
+                <div class="row" id="respon1">
+                  <div class="box99" style="margin-bottom: 0px;">
+                    <div class="text-center">
+                      <div class="accordion-item giving11">
+                        
+                        <div class=" give244 cart-subscrp" *ngIf="containGuidFlag">
+                          <div class="maninPrescription text-center">
+                            <div class="row newbox">
+                              <div class="col-md-12 p-0">
+                                <div class="box22">
+                                  <h3>Prescription Guide</h3>
+                                  <ul class="prec">
+                                    <li>
+                                      Upload Clear Prescription Image
+                                    </li>
+                                    <li>
+                                      Below mentioned points should be
+                                      part of valid Prescription
+                                    </li>
+                                  </ul>
+                                  <div class="row">
+                                    <div class="col-md-8 doctor">
+                                      <img src="assets/img/cart/doctor.png" class="img-fluid" />
+                                    </div>
+                                    <div class="col-md-4 doctor">
+                                      <label class="docp">Doctor Details</label>
+                                      <label class="docp">Patient Details</label>
+                                      <label class="docp">Medicine Details</label>
+                                      <label class="docp sign sign1">Doctor Sign</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               
+
+                <div *ngIf="Health_Vault_Array.length && healthdataClicked">
+                  <ng-container *ngFor="let data of Health_Vault_Array">
+                    <div class="row">
+                      <div class="container">
+                        <div class="col-md-12">
+                          <div class="boxa">
+
+                            <div class="form-check11 float-right">
+                              <label class="customcheck">
+                                  <input type="checkbox" (change)="Select_Health_Data($event,data)" [checked]="data.checkedFlag ? true : false">
+                                  <span class="checkmark"></span>
+                              </label>
+                            </div>
+
+                            <!-- <div class="radioaa">
+                              <input class="rrb" type="radio" name="addressStatus"yyyyyy
+                                (click)="Select_Health_Data(data)" />
+                            </div> -->
+                            <!-- Health_Data_Continue_Click -->
+                            <!-- (click)="selectHealthVault(hv.prescription)" -->
+                            <div class="col-md-8 float-left labresult">
+                              <h5>{{ data.category }}</h5>
+                              <label>Patient Name<span class="saron"></span>:
+                                {{ data.patientName }}</label>
+                              <label>Date <span class="sarondate"></span>:
+                                {{ data.date }}</label>
+                            </div>
+
+                            <div class="
+                                    col-md-4
+                                    float-left
+                                    text-center
+                                    subimageanddiscription
+                                  ">
+                              <!-- <a target="_blank" [href]="hv.prescription"> -->
+                              <img [src]="data.prescription" class="img-fluid" />
+                              <!-- </a> -->
+                              <!-- <label class="subhvl">Subscription ID</label> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+
+              
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <button type="button" class="btn btn-primary Continue1" (click)="Continue_Prescription_Click()">
+                      Upload prescription
+                    </button>
+
+                  
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- upload prescription close -->
+          <!-- -----------------------------------------------------The Modal2 ---------------------------->
+        
+          <!-- ---------------------------POPUP CLOSE------------------------------------------------------------------ -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-------------------------------- Upload Prescription -------->
+
+
+
+<!--------------------------------  Prescription List -------->
+<div class="modal fade" id="prescriptionlist" role="dialog">
+  <div class="modal-dialog">
+    <!------------ Modal content Upload pres-------------------------->
+    <div class="modal-content" style="padding: 0 7px">
+      <div class="close1">
+        <button type="button" id="dismiss-uploaded-prescription" class="closea" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+      <h5 class="uph">Prescription List</h5>
+      <div class="modal-header">
+        <div class="container">
+         
+          <div class="row" >
+              <div class="col-md-12">
+                <div class="box11">
+                
+                    <div class="row justify-content-center">
+                      <div class="col-md-3  gallery-ad-img mt-2" *ngFor="let i of prescriptionViewList">
+                        <a target="_blank" [href]="i">
+                          <img src="{{i}}" width="100%"/>
+                        </a>
+                      </div>
+                    </div>
+
+               
+
+               
+                </div>
+               
+              
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <!-- <button type="button" class="btn btn-primary Continue1" (click)="Continue_Prescription_Click()">
+                      Upload prescription
+                    </button> -->
+
+                  
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- upload prescription close -->
+          <!-- -----------------------------------------------------The Modal2 ---------------------------->
+        
+          <!-- ---------------------------POPUP CLOSE------------------------------------------------------------------ -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--------------------------------  Prescription List -------->

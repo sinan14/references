@@ -1,0 +1,1163 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid innerpage_tab_top">
+    <div class="row">
+        <div class="col-sm-11">
+
+            <div class="card-body tab2-card  employee_card_body_tab_without_table">
+                <!-- <div class="row">
+                    <input class="form-control costmr_srch"  type="search"
+                    placeholder="Enter CustomerID, Mobile, Order ID, Consultation ID">
+                    <img _ngcontent-serverapp-c18="" style="position:absolute;right:15%;top:65px;" src="assets/images/dashboard/icon-search.svg" width="20px" height="20px">
+                </div> -->
+
+                <h5> {{ editMode ? "Edit New Employee" : "Add New Employee" }}</h5>
+                <!-- <code>{{  logFormData(generateFormFinalData()) | json }}</code> -->
+
+                <div class="card-body tab2-card epm-adding">
+                    <ngb-tabset class="tab-coupon" #t="ngbTabset">
+                        <ngb-tab title="Profile" id="profile">
+                            <ng-template ngbTabContent>
+                                <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+                                    <form [formGroup]="profileForm" class="needs-validation user-add full-div"
+                                        novalidate>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="employeeType" class="">
+                                                        Employee Type *</label>
+                                                    <select class="form-control" id="employeeType"
+                                                        formControlName="employeeTypeId">
+                                                        <option value="">--- Select ---</option>
+                                                        <option [value]="employeeType._id "
+                                                            *ngFor="let employeeType of employeeTypes">{{
+                                                            employeeType.type }}</option>
+                                                    </select>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('profileForm','employeeTypeId','required')">
+                                                        Please select employee type.
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="validationCustom0" class="">
+                                                        First Name *</label>
+                                                    <input #firstname formControlName="firstName" class="form-control"
+                                                        id="validationCustom0" type="text">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('profileForm','firstName','required')">
+                                                        This field is required.
+                                                    </div>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('profileForm','firstName','minlength')">
+                                                        "Name is too short!"
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="validationCustom1" class="">Last Name *</label>
+                                                    <input #lastname class="form-control" formControlName="lastName"
+                                                        id="validationCustom1" type="text">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('profileForm','lastName','required')">
+                                                        This field is required.
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="validationCustom2">
+                                                        Employee ID *</label>
+                                                    <input #employeeid formControlName="employeeId" class="form-control"
+                                                        id="validationCustom2" type="text">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('profileForm','employeeId','required')">
+                                                        This field is required.
+                                                    </div>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('profileForm','employeeId','minlength')">
+                                                        "EmployeeID is too short!"
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="validationCustom2">
+                                                        Date Of Birth *</label>
+                                                    <input #dateofbirth formControlName="dateOfBirth" max="{{ today }}"
+                                                        class="form-control" id="validationCustom2" type="date">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('profileForm','dateOfBirth','required')">
+                                                        This field is required.
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="validationCustom1">
+                                                        Work Email *</label>
+                                                    <input #workemail formControlName="workEmail" class="form-control"
+                                                        id="validationCustom1" type="email">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('profileForm','workEmail','required')">
+                                                        This field is required.
+                                                    </div>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('profileForm','workEmail','email')">
+                                                        Invalid email.
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="validationCustom3">
+                                                        {{ editMode ? "Change Password " : "Login Password *" }}</label>
+                                                    <input #loginpassword formControlName="password"
+                                                        class="form-control" id="validationCustom3" type="password">
+                                                    <small *ngIf="editMode">Leave blank if you don't want to change
+                                                        password.</small>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('profileForm','password','required')">
+                                                        This field is required.
+                                                    </div>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('profileForm','password','minlength')">
+                                                        Password must contain minimum of 6 character.
+                                                    </div>
+                                                </div>
+
+                                                <div class="ml-1 form-group row pt-0">
+                                                    <label class="ml-4 col-md-1 col-form-label"></label>
+                                                    <div class="upload-btn-wrapper btn-dark"
+                                                        style="border-radius: 10px;padding: 20px 16px 20px 7px;background-color: #04364e;">
+                                                        <img src="assets/images/file-icons/icon-file.svg" width="40px"
+                                                            height="20px"> <label
+                                                            style="font-size: 12px;">Signature</label>
+                                                        <input type="file" formControlName="signature"
+                                                            (change)="onFileChange($event,'personalForm','signature')" />
+                                                           
+                                                        </div>
+                                                    <br>
+
+                                                </div>
+                                                <ng-container
+                                                *ngIf="employee && employee.signature && signature != 'deleted'" >
+                                                <small class="sign-vd"><a href="{{ employee.signature }}" target="_blank"
+                                                        rel="noopener noreferrer">View</a></small>&nbsp;&nbsp;<small class="attachment-delete "
+                                                    (click)="deleteFileFromForm('signature')" style="opacity:0.6;color: #ffffff;">Delete</small>
+                                            </ng-container>
+                                               
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="upload-btn-wrapper  up-img">
+                                                    <label for="photoFile" style="opacity: 1 !important;">
+                                                        <img class="img-fluid"
+                                                            [src]="profilePhotoPreview ? profilePhotoPreview : 'assets/images/icon-image-upload.svg'"
+                                                            width="50%">
+                                                        <!-- <img src="assets/images/file-icons/icon-image-upload.svg" width="20px" height="20px" > -->
+                                                        <input type="file" formControlName="photo"
+                                                            (change)="onFileChange($event,'personalForm','photo')"
+                                                            id="photoFile" />
+                                                        <label for="photoFile" class="ml-3 mt-1"
+                                                            style="margin: 0 60px;padding-left: 50px;">Add Photo</label>
+                                                    </label>
+                                                </div><br>
+                                                <!-- <div class="avatar-upload">
+                                                    <div class="  avatar-edit">
+                                                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                                        <label for="imageUpload"></label>
+                                                    </div>
+                                                    <div class="avatar-preview">
+                                                        <div id="imagePreview" style="background-image: url(assets/images/avatar.jfif);">
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+                                                <div class=" margins">
+                                                    <div class="form-group">
+                                                        <label for="validationCustom2">Gender *</label>
+                                                        <select #gender class="form-control pt-0" id="validationCustom2"
+                                                            formControlName="gender">
+                                                            <option value="male">Male</option>
+                                                            <option value="female">Female</option>
+                                                            <option value="other">Others</option>
+                                                        </select>
+                                                        <div class="invalid-feedback ifeed" style="display: block;"
+                                                            *ngIf="isControlHasError('profileForm','gender','required')">
+                                                            This field is required.
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class=" form-group">
+                                                        <label for="validationCustom2">
+                                                            Designation *</label>
+                                                        <input #designation formControlName="designation"
+                                                            class="form-control" id="validationCustom2" type="text">
+                                                        <div class="invalid-feedback ifeed" style="display: block;"
+                                                            *ngIf="isControlHasError('profileForm','designation','required')">
+                                                            This field is required.
+                                                        </div>
+                                                    </div>
+
+                                                    <div class=" form-group">
+                                                        <label for="validationCustom1">
+                                                            Work Location *</label>
+                                                        <input #worklocation formControlName="workLocation"
+                                                            class="form-control" id="validationCustom1" type="text">
+                                                        <div class="invalid-feedback ifeed" style="display: block;"
+                                                            *ngIf="isControlHasError('profileForm','workLocation','required')">
+                                                            This field is required.
+                                                        </div>
+                                                    </div>
+
+                                                    <div class=" form-group">
+                                                        <label for="validationCustom1">
+                                                            Contact Number *</label>
+                                                        <input #contactnumber2 formControlName="contactNumber"
+                                                            class="form-control" id="validationCustom1" type="text">
+                                                        <div class="invalid-feedback ifeed" style="display: block;"
+                                                            *ngIf="isControlHasError('profileForm','contactNumber','required')">
+                                                            This field is required.
+                                                        </div>
+                                                        <div class="invalid-feedback ifeed" style="display: block;"
+                                                            *ngIf="isControlHasError('profileForm','contactNumber','maxlength') || isControlHasError('profileForm','contactNumber','minlength') || isControlHasError('profileForm','contactNumber','pattern')">
+                                                            Invalid Phone number.
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4 row">
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-4 text-center">
+                                                <button type="button" style="margin: 0 auto;display: block; width: 70%"
+                                                    (click)="changeTab(t,'personal')"
+                                                    class="btn btn-dark btn-dark-rounded">Next</button>
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab title="Personal" id="personal">
+                            <ng-template ngbTabContent>
+                                <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+                                    <form [formGroup]="personalForm" class="needs-validation user-add Personal-div"
+                                        novalidate>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="validationCustom0">Father Name</label>
+                                                    <input #fathername formControlName="fatherName" class="form-control"
+                                                        id="validationCustom0" type="text">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('personalForm','fatherName','required')">
+                                                        This field is required.
+                                                    </div>
+                                                </div>
+
+                                                <div class=" form-group">
+                                                    <label for="validationCustom2">
+                                                        Personal Email</label>
+                                                    <input #personalemail formControlName="personalEmail"
+                                                        class="form-control" id="validationCustom2" type="text">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('personalForm','personalEmail','required')">
+                                                        This field is required.
+                                                    </div>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('personalForm','personalEmail','email')">
+                                                        Invalid email.
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="validationCustom2">
+                                                        Pan No</label>
+                                                    <input #panno formControlName="panNo" class="form-control"
+                                                        id="validationCustom2" type="text">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('personalForm','panNo','required')">
+                                                        This field is required.
+                                                    </div>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="(isControlHasError('personalForm','panNo','minlength') || isControlHasError('personalForm','panNo','maxlength') )">
+                                                        Invalid Pan No.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+
+                                                <div class="form-group">
+                                                    <label for="validationCustom1"> Blood Group</label>
+                                                    <input #bloodgroup formControlName="bloodGroup" class="form-control"
+                                                        id="validationCustom1" type="text">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('personalForm','bloodGroup','required')">
+                                                        This field is required.
+                                                    </div> 
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="validationCustom2">
+                                                        Pincode</label>
+                                                    <input #pincode formControlName="pinCode" class="form-control"
+                                                        id="validationCustom3" type="text">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('personalForm','pinCode','required')">
+                                                        This field is required.
+                                                    </div>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="(isControlHasError('personalForm','pinCode','minlength') || isControlHasError('personalForm','pinCode','maxlength') || isControlHasError('personalForm','pinCode','pattern'))">
+                                                        Invalid Pin Code.
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="validationCustom3">
+                                                        Aadhar No</label>
+                                                    <input #aadharno formControlName="aadharNo" class="form-control"
+                                                        id="validationCustom3" type="text">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('personalForm','aadharNo','required')">
+                                                        This field is required.
+                                                    </div>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="(isControlHasError('personalForm','aadharNo','minlength') || isControlHasError('personalForm','aadharNo','maxlength') || isControlHasError('personalForm','aadharNo','pattern'))">
+                                                        Invalid Aadhar No.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label for="validationCustom1">
+                                                        Address</label>
+                                                    <textarea #address formControlName="address"
+                                                        class="add-tit form-control" placeholder="Type Here...."
+                                                        rows="4"></textarea>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('personalForm','address','required')">
+                                                        This field is required.
+                                                    </div>
+                                                </div>
+
+                                                <div class="pl-0 row align">
+                                                    <div class="col-md-6 pl-0">
+                                                        <div class="form-group">
+                                                            <label for="validationCustom4">
+                                                                Emergency No</label>
+                                                            <input #emergencyno formControlName="emergencyNumber"
+                                                                class="form-control" id="validationCustom4" type="text">
+                                                            <div class="invalid-feedback ifeed" style="display: block;"
+                                                                *ngIf="isControlHasError('personalForm','emergencyNumber','required')">
+                                                                This field is required.
+                                                            </div>
+                                                            <div class="invalid-feedback ifeed" style="display: block;"
+                                                                *ngIf="isControlHasError('personalForm','emergencyNumber','pattern') || isControlHasError('personalForm','emergencyNumber','minlength') || isControlHasError('personalForm','emergencyNumber','maxlength')">
+                                                                Invalid Phone number.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="validationCustom4">
+                                                                Contact Name</label>
+                                                            <input #contactname formControlName="contactName"
+                                                                class="form-control" id="validationCustom4" type="text">
+                                                            <div class="invalid-feedback ifeed" style="display: block;"
+                                                                *ngIf="isControlHasError('personalForm','contactName','required')">
+                                                                This field is required.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br><br>
+                                        <div class="row image_uploading">
+                                            <div class="col-md-12 ">
+                                                <!-- <div class="input-group upload-btn-wrapper ">
+                                                        <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark inverse-dark-rounded" value="Add Address Proof" >Add Address Proof</button>
+                                                            <img src="assets/images/file-icons/icon-add-circle.svg" width="10%" height="10%" style="margin-right:10px;"> <input type="text" class="form-control file-upload-info" disabled="" placeholder="Add Address Proof">
+                                                  
+                                                        <input type="file" name="myfile" />
+                                                    </div> -->
+                                                <div class="fake-input upload-btn-wrapper ">
+                                                    <input #aadhar type="text" class="form-upload"
+                                                        placeholder="Add Aadhar" />
+                                                    <img src="assets/images/file-icons/icon-add-circle.svg" width=20 />
+                                                    <input type="file" formControlName="attachmentAaadhar"
+                                                        (change)="onFileChange($event,'personalForm','attachmentAdhaar')" />
+                                                    <ng-container
+                                                        *ngIf="employee && employee.personal.aadhar && attachmentAdhaar != 'deleted'">
+                                                        <small *ngIf="employee && employee.personal.aadhar"><a
+                                                                href="{{ employee.personal.aadhar }}" target="_blank"
+                                                                rel="noopener noreferrer">View</a></small>
+                                                        <small class="attachment-delete ml-3"
+                                                            (click)="deleteFileFromForm('attachmentAaadhar')" style="opacity:0.6;color: #ffffff;">Delete</small>
+                                                    </ng-container>
+                                                </div>
+                                                <div class="fake-input upload-btn-wrapper">
+                                                    <input #employeeidcard type="text" class="form-upload"
+                                                        placeholder="Add EmployeeIDCard" />
+                                                    <img src="assets/images/file-icons/icon-add-circle.svg" width=20 />
+                                                    <input type="file" formControlName="attachmentEmployeeId"
+                                                        (change)="onFileChange($event,'personalForm','attachmentEmployeeId')" />
+                                                    <!-- <small *ngIf="employee && employee.personal.employeeIdCard"><a
+                                                            href="{{ employee.personal.employeeIdCard }}"
+                                                            target="_blank" rel="noopener noreferrer">View Current
+                                                            EmployeeIDCard</a></small> -->
+
+                                                    <ng-container
+                                                        *ngIf="employee && employee.personal.employeeIdCard && attachmentEmployeeId != 'deleted'">
+                                                        <small *ngIf="employee && employee.personal.employeeIdCard"><a
+                                                                href="{{ employee.personal.employeeIdCard }}"
+                                                                target="_blank"
+                                                                rel="noopener noreferrer">View</a></small>
+                                                        <small class="attachment-delete ml-3"
+                                                            (click)="deleteFileFromForm('attachmentEmployeeId')" style="opacity:0.6;color: #ffffff;">Delete</small>
+                                                    </ng-container>
+                                                </div>
+                                                <div class="fake-input upload-btn-wrapper">
+                                                    <input type="text" class="form-upload"
+                                                        placeholder="Add Offer Letter" />
+                                                    <img src="assets/images/file-icons/icon-add-circle.svg" width=20 />
+                                                    <input type="file" formControlName="attachmentOfferLetter"
+                                                        (change)="onFileChange($event,'personalForm','attachmentOfferLetter')" />
+                                                    <!-- <small *ngIf="employee && employee.personal.offerLetter"><a
+                                                            href="{{ employee.personal.offerLetter }}" target="_blank"
+                                                            rel="noopener noreferrer">View Current Offer
+                                                            Letter</a></small> -->
+
+                                                    <ng-container
+                                                        *ngIf="employee && employee.personal.offerLetter && attachmentOfferLetter != 'deleted'">
+                                                        <small><a href="{{ employee.personal.offerLetter }}"
+                                                                target="_blank"
+                                                                rel="noopener noreferrer">View</a></small>
+                                                        <small class="attachment-delete ml-3"
+                                                            (click)="deleteFileFromForm('attachmentOfferLetter')" style="opacity:0.6;color: #ffffff;">Delete</small>
+                                                    </ng-container>
+                                                </div>
+                                                <div class="fake-input upload-btn-wrapper">
+                                                    <input type="text" class="form-upload" placeholder="Add Pan Card" />
+                                                    <img src="assets/images/file-icons/icon-add-circle.svg" width=20 />
+                                                    <input type="file" formControlName="attachmentPanCard"
+                                                        (change)="onFileChange($event,'personalForm','attachmentPanCard')" />
+                                                    <!-- <small *ngIf="employee && employee.personal.panCard"><a
+                                                            href="{{ employee.personal.panCard }}" target="_blank"
+                                                            rel="noopener noreferrer">View Current Pan Card</a></small> -->
+
+                                                    <ng-container
+                                                        *ngIf="employee && employee.personal.panCard && attachmentPanCard != 'deleted'">
+                                                        <small><a href="{{ employee.personal.panCard }}" target="_blank"
+                                                                rel="noopener noreferrer">View</a></small>
+                                                        <small class="attachment-delete ml-3"
+                                                            (click)="deleteFileFromForm('attachmentPanCard')" style="opacity:0.6;color: #ffffff;">Delete</small>
+                                                    </ng-container>
+                                                </div>
+                                                <div class="fake-input upload-btn-wrapper">
+                                                    <input type="text" class="form-upload"
+                                                        placeholder="Add Pass Book" />
+                                                    <img src="assets/images/file-icons/icon-add-circle.svg" width=20 />
+                                                    <input type="file" formControlName="attachmentPassbook"
+                                                        (change)="onFileChange($event,'personalForm','attachmentPassBook')" />
+                                                    <!-- <small *ngIf="employee && employee.personal.passbook"><a
+                                                            href="{{ employee.personal.passbook }}" target="_blank"
+                                                            rel="noopener noreferrer">View Pass Book</a></small> -->
+
+                                                    <ng-container
+                                                        *ngIf="employee && employee.personal.passbook && attachmentPassBook != 'deleted'">
+                                                        <small><a href="{{ employee.personal.passbook }}"
+                                                                target="_blank"
+                                                                rel="noopener noreferrer">View</a></small>
+                                                        <small class="attachment-delete ml-3"
+                                                            (click)="deleteFileFromForm('attachmentPassBook')" style="opacity:0.6;color: #ffffff;">Delete</small>
+                                                    </ng-container>
+                                                </div>
+
+                                                <div class="fake-input upload-btn-wrapper" style="width: 129px;">
+                                                    <input type="text" class="form-upload" placeholder="Add" />
+                                                    <img src="assets/images/file-icons/icon-add-circle.svg" width=20 />
+                                                    <input type="file" formControlName="attachmentOther"
+                                                        (change)="onFileChange($event,'personalForm','attachmentOther')" />
+                                                    <!-- <small *ngIf="employee && employee.personal.others"><a
+                                                            href="{{ employee.personal.others }}" target="_blank"
+                                                            rel="noopener noreferrer">View&nbsp;Current&nbsp;Attachment</a></small> -->
+
+                                                    <ng-container
+                                                        *ngIf="employee && employee.personal.others && attachmentOther != 'deleted'">
+                                                        <small><a href="{{ employee.personal.others }}" target="_blank"
+                                                                rel="noopener noreferrer">View</a></small>
+                                                        <small class="attachment-delete ml-3"
+                                                            (click)="deleteFileFromForm('attachmentOther')" style="opacity:0.6;color: #ffffff;">Delete</small>
+                                                    </ng-container>
+                                                </div>
+
+                                            </div>
+
+
+
+                                        </div>
+
+                                        <div class="mt-3 row">
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-4 text-center">
+                                                <button style="width: 70%;margin: 0 auto;display: block;" type="button"
+                                                    (click)="changeTab(t,'paymentAndSalary')"
+                                                    class="btn btn-dark btn-dark-rounded">Next</button>
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab title="Payment & Salary" id="paymentAndSalary">
+                            <ng-template ngbTabContent>
+                                <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+                                    <form [formGroup]="paymentAndSalaryForm"
+                                        class="needs-validation user-add Personal-div" novalidate>
+                                        <div class="ml-1 row">
+                                            <div class="col-md-3">
+                                                <div class="form-group row">
+                                                    <label class="">Annual CTC</label>
+                                                    <input formControlName="annualCtc" #annualctc type="text"
+                                                        class="form-control">
+                                                    <div class="invalid-feedback " style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','annualCtc','required')">
+                                                        This field is required.
+                                                    </div>
+                                                    <div class="invalid-feedback " style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','annualCtc','pattern')">
+                                                        Invalid Value.
+                                                    </div>
+                                                    <div class="invalid-feedback " style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','annualCtc','maxLength')">
+                                                        Oops!, The Value is too large.
+                                                    </div>
+                                                </div>
+                                            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <div class="col-md-3">
+                                                <div class="form-group row">
+                                                    <label class="">Monthly CTC</label>
+                                                    <input formControlName="monthlyCtc" #monthlyctc type="text"
+                                                        class="form-control">
+                                                    <div class="invalid-feedback " style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','monthlyCtc','required')">
+                                                        This field is required.
+                                                    </div>
+                                                    <div class="invalid-feedback " style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','monthlyCtc','pattern')">
+                                                        Invalid Value.
+                                                    </div>
+                                                    <div class="invalid-feedback " style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','monthlyCtc','maxLength')">
+                                                        Oops!, The Value is too large.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-md-12 outer">
+                                                <label class="ml-2">Salary Components</label><br><br>
+                                                <div class="col-md-6 add-blue">
+                                                    <h4 class="card-header">Addings</h4>
+                                                    <div class="form-group row pr-4">
+                                                        <label for="exampleInputEmail2"
+                                                            class="col-sm-6 col-form-label whiteb">Basic Salary</label>
+                                                        <div class="col-sm-6">
+                                                            <input formControlName="basicSalary" #basicsalary
+                                                                type="text" class="form-control" id="boxsize">
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','basicSalary','required')">
+                                                                This field is required.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','basicSalary','pattern')">
+                                                                Invalid Value.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','basicSalary','maxLength')">
+                                                                Oops!, The Value is too large.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row pr-4">
+                                                        <label for="exampleInputEmail2"
+                                                            class="col-sm-6 col-form-label whiteb">DA</label>
+                                                        <div class="col-sm-6">
+                                                            <input formControlName="da" #da type="text"
+                                                                class="form-control" id="boxsize">
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','da','required')">
+                                                                This field is required.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','da','pattern')">
+                                                                Invalid Value.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','da','maxLength')">
+                                                                Oops!, The Value is too large.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row pr-4">
+                                                        <label for="exampleInputMobile"
+                                                            class="col-sm-6 col-form-label whiteb">HRA</label>
+                                                        <div class="col-sm-6">
+                                                            <input formControlName="hra" #hra type="text"
+                                                                class="form-control" id="boxsize">
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','hra','required')">
+                                                                This field is required.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','hra','pattern')">
+                                                                Invalid Value.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','hra','maxLength')">
+                                                                Oops!, The Value is too large.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row pr-4">
+                                                        <label for="exampleInputMobile"
+                                                            class="col-sm-6 col-form-label whiteb">TA</label>
+                                                        <div class="col-sm-6">
+                                                            <input formControlName="ta" #ta type="text"
+                                                                class="form-control" id="boxsize">
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','ta','required')">
+                                                                This field is required.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','ta','pattern')">
+                                                                Invalid Value.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','ta','maxLength')">
+                                                                Oops!, The Value is too large.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row pr-4">
+                                                        <label for="exampleInputMobile"
+                                                            class="col-sm-6 col-form-label whiteb">Food Coupon</label>
+                                                        <div class="col-sm-6">
+                                                            <input formControlName="foodCoupon" #foodcoupon type="text"
+                                                                class="form-control" id="boxsize">
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','foodCoupon','required')">
+                                                                This field is required.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','foodCoupon','pattern')">
+                                                                Invalid Value.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','foodCoupon','maxLength')">
+                                                                Oops!, The Value is too large.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row pr-4">
+                                                        <label for="exampleInputMobile"
+                                                            class="col-sm-6 col-form-label whiteb">Bonus</label>
+                                                        <div class="col-sm-6">
+                                                            <input formControlName="bonus" #bonus type="text"
+                                                                class="form-control" id="boxsize">
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','bonus','required')">
+                                                                This field is required.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','bonus','pattern')">
+                                                                Invalid Value.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','bonus','maxLength')">
+                                                                Oops!, The Value is too large.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row mb-0 blue">
+                                                        <label for="exampleInputMobile"
+                                                            class="col-sm-7 col-form-label ">CTC</label>
+                                                        <div class="col-sm-4 pr-0">
+                                                            <input formControlName="ctc" #ctc type="text"
+                                                                class="form-control " id="boxsize">
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','ctc','required')">
+                                                                This field is required.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','ctc','pattern')">
+                                                                Invalid Value.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','ctc','maxLength')">
+                                                                Oops!, The Value is too large.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="col-md-6" style="float: left;background: #315b71;
+                                                    padding: 0 14px;border-radius: 0 15px 15px 15px; overflow:hidden; ">
+                                                    <h4 class="card-header" style="  border-radius: 0px 15px 3px 3px;">
+                                                        Deductions</h4>
+                                                    <div class="form-group row pr-4">
+                                                        <label for="exampleInputUsername2"
+                                                            class="col-sm-6 col-form-label whiteb">HRA Advance
+                                                            Paid</label>
+                                                        <div class="col-sm-6">
+                                                            <input formControlName="hraAdvancePaid" #hraadvancepaid
+                                                                type="text" class="form-control" id="boxsize">
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','hraAdvancePaid','required')">
+                                                                This field is required.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','hraAdvancePaid','pattern')">
+                                                                Invalid Value.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','hraAdvancePaid','maxLength')">
+                                                                Oops!, The Value is too large.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row pr-4">
+                                                        <label for="exampleInputEmail2"
+                                                            class="col-sm-6 col-form-label whiteb">Food Coupon Advance
+                                                            Paid</label>
+                                                        <div class="col-sm-6">
+                                                            <input formControlName="foodCouponAdvancePaid"
+                                                                #foodcouponadvpaid type="text" class="form-control"
+                                                                id="boxsize">
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','foodCouponAdvancePaid','required')">
+                                                                This field is required.
+                                                            </div>
+                                                            <div class="invalid-feedback" style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','foodCouponAdvancePaid','pattern')">
+                                                                Invalid Value.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','foodCouponAdvancePaid','maxLength')">
+                                                                Oops!, The Value is too large.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row pr-4">
+                                                        <label for="exampleInputMobile"
+                                                            class="col-sm-6 col-form-label whiteb">PF</label>
+                                                        <div class="col-sm-6">
+                                                            <input formControlName="pf" #pf type="text"
+                                                                class="form-control" id="boxsize">
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','pf','required')">
+                                                                This field is required.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','pf','pattern')">
+                                                                Invalid Value.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','pf','maxLength')">
+                                                                Oops!, The Value is too large.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row pr-4">
+                                                        <label for="exampleInputMobile"
+                                                            class="col-sm-6 col-form-label whiteb">EBI</label>
+                                                        <div class="col-sm-6">
+                                                            <input formControlName="ebi" #ebi type="text"
+                                                                class="form-control" id="boxsize">
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','ebi','required')">
+                                                                This field is required.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','ebi','pattern')">
+                                                                Invalid Value.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','ebi','maxLength')">
+                                                                Oops!, The Value is too large.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row pr-4" style="visibility: hidden;">
+                                                        <label for="" class="col-sm-6 col-form-label whiteb"></label>
+                                                        <div class="col-sm-6">
+                                                            <input formControlName="ebi" #ebi type="text"
+                                                                class="form-control" id="" disabled
+                                                                style="border-color: #315b71;">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row pr-4" style="visibility: hidden;">
+                                                        <label for="exampleInputMobile"
+                                                            class="col-sm-6 col-form-label whiteb"></label>
+                                                        <div class="col-sm-6">
+                                                            <input formControlName="" #ebi type="text"
+                                                                class="form-control" id="" disabled style="border:0px;">
+
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="form-group row">
+                                                        <label for="exampleInputMobile"
+                                                            class="col-sm-6 col-form-label whiteb">HRA Advance
+                                                            Paid</label>
+                                                        <div class="col-sm-6">
+                                                            <input formControlName="totalDeduction" type="text" class="form-control"
+                                                                id="boxsize">
+                                                            <div class="invalid-feedback" style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','totalDeduction','required')">
+                                                                This field is required.
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+                                                    <!-- <div class="form-group row">
+                                                        <label for="exampleInputMobile"
+                                                            class="col-sm-6 col-form-label whiteb">HRA Advance
+                                                            Paid</label>
+                                                        <div class="col-sm-6">
+                                                            <input formControlName="contactNumber" type="text" class="form-control"
+                                                                id="boxsize">
+                                                            <div class="invalid-feedback" style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','contactNumber','required')">
+                                                                This field is required.
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+
+                                                    <div class="form-group row mt-3 mb-0 ble mrg ">
+                                                        <label for="exampleInputMobile"
+                                                            class="col-sm-7 col-form-label whiteb">Total
+                                                            Deduction</label>
+                                                        <div class="col-sm-4 pr-0">
+                                                            <input formControlName="totalDeduction" #totaldeduction
+                                                                type="text" class="form-control" id="boxsize">
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','totalDeduction','required')">
+                                                                This field is required.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','totalDeduction','pattern')">
+                                                                Invalid Value.
+                                                            </div>
+                                                            <div class="invalid-feedback " style="display: block;"
+                                                                *ngIf="isControlHasError('paymentAndSalaryForm','totalDeduction','maxLength')">
+                                                                Oops!, The Value is too large.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 row">
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label class="">Salary Date</label>
+                                                    <input formControlName="salaryDate" #salarydate type="text"
+                                                        class="form-control">
+                                                    <div class="invalid-feedback" style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','salaryDate','required')">
+                                                        This field is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label>Gross pay</label>
+                                                    <input formControlName="grossPay" #grosspay type="text"
+                                                        class="form-control">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','grossPay','required')">
+                                                        This field is required.
+                                                    </div>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','grossPay','pattern')">
+                                                        Invalid Value.
+                                                    </div>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','grossPay','maxLength')">
+                                                        Oops!, The Value is too large.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label>Net pay</label>
+                                                    <input formControlName="netPay" #netpay type="text"
+                                                        class="form-control">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','netPay','required')">
+                                                        This field is required.
+                                                    </div>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','netPay','pattern')">
+                                                        Invalid Value.
+                                                    </div>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','netPay','maxLength')">
+                                                        Oops!, The Value is too large.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3"></div>
+                                        </div>
+                                        <p style="color: white;opacity: 0.5;">Bank Details</p>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label>Account Number</label>
+                                                    <input formControlName="accountNumber" #accountnumber type="text"
+                                                        class="form-control">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','accountNumber','required')">
+                                                        This field is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label>Confirm Account Number</label>
+                                                    <input formControlName="confirmAccountNumber" #confirmaccountnumber
+                                                        type="text" class="form-control">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','confirmAccountNumber','required')">
+                                                        This field is required.
+                                                    </div>
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="!isControlHasError('paymentAndSalaryForm','confirmAccountNumber','required') && (confirmaccountnumber.value) && (accountnumber.value != confirmaccountnumber.value) ">
+                                                        Account Number and Confirm Account Number must be match.
+                                                    </div>
+                                                    <!-- <div class="invalid-feedback" style="display: block;"
+                                                        >
+                                                        {{ accountnumber.value }}
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label>Account Holder Name</label>
+                                                    <input formControlName="accountHolderName" #accountholdername
+                                                        type="text" class="form-control">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','accountHolderName','required')">
+                                                        This field is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3"></div>
+                                        </div>
+                                        <div class="mt-2 row">
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label>IFSC Code</label>
+                                                    <input formControlName="ifscCode" #ifsccode type="text"
+                                                        class="form-control">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','ifscCode','required')">
+                                                        This field is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label>Branch Name</label>
+                                                    <input formControlName="branchName" #branchname type="text"
+                                                        class="form-control">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','branchName','required')">
+                                                        This field is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label>MICR Code</label>
+                                                    <input formControlName="micrCode" #micrcode type="text"
+                                                        class="form-control">
+                                                    <div class="invalid-feedback ifeed" style="display: block;"
+                                                        *ngIf="isControlHasError('paymentAndSalaryForm','micrCode','required')">
+                                                        This field is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 row">
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-4 text-center">
+                                                <button style="width: 70%;margin: 0 auto;display: block;" type="button"
+                                                    (click)="changeTab(t,'permissions')"
+                                                    class="btn btn-dark btn-dark-rounded">Next</button>
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab title="Permissions" id="permissions">
+                            <!-- <ng-template ngbTabTitle>Permission -->
+                            <ng-template ngbTabContent>
+                                <!-- {{ privileges | json }} -->
+                                <form class="Permission-div" novalidate="">
+                                    <table class="table table-borderless opac-table"
+                                        style="color: white;font-weight: lighter;font-family: Poppins;">
+                                        <th></th>
+                                        <th class="text-center">All</th>
+                                        <th class="text-center">View Only</th>
+                                        <th class="text-center">Edit</th>
+                                        <tbody>
+                                            <!-- <ng-container *ngFor="let privilege of privileges"> -->
+                                            <!-- <tr>
+                                                        <td>
+                                                            <h5 style="color:#00B4FF">{{privilege.name}}</h5>
+                                                        </td>
+                                                    </tr> -->
+                                            <tr *ngFor="let privilege of privileges">
+                                                <td>
+                                                    <h5>{{privilege.name}} {{privilege.subOf != 'none' ?
+                                                        "("+privilege.subOf+")" : "" }}</h5>
+                                                </td>
+                                                <td class="text-center">
+                                                    <!-- <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="customSwitches1" checked>
+                                                                            <label class="custom-control-label" for="customSwitches1"></label>
+                                                                        </div> -->
+                                                    <div>
+                                                        <input type="checkbox"
+                                                            name="{{privilege.head}}-{{privilege.name}}all"
+                                                            class="toggle-switch oversize" [(ngModel)]="privilege.all"
+                                                            (change)="onChangePermission(privilege,'all')">
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <input class="radio_animated"
+                                                        name="{{privilege.head}}-{{privilege.name}}View" type="checkbox"
+                                                        [(ngModel)]="privilege.view"
+                                                        (change)="onChangePermission(privilege,'view')">
+                                                </td>
+                                                <td class="text-center">
+                                                    <input class="radio_animated r-check" type="checkbox"
+                                                        name="{{privilege.head}}-{{privilege.name}}Edit"
+                                                        [(ngModel)]="privilege.edit"
+                                                        (change)="onChangePermission(privilege,'edit')">
+                                                </td>
+                                            </tr>
+                                            <!-- </ng-container> -->
+                                        </tbody>
+                                    </table>
+
+                                    <div class="mt-3 row">
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4 text-center">
+                                            <button style="width: 70%; margin: 0 auto;display: block;" type="button"
+                                                class="btn btn-dark btn-dark-rounded"
+                                                (click)="changeTab(t,'notes')">Next</button>
+                                        </div>
+                                        <div class="col-md-4"></div>
+                                    </div>
+
+                                </form>
+
+                            </ng-template>
+                            <!-- </ng-template> -->
+                        </ngb-tab>
+
+                        <ngb-tab title="Notes" id="notes">
+                            <ng-template ngbTabContent>
+                                <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab" style="float: right; width: 70%;">
+
+                                    <form [formGroup]="noteForm" class="needs-validation user-add Personal-div"
+                                        novalidate>
+                                        <ng-container *ngIf="employee">
+                                            <ng-container *ngFor="let note of employee.notes">
+                                                <p class="d-block" for="edo-ani3" style="opacity: 1;">{{ note.note.noted_by }}<span
+                                                        style="float: right;opacity: 1;">{{ note.note.date }}</span></p><br>
+                                                <div style="color: white;opacity: 0.6;">
+                                                    {{ note.note.content }}
+                                                </div>
+
+                                                <hr>
+                                            </ng-container>
+                                        </ng-container>
+
+                                        <div style="color: white;opacity: 0.6;">
+                                            <textarea formControlName="note" #notes class="form-control"
+                                                placeholder="Type Here...." rows="4"></textarea>
+                                        </div>
+                                        <div class="invalid-feedback ifeed" style="display: block;"
+                                            *ngIf="isControlHasError('noteForm','note','required')">
+                                            This field is required.
+                                        </div>
+
+                                        <div class="mt-3 row">
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-4" *ngIf="!editMode">
+                                                <button style="width: 70%;margin: 0 auto;display: block;" type="button"
+                                                    class="btn btn-dark btn-dark-rounded" (click)="save(t)"
+                                                    [disabled]="loading">
+                                                    Submit
+                                                    <div class="spinner-border spinner-border-sm  text-light"
+                                                        role="status" *ngIf="loading">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+
+                                                </button>
+                                            </div>
+
+                                            <div class="col-md-4" *ngIf="editMode">
+                                                <button style="width: 70%;margin: 0 auto;display: block;" type="button"
+                                                    class="btn btn-dark btn-dark-rounded" (click)="update(t)"
+                                                    [disabled]="loading">
+                                                    Update
+
+                                                    <div class="spinner-border spinner-border-sm  text-light"
+                                                        role="status" *ngIf="loading">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+
+                                                </button>
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                        </div>
+
+
+                                    </form>
+                                </div>
+
+
+                            </ng-template>
+                        </ngb-tab>
+
+                    </ngb-tabset>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends--> 

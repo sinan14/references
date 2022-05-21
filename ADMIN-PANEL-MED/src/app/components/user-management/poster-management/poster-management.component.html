@@ -1,0 +1,141 @@
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <div class="card-body tab2-card">
+       
+
+                <div class="mt-4 row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="post_items" >    
+                                            <h6>Banner no : #65747<span style="float:right;"><i class="fa fa-edit"></i> Edit</span></h6>    
+                                            <img src="assets/images/dashboard/poster1.png" width="100%" >
+                                          
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="post_items" >
+                                            <h6>Banner no : #65747<span style="float:right;"><i class="fa fa-edit"></i> Edit</span></h6>
+                                            <img src="assets/images/dashboard/poster2.png" width="100%" >
+                                           
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="post_items"  data-toggle="modal" data-original-title="test"
+                            data-target="#uploadVedioexampleModal" (click)="open(content)">
+                                            <h6>Banner no : #65747<span style="float:right;"><i class="fa fa-edit"></i> Edit</span></h6>
+                                            <img src="assets/images/dashboard/poster1.png" width="100%" >
+                                           
+                            </div>
+                        </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="post_items" >    
+                                        <h6>Banner no : #65747<span style="float:right;"><i class="fa fa-edit"></i> Edit</span></h6>    
+                                        <img src="assets/images/dashboard/poster1.png" width="100%">
+                                      
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="post_items" >
+                                        <h6>Banner no : #65747<span style="float:right;"><i class="fa fa-edit"></i> Edit</span></h6>
+                                        <img src="assets/images/dashboard/poster2.png" width="100%">
+                                       
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="post_items" >
+                                        <h6>Banner no : #65747<span style="float:right;"><i class="fa fa-edit"></i> Edit</span></h6>
+                                        <img src="assets/images/dashboard/poster1.png" width="100%">
+                                       
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<ng-template #content let-modal>
+<div class="modal-header">
+    <h5 style="color: white;opacity: 0.5;" class="modal-title f-w-600" id="uploadVedioexampleModal"></h5>
+    <button style="color: white;opacity: 0.5;" type="button" class="close" aria-label="Close"
+        (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="image-data">
+                <div class="upload-btn-wrapper ">
+                    <i class="icon fa fa-upload"></i><br><small style="font-size: 10px;">Upload Banner</small>
+                    <input type="file" name="myfile" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-1 row">
+        <div class="col-md-6 ">
+            <h6 style="color: #fff;opacity: 0.5;font-weight: lighter;font-size: 10px;" for="validationCustom0" class="">Banner No : #52345</h6>
+        </div>
+        <div class="col-md-6 ">
+            <h6 style="color: #fff;opacity: 0.5;font-weight: lighter;font-size: 10px;" for="validationCustom0" class="">Banner Size : 350 x 750</h6>
+        </div>
+    </div>
+
+    <div class="mt-1 row">
+        <div class="col-md-6">
+            <label style="color: #fff;opacity: 0.5;font-weight: lighter;" for="validationCustom0" class="">Naviagtion</label>
+            <input type="text" class="form-control" />
+        </div>
+        <div class="col-md-5">
+            <label style="color: #fff;" for="validationCustom0" class="">Department</label>
+            <input type="text" class="form-control" />
+        </div>
+        <div class="col-md-1">
+            <label for="validationCustom0" class=""></label>
+            <label for="validationCustom0" class=""></label>
+            <label for="validationCustom0" class=""></label>
+            <label for="validationCustom0" class=""></label>
+            <h6><img src="assets/images/file-icons/icon-add-circle.svg" width="20px" height="20px" style="margin-top:16px;float:left;margin-left:-20px;"></h6>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+
+    <div class="mt-1 row">
+        <div class="col-md-5">
+            <label for="validationCustom0" class="">Product ID</label>
+            <input type="text" class="form-control" />
+        </div>
+        <div class="col-md-1">
+            <label for="validationCustom0" class=""></label>
+            <label for="validationCustom0" class=""></label>
+            <label for="validationCustom0" class=""></label>
+            <label for="validationCustom0" class=""></label>
+            <h6><img src="assets/images/file-icons/icon-add-circle.svg" width="20px" height="20px" style="margin-top:16px;float:left;margin-left:-20px;"></h6>
+        </div>
+        <div class="col-md-6">
+          <button style="margin:0;font-size:8px;line-height:14px;margin-top:25px;" type="submit" class="btn btn-dark btn-sm btn-dark-rounded">Disable Navigation</button>
+        </div>
+        
+    </div>
+
+</div>
+<div class="modal-footer">
+    <div class="row">
+        <div class="mr-4 col-md-4 "></div>
+        <div class="col-md-4">
+            <button style=" width: 170px;" type="button" class="btn btn-dark btn-dark-rounded">Upload</button>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+</ng-template>

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="social-icon">
+    <h4>Have a Friend who would love this ?</h4>
+    <ul>
+      <li>
+        <button [url]="currentURL" shareButton="facebook"  style="cursor: pointer;">
+          <img src="assets/img/coupon/f.png" />
+        </button>
+      </li>
+
+      <li>
+        <a><img src="assets/img/coupon/i.png" /></a>
+      </li>
+
+      <li>
+        <button [url]="currentURL" shareButton="twitter" style="cursor: pointer;">
+          <img src="assets/img/coupon/t.png" />
+        </button>
+      </li>
+
+      <li>
+        <a (click)="openWhatsApp()"><img src="assets/img/coupon/w.png" /></a>
+      </li>
+
+      <li style="display: none">
+        <a (click)="openWhatsappWeb()"><img src="assets/img/coupon/w.png" /></a>
+      </li>
+    </ul>
+  </div>
+</div>

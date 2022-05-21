@@ -1,0 +1,512 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="kendo_table">
+                <div class="card-body" style="background:transparent;font-weight: lighter;">
+                    <h6 style="margin-bottom: 4%;">Store Creation</h6>
+                    <div class="btn-popup pull-right">
+                        <button *ngIf="addFlag" type="button" class="btn btn-dark btn-inverse-dark" data-toggle="modal"
+                            data-original-title="test" data-target="#StoreCreationexampleModal"
+                            (click)="open(StoreCreationContent,'add','')"><img
+                                src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                style="margin-right:10px;">Add New</button>
+                    </div>
+
+                    <div class="table-responsive " *ngIf="disableTab('Store Creation')">
+                        <!-- <ng2-smart-table  [settings]="settings" [source]="vendors"
+                                    (edit)="editRow($event,StoreCreationContent,'edit')"></ng2-smart-table> -->
+
+
+                        <kendo-grid [kendoGridBinding]="LIST_ALL_STORE" [filterable]="true" [sortable]="true" [pageSize]="10"
+                        [skip]="skip" (pageChange)="pageChange($event)"
+                        [pageable]="true">
+
+                           
+
+
+
+                            <ng-template kendoGridToolbarTemplate>
+                                <!-- <kendo-datepicker
+                                            [min]="min"
+                                            [(ngModel)]="value"
+                                            #dateModel="ngModel"
+                                        ></kendo-datepicker> -->
+
+                                <div style="padding-left: 80%;">
+                                    <!-- <button  type="button"  kendoGridPDFCommand  class="btn btn-dark btn-excel-rounded">
+                                                <i class="fa fa-file-pdf-o"></i> Export to PDF</button> -->
+
+                                    &nbsp;&nbsp;&nbsp;<button type="button" kendoGridExcelCommand
+                                        class="btn btn-dark btn-inverse-dark" *ngIf="viewFlag">
+                                        <i class="fa fa-file-excel-o"></i>Download to Excel
+                                    </button>
+                                </div>
+                            </ng-template>
+
+                            <kendo-grid-column field="parent" title="Parent Store" width="30">
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell [showOperators]="false" [column]="column"
+                                        title="Parent Store" [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+                            </kendo-grid-column>
+
+                            <kendo-grid-column field="name" title="Store Name" width="30">
+
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell placeholder="search"
+                                        [showOperators]="false" [column]="column" title="Sl. No"
+                                        [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+
+                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                    <a style="text-decoration: underline;cursor: pointer;"
+                                        (click)="cellClickHandler(dataItem._id)">{{dataItem.name}}</a>
+                                    <!-- <kendo-grid-string-filter-cell
+                                                    placeholder="search"
+                                                    [showOperators]="false"
+                                                    [column]="column"
+                                                    title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                </ng-template>
+
+                            </kendo-grid-column>
+
+
+
+                            <kendo-grid-column field="email" title="Email ID" width="50">
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell [showOperators]="false" [column]="column"
+                                        title="Email ID" [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+                            </kendo-grid-column>
+
+                            <kendo-grid-column field="phone" title="Mobile Number" width="30">
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell [showOperators]="false" [column]="column"
+                                        title="Mobile Number" [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+                            </kendo-grid-column>
+
+                            <!-- <kendo-grid-column field="password" title="Password" width="30">
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell [showOperators]="false" [column]="column"
+                                        title="Parent Store" [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+                            </kendo-grid-column> -->
+                            <kendo-grid-command-column title="Action" width="30" class="text-center">
+                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                    <button type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal"
+                                        data-original-title="test" data-target="#StoreCreationexampleModal"
+                                        (click)="open(StoreCreationContent,'edit',dataItem._id)"
+                                        *ngIf="editFlag">Edit</button>
+
+                                    &nbsp;&nbsp; <input type="checkbox" class="toggle-switch oversize" id="toggle3"
+                                        checked [checked]="!dataItem.isDisabled"
+                                        (change)="Deactivate($event,dataItem._id)" *ngIf="editFlag">
+
+                                </ng-template>
+                            </kendo-grid-command-column>
+
+
+                            <kendo-grid-excel fileName="Store.xlsx"></kendo-grid-excel>
+                            <kendo-grid-pdf fileName="Products.pdf" [allPages]="true" paperSize="A4"
+                                [repeatHeaders]="true" [landscape]="true">
+                                <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm">
+                                </kendo-grid-pdf-margin>
+                                <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
+                                    <div class="page-template">
+                                        <div class="header">
+                                            <div style="float: right">
+                                                Page {{ pageNum }} of {{ totalPages }}
+                                            </div>
+                                            Multi-page grid with automatic page breaking
+                                        </div>
+                                        <div class="footer">Page {{ pageNum }} of {{ totalPages }}</div>
+                                    </div>
+                                </ng-template>
+                            </kendo-grid-pdf>
+
+
+                        </kendo-grid>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+<ng-template #StoreCreationContent let-modal>
+    <div *ngIf="update_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.5;" class="modal-title f-w-200" id="StoreCreationexampleModal">Update</h5>
+        <button style="color: white;opacity: 0.5;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div *ngIf="add_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.5;" class="modal-title f-w-200" id="StoreCreationexampleModal">Add</h5>
+        <button style="color: white;opacity: 0.5;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="Store_Creation_Form" class="needs-validation">
+
+            <div class="form-group row">
+                <div class="form-group mb-0 col-md-12">
+                    <label for="validationCustom02" class="mb-1">Parent Store</label>
+                    <div class="example-wrapper">
+                        <kendo-dropdownlist formControlName="parent" #list id="multiselect" class="form-control"
+                            [data]="STORE_DROPDOWN" textField="name" valueField="_id" [valuePrimitive]="true"
+                            [filterable]="false">
+                        </kendo-dropdownlist>
+                        <small for="parent" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['parent'].errors?.required && 
+                        (Store_Creation_Form.controls['parent'].dirty ||  
+                        Store_Creation_Form.controls['parent'].touched || 
+                        (Store_Creation_Form.controls['parent'].untouched  && attemptedSubmit ) )">
+                            Parent Store required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="form-group  col-md-12">
+                    <label for="validationCustom02" class="mb-1">Store Category</label>
+                    <div class="example-wrapper">
+                        <kendo-dropdownlist formControlName="category" #list id="multiselect" class="form-control"
+                            [data]="listStoreCategory" [filterable]="false" [valuePrimitive]="true">
+                        </kendo-dropdownlist>
+                        <small for="category" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['category'].errors?.required && 
+                        (Store_Creation_Form.controls['category'].dirty ||  
+                        Store_Creation_Form.controls['category'].touched || 
+                        (Store_Creation_Form.controls['category'].untouched  && attemptedSubmit ) )">
+                            Store Category required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="form-group col-md-12">
+                    <label for="validationCustom02" class="mb-1">Store Name</label>
+                    <input formControlName="name" class="form-control" id="validationCustom02" type="text">
+                    <small for="name" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['name'].errors?.required && 
+                        (Store_Creation_Form.controls['name'].dirty ||  
+                        Store_Creation_Form.controls['name'].touched || 
+                        (Store_Creation_Form.controls['name'].untouched  && attemptedSubmit ) )">
+                        Store Name required.
+                    </small>
+                    <!-- <small for="name" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['name'].errors?.pattern">
+                        Numbers Not Allowed
+                    </small> -->
+                    <small for="name" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['name'].errors?.minlength">
+                        Enter a valid Store Name
+                    </small>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="validationCustom02" class="mb-1">Email ID</label>
+                    <input formControlName="email" class="form-control" id="validationCustom02" type="text">
+                    <small for="email" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['email'].errors?.required && 
+                    (Store_Creation_Form.controls['email'].dirty ||  
+                    Store_Creation_Form.controls['email'].touched || 
+                    (Store_Creation_Form.controls['email'].untouched  && attemptedSubmit ) )">
+                        Email ID required.
+                    </small>
+                    <small for="email" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['email'].errors?.pattern">
+                        Enter Valid Email
+                    </small>
+                    <small for="email" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['email'].errors?.email">
+                        Email Invalid.
+                    </small>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="validationCustom02" class="mb-1">Mobile No</label>
+                    <input formControlName="phone" class="form-control" id="validationCustom02" type="text">
+                    <small for="phone" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['phone'].errors?.required && 
+                    (Store_Creation_Form.controls['phone'].dirty ||  
+                    Store_Creation_Form.controls['phone'].touched || 
+                    (Store_Creation_Form.controls['phone'].untouched  && attemptedSubmit ) )">
+                        Mobile No required.
+                    </small>
+                    <small for="phone" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['phone'].errors?.pattern">
+                        Numbers Only Allowed
+                    </small>
+                    <small for="phone" class="form-text text-danger" *ngIf="(Store_Creation_Form.controls['phone'].errors?.maxlength ||
+                            Store_Creation_Form.controls['phone'].errors?.minlength)">
+                        Numbers should be 10 digits
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="form-group row">
+                <div class="form-group mb-0 col-md-12">
+                    <label for="validationCustom02" class="mb-1">Address</label>
+                    <textarea formControlName="address" class="form-control" rows="3"></textarea>
+                    <small for="address" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['address'].errors?.required && 
+                    (Store_Creation_Form.controls['address'].dirty ||  
+                    Store_Creation_Form.controls['address'].touched || 
+                    (Store_Creation_Form.controls['address'].untouched  && attemptedSubmit ) )">
+                        Address required.
+                    </small>
+                    <small for="address" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['address'].errors?.minlength ">
+                        Enter Valid Address
+                    </small>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="form-group mb-0 col-md-6">
+                    <label for="validationCustom02" class="mb-1">Password</label>
+                    <input formControlName="password" class="form-control" id="validationCustom02" type="password">
+                    <small for="password" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['password'].errors?.required && 
+                    (Store_Creation_Form.controls['password'].dirty ||  
+                    Store_Creation_Form.controls['password'].touched || 
+                    (Store_Creation_Form.controls['password'].untouched  && attemptedSubmit ) )">
+                        Password required.
+                    </small>
+                    <small for="password" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['password'].errors?.minlength">
+                        Minimum 8 digits required
+                    </small>
+                </div>
+
+                <div class="form-group mb-0 col-md-6">
+                    <label for="validationCustom02" class="mb-1">Pincode</label>
+                    <input formControlName="pin" class="form-control" id="validationCustom02" type="text">
+                    <small for="pin" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['pin'].errors?.required && 
+                    (Store_Creation_Form.controls['pin'].dirty ||  
+                    Store_Creation_Form.controls['pin'].touched || 
+                    (Store_Creation_Form.controls['pin'].untouched  && attemptedSubmit ) )">
+                        Pincode required.
+                    </small>
+                    <small for="pin" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['pin'].errors?.pattern ">
+                        Numbers Only Allowed
+                    </small>
+                    <small for="pin" class="form-text text-danger" *ngIf="(Store_Creation_Form.controls['pin'].errors?.maxlength ||
+                    Store_Creation_Form.controls['pin'].errors?.minlength)">
+                        Pincode should be 6 digits
+                    </small>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <div class="form-group mb-0 col-md-6">
+                    <label for="validationCustom02" class="mb-1">State</label>
+                    <input formControlName="state" class="form-control" id="validationCustom02" type="text">
+                    <small for="state" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['state'].errors?.required && 
+                    (Store_Creation_Form.controls['state'].dirty ||  
+                    Store_Creation_Form.controls['state'].touched || 
+                    (Store_Creation_Form.controls['state'].untouched  && attemptedSubmit ) )">
+                        State required.
+                    </small>
+                    <small for="state" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['state'].errors?.pattern">
+                        Numbers Not Allowed
+                    </small>
+                    <small for="state" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['state'].errors?.minlength">
+                        Enter a valid State
+                    </small>
+                </div>
+
+                <div class="form-group mb-0 col-md-6">
+                    <label for="validationCustom02" class="mb-1">Country</label>
+                    <input formControlName="country" class="form-control" id="validationCustom02" type="text">
+                    <small for="country" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['country'].errors?.required && 
+                    (Store_Creation_Form.controls['country'].dirty ||  
+                    Store_Creation_Form.controls['country'].touched || 
+                    (Store_Creation_Form.controls['country'].untouched  && attemptedSubmit ) )">
+                        Country required.
+                    </small>
+                    <small for="country" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['country'].errors?.pattern">
+                        Numbers Not Allowed
+                    </small>
+                    <small for="country" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['country'].errors?.minlength">
+                        Enter a valid Country
+                    </small>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <div class="form-group mb-0 col-md-6">
+                    <label for="validationCustom02" class="mb-1">GST No.</label>
+                    <input formControlName="gst" class="form-control" id="validationCustom02" type="text">
+                    <small for="gst" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['gst'].errors?.required && 
+                    (Store_Creation_Form.controls['gst'].dirty ||  
+                    Store_Creation_Form.controls['gst'].touched || 
+                    (Store_Creation_Form.controls['gst'].untouched  && attemptedSubmit ) )">
+                        GST No. required.
+                    </small>
+                    <small for="gst" class="form-text text-danger" *ngIf="(Store_Creation_Form.controls['gst'].errors?.minlength || Store_Creation_Form.controls['gst'].errors?.maxlength) 
+                       ">
+                        Enter Valid GST No.
+                    </small>
+                </div>
+
+                <div class="form-group mb-0 col-md-6">
+                    <label for="validationCustom02" class="mb-1">Company Reg.No</label>
+                    <input formControlName="regNo" class="form-control" id="validationCustom02" type="text">
+                    <small for="regNo" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['regNo'].errors?.required && 
+                    (Store_Creation_Form.controls['regNo'].dirty ||  
+                    Store_Creation_Form.controls['regNo'].touched || 
+                    (Store_Creation_Form.controls['regNo'].untouched  && attemptedSubmit ) )">
+                        Company Reg.No required.
+                    </small>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <div class="form-group mb-0 col-md-6">
+                    <label for="validationCustom02" class="mb-1">Store Manager Name</label>
+                    <input formControlName="managerName" class="form-control" id="validationCustom02" type="text">
+                    <small for="managerName" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['managerName'].errors?.required && 
+                    (Store_Creation_Form.controls['managerName'].dirty ||  
+                    Store_Creation_Form.controls['managerName'].touched || 
+                    (Store_Creation_Form.controls['managerName'].untouched  && attemptedSubmit ) )">
+                        Store Manager Name required.
+                    </small>
+                    <!-- <small for="managerName" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['managerName'].errors?.pattern">
+                        Numbers Not Allowed
+                    </small> -->
+                    <small for="managerName" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['managerName'].errors?.minlength">
+                        Enter Valid Name
+                    </small>
+                </div>
+
+                <div class="form-group mb-0 col-md-6">
+                    <label for="validationCustom02" class="mb-1">Manager Contact Number</label>
+                    <input formControlName="managerPhone" class="form-control" id="validationCustom02" type="text">
+                    <small for="managerPhone" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['managerPhone'].errors?.required && 
+                    (Store_Creation_Form.controls['managerPhone'].dirty ||  
+                    Store_Creation_Form.controls['managerPhone'].touched || 
+                    (Store_Creation_Form.controls['managerPhone'].untouched  && attemptedSubmit ) )">
+                        Manager Contact Number required.
+                    </small>
+                    <small for="managerPhone" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['managerPhone'].errors?.pattern">
+                        Numbers Only Allowed
+                    </small>
+                    <small for="managerPhone" class="form-text text-danger" *ngIf="(Store_Creation_Form.controls['managerPhone'].errors?.maxlength ||
+                            Store_Creation_Form.controls['managerPhone'].errors?.minlength)">
+                        Numbers should be 10 digits
+                    </small>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <!-- (keypress)="alphaNumberOnly($event)" -->
+                <!-- (input)="Pincodes()" -->
+                <div class="form-group mb-0 col-md-12">
+                    <label for="validationCustom02" class="mb-1"> Serviceable Pincode(s)</label>
+                    <textarea formControlName="serviceablePincodes" class="form-control" rows="3" (keyup)="Pincodes($event)"></textarea>
+                    <small for="serviceablePincodes" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['serviceablePincodes'].errors?.required && 
+                    (Store_Creation_Form.controls['serviceablePincodes'].dirty ||  
+                    Store_Creation_Form.controls['serviceablePincodes'].touched || 
+                    (Store_Creation_Form.controls['serviceablePincodes'].untouched  && attemptedSubmit ) )">
+                        Serviceable Pincode required.
+                    </small>
+                    <!-- <small for="serviceablePincodes" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['serviceablePincodes'].errors?.pattern">
+                        Numbers Only Allowed
+                    </small> -->
+                    <small for="serviceablePincodes" class="form-text text-danger" *ngIf="(Store_Creation_Form.controls['serviceablePincodes'].errors?.maxlength ||
+                Store_Creation_Form.controls['serviceablePincodes'].errors?.minlength)">
+                        Pincode should be 6 digits
+                    </small>
+
+                    <!-- <small for="serviceablePincodes" class="form-text text-danger" *ngIf="hasError">
+                        Pincode hasError
+                    </small> -->
+
+
+                    <label for="serviceablePincodes"> Eg: Pincode1,Pincode2...</label>
+
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="form-group mb-0 col-md-6">
+                    <label for="validationCustom02" class="mb-1">POS User Name</label>
+                    <input formControlName="posUsername" class="form-control" id="validationCustom02" type="text">
+                    <small for="posUsername" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['posUsername'].errors?.required && 
+                    (Store_Creation_Form.controls['posUsername'].dirty ||  
+                    Store_Creation_Form.controls['posUsername'].touched || 
+                    (Store_Creation_Form.controls['posUsername'].untouched  && attemptedSubmit ) )">
+                        POS User Name required.
+                    </small>
+                    <small for="posUsername" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['posUsername'].errors?.minlength">
+                        Enter a valid POS User Name
+                    </small>
+                </div>
+
+                <div class="form-group mb-0 col-md-6">
+                    <label for="validationCustom02" class="mb-1">POS Password</label>
+                    <input formControlName="posPassword" class="form-control" id="validationCustom02" type="password">
+                    <small for="posPassword" class="form-text text-danger" *ngIf="Store_Creation_Form.controls['posPassword'].errors?.required && 
+                    (Store_Creation_Form.controls['posPassword'].dirty ||  
+                    Store_Creation_Form.controls['posPassword'].touched || 
+                    (Store_Creation_Form.controls['posPassword'].untouched  && attemptedSubmit ) )">
+                        POS Password required.
+                    </small>
+                    <small for="posPassword" class="form-text text-danger"
+                        *ngIf="Store_Creation_Form.controls['posPassword'].errors?.minlength">
+                        Minimum 8 digits required
+                    </small>
+                </div>
+
+            </div>
+
+
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-dark btn-dark-rounded" type="button" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Close</button>
+        <button *ngIf="add_Modal_Flag" type="button" class="btn  btn-dark btn-dark-rounded"
+            (click)="Save()">{{addLoading?"Saving...":"Save"}}</button>
+        <button *ngIf="update_Modal_Flag" type="button" class="btn  btn-dark btn-dark-rounded"
+            (click)="Update()">{{addLoading?"Updating...":"Update"}}</button>
+    </div>
+</ng-template>

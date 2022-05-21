@@ -1,0 +1,2461 @@
+<div class="ps-page">
+  <app-header></app-header>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript
+    ><iframe
+      src="https://www.googletagmanager.com/ns.html?id=GTM-W32L424"
+      height="0"
+      width="0"
+      style="display: none; visibility: hidden"
+    ></iframe
+  ></noscript>
+  <!-- End Google Tag Manager (noscript) →-->
+
+  <div class="ps-home ps-home--1">
+    <section class="ps-section--banner" *ngIf="mainSlider.length > 0">
+      <div class="ps-banner baners" id="sliders-ones">
+        <div class="container-initial">
+          <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let slide of mainSlider">
+              <ng-template carouselSlide [id]="slide._id">
+                <!-- <a class="ps-banner baners" style="background-image: url(slide.image);">
+                            <div class="container container-initial">
+                                <div class="ps-banner__block">
+                                   </div>
+                            </div>
+                        </a> -->
+                <a
+                  (click)="
+                    redirectionTo(slide.redirection_type, slide)
+                  "
+                >
+                  <img [src]="slide.image" />
+                </a>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+      </div>
+    </section>
+    <div class="ps-home__content">
+      <div class="container">
+        <div class="ps-promo">
+          <div class="row">
+            <div class="col-12 col-md-4" data-toggle="modal"
+            data-target="#refund1"
+            (click)="orderMedicine()">
+              <div class="ps-promo__item wow fadeInLeft" data-wow-delay="0.1s">
+                <a
+                 
+                >
+                  <div
+                    class="ps-promo__content"
+                    style="
+                      background-image: url('../../../assets/img/png/promo.png');
+                    "
+                  >
+                    <div class="cont">
+                      <h4 class="ps-promo__name">
+                        Online &nbsp;<strong> Pharmacy</strong>
+                      </h4>
+                      <h6>Get upto 75% off</h6>
+                      <a class="promo__btn"
+                        ><i class="fa fa-angle-right"></i> Shop now</a
+                      >
+                    </div>
+                    <div class="cont2">
+                      <img
+                        class="ps-promo__banner"
+                        src="assets/img\png\pro1.png"
+                      />
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div
+                class="ps-promo__item little wow fadeInDown"
+                data-wow-delay="0.2s"
+              >
+                <div
+                  class="ps-promo__content prop"
+                  style="
+                    background-image: url('../../../assets/img/png/promo4.png');
+                  "
+                >
+                  <div class="just">
+                    <img class="ps" src="assets/img\png\proi1.png" />
+                    <h6 class="">Have a <br />Prescription?</h6>
+                    <a *ngIf="token" class="ps-btns" data-toggle="modal" id="popup-upload-prescription" data-target="#myUpload">Upload Now</a>
+                    <a *ngIf="!token" class="ps-btns" (click)="pleaseLoginPopup()">Upload Now</a>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ps-promo__item mt-1 wow fadeInDown"
+                data-wow-delay="0.2s"
+              >
+                <div
+                  class="ps-promo__content prop"
+                  style="
+                    background-image: url('../../../assets/img/png/promo2.png');
+                  "
+                >
+                  <div class="just">
+                    <img class="ps" src="assets/img\png\proi.png" />
+                    <h6 class="">Dont Have a Prescription?</h6>
+                    <a class="ps-btns">Consult Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="ps-promo__item wow fadeInRight" data-wow-delay="0.3s">
+                <a routerLink="/category-list">
+                  <div
+                    class="ps-promo__content"
+                    style="
+                      background-image: url('../../../assets/img/png/promo3.png');
+                    "
+                  >
+                    <div class="cont1">
+                      <h5
+                        class="ps-promo__name"
+                        style="color: #0a6c04 !important"
+                      >
+                        Healthcare &nbsp;<strong>Products</strong>
+                      </h5>
+                      <h6>Get upto 75% off</h6>
+                      <a class="promo__btn"
+                        ><i class="fa fa-angle-right"></i> Shop now</a
+                      >
+                    </div>
+                    <div class="cont11">
+                      <img
+                        class="ps-promo__banner"
+                        src="assets/img\png\pro3.png"
+                      />
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section class="work-process-section padding">
+          <h3 class="headingl">Behind the Screen</h3>
+          <video
+            autoplay
+            loop
+            muted
+            playsinline
+            id="vid"
+            oncanplay="this.play()"
+            onloadedmetadata="this.muted = true"
+            style="width: 100%"
+          >
+            <source type="video/mp4" src="assets/img/png/how.m4v" />
+          </video>
+        </section>
+
+        <!-- <section class="ps-section--latest" *ngIf="shopConcern.length > 0">
+          <h3 class="shopby">Shop by concern</h3>
+ 
+          <div class="ps-section__carousel">
+            <owl-carousel-o [options]="shopConcerncustomOptions">
+              <ng-container
+                class="owl-carousel"
+                *ngFor="let slide of shopConcern"
+              >
+                <ng-template
+                  carouselSlide
+                  [id]="slide._id"
+                  class="ps-section__product"
+                >
+                  <div class="ps-product ps-product--standard">
+                    <div class="ps-product__thumbnail shopby">
+                      <a
+                        class="ps-product__image"
+                        routerLink="/product-list/{{ slide.categoryId }}"
+                      >
+                        <img src="{{ slide.image }}" alt="alt" />
+                      </a>
+                    </div>
+                    <div class="ps-product__content">
+                      <h5 class="ps-product__title">
+                        <a routerLink="/product-list/{{ slide.categoryId }}">{{
+                          slide.name
+                        }}</a>
+                      </h5>
+                    </div>
+                  </div>
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+          </div>
+        </section> -->
+
+        <section class="ps-section--latest" *ngIf="shopConcern.length > 0">
+          <h3 class="shopby">Shop by concern</h3>
+          <div class="ps-section__carousel">
+            <div
+              id="shopBy"
+              class="owl-carousel wow fadeInUp"
+              data-wow-delay="0.1s"
+              data-owl-auto="true"
+              data-owl-loop="true"
+              data-owl-speed="15000"
+              data-owl-gap="0"
+              data-owl-nav="false"
+              data-owl-dots="true"
+              data-owl-item="7"
+              data-owl-item-xs="2"
+              data-owl-item-sm="2"
+              data-owl-item-md="3"
+              data-owl-item-lg="10"
+              data-owl-item-xl="10"
+              data-owl-duration="1000"
+              data-owl-mousedrag="on"
+            >
+            <ng-container
+            *ngFor="let slide of shopConcern"
+          >
+              <div class="ps-section__product">
+                <div class="ps-product ps-product--standard">
+                  <div class="ps-product__thumbnail shopby">
+                    <a routerLink="/product-list/{{ slide.categoryId }}/{{ slide.subCategoryId }}/''" class="ps-product__image" >
+                      <img src="{{slide.image}}" alt="alt" />
+                    </a>
+                  </div>
+                  <div class="ps-product__content">
+                    <h5 class="ps-product__title">
+                      <a routerLink="/product-list/{{ slide.categoryId }}/{{ slide.subCategoryId }}/''">{{
+                        slide.name | titlecase
+                      }}</a>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              </ng-container>
+            </div>
+          </div>
+        </section>
+
+        <div
+          class="ps-delivery lap"
+          style="background-image: url('../../../assets/img/png/2ban.png')"
+        >
+          <div class="ps-delivery__content row">
+            <div class="ps-delivery__text col-md-4 col-12">
+              <span>
+                Steal The Deals With
+                <span class="med">Medpride </span>
+              </span>
+            </div>
+            <div class="col-md-8 p-0 member">
+              <p>
+                Get <span class="typed-text"></span
+                ><span class="cursor">&nbsp;</span>
+              </p>
+              <!--<a class="" >Get Membership</a>-->
+              <div class="owl-carousel owl-theme" id="try">
+                <div class="">
+                  <img src="assets/img/png\6.png" alt="alt" />
+                </div>
+                <div class="">
+                  <img src="assets/img/png\6.png" alt="alt" />
+                </div>
+                <div class="">
+                  <img src="assets/img/png\6.png" alt="alt" />
+                </div>
+                <div><img src="assets/img/png\6.png" alt="alt" /></div>
+                <div><img src="assets/img/png\6.png" alt="alt" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ps-delivery mobile">
+          <div class="ps-delivery__content row">
+            <div class="ps-delivery__text col-md-4 col-8">
+              <span>
+                Steal The Deals With
+                <strong style="color: #eba604">Medpride </strong></span
+              >
+
+              <h3><a class="getmem"> </a></h3>
+            </div>
+
+            <div class="col-md-4 col-4 memberm">
+              <div class="owl-carousel owl-theme" id="try1">
+                <div class="">
+                  <img src="assets/img/png\6.png" alt="alt" />
+                </div>
+                <div class="">
+                  <img src="assets/img/png\6.png" alt="alt" />
+                </div>
+                <div class="">
+                  <img src="assets/img/png\6.png" alt="alt" />
+                </div>
+                <div><img src="assets/img/png\6.png" alt="alt" /></div>
+                <div><img src="assets/img/png\6.png" alt="alt" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="categoriesToBag.length > 0" class="container">
+        <section class="ps-section--topcategory">
+          <h3 class="headings">Categories to Bag</h3>
+          <div class="ps-section__carousel wow fadeInUp" data-wow-delay="0.2s">
+            <div
+              id="catbag"
+              class="owl-carousel"
+              data-owl-auto="true"
+              data-owl-loop="true"
+              data-owl-speed="3000"
+              data-owl-gap="0"
+              data-owl-nav="false"
+              data-owl-dots="true"
+              data-owl-item="8"
+              data-owl-item-xs="2"
+              data-owl-item-sm="2"
+              data-owl-item-md="3"
+              data-owl-item-lg="6"
+              data-owl-item-xl="6"
+              data-owl-duration="1000"
+              data-owl-mousedrag="on"
+            >
+              <ng-container *ngFor="let slide of categoriesToBag">
+                <div
+                  class="ps-section__product wow fadeInUp"
+                  data-wow-delay="0.1s"
+                >
+                  <div class="ps-product">
+                    <div class="category-ps-thumb">
+                      <a
+                        class="ps-product__image"
+                        routerLink="/product-list/{{ slide.categoryId }}/{{ slide.subCategoryId }}/''"
+                      >
+                        <img src="{{ slide.image }}" alt="alt" />
+                      </a>
+                      <div class="ps-product__badge"></div>
+                      <div
+                        style="background-image: url('assets/img/png/red.svg')"
+                        class="ps-product__percent"
+                        *ngIf="slide.offerPercentage"
+                      >
+                        {{ slide.offerPercentage }} % OFF
+                      </div>
+                    </div>
+                    <!-- <div class="ps-product__content">
+                    <div class="orange">
+                      <h5
+                        style="
+                          background-image: url('assets/img/png/labels.png');
+                        "
+                        class="ps-product__title topfive"
+                      >
+                        <a
+                          routerLink="/product-list/{{ slide.categoryId }}"
+                          style="color: #fbfbfb"
+                          >{{ slide.categoryName }}</a
+                        >
+                      </h5>
+                    </div>
+                  </div> -->
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </section>
+        <section class="ps-section--brand" *ngIf="featuredBrands.length > 0">
+          <h3 class="headings">Featured Brands</h3>
+          <div class="ps-section__carousel">
+            <owl-carousel-o [options]="featurecustomOptions">
+              <ng-container
+                class="owl-carousel"
+                *ngFor="let slide of featuredBrands"
+              >
+                <ng-template
+                  carouselSlide
+                  [id]="slide._id"
+                  class="ps-section__product"
+                >
+                  <div class="ps-section__product">
+                    <div class="ps-product ps-product--standard brand">
+                      <div class="ps-product__thumbnail">
+                        <a
+                          class="ps-product__image"
+                          routerLink="/brand/{{ slide._id }}"
+                        >
+                          <figure>
+                            <img src="{{ slide.image }}" alt="alt" />
+                          </figure>
+                        </a>
+                      </div>
+                      <div class="ps-product__content">
+                        <h5 class="ps-product__titleb" style="color: black">
+                          <a
+                            class="covid"
+                            routerLink="/brand/{{ slide._id }}"
+                            >{{ slide.title }}</a
+                          >
+                        </h5>
+                        <h6 class="text-center">{{ slide.count }}+ items</h6>
+                      </div>
+                      <a routerLink="/brand/{{ slide._id }}" class="fbrand"
+                        ><i class="fa fa-angle-right"></i
+                      ></a>
+                    </div>
+                  </div>
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+          </div>
+        </section>
+        <section class="ps-section--mega" *ngIf="slider.length > 0">
+          <div class="ps-section__carousel" *ngIf="slider.length >=3">
+            <div
+              id="subSlider"
+              class="owl-carousel"
+              data-owl-auto="true"
+              data-owl-loop="true"
+              data-owl-speed="3000"
+              data-owl-gap="0"
+              data-owl-nav="false"
+              data-owl-dots="true"
+              data-owl-item="3"
+              data-owl-item-xs="2"
+              data-owl-item-sm="2"
+              data-owl-item-md="2"
+              data-owl-item-lg="3"
+              data-owl-item-xl="3"
+              data-owl-duration="1000"
+              data-owl-mousedrag="on"
+            >
+              <ng-container class="my-carousel" *ngFor="let slide of slider">
+                  <div
+                    class="ps-section__product wow fadeInUp"
+                    data-wow-delay="0.1s"
+                  >
+                    <div class="ps-product ps-product--standard">
+                      <div class="ps-product__thumbnail normal">
+                        <a
+                          class="ps-product__image"
+                          (click)="redirectSlider(slide.type, slide)"
+                        >
+                          <img src="{{ slide.image }}" alt="alt" class="mega" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+              </ng-container>
+            </div>
+          </div>
+
+          <div class="ps-section__carousel" *ngIf="slider.length < 3">
+            <div
+              id="subSliderLengthWise"
+              class="owl-carousel"
+              data-owl-auto="true"
+              data-owl-loop="true"
+              data-owl-speed="3000"
+              data-owl-gap="0"
+              data-owl-nav="false"
+              data-owl-dots="true"
+              data-owl-item="3"
+              data-owl-item-xs="2"
+              data-owl-item-sm="2"
+              data-owl-item-md="2"
+              data-owl-item-lg="3"
+              data-owl-item-xl="3"
+              data-owl-duration="1000"
+              data-owl-mousedrag="on"
+            >
+              <ng-container class="my-carousel" *ngFor="let slide of slider">
+                  <div
+                    class="ps-section__product wow fadeInUp"
+                    data-wow-delay="0.1s"
+                  >
+                    <div class="ps-product ps-product--standard">
+                      <div class="ps-product__thumbnail normal">
+                        <a
+                          class="ps-product__image"
+                          (click)="redirectSlider(slide.type, slide)"
+                        >
+                          <img src="{{ slide.image }}" alt="alt" class="mega" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+              </ng-container>
+            </div>
+          </div>
+
+
+        </section>
+
+        
+
+
+
+        <section class="ps-section--deals" *ngIf="offers.length > 0">
+          <h3 class="headings">
+            <img
+              src="assets/img/png/offer.png"
+              width="30"
+              class="rotate"
+            /> &nbsp;&nbsp;Offers From Our Payment Partners
+          </h3>
+          <div class="ps-section__carousel" *ngIf="offers.length >=3">
+            <div
+              id="paymentOffers"
+              class="owl-carousel"
+              data-owl-auto="true"
+              data-owl-loop="true"
+              data-owl-speed="13000"
+              data-owl-gap="0"
+              data-owl-nav="false"
+              data-owl-dots="false"
+              data-owl-item="3"
+              data-owl-item-xs="1"
+              data-owl-item-sm="1"
+              data-owl-item-md="3"
+              data-owl-item-lg="3"
+              data-owl-item-xl="3"
+              data-owl-duration="1000"
+              data-owl-mousedrag="on"
+            >
+              
+
+
+            <ng-container class="my-carousel" *ngFor="let slide of offers">
+              
+                <div
+                  class="ps-section__product wow fadeInUp"
+                  data-wow-delay="0.1s"
+                >
+                  <div class="ps-product ps-product--standard">
+                    <div class="ps-product__thumbnail offers">
+                      <div
+                        class="ps-product__image off"
+                        (click)="openTermsConditions(slide.termsConditions)"
+                      >
+                        <img src="{{ slide.image }}" />
+                        <div class="rows">
+                          <div class="imgc">
+                            <div class="tcdiv"><a class="tc">T&C</a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+            </ng-container>
+
+
+
+
+
+
+            </div>
+          </div>
+
+
+          <div class="ps-section__carousel" *ngIf="offers.length <3">
+            <div
+              id="paymentOffersLengthWise"
+              class="owl-carousel"
+              data-owl-auto="true"
+              data-owl-loop="true"
+              data-owl-speed="13000"
+              data-owl-gap="0"
+              data-owl-nav="false"
+              data-owl-dots="false"
+              data-owl-item="3"
+              data-owl-item-xs="1"
+              data-owl-item-sm="1"
+              data-owl-item-md="3"
+              data-owl-item-lg="3"
+              data-owl-item-xl="3"
+              data-owl-duration="1000"
+              data-owl-mousedrag="on"
+            >
+              
+
+
+            <ng-container class="my-carousel" *ngFor="let slide of offers">
+              
+                <div
+                  class="ps-section__product wow fadeInUp"
+                  data-wow-delay="0.1s"
+                >
+                  <div class="ps-product ps-product--standard">
+                    <div class="ps-product__thumbnail offers">
+                      <div
+                        class="ps-product__image off"
+                        (click)="openTermsConditions(slide.termsConditions)"
+                      >
+                        <img src="{{ slide.image }}" />
+                        <div class="rows">
+                          <div class="imgc">
+                            <div class="tcdiv"><a class="tc">T&C</a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+            </ng-container>
+
+
+
+
+
+
+            </div>
+          </div>
+
+
+        </section>
+
+
+
+
+      </div>
+      <section
+        *ngIf="hotDealsProducts.length > 0"
+        class="ps-section--dealing"
+        style="padding-bottom: 0; position: relative;"
+      >
+        <h3 class="dealcont">Hot Deals For You</h3>
+        <div class="row">
+          <div
+            class="col-lg-3 back"
+            style="background-image: url('assets/img/png/bb.png')"
+          >
+            <!-- <h1 class="ps-section__title text-left text-white">
+              <span class="grab">{{ hotDeals.name }} </span><br />
+            </h1> -->
+            <h1 class="lap ps-section__title text-left text-white"><span class="grab">Grab </span>Your<br>
+              <span class="grab">Things </span> </h1>
+               <h1 class=" mobile ps-section__title text-white"><strong>Grab </strong>Your
+              <strong>Things</strong> </h1>
+
+            <div id="demo"></div>
+          </div>
+          <div class="col-lg-9 ps-section__carousel" id="hotdeal">
+            <!-- <h3 class="dealcont mobile">Deal of the day</h3> -->
+            <a class="viewall llo"></a>
+            <div
+              id="hotDealsForYou" 
+              class="owl-carousel" 
+              data-owl-auto="true" 
+              data-owl-loop="true" 
+              data-owl-speed="7000" 
+              data-owl-gap="0" 
+              data-owl-nav="false" 
+              data-owl-dots="false" 
+              data-owl-item="8" 
+              data-owl-item-xs="2" 
+              data-owl-item-sm="2" 
+              data-owl-item-md="4" 
+              data-owl-item-lg="8" 
+              data-owl-item-xl="8" 
+              data-owl-duration="1000" 
+              data-owl-mousedrag="on">
+              <ng-container  class="my-carousel" *ngFor="let slide of hotDealsProducts; let i = index"
+              >
+                  <div
+                    class="ps-section__product wow fadeInUp"
+                    data-wow-delay="0.1s"
+                  >
+                    <div class="ps-product ps-product--standard personals">
+                      <div
+                        class="ps-product__thumbnail deal"
+                        style="
+                          background-image: url('../../assets/img/png/deal.png');
+                        "
+                      >
+                        <a
+                          class="ps-product__image"
+                          routerLink="/product-detail/{{ slide.title }}/{{ slide.product_id }}/{{ slide.brand }}/{{ slide.brand }}"
+                        >
+                          <figure>
+                            <img src="{{ slide.image }}" alt="alt" />
+                          </figure>
+                        </a>
+                        <div class="ps-product__badge"></div>
+                        <div
+                          style="
+                            background-image: url('assets/img/png/red2.png');
+                          "
+                          class="ps-product__percents"
+                          *ngIf="slide.discount"
+                        >
+                          {{ slide.discount }} % OFF
+                        </div>
+                      </div>
+                      <div class="ps-product__content personalsc">
+                        <h5 class="ps-product__title">
+                          <a routerLink="/product-detail/{{ slide.title }}/{{ slide.product_id }}/{{ slide.brand }}/{{ slide.brand }}"
+                            >{{ slide.title | slice:0:20 }}
+                          </a>
+                        </h5>
+                        <div class="ps-product__meta">
+                          <span class="ps-product__price">
+                            <i class="fa fa-inr"></i>{{ slide.spl_price }}</span
+                          >
+                          <span class="ps-product__del"  *ngIf="slide.discount!=0">
+                            <i class="fa fa-inr"></i>{{ slide.price }}</span
+                          >
+                        </div>
+                        <h6 class="ps-product__title">
+                          <a id="timing">
+                            Ends on {{ hotDeals.ending_date | date}}
+                          </a>
+                        </h6>
+
+
+                        <a
+                          (click)="
+                            addToCart(slide.product_id, slide.varient_id, slide)
+                          "
+                          class="buy"
+                          >Add to Cart</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        *ngIf="popularProducts.length > 0"
+        class="ps-section--healthcareproduct"
+        style="background-color: #fbfbfb"
+      >
+        <div class="container">
+          <h3 class="headings">Popular health care products</h3>
+          <!-- <h5 class="text-right">
+            <a class="viewall">View all</a>
+          </h5> -->
+          <div class="ps-section__carousel wow fadeInUp" data-wow-delay="0.1s">
+            <owl-carousel-o [options]="healthcustomOptions">
+              <ng-container
+                class="owl-carousel"
+                *ngFor="let slide of popularProducts"
+              >
+                <ng-template
+                  carouselSlide
+                  [id]="slide._id"
+                  class="ps-section__product"
+                >
+                  <div
+                    class="ps-section__product wow fadeInUp"
+                    data-wow-delay="0.1s"
+                  >
+                    <div class="ps-product ps-product--standard popular pt-3">
+                      <div class="ps-product__thumbnail popular">
+                        <a
+                          class="ps-product__image"
+                          routerLink="/product-detail/{{ slide.title }}/{{ slide.product_id }}/{{ slide.brand }}/{{ slide.brand }}"
+                        >
+                          <figure>
+                            <img src="{{ slide.image }}" alt="alt" />
+                          </figure>
+                          <div class="ps-product__badge"></div>
+                          <div
+                            class="ps-product__percent pophealth"
+                            *ngIf="slide.discount"
+                          >
+                            {{ slide.discount }} Off
+                          </div>
+                        </a>
+                      </div>
+                      <div class="ps-product__content popular">
+                        <h6>{{ slide.brand | titlecase }}</h6>
+                        <h5 class="ps-product__title">
+                          <a routerLink="/product-detail/{{ slide.title }}/{{ slide.product_id }}/{{ slide.brand }}/{{ slide.brand }}">{{
+                            slide.title | titlecase
+                          }}</a>
+                        </h5>
+                        <!-- <h6>Mf.By test</h6> -->
+                        <!-- <h6>3000+ items</h6> -->
+                        <div class="wc">
+                          <div class="ps-product__meta">
+                            <span class="ps-product__price"
+                              ><i class="fa fa-inr"></i> {{ slide.spl_price }}
+                            </span>
+                            <span class="ps-product__del" *ngIf="slide.discount!=0">
+                              {{ slide.price }}</span
+                            >
+                          </div>
+                          <div class="ps-product__item d-flex" data-placement="left" >
+                            <a class="heart" *ngIf="token && slide.isFavorite" (click)="clickToLike(slide.varient_id,slide.product_id)"><i class="fa fa-heart"></i></a>
+                            <a class="heart" *ngIf="token && !slide.isFavorite" (click)="clickToLike(slide.varient_id,slide.product_id)"><i class="fa fa-heart-o"></i></a>
+                            <a class="heart"  *ngIf="!token" (click)="clickToLike(slide.varient_id,slide.product_id)"><i class="fa fa-heart-o" [ngClass]="slide.isFavorite ? '' : '' "></i></a>
+                            <a class="str">|</a>
+                            <a
+                              (click)="
+                                addToCart(
+                                  slide.product_id,
+                                  slide.varient_id,
+                                  slide
+                                )
+                              "
+                              class="shopping"
+                              ><img
+                                src="assets/img/png/cart.png"
+                                class="shopping-cart"
+                            /></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+          </div>
+        </div>
+      </section>
+      <section class="lap" style="background-color: #fbfbfb">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="employees">
+                <img src="assets/img/png/g1.png" />
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="employees">
+                <img src="assets/img/png/g2.png" />
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="employees">
+                <img src="assets/img/png/g3.png" />
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="employees">
+                <img src="assets/img/png/g4.png" />
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="employees">
+                <img src="assets/img/png/g5.png" />
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="employees">
+                <img src="assets/img/png/g6.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="background-color: #fbfbfb; padding: 5px 0px">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="employees">
+                  <p class="employee-p">100% Genuine Products</p>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="employees">
+                  <p class="employee-p">20,000 + Deliverable Pincodes</p>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="employees">
+                  <p class="employee-p">3 Hour Delivery on Selected Pincodes</p>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="employees">
+                  <p class="employee-p">Easy Return</p>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="employees">
+                  <p class="employee-p">100,000 + <br />Inventories</p>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="employees">
+                  <p class="employee-p">3 Layer Quality Checking</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mobile" style="background-color: #fbfbfb">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-2 col-6">
+              <div class="employees">
+                <p class="couti">
+                  <img src="assets/img/png/g1.png" />
+                </p>
+                <p class="employee-p">100% Genuine Products</p>
+              </div>
+            </div>
+            <div class="col-md-2 col-6">
+              <div class="customer">
+                <p class="couti">
+                  <img src="assets/img/png/g2.png" />
+                </p>
+                <p class="employee-p">20,000 + Deliverable Pincodes</p>
+              </div>
+            </div>
+            <div class="col-md-2 col-6">
+              <div class="design">
+                <p class="couti">
+                  <img src="assets/img/png/g3.png" />
+                </p>
+                <p class="employee-p">3 Hour Delivery on Selected Pincodes</p>
+              </div>
+            </div>
+            <div class="col-md-2 col-6">
+              <div class="order">
+                <p class="couti">
+                  <img src="assets/img/png/g4.png" />
+                </p>
+                <p class="employee-p">Easy Return</p>
+              </div>
+            </div>
+            <div class="col-md-2 col-6">
+              <div class="order">
+                <p class="couti">
+                  <img src="assets/img/png/g5.png" />
+                </p>
+                <p class="employee-p">100,000 + Inventories</p>
+              </div>
+            </div>
+            <div class="col-md-2 col-6">
+              <div class="order">
+                <p class="couti">
+                  <img src="assets/img/png/g6.png" />
+                </p>
+                <p class="employee-p">3 Layer Quality Checking</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.0.47/jquery.fancybox.min.css"
+      />
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.css">
+
+<script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script> -->
+
+      <section class="vide" style="padding: 0px">
+        <div class="container">
+          <section class="ps-about--video">
+            <div class="ps-banner">
+              <div class="container">
+                <h2 class="ps-section__title">
+                  How to Order Medicines From Medimall?
+                </h2>
+                <div class="ps-banner__block">
+                  <div class="contents">
+                    <ol class="timeline">
+                      <li class="wow fadeInUp" data-wow-duration="0.5s">
+                        <h5>Open the App</h5>
+                        <p class="how-one">
+                          Our Medimall App is easily available on Play Store and
+                          App Store. Click download and open the app to find
+                          100,000 + Inventories.
+                        </p>
+                      </li>
+                      <li class="wow fadeInUp" data-wow-duration="1.0s">
+                        <h5>Search for a Product</h5>
+                        <p class="how-two">
+                          Search for your desired products using the medimall.
+                          Choose your product or medicines. You can easily check
+                          the availability, Ingredients, and expiry dates.
+                        </p>
+                      </li>
+                      <li class="wow fadeInUp" data-wow-duration="1.6s">
+                        <h5>Click to order</h5>
+                        <p class="how-three">
+                          Cart your Essentials and click to order. If you have
+                          carted any prescribed medicines, you will be given an
+                          option to upload the prescription. If you don’t have
+                          one, yo u can easily consult our doctors at the
+                          comfort of your home and get a prescription. Then you
+                          can proceed with your order and choose your shipping
+                          address.
+                        </p>
+                      </li>
+                      <li class="wow fadeInUp" data-wow-duration="2.0s">
+                        <h5>Choose your Payment</h5>
+                        <p class="how-four">
+                          Once you have chosen the shipping address, you’ll have
+                          to select your payment method. For payment, you can
+                          either use cards, UPI apps, net banking, or pay on
+                          delivery. After you make your payment, we will confirm
+                          your order and notify you of the delivery date.
+                        </p>
+                      </li>
+                    </ol>
+                  </div>
+                  <div class="ps-banner__thumnail thumbnail">
+                    <img src="assets/img/png/video.png" />
+                    <a
+                      data-fancybox="video-gallery"
+                      class="fancybox how_to"
+                      [href]="vimeoVideoHOwTo"
+                      target="_blank"
+                    >
+                      <div class="vedio">
+                        <div class="ps-banner__video">
+                          <i class="fa fa-play"></i>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section
+        *ngIf="medArticles.length > 0"
+        style="
+          background-image: url('../../assets/img/png/backg.png');
+          background-size: cover;
+          background-repeat: no-repeat;
+          padding: 0px !important;
+        "
+      >
+        <div class="containers">
+          <section class="ps-section--blog">
+            <h3 class="ps-section__title" >Med Articles</h3>
+            <h5>Carefully Curated by Our Health Experts</h5>
+
+            <div>
+              <h5  style="padding-left: 40px;"
+              (click)="redirectBlog()"
+              class="viewall desktop-only"
+              >View All</h5>
+            </div>
+           
+            <a
+              (click)="redirectBlog()"
+              class="viewallm mobile-only"
+              >View All</a
+            >
+            <div class="ps-section__carousel">
+              <div
+                id="medArticle"
+                class="owl-carousel"
+                data-owl-auto="false"
+                data-owl-loop="true"
+                data-owl-speed="13000"
+                data-owl-gap="0"
+                data-owl-nav="true"
+                data-owl-dots="true"
+                data-owl-item="4"
+                data-owl-item-xs="1"
+                data-owl-item-sm="1"
+                data-owl-item-md="2"
+                data-owl-item-lg="4"
+                data-owl-item-xl="4"
+                data-owl-duration="1000"
+                data-owl-mousedrag="on"
+              >
+                <ng-container *ngFor="let slide of medArticles">
+                  <div
+                    class="ps-section__item wow fadeInUp"
+                    data-wow-duration="0.1s"
+                  >
+                    <div class="ps-blog--latset">
+                      <div class="ps-blog__thumbnail">
+                        <div class="col-md-12 recent-blog-i">
+                          <img src="{{ slide.image }}" />
+                          <div class="middle">
+                            <a
+                              routerLink="/blog-detail/{{ slide._id }}"
+                              class="text"
+                              >Read more</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ps-blog__content">
+                        <div class="ps-blog__meta">
+                          <a
+                            class="ps-blog__title text-overflow"
+                          >
+                            {{ slide.heading }}</a
+                          >
+                        </div>
+                        <div class="blogname" style="display: flex">
+                          <p>{{ slide.title }}</p>
+                          <a>|</a>
+                          <p>{{ slide.authorName }}</p>
+                        </div>
+                        <div
+                          *ngIf="slide.description.length > 100"
+                          class="ps-blog__des"
+                          innerHTML="{{ slide.description | slice: 0:100 }}..."
+                        ></div>
+                        <p
+                          *ngIf="slide.description.length <= 100"
+                          class="ps-blog__des"
+                          innerHTML="{{ slide.description }}..."
+                        ></p>
+                        <div class="bt">
+                          <a
+                            routerLink="/blog-detail/{{ slide._id }}"
+                            class="hvr-underline-from-left"
+                            >Read More</a
+                          >
+                          <div class="blogname" style="display: flex">
+                            <p>{{ slide.date }}</p>
+                            <a>|</a>
+                            <a (click)="clickToCopyBoardShared(slide._id)"><i class="icon-share2"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </section>
+          <!-- <section class="ps-section--blog">
+            <h3 class="ps-section__title">MedArticles</h3>
+            <h5>Carefully Curated By our Health Experts</h5>
+
+            <a
+              href="http://medimall.co.in/blog.html"
+              class="viewall desktop-only"
+              >View All</a
+            >
+            <a
+              href="http://medimall.co.in/blog.html"
+              class="viewallm mobile-only"
+              >View All</a
+            >
+            <div id="sliders-ones">
+              <div class="ps-section__carousel">
+                <owl-carousel-o [options]="blogcustomOptions">
+                  <ng-container
+                    class="owl-carousel"
+                    *ngFor="let slide of medArticles"
+                  >
+                    <ng-template
+                      carouselSlide
+                      [id]="slide._id"
+                      class="ps-section__product"
+                    >
+                      <div
+                        class="ps-section__item wow fadeInUp"
+                        data-wow-duration="0.1s"
+                      >
+                        <div class="ps-blog--latset">
+                          <div class="ps-blog__thumbnail">
+                            <div class="col-md-12 recent-blog-i">
+                              <img src="{{ slide.image }}" />
+                              <div class="middle">
+                                <a
+                                  routerLink="/blog-detail/{{ slide._id }}"
+                                  class="text"
+                                  >Read more</a
+                                >
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-blog__content">
+                            <div class="ps-blog__meta">
+                              <a
+                                class="ps-blog__title text-overflow"
+                                href="http://medimall.co.in/mental-health.html"
+                              >
+                                {{ slide.heading }}</a
+                              >
+                            </div>
+                            <div class="blogname" style="display: flex">
+                              <p>{{ slide.title }}</p>
+                              <a>|</a>
+                              <p>{{ slide.authorName }}</p>
+                            </div>
+                            <p
+                              *ngIf="slide.description.length > 100"
+                              class="ps-blog__des"
+                              innerHTML="{{
+                                slide.description | slice: 0:100
+                              }}..."
+                            ></p>
+                            <p
+                              *ngIf="slide.description.length <= 100"
+                              class="ps-blog__des"
+                              innerHTML="{{ slide.description }}"
+                            ></p>
+                            <div class="bt">
+                              <a
+                                href="http://medimall.co.in/mental-health.html"
+                                class="hvr-underline-from-left"
+                                >Read More</a
+                              >
+                              <div class="blogname" style="display: flex">
+                                <p>{{ slide.date }}</p>
+                                <a>|</a>
+                                <a class=""><i class="icon-share2"></i></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ng-container>
+                </owl-carousel-o>
+              </div>
+            </div>
+          </section> -->
+        </div>
+        <div class="container">
+          <section class="ps-section--blog worry">
+            <h2 class="">Million Worries One Cure</h2>
+            <div class="row">
+              <div class="col-md-4 wow fadeInUp" data-wow-duration="0.1s">
+                <div class="one-app wow fadeInUp" data-wow-duration="0.2s">
+                  <div class="one-img">
+                    <img src="assets/img/png/one1.png" />
+                  </div>
+                  <div class="one-cont">
+                    <h3>Stay Home & FolioFit</h3>
+                    <p>
+                      Transform Yourself with the mantra of Fitness. Commence
+                      your Fitness journey with daily workout sessions , yoga
+                      and much more.
+                    </p>
+                  </div>
+                </div>
+                <div class="one-app wow fadeInUp" data-wow-duration="0.4s">
+                  <div class="one-img">
+                    <img src="assets/img/png/one2.png" />
+                  </div>
+                  <div class="one-cont">
+                    <h3>Express Deliveries</h3>
+                    <p>
+                      Be it the village, the cities or the suburbs, get lighting
+                      fast cures on your doorsteps.
+                    </p>
+                  </div>
+                </div>
+                <div class="one-app wow fadeInUp" data-wow-duration="0.6s">
+                  <div class="one-img">
+                    <img src="assets/img/png/one3.png" />
+                  </div>
+                  <div class="one-cont">
+                    <h3>Keep learning with MedFeed</h3>
+                    <p>
+                      Jolt your knowledge with Medfeed. Explore the realm of
+                      articles, quizzes and expert talks from anywhere anytime.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 wow fadeInUp" data-wow-duration="0.2s">
+                <video
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  id="vid"
+                  style="width: 100%"
+                  oncanplay="this.play()"
+                  onloadedmetadata="this.muted = true"
+                >
+                  <source type="video/mp4" src="assets/img/png/one.mp4" />
+                </video>
+              </div>
+              <div class="col-md-4 wow fadeInUp" data-wow-duration="0.3s">
+                <div class="one-apps wow fadeInUp" data-wow-duration="0.2">
+                  <div class="one-cont">
+                    <h3>Virtual Hospitals</h3>
+                    <p>
+                      Doctors are now just one click away. Consult your doctor
+                      at the comfort of your home with upto 40+ specialities.
+                    </p>
+                  </div>
+                  <div class="one-img">
+                    <img src="assets/img/png/one4.png" />
+                  </div>
+                </div>
+                <div class="one-apps wow fadeInUp" data-wow-duration="0.4s">
+                  <div class="one-cont">
+                    <h3>Replenish & Stock up</h3>
+                    <p>
+                      Replenish your medicines with Medfill. Get Timely
+                      reminders and stay up to date with your health.
+                    </p>
+                  </div>
+                  <div class="one-img">
+                    <img src="assets/img/png/one5.png" />
+                  </div>
+                </div>
+                <div class="one-apps wow fadeInUp" data-wow-duration="0.6s">
+                  <div class="one-cont">
+                    <h3>Indulge yourself with medimall</h3>
+                    <p>
+                      Appease your cravings for health needs with Medimall. Get
+                      your hands on 100,000+ healthcare and inventories.
+                    </p>
+                  </div>
+                  <div class="one-img">
+                    <img src="assets/img/png/one6.png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <div class="home-hero -reveal">
+        <div
+          id="iphoneSlide"
+          class="home-slides c--white h-100 owl-carousel owl-theme"
+          data-owl-auto="true"
+          data-owl-loop="true"
+          data-owl-speed="20000"
+          data-owl-gap="0"
+          data-owl-nav="true"
+          data-owl-dots="true"
+          data-owl-item="1"
+          data-owl-item-xs="1"
+          data-owl-item-sm="1"
+          single-items="true"
+          data-owl-item-md="1"
+          data-owl-item-lg="1"
+          data-owl-duration="80000"
+          data-owl-mousedrag="on"
+        >
+          <div class="header-slides" style="background-color: #72ef72">
+            <div class="slides--slide -web -active wrapper-container-el">
+              <div class="container-illu">
+                <div class="container-device">
+                  <div class="el-device">
+                    <img
+                      src="../../assets/home\images\objects\iPhoneX.svg"
+                      class="iphone"
+                      alt="no-img"
+                    />
+                    <div class="container-screen">
+                      <img
+                        src="../../assets/home\images\banner\bb.png"
+                        class="unscroll"
+                        alt="no-img"
+                      />
+                      <img
+                        src="../../assets/home\images\banner\yoga-srn.png"
+                        class="scroll will-scroll"
+                        alt="no-img"
+                      />
+                    </div>
+                  </div>
+                  <div class="el-device">
+                    <img
+                      src="../../assets/home\images\objects\iPhoneX.svg"
+                      class="iphone"
+                      alt="no-img"
+                    />
+                    <div class="container-screen">
+                      <img
+                        src="../../assets/home\images\banner\yoga-srn.png"
+                        class="header"
+                        alt="no-img"
+                      />
+                      <img
+                        src="../../assets/home\images\banner\yoga-srn.png"
+                        class="unscroll"
+                        alt="no-img"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="el-bg-elements">
+                <div class="el-mobile-bg-elements is-show">
+                  <div class="container-obj">
+                    <img
+                      src="../../assets/home/images/objects/yoga1.svg"
+                      class="obj obj-3"
+                      alt="no-img"
+                    />
+                    <img
+                      src="../../assets/home/images/objects/y-star.png"
+                      class="obj obj-1 rotate_Move"
+                      alt="no-img"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="asset-content d-block">
+              <div
+                class="
+                  copy
+                  d-lg-flex
+                  flex-column
+                  justify-content-center
+                  align-items-lg-start
+                  justify-content-lg-center
+                "
+              >
+                <div class="copy--title w--100">
+                  <h2>
+                    Heal Your Mind Nourish Your Soul Sculpt Your Body With Daily
+                    Yoga Sessions
+                  </h2>
+                </div>
+                <div class="slide-progress-main">
+                  <div class="slide-progress"></div>
+                </div>
+                <div class="copy--body w--100">
+                  <p>
+                    Rejuvenate your Mind, Body, and Soul with the Art of Yoga.
+                    Get access to daily yoga sessions from beginners to experts.
+                    Join now and heal your body and soul with Medimall.
+                  </p>
+                  <p>
+                    <a target="_blank"  href="https://play.google.com/store/apps/details?id=com.medfolio.medimall">Download app Now</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="header-slides" style="background-color: #ffea2e">
+            <div class="slides--slide -web -active wrapper-container-el">
+              <div class="container-illu">
+                <div class="container-device">
+                  <div class="el-device">
+                    <img
+                      src="../../assets/home/images/objects/iPhoneX.svg"
+                      class="iphone"
+                      alt="no-img"
+                    />
+                    <div class="container-screen">
+                      <img
+                        src="../../assets/home\images\banner\remind-srn1.png"
+                        class="unscroll"
+                        alt="no-img"
+                      />
+                    </div>
+                  </div>
+                  <div class="el-device">
+                    <img
+                      src="../../assets/home\images\objects\iPhoneX.svg"
+                      class="iphone"
+                      alt="no-img"
+                    />
+                    <div class="container-screen">
+                      <img
+                        src="../../assets/home\images\banner\remind-srn2.png"
+                        class="header"
+                        alt="no-img"
+                      />
+                      <img
+                        src="../../assets/home\images\banner\remind-srn2.png"
+                        class="unscroll"
+                        alt="no-img"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="el-bg-elements">
+                <div class="el-mobile-bg-elements is-show">
+                  <div class="container-obj">
+                    <img
+                      src="../../assets/home/images/objects/remind1.svg"
+                      class="obj obj-1"
+                      alt="no-img"
+                    />
+                    <img
+                      src="../../assets/home/images/objects/remind2.svg"
+                      class="obj obj-2 rotate_Move"
+                      alt="no-img"
+                    />
+                    <!-- <img
+                      src="../../assets/home/images/objects/"
+                      class="obj obj-3"
+                      alt="no-img"
+                    /> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="asset-content d-block">
+              <div
+                class="
+                  copy
+                  d-lg-flex
+                  flex-column
+                  justify-content-center
+                  align-items-lg-start
+                  justify-content-lg-center
+                "
+              >
+                <div class="copy--title w--100">
+                  <h2>
+                    Stay Reminded on Your Health Needs With Health Reminder
+                  </h2>
+                </div>
+                <div class="slide-progress-main">
+                  <div class="slide-progress"></div>
+                </div>
+                <div class="copy--body w--100">
+                  <p>
+                    Always forgetting to take your medicines? Worry no more.
+                    Stay notified of your health needs. Be it a meal or
+                    medicine, get timely notifications with our health
+                    reminders.
+                  </p>
+                  <p>
+                    <a target="_blank" href="https://play.google.com/store/apps/details?id=com.medfolio.medimall">Download app Now</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="header-slides" style="background-color: #ed5858">
+            <div class="slides--slide -web -active wrapper-container-el">
+              <div class="container-illu">
+                <div class="container-device">
+                  <div class="el-device">
+                    <img
+                      src="../../assets/home/images/objects/iPhoneX.svg"
+                      class="iphone"
+                      alt="no-img"
+                    />
+                    <div class="container-screen">
+                      <img
+                        src="../../assets/home\images\banner\nutri.png"
+                        class="unscroll"
+                        alt="no-img"
+                      />
+                    </div>
+                  </div>
+                  <div class="el-device">
+                    <img
+                      src="../../assets/home\images\objects\iPhoneX.svg"
+                      class="iphone"
+                      alt="no-img"
+                    />
+                    <div class="container-screen">
+                      <img
+                        src="../../assets/home\images\banner\bb.png"
+                        class="unscroll"
+                        alt="no-img"
+                      />
+                      <img
+                        src="../../assets/img/art1.png"
+                        class="scroll will-scroll"
+                        alt="no-img"
+                      />
+                      <!-- <img
+                        src="../../assets/home/images/objects/ol-scroll-footer.png"
+                        class="footer"
+                        alt="no-img"
+                      /> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="el-bg-elements">
+                <div class="el-mobile-bg-elements is-show">
+                  <div class="container-obj">
+                    <!-- <img
+                      src="../../assets/home/images/objects/.png"
+                      class="obj obj-1"
+                      alt="no-img"
+                    />
+                    <img
+                      src="../../assets/home/images/objects/.svg"
+                      class="obj obj-2 rotate_Move"
+                      alt="no-img"
+                    />
+                    <img
+                      src="../../assets/home/images/objects/.png"
+                      class="obj obj-3"
+                      alt="no-img"
+                    /> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="asset-content d-block">
+              <div
+                class="
+                  copy
+                  d-lg-flex
+                  flex-column
+                  justify-content-center
+                  align-items-lg-start
+                  justify-content-lg-center
+                "
+              >
+                <div class="copy--title w--100">
+                  <h2>Are You Making the Right Choices With Your Food ?</h2>
+                </div>
+                <div class="slide-progress-main">
+                  <div class="slide-progress"></div>
+                </div>
+                <div class="copy--body w--100">
+                  <p>
+                    Are you aware of the need for nutrition in your body? Every
+                    individual is different and every body craves different
+                    nutritions and proteins. Are you eating the right food for
+                    your body? Connect with your NutriExpert and find out today.
+                  </p>
+                  <p>
+                    <a target="_blank" href="https://play.google.com/store/apps/details?id=com.medfolio.medimall">Download app Now</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="header-slides" style="background-color: orange">
+            <div class="slides--slide -web -active wrapper-container-el">
+              <div class="container-illu">
+                <div class="container-device">
+                  <div class="el-device">
+                    <img
+                      src="../../assets/home/images/objects/iPhoneX.svg"
+                      class="iphone"
+                      alt="no-img"
+                    />
+                    <div class="container-screen">
+                      <img
+                        src="../../assets/home/images/bmi1.png"
+                        class="unscroll"
+                        alt="no-img"
+                      />
+                    </div>
+                  </div>
+                  <div class="el-device">
+                    <img
+                      src="../../assets/home\images\objects\iPhoneX.svg"
+                      class="iphone"
+                      alt="no-img"
+                    />
+
+                    <div class="container-screen">
+                      <img
+                        src="../../assets/home\images\banner\bb.png"
+                        class="unscroll"
+                        alt="no-img"
+                      />
+                      <img
+                        src="../../assets/home/images/bmi2.png"
+                        class="scroll will-scroll"
+                        alt="no-img"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="el-bg-elements">
+                <div class="el-mobile-bg-elements is-show">
+                  <div class="container-obj">
+                    <img
+                      src="../../assets/home/images/objects/ht1.png"
+                      class="obj obj-1"
+                      alt="no-img"
+                    />
+                    <img
+                      src="../../assets/home/images/objects/ht2.svg"
+                      class="obj obj-2 rotate_Move"
+                      alt="no-img"
+                    />
+                    <!-- <img
+                      src="../../assets/home/images/objects/ht3.png"
+                      class="obj obj-4"
+                      alt="no-img"
+                    /> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="asset-content d-block">
+              <div
+                class="
+                  copy
+                  d-lg-flex
+                  flex-column
+                  justify-content-center
+                  align-items-lg-start
+                  justify-content-lg-center
+                "
+              >
+                <div class="copy--title w--100">
+                  <h2>Are You Making the Right Choices With Your Food ?</h2>
+                </div>
+                <div class="slide-progress-main">
+                  <div class="slide-progress"></div>
+                </div>
+                <div class="copy--body w--100">
+                  <p>
+                    Are you aware of the nutritionist facts hiding in your body?
+                    Every individual is different and every body craves for
+                    different nutritions and proteins. Are you eating the right
+                    food for your body? Connect with your nutriExpert and find
+                    out today.
+                  </p>
+                  <p>
+                    <a target="_blank" href="https://play.google.com/store/apps/details?id=com.medfolio.medimall">Download app Now</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--<div class="header-slides" style="background-color: #72ef72;">
+<div class="slides--slide -web -active wrapper-container-el">
+<div class="container-illu">
+<div class="container-device">
+<div class="el-device">
+<img src="../../assets/home/images/objects/iPhoneX.svg" class="iphone" alt="no-img">
+<div class="container-screen">
+<img src="../../assets/home\images\banner\esaf_unscroll.jpg" class="unscroll" alt="no-img">
+</div>
+</div>
+<div class="el-device">
+  <img src="../../assets/home\images\objects\iPhoneX.svg" class="iphone" alt="no-img">
+  <div class="container-screen">
+  <img data-src="../../assets/home/images/objects/ol-scroll-header.png" class="header" alt="no-img">
+
+  <img data-src="../../assets/home/images/objects/ol-scroll-footer.png" class="footer" alt="no-img">
+  </div>
+  </div>
+</div>
+</div>
+<div class="el-bg-elements">
+<div class="el-mobile-bg-elements is-show">
+<div class="container-obj">
+<img data-src="../../assets/home/images/objects/ht1.png" class="obj obj-1" alt="no-img">
+<img data-src="../../assets/home/images/objects/ht2.svg" class="obj obj-2 rotate_Move" alt="no-img">
+<img data-src="../../assets/home/images/objects/ht3.svg" class="obj obj-3 " alt="no-img">
+</div>
+</div>
+</div>
+</div>
+<div class="asset-content d-block">
+<div class="copy d-lg-flex flex-column justify-content-center align-items-lg-start justify-content-lg-center">
+<div class="copy--title w--100">
+
+<h2>Little habits for a better change.</h2>
+</div>
+<div class="slide-progress-main">
+<div class="slide-progress"></div>
+</div>
+<div class="copy--body w--100">
+<p>Is your diet plant not effective? Discover healthy recipes and personalized meal plans 
+specially designed for your goals. Every day is a chance to be healthy, start your health journey with Medimall.</p>
+<p><a  target="_self" rel="noopener">Download app Now</a></p>
+</div>
+</div>
+</div>
+</div>-->
+        </div>
+      </div>
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css"
+      />
+      <section class="ps-whowe">
+        <div class="counter">
+          <div class="container">
+            <h3 class="text-center">Accomplishments That Speaks for Itself</h3>
+            <div class="desktop-only">
+              <div class="conut row">
+                <div
+                  class="counts col-md-2 wow fadeInUp"
+                  data-wow-duration="0.5s"
+                >
+                  <div class="employees">
+                    <img src="assets/img/png/we1.png" />
+                    <h2 class="counter-count" data-max="10000">+ <br /></h2>
+                    <span class="counti">Families Served</span>
+                  </div>
+                </div>
+                <div
+                  class="counts col-md-2 wow fadeInUp"
+                  data-wow-duration="1s"
+                >
+                  <div class="employees">
+                    <img src="assets/img/png/we2.png" />
+                    <h2 class="counter-count" data-max="17500">+ <br /></h2>
+                    <span class="counti">Pincodes</span>
+                  </div>
+                </div>
+                <div
+                  class="counts col-md-2 wow fadeInUp"
+                  data-wow-duration="1.5s"
+                >
+                  <div class="employees">
+                    <img src="assets/img/png/we3.png" />
+                    <h2 class="counter-count" data-max="25000">+ <br /></h2>
+                    <span class="counti">Products</span>
+                  </div>
+                </div>
+                <div
+                  class="counts col-md-2 wow fadeInUp"
+                  data-wow-duration="2s"
+                >
+                  <div class="employees">
+                    <img src="assets/img/png/we4.png" />
+                    <h2 class="counter-count" data-max="12000">+ <br /></h2>
+                    <span class="counti">Order Delivered</span>
+                  </div>
+                </div>
+                <div
+                  class="counts col-md-2 wow fadeInUp"
+                  data-wow-duration="2.5s"
+                >
+                  <div class="employees">
+                    <img src="assets/img/png/we5.png" />
+                    <h2 class="counter-count" data-max="5000">+ <br /></h2>
+                    <span class="counti">5 Star Reviews</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mobile-only">
+              <div class="conut row">
+                <div
+                  class="counts col-md-2 col-6 wow fadeInUp"
+                  data-wow-duration="0.5s"
+                >
+                  <div class="employees">
+                    <img src="assets/img/png/we1.png" />
+                    <h2 class="counter-count" data-max="10000">
+                      + <br />
+                      <span class="counti">Families Served</span>
+                    </h2>
+                  </div>
+                </div>
+                <div
+                  class="counts col-md-2 col-6 wow fadeInUp"
+                  data-wow-duration="1s"
+                >
+                  <div class="employees">
+                    <img src="assets/img/png/we2.png" />
+                    <h2 class="counter-count" data-max="17500">
+                      + <br />
+                      <span class="counti">Pincodes</span>
+                    </h2>
+                  </div>
+                </div>
+                <div
+                  class="counts col-md-2 col-6 wow fadeInUp"
+                  data-wow-duration="1.5s"
+                >
+                  <div class="employees">
+                    <img src="assets/img/png/we3.png" />
+                    <h2 class="counter-count" data-max="25000">
+                      + <br />
+                      <span class="counti">Products</span>
+                    </h2>
+                  </div>
+                </div>
+                <div
+                  class="counts col-md-2 col-6 wow fadeInUp"
+                  data-wow-duration="2s"
+                >
+                  <div class="employees">
+                    <img src="assets/img/png/we4.png" />
+                    <h2 class="counter-count" data-max="12000">
+                      + <br />
+                      <span class="counti">Order Delivered</span>
+                    </h2>
+                  </div>
+                </div>
+                <div
+                  class="counts col-md-2 col-xs-12 wow fadeInUp"
+                  data-wow-duration="2.5s"
+                >
+                  <div class="employees">
+                    <img src="assets/img/png/we5.png" />
+                    <h2 class="counter-count" data-max="5000">
+                      + <br />
+                      <span class="counti">5 Star Reviews</span>
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="ps-section--reviews" *ngIf="customers.length > 0">
+        <h3 class="ps-section__title">Our Happy Customers</h3>
+        <div class="ps-section__content">
+          <!-- <div id="ourHappy" class="owl-carousel owl-theme">
+        
+            <ng-container *ngFor="let slide of customers">
+              <div class="item testimonials-img">
+                <img style="cursor: text !important;" class="img-fluid" src="{{ slide.image }}" />
+              </div>
+            </ng-container>
+          </div> -->
+          <div
+            class="owl-carousel owl-theme"
+            id="ourHappy"
+            data-owl-auto="true"
+            data-owl-loop="true"
+            data-owl-speed="3000"
+            data-owl-gap="0"
+            data-owl-nav="false"
+            data-owl-dots="false"
+            data-owl-item-xs="1"
+            data-owl-item-sm="1"
+            data-owl-item-md="3"
+            data-owl-item-lg="3"
+            data-owl-item-xl="3"
+       
+          >
+            <ng-container *ngFor="let slide of customers">
+              <div class="item">
+                <img [src]="slide.image" />
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </section>
+      <section class="ps-about__banner give">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="mobilecont">
+                <h1
+                  class="ps-banner__title"
+                  style="color: white; font-weight: 400"
+                >
+                  <strong>Giving hope</strong> to
+                  <strong style="color: #181818">India</strong>
+                </h1>
+                <div class="col-md-5">
+                  <h6>Download the app for free</h6>
+                </div>
+                <div class="col-md-7 play-apps">
+                  <a  class="hvr-grow"
+                    ><img src="assets/img/png/play1.png"
+                  /></a>
+                  <a target="_blank" href="https://play.google.com/store/apps/details?id=com.medfolio.medimall" class="hvr-grow"
+                    ><img src="assets/img/png/play.png"
+                  /></a>
+                </div>
+              </div>
+            </div>
+            <video
+              autoplay
+              loop
+              muted
+              playsinline
+              id="vid-give"
+              class="ps"
+              oncanplay="this.play()"
+              onloadedmetadata="this.muted = true"
+            >
+              <source type="video/mp4" src="assets/img/give.m4v" />
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <footer class="ps-footer ps-footer--5">
+        <div class="ps-footer--top">
+          <div class="container">
+            <div class="row m-0 mains">
+              <h4>Medimall, India's Most Trusted Healthcare platform</h4>
+              <br /><br />
+
+              <p>
+                Get Authentic Products in assured discounts <br />Medimall is
+                your one stop destination for everything healthy needs where you
+                can shop for quality online medicines, wellness products, and
+                consult India's top doctors. Get your medicines and wellness
+                products delivered at the comfort of your home, no matter where
+                you live be it the cities, the village or the suburbs. Here is
+                what we promise to you and your well beings.
+              </p>
+              <h5>Virtual Hospitals</h5>
+              <p>
+                Doctors are now just one click away. Consult your doctor at the
+                comfort of your home.Connect with 40+ specialties and 800+
+                doctors.
+              </p>
+              <h5>3 Hour Lightning Fast Deliveries</h5>
+              <p>
+                Be it the village, the cities or the suburbs, get lighting fast
+                cures on your doorsteps.
+              </p>
+              <h5>FolioFit: Your Fitness Expert</h5>
+              <p>
+                Transform Yourself with the mantra of Fitness. Commence your
+                Fitness journey with our workouts, yoga sessions and much more.
+              </p>
+              <h5>Jolt your Knowledge with MedFeed</h5>
+              <p>
+                Amplify your knowledge with MedFeed. Learn & Explore the
+                horizons of Healthcare with articles, quizzes and expert talks
+                from anywhere anytime.
+              </p>
+              <h5>MedFill - Replenish Your Medical Needs</h5>
+              <p>
+                Get your timely medical refills with Medfill. Stay up to date
+                with your health with our health reminders.
+              </p>
+              <h5>Indulge your MeDesires with Medimall</h5>
+              <p>
+                Appease your cravings for health needs with Medimall. Get your
+                hands on 100,000+ healthcare and inventories.
+              </p>
+              <h5>What makes us Unique?</h5>
+              <p>
+                Humans are bound to have succumbed to illness quite often. With
+                the surge of the pandemic, people are terrified to go to
+                hospitals and pharmacies.Our solution caters to the needs of
+                these individuals. The most affected by these issues are people
+                living in remote areas of India. Through medimall, we aim at
+                digitizing and simplifying the way they live. Through our
+                services, people living in remote areas could avail of
+                consultation services from the top doctors in India. Since we
+                offer our app services in regional languages, people can make
+                hassle-free communication.
+              </p>
+              <h5>Serving You With The Best</h5>
+              <p>
+                The abundance and unavailability of medicines and their supply
+                to these hyper-local areas could be sorted out by the
+                implementation of our app. We also offer services relating to
+                fitness and health and offer a virtual gymnasium fulfilling all
+                requirements from the comfort of their homes.<br />We will guide
+                individuals on how to use the app, and how to do things with
+                ease. If an individual is sick or is having ailments, they can
+                order medicine from the comfort of their homes. Our dedicated
+                team will deliver the product after assessment through a 3 level
+                quality check, within a stipulated time.
+              </p>
+              <h5>Our Vision</h5>
+              <p>
+                With medimall, we strive to bridge the gap between the scarcity
+                of healthcare services in rural areas and the abundance of
+                healthcare professionals in urban areas. We are working to
+                balance the scales between these two extremes. We hope to offer
+                the future of health and fitness and deliver that promise to
+                their doorsteps.
+              </p>
+              <p class="colors">
+                Avail our services from whole kerala and bangalore
+              </p>
+
+              <h3 *ngIf="topCategories.length>0">Top Categories :</h3>
+              <ul class="footer-cat" *ngFor="let topCat of topCategories;let isLast=last">
+                <li><a class="menus-f" (click)="redirectToInner('categories',topCat)">{{topCat.title}}</a></li>
+                <li *ngIf="!isLast">|</li>
+              
+              </ul>
+              <h3 *ngIf="topBrands.length>0">Top Brands :</h3>
+              <ul class="footer-cat" *ngFor="let topBrand of topBrands;let isLast=last">
+                <li><a class="menus-f" (click)="redirectToInner('brand',topBrand)">{{topBrand.title}}</a></li>
+                <li *ngIf="!isLast">|</li>
+               
+              </ul>
+              <h3 *ngIf="topSellingProducts.length>0">Top Selling Products :</h3>
+              <ul class="footer-cat" *ngFor="let topProd of topSellingProducts;let isLast=last">
+                <li><a class="menus-f"  (click)="redirectToInner('sellingprod',topProd)">{{topProd.title}}</a></li>
+                <li *ngIf="!isLast">|</li>
+               
+              </ul>
+              <h3 *ngIf="mostSearchedHealthCareProducts.length>0">Most Searched Healthcare Products :</h3>
+              <ul class="footer-cat" *ngFor="let topMostProd of mostSearchedHealthCareProducts;let isLast=last">
+                <li><a class="menus-f" (click)="redirectToInner('mostsearchprod',topMostProd)">{{topMostProd.title}}</a></li>
+                <li *ngIf="!isLast">|</li>
+               
+              </ul>
+              <h3 *ngIf="mostSearchedBrands.length>0">Most Searched Brands :</h3>
+              <ul class="footer-cat" *ngFor="let topMostBrands of mostSearchedBrands;let isLast=last">
+                <li><a class="menus-f" (click)="redirectToInner('mostbrands',topMostBrands)">{{topMostBrands.title}}</a></li>
+                <li *ngIf="!isLast">|</li>
+               
+              </ul>
+              <h5 *ngIf="mostViewedArticles.length>0">Most Viewed Articles :</h5>
+              <ul class="footer-cat" *ngFor="let topMostArticle of mostViewedArticles;let isLast=last">
+                <li><a class="menus-f" (click)="redirectToInner('mostArticle',topMostArticle)">{{topMostArticle.heading}}</a></li>
+                <li *ngIf="!isLast">|</li>
+               
+              </ul>
+              <br />
+              <br />
+            </div>
+          </div>
+        </div>
+
+        <style>
+          @font-face {
+            font-family: SegoeUI;
+            src: local("Segoe UI Light"),
+              url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff2)
+                format("woff2"),
+              url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff)
+                format("woff"),
+              url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.ttf)
+                format("truetype");
+            font-weight: 100;
+          }
+        </style>
+
+        <section class="ps-section--newsletter">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">
+                <video
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  id="vid-delivery"
+                  class="ps"
+                  oncanplay="this.play()"
+                  onloadedmetadata="this.muted = true"
+                >
+                  <source type="video/mp4" src="assets/img/delivery.m4v" />
+                </video>
+              </div>
+              <!-- <div class="col-md-6"></div> -->
+              <!-- <div class="col-md-9">
+                <form  [formGroup]="phoneValidForm" method="post" class="news">
+                  <div class="ps-form--subscribe">
+                    <h4>Get the link to Download App</h4>
+                    <div class="ps-form__control ml-2">
+                      <input
+                        class="form-control ps-inputs"
+                        type="text"
+                        placeholder="Enter your Phone number"
+                        formControlName="phone"
+                        (keypress)="alphaNumberOnly($event)"
+                      />
+
+
+                      <button class="ps-btn" (click)="getTheLink();attemptSubmitted=true;">Get link</button>
+                    </div>
+                  </div>
+                  <small *ngIf="phoneValidForm.controls['phone'].errors?.required && 
+                  (phoneValidForm.controls['phone'].dirty ||  
+                  phoneValidForm.controls['phone'].touched || 
+                  (phoneValidForm.controls['phone'].untouched  && attemptSubmitted ) )"
+                  class="small-block form-text"
+                  >Phone number is required</small>
+
+                  <small *ngIf="phoneValidForm.controls['phone'].errors?.pattern || phoneValidForm.controls['phone'].errors?.maxlength || phoneValidForm.controls['phone'].errors?.minlength"
+                  class="small-block form-text"
+                  >Enter valid phone number</small>
+
+                </form>
+              </div> -->
+            </div>
+          </div>
+        </section>
+        <app-footer></app-footer>
+      </footer>
+
+      <button class="btn scroll-top">
+        <i class="fa fa-angle-double-up"></i>
+      </button>
+      <div class="ps-preloader" id="preloader">
+        <div class="ps-preloader-section ps-preloader-left"></div>
+        <div class="ps-preloader-section ps-preloader-right"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!------------order medicine pop up-------->
+<!-- <section class="mode">
+  <div class="container">
+    
+  </div>
+</section> -->
+
+<div class="modal fade" id="refund1" role="dialog">
+  <div class="modal-dialog" id="mdwidth1" id="mdwidth">
+    <!-- Modal content-->
+    <div class="modal-content bclolor">
+      <div class="row">
+        <div class="col-md-12">
+          <button
+            type="button"
+            class="closeselect"
+            data-dismiss="modal"
+            id="dismiss-refund1"
+          >
+            &times;
+          </button>
+        </div>
+      </div>
+      <!-- <div class="headerpopup">
+        <div class="row p-3"></div>
+      </div> -->
+      
+          <!-- <div class="headerpopup">
+            <div class="row p-3"></div>
+          </div> -->
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div
+                  class="col-md-6 col-6 text-center div-box"
+                  *ngFor="let medi of medicineName"
+                 
+                >
+                  <div class="box3" (click)="orderMedicineRoute()">
+                    <img src="{{ medi.image }}" class="img-fluid" />
+                     <label class="medi">{{ medi.title }}</label>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="modal-footer ftrbox">
+            <div class="container"></div>
+          </div> -->
+        
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+  src="assets/home\js\script.js"
+  type="be9dfe49072cb4d1912e7519-text/javascript"
+></script>
+<script
+  src="assets/home\js\output.min.js"
+  type="be9dfe49072cb4d1912e7519-text/javascript"
+></script>
+<script
+  src="assets/js/rocket-loader.min.js"
+  data-cf-settings="be9dfe49072cb4d1912e7519-|49"
+  defer=""
+></script>
+
+
+
+
+
+<!-------------------------------- Upload Prescription -------->
+<div class="modal fade" id="myUpload" role="dialog">
+  <div class="modal-dialog">
+    <!------------ Modal content Upload pres-------------------------->
+    <div class="modal-content" style="padding: 0 7px">
+      <div class="close1">
+        <button type="button" id="dismiss-upload-prescription" class="closea" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+      <h5 class="uph">Upload Prescription</h5>
+      <div class="modal-header">
+        <div class="container">
+         
+          <div class="row" >
+              <div class="col-md-12">
+                <div class="box11">
+                
+                  <div class="row justify-content-center bgallerymain1">
+                    <div class="col-md-4 float-left text-center p-0 mobile">
+                      <div class="gallery1">
+                        <!-- (click)="uploadPrescritpion($event,'camera')" -->
+                        <img src="assets/img/cart/icon12.png" class="img-fluid"/>
+                        <input class="input-file" type="file" accept="image/*" capture="camera" (change)="uploadPrescritpion($event,'camera')">
+                      </div>
+                      Camera
+                    </div>
+                    <div class="col-md-4 float-left text-center p-0">
+                      <div class="gallery1">
+                        <!-- (click)="uploadPrescritpion($event,'gallery')" -->
+                        <!-- <img *ngIf="Upload_Image" src={{Upload_Image}} class="img-fluid" /> -->
+                        <img src="assets/img/cart/icon11.png" class="img-fluid" />
+                        <input class="input-file" type="file" accept="image/*,application/pdf" capture="user"
+                          formControlName="gallery" (change)="uploadPrescritpion($event,'gallery')">
+                      </div>
+                      Gallery
+                    </div>
+                    <div class="col-md-4 float-left text-center p-0">
+                      <!-- (click)="uploadPrescritpion($event,'healthdata')" -->
+                      <div class="gallery1" (click)="Get_Health_Vault_Data()">
+                        <!-- data-toggle="modal" -->
+                        <!-- data-target="#health_data_pop_up" -->
+                        <img  src="assets/img/cart/icon13.png" class="img-fluid"  />
+                        <!-- <input class="input-file" type="file" accept="image/*,application/pdf" formControlName="healthdata" (change)="uploadPrescritpion($event,'healthdata')"> -->
+                      </div>
+                      Health data
+                    </div>
+                  </div>
+
+                  <div class="row" *ngIf="prescriptionImageURLArray.length">
+                    <div class="col-md-3  gallery-ad-img mt-2" *ngFor="let j of prescriptionImageURLArray">
+                      <button type="button" class="close11" style="cursor: pointer;" (click)="removePrescription(j)">
+                        ×
+                      </button>
+                        <img src="{{j}}" width="100%"/>
+                    </div>
+                  </div>
+
+                  <div *ngIf="imageLoading" class="lod">
+                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                  </div>
+
+                  <div class="row" *ngIf="prescriptionImageURLArray.length">
+                    <div class="col-md-12">
+                      <h4>Prescription Attached By You</h4>
+                      <h6 style="color: rgb(41 41 41 / 60%);">Check your prescription before submitting it or reupload it.</h6>
+                    </div>
+                  </div>
+
+                  <a class="box991 pescription-add" style="cursor: pointer;" (click)="prescriptionGuidClick()">
+                    <p class="priscription mt-4">
+                      Prescription should contains<img src="assets/img/cart/prescription.png"
+                        class="img-fluid imgpre" />
+                    </p>
+                  </a>
+
+               
+                </div>
+
+                <div class="row" id="respon1">
+                  <div class="box99" style="margin-bottom: 0px;">
+                    <div class="text-center">
+                      <div class="accordion-item giving11" style="border:none !important;">
+                        
+                        <div class=" give244 cart-subscrp" *ngIf="containGuidFlag">
+                          <div class="maninPrescription text-center">
+                            <div class="row newbox">
+                              <div class="col-md-12 p-0">
+                                <div class="box22">
+                                  <h3>Prescription Guide</h3>
+                                  <ul class="prec">
+                                    <li>
+                                      Upload Clear Prescription Image
+                                    </li>
+                                    <li>
+                                      Below mentioned points should be
+                                      part of valid Prescription
+                                    </li>
+                                  </ul>
+                                  <div class="row">
+                                    <div class="col-md-8 doctor">
+                                      <img src="assets/img/cart/doctor.png" class="img-fluid" />
+                                    </div>
+                                    <div class="col-md-4 doctor">
+                                      <label class="docp">Doctor Details</label>
+                                      <label class="docp">Patient Details</label>
+                                      <label class="docp">Medicine Details</label>
+                                      <label class="docp sign sign1">Doctor Sign</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngIf="Health_Vault_Array.length && healthdataClicked">
+                  <ng-container *ngFor="let data of Health_Vault_Array">
+                    <div class="row">
+                      <div class="container">
+                        <div class="col-md-12">
+                          <div class="boxa">
+
+                            <div class="form-check11 float-right">
+                              <label class="customcheck">
+                                  <input type="checkbox" (change)="Select_Health_Data($event,data)" [checked]="data.checkedFlag ? true : false">
+                                  <span class="checkmark"></span>
+                              </label>
+                            </div>
+
+                            <!-- <div class="radioaa">
+                              <input class="rrb" type="radio" name="addressStatus"
+                                (click)="Select_Health_Data(data)" />
+                            </div> -->
+                            <!-- Health_Data_Continue_Click -->
+                            <!-- (click)="selectHealthVault(hv.prescription)" -->
+                            <div class="col-md-8 float-left labresult">
+                              <h5>{{ data.category }}</h5>
+                              <label>Patient Name<span class="saron"></span>:
+                                {{ data.patientName }}</label>
+                              <label>Date <span class="sarondate"></span>:
+                                {{ data.date }}</label>
+                            </div>
+
+                            <div class="
+                                    col-md-4
+                                    float-left
+                                    text-center
+                                    subimageanddiscription
+                                  ">
+                              <!-- <a target="_blank" [href]="hv.prescription"> -->
+                              <img [src]="data.prescription" class="img-fluid" />
+                              <!-- </a> -->
+                              <!-- <label class="subhvl">Subscription ID</label> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+
+               
+              
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <button type="button" class="btn btn-primary Continue1" (click)="Continue_Prescription_Click()">
+                      Upload prescription
+                    </button>
+
+                  
+                  </div>
+                </div>
+
+              </div>
+          </div>
+          <!-- upload prescription close -->
+          <!-- -----------------------------------------------------The Modal2 ---------------------------->
+        
+          <!-- ---------------------------POPUP CLOSE------------------------------------------------------------------ -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-------------------------------- Upload Prescription -------->

@@ -1,0 +1,22 @@
+
+footer {
+    text-align: center;
+    color: var(--footer-color);
+    padding: 20px 0;
+    color: #414142;
+}
+footer h4{
+    margin-top: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+footer .footer-contact {
+    margin-bottom: 20px;
+}
+footer .footer-contact a{
+    color: var(--footer-color);
+}
+footer .footer-contact p{
+    margin-bottom: 0;
+    font-size: 13px;
+}

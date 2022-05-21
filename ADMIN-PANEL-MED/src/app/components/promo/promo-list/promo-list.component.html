@@ -1,0 +1,827 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-body tab2-card add_inventory_tab master-demo">
+
+                <label>Promotion</label>
+                <br><br>
+
+                <ngb-tabset class="tab-coupon" (tabChange)="TabChange($event)">
+
+                    <ngb-tab title="All" *ngIf="disableTab('All')" id="all">
+                        <ng-template ngbTabContent>
+
+                            <div class="text-center mt-3" *ngIf="loading"><br><br>
+                                <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab" *ngIf="!loading">
+
+                                <br><br>
+                                <!-- <kendo-grid class="kendo_table" [kendoGridBinding]="ALL_PROMO_ARRAY" [filterable]="true"
+                                    [sortable]="true"> -->
+
+                                <kendo-grid [kendoGridBinding]="ALL_PROMO_ARRAY" [filterable]="true" [sortable]="true"
+                                    classs="master-table master-demo-promo" [pageSize]="10" [skip]="skip"
+                                    (pageChange)="pageChange($event)" [pageable]="true">
+
+                                    <kendo-grid-column field="no" title="No" width="15">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="No" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-column field="type" title="Type" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Type" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-column field="customerType" title="Customer Type" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Customer Type" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-column field="promotionType" title="Promo Type" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Promo Type" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+                                   
+
+                                   
+
+                                    <kendo-grid-column field="name" title="Promo Name" width="20">
+
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Promo Name" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                            <a style="text-decoration: underline;cursor: pointer;"
+                                                (click)="viewPromoDetails(dataItem._id)" *ngIf="viewFlag">{{dataItem.name}}</a>
+
+                                                <a  *ngIf="!viewFlag">{{dataItem.name}}</a>
+
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-column field="code" title="Code" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Code" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                            <a style="text-decoration: underline;cursor: pointer;"
+                                        [routerLink]="['/promo/promocode',dataItem._id,dataItem.code]" *ngIf="viewFlag"
+                                                >{{dataItem.code}}</a>
+
+                                                <a  *ngIf="!viewFlag">{{dataItem.name}}</a>
+                                        </ng-template>
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-column field="percentage" title="Percentage" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Percentage" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+                                    </kendo-grid-column>
+                                    <!-- 
+                                                <kendo-grid-column field="amount" title="Amount" width="20">
+                                                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                        <kendo-grid-string-filter-cell
+                                                            placeholder="search"
+                                                            [showOperators]="false"
+                                                            [column]="column"
+                                                            title="Parent Store"
+                                                            [filter]="filter">
+                                                        </kendo-grid-string-filter-cell>
+                                                    </ng-template>
+                                                    
+                                                </kendo-grid-column> -->
+
+                                    <kendo-grid-command-column title="Action" width="20" class="text-center">
+                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                            <i class="fa fa-edit" (click)="editPromoDetails(dataItem._id)" 
+                                                *ngIf="editFlag"></i>
+
+                                            &nbsp;&nbsp;<i class="fa fa-trash" *ngIf="deleteFlag"
+                                                (click)="Delete(dataItem._id)"></i>
+                                        </ng-template>
+                                    </kendo-grid-command-column>
+
+
+                                </kendo-grid>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Active Promo" *ngIf="disableTab('Active Promo')" id="activated">
+                        <ng-template ngbTabContent>
+
+                            <div class="text-center mt-3" *ngIf="loading"><br><br>
+                                <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab" *ngIf="!loading">
+
+                                <br><br>
+                                <!-- <kendo-grid class="kendo_table" [kendoGridBinding]="ACTIVE_PROMO_ARRAY" [filterable]="true"
+                                    [sortable]="true"> -->
+
+                                <kendo-grid [kendoGridBinding]="ACTIVE_PROMO_ARRAY" [filterable]="true"
+                                    [sortable]="true" classs="master-table master-demo-promo" [pageSize]="10" [skip]="skip"
+                                    (pageChange)="pageChange($event)" [pageable]="true">
+
+                                    <kendo-grid-column field="no" title="No" width="15">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="No" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+                                    </kendo-grid-column>
+
+                                    
+                                    <kendo-grid-column field="type" title="Type" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Type" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-column field="customerType" title="Customer Type" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Customer Type" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-column field="promotionType" title="Promo Type" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Promo Type" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+                                    
+
+
+                                    <kendo-grid-column field="name" title="Promo Name" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Promo Name" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                            <a style="text-decoration: underline;cursor: pointer;"
+                                                (click)="viewPromoDetails(dataItem._id)" *ngIf="viewFlag">{{dataItem.name}}</a>
+
+                                                <a  *ngIf="!viewFlag">{{dataItem.name}}</a>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-column field="code" title="Code" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Code" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                            <a style="text-decoration: underline;cursor: pointer;"
+                                            [routerLink]="['/promo/promocode',dataItem._id,dataItem.code]" *ngIf="viewFlag"
+                                                >{{dataItem.code}}</a>
+
+                                                <a  *ngIf="!viewFlag"
+                                                    >{{dataItem.code}}</a>
+                                        </ng-template>
+                                    </kendo-grid-column>
+
+                                    <!-- <kendo-grid-column field="code" title="Code" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Parent Store" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+                                    </kendo-grid-column> -->
+
+                                    <kendo-grid-column field="percentage" title="Percentage" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Percentage" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-command-column title="Action" width="40"  class="text-center">
+                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                            <i class="fa fa-edit" (click)="editPromoDetails(dataItem._id)"
+                                                *ngIf="editFlag"></i>
+
+                                            &nbsp;&nbsp;<i class="fa fa-trash" *ngIf="editFlag"
+                                                (click)="Delete(dataItem._id)"></i>
+                                            &nbsp;<button type="submit" class="btn btn-dark btn-sm btn-dark-rounded"
+                                                (click)="Deactivate_Promo(dataItem._id)"
+                                                *ngIf="editFlag">Deactivate</button>
+                                        </ng-template>
+                                    </kendo-grid-command-column>
+
+
+                                </kendo-grid>
+                                <!-- <kendo-grid class="kendo_table" [kendoGridBinding]="active_promo_table" [filterable]="true"  [sortable]="true">
+                                
+                                                <kendo-grid-column field="slno" title="No" width="10">
+                                                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                        <kendo-grid-string-filter-cell
+                                                            placeholder="search"
+                                                            [showOperators]="false"
+                                                            [column]="column"
+                                                            title="Parent Store"
+                                                            [filter]="filter">
+                                                        </kendo-grid-string-filter-cell>
+                                                    </ng-template>
+                                                    
+                                                </kendo-grid-column>
+
+                                                <kendo-grid-column field="name" title="Promotion Name & Category" width="25">
+                                                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                        <kendo-grid-string-filter-cell
+                                                            placeholder="search"
+                                                            [showOperators]="false"
+                                                            [column]="column"
+                                                            title="Parent Store"
+                                                            [filter]="filter">
+                                                        </kendo-grid-string-filter-cell>
+                                                    </ng-template>
+                                                    
+                                                    
+                                                </kendo-grid-column>
+
+                                                <kendo-grid-column field="offer" title="Offer" width="18">
+                                                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                        <kendo-grid-string-filter-cell
+                                                            placeholder="search"
+                                                            [showOperators]="false"
+                                                            [column]="column"
+                                                            title="Parent Store"
+                                                            [filter]="filter">
+                                                        </kendo-grid-string-filter-cell>
+                                                    </ng-template>
+                                                    
+                                                    
+                                                </kendo-grid-column>
+                                
+                                                <kendo-grid-column field="period" title="Promotion Period" width="25">
+                                                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                        <kendo-grid-string-filter-cell
+                                                            placeholder="search"
+                                                            [showOperators]="false"
+                                                            [column]="column"
+                                                            title="Parent Store"
+                                                            [filter]="filter">
+                                                        </kendo-grid-string-filter-cell>
+                                                    </ng-template>
+                                                    
+                                                    
+                                                </kendo-grid-column>
+                                
+                                                <kendo-grid-column field="coupon" title="Coupon" width="20">
+                                                        <ng-template  kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                            <a style="text-decoration: underline;cursor: pointer;" (click)="viewPromoDetails()">{{dataItem.coupon}}</a>
+                                                        </ng-template>
+                                                    
+                                                </kendo-grid-column>
+                                
+                                                <kendo-grid-column field="performance" title="Performance" width="20">
+                                                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                        <kendo-grid-string-filter-cell
+                                                            placeholder="search"
+                                                            [showOperators]="false"
+                                                            [column]="column"
+                                                            title="Parent Store"
+                                                            [filter]="filter">
+                                                        </kendo-grid-string-filter-cell>
+                                                    </ng-template>
+                                                </kendo-grid-column>
+                                
+                                
+                                                <kendo-grid-command-column title="Action" width="40">
+                                                    <ng-template kendoGridCellTemplate let-isNew="isNew">
+                                                        <button type="submit" class="btn btn-dark btn-sm btn-dark-rounded">Deactivate</button>
+                                                        <button type="submit" class="btn btn-dark btn-dark-rounded  btn-sm">Modify</button>
+                                                        <span style="padding-left: 20%;font-size: 10px;opacity: 0.5;color: white;opacity: 0.5;">Last Modified On 10:30 am</span>
+                                                    </ng-template>
+                                                </kendo-grid-command-column>
+                                
+                                
+                                            </kendo-grid> -->
+
+
+                                <!-- <div class="table-sorter-wrapper  table-responsive innerr_table_style ">
+                                                <table id="sortable-table-2" class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                    <th class="sortStyle">Promotion Name & Category</th>
+                                                    <th class="sortStyle">Offer</th>
+                                                    <th class="sortStyle">Promotion Period</th>
+                                                    <th class="sortStyle">Coupon</th>
+                                                    <th class="sortStyle">Perfomance</th>
+                                                    <th class="sortStyle"></th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Basic Promotion Day Base</td>
+                                                        <td>Flat 50</td>
+                                                        <td>01 Dec 2020 to 02 Jan 2021</td>
+                                                        <td>Hello20</td>
+                                                        <td>People used this</td>
+                                                        <td>
+                                                            <div class="row">
+                                                                <button type="submit" class="btn btn-dark btn-sm btn-dark-rounded">Deactivate</button>
+                                                                <button type="submit" class="btn btn-dark btn-dark-rounded  btn-sm">Modify</button>
+                                                                <span style="padding-left: 20%;font-size: 10px;opacity: 0.5;"><h6>Last Modified On 10:30 am</h6></span>
+                                                            </div>
+                                                            
+                                                        </td>
+    
+                                                    <tr>
+                                                        <td>Basic Promotion Day Base</td>
+                                                        <td>Flat 50</td>
+                                                        <td>01 Dec 2020 to 02 Jan 2021</td>
+                                                        <td>Hello20</td>
+                                                        <td>People used this</td>
+                                                        <td>
+                                                            <div class="row">
+                                                                <button type="submit" class="btn btn-dark btn-dark-rounded  btn-sm">Deactivate</button>
+                                                                <button type="submit" class="btn btn-dark btn-dark-rounded  btn-sm">Modify</button>
+                                                                <span style="padding-left: 20%;font-size: 10px;opacity: 0.5;"><h6>Last Modified On 10:30 am</h6></span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                    </tr>
+    
+                                                    <tr>
+                                                        <td>Basic Promotion Day Base</td>
+                                                        <td>Flat 50</td>
+                                                        <td>01 Dec 2020 to 02 Jan 2021</td>
+                                                        <td>Hello20</td>
+                                                        <td>People used this</td>
+                                                        <td>
+                                                            <div class="row">
+                                                                <button type="submit" class="btn btn-dark btn-dark-rounded  btn-sm">Deactivate</button>
+                                                                <button type="submit" class="btn btn-dark btn-dark-rounded  btn-sm">Modify</button>
+                                                                <span style="padding-left: 20%;font-size: 10px;opacity: 0.5;"><h6>Last Modified On 10:30 am</h6></span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                    </tr>
+    
+                                                    <tr>
+                                                        <td>Basic Promotion Day Base</td>
+                                                        <td>Flat 50</td>
+                                                        <td>01 Dec 2020 to 02 Jan 2021</td>
+                                                        <td>Hello20</td>
+                                                        <td>People used this</td>
+                                                        <td>
+                                                            <div class="row">
+                                                                <button type="submit" class="btn btn-dark btn-dark-rounded btn-sm">Deactivate</button>
+                                                                <button type="submit" class="btn btn-dark btn-dark-rounded btn-sm">Modify</button>
+                                                                <span style="padding-left: 20%;font-size: 10px;opacity: 0.5;"><h6>Last Modified On 10:30 am</h6></span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                    </tr>
+    
+                                                    <tr>
+                                                        <td>Basic Promotion Day Base</td>
+                                                        <td>Flat 50</td>
+                                                        <td>01 Dec 2020 to 02 Jan 2021</td>
+                                                        <td>Hello20</td>
+                                                        <td>People used this</td>
+                                                        <td>
+                                                            <div class="row">
+                                                                <button type="submit" class="btn btn-dark btn-dark-rounded btn-sm">Deactivate</button>
+                                                                <button type="submit" class="btn btn-dark btn-dark-rounded btn-sm">Modify</button>
+                                                                <span style="padding-left: 20%;font-size: 10px;opacity: 0.5;"><h6>Last Modified On 10:30 am</h6></span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                    </tr>
+    
+                                                    
+                                                </tbody>
+                                                </table>
+                                            </div> -->
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Expired Promo" *ngIf="disableTab('Expired Promo')" id="expired">
+                        <ng-template ngbTabContent>
+
+                            <div class="text-center mt-3" *ngIf="loading"><br><br>
+                                <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab" *ngIf="!loading">
+
+                                <br><br>
+                                <!-- <kendo-grid class="kendo_table" [kendoGridBinding]="EXPIRED_PROMO_ARRAY" [filterable]="true"
+                                    [sortable]="true"> -->
+
+                                <kendo-grid [kendoGridBinding]="EXPIRED_PROMO_ARRAY" [filterable]="true"
+                                    [sortable]="true" classs="master-table master-demo-promo" [pageSize]="10" [skip]="skip"
+                                    (pageChange)="pageChange($event)" [pageable]="true">
+
+                                    <kendo-grid-column field="no" title="No" width="15">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="No" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+                                    </kendo-grid-column>
+
+
+                                    <kendo-grid-column field="type" title="Type" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Type" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+
+
+                                    <kendo-grid-column field="customerType" title="Customer Type" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Customer Type" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+
+
+
+                                    <kendo-grid-column field="promotionType" title="Promo Type" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Promo Type" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+                                    
+                                   
+
+                                    <kendo-grid-column field="name" title="Promo Name" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Promo Name" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                            <a style="text-decoration: underline;cursor: pointer;" *ngIf="viewFlag"
+                                                (click)="viewPromoDetails(dataItem._id)">{{dataItem.name}}</a>
+
+                                                <a  *ngIf="!viewFlag">{{dataItem.name}}</a>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-column field="code" title="Code" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Code" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                            <a style="text-decoration: underline;cursor: pointer;"
+                                            [routerLink]="['/promo/promocode',dataItem._id,dataItem.code]" *ngIf="viewFlag">{{dataItem.code}}</a>
+
+                                            <a *ngIf="!viewFlag">{{dataItem.code}}</a>
+                                        </ng-template>
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-column field="percentage" title="Percentage" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Parent Store" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+                                    </kendo-grid-column>
+
+                                    <!-- <kendo-grid-column field="amount" title="Amount" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Parent Store" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+                                    </kendo-grid-column> -->
+
+                                    <kendo-grid-command-column title="Action" width="20"  class="text-center">
+                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                            <i class="fa fa-edit" (click)="editPromoDetails(dataItem._id)"
+                                                *ngIf="editFlag"></i>
+
+                                            &nbsp;&nbsp;<i class="fa fa-trash" *ngIf="editFlag"
+                                                (click)="Delete(dataItem._id)"></i>
+                                        </ng-template>
+                                    </kendo-grid-command-column>
+
+                                </kendo-grid>
+                                <!-- <kendo-grid class="kendo_table" [kendoGridBinding]="active_promo_table" [filterable]="true"  [sortable]="true">
+                                
+                                                <kendo-grid-column field="slno" title="No" width="10">
+                                                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                        <kendo-grid-string-filter-cell
+                                                            placeholder="search"
+                                                            [showOperators]="false"
+                                                            [column]="column"
+                                                            title="Parent Store"
+                                                            [filter]="filter">
+                                                        </kendo-grid-string-filter-cell>
+                                                    </ng-template>
+                                                    
+                                                </kendo-grid-column>
+
+                                                <kendo-grid-column field="name" title="Promotion Name & Category" width="25">
+                                                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                        <kendo-grid-string-filter-cell
+                                                            placeholder="search"
+                                                            [showOperators]="false"
+                                                            [column]="column"
+                                                            title="Parent Store"
+                                                            [filter]="filter">
+                                                        </kendo-grid-string-filter-cell>
+                                                    </ng-template>
+                                                    
+                                                    
+                                                </kendo-grid-column>
+
+                                                <kendo-grid-column field="offer" title="Offer" width="18">
+                                                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                        <kendo-grid-string-filter-cell
+                                                            placeholder="search"
+                                                            [showOperators]="false"
+                                                            [column]="column"
+                                                            title="Parent Store"
+                                                            [filter]="filter">
+                                                        </kendo-grid-string-filter-cell>
+                                                    </ng-template>
+                                                    
+                                                    
+                                                </kendo-grid-column>
+                                
+                                                <kendo-grid-column field="period" title="Promotion Period" width="25">
+                                                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                        <kendo-grid-string-filter-cell
+                                                            placeholder="search"
+                                                            [showOperators]="false"
+                                                            [column]="column"
+                                                            title="Parent Store"
+                                                            [filter]="filter">
+                                                        </kendo-grid-string-filter-cell>
+                                                    </ng-template>
+                                                    
+                                                    
+                                                </kendo-grid-column>
+                                
+                                                <kendo-grid-column field="coupon" title="Coupon" width="20">
+                                                        <ng-template  kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                            <a style="text-decoration: underline;cursor: pointer;" (click)="viewPromoDetails()">{{dataItem.coupon}}</a>
+                                                        </ng-template>
+                                                    
+                                                </kendo-grid-column>
+                                
+                                                <kendo-grid-column field="performance" title="Performance" width="20">
+                                                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                        <kendo-grid-string-filter-cell
+                                                            placeholder="search"
+                                                            [showOperators]="false"
+                                                            [column]="column"
+                                                            title="Parent Store"
+                                                            [filter]="filter">
+                                                        </kendo-grid-string-filter-cell>
+                                                    </ng-template>
+                                                </kendo-grid-column>
+                                
+                                
+                                                <kendo-grid-command-column title="Action" width="40">
+                                                    <ng-template kendoGridCellTemplate let-isNew="isNew">
+                                                        <button type="submit" class="btn btn-dark btn-sm btn-dark-rounded">Deactivate</button>
+                                                        <button type="submit" class="btn btn-dark btn-dark-rounded  btn-sm">Modify</button>
+                                                        <span style="padding-left: 20%;font-size: 10px;opacity: 0.5;color: white;opacity: 0.5;">Last Modified On 10:30 am</span>
+                                                    </ng-template>
+                                                </kendo-grid-command-column>
+                                
+                                
+                                            </kendo-grid> -->
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Deactivated Promo" *ngIf="disableTab('Deactivated Promo')" id="deactivated">
+                        <ng-template ngbTabContent>
+
+                            <div class="text-center mt-3" *ngIf="loading"><br><br>
+                                <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab" *ngIf="!loading">
+
+                                <br><br>
+                                <!-- <kendo-grid class="kendo_table" [kendoGridBinding]="DEACTIVE_PROMO_ARRAY" [filterable]="true"
+                                    [sortable]="true"> -->
+
+                                <kendo-grid [kendoGridBinding]="DEACTIVE_PROMO_ARRAY" [filterable]="true"
+                                    [sortable]="true" classs="master-table master-demo-promo" [pageSize]="10" [skip]="skip"
+                                    (pageChange)="pageChange($event)" [pageable]="true">
+
+                                    <kendo-grid-column field="no" title="No" width="15">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="No" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+                                    </kendo-grid-column>
+
+
+                                    <kendo-grid-column field="type" title="Type" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Type" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-column field="customerType" title="Customer Type" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Customer Type" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-column field="promotionType" title="Promo Type" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Promo Type" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+                                   
+                                    <kendo-grid-column field="name" title="Promo Name" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Promo Name" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                            <a style="text-decoration: underline;cursor: pointer;" *ngIf="viewFlag"
+                                                (click)="viewPromoDetails(dataItem._id)">{{dataItem.name}}</a>
+
+                                                <a *ngIf="!viewFlag">{{dataItem.name}}</a>
+                                        </ng-template>
+
+
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-column field="code" title="Code" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Code" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                            <a *ngIf="viewFlag" style="text-decoration: underline;cursor: pointer;"
+                                            [routerLink]="['/promo/promocode',dataItem._id,dataItem.code]">{{dataItem.code}}</a>
+
+                                            <a *ngIf="!viewFlag">{{dataItem.code}}</a>
+                                        </ng-template>
+                                    </kendo-grid-column>
+
+                                    <kendo-grid-column field="percentage" title="Percentage" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Percentage" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+                                    </kendo-grid-column>
+
+                                    <!-- <kendo-grid-column field="amount" title="Amount" width="20">
+                                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                            <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                                [column]="column" title="Parent Store" [filter]="filter">
+                                            </kendo-grid-string-filter-cell>
+                                        </ng-template>
+
+                                    </kendo-grid-column> -->
+
+
+                                    <kendo-grid-command-column title="Action" width="20"  class="text-center">
+                                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                            <!-- <i class="fa fa-edit" (click)="editPromoDetails(dataItem._id)"
+                                                *ngIf="editFlag"></i> -->
+
+                                            &nbsp;&nbsp;<i class="fa fa-trash" *ngIf="editFlag"
+                                                (click)="Delete(dataItem._id)"></i>
+                                        </ng-template>
+                                    </kendo-grid-command-column>
+
+
+                                </kendo-grid>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+
+                </ngb-tabset>
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid ends-->

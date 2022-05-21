@@ -1,0 +1,224 @@
+a,span{
+  color: white;
+  opacity: 0.6;
+  padding-left: 2%;
+  font-weight: lighter;
+}
+.mt{
+  padding-right: 0px;
+}
+h5,h6,label{
+color: white;
+opacity: 0.5;
+font-weight: lighter;
+font-weight: "Poppins";
+}
+
+input::placeholder{
+color: white;
+opacity: 0.6;
+font-weight: lighter;
+font-weight: "Poppins-Light";
+}
+
+select option{
+color: white;
+opacity: 0.5;
+font-weight: lighter;
+font-weight: "Poppins-Light";
+}
+
+.basic_info{
+  font-size: 13px;
+  padding-top: 8px;
+  margin-bottom: 0px;
+}
+
+.substitution_info{
+  font-size: 10px;
+  padding-top: 8px;
+  margin-bottom: 0px;
+}
+
+
+.card-data{
+  background-color: #1c5470;
+}
+.costmr_srch_ivntrylist .form-control{
+  font-size: 13px;
+  border-radius: 30px;
+  height: 51px;
+  background: #014466 !important;
+  border: 7px solid #046190 !important;
+}
+
+
+.card-data{
+  background-color: #144258;
+  padding: 40px;
+  align-content: center;
+  border-radius: 10px;
+  padding-right: 20px;
+  color:white;
+  position: relative;
+  padding-right: 20px;
+}
+
+.span-data{
+background-color: #014466; 
+width: 170px; 
+height: 140px; 
+text-align: center; 
+border-radius: 10px; 
+margin-top: 15px;
+}
+.span-data input{
+  position: absolute;
+  top: 35px;
+  left: 15px;
+  width: 170px;
+  height: 140px !important;
+  opacity: 0;
+  cursor: pointer;
+}
+.span-data a {
+  padding-left:30%;
+}
+.span-data .icon{
+color: white;
+padding-top: 40px;
+}
+
+
+
+.div-data{
+  background-color: #033a56;
+  padding: 13px;
+  border-radius: 6px;
+  padding-right: 120px;
+  color:white;
+  position: relative;
+}
+
+.span-data a {
+  padding-left:30%;
+}
+
+
+
+/*Button CSS*/
+
+.btn{
+  
+  font-weight: 400;
+  box-shadow: none;
+}
+.btn-inverse-dark {
+    background-color: rgba(79, 74, 96, 0.2);
+    background-image: none;
+    border-color: rgba(79, 74, 96, 0);
+    box-shadow: none;
+  }
+.btn-dark-rounded{
+  margin-left: 12px;
+  background-color: #014466;
+  border-radius: 10.25em;
+  box-shadow: none;
+}
+
+  
+  
+  .form-control{
+      background: #052a3d;
+      border-radius: 7px;
+    }
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+label{
+    color: gray;
+}
+.pull-right{
+  float: right;
+}
+
+.icon-style{
+  font-size: 100%;
+}    
+
+
+.upload-btn-wrapper {
+position: relative;
+overflow: hidden;
+display: inline-block;
+}
+
+.icon {
+border: 0px solid gray;
+color: white;
+opacity: 0.5;
+background-color: transparent;
+padding: 10px 20px;
+border-radius: 8px;
+font-size: 50px;
+font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+font-size: 100px;
+position: absolute;
+left: 0;
+top: 0;
+opacity: 0;
+}
+
+
+/* CSS Tabs*/
+.tabs {
+  max-width: 100%;
+  margin-top: 20px;
+  padding: 0 20px;
+  }
+  .tabs input {
+  display: none;
+  }
+  .tabs label {
+    border: unset;
+    border-width: unset;
+    background-color: #0e6e9e;
+    padding: 9px;
+    width: 130px;
+    border-radius: 4px;
+    margin: 0px 8px;
+    background-color: #00496e;
+    text-align:center;
+  }
+  .tabs label:hover {
+  cursor: pointer;
+  }
+  
+  .tabs input:checked + label {
+    border: unset;
+    border-width: unset;
+    background-color: #0e6e9e;
+    padding: 9px;
+    width: 130px;
+    border-radius: 4px;
+    margin: 0px 8px;
+  }
+  .tabs #tab1:checked ~ .content #content1,
+  .tabs #tab2:checked ~ .content #content2,
+  .tabs #tab3:checked ~ .content #content3,
+  .tabs #tab4:checked ~ .content #content4, 
+  .tabs #tab5:checked ~ .content #content5 {
+  display: block;
+  }
+  .tabs .content > div {
+  display: none;
+  padding-top: 20px;
+  text-align: center;
+  /*height: 192px;*/
+  overflow: none;
+  }
+
+    

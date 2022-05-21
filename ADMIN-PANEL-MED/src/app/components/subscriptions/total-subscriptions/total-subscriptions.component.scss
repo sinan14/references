@@ -1,0 +1,249 @@
+a{
+  color: white;
+}
+.order_tbl_slct_icon {
+  background-color: #3f718a;
+  color: #fff;
+  opacity: 1;
+  float: right;
+  margin-top: -26px;
+  margin-right: 25px;
+  padding: 2px 4px;
+  border-radius: 13px;
+  font-size: 10px;
+}
+.innerr_table_style table tr img {
+  width: 17px !important;
+  height: auto !important;
+  margin-left: 10px;
+}
+.card-data{
+  background-color: #1c5470;
+}
+.prem_topbanner{
+  margin-top: 40px; margin-bottom:30px; font-size: 15px;
+  }
+  .prem_topbanner span{
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 15px;
+  }
+  .form-control {
+    background-color: #042b3f !important;
+    border: 1px solid #7696a7 !important;
+    font-size: 13px;
+    color: white;
+    margin-top: -6px;
+  }
+.card-data{
+  background-color: #144258;
+  padding:10px;
+  padding: 40px;
+  align-content: center;
+  border-radius: 10px;
+  padding-right: 20px;
+  color:white;
+  position: relative;
+}
+
+.span-data{
+  justify-content: space-between;
+  background-color: #0a3347;
+  color:white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 75px;
+  font-weight: 5em;
+  float: right;
+}
+
+
+
+
+/*Button CSS*/
+.close-btn{
+  width: 100px;
+}
+.btn{
+  
+  font-weight: 300;
+}
+.btn-dark{
+  border-radius: 10px;
+  background-color: #0b4866;
+}
+
+.btn-dark-rounded{
+  margin-left: 12px;
+  background-color: #032536;
+  border: unset;
+  border-radius: 10.25em;
+  }
+
+  
+  
+.form-control{
+    background: #014466;
+  }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-body, .modal-header, .modal-footer{
+      background-color: #0b4866;
+  }
+  
+
+  .modal-dialog{max-width: 600px !important;}
+.modal-body h6,.modal-header h6,.modal-footer h6{color: white;opacity: 0.7;font-weight: normal;}
+.modal-body .form-control{background: #00496e !important;font-size:13px !important;}
+.modal-body .table thead th {border-bottom: unset;color: #8a959a;font-size: 12px;
+  font-weight: normal;}
+.modal-body .table tr td button{padding: 1px 10px !important;
+    border-radius: 11px !important;font-size: 9px;
+    margin: 0;}
+   
+    .modal-body{
+      background-color: #00496e;
+      .form-control{
+        background-color: #00496e;
+        border-top:none;
+      }
+  }
+  .modal-header{
+      background-color: #00496e;
+      border-top:none !important;
+      border-bottom:none !important;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+  }
+  .modal-footer{
+      background-color: #00496e;
+      border-top:none;
+      margin: none !important;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+  }
+  .modal-body,.modal-header,.modal-footer{
+    width: 146%;
+  }
+
+
+
+  label{
+      color: whitesmoke;
+  }
+  .data{
+      padding-top: 2%;
+      background-color: #053449;
+      align-content: center;
+      justify-content: center;
+  }
+ 
+
+
+
+
+/* CSS Tabs*/
+.tabs {
+  max-width: 100%;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+.tabs input {
+  display: none;
+}
+.tabs label {
+  display: inline-block;
+  padding: 6px 0 6px 0;
+  margin: 0 -2px;
+  width: 20%; /* =100/tabs number */
+  border-bottom: 1px solid #000;
+  text-align: center;
+}
+.tabs label:hover {
+  cursor: pointer;
+}
+.tabs input:checked + label {
+  border: 1px solid #000;
+  border-width: 1px 1px 0 1px;
+}
+.tabs #tab1:checked ~ .content #content1,
+.tabs #tab2:checked ~ .content #content2,
+.tabs #tab3:checked ~ .content #content3,
+.tabs #tab4:checked ~ .content #content4, 
+.tabs #tab5:checked ~ .content #content5 {
+  display: block;
+}
+.tabs .content > div {
+  display: none;
+  padding-top: 20px;
+  text-align: center;
+  /*height: 192px;*/
+  overflow: auto;
+}
+
+
+
+
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+
+
+
+.pagination button{
+  padding: 5px 10px;
+  margin: 8px;
+  color: white;
+  background: #014466 !important;
+  border: none !important;
+  }
+  
+  .added {
+    background-color: #014466 !important;
+    border: none !important;
+    padding: 16px;
+    opacity: 0.7;
+    height: calc(1.5em + 0.75rem + 6px);
+    transition: none !important;
+}
+
+.form-control{
+  background: #052a3d;
+}
+.side_innerpage_tab button {
+  background: #014466 !important;
+  border: 1px solid #014466 !important;
+}
+.innerr_table_style .table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: initial;}

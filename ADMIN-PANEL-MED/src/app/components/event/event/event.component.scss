@@ -1,0 +1,170 @@
+.card-data{
+  background-color: #1c5470;
+  padding:10px;
+  padding: 40px;
+  align-content: center;
+  border-radius: 10px;
+  padding-right: 20px;
+  color:white;
+  position: relative;
+}
+
+.span-data{
+  justify-content: space-between;
+  background-color: #0a3347;
+  color:white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 75px;
+  font-weight: 5em;
+  float: right;
+}
+
+
+
+
+/*Button CSS*/
+
+
+.btn{
+  color: #99b2bf ;
+  font-weight: 400;
+}
+
+.btn-dark-rounded{
+  margin-left: 12px;
+  background-color: #00283d;
+  border: unset;
+  border-radius: 10.25em;
+  }
+
+  .btn-inverse-dark{
+    background-color: #0b4866;
+    background-image: none;
+    border: unset;
+    border-radius: 10.25em;
+  }
+
+  hr{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+    
+.form-control{
+background: #093d57;
+border: none;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+
+.modal-body, .modal-header, .modal-footer{
+background-color: #0b4866;
+color:#fff;
+width: 100%;
+border-bottom: none !important;
+border-top: none !important;
+label{
+color: white;
+opacity: 0.5;
+}
+}
+
+.modal-header{
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+}
+.modal-footer{
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+}
+
+
+
+  /*Kendo Calender*/
+
+
+  kendo-multiviewcalendar {
+    background-color: #031620;
+  }
+
+  .k-calendar .k-calendar-view td, .k-calendar .k-calendar-view th, .k-calendar .k-calendar-view .k-calendar-td, .k-calendar .k-calendar-view .k-calendar-th {
+    border-width: 0;
+    padding: 20px;
+    text-align: center;
+    border-style: solid;
+    border-color: inherit;
+    font-weight: normal;
+    cursor: default;
+}
+
+::ng-deep  .fc table {
+  border: 1px solid black !important;
+}
+
+::ng-deep .fc .fc-daygrid-day-number {
+  padding: 12px !important;
+  position: relative !important;
+  z-index: 40 !important;
+  color: white !important;
+  opacity: 0.5 !important;
+  float: left !important;
+}
+
+
+
+::ng-deep .fc .fc-toolbar-title {
+  font-size: 8px;
+  padding-top: 30%;
+  padding-left: 0%;
+  color: white;
+  font-weight: lighter;
+}
+
+::ng-deep  .fc .fc-col-header-cell-cushion{
+  font-size: 16px;
+  padding-top: 2%;
+  padding-left: 2%;
+  color: white;
+  background-color: #042B3F;
+  text-align: center;
+}
+
+::ng-deep .fc .fc-col-header-cell-cushion {
+  display: inline-block;
+  padding: 17px 60px !important;
+}
+
+::ng-deep .fc, .fc *, .fc :after, .fc :before{
+  font-size: 10px;
+  padding-top: 2%;
+  color: white;
+  background-color: #042B3F;
+  padding: 10px;
+  text-align: center;
+}
+
+
+::ng-deep .fc .fc-daygrid-day-frame {
+  min-height: 75%;
+  position: relative;
+}
+
+::ng-deep  .fc-direction-ltr .fc-daygrid-event.fc-event-end, .fc-direction-rtl .fc-daygrid-event.fc-event-start {
+  
+  color: white;
+  background-color: #042B3F;
+  border: none;
+  height: 20px;
+}
+
+::ng-deep .fc .fc-button-primary {
+  background-color: none !important;
+  background-color: none !important;
+  border-color: none !important;
+  border-color: none !important;
+  color: #fff;
+  color: none !important;
+}

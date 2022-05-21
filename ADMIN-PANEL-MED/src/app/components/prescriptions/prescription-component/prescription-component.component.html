@@ -1,0 +1,209 @@
+<section style="margin-top: 10%">
+  <div class="row"><div class="col-lg-6 col-md-6"></div>
+    <div class="col-lg-6 col-md-6">
+      <div class="input-group">
+        <input
+          type="text"
+          trim="blur"
+          class="form-control form-control-text added"
+          style="border-radius: 27px 0px 0px 27px; opacity: 1"
+          (keyup)="onChangeKeyword($event.target.value)"
+          placeholder="Search"
+          name="search"
+        />
+        <div class="input-group-btn">
+          <button
+            class="btn btn-default"
+            type="submit"
+            style="border-radius: 0px 27px 27px 0px; background: #014466!important;"
+          >
+            <i class="fa fa-search" style="color: white"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <br /><br /><br />
+  </div>
+  <div>
+    <div class="order-medicine table-responsive">
+      <kendo-grid
+        [kendoGridBinding]="prescriptionTable.finalResult"
+        [filterable]="false"
+        [sortable]="true"
+      >
+        <kendo-grid-column field="SlNo" title="Sl.No" width="10">
+          <ng-template
+            kendoGridFilterCellTemplate
+            let-filter
+            let-column="column"
+          >
+            <kendo-grid-string-filter-cell
+              placeholder="search"
+              [showOperators]="false"
+              [column]="column"
+              title="Parent Store"
+              [filter]="filter"
+            >
+            </kendo-grid-string-filter-cell>
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="customerId" title="Customer Id" width="30">
+          <ng-template
+            kendoGridFilterCellTemplate
+            let-filter
+            let-column="column"
+          >
+            <kendo-grid-string-filter-cell
+              placeholder="search"
+              [showOperators]="false"
+              [column]="column"
+              title="Parent Store"
+              [filter]="filter"
+            >
+            </kendo-grid-string-filter-cell>
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="name" title="User Name" width="30">
+          <ng-template
+            kendoGridFilterCellTemplate
+            let-filter
+            let-column="column"
+          >
+            <kendo-grid-string-filter-cell
+              placeholder="search"
+              [showOperators]="false"
+              [column]="column"
+              title="Parent Store"
+              [filter]="filter"
+            >
+            </kendo-grid-string-filter-cell>
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="phone" title="Contact No" width="30">
+          <ng-template
+            kendoGridFilterCellTemplate
+            let-filter
+            let-column="column"
+          >
+            <kendo-grid-string-filter-cell
+              placeholder="search"
+              [showOperators]="false"
+              [column]="column"
+              title="Parent Store"
+              [filter]="filter"
+            >
+            </kendo-grid-string-filter-cell>
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column title="Created At" width="20">
+          <ng-template
+            kendoGridCellTemplate
+            let-isNew="isNew"
+            let-dataItem="dataItem"
+          >
+            <a>
+              {{ dataItem.createdAt | date }}
+            </a>
+
+            <div></div>
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column title="Prescription" width="30">
+          <ng-template
+            kendoGridCellTemplate
+            let-isNew="isNew"
+            let-dataItem="dataItem"
+          >
+            <ng-container *ngFor="let pre of dataItem.prescription">
+              <div class="mb-3 text-center">
+                <a target="_blank" [href]="pre">
+                  <img width="auto" height="25px" [src]="pre" />
+                </a>
+                <a style="cursor: pointer;">
+                  &nbsp;<i class="fa fa-arrow-circle-o-down" aria-hidden="true"  (click)="download(pre, dataItem.name)"></i>
+                  <!-- <img
+                    (click)="download(pre, dataItem.name)"
+                    style="float: right"
+                    src="assets/images/file-icons/icon-download.png"
+                    width="17px"
+                    height="17px"
+                  /> -->
+                </a>
+              </div>
+            </ng-container>
+
+            <div></div>
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column title="Action" width="40" class="text-center">
+          <ng-template
+            kendoGridCellTemplate
+            let-isNew="isNew"
+            let-dataItem="dataItem"
+          >
+            <button
+              type="button"
+              class="btn btn-dark btn-dark-rounded"
+              (click)="
+                _prescriptionService.goToCustomerDetails(dataItem.customerId)
+              "
+            >
+              Make New
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-dark btn-dark-rounded"
+              (click)="onDeletePrescription(dataItem)"
+            >
+              Delete
+            </button>
+          </ng-template>
+        </kendo-grid-column>
+      </kendo-grid>
+    </div>
+    <div class="row">
+      <div class="pagination ml-2">
+        <button (click)="pagination(1)">First</button>
+        <button
+          *ngIf="prescriptionTable.hasPrevPage"
+          (click)="pagination(prescriptionTable.current_page - 1)"
+        >
+          Prev
+        </button>
+        <button
+          *ngIf="prescriptionTable.hasPrevPage"
+          (click)="pagination(prescriptionTable.current_page - 1)"
+        >
+          {{ prescriptionTable.current_page - 1 }}
+        </button>
+        <button style="color: yellow">
+          {{ prescriptionTable.current_page }}
+        </button>
+        <button
+          *ngIf="prescriptionTable.hasNextPage"
+          (click)="pagination(prescriptionTable.current_page + 1)"
+        >
+          {{ prescriptionTable.current_page + 1 }}
+        </button>
+        <button
+          *ngIf="prescriptionTable.hasNextPage"
+          (click)="pagination(prescriptionTable.current_page + 1)"
+        >
+          Next
+        </button>
+        <button (click)="pagination(prescriptionTable.total_page)">Last</button>
+      </div>
+      <!-- <div class="pagination ml-2">
+        <p>
+          {{ prescriptionTable.current_page }} -
+          {{ prescriptionTable.finalResult.length }} of
+          {{ prescriptionTable.total_items }} items
+        </p>
+      </div> -->
+    </div>
+  </div>
+</section>

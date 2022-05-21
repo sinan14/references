@@ -1,0 +1,896 @@
+<body>
+  <section>
+    <img src="assets/img/circ.png" class="cir1 rotate" />
+    <img src="assets/img/membership/dot.png" class="dpres floatings" />
+    <img src="assets/img/membership/dot.png" class="dpres1 floatings" />
+
+    <div class="membership_top_cnt_obj">
+      <img src="assets/img/membership/obj1.png" alt="" />
+    </div>
+
+    <section class="membership_section_container" *ngIf="!premiumUser">
+      <a routerLink="/" style="cursor: pointer">
+        <div class="membership_backto_home_btn">
+          <div class="membership_backto_home_btn_ico">
+            <img src="assets/img/membership/home.png" alt="" />
+          </div>
+          Back To Home
+        </div>
+      </a>
+
+      <div class="container">
+        <div class="membership_logo_container_sec">
+          <img src="assets/img/membership/member_logo.png" alt="" />
+        </div>
+
+        <div class="membership_feature_sec">
+          <div class="row center_div_cl" style="width: auto">
+            <div class="col-md-3" *ngFor="let i of bannersList">
+              <div class="membership_feature_box">
+                <img src="{{ i.image }}" alt="" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row center_div_cl ipad-center-row">
+            <div
+              class="col-lg-3 mrg-rgt-bx col-sm-10 col-10"
+              *ngFor="let i of premiumList"
+            >
+              <div class="member_plan_box">
+                <div
+                  *ngIf="i.name === 'PLATINUM'"
+                  class="member_recomnended_bx"
+                  style="background-color: #010f25"
+                >
+                  Recomended
+                </div>
+                <div
+                  class="member_plan_box_off_tg"
+                  *ngIf="i.offer_percentage != 0"
+                  style="background-image: url('assets/img/membership/off.png')"
+                >
+                  <div class="member_plan_box_off_tg_txt">
+                    {{ i.offer_percentage }} <span>%<br />OFF</span>
+                  </div>
+                </div>
+                <div class="member_plan_box_name">
+                  {{ i.name }}
+                </div>
+                <div class="member_plan_box_rate_bx">
+                  <div
+                    class="member_plan_box_rate_bx_rate"
+                    *ngIf="!i.discountPrice"
+                  >
+                    <i class="fa fa-rupee"></i> {{ i.specialPrice }}
+                    <span *ngIf="i.offer_percentage != 0"> {{ i.price }}</span>
+                    <div class="member_plan_box_rate_bx_mnth">
+                      {{ i.month }} month
+                    </div>
+                  </div>
+
+                  <div
+                    class="member_plan_box_rate_bx_rate"
+                    *ngIf="i.discountPrice"
+                  >
+                    <i class="fa fa-rupee"></i> {{ i.discountPrice }}
+                    <span *ngIf="i.offer_percentage != 0"> {{ i.price }}</span>
+                    <div class="member_plan_box_rate_bx_mnth">
+                      {{ i.month }} month
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a
+                id="rzp-button1"
+                class="mem_pay_now"
+                (click)="chooseMembership(i.name, i)"
+                >Pay Now</a
+              >
+            </div>
+
+            <!-- <div class="col-md-3 col-sm-10 col-10">
+                        <div class="member_plan_box">
+                            <div class="member_recomnended_bx" style="background-color: black;">Recomended</div>
+                            <div class="member_plan_box_off_tg" style="background-image: url('assets/img/membership/off.png');"><div class="member_plan_box_off_tg_txt">70 <span>%<br>OFF</span></div> </div>
+                            <div class="member_plan_box_name">
+                                Platinum
+                            </div>
+                            <div class="member_plan_box_rate_bx">
+                                <div class="member_plan_box_rate_bx_rate">
+                                    <i class="fa fa-rupee"></i> 699 <span>2499</span>
+                                    <div class="member_plan_box_rate_bx_mnth">6 month</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a  class="mem_pay_now" (click)="chooseMembership('platinum')">Pay Now</a>
+                    </div> -->
+          </div>
+
+          <div class="promo_btn_row">
+            <button
+              *ngIf="!couponCode"
+              data-toggle="modal"
+              data-target="#promocode"
+              class="promo_btn_a"
+            >
+              Have a promocode
+            </button>
+            <!-- <a href="#" class="promo_btn_a">Have a promocode</a> -->
+
+            <span class="promo_btn_a" *ngIf="couponCode">{{
+              couponCode.code
+            }}</span>
+            <button
+              *ngIf="couponCode"
+              type="button"
+              class="promo-close"
+              style="cursor: pointer"
+              (click)="removeCoupon()"
+            >
+              ×
+            </button>
+          </div>
+
+          <div class="row center_div_cl">
+            <div class="col-md-9">
+              <div class="member_faw_head"><span>FAQ</span></div>
+              <div class="faq_box_sec" style="overflow-x: hidden">
+                <div class="accordion">
+                  <div class="accordion-item">
+                    <a (click)="expand('p1')"
+                      >How can I benefit from the Medpride membership plan?</a
+                    >
+                    <div
+                      class="content"
+                      *ngIf="type == 'p1'"
+                      [ngClass]="showContent && type == 'p1' ? 'active' : ''"
+                    >
+                      <p>
+                        With our MedPride, you can avail of exclusive discounts,
+                        5% cashback, lightning fast deliveries for free,
+                        priority support and an exclusive folio fit account.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <a (click)="expand('p2')"
+                      >Can I cancel my Medpride membership plan?</a
+                    >
+                    <div
+                      class="content"
+                      *ngIf="type == 'p2'"
+                      [ngClass]="showContent && type == 'p2' ? 'active' : ''"
+                    >
+                      <p>
+                        No, You cannot cancel your Medpride membership plan.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <a (click)="expand('p3')">How can I avail my cashback?</a>
+                    <div
+                      class="content"
+                      *ngIf="type == 'p3'"
+                      [ngClass]="showContent && type == 'p3' ? 'active' : ''"
+                    >
+                      <p>
+                        You will receive your cashback for each purchase in the
+                        form of MedCoins, which will add to your Medimall
+                        account.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <a (click)="expand('p4')"
+                      >How can I use these cashbacks & do they have any
+                      validity?</a
+                    >
+                    <div
+                      class="content"
+                      *ngIf="type == 'p4'"
+                      [ngClass]="showContent && type == 'p4' ? 'active' : ''"
+                    >
+                      <p>
+                        The cashback received as Medcoins can be used to
+                        purchase medicines and health products at medimall. You
+                        will receive exclusive discounts and cashback while
+                        purchasing with Medcoins also. Yes, the Medcoins come
+                        with a validity period of 30 Days.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <a (click)="expand('p5')"
+                      >How does this Folio Fit membership help me?</a
+                    >
+                    <div
+                      class="content"
+                      *ngIf="type == 'p5'"
+                      [ngClass]="showContent && type == 'p5' ? 'active' : ''"
+                    >
+                      <p>
+                        The folio fit is a digital platform which helps you stay
+                        fit and prevent chronic conditions.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <a (click)="expand('p6')"
+                      >I am living in a rural area. Will I get free delivery in
+                      my area?</a
+                    >
+                    <div
+                      class="content"
+                      *ngIf="type == 'p6'"
+                      [ngClass]="showContent && type == 'p6' ? 'active' : ''"
+                    >
+                      <p>
+                        Yes, as our Medpride member, you will get free delivery
+                        if you reside in a deliverable pincode.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <a (click)="expand('p7')"
+                      >How will I benefit from priority support as a Medpride
+                      Member?</a
+                    >
+                    <div
+                      class="content"
+                      *ngIf="type == 'p7'"
+                      [ngClass]="showContent && type == 'p7' ? 'active' : ''"
+                    >
+                      <p>
+                        You will always receive priority support from our
+                        healthcare executives, and we will clear all your
+                        queries within XX hours.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <a (click)="expand('p8')"
+                      >How can I always get cashback?
+                    </a>
+                    <div
+                      class="content"
+                      *ngIf="type == 'p8'"
+                      [ngClass]="showContent && type == 'p8' ? 'active' : ''"
+                    >
+                      <p>
+                        Join the thousands of other Medpride members with our
+                        Medpride membership to get the cashback on every
+                        purchase.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <a (click)="expand('p9')"
+                      >How can I sign up for MedPride membership?
+                    </a>
+                    <div
+                      class="content"
+                      *ngIf="type == 'p9'"
+                      [ngClass]="showContent && type == 'p9' ? 'active' : ''"
+                    >
+                      <p>
+                        1. To be a part of our prestigious membership program,
+                        please click here.
+                      </p>
+                      <p>2. Buy the membership plan that suits you best</p>
+                      <p>3. Enjoy all the benefits of membership</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mem_btn_terms">
+            <!-- <a  class="mem_term_btn" (click)="viewTermsCondition()">Terms and conditions</a> -->
+            <div class="con-tooltip right1">
+              <a routerLink="#" class="mem_term_btn">Terms and conditions</a>
+
+              <!-- <p *ngIf="viewTerms" class="terms_member" innerHTML="{{sanitizer.bypassSecurityTrustHtml(termsConditions)}}"></p> -->
+              <div class="tooltip">
+                <h5
+                  style="
+                    margin: 11px 0 14px 0px;
+                    font-size: 15px;
+                    font-weight: 600;
+                  "
+                >
+                  Terms & Conditions
+                </h5>
+                <label [innerHTML]="termsConditions"> </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="mem_bottom_obj2">
+          <img src="assets/img/membership/obj2.png" alt="">
+      </div> -->
+    </section>
+
+    <!-- After medpride member ship purchase section-->
+
+    <section *ngIf="premiumUser" class="save_section_container">
+      <a routerLink="/" style="cursor: pointer">
+        <div class="membership_backto_home_btn saves-memb">
+          <div class="membership_backto_home_btn_ico">
+            <img src="assets/img/membership/home.png" alt="" />
+          </div>
+          Back To Home
+        </div>
+      </a>
+      <div class="container">
+        <div class="save_logo_container_sec">
+          <img src="../../assets/img/membership/memberlogo.png ">
+        </div>
+
+        <div class="save_feature_sec">
+          <div class="col-md-12 saving-content">
+            <h3>Super {{ myBenefits.planName }} savings</h3>
+            <p>In the last {{ myBenefits.daysAfterMemberShipPurchase }} days</p>
+          </div>
+        </div>
+
+        <div class="save-row">
+          <div class="save-blue1">
+            <div class="save-blue-content">
+              <img src="assets/img/save/save-del.svg" />
+
+              <h5>Cash Back</h5>
+            </div>
+            <h3><i class="fa fa-inr"></i> {{ myBenefits.cashBackAmount }}</h3>
+            <p>Availed</p>
+            <img class="overlaps" src="assets/img/save/cash.svg" />
+          </div>
+          <div class="save-blue1">
+            <div class="save-blue-content">
+              <img src="assets/img/save/save-dis.svg" />
+
+              <h5>Discount</h5>
+            </div>
+            <h3><i class="fa fa-inr"></i> {{ myBenefits.discount }}</h3>
+            <p>Redeemed</p>
+            <img class="overlaps" src="assets/img/save/tag.svg" />
+          </div>
+          <div class="save-blue1">
+            <div class="save-blue-content">
+              <img src="assets/img/save/save-cash.svg" />
+              <h5>Delivery <br />Charges</h5>
+            </div>
+            <h3><i class="fa fa-inr"></i> {{ myBenefits.deliveryCharges }}</h3>
+            <p>Saved</p>
+            <img class="overlaps" src="assets/img/save/truck.svg" />
+          </div>
+        </div>
+
+        <div class="Save-images">
+          <div class="container">
+            <div class="row save-second">
+              <div class="save-imgs">
+                <div class="save-carousel shines">
+                  <span class="save-badge" *ngIf="myBenefits.freeDelivery == 0"
+                    >Zero left</span
+                  >
+                  <span class="save-badge" *ngIf="myBenefits.freeDelivery > 0"
+                    >{{ myBenefits.freeDeliveryLeftInWords }} left</span
+                  >
+                  <div class="freeDelivery">
+                    <a class="ps-product__image">
+                      <figure>
+                        <img
+                          src="../../assets/img/save\save-sec-1.png"
+                          alt="alt"
+                          class="save-car-img"
+                        />
+                      </figure>
+                    </a>
+
+                    <!-- <div class="dots">
+                        <span class="dot-fulled"></span>
+                        <span class="dot-border"></span>
+                        <span class="dot-border"></span>
+                        <span class="dot-border"></span>
+                        <span class="dot-border"></span>
+                      </div> -->
+                      <div class="dot-out">
+                    <div class="dots">
+                      <ng-container
+                        *ngFor="
+                          let hv of myBenefits.fakeArray;
+                          let RowIndex = index
+                        "
+                      >
+                        <span
+                          [class.dot-fulled]="
+                            RowIndex < myBenefits.freeDeliveryUsed
+                          "
+                          [class.dot-border]="
+                            RowIndex >= myBenefits.freeDeliveryUsed
+                          "
+                        ></span>
+                      </ng-container>
+                    </div> </div>
+                  </div>
+                </div>
+                <div
+                  class="save-img-conet"
+                  style="
+                    background: transparent
+                      linear-gradient(90deg, #ffaf5c 0%, #ff5cdd 100%) 0% 0%;
+                  "
+                >
+                  <p>Free Delivery</p>
+                </div>
+              </div>
+
+              <div class="save-imgs">
+                <div class="save-carousel shines">
+                  <span class="save-badge" *ngIf="myBenefits.freeDelivery == 0"
+                    >Zero left</span
+                  >
+                  <span class="save-badge" *ngIf="myBenefits.freeDelivery > 0"
+                    >{{ myBenefits.freeDeliveryLeftInWords }} left</span
+                  >
+
+                  <div id="fastDelivery">
+                    <a class="ps-product__image">
+                      <figure>
+                        <img
+                          src="assets/img/save\save-sec-2.png"
+                          alt="alt"
+                          class="save-car-img"
+                        />
+                      </figure>
+                    </a>
+
+                    <div class="dots">
+                      <ng-container
+                        *ngFor="
+                          let hv of myBenefits.fakeArray;
+                          let RowIndex = index
+                        "
+                      >
+                        <span
+                          [class.dot-fulled]="
+                            RowIndex < myBenefits.freeDeliveryUsed
+                          "
+                          [class.dot-border]="
+                            RowIndex >= myBenefits.freeDeliveryUsed
+                          "
+                        ></span>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="save-img-conet"
+                  style="
+                    background: transparent
+                      linear-gradient(
+                        90deg,
+                        #5c5cff 0%,
+                        #d95cff 100%,
+                        #ff5cdd 100%
+                      )
+                      0% 0%;
+                  "
+                >
+                  <p>Fast Delivery</p>
+                </div>
+              </div>
+
+              <div class="save-imgs">
+                <div class="save-carousel shines">
+                  <span class="save-badge"
+                    >Earned : <i class="fa fa-rupee"></i>
+                    {{ myBenefits.cashBackAmount }}</span
+                  >
+                  <img
+                    src="assets/img/save\save-sec-3.png"
+                    alt="alt"
+                    class="save-car-img"
+                  />
+                </div>
+                <div
+                  class="save-img-conet"
+                  style="
+                    background: transparent
+                      linear-gradient(
+                        90deg,
+                        #3ecdd2 0%,
+                        #5c67ff 100%,
+                        #ff5cdd 100%
+                      )
+                      0% 0%;
+                  "
+                >
+                  <p>{{ myBenefits.cashBack }}% Cash Back</p>
+                </div>
+              </div>
+
+              <div class="save-imgs">
+                <div class="save-carousel">
+                  <img
+                    src="assets/img/save/fft.png"
+                    alt="alt"
+                    class="save-car-img"
+                  />
+                </div>
+                <div
+                  class="save-img-conet"
+                  style="
+                    background: transparent
+                      linear-gradient(90deg, #ffaf5c 0%, #ff5cdd 100%) 0% 0%;
+                  "
+                >
+                  <p>FolioFit Membership</p>
+                </div>
+              </div>
+            </div>
+            <div class="row save-sec-2">
+              <div class="save-imgs">
+                <div class="save-carousel">
+                  <img
+                    src="assets/img/save/exclusive.png"
+                    alt="alt"
+                    class="save-car-img" style="padding-top: 8px;"
+                  />
+                </div>
+                <div
+                  class="save-img-conet"
+                  style="
+                    background: transparent
+                      linear-gradient(
+                        90deg,
+                        #5c5cff 0%,
+                        #d95cff 100%,
+                        #ff5cdd 100%
+                      )
+                      0% 0%;
+                  "
+                >
+                  <p>Exclusive Offers</p>
+                </div>
+              </div>
+
+              <div class="save-imgs">
+                <div class="save-carousel">
+                  <img
+                    src="assets/img/save/priority.png"
+                    alt="alt"
+                    class="save-car-img"  style="padding-top: 8px;"
+                  />
+                </div>
+                <div
+                  class="save-img-conet"
+                  style="
+                    background: transparent
+                      linear-gradient(
+                        90deg,
+                        #3ecdd2 0%,
+                        #5c67ff 100%,
+                        #ff5cdd 100%
+                      )
+                      0% 0%;
+                  "
+                >
+                  <p>Priority Support</p>
+                </div>
+              </div>
+
+              <div class="save-imgs">
+                <div class="save-carousel">
+                  <img
+                    src="assets/img/save/ten.png"
+                    alt="alt"
+                    class="save-car-img"  style="padding-top: 8px;"
+                  />
+                </div>
+                <div
+                  class="save-img-conet"
+                  style="
+                    background: transparent
+                      linear-gradient(90deg, #ffaf5c 0%, #ff5cdd 100%) 0% 0%;
+                  "
+                >
+                  <p>{{ myBenefits.miniMumOffer }}% off on Outlets</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+  <!-- Coupon code pop-up-->
+  <div class="modal fade" id="promocode" role="dialog">
+    <div class="modal-dialog">
+      <!------------ Modal content Upload pres-------------------------->
+      <div class="modal-content" style="padding: 0 7px">
+        <div class="close1">
+          <button
+            type="button"
+            id="dismiss-coupon-form"
+            class="closea"
+            data-dismiss="modal"
+          >
+            &times;
+          </button>
+        </div>
+        <h6 class="uph">Available Coupon Code</h6>
+        <div class="modal-header">
+          <form [formGroup]="couponForm">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12 apply-coupon">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Coupon..."
+                    formControlName="coupon"
+                  />
+                  <small
+                    class="form-text small-block"
+                    *ngIf="isValidnewCoupon('coupon')"
+                  >
+                    Field empty...
+                  </small>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="height-coupon">
+                    <div
+                      class="cart_payment_dtl_box_row addcoupon"
+                      *ngFor="let c of availableCoupon"
+                    >
+                      <p
+                        style="cursor: pointer"
+                        (click)="copyToClipBoard(c.code)"
+                        style="float: right"
+                      >
+                        {{ c.code }}
+                      </p>
+                      <div class="cart_payment_dtl_box_head coupon-head">
+                        Get {{ c.percentage }}% Off
+                      </div>
+
+                      <div class="accordion-item mb-2">
+                        <a
+                          (click)="termsConditionClicked(c._id)"
+                          style="cursor: pointer"
+                        >
+                          <div class="tc-text">T&C</div></a
+                        >
+                        <div
+                          *ngIf="showTerms && typeTerms == c._id"
+                          [ngClass]="
+                            showTerms && typeTerms == c._id ? 'active' : ''
+                          "
+                        >
+                          <p
+                            style="
+                              padding: 0 5px;
+                              text-align: justify;
+                              font-size: 11px;
+                            "
+                            [innerHtml]="c.termsAndCondition"
+                          ></p>
+                        </div>
+                      </div>
+
+                      <!-- Right tooltip-->
+                      <!-- <div class="con-tooltip right">
+                                                    <div class="tc-text">T&C</div>
+                                                    <div class="tooltip">
+                                                    <h5
+                                                    style="
+                                                        margin: 11px 0 14px 0px;
+                                                        font-size: 15px;
+                                                        font-weight: 600;
+                                                    "
+                                                    >
+                                                    Terms & Conditions
+                                                    </h5>
+                                                    <label style="padding: 0 5px; text-align: justify; font-size: 11px" [innerHtml]="c.termsAndCondition"></label>
+                                                    </div>
+                                                
+                                                </div> -->
+
+                      <div class="coupon-pop-apply">
+                        <button
+                          class="btn btn-primary"
+                          (click)="selectCoupon(c)"
+                        >
+                          Apply
+                        </button>
+
+                        <span>{{ c.name }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-primary saveandcontinue"
+                (click)="applyCoupon(); attemptedSubmit = true"
+              >
+                Apply
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Coupon code pop-up-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style type="text/css">
+    .intro {
+      height: auto;
+      min-height: 100vh;
+      text-align: center;
+      background-color: teal;
+    }
+  </style>
+
+  <script type="text/javascript">
+    function inVisible(element) {
+      //Checking if the element is
+      //visible in the viewport
+      var WindowTop = $(window).scrollTop();
+      var WindowBottom = WindowTop + $(window).height();
+      var ElementTop = element.offset().top;
+      var ElementBottom = ElementTop + element.height();
+      //animating the element if it is
+      //visible in the viewport
+      if (ElementBottom <= WindowBottom && ElementTop >= WindowTop)
+        animate(element);
+    }
+
+    function animate(element) {
+      //Animating the element if not animated before
+      if (!element.hasClass("ms-animated")) {
+        var maxval = element.data("max");
+        var html = element.html();
+        element.addClass("ms-animated");
+        $({
+          countNum: element.html(),
+        }).animate(
+          {
+            countNum: maxval,
+          },
+          {
+            //duration 5 seconds
+            duration: 5000,
+            easing: "linear",
+            step: function () {
+              element.html(Math.floor(this.countNum) + html);
+            },
+            complete: function () {
+              element.html(this.countNum + html);
+            },
+          }
+        );
+      }
+    }
+    //When the document is ready
+    $(function () {
+      //This is triggered when the
+      //user scrolls the page
+      $(window).scroll(function () {
+        //Checking if each items to animate are
+        //visible in the viewport
+        $("h2[data-max]").each(function () {
+          inVisible($(this));
+        });
+      });
+    });
+  </script>
+
+  <script
+    data-cfasync="false"
+    src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+  ></script>
+
+  <script src="assets/plugins/jquery.min.js"></script>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script> -->
+
+  <script src="./assets/plugins\popper.min.js"></script>
+  <script src="./assets/plugins\bootstrap4\js\bootstrap.min.js"></script>
+
+  <script src="./assets/plugins\select2\dist\js\select2.full.min.js"></script>
+  <!-- <script src="./assets/plugins\owl-carousel\owl.carousel.min.js"></script> -->
+  <script src="./assets/plugins\jquery-bar-rating\dist\jquery.barrating.min.js"></script>
+  <script src="./assets/plugins\lightGallery\dist\js\lightgallery-all.min.js"></script>
+  <script src="./assets/plugins\slick\slick\slick.min.js"></script>
+
+  <script src="assets/plugins/noUiSlider/nouislider.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.0.47/jquery.fancybox.min.js"></script>
+
+  <script
+    src="./assets/home\js\script.js"
+    type="be9dfe49072cb4d1912e7519-text/javascript"
+  ></script>
+  <script
+    src="./assets/home\js\output.min.js"
+    type="be9dfe49072cb4d1912e7519-text/javascript"
+  ></script>
+
+  <script>
+    var hideTimeout = null;
+
+    var show = function () {
+      $(".sticky-container").show();
+    };
+
+    var hide = function () {
+      $(".sticky-container").hide();
+    };
+
+    $(document).ready(function () {
+      $(window).scroll(function (e) {
+        if (hideTimeout) {
+          window.clearTimeout(hideTimeout);
+          hideTimeout = null;
+        }
+        hide();
+
+        window.setTimeout(show, 1000);
+      });
+    });
+  </script>
+
+  <script>
+    $(window).ready(function () {
+      setInterval(function () {
+        $(".loader-container").addClass("active");
+      }, 1500);
+    });
+  </script>
+  <!-- custom code-->
+
+  <script src="./assets/js/main.js"></script>
+  <!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.8.3/TweenMax.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script> -->
+
+  <script type="text/javascript">
+    const items = document.querySelectorAll(".accordion a");
+
+    function toggleAccordion() {
+      this.classList.toggle("active");
+      this.nextElementSibling.classList.toggle("active");
+    }
+
+    items.forEach((item) => item.addEventListener("click", toggleAccordion));
+  </script>
+
+  <script>
+    wow = new WOW({
+      animateClass: "animated",
+      offset: 100,
+      callback: function (box) {
+        console.log("WOW: animating <" + box.tagName.toLowerCase() + ">");
+      },
+    });
+    wow.init();
+    document.getElementById("moar").onclick = function () {
+      var section = document.createElement("section");
+      section.className = "section--purple wow fadeInDown";
+      this.parentNode.insertBefore(section, this);
+    };
+  </script>
+</body>

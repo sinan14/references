@@ -1,0 +1,1013 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid innerpage_tab_top">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-body tab2-card">
+                <label *ngIf="med_flag">Medicine</label>
+                <label *ngIf="!med_flag">Healthcare</label>
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <!-- readonly="true" -->
+                        <kendo-dropdowntree [kendoDropDownTreeHierarchyBinding]="CAT_DROP_ARRAY"
+                            childrenField="subCategories" textField="title" valueField="_id" placeholder="All"
+                            (valueChange)="onChangeList($event)" [filterable]="true" (filterChange)="FilterDrop($event)"
+                            class="form-control" formControlName='drop' style="width: 15%;float: right;">
+                        </kendo-dropdowntree>
+
+
+                    </div>
+                </div>
+                <br><br>
+
+
+
+
+                <ngb-tabset class="mt-4 tab-coupon add_inventory_tab" [activeId]="selectedTab"
+                    (tabChange)="tabChangeFn($event)">
+
+                    <ngb-tab title="All" id="all" *ngIf="disableTab('All')">
+
+                        <ng-template ngbTabContent>
+
+                            <!-- <div class="mt-3">
+                                <input type="text" class="form-control form-control-text"
+                                    (keyup)="searchAll($event.target.value)" placeholder="Search All" name="search">
+
+                            </div> -->
+
+                            <div class="col-md-12 mt-3 pl-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control form-control-text added"
+                                        (keyup)="searchAll($event.target.value)" placeholder="Search All" name="search">
+                                    <div class="input-group-btn" style="background: #014466;">
+                                        <button class="btn btn-default" type="submit" style=""><i class="fa fa-search"
+                                                style="color:white"></i></button>
+                                    </div>
+                                </div>
+                                <!-- <input type="text" class="form-control form-control-text" (keyup)="searchInventory($event.target.value)"
+                                    placeholder="Search" name="search"> -->
+                            </div>
+
+                            <br><br>
+                            <div class="table-responsive kendo_table vendor-list">
+                                <ng-template #template let-anchor>
+                                    <span>{{ anchor.nativeElement.innerText }}</span>
+                                </ng-template>
+                                <div kendoTooltip showOn="none" [tooltipTemplate]="template" filter=".k-grid td">
+                                    <kendo-grid [kendoGridBinding]="Stock_List_Array" [filterable]="true"
+                                        [sortable]="true">
+
+                                        <kendo-grid-column field="image" title="" width="15" [filterable]="false"
+                                            [sortable]="false">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <img class="img-fluid" src={{dataItem.image}}>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="productId" title="Product ID" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+
+                                        <kendo-grid-column field="name" title="Name" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="category" title="Category" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brand" title="Brand" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="sku" title="SKU" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="skuOrHsnNo" title="SKU/HSN No" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="price" title="Price" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="specialPrice" title="Special Price" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="stock" title="Stock" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-command-column title="Action" width="15" class="text-center">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <i class="fa fa-pencil-square-o" kendoTooltip title="Edit"
+                                                    style="cursor: pointer;font-size: 16px;" *ngIf="editFlag"
+                                                    data-toggle="modal" data-original-title="test"
+                                                    data-target="#allstockExampleModal"
+                                                    (click)="open(allstockContent,dataItem)"></i>
+                                            </ng-template>
+                                        </kendo-grid-command-column>
+
+
+                                    </kendo-grid>
+                                </div>
+
+                            </div>
+
+                            <div class="pagination">
+                                <!-- <ngb-pagination [collectionSize]={{TotalRecords}} [(page)]={{CurrentPage}} [maxSize]={{PageSize}} [rotate]="true"
+                                    [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+
+                                <button *ngIf="CurrentPage > 1" (click)="onPageChangeAll(1)"> First </button>
+                                <button *ngIf="CurrentPage > 1" (click)="onPageChangeAll(CurrentPage-1)"> Prev </button>
+                                <button *ngIf="CurrentPage > 1" (click)="onPageChangeAll(CurrentPage-1)"> {{CurrentPage
+                                    -
+                                    1}} </button>
+                                <button *ngIf="CurrentPage> 0" style="color: yellow;"> {{CurrentPage}} </button>
+                                <button *ngIf="nextPage" (click)="onPageChangeAll(CurrentPage+1)"> {{CurrentPage + 1}}
+                                </button>
+                                <button *ngIf="nextPage" (click)="onPageChangeAll(CurrentPage+1)"> Next </button>
+                                <button *ngIf="nextPage" (click)="onPageChangeAll(totalPage)"> Last </button>
+
+                            </div>
+
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Our Inventory" id="Our Inventory" *ngIf="user.isStore">
+
+                        <ng-template ngbTabContent>
+
+                            <!-- <div class="mt-3">
+                                <input type="text" class="form-control form-control-text"
+                                    (keyup)="searchAll($event.target.value)" placeholder="Search All" name="search">
+
+                            </div> -->
+
+                            <div class="col-md-12 mt-3  pl-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control form-control-text added"
+                                        (keyup)="searchOurInventory($event.target.value)"
+                                        placeholder="Search Our Inventory" name="search">
+                                    <div class="input-group-btn" style="background: #014466;">
+                                        <button class="btn btn-default" type="submit"><i class="fa fa-search"
+                                                style="color:white"></i></button>
+                                    </div>
+                                </div>
+                                <!-- <input type="text" class="form-control form-control-text" (keyup)="searchInventory($event.target.value)"
+                                    placeholder="Search" name="search"> -->
+                            </div>
+
+                            <br><br>
+                            <div class="table-responsive kendo_table vendor-list">
+                                <ng-template #template let-anchor>
+                                    <span>{{ anchor.nativeElement.innerText }}</span>
+                                </ng-template>
+                                <div kendoTooltip showOn="none" [tooltipTemplate]="template" filter=".k-grid td">
+                                    <kendo-grid [kendoGridBinding]="Store_Stock_List_Array" [filterable]="true"
+                                        [sortable]="true">
+
+                                        <kendo-grid-column field="image" title="" width="15" [filterable]="false"
+                                            [sortable]="false">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <img class="img-fluid" src={{dataItem.image}}>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="productId" title="Product ID" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+
+                                        <kendo-grid-column field="name" title="Name" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="category" title="Category" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brand" title="Brand" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="sku" title="SKU" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="skuOrHsnNo" title="SKU/HSN No" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="price" title="Price" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="specialPrice" title="Special Price" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="stock" title="Stock" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-command-column title="Action" width="15" class="text-center">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <i class="fa fa-pencil-square-o" kendoTooltip title="Edit"
+                                                    style="cursor: pointer;font-size: 16px;" *ngIf="editFlag"
+                                                    data-toggle="modal" data-original-title="test"
+                                                    data-target="#allstockExampleModal"
+                                                    (click)="open(allstockContent,dataItem)"></i>
+                                            </ng-template>
+                                        </kendo-grid-command-column>
+
+
+                                    </kendo-grid>
+                                </div>
+
+                            </div>
+
+                            <div class="pagination">
+                                <!-- <ngb-pagination [collectionSize]={{TotalRecords}} [(page)]={{CurrentPage}} [maxSize]={{PageSize}} [rotate]="true"
+                                    [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+
+                                <button *ngIf="CurrentPage > 1" (click)="onPageChangeAll(1)"> First </button>
+                                <button *ngIf="CurrentPage > 1" (click)="onPageChangeAll(CurrentPage-1)"> Prev </button>
+                                <button *ngIf="CurrentPage > 1" (click)="onPageChangeAll(CurrentPage-1)"> {{CurrentPage
+                                    -
+                                    1}} </button>
+                                <button *ngIf="CurrentPage> 0" style="color: yellow;"> {{CurrentPage}} </button>
+                                <button *ngIf="nextPage" (click)="onPageChangeAll(CurrentPage+1)"> {{CurrentPage + 1}}
+                                </button>
+                                <button *ngIf="nextPage" (click)="onPageChangeAll(CurrentPage+1)"> Next </button>
+                                <button *ngIf="nextPage" (click)="onPageChangeAll(totalPage)"> Last </button>
+
+                            </div>
+
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+                    <ngb-tab title="Out Of Stock" id="outOfStock" *ngIf="disableTab('Out Of Stock')">
+
+                        <ng-template ngbTabContent>
+
+                            <!-- <div>
+                                <input type="text" class="form-control form-control-text"
+                                    (keyup)="searchOut($event.target.value)" placeholder="Search Out Of Stock"
+                                    name="search">
+
+                            </div> -->
+
+                            <div class="col-md-12 mt-3  pl-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control form-control-text added"
+                                        (keyup)="searchOut($event.target.value)" placeholder="Search Out Of Stock"
+                                        name="search">
+                                    <div class="input-group-btn" style="background: #014466;">
+                                        <button class="btn btn-default" type="submit"><i class="fa fa-search"
+                                                style="color:white"></i></button>
+                                    </div>
+                                </div>
+                                <!-- <input type="text" class="form-control form-control-text" (keyup)="searchInventory($event.target.value)"
+                                    placeholder="Search" name="search"> -->
+                            </div>
+
+
+                            <br><br>
+                            <div class="table-responsive kendo_table vendor-list">
+                                <ng-template #template let-anchor>
+                                    <span>{{ anchor.nativeElement.innerText }}</span>
+                                </ng-template>
+                                <div kendoTooltip showOn="none" [tooltipTemplate]="template" filter=".k-grid td">
+                                    <kendo-grid [kendoGridBinding]="Out_Stock_List_Array" [filterable]="true"
+                                        [sortable]="true">
+
+                                        <kendo-grid-column field="image" title="" width="15" [filterable]="false"
+                                            [sortable]="false">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <img class="img-fluid" src={{dataItem.image}}>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="productId" title="Product ID" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+
+                                        <kendo-grid-column field="name" title="Name" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="category" title="Category" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brand" title="Brand" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="sku" title="SKU" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="skuOrHsnNo" title="SKU/HSN No" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="price" title="Price" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="stock" title="Stock" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-command-column title="Action" width="15" class="text-center">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <i class="fa fa-pencil-square-o" kendoTooltip title="Edit"
+                                                    style="cursor: pointer;font-size: 16px;" *ngIf="editFlag"
+                                                    data-toggle="modal" data-original-title="test"
+                                                    data-target="#allstockExampleModal"
+                                                    (click)="open(allstockContent,dataItem)"></i>
+                                            </ng-template>
+                                        </kendo-grid-command-column>
+
+
+                                    </kendo-grid>
+                                </div>
+
+                            </div>
+
+
+                            <div class="pagination">
+                                <!-- <ngb-pagination [collectionSize]={{TotalRecords}} [(page)]={{CurrentPage}} [maxSize]={{PageSize}} [rotate]="true"
+                                    [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+
+                                <button *ngIf="CurrentPageOut > 1" (click)="onPageChangeOut(1)"> First </button>
+                                <button *ngIf="CurrentPageOut > 1" (click)="onPageChangeOut(CurrentPageOut-1)"> Prev
+                                </button>
+                                <button *ngIf="CurrentPageOut > 1" (click)="onPageChangeOut(CurrentPageOut-1)">
+                                    {{CurrentPage -
+                                    1}} </button>
+                                <button *ngIf="CurrentPageOut > 0" style="color: yellow;"> {{CurrentPageOut}} </button>
+                                <button *ngIf="nextPageOut" (click)="onPageChangeOut(CurrentPageOut+1)"> {{CurrentPage +
+                                    1}}
+                                </button>
+                                <button *ngIf="nextPageOut" (click)="onPageChangeOut(CurrentPageOut+1)"> Next </button>
+                                <button *ngIf="nextPageOut" (click)="onPageChangeOut(totalPageOut)"> Last </button>
+
+                            </div>
+
+
+
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+                    <ngb-tab title="Low Stock" id="LowStock" *ngIf="disableTab('Low Stock')">
+
+                        <ng-template ngbTabContent>
+
+
+                            <!-- <div>
+                                <input type="text" class="form-control form-control-text"
+                                    (keyup)="searchLow($event.target.value)" placeholder="Search Low Stock"
+                                    name="search">
+
+                            </div> -->
+
+                            <div class="col-md-12 mt-3 pl-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control form-control-text added"
+                                        (keyup)="searchLow($event.target.value)" placeholder="Search Low Stock"
+                                        name="search">
+                                    <div class="input-group-btn" style="background: #014466;">
+                                        <button class="btn btn-default" type="submit"><i class="fa fa-search"
+                                                style="color:white"></i></button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <br><br>
+                            <div class="table-responsive kendo_table vendor-list">
+                                <ng-template #template let-anchor>
+                                    <span>{{ anchor.nativeElement.innerText }}</span>
+                                </ng-template>
+                                <div kendoTooltip showOn="none" [tooltipTemplate]="template" filter=".k-grid td">
+                                    <kendo-grid [kendoGridBinding]="Low_Stock_List_Array" [filterable]="true"
+                                        [sortable]="true">
+
+                                        <kendo-grid-column field="image" title="" width="15" [filterable]="false"
+                                            [sortable]="false">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <img class="img-fluid" src={{dataItem.image}}>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="productId" title="Product ID" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+
+                                        <kendo-grid-column field="name" title="Name" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="category" title="Category" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brand" title="Brand" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="sku" title="SKU" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="skuOrHsnNo" title="SKU/HSN No" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="price" title="Price" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-column field="stock" title="Stock" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <!-- <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell> -->
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-command-column title="Action" width="15" class="text-center">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <i class="fa fa-pencil-square-o" kendoTooltip title="Edit"
+                                                    style="cursor: pointer;font-size: 16px;" *ngIf="editFlag"
+                                                    data-toggle="modal" data-original-title="test"
+                                                    data-target="#allstockExampleModal"
+                                                    (click)="open(allstockContent,dataItem)"></i>
+                                            </ng-template>
+                                        </kendo-grid-command-column>
+
+
+                                    </kendo-grid>
+                                </div>
+
+                            </div>
+
+                            <div class="pagination">
+                                <!-- <ngb-pagination [collectionSize]={{TotalRecords}} [(page)]={{CurrentPage}} [maxSize]={{PageSize}} [rotate]="true"
+                                    [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+
+                                <button *ngIf="CurrentPageLow > 1" (click)="onPageChangeLow(1)"> First </button>
+                                <button *ngIf="CurrentPageLow > 1" (click)="onPageChangeLow(CurrentPageLow-1)"> Prev
+                                </button>
+                                <button *ngIf="CurrentPageLow > 1" (click)="onPageChangeLow(CurrentPageLow-1)">
+                                    {{CurrentPageLow -
+                                    1}} </button>
+                                <button *ngIf="CurrentPageLow > 0" style="color: yellow;"> {{CurrentPageLow}} </button>
+                                <button *ngIf="nextPageLow" (click)="onPageChangeLow(CurrentPageLow+1)">
+                                    {{CurrentPageLow + 1}}
+                                </button>
+                                <button *ngIf="nextPageLow" (click)="onPageChangeLow(CurrentPageLow+1)"> Next </button>
+                                <button *ngIf="nextPageLow" (click)="onPageChangeLow(totalPageLow)"> Last </button>
+
+                            </div>
+
+                        </ng-template>
+                    </ngb-tab>
+
+
+                </ngb-tabset>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<ng-template #allstockContent let-modal>
+    <div class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="allstockExampleModal">Update
+        </h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+
+
+        <!-- Medicine care popup -->
+        <form [formGroup]="Med_Stock_form">
+            <div class="form row" *ngIf="med_flag">
+                <div class="form-group mb-0 col-md-12 mb-3">
+                    <label class="mb-1">HSN no</label>
+                    <input class="form-control" type="text" formControlName='hsn'>
+                    <small for="categoryname" class="form-text text-danger" *ngIf="Med_Stock_form.controls['hsn'].errors?.required && 
+                    (Med_Stock_form.controls['hsn'].dirty ||  
+                    Med_Stock_form.controls['hsn'].touched || 
+                    (Med_Stock_form.controls['hsn'].untouched  && attemptedSubmit ) )">
+                        HSN no required.
+                    </small>
+                </div>
+                <div class="form-group mb-0 col-md-6 mb-3">
+                    <label class="mb-1">Price</label>
+                    <!-- [(ngModel)]="playerName" -->
+                    <input class="form-control" type="text" formControlName='price' (keyup)="Price_Med()">
+                    <small for="categoryname" class="form-text text-danger" *ngIf="Med_Stock_form.controls['price'].errors?.required && 
+                    (Med_Stock_form.controls['price'].dirty ||  
+                    Med_Stock_form.controls['price'].touched || 
+                    (Med_Stock_form.controls['price'].untouched  && attemptedSubmit ) )">
+                        Price required.
+                    </small>
+                </div>
+                <div class="form-group mb-0 col-md-6 mb-3">
+                    <label class="mb-1">Special Price</label>
+                    <input class="form-control" type="text" formControlName='sprice' (keyup)="Price_Med()">
+                    <small for="categoryname" class="form-text text-danger" *ngIf="Med_Stock_form.controls['sprice'].errors?.required && 
+                    (Med_Stock_form.controls['sprice'].dirty ||  
+                    Med_Stock_form.controls['sprice'].touched || 
+                    (Med_Stock_form.controls['sprice'].untouched  && attemptedSubmit ) )">
+                        Special Price required.
+                    </small>
+
+                    <small for="categoryname" *ngIf="Med_Stock_form.controls['sprice'].errors?.max"
+                        class="form-text text-danger">
+                        Special Price Greater Than Price.
+                    </small>
+                </div>
+                <div class="form-group mb-0 col-md-12 mb-3">
+                    <label class="mb-1">Expire Date</label>
+                    <input class="form-control" formControlName='exp' type="date" min="{{temp}}" />
+                    <!-- <input class="form-control" type="date" formControlName='exp'> -->
+                    <small for="categoryname" class="form-text text-danger" *ngIf="Med_Stock_form.controls['exp'].errors?.required && 
+                    (Med_Stock_form.controls['exp'].dirty ||  
+                    Med_Stock_form.controls['exp'].touched || 
+                    (Med_Stock_form.controls['exp'].untouched  && attemptedSubmit ) )">
+                        Expire Date
+                    </small>
+                </div>
+                <div class="form-group mb-0 col-md-12 mb-3">
+                    <label class="mb-1">Stock</label>
+                    <input class="form-control" type="text" formControlName='stock'>
+                    <small for="categoryname" class="form-text text-danger" *ngIf="Med_Stock_form.controls['stock'].errors?.required && 
+                    (Med_Stock_form.controls['stock'].dirty ||  
+                    Med_Stock_form.controls['stock'].touched || 
+                    (Med_Stock_form.controls['stock'].untouched  && attemptedSubmit ) )">
+                        Stock required.
+                    </small>
+                </div>
+            </div>
+        </form>
+
+
+
+
+        <!--Start health care popup -->
+        <form [formGroup]="Health_Stock_form">
+            <div class="form row" *ngIf="!med_flag">
+                <div class="form-group mb-0 col-md-12 mb-3">
+                    <label class="mb-1">HSN no</label>
+                    <input class="form-control" type="text" formControlName='hsn'>
+                    <small for="categoryname" class="form-text text-danger" *ngIf="Health_Stock_form.controls['hsn'].errors?.required && 
+                    (Health_Stock_form.controls['hsn'].dirty ||  
+                    Health_Stock_form.controls['hsn'].touched || 
+                    (Health_Stock_form.controls['hsn'].untouched  && attemptedSubmit ) )">
+                        HSN no required.
+                    </small>
+                </div>
+                <div class="form-group mb-0 col-md-6 mb-3">
+                    <label class="mb-1">Price</label>
+                    <input class="form-control" type="text" formControlName='price' (keyup)="Price_Hel()">
+                    <!-- <input class="form-control" type="text" formControlName='price'> -->
+                    <small for="categoryname" class="form-text text-danger" *ngIf="Health_Stock_form.controls['price'].errors?.required && 
+                    (Health_Stock_form.controls['price'].dirty ||  
+                    Health_Stock_form.controls['price'].touched || 
+                    (Health_Stock_form.controls['price'].untouched  && attemptedSubmit ) )">
+                        Price required.
+                    </small>
+                </div>
+                <div class="form-group mb-0 col-md-6 mb-3">
+                    <label class="mb-1">Special Price</label>
+                    <input class="form-control" type="text" formControlName='sprice' (keyup)="Price_Hel()">
+                    <!-- <input class="form-control" type="text" formControlName='sprice'> -->
+                    <small for="categoryname" class="form-text text-danger" *ngIf="Health_Stock_form.controls['sprice'].errors?.required && 
+                    (Health_Stock_form.controls['sprice'].dirty ||  
+                    Health_Stock_form.controls['sprice'].touched || 
+                    (Health_Stock_form.controls['sprice'].untouched  && attemptedSubmit ) )">
+                        Special Price required.
+                    </small>
+                   <small for="categoryname" *ngIf="Health_Stock_form.controls['sprice'].errors?.max"
+                        class="form-text text-danger">
+                        Special Price Greater Than Price.
+                    </small>
+                </div>
+
+                <div class="form-group mb-0 col-md-12 mb-3">
+                    <label class="mb-1">Stock</label>
+                    <input class="form-control" type="text" formControlName='stock'>
+                    <small for="categoryname" class="form-text text-danger" *ngIf="Health_Stock_form.controls['stock'].errors?.required && 
+                    (Health_Stock_form.controls['stock'].dirty ||  
+                    Health_Stock_form.controls['stock'].touched || 
+                    (Health_Stock_form.controls['stock'].untouched  && attemptedSubmit ) )">
+                        Stock required.
+                    </small>
+                </div>
+            </div>
+        </form>
+
+        <!-- End health popup -->
+
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-dark btn-dark-rounded" type="button" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Close</button>
+        <button type="button" class="btn btn-dark btn-dark-rounded" (click)="Update()" *ngIf="user.isAdmin">
+            {{ addLoading ? "Updating..." :"Update" }}</button>
+
+
+        <!-- Store Stock Updation -->
+        <button type="button" class="btn btn-dark btn-dark-rounded" (click)="StoreStockUpdate()" *ngIf="user.isStore">
+            {{ addLoading ? "Updating..." :"Update" }}</button>
+
+    </div>
+</ng-template>
+
+
+<!-- <ng-template #outofstockContent let-modal>
+    <div class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="outofstockExampleModal">Update
+        </h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+
+
+        <div class="form row">
+            <div class="form-group mb-0 col-md-12 mb-3">
+                <label class="mb-1">HSN no</label>
+                <input class="form-control" type="text">
+                <small for="categoryname" class="form-text text-danger">
+                    HSN noe required.
+                </small>
+            </div>
+            <div class="form-group mb-0 col-md-6 mb-3">
+                <label class="mb-1">Price</label>
+                <input class="form-control" type="text">
+                <small for="categoryname" class="form-text text-danger">
+                    Price required.
+                </small>
+            </div>
+            <div class="form-group mb-0 col-md-6 mb-3">
+                <label class="mb-1">Special Price</label>
+                <input class="form-control" type="text">
+                <small for="categoryname" class="form-text text-danger">
+                    Special Price required.
+                </small>
+            </div>
+            <div class="form-group mb-0 col-md-12 mb-3">
+                <label class="mb-1">Expire Date</label>
+                <input class="form-control" type="text">
+                <small for="categoryname" class="form-text text-danger">
+                    Expire Date
+                </small>
+            </div>
+            <div class="form-group mb-0 col-md-12 mb-3">
+                <label class="mb-1">Stock</label>
+                <input class="form-control" type="text">
+                <small for="categoryname" class="form-text text-danger">
+                    Stock required.
+                </small>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-dark btn-dark-rounded" type="button" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Close</button>
+        <button type="button" class="btn btn-dark btn-dark-rounded">Update</button>
+
+    </div>
+</ng-template> -->
+
+<!-- <ng-template #lowstockContent let-modal>
+    <div class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="lowstockExampleModal">Update
+        </h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+
+
+        <div class="form row">
+            <div class="form-group mb-0 col-md-12 mb-3">
+                <label class="mb-1">HSN no</label>
+                <input class="form-control" type="text">
+                <small for="categoryname" class="form-text text-danger">
+                    HSN noe required.
+                </small>
+            </div>
+            <div class="form-group mb-0 col-md-6 mb-3">
+                <label class="mb-1">Price</label>
+                <input class="form-control" type="text">
+                <small for="categoryname" class="form-text text-danger">
+                    Price required.
+                </small>
+            </div>
+            <div class="form-group mb-0 col-md-6 mb-3">
+                <label class="mb-1">Special Price</label>
+                <input class="form-control" type="text">
+                <small for="categoryname" class="form-text text-danger">
+                    Special Price required.
+                </small>
+            </div>
+            <div class="form-group mb-0 col-md-12 mb-3">
+                <label class="mb-1">Expire Date</label>
+                <input class="form-control" type="text">
+                <small for="categoryname" class="form-text text-danger">
+                    Expire Date
+                </small>
+            </div>
+            <div class="form-group mb-0 col-md-12 mb-3">
+                <label class="mb-1">Stock</label>
+                <input class="form-control" type="text">
+                <small for="categoryname" class="form-text text-danger">
+                    Stock required.
+                </small>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-dark btn-dark-rounded" type="button" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Close</button>
+        <button type="button" class="btn btn-dark btn-dark-rounded">Update</button>
+
+    </div>
+</ng-template> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ng-template #lowstockContent let-modal>
+    <div  class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="lowstockExampleModal">Update
+        </h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+        (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+
+
+        <div class="mt-1 row">
+           
+        </div>
+
+
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-dark btn-dark-rounded" type="button" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Close</button>
+        <button  type="button" class="btn btn-dark btn-dark-rounded"
+           >Update</button>
+
+    </div>
+</ng-template> -->

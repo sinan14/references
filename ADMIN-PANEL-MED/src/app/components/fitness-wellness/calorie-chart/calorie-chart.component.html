@@ -1,0 +1,263 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid side_innerpage_tab">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card tab2-card">
+
+                <div class="card-body tab2-card" *ngIf="disableTab('Nutri Chart')">
+
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-dark-rounded" (click)="BackRedirectTo()">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            </button>
+
+                        </div>
+                        <div class="col-md-6"></div>
+                        <div class="col-md-4">
+                            <button style="float:right;" type="button" class="btn btn-dark btn-dark-rounded"
+                                data-toggle="modal" data-original-title="test" data-target="#DietExampleModal"
+                                (click)="open(DietContent,'add')" *ngIf="editFlag"><img
+                                    src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                    style="margin-right:10px;">Add New</button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="text-center mt-3" *ngIf="loading">
+                        <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <div class="mt-5 row" *ngIf="!loading && !foods.length">
+                        <div class="col-md-12">
+                            <i>
+                                <h5 class="text-center text-white">No Items Found</h5>
+                            </i>
+                        </div>
+                    </div>
+                    <div class="row mt-4" *ngIf="!loading">
+                        <div class="col-md-2 mb-3" *ngFor="let food of foods">
+                            <div class="icon-data" data-toggle="modal" data-original-title="test"
+                                data-target="#DietExampleModal" (click)="open(DietContent,'edit',food)">
+                                <img src="{{ food.image }}" class="fruitv" />
+                            </div>
+                            <h6><span>{{ food.title }}</span>
+                                <span style="   padding-top: 2px;  float: right;;color: white;font-size: 15px;">
+                                    <i style="margin-left: 6%;" class="fa fa-trash" *ngIf="editFlag"
+                                        (click)="delete(food._id)"></i>
+                                </span>
+                            </h6>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+
+
+
+
+
+
+<ng-template #DietContent let-modal>
+    <div class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="CalorieChartxampleModal">{{editMode ?
+            "Update" : "Add"}}</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+
+        <form [formGroup]="form">
+            <div class="row">
+                <!-- <code>{{ form.value | json }}</code> -->
+                <!-- <code>{{ bannerImagePreview| json }}</code> -->
+                <div class=" mb-0 col-md-12">
+                    <label for="validationCustom02" class="mb-0">Name</label>
+                    <input type="text" class="form-control" value="Banana" formControlName="name">
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('name','required')">
+                        Name is required.
+                    </div>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('name','maxlength')">
+                        Maximum allowed length is 255.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3 row">
+                <div class="col-md-6 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <ng-container *ngIf="!bannerImagePreview ">
+                                <i class="icon fa fa-upload"></i>
+                                <small >Banner</small>
+                            </ng-container>
+                            <img src="{{bannerImagePreview}}" width="100%" height="50%"
+                                class="image-icon  " *ngIf="bannerImagePreview">
+                            <input type="file" name="myfile" formControlName="bannerImage"
+                                (change)="onImageChange($event,'banner')" />
+                            <div class="invalid-feedback ifeed text-center" style="display: block;"
+                                *ngIf="(form.controls.bannerImage.touched && !editMode && !bannerImage)">
+                                Banner image is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 ">
+                        <label _ngcontent-serverapp-c827="" for="image" style="float: right;">882 X 1878</label>
+                        
+                    </div>
+                </div>
+
+                <div class="col-md-6 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <ng-container *ngIf="!imagePreview ">
+                                <i class="icon fa fa-upload"></i>
+                                <small>Image</small>
+                            </ng-container>
+                            <img src="{{imagePreview}}" width="100%" height="50%" class="image-icon  "
+                                *ngIf="imagePreview">
+                            <input type="file" name="myfile" formControlName="image"
+                                (change)="onImageChange($event,'image')" />
+                            <div class="invalid-feedback ifeed text-center" style="display: block;"
+                                *ngIf="(form.controls.image.touched && !editMode && !image)">
+                                Image is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 ">
+                        <label _ngcontent-serverapp-c827="" for="image" style="float: right;">308 X 285</label>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3 row">
+                <div class=" mb-0 col-md-12">
+                    <label for="validationCustom02" class="mb-0">Description</label>
+                    <textarea class="form-control" rows="5" formControlName="description"></textarea>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('description','required')">
+                        Description is required.
+                    </div>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('description','maxlength')">
+                        Maximum allowed length is 255.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3 row">
+                <div class=" mb-0 col-md-6">
+                    <label for="validationCustom02" class="mb-0">Vitamins</label>
+                    <div class="example-wrapper">
+                        <kendo-multiselect #multiselect formControlName="vitamins" class="form-control txt"
+                            [data]="multiSelectDisplayVitamins" [filterable]="true" textField="title" valueField="_id" [autoClose]="false"
+                            [checkboxes]="false" [valuePrimitive]="true" [placeholder]="'-- Select --'"
+                            (filterChange)="handleVitaminsFilter($event)">
+                        </kendo-multiselect>
+                        <div class="invalid-feedback ifeed" style="display: block;"
+                            *ngIf="isControlHasError('vitamins','required')">
+                            This field is required.
+                        </div>
+                    </div>
+
+                </div>
+                <div class=" mb-0 col-md-6">
+                    <label for="validationCustom02" class="mb-0">Nutritious Sources</label>
+                    <div class="example-wrapper">
+                        <kendo-multiselect #multiselect formControlName="nutritiousSources" class="form-control txt"
+                            [data]="multiSelectDisplayNutritiousSources" [filterable]="true" textField="title" valueField="_id"
+                            [autoClose]="false" [checkboxes]="false" [valuePrimitive]="true"
+                            [placeholder]="'-- Select --'" (valueChange)="onCNutritiousSource($event)"
+                            (filterChange)="handleNutritiousSourcesFilter($event)">
+                        </kendo-multiselect>
+                        <div class="invalid-feedback ifeed" style="display: block;"
+                            *ngIf="isControlHasError('nutritiousSources','required')">
+                            Nutritious Sources is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3 row">
+                <div class=" mb-0 col-md-12">
+                    <label for="validationCustom02" class="mb-0">Nice To Avoid</label>
+                    <div class="example-wrapper">
+                        <kendo-multiselect #multiselect formControlName="niceToAvoids" class="form-control txt"
+                            [data]="multiSelectDisplayNiceToAvoids" [filterable]="true" textField="title" valueField="_id"
+                            [autoClose]="false" [checkboxes]="false" [valuePrimitive]="true"
+                            [placeholder]="'-- Select --'" (filterChange)="handleNiceToAvoidsFilter($event)">
+                        </kendo-multiselect>
+                        <div class="invalid-feedback ifeed" style="display: block;"
+                            *ngIf="isControlHasError('niceToAvoids','required')">
+                            Nice to avoid is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3 row">
+                <div class="col-md-3"  style="display: flex;justify-content: inherit;align-items: flex-start;">
+                    <label for="validationCustom02" class="mb-0">Veg</label>&nbsp;&nbsp;
+                    <input class="radio_animated" id="edo-ani1" type="radio" value="true" formControlName="veg" style="margin-top: 4px;">
+                </div>
+
+                <div class="col-md-4"  style="display: flex;justify-content: inherit;align-items: flex-start;">
+                    <label for="validationCustom02" class="mb-0">Non-Veg</label>&nbsp;&nbsp;
+                    <input class="radio_animated" id="edo-ani2" type="radio" value="false" formControlName="veg" style="margin-top: 4px;">
+                </div>
+
+
+                <div class="col-md-5"  style="display: flex;justify-content: inherit;align-items: flex-start; ">
+                    <label>Recommended</label>
+                    <input type="checkbox" formControlName="recommended" style="margin-top: 1px;">
+                </div>
+                <div class="col-md-12">
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('veg','required')">
+                        Veg or non veg is required.
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            
+            <div class=" mb-0 col-md-12 ">
+                <button type="button" class="btn btn-dark btn-modal-rounded" (click)="save()" *ngIf="!editMode && editFlag">
+                    {{ saving ? "Saving" : "Save" }}
+                    <div class="spinner-border spinner-border-sm  text-light" role="status" *ngIf="saving">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </button>
+                <button type="button" class="btn btn-dark btn-modal-rounded" (click)="update()" *ngIf="editMode && editFlag">
+                    {{ updating ? "Updating" : "update" }}
+                    <div class="spinner-border spinner-border-sm  text-light" role="status" *ngIf="updating">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </button>
+            </div>
+           
+        </div>
+    </div>
+</ng-template>

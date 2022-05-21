@@ -1,0 +1,2742 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="img/favi.png" rel="apple-touch-icon-precomposed" width="16">
+    <link href="img/favi.png" rel="shortcut icon" type="image/png" width="16">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Medimall | Products</title>
+   
+    <link rel="stylesheet" href="plugins\font-awesome\css\font-awesome.min.css">
+    <link rel="stylesheet" href="fonts\Linearicons\Font\demo-files\demo.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">  <link rel="stylesheet" href="plugins\bootstrap4\css\bootstrap.min.css">
+    <link rel="stylesheet" href="plugins\owl-carousel\assets\owl.carousel.css">
+    <link rel="stylesheet" href="plugins\slick\slick\slick.css">
+    <link rel="stylesheet" href="plugins\lightGallery\dist\css\lightgallery.min.css">
+    <link rel="stylesheet" href="plugins\jquery-bar-rating\dist\themes\fontawesome-stars.css">
+    <link rel="stylesheet" href="plugins\select2\dist\css\select2.min.css">
+    <link rel="stylesheet" href="plugins\lightGallery\dist\css\lightgallery.min.css">
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.0/css/intlTelInput.css">
+    <link rel="stylesheet" href="home\css\r-sub-default.css">
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="https://www.medfoliotechnologies.com/css/animate.css"> 
+    <link href="http://fonts.cdnfonts.com/css/segoe-ui-4" rel="stylesheet">
+            
+</head>
+    <style>
+
+
+ 
+      .ps-header {
+        background-color: #00AAFF;
+         background-image: linear-gradient(#00AAFF, #005BEC);
+       
+    }  
+        
+    .loader-container {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1999;
+      height: 100%;
+      opacity: 1;
+      overflow: hidden;
+      background-color: #fff;
+      -webkit-transition: all 0.4s ease;
+      -o-transition: all 0.4s ease;
+      transition: all 0.4s ease;
+    }
+    
+    .loader-container:before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      overflow: hidden;
+    }
+    
+    .loader-container:before {
+      -webkit-transition: all 0.4s ease;
+      -o-transition: all 0.4s ease;
+      transition: all 0.4s ease;
+    }
+    
+    .loader-container.active {
+      /* animation: slideBgTop 1.75s forwards;
+      -webkit-animation: slideBgTop 1.75s forwards;
+      -webkit-animation-delay: 0.5s;
+      animation-delay: 0.5s; */
+    }
+    
+    
+    @keyframes b {
+      0% {
+        background-position: 0 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0 50%;
+      }
+    }
+    @keyframes workGridItem-onboard {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, -100px, 0) scale3d(0.95, 0.95, 0.95) rotate3d(1, 0.05, 0, 5deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translateZ(0) scaleX(1) rotate3d(0, 0, 0, 0);
+      }
+    }
+    @keyframes spin-it {
+      from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes will-scale {
+      from {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      }
+      100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+    @keyframes pageTransAnim-onboard {
+      0% {
+        transform: translate3d(-100vw, 0, 0);
+      }
+      to {
+        transform: translateZ(0);
+      }
+    }
+    .PageTransitions__mainWrapperAnimation--onboard {
+      animation-name: pageTransAnim-onboard;
+      animation-timing-function: 0cubic-bezier 0.4, 0.1, 0.1, 1;
+      animation-duration: 0.75s;
+      animation-fill-mode: backwards;
+    }
+    
+        .col-6 {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+        float: left;
+    }
+   
+    @-webkit-keyframes scaleCircle {
+      0% {
+        transform: scale(1);
+      }
+      33% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes scaleCircle {
+      0% {
+        transform: scale(1);
+      }
+      33% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    .c-trigger {
+      position: absolute;
+      top: 2rem;
+      background-color: #ffff00;
+      padding: 1rem;
+      display: block;
+      right: 2rem;
+      color: black;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .pen__container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .pen__heading {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .pen__intro {
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.6);
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    } 
+       
+     .home-hero{
+        width: 100%;
+        position: relative;
+        display: inline-block;
+        height: 80vh;
+     }   
+     .banner{padding-bottom: 0;}
+     .banner__background{min-height: 540px;}
+     .home-hero .home-slides{min-height: 580px;display: inline-block;width: 100%;margin-bottom: 80px;}
+    
+     .banner__background.home {
+     
+        -webkit-transition: all 1500ms ease-in-out;
+        -o-transition: all 1500ms ease-in-out;
+        transition: all 1500ms ease-in-out;
+    }
+    .home-hero .copy--title h2{
+        color: #414040;
+    }
+    .home-hero .home-slides .owl-item.active .copy--body p{color: #000;opacity: 0.5;}
+    .home-hero .copy a{    background: rgb(0 0 0 / 30%);}
+    .home-hero .copy a:hover{    background: rgb(0 0 0 / 50%);}
+    
+    @media (max-width: 992px) {
+        .banner__background{min-height: 760px;}
+    .home-hero .home-slides{min-height: 800px;}
+    .home-hero .home-slides .wrapper-container-el{width: 50%;padding-top: 10%;}
+    .container-illu .el-device {  height: 80%;}
+    .header-slides{padding-top: 0;}
+    }
+    @media (max-width: 500px) {
+        .home-hero .home-slides .wrapper-container-el{width: 80%;}
+        .home-hero .home-slides{min-height: 700px;}
+        .banner__background{min-height: 700px;}
+    }
+    
+    .ps-section__carousel .owl-carousel {
+    width: calc(100vw + 370px);
+    margin-left: -10px;
+    margin-right: calc(-50vw + 50% - 420px);
+}
+    
+    .slide-progress {
+        width: 0;
+        max-width: 100%;
+        height: 6px;
+        background: rgba(0, 0, 0, 0.35);
+        border-radius: 30px;
+      }
+      .slide-progress-main{
+        width: 50%;
+        position: var(--relative);
+        z-index: 5555;
+        margin: 10px 0 20px;
+        height: 6px;
+        background: rgba(0, 0, 0, 0.1)
+      }
+    
+      .home-hero .home-slides .owl-nav .owl-next span{font-size: 55px;
+        color: #666;
+        line-height: 0;}
+        .home-hero .home-slides .owl-nav button{background-color: transparent !important ;font: 70px/45px FontAwesome;
+        color: #0000003b;  opacity: 0.5;}
+        .home-hero .home-slides .owl-nav button:hover{background-color: transparent !important}
+        .home-hero .home-slides .owl-nav button.owl-prev{display: block;}
+        .home-hero .home-slides .owl-nav .owl-prev span {    font-size: 55px;    color: #666;    }
+        .home-hero .home-slides .owl-nav .owl-prev:before {  content: '\f104';}
+        .home-hero .home-slides .owl-nav .owl-next:before {  content: '\f105';}
+        .home-hero .home-slides .owl-nav span{display: none;}
+    @media (min-width:1280px){
+        .ps-blog__thumbnail img {
+       
+        height: 180px;
+        object-fit: fill;
+    }
+    }
+   
+   
+
+                
+@media (max-width: 1200px) {
+        .ps-product__thumbnail{    padding: 25px 15px !important}
+}
+        
+@media (max-width: 768px) {
+    .ps-social__link {  margin-bottom: 5px;display: inline-block;}
+}
+
+
+    </style>
+
+</head>
+
+
+
+
+
+<body>
+   <div class="loader-container" id="loader-container">
+
+<div class="textRevealContainer">
+<div class="textReveal rotateY">
+<div>
+<div>
+<p class="font-weight-bold mb-0">Giving Hope to India</p>
+<div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    <div class="ps-page">
+        <header class="ps-header ps-header--1">
+          
+            <div class="ps-header__middle">
+                <div class="container">
+                    <div class="ps-logo  wow fadeInUp" data-wow-delay="0.4s">
+                        <a href="#"> <img src="img/logo.png" alt=""><img class="sticky-logo" src="img/logo.png" alt=""></a>
+                    </div>
+                    <!-- a class="ps-menu--sticky" href="#"><i class="fa fa-bars"></i></a> -->
+                    <div class="ps-header__right">
+                        <div class="ps-header__search">
+                            <form action="do_action" method="post">
+                                <div class="ps-search-table">
+                                    <div class="location"> <span><img src="img/png/point.png"></span>
+                                        <select>
+                                            <option value="1">Choose Locality</option>
+                                            <option value="1">1</option>
+                                            <option value="1">1</option>
+                                        </select>
+                                    </div>
+                                    <style type="text/css">
+                                    select {
+                                        /* for Firefox */
+                                        -moz-appearance: none;
+                                        /* for Chrome */
+                                        -webkit-appearance: none;
+                                    }
+                                    /* For IE10 */
+                                    
+                                    select::-ms-expand {
+                                        display: none;
+                                    }
+                                    </style>
+                                    <div class="input-group serching">
+                                        <input class="form-control ps-input" type="text" placeholder="Search medicine/healthcare products">
+                                        <div class="input-group-append"><a href="#"><i class="fa fa-search"></i></a></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div> <a class="placeholder bg-yellow ps-banner__shop hvr-float-shadow" href="#">Download the App</a>
+                        <!-- <a class="bg-yellow ps-banner__shop" href="#">Download the App</a> -->
+                        <div class="container">
+                            <div class="ps-navigation__right">
+                                <nav class="ps-main-menu" >
+                                    <ul class="menu">
+                                        <li class="has-mega-menu"><a href="#">Category<span class="sub-toggle"><i class="fa fa-angle-down"></i></span></a>
+                                        
+                                      
+                                        </li>
+                                        <li class="has-mega-menu"><a href="blog.html">Blog<span class="sub-toggle"><i class="fa fa-angle-down"></i></span></a></li>
+                                        <li class="has-mega-menu"><a href="#">Medimall Foundation<span class="sub-toggle"><i class="fa fa-angle-down"></i></span></a></li>
+                                        <li class="has-mega-menu"><a href="#">Fitness Arena<span class="sub-toggle"><i class="fa fa-angle-down"></i></span></a></li>
+                                        <li class="has-mega-menu"><a href="#">More <span class="sub-toggle"><i class="fa fa-angle-down"></i></span></a></li>
+                                      
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="ps-navigation__right">
+                                <ul class="ps-header__icons">
+                                    <li><a class="ps-header__item" href="#"><img src="img/off.svg" class=""><span class="off-tag"> Offers</span></a></li>
+                                    <li><a class="ps-header__item" href="#"><i class="fa fa-user"></i><span> Login</span></a></li>
+                                    <li><a class="ps-header__item" href="#" id="cart-mini"><i class="fa fa-shopping-cart"></i> <span class="badge">2</span><span>Cart</span></a>
+                                       
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </header>
+		
+                    <div class="ps-navigation desktop-only">
+					<div class="overlap-menu">
+                        <div class="container">
+                            <div class="ps-navigation__left" style="text-align: center;">
+                                <nav class="ps-main-menu">
+                                    <ul class="menu">
+                                        <li class="has-mega-menu">
+                                            <div class="megamenu-img" style=" "> <img src="img/green.svg"></div>
+                                            <div class="mega-content"> <a href="#">Order Medicines</a>
+                                                <p>25000+ Products</p>
+                                            </div>
+                                        </li>
+                                        <li class="has-mega-menu">
+                                            <div class="megamenu-img" style=""> <img src="img/orange.svg" ></div>
+                                            <div class="mega-content"> <a href="#">Order Health Care Products</a>
+                                                <p>20000+ Products</p>
+                                            </div>
+                                        </li>
+                                        <li class="has-mega-menu">
+                                            <div class="megamenu-img" style=""> <img src="img/blues.svg" ></div>
+                                            <div class="mega-content"> <a href="#">Medpride Membership</a>
+                                                <p>Get Exclusive Benefits</p>
+                                            </div>
+                                        </li>
+                                        
+                                        
+                                        <li class="has-mega-menu">
+                                            <div class="megamenu-img" style=""> <img src="img/pink.svg" ></div>
+                                            <div class="mega-content"> <a href="#">Medfill Refill</a>
+                                                <p>Unforgatable Refill</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+						</div>
+                    </div>
+              
+        <header class="ps-header ps-header--1 ps-header--mobile">
+           <div class="ps-header__middle">
+                    <div class="container mobilelogo">
+                         <div class="ps-navigation--footer">
+            <div class="ps-nav__item"><a href="#" id="open-menu"><i class="icon-menu" style="color:white;"></i></a>
+            <a href="#" id="close-menu"><i class="icon-cross"></i></a></div>
+            </div>
+                        <div class="ps-logo">
+                            <a href="#"> <img src="img/logo.png" alt=""></a>
+                        </div>
+                        <div class="ps-header__right">
+                            <ul class="ps-header__icons">
+                                    <li><a class="ps-header__item" href="#"><i class="fa fa-tag"></i></a></li>
+                                    <li><a class="ps-header__item" href="#"><i class="fa fa-user"></i></a></li>
+                                    <li><a class="ps-header__item" href="#" id="cart-mini"><i class="fa fa-shopping-cart"></i></a>
+                                        <div class="ps-cart--mini">
+                                            <ul class="ps-cart__items">
+                                                <li class="ps-cart__item">
+                                                    <div class="ps-product--mini-cart">
+                                                        <a class="ps-product__thumbnail" href="#"><img src="img/products\055.jpg" alt="alt"></a>
+                                                        <div class="ps-product__content"><a class="ps-product__name" href="#">  tablet</a>
+                                                            <p class="ps-product__meta"> <span class="ps-product__price">399.99</span></p>
+                                                        </div><a class="ps-product__remove" href="javascript: void(0)"><i class="icon-cross"></i></a> </div>
+                                                </li>
+                                              
+                                            </ul>
+                                            <div class="ps-cart__total"><span>Subtotal </span><span>399</span></div>
+                                            <div class="ps-cart__footer"><a class="ps-btn ps-btn--outline" href="#">View Cart</a><a class="ps-btn ps-btn--warning" href="#">Checkout</a></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                 
+                        </div>
+                        <div class="deliver"> <select>
+                                            <option value="1">Choose Locality</option>
+                                            <option value="1">1</option>
+                                            <option value="1">1</option>
+                                        </select></div>
+                    </div>
+                    
+                    <div class="ps-navigation">
+                        <div class="container">
+                          
+                         <div class="input-group serching">
+                                        <input class="form-control ps-input" type="text" placeholder="Search medicine/healthcare products">
+                                        <div class="input-group-append"><a href="#"><i class="fa fa-search"></i></a></div>
+                             </div>
+                        </div>
+                </div>
+                </div>
+        </header>
+        
+        </div>
+
+
+
+<section class="inner_new_page_container" style="overflow: hidden;">
+
+    <section class="category_banner">
+        <div class="category_banner_cnt">
+            <div class="category_banner_cnt_left_img">
+                <img src="" alt="">
+            </div>
+            <div class="category_banner_cnt_right_txt">
+                <span>
+                    Lets Begin<br> fight against virus diseases
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <section class="breadcrumbs_sec">
+    <div class="container">
+            <a href="#">Product</a> <a >></a> <a href="#">Category</a> <a >></a> <a >Covid Essential</a>
+        </div>
+    </section>
+
+
+    <section class="produc_list_categ_scr">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="produc_list_categ_cnt_head" style="margin-top: 10px;">Covid Essential</h3>
+                </div>
+                <div class="col-md-6">
+                  
+                    <div class="produc_list_sort_sec">
+                        <span>Sort by</span>
+                        <select name="" class="produc_list_sort_select">
+                            <option value="">Price Low To High</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="produc_list_categ_cnt">
+                <div class="ps-section__carousel">
+                    <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="15000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="10" data-owl-item-xs="5" data-owl-item-sm="7" data-owl-item-md="5" data-owl-item-lg="10" data-owl-item-xl="10" data-owl-duration="1000" data-owl-mousedrag="on">
+                        <div class="ps-section__product">
+                            <div class="ps-product ps-product--standard ">
+                                <div class="ps-product__thumbnail shopby">
+                                    <a class="ps-product__image" href="#">
+                                       <img src="img/product/prd1.png" alt="alt"> 
+                                    </a>
+                                </div>
+                                <div class="ps-product__content">
+                                    <h5 class="ps-product__title"><a href="#">Diebetics</a></h5> </div>
+                            </div>
+                        </div>
+                        <div class="ps-section__product ">
+                            <div class="ps-product ps-product--standard ">
+                                <div class="ps-product__thumbnail shopby">
+                                    <a class="ps-product__image" href="#">
+                                        <img src="img/product/prd2.png" alt="alt"> 
+                                    </a>
+                                </div>
+                                <div class="ps-product__content">
+                                    <h5 class="ps-product__title"><a href="#">Liver Care</a></h5> </div>
+                            </div>
+                        </div>
+                        <div class="ps-section__product ">
+                            <div class="ps-product ps-product--standard ">
+                                <div class="ps-product__thumbnail shopby">
+                                    <a class="ps-product__image" href="#">
+                                        <img src="img/product/prd3.png" alt="alt"> 
+                                    </a>
+                                </div>
+                                <div class="ps-product__content">
+                                    <h5 class="ps-product__title"><a href="#">Stomach Care</a></h5> </div>
+                            </div>
+                        </div>
+                        <div class="ps-section__product ">
+                            <div class="ps-product ps-product--standard ">
+                                <div class="ps-product__thumbnail shopby">
+                                    <a class="ps-product__image" href="#">
+                                        <img src="img/product/prd1.png" alt="alt"> 
+                                    </a>
+                                </div>
+                                <div class="ps-product__content">
+                                    <h5 class="ps-product__title"><a href="#">Kidney Care</a></h5> </div>
+                            </div>
+                        </div>
+                        <div class="ps-section__product">
+                            <div class="ps-product ps-product--standard ">
+                                <div class="ps-product__thumbnail shopby">
+                                    <a class="ps-product__image" href="#">
+                                        <img src="img/product/prd2.png" alt="alt"> 
+                                    </a>
+                                </div>
+                                <div class="ps-product__content">
+                                    <h5 class="ps-product__title"><a href="#">Lungs Care</a></h5> </div>
+                            </div>
+                        </div>
+                        <div class="ps-section__product ">
+                            <div class="ps-product ps-product--standard ">
+                                <div class="ps-product__thumbnail shopby">
+                                    <a class="ps-product__image" href="#">
+                                        <img src="img/product/prd3.png" alt="alt"> 
+                                    </a>
+                                </div>
+                                <div class="ps-product__content">
+                                    <h5 class="ps-product__title"><a href="#">Covid Care</a></h5> </div>
+                            </div>
+                        </div>
+                        <div class="ps-section__product ">
+                            <div class="ps-product ps-product--standard ">
+                                <div class="ps-product__thumbnail shopby">
+                                    <a class="ps-product__image" href="#"> 
+                                        <img src="img/product/prd1.png" alt="alt">  
+                                    </a>
+                                </div>
+                                <div class="ps-product__content">
+                                    <h5 class="ps-product__title"><a href="#">Skin Care</a></h5> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </section>
+
+    <section class="product_list_sec">
+        <div class="product_filter_btn">Filter <i class="fa fa-angle-down"></i></div>
+                    
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 product_mob_filter">
+                    <div class="product_prd_left_sec">
+                        <div class="product_prd_left_sec_head">Sort By
+
+                            <div class="product_mob_filter_pop_close"><i class="fa fa-close"></i></div>
+
+                        </div>
+                        <div class="product_prd_left_box">
+                            <div class="product_prd_left_box_scrl">
+                                
+                                <div class="product_prd_left_box_row form-group">                                  
+                                        <div class="product_prd_left_box_img"><img src="img/product/filter_img1.png" alt=""></div>
+                                        <input  type="checkbox" id="flt1">
+                                        <label  class="product_prd_left_box_txt" for="flt1">Baby Care</label>
+                                </div>
+
+                                <div class="product_prd_left_box_row form-group">                                  
+                                    <div class="product_prd_left_box_img"><img src="img/product/filter_img2.png" alt=""></div>
+                                    <input  type="checkbox" id="flt2">
+                                    <label  class="product_prd_left_box_txt" for="flt2">Personal Care</label>
+                                </div>
+                                <div class="product_prd_left_box_row form-group">                                  
+                                        <div class="product_prd_left_box_img"><img src="img/product/filter_img1.png" alt=""></div>
+                                        <input  type="checkbox" id="flt3">
+                                        <label  class="product_prd_left_box_txt" for="flt3">Hair Care</label>
+                                </div>
+                                <div class="product_prd_left_box_row form-group">                                  
+                                    <div class="product_prd_left_box_img"><img src="img/product/filter_img2.png" alt=""></div>
+                                    <input  type="checkbox" id="flt3">
+                                    <label  class="product_prd_left_box_txt" for="flt3">Other Brands</label>
+                            </div>
+                            <div class="product_prd_left_box_row form-group">                                  
+                                <div class="product_prd_left_box_img"><img src="img/product/filter_img1.png" alt=""></div>
+                                <input  type="checkbox" id="flt1">
+                                <label  class="product_prd_left_box_txt" for="flt1">Baby Care</label>
+                        </div>
+
+                        <div class="product_prd_left_box_row form-group">                                  
+                            <div class="product_prd_left_box_img"><img src="img/product/filter_img2.png" alt=""></div>
+                            <input  type="checkbox" id="flt2">
+                            <label  class="product_prd_left_box_txt" for="flt2">Personal Care</label>
+                        </div>
+                        <div class="product_prd_left_box_row form-group">                                  
+                            <div class="product_prd_left_box_img"><img src="img/product/filter_img2.png" alt=""></div>
+                            <input  type="checkbox" id="flt3">
+                            <label  class="product_prd_left_box_txt" for="flt3">Other Brands</label>
+                    </div>
+                    <div class="product_prd_left_box_row form-group">                                  
+                        <div class="product_prd_left_box_img"><img src="img/product/filter_img1.png" alt=""></div>
+                        <input  type="checkbox" id="flt1">
+                        <label  class="product_prd_left_box_txt" for="flt1">Baby Care</label>
+                </div>
+
+                <div class="product_prd_left_box_row form-group">                                  
+                    <div class="product_prd_left_box_img"><img src="img/product/filter_img2.png" alt=""></div>
+                    <input  type="checkbox" id="flt2">
+                    <label  class="product_prd_left_box_txt" for="flt2">Personal Care</label>
+                </div>
+                        <div class="product_prd_left_box_row form-group">                                  
+                                <div class="product_prd_left_box_img"><img src="img/product/filter_img1.png" alt=""></div>
+                                <input  type="checkbox" id="flt3">
+                                <label  class="product_prd_left_box_txt" for="flt3">Hair Care</label>
+                        </div>
+                        <div class="product_prd_left_box_row form-group">                                  
+                            <div class="product_prd_left_box_img"><img src="img/product/filter_img2.png" alt=""></div>
+                            <input  type="checkbox" id="flt3">
+                            <label  class="product_prd_left_box_txt" for="flt3">Other Brands</label>
+                    </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12"><hr class="flt_hr"></div>
+
+                        <div class="product_prd_left_sec_head" style="">Filters</div>
+                        <div class="product_prd_left_box">
+
+                            <div class="accordion">
+                                <div class="accordion-item"> 
+                                  <a class="active">Price</a>
+                                  <div class="content active wow fadeInUp" data-wow-delay="0.4s" style="padding-left: 0 !important;">
+                                    <div style="width: 100%; margin: 0px auto; display: flex; align-items: center; flex-direction: column;    margin-bottom: 20px;">
+                                        <svg id="histogram-view"></svg>
+                                        <div style="margin-top: -30px; width: 100%;">
+                                          <input type="text" id="slider" />
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="accordion-item" style="position: relative;">
+                                    <div class="flt_srch_ico"><i class="fa fa-search"></i></div>
+                                  <a class="active">Brand  </a>
+                                  <div class="content active wow fadeInUp" data-wow-delay="0.4s" >
+                                      <div class="flt_brt_search">
+                                          <input type="text" placeholder="Search Brand">
+                                          <div class="flt_srch_btn"><i class="fa fa-search"></i></div>
+                                      </div>
+                                        <div class="filter_mn_bx form-group">                                  
+                                            <input type="checkbox" id="flt01">
+                                            <label class="product_prd_left_box_txt" for="flt01">Himalaya <span>(174)</span></label>
+                                        </div>
+                                        <div class="filter_mn_bx form-group">                                  
+                                            <input type="checkbox" id="flt02">
+                                            <label class="product_prd_left_box_txt" for="flt02">Dove <span>(100)</span></label>
+                                        </div>
+                                        <div class="filter_mn_bx form-group">                                  
+                                            <input type="checkbox" id="flt03">
+                                            <label class="product_prd_left_box_txt" for="flt03">Dabur <span>(87)</span></label>
+                                        </div>
+                                        <div class="filter_mn_bx form-group">                                  
+                                            <input type="checkbox" id="flt04">
+                                            <label class="product_prd_left_box_txt" for="flt04">Colgate <span>(174)</span></label>
+                                        </div>
+                                        <div class="filter_mn_bx form-group">                                  
+                                            <input type="checkbox" id="flt05">
+                                            <label class="product_prd_left_box_txt" for="flt05">Patanjali <span>(76)</span></label>
+                                        </div>
+                                        <div class="filter_mn_bx form-group">                                  
+                                            <input type="checkbox" id="flt06">
+                                            <label class="product_prd_left_box_txt" for="flt06">Himalaya <span>(120)</span></label>
+                                        </div>
+                                        <div class="filter_mn_bx form-group">                                  
+                                            <input type="checkbox" id="flt07">
+                                            <label class="product_prd_left_box_txt" for="flt07">Horlicks <span>(87)</span></label>
+                                        </div>
+
+                                        <div class="filter_mn_bx">
+                                            <a class="prd_view_mr_btn" href="#">View More</a>
+                                        </div>
+                                  </div>
+                                </div>
+        
+                                <div class="accordion-item">
+                                    <a class="active">Discounts</a>
+                                    <div class="content active wow fadeInUp" data-wow-delay="0.4s">
+                                        <div class="filter_mn_bx form-group">                                  
+                                            <input type="checkbox" id="flt01">
+                                            <label class="product_prd_left_box_txt" for="flt01">10 % - 25 % <span>(174)</span></label>
+                                        </div>
+                                        <div class="filter_mn_bx form-group">                                  
+                                            <input type="checkbox" id="flt02">
+                                            <label class="product_prd_left_box_txt" for="flt02">25 % - 30 % <span>(100)</span></label>
+                                        </div>
+                                        <div class="filter_mn_bx form-group">                                  
+                                            <input type="checkbox" id="flt03">
+                                            <label class="product_prd_left_box_txt" for="flt03">10 % - 25 % <span>(87)</span></label>
+                                        </div>
+                                        <div class="filter_mn_bx form-group">                                  
+                                            <input type="checkbox" id="flt04">
+                                            <label class="product_prd_left_box_txt" for="flt04">25 % - 30 % <span>(174)</span></label>
+                                        </div>
+                                       
+
+                                  </div>
+                                  </div>
+                                  
+                                  <div class="accordion-item">
+                                    <a class="active">Availability</a>
+                                    <div class="content active acc_cnt_no_bdr wow fadeInUp" data-wow-delay="0.4s" >
+                                        <div class="filter_mn_bx form-group">                                  
+                                            <input type="checkbox" id="flt04">
+                                            <label class="product_prd_left_box_txt" for="flt04">Exclude Out of Stock</label>
+                                        </div>
+                                    </div>
+                                  </div>
+                               
+                                
+                                
+                  
+                              </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 tb_full_wd">
+
+                    <div class="product_right_product_sec ">
+                        <div class="row"><div class="product_right_product_shown">Showing <strong>20</strong> of <strong>25000</strong> products</div></div>
+
+                        <div class="row">
+                           
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="product_list_box_img">
+
+                                        <div class="prd_star_rate_sec">
+                                           <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                           <span>Ratings</span>
+                                        </div>
+                                        <div class="prd_discount_cpn_sec">
+                                            <div class="prd_discount_coupon">
+                                                35% <span>Discount</span>
+                                            </div>
+                                            <div class="prd_ml_sec">50ml</div>
+                                        </div>
+
+                                        <a href="#"><img src="img/product/1.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Nixon Mask</div></a>
+                                            <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                        <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="product_list_box_img">
+
+                                        <div class="prd_star_rate_sec">
+                                           <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                           <span>Ratings</span>
+                                        </div>
+                                        <div class="prd_discount_cpn_sec">
+                                            <div class="prd_discount_coupon">
+                                                35% <span>Discount</span>
+                                            </div>
+                                            <div class="prd_ml_sec">50ml</div>
+                                        </div>
+
+                                        <a href="#"><img src="img/product/2.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Instant hand sanitizer</div></a>
+                                            <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                        <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="product_list_box_img">
+
+                                        <div class="prd_star_rate_sec">
+                                           <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                           <span>Ratings</span>
+                                        </div>
+                                        <div class="prd_discount_cpn_sec">
+                                            <div class="prd_discount_coupon">
+                                                35% <span>Discount</span>
+                                            </div>
+                                            <div class="prd_ml_sec">50ml</div>
+                                        </div>
+
+                                        <a href="#"><img src="img/product/3.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Nolla sanitizer spray</div></a>
+                                            <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                        <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="product_list_box_img">
+
+                                        <div class="prd_star_rate_sec">
+                                           <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                           <span>Ratings</span>
+                                        </div>
+                                        <div class="prd_discount_cpn_sec">
+                                            <div class="prd_discount_coupon">
+                                                35% <span>Discount</span>
+                                            </div>
+                                            <div class="prd_ml_sec">50ml</div>
+                                        </div>
+
+                                        <a href="#"><img src="img/product/1.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Nixon Mask</div></a>
+                                            <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                        <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="product_list_box_img">
+
+                                        <div class="prd_star_rate_sec">
+                                           <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                           <span>Ratings</span>
+                                        </div>
+                                        <div class="prd_discount_cpn_sec">
+                                            <div class="prd_discount_coupon">
+                                                35% <span>Discount</span>
+                                            </div>
+                                            <div class="prd_ml_sec">50ml</div>
+                                        </div>
+
+                                        <a href="#"><img src="img/product/2.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Instant hand sanitizer</div></a>
+                                            <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                        <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="product_list_box_img">
+
+                                        <div class="prd_star_rate_sec">
+                                           <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                           <span>Ratings</span>
+                                        </div>
+                                        <div class="prd_discount_cpn_sec">
+                                            <div class="prd_discount_coupon">
+                                                35% <span>Discount</span>
+                                            </div>
+                                            <div class="prd_ml_sec">50ml</div>
+                                        </div>
+
+                                        <a href="#"><img src="img/product/3.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Nolla sanitizer spray</div></a>
+                                            <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                        <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="popular_brand_sec">
+                        <div class="popular_brand_head">Popular brand</div>
+                            <div class="ps-section__carousel">
+                                <div class="owl-carousel" style="width: 100%;margin: 0;" data-owl-auto="true" data-owl-loop="true" data-owl-speed="15000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="false" data-owl-item="6" data-owl-item-xs="2" data-owl-item-sm="3" data-owl-item-md="3" data-owl-item-lg="6" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
+                                    <div class="ps-section__product wow fadeInUp" data-wow-delay="0.1s">
+                                        <div class="ps-product ps-product--standard ">
+                                            <div class="ps-product__thumbnail shopby">
+                                                <a class="ps-product__image" href="#">
+                                                   <img src="img/product/brand1.png" alt="alt"> 
+                                                </a>
+                                            </div>
+                                            <div class="ps-product__content">
+                                                <h5 class="ps-product__title"><a href="#">Safeguard</a></h5> </div>
+                                        </div>
+                                    </div>
+                                    <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.2s">
+                                        <div class="ps-product ps-product--standard ">
+                                            <div class="ps-product__thumbnail shopby">
+                                                <a class="ps-product__image" href="#">
+                                                    <img src="img/product/brand2.png" alt="alt"> 
+                                                </a>
+                                            </div>
+                                            <div class="ps-product__content">
+                                                <h5 class="ps-product__title"><a href="#">Garnier</a></h5> </div>
+                                        </div>
+                                    </div>
+                                    <div class="ps-section__product wow fadeInUp" data-wow-delay="0.3s">
+                                        <div class="ps-product ps-product--standard ">
+                                            <div class="ps-product__thumbnail shopby">
+                                                <a class="ps-product__image" href="#">
+                                                    <img src="img/product/brand3.png" alt="alt"> 
+                                                </a>
+                                            </div>
+                                            <div class="ps-product__content">
+                                                <h5 class="ps-product__title"><a href="#">Zendium</a></h5> </div>
+                                        </div>
+                                    </div>
+                                    <div class="ps-section__product wow fadeInUp" data-wow-delay="0.4s">
+                                        <div class="ps-product ps-product--standard ">
+                                            <div class="ps-product__thumbnail shopby">
+                                                <a class="ps-product__image" href="#">
+                                                    <img src="img/product/brand4.png" alt="alt"> 
+                                                </a>
+                                            </div>
+                                            <div class="ps-product__content">
+                                                <h5 class="ps-product__title"><a href="#">Colgate</a></h5> </div>
+                                        </div>
+                                    </div>
+                                    <div class="ps-section__product wow fadeInUp" data-wow-delay="0.5s">
+                                        <div class="ps-product ps-product--standard ">
+                                            <div class="ps-product__thumbnail shopby">
+                                                <a class="ps-product__image" href="#">
+                                                    <img src="img/product/brand5.png" alt="alt"> 
+                                                </a>
+                                            </div>
+                                            <div class="ps-product__content">
+                                                <h5 class="ps-product__title"><a href="#">Lifebuoy</a></h5> </div>
+                                        </div>
+                                    </div>
+                                    <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.6s">
+                                        <div class="ps-product ps-product--standard ">
+                                            <div class="ps-product__thumbnail shopby">
+                                                <a class="ps-product__image" href="#">
+                                                    <img src="img/product/brand1.png" alt="alt"> 
+                                                </a>
+                                            </div>
+                                            <div class="ps-product__content">
+                                                <h5 class="ps-product__title"><a href="#">Safeguard</a></h5> </div>
+                                        </div>
+                                    </div>
+                                    <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.7s">
+                                        <div class="ps-product ps-product--standard ">
+                                            <div class="ps-product__thumbnail shopby">
+                                                <a class="ps-product__image" href="#"> 
+                                                    <img src="img/product/brand2.png" alt="alt">  
+                                                </a>
+                                            </div>
+                                            <div class="ps-product__content">
+                                                <h5 class="ps-product__title"><a href="#">Garnier</a></h5> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+
+
+                    </div>
+
+
+
+                    <div class="row">
+                           
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                <div class="product_list_box_img">
+
+                                    <div class="prd_star_rate_sec">
+                                       <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                       <span>Ratings</span>
+                                    </div>
+                                    <div class="prd_discount_cpn_sec">
+                                        <div class="prd_discount_coupon">
+                                            35% <span>Discount</span>
+                                        </div>
+                                        <div class="prd_ml_sec">50ml</div>
+                                    </div>
+
+                                    <a href="#"><img src="img/product/1.png" alt=""></a>
+                                </div>
+                                <div class="product_list_box_text">
+                                    <a href="#"><div class="product_list_box_text_prd_name">Nixon Mask</div></a>
+                                        <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                        <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                </div>
+                                <div class="product_list_box_btn_row">
+                                    <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                    <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s" >
+                                <div class="product_list_box_img">
+
+                                    <div class="prd_star_rate_sec">
+                                       <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                       <span>Ratings</span>
+                                    </div>
+                                    <div class="prd_discount_cpn_sec">
+                                        <div class="prd_discount_coupon">
+                                            35% <span>Discount</span>
+                                        </div>
+                                        <div class="prd_ml_sec">50ml</div>
+                                    </div>
+
+                                    <a href="#"><img src="img/product/2.png" alt=""></a>
+                                </div>
+                                <div class="product_list_box_text">
+                                    <a href="#"><div class="product_list_box_text_prd_name">Instant hand sanitizer</div></a>
+                                        <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                        <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                </div>
+                                <div class="product_list_box_btn_row">
+                                    <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                    <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                <div class="product_list_box_img">
+
+                                    <div class="prd_star_rate_sec">
+                                       <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                       <span>Ratings</span>
+                                    </div>
+                                    <div class="prd_discount_cpn_sec">
+                                        <div class="prd_discount_coupon">
+                                            35% <span>Discount</span>
+                                        </div>
+                                        <div class="prd_ml_sec">50ml</div>
+                                    </div>
+
+                                    <a href="#"><img src="img/product/3.png" alt=""></a>
+                                </div>
+                                <div class="product_list_box_text">
+                                    <a href="#"><div class="product_list_box_text_prd_name">Nolla sanitizer spray</div></a>
+                                        <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                        <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                </div>
+                                <div class="product_list_box_btn_row">
+                                    <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                    <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                <div class="product_list_box_img">
+
+                                    <div class="prd_star_rate_sec">
+                                       <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                       <span>Ratings</span>
+                                    </div>
+                                    <div class="prd_discount_cpn_sec">
+                                        <div class="prd_discount_coupon">
+                                            35% <span>Discount</span>
+                                        </div>
+                                        <div class="prd_ml_sec">50ml</div>
+                                    </div>
+
+                                    <a href="#"><img src="img/product/1.png" alt=""></a>
+                                </div>
+                                <div class="product_list_box_text">
+                                    <a href="#"><div class="product_list_box_text_prd_name">Nixon Mask</div></a>
+                                        <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                        <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                </div>
+                                <div class="product_list_box_btn_row">
+                                    <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                    <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                <div class="product_list_box_img">
+
+                                    <div class="prd_star_rate_sec">
+                                       <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                       <span>Ratings</span>
+                                    </div>
+                                    <div class="prd_discount_cpn_sec">
+                                        <div class="prd_discount_coupon">
+                                            35% <span>Discount</span>
+                                        </div>
+                                        <div class="prd_ml_sec">50ml</div>
+                                    </div>
+
+                                    <a href="#"><img src="img/product/2.png" alt=""></a>
+                                </div>
+                                <div class="product_list_box_text">
+                                    <a href="#"><div class="product_list_box_text_prd_name">Instant hand sanitizer</div></a>
+                                        <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                        <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                </div>
+                                <div class="product_list_box_btn_row">
+                                    <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                    <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                <div class="product_list_box_img">
+
+                                    <div class="prd_star_rate_sec">
+                                       <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                       <span>Ratings</span>
+                                    </div>
+                                    <div class="prd_discount_cpn_sec">
+                                        <div class="prd_discount_coupon">
+                                            35% <span>Discount</span>
+                                        </div>
+                                        <div class="prd_ml_sec">50ml</div>
+                                    </div>
+
+                                    <a href="#"><img src="img/product/3.png" alt=""></a>
+                                </div>
+                                <div class="product_list_box_text">
+                                    <a href="#"><div class="product_list_box_text_prd_name">Nolla sanitizer spray</div></a>
+                                        <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                        <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                </div>
+                                <div class="product_list_box_btn_row">
+                                    <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                    <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+                    <div class="popular_brand_sec">
+                        <div class="popular_brand_head" style="    margin-bottom: 0;">Choose price range</div>
+                        <div class="price_range_sec">
+
+
+                                <div class="ps-section__carousel">
+                                    <div style="width: 100%;margin: 0;" class="owl-carousel" data-owl-auto="true" data-owl-loop="false" data-owl-speed="15000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="false" data-owl-item="5" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="5" data-owl-duration="1000" data-owl-mousedrag="on">
+                                        
+                                        <div class="ps-section__product wow fadeInUp" data-wow-delay="0.1s">
+                                            <div class="ps-product ps-product--standard ">
+                                                <a href="#"><div class="price_range_box price_range_box_1">
+                                                            UP TO<br>
+                                                            <strong>5%</strong>
+                                                        </div>
+                                                </div></a>
+                                               
+                                            </div>
+
+                                            <div class="ps-section__product wow fadeInUp" data-wow-delay="0.2s">
+                                                <div class="ps-product ps-product--standard ">
+                                                    <a href="#"><div class="price_range_box price_range_box_2">
+                                                                UP TO<br>
+                                                                <strong>10%</strong>
+                                                            </div>
+                                                    </div></a>
+                                                   
+                                                </div>
+
+                                                <div class="ps-section__product wow fadeInUp" data-wow-delay="0.3s">
+                                                    <div class="ps-product ps-product--standard ">
+                                                        <a href="#"><div class="price_range_box price_range_box_3">
+                                                                    UP TO<br>
+                                                                    <strong>20%</strong>
+                                                                </div>
+                                                        </div></a>
+                                                       
+                                                    </div>
+                                                    
+                                                <div class="ps-section__product wow fadeInUp" data-wow-delay="0.4s">
+                                                    <div class="ps-product ps-product--standard ">
+                                                        <a href="#"><div class="price_range_box price_range_box_4">
+                                                                    UP TO<br>
+                                                                    <strong>30%</strong>
+                                                                </div>
+                                                        </div></a>
+                                                       
+                                                    </div>
+                                                    
+                                                <div class="ps-section__product wow fadeInUp" data-wow-delay="0.5s">
+                                                    <div class="ps-product ps-product--standard ">
+                                                        <a href="#"><div class="price_range_box price_range_box_5">
+                                                                    UP TO<br>
+                                                                    <strong>40%</strong>
+                                                                </div>
+                                                        </div></a>
+                                                       
+                                                    </div>
+
+                                        </div>
+                                        
+                                       
+                                       
+                                       
+                                       
+                                      
+                                    </div>
+                                </div>  
+
+
+
+
+                            
+                        </div>
+
+
+
+
+                        <div class="row">
+                           
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="product_list_box_img">
+    
+                                        <div class="prd_star_rate_sec">
+                                           <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                           <span>Ratings</span>
+                                        </div>
+                                        <div class="prd_discount_cpn_sec">
+                                            <div class="prd_discount_coupon">
+                                                35% <span>Discount</span>
+                                            </div>
+                                            <div class="prd_ml_sec">50ml</div>
+                                        </div>
+    
+                                        <a href="#"><img src="img/product/1.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Nixon Mask</div></a>
+                                            <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                        <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                    </div>
+    
+                                </div>
+                            </div>
+    
+    
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="product_list_box_img">
+    
+                                        <div class="prd_star_rate_sec">
+                                           <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                           <span>Ratings</span>
+                                        </div>
+                                        <div class="prd_discount_cpn_sec">
+                                            <div class="prd_discount_coupon">
+                                                35% <span>Discount</span>
+                                            </div>
+                                            <div class="prd_ml_sec">50ml</div>
+                                        </div>
+    
+                                        <a href="#"><img src="img/product/2.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Instant hand sanitizer</div></a>
+                                            <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                        <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                    </div>
+    
+                                </div>
+                            </div>
+    
+    
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="product_list_box_img">
+    
+                                        <div class="prd_star_rate_sec">
+                                           <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                           <span>Ratings</span>
+                                        </div>
+                                        <div class="prd_discount_cpn_sec">
+                                            <div class="prd_discount_coupon">
+                                                35% <span>Discount</span>
+                                            </div>
+                                            <div class="prd_ml_sec">50ml</div>
+                                        </div>
+    
+                                        <a href="#"><img src="img/product/3.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Nolla sanitizer spray</div></a>
+                                            <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                        <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                    </div>
+    
+                                </div>
+                            </div>
+    
+    
+    
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="product_list_box_img">
+    
+                                        <div class="prd_star_rate_sec">
+                                           <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                           <span>Ratings</span>
+                                        </div>
+                                        <div class="prd_discount_cpn_sec">
+                                            <div class="prd_discount_coupon">
+                                                35% <span>Discount</span>
+                                            </div>
+                                            <div class="prd_ml_sec">50ml</div>
+                                        </div>
+    
+                                        <a href="#"><img src="img/product/1.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Nixon Mask</div></a>
+                                            <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                        <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                    </div>
+    
+                                </div>
+                            </div>
+    
+    
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="product_list_box_img">
+    
+                                        <div class="prd_star_rate_sec">
+                                           <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                           <span>Ratings</span>
+                                        </div>
+                                        <div class="prd_discount_cpn_sec">
+                                            <div class="prd_discount_coupon">
+                                                35% <span>Discount</span>
+                                            </div>
+                                            <div class="prd_ml_sec">50ml</div>
+                                        </div>
+    
+                                        <a href="#"><img src="img/product/2.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Instant hand sanitizer</div></a>
+                                            <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                        <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                    </div>
+    
+                                </div>
+                            </div>
+    
+    
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="product_list_box_img">
+    
+                                        <div class="prd_star_rate_sec">
+                                           <div class="prd_star_rate_sec_box"><i class="fa fa-star"></i> 4.5</div> 
+                                           <span>Ratings</span>
+                                        </div>
+                                        <div class="prd_discount_cpn_sec">
+                                            <div class="prd_discount_coupon">
+                                                35% <span>Discount</span>
+                                            </div>
+                                            <div class="prd_ml_sec">50ml</div>
+                                        </div>
+    
+                                        <a href="#"><img src="img/product/3.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Nolla sanitizer spray</div></a>
+                                            <div class="product_list_box_text_prd_sub">medima. pvt. ltd</div>
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Add to cart</div></a>
+                                        <a href="#"><div class="product_list_box_btn">Buy Now</div></a>
+                                    </div>
+    
+                                </div>
+                            </div>
+    
+    
+    
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    
+
+
+
+
+
+</section>
+
+
+
+
+
+
+<footer class="ps-footer ps-footer--5" style="padding-top: 1px;">
+            
+
+
+
+
+              
+            <div class="container">
+                <div class="ps-footer__middle">
+                    <div class="row ps-footer__category  m-0 justify-content-between">
+                        <div class="ft">
+                            <div class="ps-footer--block ">
+                                <h5 class="ps-block__title">Company</h5>
+                                <ul class="ps-block__list shadows ">
+                                    <li><a href="who-we-are.html">Our Legacy </a></li>
+                                    <li><a href="leadership.html">Health Saviours</a></li>
+                                    <li><a href="credible-platform.html">Trustable platform</a></li>
+                                    <li><a href="career.html">Career </a></li>
+                                    <li><a href="foundation.html">Medimall Foundation </a></li>
+                                    <li><a href="blog.html">MediBlog</a></li>
+                                    <li><a href="refer.html">Refer & Earn</a></li>
+                                    <li><a href="press-release.html">Press Release </a></li>
+                                    <li><a href="reward.html">Glitch Reward Programme</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ft ">
+                            <div class="ps-footer--block">
+                                <h5 class="ps-block__title">Our Services</h5>
+                                <ul class="ps-block__list shadows">
+                                    <li><a href="order.html">Order Medicines</a></li>
+                                    <li><a href="under.html">Order Healthcare Products</a></li>
+                                    <li><a href="under.html">Virtual Consultation</a></li>
+                                    <li><a href="under.html">Offline Medical Store</a></li>
+                                    <li><a href="gym.html">Gym</a></li>
+                                    <li><a href="gym.html#yoga"> Yoga</a></li>
+                                    <li><a href="gym.html#nutri">Nutri Chart </a></li>
+                                    <li><a href="gym.html#diet"> Diet Regime</a></li>
+                                    <li><a href="gym.html">Quiz</a></li>
+                                    <li><a href="under.html">Medpride Subscription </a></li>
+                                    <li><a href="under.html">Medfil Refill</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ft">
+                            <div class="ps-footer--block">
+                                <h5 class="ps-block__title">Partner With Us</h5>
+                                <ul class="ps-block__list shadows">
+                                    <li><a href="franchise.html">Own a Franchise </a></li>
+                                       <li><a href="join.html" target="_blank"> Affiliate Centres </a></li>
+                                   
+                                    <li><a href="companion.html">Doctors Be a Health Companion</a></li></ul>
+                            </div>
+                        </div>
+                        <div class="ft">
+                            <div class="ps-footer--block">
+                                <h5 class="ps-block__title">Quick Links</h5>
+                                <ul class="ps-block__list shadows">
+                                    <li><a href="order.html">Order Medicines</a></li>
+                                    <li><a href="under.html">Order Healthcare Products </a></li>
+                                    <li><a href="under.html">My Orders </a></li>
+                                    <li><a href="under.html">My Membership</a></li>
+                                    <li><a href="under.html">Ayure Care </a></li>
+                                    <li><a href="under.html">Expert Talk  </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ft">
+                            <div class="ps-footer--block">
+                                <h5 class="ps-block__title">Help</h5>
+                                <ul class="ps-block__list shadows">
+                                    <li><a href="under.html">FAQ</a></li>
+                                    <li><a href="under.html">Return Policy </a></li>
+                                    <li><a href="under.html">Terms & Conditions </a></li>
+                                    <li><a href="under.html">Privacy Policy </a></li>
+                                    <li><a href="under.html">Refund Policy </a></li>
+                                    <li><a href="under.html">Editorial Policy  </a></li>
+                                    <li><a href="under.html">Referal Policy </a></li>
+                                    <li><a href="under.html">Site Map </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lap">
+                        <div class="row ">
+                            <div class="col-12 col-md-4">
+                                <div class="ps-footer--contact">
+                                    <div class="text-white partner">Our payment Partners</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="ps-footer--contact"> </div>
+                            </div>
+                            <div class="col-12 col-md-2">
+                                <div class="ps-footer--address">
+                                    <div class="ps-logo">
+                                        <!--<a href="under.html"><img class="logo-black" src="img\Logo-black.png" alt=""></a>-->
+                                    </div>
+                                    <div class="text-white">We are Social</div>
+                                   <ul class="ps-social">
+                                        <li><a class="ps-social__link facebook icon" href="under.html"><i class="fa fa-facebook"> </i><span class="ps-tooltip">Facebook</span></a></li>
+                                        <li><a class="ps-social__link instagram icon" href="under.html"><i class="fa fa-instagram"></i><span class="ps-tooltip">Instagram</span></a></li>
+                                        <li><a class="ps-social__link youtube icon" href="under.html"><i class="fa fa-youtube-play"></i><span class="ps-tooltip">Youtube</span></a></li>
+                                        <li><a class="ps-social__link pinterest icon" href="under.html"><i class="fa fa-whatsapp"></i><span class="ps-tooltip">Whatsapp</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile">
+                        <div class="row ">
+                            <div class="col-12 col-md-3">
+                                <div class="ps-footer--address">
+                                    <div class="ps-logo">
+                                        <!--<a href="under.html"><img class="logo-black" src="img\Logo-black.png" alt=""></a>-->
+                                    </div>
+                                    <div class="text-white">We are Social</div>
+                                    <ul class="ps-social">
+                                        <li><a class="ps-social__link facebook " href="under.html"><i class="fa fa-facebook"> </i><span class="ps-tooltip">Facebook</span></a></li>
+                                        <li><a class="ps-social__link instagram" href="under.html"><i class="fa fa-instagram"></i><span class="ps-tooltip">Instagram</span></a></li>
+                                        <li><a class="ps-social__link youtube" href="under.html"><i class="fa fa-youtube-play"></i><span class="ps-tooltip">Youtube</span></a></li>
+                                        <li><a class="ps-social__link pinterest" href="under.html"><i class="fa fa-whatsapp"></i><span class="ps-tooltip"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="ps-footer--contact"> </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="ps-footer--contact">
+                                    <div class="text-white partner">Our payment Partners</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ps-footer--bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <a><img class="payment-light" src="img\png\f1.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f2.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f3.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f4.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f5.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f6.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f7.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f8.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f9.png" alt=""></a>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <p style="color: #103178; padding-top: 5px;" class="copy">Copyright © 2021 Medimall. All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+
+
+
+
+
+
+
+
+        <!--Right Side Buttons Start-->
+        <div class="sticky-container">
+            <ul class="sticky">
+                 <li> <img src="img/phone-call.svg">
+                 <!--<i class="icon-telephone"></i>-->
+                    <p>Call</p>
+                </li>
+                <li> <i class="fa fa-whatsapp"></i>
+                    <p>Whatsapp</p>
+                </li>
+               
+            </ul>
+        </div>
+        <!--Right Side Buttons End-->
+        <div class="ps-search">
+            <div class="ps-search__content ps-search--mobile"><a class="ps-search__close" href="#" id="close-search"><i class="icon-cross"></i></a>
+                <h3>Search</h3>
+                <form action="do_action" method="post">
+                    <div class="ps-search-table">
+                        <div class="input-group">
+                            <input class="form-control ps-input" type="text" placeholder="Search for products">
+                            <div class="input-group-append"><a href="#"><i class="fa fa-search"></i></a></div>
+                        </div>
+                    </div>
+                </form>
+                <div class="ps-search__result">
+                    <div class="ps-search__item">
+                        <div class="ps-product ps-product--horizontal">
+                            <div class="ps-product__thumbnail">
+                                <a class="ps-product__image" href="#">
+                                    <figure><img src="img/png\smade.png" alt="alt"></figure>
+                                </a>
+                            </div>
+                            <div class="ps-product__content">
+                                <h5 class="ps-product__title"><a>3-layer <span class='hightlight'>mask</span> with an elastic band (1 piece)</a></h5>
+                                <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate</p>
+                                <div class="ps-product__meta"><span class="ps-product__price">$38.24</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ps-search__item">
+                        <div class="ps-product ps-product--horizontal">
+                            <div class="ps-product__thumbnail">
+                                <a class="ps-product__image" href="#">
+                                    <!--<figure><img src="img/products\033.jpg" alt="alt"></figure>-->
+                                </a>
+                            </div>
+                            <div class="ps-product__content">
+                                <h5 class="ps-product__title"><a>3 Layer Disposable Protective Face <span class='hightlight'>mask</span>s</a></h5>
+                                <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate</p>
+                                <div class="ps-product__meta"><span class="ps-product__price sale">$14.52</span><span class="ps-product__del">$17.24</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ps-search__item">
+                        <div class="ps-product ps-product--horizontal">
+                            <div class="ps-product__thumbnail">
+                                <a class="ps-product__image" href="#">
+                                    <figure><img src="img/png\smade.png" alt="alt"></figure>
+                                </a>
+                            </div>
+                            <div class="ps-product__content">
+                                <h5 class="ps-product__title"><a>3-Ply Ear-Loop Disposable Blue Face <span class='hightlight'>mask</span></a></h5>
+                                <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate</p>
+                                <div class="ps-product__meta"><span class="ps-product__price sale">$14.99</span><span class="ps-product__del">$38.24</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ps-search__item">
+                        <div class="ps-product ps-product--horizontal">
+                            <div class="ps-product__thumbnail">
+                                <a class="ps-product__image" href="#">
+                                    <!--<figure><img src="img/products\050.jpg" alt="alt"></figure>-->
+                                </a>
+                            </div>
+                            <div class="ps-product__content">
+                                <h5 class="ps-product__title"><a>Disposable Face <span class='hightlight'>mask</span> for Unisex</a></h5>
+                                <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate</p>
+                                <div class="ps-product__meta"><span class="ps-product__price sale">$8.15</span><span class="ps-product__del">$12.24</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="ps-menu--slidebar">
+            <div class="ps-menu__content">
+                <div id="close-menu" class="overlay_mob_menu"></div>
+        <div class="mobile_menu_sec">
+
+            <a href="#"><div class="mobile_menu_sec_head">Login / Sign Up <span><i class="fa fa-angle-right"></i></span></div></a>
+            <div class="mobile_menu_sec_banner">
+                <div class="mobile_menu_banner_left_txt">
+                    <strong>Exciting offers are Waiting for you</strong>
+                    <span>Get flat 74% Off on Medimall App</span>
+                     <div class="mobile_menu_banner_btm_sec">
+                    <a href="#"><div class="mobile_menu_banner_btm_btn"><img src="img/menu/appstore.png" alt=""></div></a>
+                    <a href="#"><div class="mobile_menu_banner_btm_btn"><img class="" src="img/menu/playstore.png"></div></a>
+                </div>
+                </div>
+                <div class="mobile_menu_banner_right_img_sec"><img src="img/menu/bann_img.png" alt=""></div>
+               
+            </div>
+            
+            <div class="mobile_menu_mn_1 mn_bdr_btm">
+                <a href="#"> <div class="mobile_menu_mn_ico"><img src="img/menu/home.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Home</div></a>
+            </div>
+
+            <div class="mobile_menu_mn_1 ">
+                <a  href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><div class="mob_btn_left_ico"><img src="img/menu/odr_top1.png" alt=""></div>
+                <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/order_med.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Order Medicine<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div></a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+
+            <div class="mobile_menu_mn_1 ">
+                <a  href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><div class="mob_btn_left_ico"><img src="img/menu/odr_top2.png" alt=""></div>
+                <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/order_heal.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Order Healthcare Products<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div></a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+
+
+            <div class="mobile_menu_mn_1 mn_bdr_btm" style="padding-right: 50px;margin-bottom: 10px ;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/offer.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Offers<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                <div class="mob_mn_new_btn">NEW</div>
+                 </a>
+            </div>
+
+            
+            <div class="mobile_menu_mn_1 "  style="padding: 5px 15px;">
+                <a  href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/account.png" alt=""></div>
+                <div class="mobile_menu_mn_text">MY Account<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div></a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+
+            <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/orders.png" alt=""></div>
+                <div class="mobile_menu_mn_text">My Orders<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+
+            
+            <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/medfill.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Med Refill<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+
+            <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/membership.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Medpride Membership<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+            <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/health_vault.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Health Vault<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+
+            <div class="mobile_menu_mn_1 mn_bdr_btm"  style="padding: 5px 15px;margin-bottom: 10px ;padding-bottom: 15px;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/wallet.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Wallet<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+
+            <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/refer_earn.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Refer and Earn<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+
+            <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/conact_us.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Contact Us<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+
+            <div class="mobile_menu_mn_1 mn_bdr_btm" style="padding: 5px 15px;padding-bottom:30px">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/faq.png" alt=""></div>
+                <div class="mobile_menu_mn_text">FAQ<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+            <div class="mobile_menu_mn_1 mn_bdr_btm"></div>
+			</div>
+          </div>
+        </div>
+        <button class="btn scroll-top"><i class="fa fa-angle-double-up"></i></button>
+        <div class="ps-preloader" id="preloader">
+            <div class="ps-preloader-section ps-preloader-left"></div>
+            <div class="ps-preloader-section ps-preloader-right"></div>
+        </div>
+       
+
+      <div id="myModal" class="modal fade sign-up-popup">
+    <div class="modal-dialog">
+        <div class="modal-content">
+           
+            <div class="modal-body"><button type="button" class="close co" data-dismiss="modal">&times;</button>
+				<div id="myDIV11"><div class="row" >
+				<div class="col-md-6" style="padding-left: 0px;">
+				<div class="signin-carousel">
+				<div class="owl-carousel"  data-owl-auto="false" data-owl-loop="true" data-owl-speed="3000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-item-xl="1" data-owl-duration="1000" data-owl-mousedrag="on">
+                                <a class="ps-product__image">
+                                                <figure><img src="img\phone-sign.png" alt="alt" class="sign-owl-img"> </figure>
+                                            </a>
+                                       
+                                 <a class="ps-product__image">
+                                                <figure><img src="img\scot-sign.png" alt="alt" class="sign-owl-img"> </figure>
+                                            </a>
+                                <a class="ps-product__image">
+                                                <figure><img src="img\pen-sign.png" alt="alt" class="sign-owl-img"> </figure>
+                                            </a>
+											<a class="ps-product__image">
+                                                <figure><img src="img\yogo-sign.png" alt="alt" class="sign-owl-img"> </figure>
+                                            </a>
+                                        
+                            </div>
+				</div>
+				</div>
+				<div class="col-md-6">
+				<div class="sign-ups">
+				<h4>Sign Up</h4>
+				<p>Sign up to enter the world of Healthcare. Avail offers, rewards and so much more!!!!</p>
+				<h5>Login With Mobile Number</h5>
+				
+<div class="wrap">
+  
+  <form action="#" method="get">
+    <div class="form-group" style="position: relative;">
+     <input class="form-control tel" type="tel" name="leyka_donor_phone" placeholder="Enter your mobile number" inputmode="tel" value=""/ style="font-weight: 200;">
+	 <button class="button-sign"  onclick="myFunction1()" ><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+    </div>
+   
+  </form>
+</div>
+ 
+				<h6 class="text-left">An OTP has been sent to this no.</h6>
+				<div class="but">
+				<a href="" class="face-blue"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
+				<a href="" class="face-red"><i class="fa fa-google" aria-hidden="true"></i> Google</a>
+				</div>
+				<p class="tc-sign">By clicking continue <br>you agree with our <a href="">privacy policy </a>& <a href="">terms and conditions</a></p>
+				</div>
+				</div>
+				</div>
+      </div>
+
+<!-- Otp -->
+ <div id="myDIV1" style="display: none;" >
+       <div class="row"  >
+        <div class="col-md-6"  style="padding-left: 0px;">
+        <div class="signin-carousel">
+        <div class="owl-carousel"  data-owl-auto="false" data-owl-loop="true" data-owl-speed="3000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-item-xl="1" data-owl-duration="1000" data-owl-mousedrag="on">
+                                <a class="ps-product__image">
+                                                <figure><img src="img\otp.png" alt="alt" class="sign-owl-img"> </figure>
+                                            </a>
+                                       
+                                
+                            </div>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="otp">
+        <h4>OTP Verification</h4>
+        
+        <h5>Enter Your OTP</h5>
+        
+
+              <div class="wrap">
+                  <form action="" class="">
+              <input class="otps" type="text" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1 >
+              <input class="otps" type="text" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1 >
+              <input class="otps" type="text" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1 >
+              <input class="otps" type="text" oninput='digitValidate(this)'onkeyup='tabChange(4)' maxlength=1 >
+            </form>
+
+              </div>
+ 
+        <h6><a  href="" class="resend" >Resend OTP</a></h6>
+        <div class="otp-has">
+        <p>OTP has been sent to xx xxxx xx98 <a href="" class="">Change</a></p>
+        </div>
+         <a href="#" class="con-otp" onclick="myFunction2()">Confirm </a>
+         </div>
+        </div>
+        </div>
+ </div>
+
+<!-- Password -->
+
+<div id="myDIV2"  style="display: none;">
+        <div class="row">
+        <div class="col-md-6" style="padding-left: 0px;">
+        <div class="signin-carousel">
+        <div class="owl-carousel"  data-owl-auto="false" data-owl-loop="true" data-owl-speed="3000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-item-xl="1" data-owl-duration="1000" data-owl-mousedrag="on">
+                    <a class="ps-product__image">
+                         <figure><img src="img\password.png" alt="alt" class="sign-owl-img"> </figure>
+                     </a>
+                                       
+                 </div>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="password">
+        <h4>Password</h4>
+              <div class="wrap">
+              <form class="form-horizontal" method="" action="">
+          <div class="form-group">
+           <div class="pass">
+        <img src="img\lock.svg" alt="alt" class="sign-lock">
+              <input id="password-field" type="password" class="form-controls" name="password" placeholder="Enter password" >
+              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+            </div>
+          </div>
+        </form>
+
+              </div>
+                
+      
+        <div class="password-but">
+        <a href="" class=""> Login with OTP</a>
+        <a href="" class="">Forgot password</a>
+        </div>
+         <a href="#" class="con-otp"   onclick="myFunction3()">Continue </a>
+         </div>
+        </div>
+        </div> </div>
+<!-- Personal Detail -->
+ <div id="myDIV3" style="display: none;">
+        <div class="row">
+        <div class="col-md-6" style="padding-left: 0px;">
+        <div class="signin-carousel">
+        <div class="owl-carousel"  data-owl-auto="false" data-owl-loop="true" data-owl-speed="3000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-item-xl="1" data-owl-duration="1000" data-owl-mousedrag="on">
+                    <a class="ps-product__image">
+                         <figure><img src="img\for-got.png" alt="alt" class="sign-owl-img"> </figure>
+                     </a>
+                                       
+                 </div>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="personal">
+        <h4>Personal Details</h4>
+              <div class="wrap">
+                  <form class="form-horizontal" method="" action="">
+          <div class="form-group">
+      <div class="pass">
+        <i class="icon-user"></i>
+              <input id="" type="text" class="form-controls" name="name" placeholder="Name">
+             
+            </div>
+      <div class="pass">
+         <i class="icon-envelope"></i>
+              <input id="" type="email" class="form-controls" name="email"  placeholder="Email*">
+               <span class="" style="color: #00C01F;">Verified</span>
+            </div>
+      <div class="pass">
+        <img src="img\lock.svg" alt="alt" class="sign-lock">
+              <input id="password-field" type="password" class="form-controls" name="password"  placeholder="Password*">
+              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+            </div>
+         <div class="pass">
+        <img src="img\lock.svg" alt="alt" class="sign-lock">
+              <input id="password-field" type="password" class="form-controls" name="password"  placeholder="Re-enter password*">
+              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+            </div>
+          
+          </div>
+        </form>
+              </div>
+                  
+      
+         <a href="#" class="con-otp"  onclick="myFunction4()">Continue </a>
+         </div>
+        </div>
+        </div> </div>
+ <div id="myDIV4" style="display: none;">
+        <div class="row"  >
+        <div class="col-md-6" style="padding-left: 0px;">
+        <div class="signin-carousel">
+        <div class="owl-carousel"  data-owl-auto="false" data-owl-loop="true" data-owl-speed="3000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-item-xl="1" data-owl-duration="1000" data-owl-mousedrag="on">
+                    <a class="ps-product__image">
+                         <figure><img src="img\person.png" alt="alt" class="sign-owl-img"> </figure>
+                     </a>
+                                       
+                 </div>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="personal">
+        <h4>Forgot Password</h4>
+              <div class="wrap">
+                  <form class="form-horizontal" method="" action="">
+          <div class="form-group">
+      <div class="pass">
+        <i class="icon-clock"></i>
+              <input id="" type="text" class="form-controls" name="name" placeholder="Enter OTP">
+               <span class="" style="color: #00C01F;">Verified</span>
+            </div>
+     
+      <div class="pass">
+        <img src="img\lock.svg" alt="alt" class="sign-lock">
+              <input  type="text" class="form-controls" name="password"  placeholder="New password">
+              <!-- <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
+                <span class="" style="color: #00C01F;">Verified</span>
+            </div>
+         <div class="pass">
+        <img src="img\lock.svg" alt="alt" class="sign-lock">
+              <input id="password-field" type="password" class="form-controls" name="password"  placeholder="Re-enter password*">
+              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+            </div>
+          
+          </div>
+        </form>
+              </div>
+                  
+      
+         <a href="#" class="con-otp">Continue </a>
+         </div>
+        </div>
+        </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>  
+  
+
+
+
+ 
+
+
+
+  <style type="text/css">
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  position: absolute;
+  z-index: 2;
+  color: #262626;
+    opacity: 0.17;
+}
+ .intro {
+     height: auto;
+     min-height: 100vh;
+     text-align: center;
+     background-color: teal;
+ }
+		
+.wrap {
+  width: auto;
+  margin: auto;
+  border-radius: 4px;
+  padding: 1.25rem;
+      box-shadow: none;
+}
+
+.iti {
+  width: 100%;
+}
+        </style>
+		
+	
+		
+		
+<script>
+
+// Some vars
+var passwordInput = $("#password"),
+    revealBtn     = $("#reveal");
+
+// show / hide eye button
+passwordInput.on("keyup", function () {
+  if(!$(this).val()) {
+    revealBtn.css("opacity", "0");
+  } else {
+    revealBtn.css("opacity", "1");
+  }
+});
+
+// show / hide password
+revealBtn.on("click", function () {
+  if (passwordInput.attr("type") === "password") {
+    passwordInput.attr("type", "text");
+  } else {
+    passwordInput.attr("type", "password");
+  }
+});
+
+
+</script>
+
+
+
+ <script type="text/javascript">
+        function inVisible(element) {
+            //Checking if the element is
+            //visible in the viewport
+            var WindowTop = $(window).scrollTop();
+            var WindowBottom = WindowTop + $(window).height();
+            var ElementTop = element.offset().top;
+            var ElementBottom = ElementTop + element.height();
+            //animating the element if it is
+            //visible in the viewport
+            if((ElementBottom <= WindowBottom) && ElementTop >= WindowTop) animate(element);
+        }
+
+        function animate(element) {
+            //Animating the element if not animated before
+            if(!element.hasClass('ms-animated')) {
+                var maxval = element.data('max');
+                var html = element.html();
+                element.addClass("ms-animated");
+                $({
+                    countNum: element.html()
+                }).animate({
+                    countNum: maxval
+                }, {
+                    //duration 5 seconds
+                    duration: 5000,
+                    easing: 'linear',
+                    step: function() {
+                        element.html(Math.floor(this.countNum) + html);
+                    },
+                    complete: function() {
+                        element.html(this.countNum + html);
+                    }
+                });
+            }
+        }
+        //When the document is ready
+        $(function() {
+            //This is triggered when the
+            //user scrolls the page
+            $(window).scroll(function() {
+                //Checking if each items to animate are 
+                //visible in the viewport
+                $("h2[data-max]").each(function() {
+                    inVisible($(this));
+                });
+            })
+        });
+        </script>
+
+        
+        
+        <script src="plugins\jquery.min.js"></script>
+        <script src="plugins\popper.min.js"></script>
+        <script src="plugins\bootstrap4\js\bootstrap.min.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/js/ion.rangeSlider.min.js'></script>
+        <script src='https://d3js.org/d3.v4.min.js'></script>
+        <script src="plugins\select2\dist\js\select2.full.min.js"></script>
+     <script src="plugins\owl-carousel\owl.carousel.min.js"></script>
+        <script src="plugins\jquery-bar-rating\dist\jquery.barrating.min.js"></script>
+        <script src="plugins\lightGallery\dist\js\lightgallery-all.min.js"></script>
+        <script src="plugins\slick\slick\slick.min.js"></script>
+        <script type="text/javascript" src="https://www.medfoliotechnologies.com/js/wow.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.0/js/intlTelInput.min.js"></script>
+
+
+
+
+<script>
+function myFunction1() {
+
+        document.getElementById("myDIV11").style.display = "none";
+        document.getElementById("myDIV1").style.display = "block";
+        document.getElementById("myDIV2").style.display = "none";
+
+        document.getElementById("myDIV3").style.display = "none";
+
+        document.getElementById("myDIV4").style.display = "none";
+
+    }
+
+    function myFunction2() {
+
+        document.getElementById("myDIV11").style.display = "none";
+        document.getElementById("myDIV1").style.display = "none";
+        document.getElementById("myDIV2").style.display = "block";
+
+        document.getElementById("myDIV3").style.display = "none";
+
+        document.getElementById("myDIV4").style.display = "none";
+
+    }
+
+     function myFunction3() {
+
+        document.getElementById("myDIV11").style.display = "none";
+        document.getElementById("myDIV1").style.display = "none";
+        document.getElementById("myDIV2").style.display = "none";
+
+        document.getElementById("myDIV3").style.display = "block";
+
+        document.getElementById("myDIV4").style.display = "none";
+
+    }
+
+     function myFunction4() {
+
+        document.getElementById("myDIV11").style.display = "none";
+        document.getElementById("myDIV1").style.display = "none";
+        document.getElementById("myDIV2").style.display = "none";
+
+        document.getElementById("myDIV3").style.display = "none";
+
+        document.getElementById("myDIV4").style.display = "block";
+
+    }
+ 
+</script>
+
+
+		<script>
+    var input = document.querySelector("#phone");
+    window.intlTelInput(input, {
+      // allowDropdown: false,
+      // autoHideDialCode: false,
+      // autoPlaceholder: "off",
+      // dropdownContainer: document.body,
+      // excludeCountries: ["us"],
+      // formatOnDisplay: false,
+      // geoIpLookup: function(callback) {
+      //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+      //     var countryCode = (resp && resp.country) ? resp.country : "";
+      //     callback(countryCode);
+      //   });
+      // },
+      // hiddenInput: "full_number",
+      // initialCountry: "auto",
+      // localizedCountries: { 'de': 'Deutschland' },
+      // nationalMode: false,
+      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+      // placeholderNumberType: "MOBILE",
+      // preferredCountries: ['cn', 'jp'],
+      // separateDialCode: true,
+      utilsScript: "build/js/utils.js",
+    });
+  </script>
+
+<script src="home\js\script.js" type="be9dfe49072cb4d1912e7519-text/javascript"></script>
+<script src="home\js\output.min.js" type="be9dfe49072cb4d1912e7519-text/javascript"></script>
+
+
+<script src="js/rocket-loader.min.js" data-cf-settings="be9dfe49072cb4d1912e7519-|49" defer=""></script>
+
+
+
+
+
+<script>
+	$(document).ready(function(){
+		$("#myModal").modal('show');
+	});
+	$('#otp').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
+</script>
+<script>
+$('.owl-carousel').owlCarousel({
+  loop: true,
+  dot: true,
+  autoplay: false,
+  autoplayHoverPause: true,
+  responsive: {
+    0: {
+      items: 1
+    },
+    600: {
+      items: 1
+    },
+    1000: {
+      items: 1
+    }
+  }
+})
+
+
+
+var hideTimeout = null;
+
+var show = function() {
+  $('.sticky-container').show();
+}
+
+var hide = function() {
+  $('.sticky-container').hide();
+}
+
+$(document).ready(function(){
+
+  $(window).scroll(function(e){
+  	if (hideTimeout) {
+    	window.clearTimeout(hideTimeout);
+      hideTimeout = null;
+    }
+    hide();
+
+    window.setTimeout(show, 1000);
+  });
+  
+});
+
+
+</script>
+<script>
+	let digitValidate = function(ele){
+  console.log(ele.value);
+  ele.value = ele.value.replace(/[^0-9]/g,'');
+}
+
+let tabChange = function(val){
+    let ele = document.querySelectorAll('input');
+    if(ele[val-1].value != ''){
+      ele[val].focus()
+    }else if(ele[val-1].value == ''){
+      ele[val-2].focus()
+    }   
+ }
+
+
+	
+	</script>	
+	
+	
+	<script>
+	
+	$(".toggle-password").click(function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
+	
+	</script>
+
+<script>
+  const config = {
+  width: 200,
+  barHeight: 50,
+  barWidth: 6,
+  barGap: 5,
+  barRadius: 4,
+  lang: "tr",
+  min: new Date(2004, 11, 0).valueOf(),
+  max: new Date(2017, 11, 1000).valueOf(),
+  prettify: function (ts) {
+    return new Date(ts).toLocaleDateString("en", {
+      //year: 'numeric',
+     // month: 'long',
+      day: 'numeric'
+    });
+  }
+};
+
+// x scale for time
+var x = d3.scaleTime()
+    .domain([config.min, config.max])
+    .range([0, config.width])
+    .clamp(true);
+
+// y scale for histogram
+var y = d3.scaleLinear()
+    .range([config.barHeight, 0]);
+
+////////// histogram set up //////////
+var histogram = d3.histogram()
+    .value(d => d.date)
+    .domain(x.domain())
+    .thresholds(config.width/(config.barWidth+config.barGap));
+
+var svg = d3.select("#histogram-view")
+    .attr("width", config.width)
+    .attr("height", config.barHeight);
+
+var hist = svg.append("g")
+    .attr("class", "histogram");
+
+d3.csv("https://gist.githubusercontent.com/oguzhaninan/ae7466169c06d9c145e028ff398b6eb3/raw/be32fbc76953c349c9c695e98a69f1a46d775375/example.csv", prepare, function(data) {
+  // group data for bars
+  var bins = histogram(data);
+
+  // y domain based on binned data
+  y.domain([0, d3.max(bins, d => d.length)]);
+
+  var bar = hist.selectAll(".bar")
+      .data(bins)
+      .enter()
+      .append("g")
+      .attr("class", "bar")
+      .attr("transform", d => `translate(${x(d.x0)}, ${y(d.length)})`);
+      
+  bar.append("rect")
+      .attr("class", "bar")
+      .attr("x", 1)
+      .attr("rx", config.barRadius)
+      .attr("width", config.barWidth)
+      .attr("height", d => config.barHeight - y(d.length))
+      .attr("fill", '#0091ff');
+})
+
+var parseDate = d3.timeParse("%d-%b-%y")
+function prepare(d) {
+  d.date = parseDate(d.date);
+  d.value = +d.value;
+  return d;
+}
+
+$("#slider").ionRangeSlider({
+  skin: "round",
+  type: "double",
+  grid: true,
+  step: 1,
+  min: config.min,
+  max: config.max,
+  hide_min_max: true,
+  hide_from_to: false,
+  force_edges: true,
+  drag_interval: true,
+  prettify: config.prettify,
+  onChange: function(val) {
+    d3.selectAll(".bar")
+      .attr("fill", d => d.x0 < val.to && d.x0 > val.from ? '#0091ff' : '#d8d8d8')
+    if (config.onChange) {
+      config.onChange(val)  
+    }
+  }
+});
+
+</script>
+
+<script>
+    wow = new WOW({
+        animateClass: 'animated',
+        offset: 100,
+        callback: function(box) {
+            console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+        }
+    });
+    wow.init();
+    document.getElementById('moar').onclick = function() {
+        var section = document.createElement('section');
+        section.className = 'section--purple wow fadeInDown';
+        this.parentNode.insertBefore(section, this);
+    };
+    </script>
+		<script>
+            
+$(window).ready(function(){
+    setInterval(function(){ 
+      $('.loader-container').addClass("active")
+    }, 1500);
+  
+  });
+  
+        </script>
+        <!-- custom code-->
+		
+        <script type="text/javascript">
+         
+            const items = document.querySelectorAll(".accordion a");
+        
+              function toggleAccordion(){
+                this.classList.toggle('active');
+                this.nextElementSibling.classList.toggle('active');
+              }
+        
+              items.forEach(item => item.addEventListener('click', toggleAccordion));
+        
+          </script>
+
+
+<script>
+$(function () {
+	/*
+	 * International Telephone Input v16.0.0
+	 * https://github.com/jackocnr/intl-tel-input.git
+	 * Licensed under the MIT license
+	 */
+	var input = document.querySelectorAll("input[name=leyka_donor_phone]");
+	var iti_el = $(".iti.iti--allow-dropdown.iti--separate-dial-code");
+	if (iti_el.length) {
+		iti.destroy();
+
+		// Get the current number in the given format
+	}
+	for (var i = 0; i < input.length; i++) {
+		iti = intlTelInput(input[i], {
+			autoHideDialCode: false,
+			// autoPlaceholder: "aggressive",
+			initialCountry: "auto",
+			separateDialCode: true,
+			preferredCountries: ["ru", "th"],
+			customPlaceholder: function (
+				selectedCountryPlaceholder,
+				selectedCountryData
+			) {
+				return "" + selectedCountryPlaceholder
+			},
+			geoIpLookup: function (callback) {
+				$.get("https://ipinfo.io", function () {}, "jsonp").always(function (resp) {
+					var countryCode = resp && resp.country ? resp.country : "";
+					callback(countryCode);
+				});
+			},
+			utilsScript:
+				"https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.0/js/utils.js" // just for
+		});
+
+		// $('input[name="leyka_donor_phone"]').on(
+		// 	"focus click countrychange",
+		// 	function (e, countryData) {
+		// 		var pl = $(this).attr("placeholder") + "";
+		// 		var res = pl.replace(/Enter your number/g, "1");
+		// 		if (res != "undefined") {
+		// 			$(this).inputmask(res, { placeholder: "Enter you phone number", clearMaskOnLostFocus: true });
+		// 		}
+		// 	}
+		// );
+
+		// $('input[name="leyka_donor_phone"]').on(
+		// 	"focusout",
+		// 	function (e, countryData) {
+		// 		var intlNumber = iti.getNumber();
+		// 		console.log(intlNumber);
+		// 	}
+		// );
+	}
+});
+
+
+</script>
+
+        
+
+</body>
+
+</html>

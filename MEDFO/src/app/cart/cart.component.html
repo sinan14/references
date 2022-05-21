@@ -1,0 +1,1500 @@
+<div class="ps-page">
+  <app-header></app-header>
+</div>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W32L424" height="0" width="0"
+    style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) →-->
+
+
+
+
+
+<section class="inner_new_page_container" style="overflow: hidden;background-color: #F7F7F7">
+  <div class="container">
+    <div class="cart_page_head" style="margin: 20px 0; ">My Cart</div>
+
+
+
+    <div class="cart_page_top_btn_row">
+
+      <div class="cart_page_top_btn cart_page_top_btn_act"><a routerLink="/cart">Medicart</a></div>
+      <div class="cart_page_top_btn"><a routerLink="/cart-subscription">Subscription</a></div>
+
+      <div class="cart_page_top_wishlist_btn" *ngIf="token" (click)="redirectToWishListPage()">Wishlist <i
+          class="fa fa-heart"></i>
+        <div class="cart_page_top_count" *ngIf="wishListCount>2">{{wishListCount - 2}}+</div>
+        <div class="cart_page_top_count" *ngIf="wishListCount<2">{{wishListCount}}</div>
+        <div class="cart_page_top_count" *ngIf="wishListCount<=1">{{wishListCount}}</div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <section *ngIf="cartList && cartList.length" class="cart_listing_sec" style="padding-top: 10px !important;">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-7">
+
+
+
+          <ng-container *ngIf="cartList && cartList.length">
+            <div class="cart_item_lst_row" *ngFor="let i of cartList">
+              <div class="cart_item_lst_row_delet"><img src="../../../assets/img/cart/delete.png" alt=""
+                  (click)="removeFromCart(i.cartId,i.product_id,i)"></div>
+              <div class="cart_item_lst_row_rx" *ngIf="i.IsPrescriptionRequired">
+                <img src="../../../assets/img/cart/rx.png"
+                  alt="">
+
+              </div>
+              <div style="background-image: url('assets/img/cart/dicount_bann.png');" class="cart_item_lst_dicount"
+                *ngIf="i.discountAmount!=0 && token">{{i.discountInPercentage}}% <span>Discount</span></div>
+
+                <div style="background-image: url('assets/img/cart/dicount_bann.png');" class="cart_item_lst_dicount"
+                *ngIf="i.discountAmount!=0 && !token">{{i.discountInPercentage}} <span>Discount</span></div>
+
+              <div class="cart_item_lst_row_img" (click)="redirectToProductDetail(i.product_id)"><img src="{{i.image}}" alt="">
+                <div class="outofstock" *ngIf="i.outOfStock">
+                  <span >Out of Stock</span>
+              </div>
+            </div>
+              
+
+              <!-- <div class="cart_item_lst_row_img" (click)="redirectToProductDetail(i.product_id)">
+                <img src="{{i.image}}" alt=""></div> -->
+              <div class="cart_item_lst_row_contant">
+                <div class="cart_item_lst_row_contant_name">{{i.productName | titlecase}}</div>
+                <div class="cart_item_lst_row_contant_cmpny">{{i.brandName | titlecase}}</div>
+                <div class="cart_item_lst_row_contant_gram">{{i.uomValue}}</div>
+                <div class="cart_item_lst_row_contant_rate">
+
+                  <span *ngIf="i.discountAmount!=0">
+                    <i class="fa fa-rupee"></i> {{i.price}}
+                  </span>
+                  <strong style="font-weight: 400;" *ngIf="i.discountAmount!=0"><i class="fa fa-rupee"></i> {{i.specialPrice * i.quantity}}</strong>
+                  
+                  <strong style="font-weight: 400;"  *ngIf="i.discountAmount==0"><i class="fa fa-rupee"></i> {{i.price * i.quantity}}</strong>
+
+                  <div class="xart_lst_qty_box" *ngIf="!i.outOfStock">
+                    <div class="form-group--number1">
+                      <button class="downs" (click)="decrement(i)"> <i class="fa fa-minus"></i></button>
+                      <input class="form-control" type="text" [(ngModel)]="i.quantity" value="{{i.quantity}}" disabled>
+                      <button class="ups" (click)="increment(i)"> <i class="fa fa-plus"></i></button>
+                    </div>
+
+
+                </div>
+              </div>
+            </div>
+        </div>
+        </ng-container>
+
+
+        <br>
+        <a routerLink="/category-list" *ngIf="cartList && cartList.length">
+          <div class="addmore_cart_btn" > <span>Add more</span> <i
+              class="fa fa-plus"></i></div>
+        </a>
+
+
+        <div class="handpick_slide_sec" *ngIf="handPickList.length">
+          <div class="handpick_slide_sec_head">Hand picked For You</div>
+          <div class="handpick_slide_sec_src">
+            <div class="container">
+              <div class="ps-section__carousel">
+
+                <owl-carousel-o [options]="customOptions">
+
+                  <ng-container *ngFor="let slide of handPickList">
+                    <ng-template carouselSlide [id]="slide.product_id">
+
+                      <div class="ps-section__product wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="ps-product ps-product--standard ">
+                          <div class="ps-product__thumbnail shopby ">
+                            <a class="ps-product__image" (click)="redirectToProductDetail(slide.product_id)">
+                              <div class="prd_dtl_also_scr_img">
+                                <div class="prd_discount_coupon" *ngIf="slide.discountInPercentage!=0">
+                                  {{slide.discountInPercentage}}% <span>Discount</span>
+                                </div>
+
+                                <img src="{{slide.image}}" alt="alt" width="50%">
+                              </div>
+                              <div class="prd_sub_name">{{slide.productName | titlecase}}</div>
+
+                              <div class="prd_sub_rate" *ngIf="slide.discountAmount!=0">
+                                <i class="fa fa-rupee"></i>{{slide.specialPrice}}
+                                <span>{{slide.price}}</span>
+                              </div>
+                              <div class="prd_sub_rate" *ngIf="slide.discountAmount==0">
+                                <i class="fa fa-rupee"></i>{{slide.price}}
+                              </div>
+
+                            </a>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </ng-template>
+                  </ng-container>
+
+                </owl-carousel-o>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart_banner_sec"><img src="{{bannerImage}}" alt=""></div>
+
+        <div class="cart_footer_btm_line">
+          <hr>
+        </div>
+
+        <div class="cart_btm_feature_box_sec mob_hide_crt">
+
+
+
+
+          <div class="cart_btm_feature_box ftr_bxt_1">
+            <div class="cart_btm_feature_box_ico"><img src="../../../assets/img/cart/sec1.png" alt=""></div>
+            <div class="cart_btm_feature_box_head">
+              <div class="cart_btm_feature_box_head_ico"><img src="../../../assets/img/cart/ft1.png" alt=""></div>
+              Easy<br> Return
+            </div>
+            <div class="cart_btm_feature_box_cnt">
+              consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+            </div>
+          </div>
+
+          <div class="cart_btm_feature_box ftr_bxt_2" style="    max-width: 36%;">
+            <div class="cart_btm_feature_box_ico"><img src="../../../assets/img/cart/sec.png" alt=""></div>
+            <div class="cart_btm_feature_box_head">
+              <div class="cart_btm_feature_box_head_ico"><img src="../../../assets/img/cart/ft2.png" alt=""></div>
+              100% Authentic<br> Product
+            </div>
+            <div class="cart_btm_feature_box_cnt">
+              consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+            </div>
+          </div>
+          <div class="cart_btm_feature_box ftr_bxt_3" style="margin: 0;">
+            <div class="cart_btm_feature_box_ico"><img src="../../../assets/img/cart/sec2.png" alt=""></div>
+            <div class="cart_btm_feature_box_head">
+              <div class="cart_btm_feature_box_head_ico"><img src="../../../assets/img/cart/ft3.png" alt=""></div>
+              Secure<br> Payment
+            </div>
+            <div class="cart_btm_feature_box_cnt">
+              consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <div class="col-lg-4 col-md-5">
+
+
+
+
+
+        <div class="cart_right_sec">
+
+          <div class="cart_deliver_address_sc" *ngIf="customerAddress">
+            <div class="cart_deliver_address_change_btn" data-toggle="modal" id="popup-select-address"
+              data-target="#selectaddress" (click)="getUserAddress()">Change <i class="fa fa-angle-right"></i></div>
+            <div class="cart_deliver_address_txt">
+              Delivery to {{customerAddress.type}} - {{customerAddress.pincode}}
+              <span> {{customerAddress.wholeAddress}}</span>
+            </div>
+
+            <div *ngIf="cartDetails.deliveryTime!=0" class="cart_deliver_address_txt"
+              style="border: 0; padding-bottom: 5px">
+              Delivery in {{cartDetails.deliveryTime}}
+            </div>
+
+            <div *ngIf="cartDetails.deliveryTime===0" class="cart_deliver_address_txt"
+              style="border: 0; padding-bottom: 5px">
+              Not Deliverable
+            </div>
+
+
+
+            <div class="cart_deliver_address_sc_ico"><img src="../../../assets/img/cart/address.png" alt=""></div>
+          </div>
+
+          <div class="apply_coupon_sec coupon_enterd" *ngIf="couponCode && token">
+            <div class="apply_coupon_sec_ico"><img src="../../../assets/img/cart/apply_off.png" alt=""></div>
+            <span>{{couponCode.code}}</span>
+            <div class="coupon_enterd_rmv_btn" (click)="removeCoupon(couponCode.couponId)">Remove</div>
+          </div>
+          
+           <div  class="apply_coupon_secs">
+            <p class="coupon-text" *ngIf="couponCode && token">Coupon code applied successfully. Get Flat {{couponCode.percentage}}% OFF on your order, Coupon applicable if cart value after 
+              billing is above <i class="fa fa-rupee"></i>{{couponCode.purchaseAmount}} </p>
+          </div> 
+         
+
+
+          <!-- <div>
+            <p>Coupon code applied successfully. 
+              Coupon applied successfully. Get Flat 25% OFF on your 1st medicine order. Coupon applicable if cart value after billing id above</p>
+          </div> -->
+
+          <div class="apply_coupon_sec" *ngIf="!couponCode && token" data-toggle="modal"
+            data-target="#couponcode">
+            <div class="apply_coupon_sec_ico"><img src="../../../assets/img/cart/apply_off.png" alt=""></div>
+            <span>Apply Coupon Code</span>
+            <div class="apply_coupon_arrow_ico"><i class="fa fa-angle-right"></i></div>
+
+          </div>
+          
+
+          <div class="exp_amt_pay_sec">
+            <div class="exp_amt_pay_box">
+              <i class="fa fa-rupee"></i> {{cartDetails.totalAmountToBePaid ? cartDetails.totalAmountToBePaid.toFixed(2) : 0}}
+              <span>Expected amount to paid</span>
+              <a href="#" data-toggle="modal" *ngIf="customerAddress === '' && token " id="popup-add-address"
+                data-target="#selectaddress">
+                <div class="exp_amt_pay_box_btn">Add Address</div>
+              </a>
+
+
+              <!-- <a data-toggle="modal" id="popup-upload-prescription" data-target="#myUpload">
+                <div class="exp_amt_pay_box_btn">Continue</div>
+              </a> -->
+
+              <a data-toggle="modal" id="popup-upload-prescription" data-target="#myUpload" (click)="continueWithCart()"
+              *ngIf="customerAddress != '' &&  totalPrescriptionCount!=0 && token" >
+                <div class="exp_amt_pay_box_btn">Continue</div>
+              </a> 
+
+               <a *ngIf="customerAddress != '' && totalPrescriptionCount==0 &&  token" (click)="continueWithCart()">
+                <div class="exp_amt_pay_box_btn">Continue</div>
+              </a>
+
+              <a *ngIf="customerAddress != '' && totalPrescriptionCount==0 &&  !token" (click)="continueWithLocalCart()">
+                <div class="exp_amt_pay_box_btn">Continue</div>
+              </a>
+
+            </div>
+          </div>
+
+          <div class="cart_payment_dtl_box_head">Payment Details</div>
+          <div class="cart_payment_dtl_box" *ngIf="cartDetails">
+
+            <div class="cart_payment_dtl_box_row">
+              Cart Value
+              <strong><i class="fa fa-rupee"></i>{{cartDetails.totalCartValue ? cartDetails.totalCartValue :
+                0}}</strong>
+            </div>
+
+            <div class="cart_payment_dtl_box_row" *ngIf="cartDetails.memberDiscount!=0">
+              Member discount
+              <strong><i class="fa fa-rupee"></i> {{cartDetails.memberDiscount ? cartDetails.memberDiscount :
+                0}}</strong>
+            </div>
+
+            <div class="cart_payment_dtl_box_row" *ngIf="token">
+              Delivery Charge
+              <span *ngIf="cartDetails.isThisCartEligibleForFreeDelivery"><i class="fa fa-rupee"></i> {{cartDetails.deliveryCharge}}</span>
+
+              <strong *ngIf="!cartDetails.isThisCartEligibleForFreeDelivery"><i class="fa fa-rupee"></i> {{cartDetails.deliveryCharge}}</strong>
+
+            </div>
+            <div class="cart_payment_dtl_box_row" *ngIf="cartDetails.userHasMedCoins && token">
+              Medcoins Redeemed <a style="color:#00AAFF;font-size: 11px;margin-left: 3%;cursor: pointer;"
+                (click)="removeMedimallMedcoinValue()">Remove</a>
+              <strong><input type="text" [(ngModel)]="medcoinAmountValue" 
+                  (keyup)="changeMedimallMedcoinValue($event)"></strong>
+            </div>
+            <div class="cart_payment_dtl_box_row" *ngIf="medimallFoundationFlag  && token">
+              Donate <strong style="float:none;font-weight: 600;color: #000;"><i
+                  class="fa fa-rupee"></i>{{medimallFoundationValue}} </strong>to Medimall India Foundation <a
+                style="color:#00AAFF;font-size: 11px;margin-left: 3%;cursor: pointer;"
+                (click)="removeMedimallFoundationValue()">Remove</a>
+              <strong> <input type="text" [(ngModel)]="medimallFoundationValue"
+                  (keyup)="changeMedimallFoundationValue($event)"></strong>
+            </div>
+            <div class="cart_payment_dtl_box_row" *ngIf="cartDetails.couponAppliedDiscount && token">
+              Coupon Applied
+              <strong><img style="width: 22px;" src="../../../assets/img/cart/cpn.png" alt="">{{cartDetails.couponAppliedDiscount}}</strong>
+            </div>
+            <div class="cart_payment_dtl_box_ttl">
+              Total Amount to be Paid
+              <strong> {{cartDetails.totalAmountToBePaid ? cartDetails.totalAmountToBePaid
+                : 0}}</strong>
+            </div>
+
+          </div>
+
+
+          <div class="cart_savethis_odr_sec" *ngIf="token">
+
+            <div class="accordion">
+              <div class="accordion-item">
+                <a>
+                  <div class="accordion_left_ico"><img src="assets/img/cart/rupe_ico.png" alt=""></div> Total
+                  Savings of <i class="fa fa-rupee"></i> {{cartDetails.totalDiscountAmount}} on this Order
+                </a>
+                <div class="content active">
+                  <p>MRP Discount {{cartDetails.totalDiscountInPercentage}}% <span><i class="fa fa-rupee"></i> {{cartDetails.totalDiscountAmount}}</span></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="cart_right_an_box">
+            <div class="cart_right_an_box_txt" *ngIf="medimallFoundationFlag && token">
+              <div class="cart_right_an_box_txt_ico">
+                <div class="product_prd_left_box_row form-group">
+                  <input type="checkbox" id="flt1" name="ui" [checked]="charityCheckBoxFlag" (change)="checkBoxChangeCharityValue($event)">
+                  <label class="product_prd_left_box_txt" for="flt1"></label>
+                </div>
+              </div>
+              Thank you for kindly donating <span><i class="fa fa-rupee"></i> {{medimallFoundationValue}}</span> to Medimall Charitable Trust.
+              Each Thought Counts.
+            </div>
+            <a class="read_trms" href="#">T&C</a>
+
+            <div class="cart_right_an_box_txt_bx">
+              <div class="cart_right_an_box_txt_bx_ico"><img src="../../../assets/img/cart/rght1.png" alt=""></div>
+              <span>Support us in providing better healthcare in <strong style="font-weight: 600;color: #242424;">rural
+                  villages</strong>.</span>
+            </div>
+            <div class="cart_right_an_box_txt_bx">
+              <div class="cart_right_an_box_txt_bx_ico"><img src="../../../assets/img/cart/rght2.png" alt=""></div>
+              <span>Enrich the rural lives with improved<br> <strong style="font-weight: 600;color: #242424;"> medical
+                  assistance.</strong></span>
+            </div>
+            <div class="cart_right_an_box_txt_bx">
+              <div class="cart_right_an_box_txt_bx_ico"><img src="../../../assets/img/cart/rght3.png" alt=""></div>
+              <span>Aid us to ensure a healthier society for the next generation.</span>
+            </div>
+
+
+          </div>
+
+
+          <div class="additional_note_sec">
+            <div class="additional_note_sec_2">
+              <div class="additional_note_head">Additional note</div>
+              <div class="additional_note_txtarea">
+                <textarea name="" id="" placeholder="Enter text here"></textarea>
+              </div>
+
+              <ul class="cart_right_an_box_list">
+                <li>
+                  <div class="cart_right_an_box_list_ico"><span style="font-size: 30px;color: #8c8c8c;">&#8226;</span>
+                  </div>
+                  Medimall is a healthcare technology platform to facilitate business transactions. The products are
+                  offered for sale by licensed pharmacies and, delivery partners deliver them to users accordingly.
+                  The user authorizes the delivery personnel to be their agent for the delivery of goods. For more
+                  information please read our terms and conditions.
+                </li>
+                <li>
+                  <div class="cart_right_an_box_list_ico"><span style="font-size: 30px;color: #8c8c8c;">&#8226;</span>
+                  </div>
+                  The delivery time may change as per region or availability with pharmacies. It shall also depend
+                  upon the logistic partner and travel restrictions in each state. Prices are indicative and may
+                  change after billing. In the event of cancellation of the order, please refer to our refund policy
+                  for further information.
+                </li>
+                <li>
+                  <div class="cart_right_an_box_list_ico"><span style="font-size: 30px;color: #8c8c8c;">&#8226;</span>
+                  </div>
+                  Coupon discount values may change if the order value changes. It shall be as per terms of use of the
+                  coupons.
+                </li>
+                <li *ngIf="token">
+                  <div class="cart_right_an_box_list_ico form-group second-check" style="    top: -2px;">
+                    <input type="checkbox" id="flt2">
+                    <label class="product_prd_left_box_txt" for="flt2"></label>
+                  </div>
+
+                  Medcoins may be redeemed within the app or offline stores and may not be used in other retail
+                  stores. In the event of cancellation of orders, and if medcoins have been redeemed they shall be
+                  refunded to your account subject to T&C.
+                </li>
+              </ul>
+
+            </div>
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+
+
+      <div class="col-12">
+        <div class="cart_btm_feature_box_sec web_hide_crt">
+
+
+
+
+          <div class="cart_btm_feature_box ftr_bxt_1">
+            <div class="cart_btm_feature_box_ico"><img src="../../../assets/img/cart/sec1.png" alt=""></div>
+            <div class="cart_btm_feature_box_head">
+              <div class="cart_btm_feature_box_head_ico"><img src="../../../assets/img/cart/ft1.png" alt=""></div>
+              Easy<br> Return
+            </div>
+            <div class="cart_btm_feature_box_cnt">
+              consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+            </div>
+          </div>
+
+          <div class="cart_btm_feature_box ftr_bxt_2" style="    max-width: 36%;">
+            <div class="cart_btm_feature_box_ico"><img src="../../../assets/img/cart/sec.png" alt=""></div>
+            <div class="cart_btm_feature_box_head">
+              <div class="cart_btm_feature_box_head_ico"><img src="../../../assets/img/cart/ft2.png" alt=""></div>
+              100% Authentic<br> Product
+            </div>
+            <div class="cart_btm_feature_box_cnt">
+              consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+            </div>
+          </div>
+          <div class="cart_btm_feature_box ftr_bxt_3" style="margin: 0;">
+            <div class="cart_btm_feature_box_ico"><img src="../../../assets/img/cart/sec2.png" alt=""></div>
+            <div class="cart_btm_feature_box_head">
+              <div class="cart_btm_feature_box_head_ico"><img src="../../../assets/img/cart/ft3.png" alt=""></div>
+              Secure<br> Payment
+            </div>
+            <div class="cart_btm_feature_box_cnt">
+              consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- </div> -->
+</div>
+  </section>
+
+
+  <section class="uhfgt" *ngIf="!cartList || cartList.length===0">
+    <div class="backround2">
+      <img src="assets/img/demo/round.png" class="floatings">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 float-left text-center" id="ugback">
+          <div class="cplantmain">
+            <div class="cartimg"><img src="assets/img/demo/cart.png" class="img-fluid"></div>
+          </div>
+        </div>
+
+        <div class="col-md-5 float-left">
+          <div class="background3"> <img src="assets/img/demo/squre.png" class=""></div>
+          <div class="mainoh">
+            <h2>Uh.. Oh.. </h2>
+            <label>It feels empty in here. Shop your essentials Now.</label><br><br>
+            <a routerLink="/"><button type="button" class="btn btn-primary ShopNow">Shop Now</button></a>
+            <div class="ohahlistma">
+              <div class="accordion ohahlistma1">
+                <div class="accordion-item">
+                  <a class="ohuh" routerLink="/">
+                    <div class="ohahlist">
+                      <img class="" src="assets/img/demo/giftbox.png" class="img-fluid giftbox">
+                    </div><label class="ohpgh">Recently Bought Items</label> <i class="arrow right"></i>
+                  </a>
+                  <!--<div class="content">-->
+                  <!--    <p>#</p>-->
+                  <!--</div>-->
+                </div>
+
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<footer class="ps-footer ps-footer--5" style="padding-top: 40px;">
+
+
+
+
+
+  <app-footer></app-footer>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ps-search">
+  <div class="ps-search__content ps-search--mobile"><a class="ps-search__close" href="under.html" id="close-search"><i
+        class="icon-cross"></i></a>
+    <h3>Search</h3>
+    <form action="do_action" method="post">
+      <div class="ps-search-table">
+        <div class="input-group">
+          <input class="form-control ps-input" type="text" placeholder="Search for products">
+          <div class="input-group-append"><a href="under.html"><i class="fa fa-search"></i></a></div>
+        </div>
+      </div>
+    </form>
+    <div class="ps-search__result">
+      <div class="ps-search__item">
+        <div class="ps-product ps-product--horizontal">
+          <div class="ps-product__thumbnail">
+            <a class="ps-product__image" href="under.html">
+              <figure><img src="../../../assets/img\png\smade.png" alt="alt"></figure>
+            </a>
+          </div>
+          <div class="ps-product__content">
+            <h5 class="ps-product__title"><a>3-layer <span class='hightlight'>mask</span> with an elastic band (1
+                piece)</a></h5>
+            <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate
+            </p>
+            <div class="ps-product__meta"><span class="ps-product__price">$38.24</span> </div>
+          </div>
+        </div>
+      </div>
+      <div class="ps-search__item">
+        <div class="ps-product ps-product--horizontal">
+          <div class="ps-product__thumbnail">
+            <a class="ps-product__image" href="under.html">
+              <!--<figure><img src="../../../assets/img\products\033.jpg" alt="alt"></figure>-->
+            </a>
+          </div>
+          <div class="ps-product__content">
+            <h5 class="ps-product__title"><a>3 Layer Disposable Protective Face <span
+                  class='hightlight'>mask</span>s</a></h5>
+            <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate
+            </p>
+            <div class="ps-product__meta"><span class="ps-product__price sale">$14.52</span><span
+                class="ps-product__del">$17.24</span> </div>
+          </div>
+        </div>
+      </div>
+      <div class="ps-search__item">
+        <div class="ps-product ps-product--horizontal">
+          <div class="ps-product__thumbnail">
+            <a class="ps-product__image" href="under.html">
+              <figure><img src="../../../assets/img\png\smade.png" alt="alt"></figure>
+            </a>
+          </div>
+          <div class="ps-product__content">
+            <h5 class="ps-product__title"><a>3-Ply Ear-Loop Disposable Blue Face <span
+                  class='hightlight'>mask</span></a></h5>
+            <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate
+            </p>
+            <div class="ps-product__meta"><span class="ps-product__price sale">$14.99</span><span
+                class="ps-product__del">$38.24</span> </div>
+          </div>
+        </div>
+      </div>
+      <div class="ps-search__item">
+        <div class="ps-product ps-product--horizontal">
+          <div class="ps-product__thumbnail">
+            <a class="ps-product__image" href="under.html">
+              <!--<figure><img src="../../../assets/img\products\050.jpg" alt="alt"></figure>-->
+            </a>
+          </div>
+          <div class="ps-product__content">
+            <h5 class="ps-product__title"><a>Disposable Face <span class='hightlight'>mask</span> for Unisex</a></h5>
+            <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate
+            </p>
+            <div class="ps-product__meta"><span class="ps-product__price sale">$8.15</span><span
+                class="ps-product__del">$12.24</span> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Add Address popup -->
+<div class="modal fade" id="myaddress" role="dialog">
+  <div class="modal-dialog mainaddress">
+    <!-- Modal content-->
+    <div class="modal-content mainaddress">
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="close" id="dismiss-add-address" data-dismiss="modal">
+            &times;
+          </button>
+        </div>
+      </div>
+      <!-- <div class="modal-header aaa"></div> -->
+      <!-- add address -->
+      <div class="modal-body">
+        <h3 class="text-center">{{update_Modal_Flag ? 'Update Address' : 'Add Address'}}</h3>
+        <hr class="hrs">
+        <form [formGroup]="newAddressForm">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_name">Name </label>
+                <input id="form_name" formControlName="name" type="text" name="name" class="form-control"
+                  placeholder="Enter your name" required="required" data-error="name" />
+                <small class="form-text small-block" *ngIf="isValidnewUserAddress('name')">
+                  Name cannot be empty
+                </small>
+              </div>
+              <div class="form-group">
+                <label for="form_phone">Phone Number</label>
+                <input id="form_phone" type="tel" name="phone" formControlName="mobile" class="form-control"
+                  placeholder=" Enter your phone" />
+
+                <small class="form-text small-block" *ngIf="isValidnewUserAddress('mobile')">
+                  Enter valid number
+                </small>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="form_phone">Pincode</label>
+                    <input id="form_name" type="text" name="name" formControlName="pincode" class="form-control"
+                      placeholder="Enter your pin" required="required" data-error="Pincode" />
+
+                    <small class="form-text small-block" *ngIf="isValidnewUserAddress('pincode')">
+                      Enter valid pincode
+                    </small>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-primary btn-address">
+                    <img src="assets/img/cart/location.png" class="img-fluid iconslocation" />Current location
+                  </button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="form_phone">House number & Building name</label>
+                <input id="form_phone" formControlName="house" type="tel" name="phone" class="form-control"
+                  placeholder="Enter your details" />
+                <small class="form-text small-block" *ngIf="isValidnewUserAddress('house')">
+                  This field is mandatory
+                </small>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_phone">Road name, Area, Street</label>
+                <input id="form_name" formControlName="street" type="text" name="name" class="form-control"
+                  placeholder="Enter your details" required="required" data-error="Details" />
+                <small class="form-text small-block" *ngIf="isValidnewUserAddress('name')">
+                  This field is mandatory
+                </small>
+              </div>
+              <div class="form-group">
+                <label for="form_phone">Landmark</label>
+                <input id="form_name" formControlName="landmark" type="text" name="name" class="form-control"
+                  placeholder="Enter your landmark" required="required" data-error="Landmark" />
+                <small class="form-text small-block" *ngIf="isValidnewUserAddress('landmark')">
+                  This field is mandatory
+                </small>
+              </div>
+              <div class="form-group">
+                <label for="form_phone">State</label>
+                <!-- <select class="form-control"><option>choose</option></select> -->
+                <select class="form-control" formControlName="state">
+                  <option>
+                    state 
+                  </option>
+                  <ng-container *ngFor="let state of states">
+                    <option [value]="state">
+                      {{ state }}
+                    </option>
+                  </ng-container>
+                </select> 
+                <!-- <input
+                  id="form_name"
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  placeholder="Choose your State"
+                  required="required"
+                  data-error="State"
+                />-->
+                <small class="form-text small-block" *ngIf="isValidnewUserAddress('state')">
+                  This field is mandatory
+                </small>
+              </div>
+              <div class="">
+                <label for="form_phone">State</label>
+                <div class="row ram-in">
+                  
+                         
+                  <div class="ramagb">
+                    <input formControlName="type" id="home1" [checked]="
+                    newAddressForm.get('type').value == 'home'" value="home" type="radio" />
+
+<label  class="opt" for="home1"> 
+  <img src="assets/img/cart/home.png" class="img-fluid iconshm" width="48px" height="49px" />
+  <p class="office">Home</p></label>
+</div>
+
+ <div class="ramagb">
+  <input formControlName="type" id="office1" [checked]="
+  newAddressForm.get('type').value ==
+  'office'
+" value="office" type="radio" />
+
+<label  class="opt" for="office1"> 
+  <img src="assets/img/cart/office.png" class="img-fluid iconshm" width="44px" height="43px" />
+                      <p class="office">Office</p></label>
+</div>
+
+<div class="ramagb">
+  <input formControlName="type" id="other1" [checked]="
+  newAddressForm.get('type').value ==
+  'other'
+" value="other" type="radio" />
+
+<label  class="opt" for="other1"> 
+  <img src="assets/img/cart/other.png" class="img-fluid iconshm" width="44px" height="43px" />
+  <p class="office">Other</p>
+</label>
+</div>
+
+</div>
+
+                <!-- <div class="col-md-4  add-type">
+                  <label for="home1">
+                    <button type="button" class="btn btn-light light-home">
+                      <input formControlName="type" id="home1" [checked]="
+                          newAddressForm.get('type').value == 'home'
+                        " value="home" type="radio" />
+                      <img src="assets/img/cart/home.png" class="img-fluid iconshm" width="48px" height="49px" />
+                      <p class="office">Home</p>
+                    </button>
+                  </label>
+                </div>
+                <div class="col-md-4  add-type">
+                  <label for="office1">
+                    <button type="button" class="btn btn-light light-home">
+                      <input formControlName="type" id="office1" [checked]="
+                          newAddressForm.get('type').value ==
+                          'office'
+                        " value="office" type="radio" />
+                      <img src="assets/img/cart/office.png" class="img-fluid iconshm" width="44px" height="43px" />
+                      <p class="office">Office</p>
+                    </button>
+                  </label>
+                </div>
+                <div class="col-md-4  add-type">
+                  <label for="other1">
+                    <button type="button" class="btn btn-light light-home">
+                      <input formControlName="type" id="other1" [checked]="
+                          newAddressForm.get('type').value ==
+                          'other'
+                        " value="other" type="radio" />
+                      <img src="assets/img/cart/other.png" class="img-fluid iconshm" width="44px" height="43px" />
+                      <p class="office">Other</p>
+                    </button>
+                  </label>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 save1">
+              <button type="button" class="btn btn-primary saveandcontinue" (click)="onSubmitAddress()">
+                Save & Continue
+              </button>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add Address popup -->
+
+
+<!-- Select Address -->
+<div class="modal fade" id="selectaddress" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content" style="background: #f7f7f7">
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="closeselect" data-dismiss="modal" id="dismiss-select-address">
+            &times;
+          </button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <h3 class="select-address text-center">Select address</h3>
+        <hr />
+        <div class="row selroww">
+          <div class="col-md-12">
+            <div class="addnew" style="width: 100%">
+              <div class="col-md-3 addnew1" style="float: left">
+                <span>
+                <img class="locationicon" src="assets/img/cart/Icon material-location-on.svg" style="
+                   
+                  " /></span>
+              </div>
+              <div data-toggle="modal" id="popup-add-address" data-target="#myaddress"
+                (click)="navigateToAddForm(0);update_Modal_Flag = false;" class="col-md-9 addnew1" style="float: left">
+                <label class="addneww">Add new address </label>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+        <form>
+          <div class="row">
+            <div class="container">
+              <div class="col-md-12">
+                <div class="height-coupon">
+          <ng-container *ngFor="let address of userAddresses; let i = index">
+            
+                  
+                  <div class="boxa mb-3 select-boxa">
+                    <div class="col-md-6 aswin">
+                      <label class="aa">{{ address.name }}</label>
+                    </div>
+                    <div class="col-md-6" style="float: left">
+                      <div class="col-md-6 col-6" style="float: left; padding: 13px 0 0 0">
+                        <img *ngIf="address.type === 'home'" src="assets/img/cart/home.png" class="img-fluid"
+                          width="23px" />
+                        <img *ngIf="address.type === 'office'" src="assets/img/cart/office.png" class="img-fluid"
+                          width="23px" />
+                        <img *ngIf="address.type === 'other'" src="assets/img/cart/other.png" class="img-fluid"
+                          width="23px" />
+                        <label style="padding: 0 10px">{{
+                          address.type
+                          }}</label>
+                      </div>
+                      <div class="col-md-6 col-6" style="float: right">
+                        <div class="radioaa">
+                          <input class="rrb" type="radio" name="addressStatus" [checked]="address.isDisabled == false"
+                            (change)="changeAddressStatus(i)" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12" style="float: left">
+                      <address class="adress11">
+                        {{ address.street }}, {{ address.house
+                        }}<br />
+                        {{ address.landmark }} {{ address.pincode
+                        }}<br />
+                        {{ address.mobile }}<br />
+                      </address>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="dltaa" (click)="deleteUserAddress(i)">
+                        <img  src="assets/img/cart/delete.png" /><label>Delete</label>
+                      </div>
+                      <div data-toggle="modal" id="popup-add-address" data-target="#myaddress"
+                        (click)="editUserAddress(i);update_Modal_Flag=true;" class="edit">
+                        <img src="assets/img/cart/edit.svg" />&nbsp;&nbsp;<label>Edit address</label>
+                      </div>
+                    </div>
+                  </div>
+               
+          </ng-container>
+        </div>
+      </div>
+    </div></div>
+        </form>
+        <div class="row mb-3">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <button (click)="closeSelectAddress()" id="close-select-address" type="button"
+              class="btn btn-primary Continue-btn">
+              Continue
+            </button>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Select Address -->
+
+
+<!-- Coupon code pop-up-->
+<div class="modal fade" id="couponcode" role="dialog">
+  <div class="modal-dialog">
+    <!------------ Modal content Upload pres-------------------------->
+    <div class="modal-content" style="padding: 0 7px">
+      <div class="close1">
+        <button type="button" id="dismiss-coupon-form" class="closea" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+      <h6 class="uph">Available Coupon Code</h6>
+      <div class="modal-header">
+        <form [formGroup]="couponForm">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 apply-coupon"> <input type="text" class="form-control" placeholder="Enter Coupon..." formControlName="coupon">
+                <small class="form-text small-block" *ngIf="isValidnewCoupon('coupon')">
+                  Field empty...
+                </small></div>
+             <!-- <div class="col-md-3 apply-coupon-button"> <button class="btn">Apply</button></div> -->
+             
+            </div>
+            <div class="height-coupon">
+            <div class="cart_payment_dtl_box_row addcoupon" *ngFor="let c of availableCoupon">
+              <p (click)="copyToClipBoard(c.code)">{{c.code}}</p>
+              <div class="cart_payment_dtl_box_head coupon-head">Get {{c.percentage}}% Off</div>
+
+               <!-- Right tooltip-->
+            <div class="con-tooltip right">
+              <div class="tc-text">T&C</div>
+              <div class="tooltip">
+                <h5
+                style="
+                  margin: 11px 0 14px 0px;
+                  font-size: 15px;
+                  font-weight: 600;
+                "
+              >
+                Terms & Conditions
+              </h5>
+              <label style="padding: 0 5px; text-align: justify; font-size: 11px">
+                {{c.termsAndCondition}}</label>
+              </div>
+             
+            </div>
+
+
+            <!-- <p>
+              <span id="dots">T&C</span>
+              <span id="more">{{c.termsAndCondition}}</span>
+            </p>
+            <button id="myBtn">Read More <i class="fas fa-long-arrow-alt-right"></i></button> -->
+<!-- 
+                <div class="accordion" >
+                  <div class="accordion-item" style="margin-bottom: 0">
+                    <a style="padding: 0 !important">T&C</a>
+                    <div class="content">
+                      <p>  {{c.termsAndCondition}} </p>
+                    </div>
+                  </div>
+                </div> -->
+              <div class="coupon-pop-apply">
+                <button class="btn btn-primary" (click)="selectCoupon(c)">Apply</button>
+            
+              <span>{{c.name}}</span>
+              </div>
+            </div>
+              
+            </div>
+
+
+            <button type="button" class="btn btn-primary saveandcontinue"
+              (click)="applyCoupon();attemptedSubmit = true;">
+              Apply
+            </button>
+
+          </div>
+        </form>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Coupon code pop-up-->
+
+
+
+<!-------------------------------- Upload Prescription -------->
+<div class="modal fade" id="myUpload" role="dialog">
+  <div class="modal-dialog">
+    <!------------ Modal content Upload pres-------------------------->
+    <div class="modal-content" style="padding: 0 7px">
+      <div class="close1">
+        <button type="button" id="dismiss-upload-prescription" class="closea" data-dismiss="modal"
+          (click)="Upload_Priscription_Form_Close()">
+          &times;
+        </button>
+      </div>
+      <h5 class="uph">Upload Prescription</h5>
+      <div class="modal-header">
+        <div class="container">
+          <div class="row justify-content-center">
+
+           <!-- <div class="col-md-12 caret accordion" *ngIf="totalPrescriptionCount!=0">
+              <a href="#upload-part2" data-toggle="modal" data-target="#upload-part2">
+                <h6>{{totalPrescriptionCount}} Items in cart need a priscription</h6>
+              </a>
+            </div>  -->
+
+            <div id="respon1">
+              <div class="box99">
+                <div class="">
+                  <div class="accordion-item giving11">
+                    <a class="box991" (click)="prescriptionContainClick()" style="cursor: pointer;">
+                      <p class="priscription pres_color_text">
+                        {{totalPrescriptionCount}} Items in cart need a prescription
+                      </p>
+                    </a>
+                    <div class=" give244" *ngIf="containFlag">
+                      <div class="maninPrescription">
+                        <div class="row" *ngIf="prescriptionCartList">
+                          <div class="col-md-12">
+                
+                            <div class="cart_item_lst_row" *ngFor="let i of prescriptionCartList">
+                                <div class="cart_item_lst_row_rx rx-pop">
+                                  <img src="assets/img/cart/rx.png" alt="" />
+                                </div>
+                                <!-- <div style="background-image: url('assets/img/cart/dicount_bann.png');" class="cart_item_lst_dicount"
+                                *ngIf="i.discountAmount!=0 && token">{{i.discountInPercentage}}% <span>Discount</span></div> -->
+                                
+                                <div class="flex-upload">
+                                <div class="cart_item_lst_row_img">
+                                  <img src="{{i.image}}" alt="" />
+                                </div>
+                                <div class="cart_item_lst_row_contant">
+                                  <div class="cart_item_lst_row_contant_name">
+                                    {{i.productName | titlecase}}
+                                  </div>
+                                  <div class="cart_item_lst_row_contant_cmpny">
+                                    {{i.brandName | titlecase}}
+                                  </div>
+                                  <div class="cart_item_lst_row_contant_gram">
+                                    {{i.uomValue}}
+                                  </div>
+                                  
+                                  <!-- <div class="cart_item_lst_row_contant_rate">
+                                    <span class="one99">
+                  <i class="fa fa-rupee"></i> 199
+                  </span> 
+                                  </div> -->
+                                  <div class="pop-row qtysection">
+                                    <div class="cart_item_lst_row_contant_gram qty-width">
+                                      Qty {{i.quantity}}
+                                     </div>
+                                    <!-- <button type="button" class="btn btn-primary qtybtn">
+                                      Qty {{i.quantity}} <i class="fa fa-angle-down"></i>
+                                    </button> -->
+                                    <div class="pop-discount">
+                                      <div class="ribbon cart-ribbon">{{i.discountInPercentage}}% <span>Discount</span></div>
+                                      <!-- <div class="cart_item_lst_dicount" style="background-image: url('assets/img/cart/dicount_bann.png');"  *ngIf="i.discountAmount!=0 && token">
+                                        {{i.discountInPercentage}}% <span>Discount</span>
+                                      </div>  -->
+                                      <span><i class="fa fa-rupee"></i> {{i.specialPrice  * i.quantity}}</span>
+                                  
+                                    </div>
+                                   </div>
+                                </div></div>
+                  
+                                <!-- <div class="col-md-1 offset-md-6 qtysection"></div> -->
+                            
+                            </div>
+                
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+           
+
+          </div>
+         
+          <div class="row" >
+            <form [formGroup]="uploadForm">
+              <div class="col-md-12">
+                <div class="box11">
+                  <div class="form__radio-group">
+                    <input type="radio" name="fav_language" id="bx1" class="form__radio-input"  formControlName="prescriptionFlag"
+                     value="I have a Prescription" checked
+                      (change)="isUploadPrescription($event)" />
+                    <label style="width: 100%; float: left" class="form__label-radio" for="bx1">
+                      <span class="form__radio-button"></span>
+                      I have a prescription
+                    </label>
+                  </div>
+                  <!-- <div class="radio">
+                    <input type="radio"  checked id="html" name="fav_language" value='I have a Prescription' 
+                      formControlName="prescriptionFlag" (change)="isUploadPrescription($event)" />
+                    <label for="html">I have a Prescription</label>
+                  </div> -->
+                  <div class="row justify-content-center bgallerymain1">
+                    <div class="col-md-4 float-left text-center p-0 mobile">
+                      <div class="gallery1">
+                        <!-- (click)="uploadPrescritpion($event,'camera')" -->
+                        <img src="assets/img/cart/icon12.png" class="img-fluid"/>
+                        <input class="input-file" type="file" accept="image/*" capture="camera" (change)="uploadPrescritpion($event,'camera')">
+                        <!-- <webcam *ngIf="showWebcam" [height]="200" [width]="200"  [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+                        [allowCameraSwitch]="true" [switchCamera]="nextWebcamObservable"
+                        [imageQuality]="1"
+                        (cameraSwitched)="cameraWasSwitched($event)"
+                        (initError)="handleInitError($event)"></webcam> -->
+                      </div>
+                      Camera
+                    </div>
+                    <!-- <button  class="actionBtn  text-center p-0 mobile" (click)="triggerSnapshot()">Take A Snapshot</button> -->
+                    <!-- <div class="snapshot" *ngIf="webcamImage">
+                      <h2>Nice one!</h2>
+                      <img [src]="webcamImage.imageAsDataUrl"/>
+                    </div> -->
+                    <div class="col-md-4 float-left text-center p-0">
+                      <div class="gallery1">
+                        <!-- (click)="uploadPrescritpion($event,'gallery')" -->
+                        <!-- <img *ngIf="Upload_Image" src={{Upload_Image}} class="img-fluid" /> -->
+                        <img src="assets/img/cart/icon11.png" class="img-fluid" />
+                        <input class="input-file" type="file" accept="image/*,application/pdf" capture="user"
+                          formControlName="gallery" (change)="uploadPrescritpion($event,'gallery')">
+                      </div>
+                      Gallery
+                    </div>
+                    <div class="col-md-4 float-left text-center p-0">
+                      <!-- (click)="uploadPrescritpion($event,'healthdata')" -->
+                      <div class="gallery1" (click)="Get_Health_Vault_Data()">
+                        <!-- data-toggle="modal" -->
+                        <!-- data-target="#health_data_pop_up" -->
+                        <img *ngIf="!Health_Data_Image" src="assets/img/cart/icon13.png" class="img-fluid"  />
+                        <img *ngIf="Health_Data_Image" src={{Health_Data_Image}} style="height: 50%;width: 50%;" class="img-fluid">
+                        <!-- <input class="input-file" type="file" accept="image/*,application/pdf" formControlName="healthdata" (change)="uploadPrescritpion($event,'healthdata')"> -->
+                      </div>
+                      Health data
+                    </div>
+                  </div>
+
+                  <div class="row mb-4  justify-content-center" *ngIf="prescriptionImageURLArray.length">
+                    <div class="col-md-3 col-6 gallery-ad-img mt-2" *ngFor="let j of prescriptionImageURLArray">
+                      <button type="button" class="sub-pop-close" style="cursor: pointer;" (click)="removePrescription(j)">
+                        ×
+                      </button>
+                        <img src="{{j}}" width="100%"/>
+                    </div>
+                  </div>
+                  <div *ngIf="imageLoading" class="lod">
+                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                  </div>
+
+                  
+                  <a class="box991 pescription-add" style="cursor: pointer;" (click)="prescriptionGuidClick()">
+                    <p class="priscription mt-4">
+                      Prescription should contains<img src="assets/img/cart/prescription.png"
+                        class="img-fluid imgpre" />
+                    </p>
+                  </a>
+               
+                </div>
+                <div class="row" id="respon1">
+                  <div class="box99" style="margin-bottom: 0px;">
+                    <div class="text-center">
+                      <div class="accordion-item giving11">
+                        
+                        <div class=" give244 cart-subscrp" *ngIf="containGuidFlag">
+                          <div class="maninPrescription text-center">
+                            <div class="row newbox">
+                              <div class="col-md-12 p-0">
+                                <div class="box22">
+                                  <h3>Prescription Guide</h3>
+                                  <ul class="prec">
+                                    <li>
+                                      Upload Clear Prescription Image
+                                    </li>
+                                    <li>
+                                      Below mentioned points should be
+                                      part of valid Prescription
+                                    </li>
+                                  </ul>
+                                  <div class="row">
+                                    <div class="col-md-8 doctor">
+                                      <img src="assets/img/cart/doctor.png" class="img-fluid" />
+                                    </div>
+                                    <div class="col-md-4 doctor">
+                                      <label class="docp">Doctor Details</label>
+                                      <label class="docp">Patient Details</label>
+                                      <label class="docp">Medicine Details</label>
+                                      <label class="docp sign sign1">Doctor Sign</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="Health_Vault_Array.length && healthdataClicked">
+                  <ng-container *ngFor="let data of Health_Vault_Array">
+                    <div class="row">
+                      <div class="container">
+                        <div class="col-md-12">
+                          <div class="boxa">
+
+                            <div class="form-check11 float-right">
+                              <label class="customcheck">
+                                  <input type="checkbox" (change)="Select_Health_Data($event,data)" [checked]="data.checkedFlag ? true : false">
+                                  <span class="checkmark"></span>
+                              </label>
+                            </div>
+
+                            <!-- <div class="radioaa">
+                              <input class="rrb" type="radio" name="addressStatus"yyyyyy
+                                (click)="Select_Health_Data(data)" />
+                            </div> -->
+                            <!-- Health_Data_Continue_Click -->
+                            <!-- (click)="selectHealthVault(hv.prescription)" -->
+                            <div class="col-md-8 float-left labresult">
+                              <h5>{{ data.category }}</h5>
+                              <label>Patient Name<span class="saron"></span>:
+                                {{ data.patientName }}</label>
+                              <label>Date <span class="sarondate"></span>:
+                                {{ data.date }}</label>
+                            </div>
+
+                            <div class="
+                                    col-md-4
+                                    float-left
+                                    text-center
+                                    subimageanddiscription
+                                  ">
+                              <!-- <a target="_blank" [href]="hv.prescription"> -->
+                              <img [src]="data.prescription" class="img-fluid" />
+                              <!-- </a> -->
+                              <!-- <label class="subhvl">Subscription ID</label> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                <small class="small-block" *ngIf="Health_Data_Alert_Flag">Please select a prescription</small>
+                <!-- <small class="small-block" *ngIf="!Prescription_Radio_Flag ">Please Select A Choice</small> -->
+
+                <div class="row mt-5">
+                  <div class="col-md-12">
+                    <div class="box12" *ngIf="prescriptionEnable">
+                      <div class="form__radio-group">
+                        <input type="radio" name="fav_language" id="bx2" class="form__radio-input"  formControlName="prescriptionFlag"
+                         value="I don't have a Prescription" 
+                          (change)="isUploadPrescription($event)" />
+                        <label style="width: 100%; float: left" class="form__label-radio" for="bx2">
+                          <span class="form__radio-button"></span>
+                          I don't have a Prescription
+                        </label>
+                      </div>
+                      <!-- <div class="radio">
+                        <input type="radio" id="html" name="fav_language" value="I don't have a Prescription"
+                          formControlName="prescriptionFlag" (change)="isUploadPrescription($event)" />
+                        <label for="css">I don't have a Prescription</label>
+                      </div> -->
+                      <div class="col-md-12 gallery11">
+                        <p>
+                          Get a consultation<span class="p1">199</span><span class="p2">Free</span><img
+                            src="assets/img/cart/prescription.png" class="img-fluid imgpre1" />
+                        </p>
+                      </div>
+                      <p class="priscription">
+                        You will receive a call within 6 hours
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <button type="button" class="btn btn-primary Continue1" (click)="Continue_Prescription_Click()" *ngIf="prescription_upload_flag">
+                      Continue with prescription
+                    </button>
+
+                    <button type="button" class="btn btn-primary Continue1" (click)="Continue_Winthout_Prescription_Click()" *ngIf="!prescription_upload_flag">
+                      Continue without prescription
+                    </button>
+
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- upload prescription close -->
+          <!-- -----------------------------------------------------The Modal2 ---------------------------->
+        
+          <!-- ---------------------------POPUP CLOSE------------------------------------------------------------------ -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-------------------------------- Upload Prescription -------->
+<div class="modal fade" id="upload-part2">
+  <div class="modal-dialog">
+    <div class="modal-header btn2">
+      <button type="button" class="close11" data-dismiss="modal" style="cursor: pointer;">
+        ×
+      </button>
+    </div>
+    <div class="modal-content1" style="background: none;">
+      <!-- Modal Header -->
+      <!-- Modal body -->
+      <div class="modal-body2">
+        <div class="row" *ngIf="cartList">
+          <div class="col-md-12">
+
+            <div class="cart_item_lst_row" *ngFor="let i of cartList">
+              <div class="cart_item_lst_row_delet">
+                <img src="assets/img/cart/delete.png" alt="" />
+              </div>
+             
+              <div class="cart_item_lst_row_rx">
+                <img src="assets/img/cart/rx.png" alt="" />
+              </div>
+                <div class="cart_item_lst_dicount  inside-pop-count">
+                50% <span>Discount</span>
+              </div>  
+             
+              <div class="flex-upload">
+              <div class="cart_item_lst_row_img">
+                <img src="{{i.image}}" alt="" />
+              </div>
+              <div class="cart_item_lst_row_contant">
+                <div class="cart_item_lst_row_contant_name">
+                  {{i.productName}}
+                </div>
+                <div class="cart_item_lst_row_contant_cmpny">
+                  {{i.brandName}}
+                </div>
+                <div class="cart_item_lst_row_contant_gram">
+                  {{i.uomValue}}
+                </div>
+                <!-- <div class="cart_item_lst_row_contant_rate">
+                  <span class="one99">
+<i class="fa fa-rupee"></i> 199
+</span> 
+                </div> -->
+              </div></div>
+
+              <div class="col-md-6 offset-md-6 qtysection"></div>
+              <div class="col-md-6 qtysection">
+                <button type="button" class="btn btn-primary qtybtn">
+                  Qty {{i.quantity}} <i class="fa fa-angle-down"></i>
+                </button>
+                <span><i class="fa fa-rupee"></i> {{i.specialPrice}}</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Prescription Pop Up -->
+<!-- class="modal fade" -->
+<!-- <div  class="modal fade" id="health_data_pop_up" role="dialog">
+  <div class="modal-dialog">
+    
+    <div class="modal-content" style="background: #f7f7f7">
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="closeselect" data-dismiss="modal" id="dismiss-select-health-data">
+            &times;
+          </button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <h3 class="select-address text-center">Select Health Data</h3>
+        <hr />
+          <ng-container *ngFor="let data of Health_Vault_Array">
+            <div class="row">
+              <div class="container">
+                <div class="col-md-12">
+                  <div class="boxa">
+                    <div class="radioaa">
+                      <input class="rrb" type="radio" name="addressStatus"  (click)="Select_Health_Data(data)" />
+                    </div>
+                   
+                    <div class="col-md-8 float-left labresult" >
+                      <h5>{{ data.category }}</h5>
+                      <label>Patient Name<span class="saron"></span>:
+                        {{ data.patientName }}</label>
+                      <label>Date <span class="sarondate"></span>:
+                        {{ data.date }}</label>
+                    </div>
+
+                    <div class="
+                            col-md-4
+                            float-left
+                            text-center
+                            subimageanddiscription
+                          ">
+                
+                      <img [src]="data.prescription" class="img-fluid" />
+                   
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+       
+        <div class="row mb-3">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <small *ngIf="Health_Data_Alert_Flag">Please Select A Prescription</small>
+            <button (click)="Health_Data_Continue_Click()" id="close-select-address" type="button"
+              class="btn btn-primary Continue-btn">
+              Continue
+            </button>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- Prescription Pop Up -->
+
+<!-- add_prescription -->

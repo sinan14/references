@@ -1,0 +1,223 @@
+<body class="home bgDynamic">
+  <app-navbar></app-navbar>
+  <section class="sec-padding">
+    <div class="container-fluid">
+      <div class="pop-categories">
+        <div class="first-div">
+          <h4>Popular categories</h4>
+        </div>
+        <div class="second-div">
+          <a data-bs-toggle="modal" data-bs-target="#exampleModal1"
+            ><span>Filter </span> <img src="assets/img/filterbox.png"
+          /></a>
+          <div
+            class="modal fade"
+            id="exampleModal1"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+            style="padding: 0"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div [formGroup]="searchForm" class="form-down">
+                    <div class="text-left">
+                      <input
+                        type="text"
+                        formControlName="searchBy"
+                        placeholder="Search..."
+                      />
+                      <div class="clearfix"></div>
+                      <div>
+                        <ng-container *ngFor="let filter of uomArrayForSearch">
+                          <!-- <h4>{{ filter.uom }}:</h4> -->
+                          <button
+                            (click)="changeUomOnFilter(filter.index)"
+                            class="btn-sm"
+                          >
+                            {{ filter.uom }}
+                          </button>
+                        </ng-container>
+                        <div
+                          id="myBtnContainer1"
+                          class="size form-group"
+                          data-toggle="buttons"
+                        >
+                          <ng-container
+                            *ngFor="let uv of uomValueArrayForSearch"
+                          >
+                            <label
+                              [class.active]="
+                                searchForm.value.uomValue.includes(uv)
+                              "
+                              class="btn btn-default btn-lg toggle-checkbox primary"
+                            >
+                              <input
+                                id="one"
+                                (change)="onCheckboxChangeUomValue($event)"
+                                type="checkbox"
+                                [value]="uv"
+                              />
+                              {{ uv }}
+                            </label>
+                          </ng-container>
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
+                      <div class="mt-20">
+                        <h4>Color:</h4>
+                        <div
+                          id="myBtnContainer1"
+                          class="color form-group"
+                          data-toggle="buttons"
+                        >
+                          <ng-container
+                            *ngFor="let colour of colorArrayForSearch"
+                          >
+                            <label
+                              class="btn btn-default btn-lg toggle-checkbox primary"
+                              [class.active]="
+                                searchForm.value.color.includes(colour)
+                              "
+                            >
+                              <input
+                                id="one"
+                                (change)="onCheckboxChangeColor($event)"
+                                type="checkbox"
+                                [value]="colour"
+                              />
+                              <i
+                                class="fa fa-circle {{
+                                  colour | lowercase
+                                }}color"
+                              ></i>
+                              {{ colour }}
+                            </label>
+                          </ng-container>
+                        </div>
+                      </div>
+
+                      <div class="clearfix"></div>
+
+                      <div class="mt-20">
+                        <h4>Price Range:</h4>
+                        <div class="pricerange">
+                          <input
+                            formControlName="minPrice"
+                            type="text"
+                            placeholder="Min"
+                          />
+                          <input
+                            type="text"
+                            placeholder="Max"
+                            formControlName="maxPrice"
+                          />
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
+                      <div class="mt-20">
+                        <h4>Sort By:</h4>
+                        <div class="sortselect">
+                          <select formControlName="sortBy">
+                            <option value="new">Newest First</option>
+                            <option value="lowToHigh">
+                              Price: Low to High
+                            </option>
+                            <option value="highToLow">
+                              Price: High to Low
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="mt-20">
+                        <button
+                          data-bs-dismiss="modal"
+                          type="button"
+                          id="closeFilter"
+                          style="display: none"
+                        >
+                          Done
+                        </button>
+                        <button
+                          (click)="onFiltering()"
+                          type="button"
+                          class="btn-2 center-element"
+                        >
+                          Done
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="pop-categories-btn">
+        <div id="myBtnContainer" class="category">
+          <ng-container *ngFor="let cat of categories; let RowIndex = index">
+            <button
+              [id]="RowIndex"
+              class="btn"
+              (click)="filterByCategory(cat._id)"
+            >
+              {{ cat.productCategory }}
+            </button>
+          </ng-container>
+          <!-- <button class="btn" onclick="filterSelection('toys')">Toys</button>
+          <button class="btn" onclick="filterSelection('baby')">
+            Baby Dress
+          </button>
+          <button class="btn" onclick="filterSelection('shawl')">Shawl</button> -->
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="product-section">
+      <div class="container-fluid">
+        <div class="row">
+          <ng-container *ngFor="let p of products.productDetails">
+            <div class="col-xl-2 col-lg-2 col-sm-3 col-xs-6 column toys">
+              <div
+                class="product-item"
+                [routerLink]="['/product', p._id, sellerId]"
+              >
+                <a><img [src]="p.image" class="img-responsive" /></a>
+                <div class="product-name">
+                  <a
+                    ><h5>{{ p.productName }} ...</h5></a
+                  >
+                </div>
+                <div class="product-price">
+                  <h5 class="redcolorShade">
+                    <span
+                      style="opacity: 1; float: right"
+                      class="redcolorShade"
+                    >
+                      {{ p.convertedPrice }}</span
+                    >
+                    <p
+                      class="redcolorShade"
+                      style="opacity: 0.5; float: right; font-size: 12px"
+                    >
+                      {{ _homeService.localCurrency }}
+                    </p>
+                  </h5>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-footer></app-footer>
+  <script src="../../../../assets/js/js2.js"></script>
+</body>

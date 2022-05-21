@@ -1,0 +1,257 @@
+.or-tr{
+    display: flex;
+    justify-content: space-between
+}
+.medfill-head{
+  position: relative;
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+}
+
+.medfill-head:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: #e3e2e2;
+  left: -15px;
+  bottom: 0;
+}
+label.sub1 {
+  margin: 13px 0px 0px 0;width: 60%;}
+  label.sublab {
+    width: 40%;
+  }
+  p.street{
+    width: 60%;
+  }
+div#resm6{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: self-start;
+}
+div#resmd2{
+  display: flex;
+  flex-direction: column;
+
+}
+.table-med{
+  height: 310px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.box11{
+  min-height: auto;
+  padding: 40px 20px 40px 20px;
+  margin-bottom: 16px;
+}
+
+/* width */
+.table-med::-webkit-scrollbar {
+  width: 3px;
+  height: 4px;
+}
+
+/* Track */
+.table-med::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(80, 79, 79); 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.table-med::-webkit-scrollbar-thumb {
+  background: #02132d; 
+  border-radius: 10px;
+}
+.item-td{
+  padding-left: 19px;
+}
+
+/* Handle on hover */
+.table-med::-webkit-scrollbar-thumb:hover {
+  background: #010f26; 
+}
+button.btn.btn-primary.daybtn {
+   margin: 15px 0 0 0;
+   padding: 7px 28px;
+}
+td.rspleft1 {
+  padding: 8px 10px 0px 23px;
+  text-align: right;}
+
+td.rspleft {
+ margin: 0 11px 0 0px;}
+
+.table .thead-light th {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+  font-size: 13px;
+  width: 33.33%;
+}
+.table  td {
+  font-weight: 500;
+  line-height: 2;
+  font-size: 13px;
+}
+button.btn.btn-outline-primary.daybtn1 {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 1px 3px 6px #0000001a;
+  border: 1px solid #00AAFF;
+  border-radius: 9px;
+  margin: 13px 0 0 0;}
+
+.accordion a{
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    border: 0 !important;
+    padding: 10px 60px !important;
+    color: #050500 !important;
+    font-size: 13px !important;
+    font-weight: normal !important;
+    opacity: 1 !important;
+}
+
+ul{
+    list-style: none;
+    cursor: pointer;
+}
+
+
+
+
+.gallery-ad-img{
+    background: #ececec;
+      padding: 5px;
+      border-radius: 10px;
+      margin: 5px
+  }
+  .gallery-ad-img img{
+    height: 80px;
+    object-fit: contain;
+  }
+  
+  .input-file{
+    height: 80%;
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+  
+  h5.uph {
+    color: #00AAFF;
+    opacity: 1;
+    margin-top: 0px !important;
+    margin: 10px auto;
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  .subimageanddiscription img{
+    padding-top: 32px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  
+/*Loading*/
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  margin: 3px 190px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #007bff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+ul{
+  padding: 0;
+}
+@media (max-width: 360px){
+label.docp.sign.sign1 {
+    margin: 80px 0px 0px 0px !important;
+}}
+@media (max-width: 575.98px){
+.box9 {
+    height: 615px;
+}
+.table-med{
+  height: auto;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  margin-top: 20px;
+}
+}
+
+@media (max-width: 768px){
+label.docp.sign {
+    margin: 80px 0 0 0 !important;
+}
+}
+@media (max-width: 991px){
+.inner_new_page_container.medfill { 
+  margin-top: 15%;
+}
+  .table-med{
+    height: auto;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    margin-top: 20px;
+  }
+  .box9 {
+    height: auto !important;
+    float: left;
+}
+}
+@media (min-width: 768px) and (max-width: 991.98px){
+.box9 {
+    height: auto;
+    float: left;
+}
+}
+
+@media only screen and (min-device-width : 820px) and (max-device-width : 1180px) {
+  .inner_new_page_container { 
+    margin-top: 15%;
+  }
+}

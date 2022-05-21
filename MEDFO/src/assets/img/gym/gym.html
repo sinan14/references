@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="img\favicon.png" rel="apple-touch-icon-precomposed">
+    <link href="img\favicon.png" rel="shortcut icon" type="image/png">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Medfolio - Fitfolio</title>
+    <link rel="stylesheet" href="plugins\font-awesome\css\font-awesome.min.css">
+    <link rel="stylesheet" href="fonts\Linearicons\Font\demo-files\demo.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="plugins\bootstrap4\css\bootstrap.min.css">
+    <link rel="stylesheet" href="plugins\owl-carousel\assets\owl.carousel.css">
+    <link rel="stylesheet" href="plugins\slick\slick\slick.css">
+    <link rel="stylesheet" href="plugins\lightGallery\dist\css\lightgallery.min.css">
+    <link rel="stylesheet" href="plugins\jquery-bar-rating\dist\themes\fontawesome-stars.css">
+    <link rel="stylesheet" href="plugins\select2\dist\css\select2.min.css">
+    <link rel="stylesheet" href="plugins\noUiSlider\nouislider.css">
+    <link rel="stylesheet" href="plugins\lightGallery\dist\css\lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.css">
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" type="text/css" href="https://www.medfoliotechnologies.com/css/animate.css"> </head>
+<style type="text/css">
+.last:before {
+    content: 'Giving Hope to India';
+    /* background-color: #f0f2f5; */
+    /* border-radius: 50%; */
+    height: 11.1%;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 10;
+    font-size: 88px;
+    font-weight: 800;
+    text-align: right;
+    color: #e9e9e9;
+}
+
+    .nav-link {
+    display: block;
+    padding: 0;
+}
+.ps-post__content{
+    background-image: url(../img/blogk.png);background-repeat: no-repeat;
+    background-size: contain;
+}    
+    .ps-header.ps-header--sticky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 999;
+    -webkit-animation: 1s ease-in-out 0s normal none 1 running fadeInDown;
+    animation: 1s ease-in-out 0s normal none 1 running fadeInDown;
+    -webkit-box-shadow: 0 10px 15px rgb(25 25 25 / 10%);
+    box-shadow: 0 10px 15px rgb(25 25 25 / 10%);
+}
+.ps-header--mobile .ps-header__middle .ps-header__icons .ps-header__item {
+    position: relative;
+    font-size: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    padding-left: 1px !important;
+    
+}
+    .ps-header .ps-logo {
+    width:  140px;
+    padding-right: 5px;float: left;
+}
+.ps-header {
+   background-color: #ffffff00; 
+    position: absolute;
+    width: 100%;
+   z-index: 9;
+}
+
+.ps-header .ps-header__menu .menu > li > a {
+    color: black;
+    padding: 5px 0px;
+    opacity: 0.7;
+    font-weight: 400;
+}
+
+.ps-header .ps-header__middle {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: relative;
+}
+.ps-about--video {
+    padding: 0px 0 20px;
+    border-top: 1px solid #f0f2f5;
+}
+.ps-about--video .ps-banner__image {
+    height: 200px;
+    width: 100%;
+    position: initial;
+}
+.ps-about--video .ps-banner__thumnail {
+    padding-top: 2px;
+    text-align: center;
+    position: relative;
+}
+.ps-about--video .ps-banner__thumnail {
+    padding-top: 2px;
+    text-align: center;
+    position: relative;
+}
+
+.ps-about--video .ps-banner__image {
+    height: 200px;
+    width: 100%;
+    position: initial;
+    border-radius: 10px 10px 0px 0px;object-fit: cover;
+}
+.video-blog {
+    padding: 10px;
+    background: white;border-radius: 0px 0px 10px 10px;
+}
+.ps-header .ps-header__middle {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+header.ps-header.ps-header--11.ps-header--12 .ps-header__menu .menu > li > a {
+    color: white;
+    padding: 9px 0px;
+       opacity: 1;
+    font-weight: 200;
+}
+.ps-header--mobile {
+   
+    border-bottom: 0px solid #f0f2f5;
+   
+}
+.ps-navigation--footer {
+    position: relative;
+    top: 0;
+     left: 0; 
+    right: 0;
+    z-index: 1000;
+    padding: 5px 0;
+  
+}
+
+.ps-header .ps-header__middle {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    position: relative;
+}
+.ps-header .ps-navigation__right {
+    line-height: 30px;
+    text-align: center;
+    font-size: 45px;
+    color: #5b6c8f;
+     display: block; 
+    padding: 10px 0;
+}
+.preloader-background {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #eee;
+	
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;	
+}
+.ps-header .ps-header__icons {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    float: right;
+    padding-top: 20px;
+}
+.ps-header .ps-header__icon {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    float: right;
+    padding-top: 0px;
+}
+.sub-toggle {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    font-size: 10px;
+    font-weight: 400;
+    width: 15px;
+    /* text-align: right; */
+    opacity: 0.7;
+    float: right;
+}
+img.cirm{
+    position: absolute;
+    top: -150px;
+    width: 33%;
+    right: -130px !important;
+    z-index: 0;
+    opacity: 0.5;
+}
+.who-we{padding-left: 0;}
+.who-we h2.bread__title{font-family: sans-serif ;    font-weight:700;font-size: 80px;line-height: 70px;}
+.bread__title span{font-family: sans-serif ;    font-weight: 700;font-size: 60px;}
+.ps-banner__bread p{    opacity: 0.7;    font-size: 17px;    font-weight: 400;color: #fff;}
+.lap {display: inline-block;
+    width: 100%;}
+
+    .bg-yellowa{
+        color: #2A2A2A !important;
+        position: relative;
+        z-index: 99;
+    }
+    .bg-yellowa:hover{background-color: #fff;}
+
+    video#vidb {
+    width: 100% !important;
+    position: absolute;
+    top: 0 !important;
+}
+.container{max-width: 1200px;}
+.ps-header--12 .container{max-width: 1300px;}
+.join{ display: inline-block;}
+.join:hover{
+   
+    transform: scale(1.1);
+}
+
+
+.slick span {
+  display: block;
+  color: #fff;
+  font-size: 36px;
+  position: relative;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  transform: translate(0, 0) scale(.4);
+  transition: all .4s ease;
+  
+}
+
+.slick-slide {
+}
+
+.slick-slide.lt2 span {
+  transform: translate(10%, 0) scale(0.7);
+  left: -30px;
+}
+.slick-slide.lt1 span {
+  transform: translate(5%, 0) scale(0.8);
+  left: -35px;
+}
+.slick-slide.gt1 span {
+  transform: translate(-5%, 0) scale(0.8);
+  right: -35px;
+}
+.slick-slide.gt2 span {
+  transform: translate(-10%, 0) scale(0.7);
+  right: -30px;
+
+}
+.slick-slide.slick-center span {
+  z-index: 1;
+  transform: scale(1.0);
+  opacity: 1;
+  color: #e67e22;
+}
+
+.slick-prev,
+.slick-next{
+  position: absolute;
+  top: 50%;
+  appearance: none;
+  margin-top: -10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: transparent;
+  outline: none;
+  z-index: 100;
+}
+
+.slick-prev {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15px 15px 15px 0;
+  border-color: transparent #007bff transparent transparent;
+  left: 0;
+}
+.slick-next {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15px 0 15px 15px;
+  border-color: transparent transparent transparent #007bff;
+  right: 0;
+}
+.last:before{color: #212121;}
+.last:after{    background-color: #1d1d1d;}
+
+.pres{position: relative;}
+.last:before{    bottom: 384px;    left: -30px;font-size: 75px;position: absolute !important;}
+.last:after{       height: 375px !important;
+    bottom: 0;}
+.ps-header .ps-header__menu .menu > li{margin-right: 0;}
+
+
+
+@media (min-width: 1280px){
+.ps-about--video .ps-banner__video {
+    width: 70px;
+    height: 70px;
+}}
+@media (max-width: 991px){
+    .last:before{    height: 6.3% !important;position: absolute !important;font-size: 42px !important;  bottom: 250px;}
+    .last{padding-bottom: 0;}
+    .last:after {  height: 225px !important;}
+}
+@media (max-width: 768px) {
+.who-we h2.bread__title{    line-height: 33px;font-size:30px !important;}
+.bread__title span{    font-size: 30px;}
+.who-we h2.bread__title{width: 100%;float: right;}
+.ps-banner__bread p{width: 100% !important;float: right;}
+.slick-slide.gt1 span {  right: -10px;}
+.slick-slide.lt1 span {  left: -10px;}
+}
+
+         .swiper-container {
+         width:1192px;
+         padding-top: 3px;
+         padding-bottom: 10px;
+         }
+         .swiper-slide{
+         width: 300px;
+         }
+   
+</style>
+ <div class="sticky-container">
+            <ul class="sticky">
+                
+                <li class="down"> <i class="fa fa-download "></i>
+                    <p>Download app</p>
+                </li>
+            </ul>
+        </div>
+<body style="background:#121212; ">
+    <div class="ps-page">
+       <header class="ps-header ps-header--11 ps-header--12">
+            <div class="ps-header__middle">
+                <div class="container">
+                    <div class="ps-logo"><a href="index.html"> <img src="img\blue-logo.png" alt><img class="sticky-logo" src="img\logo.png" alt></a></div>
+                    <div class="ps-header__right">
+                        <ul class="ps-header__icon">
+                            <li><a class="blogy bg-yellowa ps-banner__shop" href="#">Download the App</a> </li>
+                           
+                        </ul>
+                       
+                        <div class="ps-header__menu" style="text-align: center;">
+                            <ul class="menu">
+                               <li class="has-mega-menu"><a href="javascript: void(0);">Category </a></li>
+                                        <li class="has-mega-menu"><a href="blog.html">Blog </a></li>
+                                        <li class="has-mega-menu"><a href="javascript: void(0);">Medimall Foundation</a></li>
+                                        <li class="has-mega-menu"><a href="javascript: void(0);">Fitness Arena</a></li>
+                                        <li class="has-mega-menu"><a href="javascript: void(0);">More <span class="sub-toggle"><i class="fa fa-chevron-down"></i></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+     <header class="ps-header ps-header--1 ps-header--mobile">
+            
+                <div class="ps-header__middle">
+                    <div class="container">
+                       
+                     <div class="ps-header__left">
+                           <div class="ps-navigation--footer">
+            <div class="ps-nav__item"><a href="javascript: void(0);" id="open-menu"><i class="icon-menu" style="color:white;"></i></a>
+            <a href="javascript: void(0);" id="close-menu"><i class="icon-cross"></i></a></div>
+            </div>
+            <div class="ps-logo">
+                            <a href="index.html"> <img src="img/logo.png" alt=""></a>
+                        </div>
+                        
+                        </div>
+                         
+                    </div>
+                </div>
+        </header>
+        <div class="ps-post ps-post--sidebar">
+           <section class="ps-whoweare credible_sec_banner gym_banner_sec">
+                <div class="gwm_banner_left_obj"><img src="img/gym/gym_banner_obj.png" alt=""></div>
+                <div class="container">
+                    <div class="ps-banner who-we">
+                        <div class="container">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="ps-banner__content">
+                                
+                                <h2 class="bread__title"><span style="color: #D2CBC0;">Get Fit With  <br> FolioFit </span> </h2>
+                                <div class="ps-banner__bread">
+                                    <p style="color: #dcdcdc;">Stay Younger and Healthier Forever With Your Pocket Health Mate</p>
+                                    <a href="#" class="join">Download App</a>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="col-md-6  ps-who-img ">
+
+
+                                <!--start app screen carousel-->
+                                     
+                                          <img  src="img/gym/banner.png" alt="">
+                                          <!-- <video  autoplay loop muted playsinline id="vid" class="ps" style="width:100%">
+                                            <source type="video/mp4" src="img/credible_platform/banner_vd.mp4"></source>
+                                           </video>
+                                           
+                                      -->
+                              </div>
+  
+                            
+                           
+                          
+                            
+                        </div>
+                       </div>
+                    </div>
+                </div>
+                 <!-- <img src="img/who/m.png" class="cirm"> -->
+            </section>
+
+
+            <section class="find_you_fire_sec">
+                <div class="container">
+                    <div class="find_you_fire_sec_head">Find Your Fire</div>
+                    <div class="find_you_fire_sec_cnt">
+                        <img src="img/gym/findfire_img.png" alt="">
+
+                        <div id="phone" class=" " style="display: none;">
+                            <div><span><img src="img/gym/sl1.png" alt=""></span></div>
+                            <div><span><img src="img/gym/sl2.png" alt=""></span></div>
+                            <div><span><img src="img/gym/sl3.png" alt=""></span></div>
+                            <div><span><img src="img/gym/sl1.png" alt=""></span></div>
+                            <div><span><img src="img/gym/sl2.png" alt=""></span></div>
+                            <div><span><img src="img/gym/sl3.png" alt=""></span></div>
+                          </div>
+						   <!-- /.sec-title text-center -->
+            <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+            <!-- Slider main container -->
+            <div class="swiper-container">
+               <!-- Additional required wrapper -->
+               <div class="swiper-wrapper">
+                  <!-- Slides -->
+                  <div class="swiper-slide">
+                     <img src="img/gym/2.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                     <img src="img/gym/2.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                     <img src="img/gym/2.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                     <img src="img/gym/2.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                     <img src="img/gym/2.png" alt="">
+                  </div>
+                
+                
+               </div>
+               <!-- If we need navigation buttons -->
+               <!--<div class="swiper-button-prev"></div>-->
+               <!--<div class="swiper-button-next"></div>-->
+            </div>
+                          
+                    </div>
+                </div>
+            </section>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.js"></script>
+      <script type="text/javascript">
+         var mySwiper = new Swiper('.swiper-container', {
+         loop: true,
+         speed: 1000,
+         autoplay: {
+             delay: 1000,
+              focusOnSelect: true,
+         centerMode: true,
+         touchMove: true,
+         },
+         effect: 'coverflow',
+         grabCursor: true,
+         centeredSlides: true,
+         slidesPerView: '4',
+         coverflowEffect: {
+             rotate: 0,
+             stretch: 20,
+             depth: 100,
+             modifier: 1,
+             slideShadows: false,
+         },
+         
+         // Navigation arrows
+         // navigation: {
+            // nextEl: '.swiper-button-next',
+         //    prevEl: '.swiper-button-prev',
+         // },
+         
+         breakpoints: {
+             640: {
+               slidesPerView: 1,
+              
+             },
+             768: {
+               slidesPerView: 1,
+              
+             },
+             1024: {
+               slidesPerView: 1,
+             
+             },
+           }
+         
+         })
+       
+      </script>
+            <section class="boost_yourboundry">
+                <video  autoplay loop muted playsinline id="vid" class="ps" style="width:100%">
+                    <source type="video/mp4" src="img/gym/gym-1.m4v"></source>
+                   </video>
+                <!-- <div class="boost_yourboundry_obj3"><img src="img/gym/pushbulb.png" alt=""></div>
+                <div class="boost_yourboundry_obj1"><img src="img/gym/push_ico1.png" alt=""></div>
+                <div class="boost_yourboundry_obj2"><img src="img/gym/push_ico2.png" alt=""></div> -->
+                <!-- <div class="">
+                    <div class="row">
+                        <div class="col-md-6" style="display: flex;align-items: center;flex-wrap: wrap;">
+                            <div class="boost_yourboundry_left_sec">
+                                Push Your <span>Boundaries</span>
+                                <div class="boost_bountry_centr_img"><img src="img/gym/virtual_men.png" alt=""></div>
+                                <div class="boost_yourboundry_left_btn_sec"><a href="" class="boost_yourboundry_left_btn">Get Fit</a></div>
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="col-md-6 boost_right">
+                            <div class="boost_yourboundry_right_sec">
+                                <div class="boost_yourboundry_right_cnt">
+                                    <div class="boost_yourboundry_right_cnt_head">
+                                        <span class="gym_head_gradiant">Virtual Gym</span> 
+                                    </div>
+                                    <div class="boost_yourboundry_right_cnt_txt">
+                                        Tired of spending thousands on personal trainers? Struggling to find time for exercises? Tired of Seeking motivation to stay fit? We hear you. Foliofit is the pocket fitness assistant aimed to assist and guide you throughout your fitness journey. Folio Fit stocks easy-to-follow workouts with step-by-step guides that help you to sculpt your body and stay healthy.
+                                    </div>
+
+                                </div>
+                                <div class="boost_yourboundry_right_btm_sec">
+                                    <div class="row">
+                                       
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                            <div class="boost_yourboundry_right_btm_box">
+                                                <div class="boost_yourboundry_right_btm_box_ico"><img src="img/gym/virtual1.png" alt=""></div>
+                                                Certified<br> Trainers
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                            <div class="boost_yourboundry_right_btm_box">
+                                                <div class="boost_yourboundry_right_btm_box_ico"><img src="img/gym/virtual2.png" alt=""></div>
+                                                Comfort<br> of Home
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                            <div class="boost_yourboundry_right_btm_box">
+                                                <div class="boost_yourboundry_right_btm_box_ico"><img src="img/gym/virtual3.png" alt=""></div>
+                                                Beginners to<br> Expert Trainings
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                            <div class="boost_yourboundry_right_btm_box">
+                                                <div class="boost_yourboundry_right_btm_box_ico"><img src="img/gym/virtual4.png" alt=""></div>
+                                                24 Hour<br> Access
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </section>
+            
+
+            <section class="gallery_scrolls_sec">
+                    <div class="container">
+                        <div class="gallery_scrolls_bx">
+                            <div class="slick slick_2">
+                                <div><span><img src="img/gym/sl1.png" alt=""></span></div>
+                                <div><span><img src="img/gym/sl2.png" alt=""></span></div>
+                                <div><span><img src="img/gym/sl3.png" alt=""></span></div>
+                                <div><span><img src="img/gym/sl1.png" alt=""></span></div>
+                                <div><span><img src="img/gym/sl2.png" alt=""></span></div>
+                                <div><span><img src="img/gym/sl3.png" alt=""></span></div>
+                              </div>
+                        </div>
+                    </div>
+            </section>
+
+            <section class="yoga_section">
+                <div class="yoga_cnt_section">
+                    <div class="yoga_right_img_obj"><img src="img/gym/yoga_right_obj.png" alt=""></div>
+                     <div class="container">
+                         <div class="row">
+                             <div class="col-md-6">
+                                 <div class="yoga_cnt_section_box">
+                                    <div class="boost_yourboundry_right_cnt_head yoga_cnt_section_box_head">Yoga</div>
+                                    <div class="boost_yourboundry_right_cnt_txt">
+                                        Let your body flow with nature. Learn how to control your mind and body. Learn yoga with step-by-step video guides curated by gurus. Folio Fit helps to forge your mind and body to resist diseases
+                                    </div>
+                                    <a href="#"><div class="yoga_btm_btn">Inhale & Exhale</div></a>
+                                    <div class="row yoga_btm_sec">
+                                       
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                            <div class="boost_yourboundry_right_btm_box">
+                                                <div class="boost_yourboundry_right_btm_box_ico"><img src="img/gym/virtual1.png" alt=""></div>
+                                                Certified<br> Instructor
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                            <div class="boost_yourboundry_right_btm_box">
+                                                <div class="boost_yourboundry_right_btm_box_ico"><img src="img/gym/yg2.png" alt=""></div>
+                                                24 Hours<br> Access
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                            <div class="boost_yourboundry_right_btm_box">
+                                                <div class="boost_yourboundry_right_btm_box_ico"><img src="img/gym/yg3.png" alt=""></div>
+                                                Daily Yoga<br> Sessions
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                            <div class="boost_yourboundry_right_btm_box">
+                                                <div class="boost_yourboundry_right_btm_box_ico"><img src="img/gym/yg4.png" alt=""></div>
+                                                Beginner-Expert<br> Postures
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                 </div>
+                             </div>
+
+                             <div class="col-md-6">
+                                 <div class="yoga_right_img">
+                                     <img src="img/gym/yoga_img.png" alt="">
+                                     <div class="yoga_right_cnt">
+                                         Heal your soul 
+                                        <span>Free your body</span>
+                                     </div>
+                                 </div>
+                             </div>
+
+                         </div>
+                     </div>
+                </div>
+            </section>
+
+            <section class="diet_regm_sec">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="boost_yourboundry_right_cnt_txt_head"><span class="gym_head_gradiant">Diet Regime</span></div>
+                            <div class="boost_yourboundry_right_cnt_txt">
+                                Want to stay fit without compromising your favorite snacks? Now get meal plans based on your fitness goals, with an exclusive diet regime of folio fit. Get complete diet plans made of foods that are economical and easily available. Choose the diet plan that suits you and get the body craves.
+                            </div><br><br>
+                            <a href="#"><div class="yoga_btm_btn">Choose Healthy</div></a>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="diet_regm_sec_img"><img src="img/gym/diet_img.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <section class="nutri_section">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="nutri_section_cnt">
+                                    <div class="nutri_section_cnt_head"><span class="gym_head_gradiant">Nutri Chart</span></div>
+                                    <div class="boost_yourboundry_right_cnt_txt">
+                                        Confused between rice or wheat?. A wholesome nutrichart that helps you to choose your foods wisely. You can now view the calories, proteins and other nutritional value of your favourite foods. Pick from a wide range of foods with unique nutrition values, add them to your diet and stay healthy, younger and stronger.
+                                    </div><br><br>
+                                    <a href="#" class="boost_yourboundry_left_btn">Know Your Food</a>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="nutri_section_right_img">
+                                <img src="img/gym/nutri_img.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <section class="healthreminder_section">
+                <div class="healthreminder_left_obj1"><img src="img/gym/health_clock_left_round.png" alt=""></div>
+                <div class="">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="healthreminder_img">
+                            <img src="img/gym/remainder.png" alt="">
+                            <div class="gym_health_reminder_clock_txt">
+                                <div class="gym_health_reminder_clock_txt_ico1"><img src="img/gym/reminder_obj1.png" alt=""></div>
+                                <div class="gym_health_reminder_clock_txt_ico2"><img src="img/gym/reminder_obj2.png" alt=""></div>
+                                Hey Buddy
+                                <span>its your meal time</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5" style="display: flex;align-items: flex-end;">
+                        <div class="healthreminder_right_sec">
+                            <div class="healthreminder_img_right"><img src="img/gym/health_clock_right_line.png" alt=""></div>
+                            <div class="nutri_section_cnt_head"><span class="gym_head_gradiant">Health Reminder</span></div>
+                            <div class="boost_yourboundry_right_cnt_txt">
+
+                                Never miss any medicines, Foliofit reminds you of your meal times and essential medicine times. Set the time, frequency and chill. The rest is assured by Foliofit.
+                            </div><br><br>
+                            <a href="#" class="boost_yourboundry_left_btn">Remind me</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <section class="health_vault_section">
+                <div class="container">
+                    <div class="row">
+                    </div>
+                    <div class="col-md-5" style="display: flex;align-items: flex-end;">
+                        <div class="healthreminder_right_sec">
+                            <div class="nutri_section_cnt_head"><span class="gym_head_gradiant">Health Vault</span></div>
+                            <div class="boost_yourboundry_right_cnt_txt">
+                                Want an efficient way to hoard your health records? We hear you. Get your hands on Health Vault. Click a picture, upload, and we will handle the rest. Effortlessly access and manage, with Health Vault, your data is in safe hands.
+                            </div><br><br>
+                            <a href="" class="boost_yourboundry_left_btn">Upload Health Records</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="bmi_cal_section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="bmi_cal_section_cnt">
+                                <div class="nutri_section_cnt_head"><span class="gym_head_gradiant">BMI Calculator</span></div>
+                                <div class="boost_yourboundry_right_cnt_txt">
+                                    Confused with the weight fluctuations each time stepping on that weight scale? Find your weight category in seconds with our inbuilt BMI calculator. Check your BMI, alter your diet, add exercises and keep yourselves away from metabolic diseases.
+                                </div><br><br>
+                                <a href="#"><div class="yoga_btm_btn">Stay Fit</div></a>
+                            </div>    
+                        </div>
+                        <div class="col-md-4">
+                            <div class="bmi_cal_right_img"><img src="img/gym/bmi_right_img.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bmi_right_line1"><img src="img/gym/bmi_right_line.png" alt=""></div>
+            </section>
+
+
+            <section class="expertadvice_section">
+                <div class="container">
+                    <div class="row">
+                    <div class="col-md-4">
+                            <div class="expertadvice_section_img"><img src="img/gym/query_left.png" alt=""></div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="expertadvice_contant_sec">
+                                <div class="nutri_section_cnt_head"><span class="gym_head_gradiant">Expert Advice</span></div>
+                                <div class="boost_yourboundry_right_cnt_txt">
+                                    Stay Younger and Healthier Forever With Your Pocket Health Mate
+                                </div>
+                            </div>
+                            <div class="expertadvice_contant_rewie_sec">
+
+                                <div class="owl-carousel owl-advisor">
+                                    <div class="">
+                                        <div class="expertadvice_contant_rewie_box">
+                                            <div class="expertadvice_contant_rewie_box_head">
+                                                <div class="expertadvice_contant_rewie_box_head_img"><img src="img/gym/advice1.png" alt=""></div>
+                                                Arun Mohan
+                                                <span>On 10 Nov 2021</span>
+                                            </div>
+                                            <div class="expertadvice_contant_rewie_box_txt">
+                                                I have been trying to lose belly fat for months. I have tried many diets and workouts but none of them seems effective. Please recommend to me a workout routine that will help me lose my belly fat.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="expertadvice_contant_rewie_box">
+                                            <div class="expertadvice_contant_rewie_box_head">
+                                                <div class="expertadvice_contant_rewie_box_head_img"><img src="img/gym/advice2.png" alt=""></div>
+                                                Arun Mohan
+                                                <span>On 10 Nov 2021</span>
+                                            </div>
+                                            <div class="expertadvice_contant_rewie_box_txt">
+                                                I have been trying to lose belly fat for months. I have tried many diets and workouts but none of them seems effective. Please recommend to me a workout routine that will help me lose my belly fat.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="expertadvice_contant_rewie_box">
+                                            <div class="expertadvice_contant_rewie_box_head">
+                                                <div class="expertadvice_contant_rewie_box_head_img"><img src="img/gym/advice1.png" alt=""></div>
+                                                Arun Mohan
+                                                <span>On 10 Nov 2021</span>
+                                            </div>
+                                            <div class="expertadvice_contant_rewie_box_txt">
+                                                I have been trying to lose belly fat for months. I have tried many diets and workouts but none of them seems effective. Please recommend to me a workout routine that will help me lose my belly fat.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="expertadvice_contant_rewie_box">
+                                            <div class="expertadvice_contant_rewie_box_head">
+                                                <div class="expertadvice_contant_rewie_box_head_img"><img src="img/gym/advice2.png" alt=""></div>
+                                                Arun Mohan
+                                                <span>On 10 Nov 2021</span>
+                                            </div>
+                                            <div class="expertadvice_contant_rewie_box_txt">
+                                                I have been trying to lose belly fat for months. I have tried many diets and workouts but none of them seems effective. Please recommend to me a workout routine that will help me lose my belly fat.
+                                            </div>
+                                        </div>
+                                    </div>
+                                  
+                                    
+                                  </div>
+
+
+                                <div class="row" style="display: none;">
+                                    <div class="col-md-6">
+                                       
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="expertadvice_contant_rewie_box">
+                                            <div class="expertadvice_contant_rewie_box_head">
+                                                <div class="expertadvice_contant_rewie_box_head_img"></div>
+                                                Arun Mohan
+                                                <span>On 10 Nov 2021</span>
+                                            </div>
+                                            <div class="expertadvice_contant_rewie_box_txt">
+                                                I have been trying to lose belly fat for months. I have tried many diets and workouts but none of them seems effective. Please recommend to me a workout routine that will help me lose my belly fat.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="boost_yourboundry_left_btn_sec" style="margin-top: 30px;"><a href="" class="boost_yourboundry_left_btn">Ask our Experters</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            
+
+            <section class="gym_faq_section">
+                <div class="container">
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="faq_right_sec">
+                                <img src="img/gym/faq_img.png" alt="" class="floatings">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="impact_section_head"><span>Frequently Asked Questions </span></div>
+                            <div class="faq_box_sec">
+                                <div class="accordion">
+                                    <div class="accordion-item">
+                                      <a><div class="gym_faq_ico"><img src="img/gym/faq1.png" alt=""></div> Are these Services free of charge?</a>
+                                      <div class="content">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                                      </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <a><div class="gym_faq_ico"><img src="img/gym/faq2.png" alt=""></div> Can I access these services through the website?</a>
+                                      <div class="content">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                                      </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <a><div class="gym_faq_ico"><img src="img/gym/faq3.png" alt=""></div> How can I get the app?</a>
+                                      <div class="content">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                                      </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <a><div class="gym_faq_ico"><img src="img/gym/faq4.png" alt=""></div> Does Medimall provide medical advice?</a>
+                                      <div class="content">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                                      </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <a><div class="gym_faq_ico"><img src="img/gym/faq5.png" alt=""></div> How does the App Work?</a>
+                                        <div class="content">
+                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                                        </div>
+                                      </div>
+                                    
+                      
+                                  </div>
+
+                                  <div class="accordion_btn_sec">
+                                      <a href="" class="boost_yourboundry_left_btn">Show More</a>
+                                  </div>
+
+                            </div>
+                        </div>
+                       
+                    </div>
+
+
+
+                
+
+
+
+                </div>
+
+
+            </section>
+
+
+            
+
+
+<!-- 
+       <div class="downline" style="background-image: url(img/who/backline.png);background-position: center;
+       background-size: cover;">    
+            
+
+
+        
+
+        
+       
+      
+     </div>  -->
+
+       
+               
+      
+
+
+
+        </div>
+
+        <section class="lap pres">
+            <div class="last">
+            <div class="container">
+                <div class="row">
+                    <div></div>
+                <div class="col-md-5 ll">
+                    <img src="img/png/blog/last.png">
+                </div>
+                <div class="col-md-7 pressbot">
+                   
+                    <div class="lastdownp">
+                         
+                           <h3>Download the app for free</h3>
+                            <div>
+                              <a href=""><img src="img/png/play1.png"></a>
+                               <a href=""><img src="img/png/play.png"></a>
+                            </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <section class="mobile mm">
+            <div class="">
+            <div class="container">
+                <div class="row">
+                <div class="col-md-5 ">
+                    
+                    <img src="img/png/blog/last.png" class="mmimg">
+                </div>
+                <div class="col-md-7 ">
+                  
+                     <img src="img/png/press/give.png"  class="" >
+                    <div class="">
+                         
+                           <h3 class="text-center">Download the app for free</h3>
+                            <div class="d-flex justify-content-between">
+                              <a href=""><img src="img/png/play1.png"></a>
+                               <a href=""><img src="img/png/play.png"></a>
+                              
+                            </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        </div>
+          <div class="sticky-container">
+            <ul class="sticky">
+                
+                <li class="down"> <i class="fa fa-download "></i>
+                    <p>Download app</p>
+                </li>
+            </ul>
+        </div>
+         
+
+        <div class="ps-menu--slidebar">
+            <div class="ps-menu__content">
+                <ul class="menu--mobile">
+                    <li class="menu-item-has-children"><a href="javascript: void(0);">Category</a><span class="sub-toggle"><i class="fa fa-chevron-down"></i></span>
+                        
+                    </li>
+                    <li class="menu-item-has-children"><a href="javascript: void(0);">Blog</a></li>
+                    <li class="menu-item-has-children"><a href="javascript: void(0);">Medimall Foundation</a></li>
+                    <li class="menu-item-has-children"><a href="javascript: void(0);">Fitness Arena</a><span class="sub-toggle"><i class="fa fa-chevron-down"></i></span>
+                       
+                    </li>
+                    <li class="menu-item-has-children"><a href="javascript: void(0);">More</a></li>
+                </ul>
+            </div>
+        </div>
+        <button class="btn scroll-top"><i class="fa fa-angle-double-up"></i></button>
+        <div class="ps-preloader" id="preloader">
+            
+        </div>
+     
+       
+       
+     
+
+       
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="plugins\jquery.min.js"></script>
+<script src="plugins\popper.min.js"></script>
+<script src="plugins\bootstrap4\js\bootstrap.min.js"></script>
+<script src="plugins\select2\dist\js\select2.full.min.js"></script>
+<script src="plugins\owl-carousel\owl.carousel.min.js"></script>
+<script src="plugins\jquery-bar-rating\dist\jquery.barrating.min.js"></script>
+<script src="plugins\lightGallery\dist\js\lightgallery-all.min.js"></script>
+<script src="plugins\slick\slick\slick.min.js"></script>
+
+<script>
+    
+
+
+const items = document.querySelectorAll(".accordion a");
+
+function toggleAccordion(){
+  this.classList.toggle('active');
+  this.nextElementSibling.classList.toggle('active');
+}
+
+items.forEach(item => item.addEventListener('click', toggleAccordion));
+
+</script>
+
+
+<script>
+    var $owl = $('.owl-gall');
+
+$owl.children().each( function( index ) {
+$(this).attr( 'data-position', index ); // NB: .attr() instead of .data()
+});
+
+$owl.owlCarousel({
+center: true,
+rewind: true,
+loop: true,
+dots: false,
+items: 5,
+margin:5,
+autoplay:true,
+autoplayTimeout:5000,
+responsive:{
+        0:{
+            items:1,
+        },
+        600:{
+            items:3,
+
+        },
+        1000:{
+            items:5,
+
+        }
+    }
+
+
+});
+
+$(document).on('click', '.owl-item>div', function() {
+// see https://owlcarousel2.github.io/OwlCarousel2/docs/api-events.html#to-owl-carousel
+var $speed = 300;  // in ms
+$owl.trigger('to.owl-gall', [$(this).data( 'position' ), $speed] );
+});
+
+
+</script>
+
+
+
+<script>
+    var $owl = $('.owl-advisor');
+
+$owl.children().each( function( index ) {
+$(this).attr( 'data-position', index ); // NB: .attr() instead of .data()
+});
+
+$owl.owlCarousel({
+center: true,
+rewind: true,
+loop: true,
+dots: false,
+items: 3,
+
+autoplay:true,
+autoplayTimeout:5000,
+responsive:{
+        0:{
+            items:1,
+        },
+        600:{
+            items:2,
+
+        },
+        1000:{
+            items:3,
+
+        }
+    }
+
+
+});
+
+$(document).on('click', '.owl-item>div', function() {
+// see https://owlcarousel2.github.io/OwlCarousel2/docs/api-events.html#to-owl-carousel
+var $speed = 300;  // in ms
+$owl.trigger('to.owl-advisor', [$(this).data( 'position' ), $speed] );
+});
+
+
+</script>
+
+
+
+<script>
+    $('.slick_2')
+  .on('init', () => {
+    $('.slick-slide[data-slick-index="-2"]').addClass('lt2');
+    $('.slick-slide[data-slick-index="-1"]').addClass('lt1');
+    $('.slick-slide[data-slick-index="1"]').addClass('gt1');
+    $('.slick-slide[data-slick-index="2"]').addClass('gt2');
+})
+  .slick({
+    arrows: false,
+  centerMode: true,
+  centerPadding: 0,
+  autoplay:true,
+  draggable: false,
+  autoplaySpeed: 2000,
+            swipe: false,
+            touchMove: false,
+  slidesToShow: 5,
+  responsive: [
+                            {
+                              breakpoint: 1200,
+                              settings: {
+                                slidesToShow: 4
+                              }
+                            },
+                            {
+                              breakpoint: 1008,
+                              settings: {
+                                slidesToShow: 3
+                              }
+                            },
+                            {
+                              breakpoint: 800,
+                              settings: {
+                                slidesToShow: 3
+                              }
+                            }
+
+      ]
+
+
+}).on('beforeChange', (event, slick, current, next) => {
+  $('.slick-slide.gt2').removeClass('gt2');
+  $('.slick-slide.gt1').removeClass('gt1');
+  $('.slick-slide.lt1').removeClass('lt1');
+  $('.slick-slide.lt2').removeClass('lt2');
+
+  const lt2 = (current < next && current > 0) ? current - 1 : next - 2;
+  const lt1 = (current < next && current > 0) ? current : next - 1;
+  const gt1 = (current < next || next === 0) ? next + 1 : current;
+  const gt2 = (current < next || next === 0) ? next + 2 : current + 2;
+
+  $(`.slick-slide[data-slick-index="${lt2}"]`).addClass('lt2');
+  $(`.slick-slide[data-slick-index="${lt1}"]`).addClass('lt1');
+  $(`.slick-slide[data-slick-index="${gt1}"]`).addClass('gt1');
+  $(`.slick-slide[data-slick-index="${gt2}"]`).addClass('gt2');
+
+  // Clone processing when moving from 5 to 0
+  if (current === 5 && next === 0) {
+    $(`.slick-slide[data-slick-index="${current - 1}"]`).addClass('lt2');
+    $(`.slick-slide[data-slick-index="${current}"]`).addClass('lt1');
+    $(`.slick-slide[data-slick-index="${current + 2}"]`).addClass('gt1');
+    $(`.slick-slide[data-slick-index="${current + 2}"]`).addClass('gt2');
+  }
+
+  // Clone processing when moving from 0 to 5
+  if (current === 0 && next === 5) {
+    $(`.slick-slide[data-slick-index="${current - 1}"]`).addClass('gt2');
+    $(`.slick-slide[data-slick-index="${current}"]`).addClass('gt1');
+    $(`.slick-slide[data-slick-index="${current - 2}"]`).addClass('lt1');
+    $(`.slick-slide[data-slick-index="${current - 2}"]`).addClass('lt2');
+  }
+
+  console.log('beforeChange', current, ':', lt2, lt1, next, gt1, gt2);
+});
+</script>
+
+
+
+
+<!-- <script>
+    $('.slick_1')
+  .on('init', () => {
+    $('.slick_1>.slick-slide[data-slick-index="-2"]').addClass('nt2');
+    $('.slick_1>.slick-slide[data-slick-index="-1"]').addClass('nt1');
+    $('.slick_1>.slick-slide[data-slick-index="1"]').addClass('pr1');
+    $('.slick_1>.slick-slide[data-slick-index="2"]').addClass('pr2');
+})
+  .slick({
+    arrows: false,
+  centerMode: true,
+  centerPadding: 0,
+  autoplay:true,
+  slidesToShow: 5,
+  responsive: [
+                            {
+                              breakpoint: 1200,
+                              settings: {
+                                slidesToShow: 4
+                              }
+                            },
+                            {
+                              breakpoint: 1008,
+                              settings: {
+                                slidesToShow: 3
+                              }
+                            },
+                            {
+                              breakpoint: 800,
+                              settings: {
+                                slidesToShow: 3
+                              }
+                            }
+
+      ]
+
+
+}).on('beforeChange', (event, slick, current, next) => {
+  $('.slick_1>.slick-slide.pr2').removeClass('pr2');
+  $('.slick_1>.slick-slide.pr1').removeClass('pr1');
+  $('.slick_1>.slick-slide.nt1').removeClass('nt1');
+  $('.slick_1>.slick-slide.nt2').removeClass('nt2');
+
+  const nt2 = (current < next && current > 0) ? current - 1 : next - 2;
+  const nt1 = (current < next && current > 0) ? current : next - 1;
+  const pr1 = (current < next || next === 0) ? next + 1 : current;
+  const pr2 = (current < next || next === 0) ? next + 2 : current + 2;
+
+  $(`.slick_1>.slick-slide[data-slick-index="${nt2}"]`).addClass('nt2');
+  $(`.slick_1>.slick-slide[data-slick-index="${nt1}"]`).addClass('nt1');
+  $(`.slick_1>.slick-slide[data-slick-index="${pr1}"]`).addClass('pr1');
+  $(`.slick_1>.slick-slide[data-slick-index="${pr2}"]`).addClass('pr2');
+
+  // Clone processing when moving from 5 to 0
+  if (current === 5 && next === 0) {
+    $(`.slick_1>.slick-slide[data-slick-index="${current - 1}"]`).addClass('nt2');
+    $(`.slick_1>.slick-slide[data-slick-index="${current}"]`).addClass('nt1');
+    $(`.slick_1>.slick-slide[data-slick-index="${current + 2}"]`).addClass('pr1');
+    $(`.slick_1>.slick-slide[data-slick-index="${current + 2}"]`).addClass('pr2');
+  }
+
+  // Clone processing when moving from 0 to 5
+  if (current === 0 && next === 5) {
+    $(`.slick_1>.slick-slide[data-slick-index="${current - 1}"]`).addClass('pr2');
+    $(`.slick_1>.slick-slide[data-slick-index="${current}"]`).addClass('pr1');
+    $(`.slick_1>.slick-slide[data-slick-index="${current - 2}"]`).addClass('nt1');
+    $(`.slick_1>.slick-slide[data-slick-index="${current - 2}"]`).addClass('nt2');
+  }
+
+  console.log('beforeChange', current, ':', nt2, lt1, next, pr1, pr2);
+});
+</script> -->
+
+
+<script>
+    $('#phone').slick({
+                      infinite: true,
+                      slidesToShow: 5,
+                      slidesToScroll: 1,
+                      arrows: true,
+                      autoplay: true,
+
+                    });
+</script>
+
+        
+<!-- custom code-->
+<script src="js\main.js"></script>
+       
+</body>
+
+</html>

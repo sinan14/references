@@ -1,0 +1,369 @@
+<div class="ps-page">
+  <app-header></app-header>
+</div>
+<!-- Google Tag Manager (noscript) -->
+<noscript
+  ><iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-W32L424"
+    height="0"
+    width="0"
+    style="display: none; visibility: hidden"
+  ></iframe
+></noscript>
+<!-- End Google Tag Manager (noscript) →-->
+
+<section
+  class="inner_new_page_container resp-inner"
+  style="overflow: hidden; background-color: #f7f7f7"
+>
+  <section class="profile_sec">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 return_head">Return Details</div>
+        <div class="col-xl-8 col-md-8 col-sm-12 col-xs-12">
+          <div class="dashboard_right_cnt_sec odr_list_sc">
+            <div class="odr_dtl_sec">
+              <div class="row">
+                <div class="col-lg-12 col-md-12">
+                  <div class="odr_dtl_summ_box w-125">
+                    <div class="d-flex" style="justify-content: space-between">
+                      <div class="oder-id">
+                        <h4>Order ID</h4>
+                        <p>{{ return_details.orderId }}</p>
+                      </div>
+                      <div class="oder-id">
+                        <h4>Placed</h4>
+                        <p>
+                          <img
+                            src="../../assets/images/order/clock.png"
+                            width="23"
+                            class="pr-3"
+                          />
+                          Date : {{ return_details.placedDate }}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="order-total mt-4">
+                      <h5>Total</h5>
+                      <p class="mb-0" style="opacity: 1">
+                        <b
+                          ><i class="fa fa-rupee"></i>
+                          {{ return_details.totalAmount }}</b
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="return-green">
+                                <div class="return-green-flex">
+                                    <div class="return-content">
+                                        <h5>Return Status</h5>
+                                        <p>Refund has been initiated and will be credited within 5 - 7 business days. Refund reference number : #151545</p>
+                                    </div>
+                                    <div class="return-date">
+                                        <p>Date : {{return_details.returnDate}}</p>
+                                    </div>
+                                </div>
+                                
+                            </div> -->
+
+              <div class="order_cmp_sec" style="padding-bottom: 0">
+                <div class="odr_dtl_sec_head">Items</div>
+                <div
+                  class="order_cmp_sec_box mb-3"
+                  style="padding-top: 2px; padding-bottom: 0px"
+                >
+                  <table>
+                    <thead>
+                      <tr>
+                        <th style="width: 80%">Item</th>
+                        <th style="text-align: center">UOM</th>
+                        <th style="text-align: center">Qty</th>
+                        <th style="text-align: center">Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let i of return_details.returnProducts">
+                        <td class="d-flex align-items-center">
+                          <div class="odr_dtl_odr_item_box">
+                            <img src="{{ i.image }}" alt="" />
+                          </div>
+                          {{ i.productName }}
+                        </td>
+                        <td style="text-align: center">{{ i.uomValue }}</td>
+                        <td style="text-align: center">{{ i.quantity }}</td>
+                        <td style="text-align: center; padding: 10px">
+                          {{ i.amount * i.quantity }}<br />
+                          <small
+                            style="text-align: center; color: red"
+                            *ngIf="i.returnStatus == 'declined'"
+                          >
+                            Refund {{ i.returnStatus }}</small
+                          >
+                          <small
+                            style="text-align: center; color: green"
+                            *ngIf="i.returnStatus == 'approved'"
+                            >Refund {{ i.returnStatus }}</small
+                          >
+                        </td>
+                      </tr>
+                      <!-- <tr>
+                                                <td style="    padding: 13px 40px;"></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr> -->
+                    </tbody>
+                  </table>
+                </div>
+                <!-- <div class="col-md-12 mt-5"><p>Track ID: <b>#5784564655</b></p></div> -->
+              </div>
+
+              <div class="order_cmp_sec mt-3">
+                <div class="dflexing">
+                  <div class="odr_dtl_sec_head mb-3">Return Status</div>
+                  <div class="odr_dtl_sec_head text-right mb-3">
+                    {{ return_details.returnDate }}
+                  </div>
+                </div>
+                <!--<div class="odr_sts_box_sb_hd"><i style="background-color: #2ada38;"-->
+                <!--        class="fa fa-check"></i> Order confirmed</div>-->
+                <div class="odr_sts_box">
+                  <div class="progress-bar">
+                    <div
+                      class="progress-step"
+                      [ngClass]="
+                        return_details.status === 'requested' ||
+                        return_details.status === 'pickup pending' ||
+                        return_details.status === 'completed' ||
+                        return_details.status === 'quality check' ||
+                        return_details.status === 'submitted' ||
+                        return_details.status === 'collected' ||
+                        return_details.status == 'declined' ||
+                        return_details.status === 'accepted'
+                          ? 'return-active'
+                          : ''
+                      "
+                    >
+                      <div class="step-description">
+                        Return request submitted
+                        <p></p>
+                        <div class="step_description_sort">
+                          {{ return_details.returnTrackingDates.submitted }}
+                        </div>
+                      </div>
+                      <div class="step-count active-check">
+                        <i class="fa fa-check" style="color: white"></i>
+                      </div>
+                    </div>
+                    <div
+                      class="progress-step"
+                      [ngClass]="
+                        return_details.status === 'pickup pending' ||
+                        return_details.status === 'accepted' ||
+                        return_details.status === 'completed' ||
+                        return_details.status === 'submitted' ||
+                        return_details.status === 'collected' ||
+                        return_details.status === 'quality check' ||
+                        return_details.status == 'declined'
+                          ? 'return-active'
+                          : ''
+                      "
+                    >
+                      <div class="step-description">
+                        Return Approved
+                        <p>
+                          Our agent will come and pickup the item from the
+                          pickup address
+                        </p>
+                        <div class="step_description_sort">
+                          {{ return_details.returnTrackingDates.approved }}
+                        </div>
+                      </div>
+                      <div class="step-count">2</div>
+                    </div>
+                    <div
+                      class="progress-step"
+                      *ngIf="!return_details.directRefundApproved"
+                      [ngClass]="
+                        return_details.status === 'collected' ||
+                        return_details.status === 'submitted' ||
+                        return_details.status === 'quality check' ||
+                        return_details.status === 'completed' ||
+                        return_details.status == 'declined'
+                          ? 'return-active'
+                          : ''
+                      "
+                    >
+                      <div class="step-description">
+                        Pick Up
+                        <p>{{ return_details.statusMessage }}</p>
+                        <div class="step_description_sort">
+                          {{ return_details.returnTrackingDates.pickup }}
+                        </div>
+                      </div>
+                      <div class="step-count">3</div>
+                    </div>
+                    <div
+                      class="progress-step"
+                      *ngIf="return_details.status != 'declined'"
+                      [ngClass]="
+                        return_details.status === 'completed'
+                          ? 'return-active'
+                          : ''
+                      "
+                    >
+                      <div class="step-description">
+                        Refund Initiated
+                        <p>{{ return_details.statusMessage }}</p>
+                        <div class="step_description_sort">
+                          {{ return_details.returnTrackingDates.refundInitiated
+                          }}<br />
+                          <!-- <span>Tracking id : #48455484</span> -->
+                        </div>
+                      </div>
+                      <div
+                        class="step-count"
+                        *ngIf="!return_details.directRefundApproved"
+                      >
+                        4
+                      </div>
+                      <div
+                        class="step-count"
+                        *ngIf="return_details.directRefundApproved"
+                      >
+                        3
+                      </div>
+                    </div>
+
+                    <div
+                      class="progress-step"
+                      *ngIf="return_details.status === 'declined'"
+                      [ngClass]="
+                        return_details.status === 'declined'
+                          ? 'return-active'
+                          : ''
+                      "
+                    >
+                      <div class="step-description">
+                        Refund declined
+                        <p></p>
+                        <div class="step_description_sort">
+                          {{ return_details.returnTrackingDates.refundInitiated
+                          }}<br />
+                          <!-- <span>Tracking id : #48455484</span> -->
+                        </div>
+                      </div>
+                      <div class="step-count">4</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="order_cmp_sec">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12">
+                    <div class="retun_accordian">
+                      <div class="accordion">
+                        <div class="accordion-item">
+                          <a
+                            ><span pl-3>Refund Amount</span>
+                            <span class="pr-2"
+                              ><i class="fa fa-rupee"></i>
+                              {{ return_details.refundableAmount }}</span
+                            ></a
+                          >
+                          <div class="content active">
+                            <div
+                              class="pt-2 cart_payment_dtl_box odr_dlt_rht"
+                              style="
+                                margin-top: 30;
+                                background: none;
+                                box-shadow: none;
+                              "
+                            >
+                              <div class="cart_payment_dtl_box_row pl-4">
+                                To Wallet
+                                <strong>
+                                  {{
+                                    return_details.toWalletAmount
+                                      ? return_details.toWalletAmount
+                                      : 0
+                                  }}</strong
+                                >
+                              </div>
+                              <div class="cart_payment_dtl_box_row pl-4">
+                                To Bank Account
+                                <strong
+                                  ><i class="fa fa-rupee"></i>
+                                  {{
+                                    return_details.toBankAmount
+                                      ? return_details.toBankAmount
+                                      : 0
+                                  }}</strong
+                                >
+                              </div>
+
+                              <div class="cart_payment_dtl_box_row pl-4">
+                                Coupon Discount
+                                <strong
+                                  ><i class="fa fa-rupee"></i>
+                                  {{
+                                    return_details.memberDiscount
+                                      ? return_details.couponDiscount
+                                      : 0
+                                  }}</strong
+                                >
+                              </div>
+
+                              <div class="cart_payment_dtl_box_row pl-4">
+                                Member Discount
+                                <strong
+                                  ><i class="fa fa-rupee"></i>
+                                  {{
+                                    return_details.memberDiscount
+                                      ? return_details.memberDiscount
+                                      : 0
+                                  }}</strong
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-4 col-md-4 col-sm-12 col-xs-12">
+          <div class="cart_payment_dtl_box" style="overflow: hidden">
+            <h3 class="pickups">Pickup Address</h3>
+
+            <div class="cart_payment_dtl_box_row sub_ttl_odr">
+              {{ return_details.pickupAddress.wholeAddress }} ,
+              {{ return_details.pickupAddress.mobile }}
+            </div>
+            <div class="cart_payment_dtl_box_row">
+              Return ID
+              <strong>{{ return_details.returnId }}</strong>
+            </div>
+            <div
+              class="cart_payment_dtl_box_row res-rtn"
+              style="background: #00aaff33"
+            >
+              <h5>Reason for Return</h5>
+              <p>
+                {{ return_details.reason }} ({{ return_details.reasonNotes }})
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

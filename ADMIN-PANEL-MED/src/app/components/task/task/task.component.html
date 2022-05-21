@@ -1,0 +1,441 @@
+
+<!-- Container-fluid starts-->
+
+<div class="container-fluid add_inventory_tab">
+    <div class="row">
+        <div class="col-md-12">
+            
+            <div class=" tab2-card">
+                <div class="card-body tab2-card">
+                    <label>Task</label>
+                    <div class="btn-popup pull-right">
+                        <!-- <button type="button" class="btn btn btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                        data-target="#exampleModal" (click)="open(content)">Add Task</button> -->
+                         
+    
+                    </div>
+                    <br><br>
+                    <ngb-tabset class="tab-coupon">
+
+                        <ngb-tab>
+                            <ng-template ngbTabTitle>All Task
+                                <ng-template ngbTabContent>                                                                                                                                       
+                                    <div class="tab-pane fade active show kendo_table" id="account" role="tabpanel" aria-labelledby="account-tab">
+
+
+                                        <button type="button" class="btn btn btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                                data-target="#exampleModal" (click)="open(content)">Add Task</button>
+
+
+                                        <br><br><br>
+                                        <kendo-grid [kendoGridBinding]="taskData" [filterable]="true"  [sortable]="true">
+
+
+                                            <kendo-grid-column field="no" title="Sl.No" width="10">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+
+                                            <kendo-grid-column field="name" title="Assigner" width="20">
+                                               
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="assignee" title="Assignee" width="20">
+                                               
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="task" title="Task Name" width="20">
+                                                <ng-template  kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                    <a style="text-decoration: underline;cursor: pointer;" routerLink="#" data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModal" (click)="open(content1)">{{dataItem.task}}</a>
+                                                </ng-template>
+                                              
+                                                
+                                            </kendo-grid-column>
+                                           
+                                        
+
+                                            <kendo-grid-column field="date" title="Date" width="20">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="duedate" title="Due Date" width="20">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+
+                                            <kendo-grid-column  field="status" title="Status" width="30">
+                                                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                    <button type="button" class="btn btn-special inverse-dark" [style.background-color]="getColor(dataItem.status)">{{dataItem.status}}</button>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                          
+
+
+                                            
+                                        </kendo-grid>
+
+
+                                    </div>
+                                </ng-template>
+                            </ng-template>
+                        </ngb-tab>
+
+
+                        <ngb-tab>
+                            <ng-template ngbTabTitle>My Task
+                                <ng-template ngbTabContent>                                                                                                                                       
+                                    <div class="tab-pane fade active show kendo_table" id="account" role="tabpanel" aria-labelledby="account-tab">
+
+
+                                        <br><br>
+                                        <kendo-grid [kendoGridBinding]="taskData" [filterable]="true"  [sortable]="true">
+
+
+                                            <kendo-grid-column field="no" title="Sl.No" width="10">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+
+                                            <kendo-grid-column field="name" title="Assigner" width="20">
+                                               
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="assignee" title="Assignee" width="20">
+                                               
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="task" title="Task Name" width="20">
+                                                <ng-template  kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                    <a style="text-decoration: none;cursor: pointer;" routerLink="#" >{{dataItem.task}}</a>
+                                                </ng-template>
+                                              
+                                                
+                                            </kendo-grid-column>
+                                           
+                                        
+
+                                            <kendo-grid-column field="date" title="Date" width="20">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="duedate" title="Due Date" width="20">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell
+                                                        placeholder="search"
+                                                        [showOperators]="false"
+                                                        [column]="column"
+                                                        title="Parent Store"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+
+                                            <kendo-grid-column  field="status" title="Status" width="30">
+                                                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                    <button type="button" class="btn btn-special inverse-dark" [style.background-color]="getColor(dataItem.status)">{{dataItem.status}}</button>
+                                                </ng-template>
+                                                
+                                            </kendo-grid-column>
+
+                                          
+
+
+                                            
+                                        </kendo-grid>
+
+
+                                    </div>
+                                </ng-template>
+                            </ng-template>
+                        </ngb-tab>
+
+                    
+                        
+                        <ngb-tab>
+                            <ng-template ngbTabTitle>Completed
+                                <ng-template ngbTabContent>
+                                
+                                </ng-template>
+                            </ng-template>
+                        </ngb-tab>
+
+
+
+                    </ngb-tabset>
+                    <!-- <div class="pull-right">
+                        <button type="button" class="btn btn-primary">Submit</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h5 style="color: #FFFFFF; opacity: 0.5;" class="modal-title f-w-200" id="exampleModalLabel">Add</h5>
+        <button style="color: #FFFFFF;opacity: 0.5;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form class="needs-validation">
+            <div class="form">
+                <div class="form-group">
+                    <label for="validationCustom01" class="mb-1">Title </label>
+                    <input class="form-control" id="validationCustom01" type="text" placeholder="efgrhbvx ghndf">
+                </div>
+
+                <div class="row">
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Department </label>
+                        <div class="example-wrapper">
+                            <kendo-dropdownlist  id="multiselect"  class="form-control"
+                            [data]="listDepartment" 
+                            [filterable]="true"
+                          >
+                        </kendo-dropdownlist>
+                          </div>
+                    </div>
+
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Assignee </label>
+                        <div class="example-wrapper">
+                            <kendo-dropdownlist  id="multiselect"  class="form-control"
+                            [data]="list" 
+                            [filterable]="true"
+                          >
+                        </kendo-dropdownlist>
+                          </div>
+                    </div>
+
+                    
+                </div>
+              
+                <div class="mt-2 row">
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Due Date </label>
+                        <input class="form-control"  type="date">
+                    </div>
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Tag </label>
+                        <div class="example-wrapper">
+                            <kendo-multiselect  id="multiselect"  class="form-control"
+                            [data]="list" 
+                            [filterable]="true"
+                          >
+                        </kendo-multiselect>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="mt-2 form-group mb-0">
+                    <label for="validationCustom02" class="mb-1">Description</label>
+                    <textarea class="form-control" id="validationCustom02"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+
+        <div class="row">
+            <div class=" mb-0 col-md-4 "></div>
+            <div class=" mb-0 col-md-4 ">
+                <button type="button" class="btn btn btn-modal-rounded">Save</button>
+            </div>
+            <div class=" mb-0 col-md-4 "></div>
+        </div>
+       
+    </div>
+</ng-template>
+
+
+
+
+<ng-template #content1 let-modal>
+    <div class="modal-header">
+        <h5 style="color: #FFFFFF;opacity: 0.5;" class="modal-title f-w-200" id="exampleModalLabel">Edit</h5>
+        <button style="color: #FFFFFF;opacity: 0.5;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form class="needs-validation">
+            <div class="form">
+                <div class="form-group">
+                    <label for="validationCustom01" class="mb-1">Title </label>
+                    <input class="form-control" id="validationCustom01" type="text" placeholder="efgrhbvx ghndf">
+                </div>
+
+                <div class="row">
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Department </label>
+                        <div class="example-wrapper">
+                            <kendo-dropdownlist  id="multiselect"  class="form-control"
+                            [data]="listDepartment" 
+                            [filterable]="true"
+                          >
+                        </kendo-dropdownlist>
+                          </div>
+                    </div>
+
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Assignee </label>
+                        <div class="example-wrapper">
+                            <kendo-dropdownlist  id="multiselect"  class="form-control"
+                            [data]="list" 
+                            [filterable]="true"
+                          >
+                        </kendo-dropdownlist>
+                          </div>
+                    </div>
+
+                  
+                </div>
+              
+                <div class="mt-2 row">
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Due Date </label>
+                        <input class="form-control" id="validationCustom02" type="date" placeholder="April 24 2021">
+                    </div>
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Tag </label>
+                        <div class="example-wrapper">
+                            <kendo-multiselect  id="multiselect"  class="form-control"
+                            [data]="list" 
+                            [filterable]="true"
+                          >
+                        </kendo-multiselect>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="mt-2 form-group mb-0">
+                    <label for="validationCustom02" class="mb-1">Description</label>
+                    <textarea class="form-control" id="validationCustom02"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="form-group mb-0 col-md-4">
+                <button type="button" class="btn btn btn-modal-rounded btn-sm">Update</button>
+            </div>
+           
+            <div class="form-group mb-0 col-md-4">
+                <button type="button" class="btn btn btn-modal-rounded btn-sm">Delete</button>
+            </div>
+
+            <div class="form-group mb-0 col-md-4">
+                <button type="button" class="btn btn btn-modal-rounded btn-sm" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">Mark as completed</button>
+            </div>
+            <!-- <div class="form-group mb-0 col-md-3">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                    (click)="modal.dismiss('Cross click')">Close</button>
+            </div> -->
+            
+        </div>
+       
+    </div>
+</ng-template>

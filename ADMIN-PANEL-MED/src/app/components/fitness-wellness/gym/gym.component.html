@@ -1,0 +1,805 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid gym_side_innerpage_tab">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card tab2-card kendo_table">
+        <label style="margin: 14px 0px 0px 36px; opacity: 0.7; font-weight: 400"
+          >FolioFit</label
+        >
+        <div class="card-body tab2-card">
+          <ngb-tabset
+            #t="ngbTabset"
+            [activeId]="selectedTab"
+            (tabChange)="tabChangeEvent($event)"
+            class="tab-coupon"
+          >
+            <ngb-tab
+              title="Master"
+              id="tab-selectbyid0"
+              *ngIf="disableTab('Master')"
+            >
+              <ng-template ngbTabContent>
+                <app-master-page-tab></app-master-page-tab>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab
+              title="Fitness Club"
+              id="tab-selectbyid1"
+              *ngIf="disableTab('Fitness Club')"
+            >
+              <ng-template ngbTabContent>
+                <app-fitness-club-tab></app-fitness-club-tab>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab
+              title="Yoga"
+              id="tab-selectbyid2"
+              *ngIf="disableTab('Yoga')"
+            >
+              <ng-template ngbTabContent>
+                <app-yoga-page-tab></app-yoga-page-tab>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab
+              title="Diet Regime"
+              id="tab-selectbyid3"
+              *ngIf="disableTab('Diet Regime')"
+            >
+              <ng-template ngbTabContent>
+                <app-diet-regime-tab></app-diet-regime-tab>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab
+              title="Health Reminders"
+              id="tab-selectbyid4"
+              *ngIf="disableTab('Health Reminders')"
+            >
+              <ng-template ngbTabContent>
+                <!-- <app-health-reminders-tab></app-health-reminders-tab> -->
+
+                <label>Health Reminders</label>
+                <br /><br />
+                <form [formGroup]="medForm">
+                  <div class="mt-2 row">
+                    <div class="col-md-3">
+                      <h6>From Date</h6>
+                      <input
+                        formControlName="strt_dt"
+                        type="date"
+                        class="form-control"
+                        max="{{ strt_dt }}"
+                        (change)="getStartdate($event)"
+                        onkeydown="return false"
+                      />
+                      <!-- max="{{ strt_dt }}" -->
+                      <!-- <kendo-datepicker style="background-color: #033147;" class="form-control"
+            [min]="min"
+            [(ngModel)]="value"
+            #dateModel="ngModel"
+        ></kendo-datepicker> -->
+                    </div>
+
+                    <div class="col-md-3">
+                      <h6>To Date</h6>
+                      <input
+                        formControlName="end_dt"
+                        min="{{ temp }}"
+                        type="date"
+                        class="form-control"
+                        (change)="date_change($event)"
+                        onkeydown="return false"
+                      />
+                      <!-- <input formControlName='end_dt' min="{{temp}}" max="{{ strt_dt }}"
+                                                type="date" class="form-control" (change)="date_change($event)" onkeydown="return false"> -->
+                      <!-- <kendo-datepicker style="background-color: #033147;" class="form-control"
+            [min]="min"
+            [(ngModel)]="value"
+            #dateModel="ngModel"
+        ></kendo-datepicker> -->
+                    </div>
+
+                    <div class="col-md-3">
+                      <button
+                        type="button"
+                        class="btn btn-dark btn-excel-rounded m-30"
+                        (click)="clear()"
+                      >
+                        CLEAR
+                      </button>
+                    </div>
+                  </div>
+                </form>
+
+                <br /><br />
+
+                <div class="table-responsive tab-coupon" *ngIf="disableTab('Health Reminders')">
+                  <kendo-grid
+                    [kendoGridBinding]="medicinedata"
+                    [filterable]="true"
+                    [sortable]="true"
+                    [pageSize]="10"
+                    [pageable]="true"
+                    [skip]="skip"
+                  >
+                    <ng-template kendoGridToolbarTemplate>
+                      <div style="padding-left: 54%">
+                        <button
+                          type="button"
+                          kendoGridPDFCommand
+                          class="btn btn-dark btn-excel-rounded"
+                        >
+                          <i class="fa fa-file-pdf-o"></i> Export to PDF
+                        </button>
+
+                        &nbsp;&nbsp;&nbsp;<button
+                          type="button"
+                          kendoGridExcelCommand
+                          class="btn btn-dark btn-excel-rounded"
+                        >
+                          <i class="fa fa-file-excel-o"></i>Export to Excel</button
+                        >&nbsp;&nbsp;
+
+                        <!-- <input
+                    placeholder="Search by medicine..."
+                    kendoTextBox
+                    (keyup)="filterMedicine($event.target.value)"
+                /> -->
+                      </div>
+                    </ng-template>
+
+                    <kendo-grid-column
+                      field="sl"
+                      title="SlNo."
+                      width="20"
+                      [filterable]="true"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="SlNo"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="userId.name"
+                      title="Name"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Name"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="medicine"
+                      title="Medicine"
+                      width="30"
+                      [filterable]="true"
+                    >
+                      <!-- <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                <input kendoTextBox (keyup)="filterMedicine($event.target.value)" />
+            </ng-template> -->
+
+                      <!-- <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                <div *ngFor="let i of dataItem.medicine;let isLast = last;" class="span-med">{{i.name.toString()}}<span
+                        *ngIf="!isLast"> , </span></div>
+            </ng-template> -->
+                    </kendo-grid-column>
+                    <!-- </kendo-grid> -->
+                    <kendo-grid-excel fileName="Medicine.xlsx">
+                    </kendo-grid-excel>
+                    <kendo-grid-pdf
+                      fileName="Medicine.pdf"
+                      [allPages]="true"
+                      paperSize="A4"
+                      [repeatHeaders]="true"
+                      [landscape]="true"
+                    >
+                      <kendo-grid-pdf-margin
+                        top="2cm"
+                        left="1cm"
+                        right="1cm"
+                        bottom="2cm"
+                      >
+                      </kendo-grid-pdf-margin>
+                      <ng-template
+                        kendoGridPDFTemplate
+                        let-pageNum="pageNum"
+                        let-totalPages="totalPages"
+                      >
+                        <div class="page-template">
+                          <div class="header">
+                            <div style="float: right">
+                              Page {{ pageNum }} of {{ totalPages }}
+                            </div>
+                            <div *ngIf="temp && end_Dt">
+                              Data From {{ temp }} to {{ end_Dt }}
+                            </div>
+                          </div>
+                          <!-- <div class="footer">Page {{ pageNum }} of {{ totalPages }}</div> -->
+                        </div>
+                      </ng-template>
+                    </kendo-grid-pdf>
+                  </kendo-grid>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab
+              title="Nutri chart"
+              id="tab-selectbyid5"
+              *ngIf="disableTab('Nutri Chart')"
+            >
+              <ng-template ngbTabContent>
+                <app-nutri-chart-tab></app-nutri-chart-tab>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="BMI" id="tab-selectbyid6" *ngIf="disableTab('BMI')">
+              <ng-template ngbTabContent>
+                <!-- <app-bmi-tab></app-bmi-tab> -->
+
+                <h5 style="color: white; opacity: 0.7">BMI</h5>
+                <br />
+                <form [formGroup]="bmiForm">
+                  <div class="mt-2 row">
+                    <div class="col-md-3">
+                      <h6>From Date</h6>
+                      <input
+                        type="date"
+                        class="form-control"
+                        formControlName="startDate"
+                        max="{{ strt_dt1 }}"
+                        (change)="getStartdate1($event)"
+                      />
+                      <!-- max="{{ strt_dt }}"
+                                                max="{{ today | date: 'shortDate'  }}"
+                                            (change)="date_change()" -->
+                      <!-- <kendo-datepicker style="background-color: #033147;" class="form-control"
+                                                                        [min]="min"
+                                                                        [(ngModel)]="value"
+                                                                        #dateModel="ngModel"
+                                                                    ></kendo-datepicker> -->
+                    </div>
+                    <!-- max="{{ strt_dt }}" -->
+                    <div class="col-md-3">
+                      <h6>To Date</h6>
+                      <input
+                        type="date"
+                        class="form-control"
+                        min="{{ temp1 }}"
+                        formControlName="endDate"
+                        (change)="date_change1()"
+                      />
+                      <!-- <input type="date" class="form-control" min="{{temp1}}" max="{{strt_dt1}}"
+                                                formControlName='endDate' (change)="date_change1()"> -->
+                      <!-- <kendo-datepicker style="background-color: #033147;" class="form-control"
+                                                                        [min]="min"
+                                                                        [(ngModel)]="value"
+                                                                        #dateModel="ngModel"
+                                                                    ></kendo-datepicker> -->
+                    </div>
+
+                    <div class="col-md-6">
+                      <button
+                        type="button"
+                        class="btn btn-dark btn-excel-rounded m-30"
+                        (click)="clear1()"
+                      >
+                        CLEAR
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <br /><br />
+
+                <div class="table-responsive kendo_table" *ngIf="disableTab('BMI')">
+                  <kendo-grid
+                    [kendoGridBinding]="bmidata"
+                    [filterable]="true"
+                    [sortable]="true"
+                    [pageSize]="10"
+                    [pageable]="true"
+                  >
+                    <ng-template kendoGridToolbarTemplate>
+                      <div style="padding-left: 55%">
+                        <button
+                          type="button"
+                          kendoGridPDFCommand
+                          class="btn btn-dark btn-excel-rounded"
+                        >
+                          <i class="fa fa-file-pdf-o"></i> Export to PDF
+                        </button>
+
+                        &nbsp;&nbsp;&nbsp;<button
+                          type="button"
+                          kendoGridExcelCommand
+                          class="btn btn-dark btn-excel-rounded"
+                        >
+                          <i class="fa fa-file-excel-o"></i>Export to Excel
+                        </button>
+                      </div>
+                    </ng-template>
+
+                    <kendo-grid-column field="sl" title="SlNo." width="40">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="SlNo"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="userId.name"
+                      title="Name"
+                      width="80"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Name"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="userId.phone"
+                      title="Mobile.No"
+                      width="80"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Mobile No"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column field="bmi" title="BMI Value" width="90">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="bmi"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-excel fileName="BMI.xlsx"></kendo-grid-excel>
+                    <kendo-grid-pdf
+                      fileName="BMI.pdf"
+                      [allPages]="true"
+                      paperSize="A4"
+                      [repeatHeaders]="true"
+                      [landscape]="true"
+                    >
+                      <kendo-grid-pdf-margin
+                        top="2cm"
+                        left="1cm"
+                        right="1cm"
+                        bottom="2cm"
+                      >
+                      </kendo-grid-pdf-margin>
+                      <ng-template
+                        kendoGridPDFTemplate
+                        let-pageNum="pageNum"
+                        let-totalPages="totalPages"
+                      >
+                        <div class="page-template">
+                          <div class="header">
+                            <div style="float: right">
+                              Page {{ pageNum }} of {{ totalPages }}
+                            </div>
+                            <div *ngIf="temp1 && end_Dt1">
+                              Data From {{ temp1 }} to {{ end_Dt1 }}
+                            </div>
+                          </div>
+                          <!-- <div class="footer">Page {{ pageNum }} of {{ totalPages }}</div> -->
+                        </div>
+                      </ng-template>
+                    </kendo-grid-pdf>
+                  </kendo-grid>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab
+              title="Testimonial"
+              id="tab-selectbyid7"
+              *ngIf="disableTab('Testimonial')"
+            >
+              <ng-template ngbTabContent>
+                <app-testimonial-tab></app-testimonial-tab>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<ng-template #dietdata let-modal>
+  <div class="modal-header">
+    <h6 class="modal-title f-w-600" id="DietPlanexampleModal">Day 1</h6>
+    <!-- <button type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button> -->
+    <h6 class="modal-title f-w-600" id="DietPlanexampleModal">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Fruits Day"
+        style="
+          background: #033147;
+          border-radius: 0px;
+          border: unset;
+          border-bottom: 1px solid #fff;
+        "
+      />
+    </h6>
+  </div>
+  <div class="modal-body">
+    <div class="form-group row">
+      <div class="mb-0 col-md-12">
+        <hr style="background: white" />
+        <span style="color: #fff" class="mb-0">Morning :</span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="mb-0 col-md-8">
+        <label for="validationCustom02" class="mb-0">Describe Meal</label>
+        <input type="text" class="form-control" />
+
+        <label for="validationCustom02" class="mb-0">Sub Text</label>
+        <input type="text" class="form-control" />
+      </div>
+
+      <div class="mb-0 col-md-4">
+        <div class="round-image-data upload-btn-wrapper">
+          <input type="file" name="myfile" />
+          <img
+            style="border-radius: 23px"
+            src="assets/images/file-icons/icon-image.png"
+            width="80px"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="modal-footer">
+        <div class="row">
+            <div class="form-group  col-md-6 ">
+                <button type="submit" class=" btn-dark " data-dismiss="modal"
+                (click)="modal.dismiss('Cross click')">Quality Check Passed</button>
+            </div>
+            <div class="form-group col-md-6 ">
+                <button type="submit" class=" btn-dark " data-dismiss="modal"
+                (click)="modal.dismiss('Cross click')">Issue Refund</button>
+            </div>
+            
+        </div>
+    </div> -->
+</ng-template>
+
+<ng-template #CalorieChartdata let-modal>
+  <div *ngIf="update_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.7"
+      class="modal-title f-w-200"
+      id="CalorieChartxampleModal"
+    >
+      Update
+    </h5>
+    <button
+      style="color: white; opacity: 0.7; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="add_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.7"
+      class="modal-title f-w-200"
+      id="CalorieChartxampleModal"
+    >
+      Add
+    </h5>
+    <button
+      style="color: white; opacity: 0.7; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group row">
+      <div class="mb-0 col-md-12">
+        <label for="validationCustom02" class="mb-0">Category Name</label>
+        <input type="text" class="form-control" />
+      </div>
+    </div>
+
+    <div class="mt-3 row">
+      <div class="col-md-12">
+        <div class="image-data">
+          <div class="upload-btn-wrapper">
+            <i style="padding: 22px 182px" class="icon fa fa-upload"></i><br />
+            <input type="file" name="myfile" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="mb-0 col-md-4"></div>
+      <div class="mb-0 col-md-4">
+        <button type="button" class="btn btn-dark btn-modal-rounded">
+          Save
+        </button>
+      </div>
+      <div class="mb-0 col-md-4"></div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #TestimonialContent let-modal>
+  <div *ngIf="update_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.7"
+      class="modal-title f-w-200"
+      id="TestimonialxampleModal"
+    >
+      Update
+    </h5>
+    <button
+      style="color: white; opacity: 0.7; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="add_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.7"
+      class="modal-title f-w-200"
+      id="TestimonialxampleModal"
+    >
+      Add
+    </h5>
+    <button
+      style="color: white; opacity: 0.7; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row" *ngIf="foliofit || yoga">
+      <div class="col-md-12">
+        <div class="image-data">
+          <div class="upload-btn-wrapper">
+            <i
+              *ngIf="image_URL == ''"
+              style="padding: 0 202px"
+              class="icon fa fa-upload"
+            ></i
+            ><br />
+            <img
+              *ngIf="image_URL != ''"
+              [src]="image_URL"
+              width="100%"
+              height="50%"
+              class="image-icon"
+            />
+            <P *ngIf="image_URL == ''" style="text-align: center"> Image</P>
+            <input
+              type="file"
+              name="myfile"
+              (change)="onChangeImage($event, '908', '378')"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="foliofit || yoga">
+      <div class="col-md-6"></div>
+      <div class="col-md-6">
+        <h6
+          style="color: #fff; margin-left: 60%; font-size: 10px"
+          for="validationCustom0"
+          class=""
+        >
+          Size : 908 X 378
+        </h6>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="web">
+      <div class="col-md-12">
+        <div class="image-data">
+          <div class="upload-btn-wrapper">
+            <i
+              *ngIf="image_URL == ''"
+              style="padding: 0 202px"
+              class="icon fa fa-upload"
+            ></i
+            ><br />
+            <img
+              *ngIf="image_URL != ''"
+              [src]="image_URL"
+              width="100%"
+              height="50%"
+              class="image-icon"
+            />
+            <P *ngIf="image_URL == ''" style="text-align: center"> Image</P>
+            <input
+              type="file"
+              name="myfile"
+              (change)="onChangeImage($event, '238', '285')"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="web">
+      <div class="col-md-6"></div>
+      <div class="col-md-6">
+        <h6
+          style="color: #fff; margin-left: 60%; font-size: 10px"
+          for="validationCustom0"
+          class=""
+        >
+          Size : 238 X 285
+        </h6>
+      </div>
+    </div>
+
+    <!-- <div class=" form-group  row">
+                <div class=" col-md-12">
+                    <label for="validationCustom02" class="mb-0 form-group">Name</label>
+                    <input type="text" class="form-control">
+                
+                </div>
+            
+            </div>
+
+            <div class=" form-group  row">
+                <div class=" col-md-12">
+                    <label for="validationCustom02" class="mb-0 form-group">Description</label>
+                    <textarea class="form-control" cols="4" style="height: 80%;"></textarea>
+                
+                </div>
+            
+            </div>    -->
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="mb-0 col-md-4"></div>
+      <div class="mb-0 col-md-4" *ngIf="foliofit">
+        <button
+          type="button"
+          class="btn btn-dark btn-dark-rounded"
+          (click)="Save('foliofit')"
+          *ngIf="add_Modal_Flag"
+        >
+          {{ addLoading ? "Saving..." : "Save" }}
+        </button>
+
+        <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                    (click)="OnUpdate('foliofit')">{{
+                    addLoading ?
+                    "Updating..."
+                    : "Update" }}</button> -->
+      </div>
+      <div class="mb-0 col-md-4" *ngIf="yoga">
+        <button
+          type="button"
+          class="btn btn-dark btn-dark-rounded"
+          (click)="Save('yoga')"
+          *ngIf="add_Modal_Flag"
+        >
+          {{ addLoading ? "Saving..." : "Save" }}
+        </button>
+
+        <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                    (click)="OnUpdate('yoga')">{{
+                    addLoading ?
+                    "Updating..."
+                    : "Update" }}</button> -->
+      </div>
+      <div class="mb-0 col-md-4" *ngIf="web">
+        <button
+          type="button"
+          class="btn btn-dark btn-dark-rounded"
+          (click)="Save('web')"
+          *ngIf="add_Modal_Flag"
+        >
+          {{ addLoading ? "Saving..." : "Save" }}
+        </button>
+
+        <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                    (click)="OnUpdate('web')">{{
+                    addLoading ?
+                    "Updating..."
+                    : "Update" }}</button> -->
+      </div>
+      <div class="mb-0 col-md-4"></div>
+    </div>
+  </div>
+</ng-template>

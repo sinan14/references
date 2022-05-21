@@ -1,0 +1,305 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card-body tab2-card" *ngIf="disableTab('Preference')">
+        <br /><br />
+        <!-- <button type="button" class="btn btn-dark btn-inverse-dark" (click)="BackRedirectTo()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-dark btn-inverse-dark pull-right" data-toggle="modal" data-original-title="test"
+                data-target="#exampleModal" (click)="open(exampleModalcontent,'edit')"> <i class="fa fa-edit"></i> Edit</button> -->
+
+        <div class="row mt-3 costmr_srch_ivntrylist">
+          <div class="col-md-10"><label>Preference</label></div>
+          <div class="col-md-2">
+            <button
+              type="button"
+              class="btn btn-dark btn-inverse-dark pull-right"
+              id="btnClick"
+              data-toggle="modal"
+              data-original-title="test"
+              data-target="#exampleModal"
+              (click)="open(exampleModalcontent, 'edit')"
+              *ngIf="editFlag"
+            >
+              <i class="fa fa-edit"></i> Edit
+            </button>
+          </div>
+        </div>
+
+        <br />
+
+        <div class="mt-2 row">
+          <table>
+            <tr>
+              <td width="30">1.</td>
+              <td style="width: auto">
+                <label for="expiration">Minimum Purchase Amount</label>
+              </td>
+              <td style="width: 150px">
+                <label>{{ preferences.minPurchaseAmount }}</label>
+              </td>
+            </tr>
+            <tr>
+              <td width="30">2.</td>
+              <td style="width: auto">
+                <label for="expiration">Minimum Amount for Free Delivery</label>
+              </td>
+              <td style="width: 150px">
+                <label>{{ preferences.minFreeDeliveryAmount }}</label>
+              </td>
+            </tr>
+            <tr>
+              <td width="30">3.</td>
+              <td style="width: auto">
+                <label for="expiration">Delivery Time Slot</label>
+              </td>
+              <td style="width: 150px">
+                <label> From {{ preferences.deliveryTimeFrom }}</label
+                ><label
+                  ><strong> To {{ preferences.deliveryTimeTo }} </strong>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td width="30">4.</td>
+              <td style="width: auto">
+                <label for="expiration">I don't have a Prescription</label>
+              </td>
+              <td style="width: 150px">
+                <label *ngIf="preferences.prescription">Enabled</label>
+                <label *ngIf="!preferences.prescription">Disabled</label>
+              </td>
+            </tr>
+            <tr>
+              <td width="30">5.</td>
+              <td style="width: auto">
+                <label for="expiration"
+                  >Maximum use of medcoin in a single order</label
+                >
+              </td>
+              <td style="width: 150px">
+                <label>{{ preferences.maxMedcoinUse }}</label>
+              </td>
+            </tr>
+            <tr>
+              <td width="30">6.</td>
+              <td style="width: auto">
+                <label for="expiration">Payment Gateway</label>
+              </td>
+              <td style="width: 150px">
+                <label>{{ preferences.paymentType }}</label>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid ends-->
+
+<ng-template #exampleModalcontent let-modal>
+  <div *ngIf="update_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.7"
+      class="modal-title f-w-200"
+      id="exampleModal"
+    >
+      Update
+    </h5>
+    <button
+      style="color: white; opacity: 0.7; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click'); closeForms()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="add_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.7"
+      class="modal-title f-w-200"
+      id="exampleModal"
+    >
+      Add
+    </h5>
+    <button
+      style="color: white; opacity: 0.7; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click'); closeForms()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <form ngNativeValidate #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label>Minimum Purchase Amount</label>
+          <input
+            name="minPurchaseAmount"
+            min="0"
+            [(ngModel)]="preferences.minPurchaseAmount"
+            #minPurchaseAmount="ngModel"
+            pattern="^[0-9]+$"
+            required
+            type="number"
+            class="form-control"
+          />
+          <span
+            *ngIf="minPurchaseAmount.invalid && minPurchaseAmount.touched"
+            class="help-block"
+            >Enter valid minimum purchase amount</span
+          >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label for="expiration">Minimum Amount for Free Delivery</label>
+          <input
+            name="minFreeDeliveryAmount"
+            min="0"
+            #minFreeDeliveryAmount="ngModel"
+            [(ngModel)]="preferences.minFreeDeliveryAmount"
+            pattern="^[0-9]+$"
+            required
+            type="number"
+            class="form-control"
+          />
+          <span
+            *ngIf="
+              minFreeDeliveryAmount.invalid && minFreeDeliveryAmount.touched
+            "
+            class="help-block"
+            >Enter valid minimum free delivery amount</span
+          >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label for="expiration">From</label>
+          <input
+            name="deliveryTimeFrom"
+            [(ngModel)]="preferences.deliveryTimeFrom"
+            #deliveryTimeFrom="ngModel"
+            class="form-control"
+            type="time"
+            min="06:00"
+            max="12:00"
+            pattern="^(0?[1-9]|1[0-2]):[0-5][0-9]$"
+            class="form-control"
+            required
+          />
+          <span
+            *ngIf="deliveryTimeFrom.invalid && deliveryTimeFrom.touched"
+            class="help-block"
+            >Delivery Start time must be between 12AM to 12PM</span
+          >
+        </div>
+
+        <div class="col-md-6 form-group">
+          <label for="expiration">To</label>
+          <input
+            min="12:00"
+            max="21:00"
+            name="deliveryTimeTo"
+            #deliveryTimeTo="ngModel"
+            [(ngModel)]="preferences.deliveryTimeTo"
+            class="form-control"
+            type="time"
+            required
+          />
+          <span
+            *ngIf="
+              deliveryTimeTo.invalid && deliveryTimeTo.touched && deliveryTimeTo
+            "
+            class="help-block"
+            >Delivery time must be between 12PM to 12AM</span
+          >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label for="expiration">I don't have a Prescription</label>
+          <input
+            type="checkbox"
+            class="toggle-switch oversize"
+            id="toggle3"
+            name="prescription"
+            [(ngModel)]="preferences.prescription"
+            #prescription="ngModel"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label for="expiration"
+            >Maximum use of medcoin in a single order</label
+          >
+
+          <input
+            name="maxMedcoinUse"
+            min="0"
+            [(ngModel)]="preferences.maxMedcoinUse"
+            #maxMedcoinUse="ngModel"
+            pattern="^[0-9]+$"
+            required
+            type="number"
+            class="form-control"
+          />
+
+          <!-- <input
+            type="text"  class="form-control"/> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 d-flex align-items-center">
+          <label for="validationCustom03" class="mb-0">Razor Pay</label
+          >&nbsp;&nbsp;
+          <input
+            class="radio_animated"
+            id="edo-ani2"
+            type="radio"
+            name="rdo-ani"
+            [(ngModel)]="preferences.paymentType"
+            value="razorpay"
+          />
+        </div>
+        <div class="col-md-3 d-flex align-items-center">
+          <label for="validationCustom03" class="mb-0">Cash free</label
+          >&nbsp;&nbsp;
+          <input
+            class="radio_animated"
+            id="edo-ani2"
+            type="radio"
+            name="cashfree"
+            value="cashfree"
+            [(ngModel)]="preferences.paymentType"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-dark-rounded">Save</button>
+      <button
+        class="btn btn-dark-rounded"
+        type="button"
+        class="btn btn-dark-rounded"
+        type="button"
+        data-dismiss="modal"
+        (click)="modal.dismiss('Cross click'); closeForms()"
+      >
+        Close
+      </button>
+    </div>
+  </form>
+</ng-template>

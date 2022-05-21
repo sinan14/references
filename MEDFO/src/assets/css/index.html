@@ -1,0 +1,3172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="img\favi.png" rel="apple-touch-icon-precomposed" width="16">
+    <link href="img\favi.png" rel="shortcut icon" type="image/png" width="16">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Medimall | Home</title>
+   
+    <link rel="stylesheet" href="plugins\font-awesome\css\font-awesome.min.css">
+    <link rel="stylesheet" href="fonts\Linearicons\Font\demo-files\demo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="plugins\bootstrap4\css\bootstrap.min.css">
+    <link rel="stylesheet" href="plugins\owl-carousel\assets\owl.carousel.css">
+    <link rel="stylesheet" href="plugins\slick\slick\slick.css">
+    <link rel="stylesheet" href="plugins\lightGallery\dist\css\lightgallery.min.css">
+    <link rel="stylesheet" href="plugins\jquery-bar-rating\dist\themes\fontawesome-stars.css">
+    <link rel="stylesheet" href="plugins\select2\dist\css\select2.min.css">
+    <link rel="stylesheet" href="plugins\lightGallery\dist\css\lightgallery.min.css">
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="home\css\r-sub-default.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.css">
+   
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<script data-pace-options='{ "ajax": false }' src='https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js' type="be9dfe49072cb4d1912e7519-text/javascript"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="https://www.medfoliotechnologies.com/css/animate.css"> -->
+ 
+<style>
+ .owl-carousel .owl-dots .owl-dot.active {
+    background-color: #C0C0C0;
+    border-color: #C0C0C0;
+    width: 10px;
+    border-radius: 20px;
+}   
+  .ps-header {
+    background-color: #00AAFF;
+     background-image: linear-gradient(#00AAFF, #005BEC);
+   
+}  
+    
+.loader-container {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1999;
+  height: 100%;
+  opacity: 1;
+  overflow: hidden;
+  background-color: #fff;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.loader-container:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  overflow: hidden;
+}
+
+.loader-container:before {
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+
+
+
+@keyframes b {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+@keyframes workGridItem-onboard {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -100px, 0) scale3d(0.95, 0.95, 0.95) rotate3d(1, 0.05, 0, 5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateZ(0) scaleX(1) rotate3d(0, 0, 0, 0);
+  }
+}
+@keyframes spin-it {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes will-scale {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes pageTransAnim-onboard {
+  0% {
+    transform: translate3d(-100vw, 0, 0);
+  }
+  to {
+    transform: translateZ(0);
+  }
+}
+.PageTransitions__mainWrapperAnimation--onboard {
+  animation-name: pageTransAnim-onboard;
+  animation-timing-function: 0cubic-bezier 0.4, 0.1, 0.1, 1;
+  animation-duration: 0.75s;
+  animation-fill-mode: backwards;
+}
+
+    .col-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    float: left;
+}
+.c-timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+.c-timeline__item {
+  position: relative;
+  padding: 0 2rem 2rem;
+}
+.c-timeline__item:after, .c-timeline__item:before {
+  content: " ";
+  width: 0.5rem;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -1rem;
+  background-color: #64c2e3;
+}
+.c-timeline__item:after {
+  transform-origin: top right;
+  transform: scaley(0);
+  transition: transform 1s ease 0.25s;
+}
+.c-timeline__item.active:after {
+  background-color: #ffff00;
+  transform: scaley(1);
+}
+.c-timeline__item.active .c-timeline__item-circle {
+  border-color: #ffff00;
+  -webkit-animation: scaleCircle 0.4s forwards;
+          animation: scaleCircle 0.4s forwards;
+}
+.c-timeline__item:last-child:after, .c-timeline__item:last-child:before {
+  border-radius: 5px;
+  display: none;
+}
+.c-timeline__item-circle {
+  border-radius: 50%;
+  background: #2296bf;
+  height: 1rem;
+  width: 1rem;
+  display: block;
+  position: absolute;
+  left: -1.7rem;
+  top: 0;
+  border: 0.5rem solid #64c2e3;
+  z-index: 1;
+  transition: border-color 0.5s ease;
+}
+
+@-webkit-keyframes scaleCircle {
+  0% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleCircle {
+  0% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.c-trigger {
+  position: absolute;
+  top: 2rem;
+  background-color: #ffff00;
+  padding: 1rem;
+  display: block;
+  right: 2rem;
+  color: black;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pen__container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.pen__heading {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.pen__intro {
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+} 
+   
+ .home-hero{
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    height: 80vh;
+ }   
+ .banner{padding-bottom: 0;}
+ .banner__background{min-height: 540px;}
+ .home-hero .home-slides{min-height: 580px;display: inline-block;width: 100%;margin-bottom: 80px;}
+
+ .banner__background.home {
+ 
+    -webkit-transition: all 1500ms ease-in-out;
+    -o-transition: all 1500ms ease-in-out;
+    transition: all 1500ms ease-in-out;
+}
+.home-hero .copy--title h2{
+    color: #414040;
+}
+.home-hero .home-slides .owl-item.active .copy--body p{color: #000;opacity: 0.5;}
+.home-hero .copy a{    background: rgb(0 0 0 / 30%);}
+.home-hero .copy a:hover{    background: rgb(0 0 0 / 50%);}
+
+@media (max-width: 992px) {
+    .banner__background{min-height: 760px;}
+.home-hero .home-slides{min-height: 800px;}
+.home-hero .home-slides .wrapper-container-el{width: 50%;padding-top: 10%;}
+.container-illu .el-device {  height: 80%;}
+.header-slides{padding-top: 0;}
+}
+@media (max-width: 500px) {
+    .home-hero .home-slides .wrapper-container-el{width: 80%;}
+    .home-hero .home-slides{min-height: 700px;}
+    .banner__background{min-height: 700px;}
+}
+
+
+
+.slide-progress {
+    width: 0;
+    max-width: 100%;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 30px;
+  }
+  .slide-progress-main{
+    width: 50%;
+    position: var(--relative);
+    z-index: 5555;
+    margin: 10px 0 20px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.1)
+  }
+
+  .home-hero .home-slides .owl-nav .owl-next span{font-size: 55px;
+    color: #666;
+    line-height: 0;}
+    .home-hero .home-slides .owl-nav button{background-color: transparent !important ;font: 70px/45px FontAwesome;
+    color: #0000003b;  opacity: 0.5;}
+    .home-hero .home-slides .owl-nav button:hover{background-color: transparent !important}
+    .home-hero .home-slides .owl-nav button.owl-prev{display: block;}
+    .home-hero .home-slides .owl-nav .owl-prev span {    font-size: 55px;    color: #666;    }
+    .home-hero .home-slides .owl-nav .owl-prev:before {  content: '\f104';}
+    .home-hero .home-slides .owl-nav .owl-next:before {  content: '\f105';}
+    .home-hero .home-slides .owl-nav span{display: none;}
+@media (min-width:1280px){
+    .ps-blog__thumbnail img {
+   
+    height: 180px;
+    object-fit: fill;
+}
+}
+.blogname p{
+    color:#00AAFF;
+}
+.blogname a{
+    padding: 0px 4px 0px 4px; 
+     color: #000000; 
+     opacity: 0.5; 
+     font-size: 14px;
+}
+.ps-blog--latset .ps-blog__content{
+    padding:20px 20px;
+}
+.ps-blog--latset .ps-blog__thumbnail img{
+    border-radius:0px;
+    padding-top:15px;
+}
+.share-time a{
+    font-size:13px;
+}
+.ps-blog--latset .ps-blog__thumbnail:hover img{
+    transform: none;
+}
+.blogname{
+    justify-content:end;
+}
+/*.shadows a:hover {*/
+/*  font-weight:bold;*/
+/*}*/
+
+/*a.shadows:hover {*/
+/*  font-weight:normal;*/
+/*  text-shadow:0px 0px 5px white;*/
+/*}*/
+/*.ps-footer--block .ps-block__list li a{
+    opacity:0.6;
+    filter:brightness(0.8);
+}*/
+    .shadows a:hover {
+        color: #ffffff !important;
+        opacity:1 !important;
+        
+        filter: brightness(120%) !important;
+        font-size:15.05px !important;
+    }
+</style>
+</head>
+
+
+
+
+
+<body>
+   <div class="loader-container" id="loader-container">
+
+<div class="textRevealContainer">
+<div class="textReveal rotateY">
+<div>
+<div>
+<p class="font-weight-bold mb-0">Giving Hope to India</p>
+<div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    <div class="ps-page">
+        <header class="ps-header ps-header--1">
+          
+            <div class="ps-header__middle">
+                <div class="container">
+                    <div class="ps-logo">
+                        <a href="under.html"> <img src="img\logo.png" alt=""><img class="sticky-logo" src="img\logo.png" alt=""></a>
+                    </div>
+                    <!-- a class="ps-menu--sticky" href="under.html"><i class="fa fa-bars"></i></a> -->
+                    <div class="ps-header__right">
+                        <div class="ps-header__search">
+                            <form action="do_action" method="post">
+                                <div class="ps-search-table">
+                                    <div class="location"> <span><img src="img/png/point.png"></span>
+                                        <select>
+                                            <option value="1">Choose Locality</option>
+                                            <option value="1">1</option>
+                                            <option value="1">1</option>
+                                        </select>
+                                    </div>
+                                    <style type="text/css">
+                                    select {
+                                        /* for Firefox */
+                                        -moz-appearance: none;
+                                        /* for Chrome */
+                                        -webkit-appearance: none;
+                                    }
+                                    /* For IE10 */
+                                    
+                                    select::-ms-expand {
+                                        display: none;
+                                    }
+                                    </style>
+                                    <div class="input-group serching">
+                                        <input class="form-control ps-input" type="text" placeholder="Search medicine/healthcare products">
+                                        <div class="input-group-append"><a href="under.html"><i class="fa fa-search"></i></a></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div> <a class="placeholder bg-yellow ps-banner__shop hvr-float-shadow" href="under.html">Download the App</a>
+                        <!-- <a class="bg-yellow ps-banner__shop" href="under.html">Download the App</a> -->
+                        <div class="container">
+                            <div class="ps-navigation__right">
+                                <nav class="ps-main-menu" >
+                                    <ul class="menu">
+                                        <li class="has-mega-menu"><a href="under.html">Category<span class="sub-toggle"><i class="fa fa-angle-down"></i></span></a>
+                                        
+                                      
+                                        </li>
+                                        <li class="has-mega-menu"><a href="blog.html">Blog<span class="sub-toggle"><i class="fa fa-angle-down"></i></span></a></li>
+                                        <li class="has-mega-menu"><a href="under.html">Medimall Foundation<span class="sub-toggle"><i class="fa fa-angle-down"></i></span></a></li>
+                                        <li class="has-mega-menu"><a href="under.html">Fitness Arena<span class="sub-toggle"><i class="fa fa-angle-down"></i></span></a></li>
+                                        <li class="has-mega-menu"><a href="under.html">More <span class="sub-toggle"><i class="fa fa-angle-down"></i></span></a></li>
+                                      
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="ps-navigation__right">
+                                <ul class="ps-header__icons">
+                                    <li><a class="ps-header__item" href="under.html"><i class="fa fa-tag"></i><span class="off-tag"> Offers</span></a></li>
+                                    <li><a class="ps-header__item" href="under.html"><i class="fa fa-user"></i><span> Login</span></a></li>
+                                    <li><a class="ps-header__item" href="under.html" id="cart-mini"><i class="fa fa-shopping-cart"></i> <span class="badge">2</span><span>Cart</span></a>
+                                       
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </header>
+		
+                    <div class="ps-navigation desktop-only">
+					<div class="overlap-menu">
+                        <div class="container">
+                            <div class="ps-navigation__left" style="text-align: center;">
+                                <nav class="ps-main-menu">
+                                    <ul class="menu">
+                                        <li class="has-mega-menu">
+                                            <div class="megamenu-img" > <img src="img/green.svg"></div>
+                                            <div class="mega-content"> <a href="under.html">Order Medicines</a>
+                                                <p>25000+ Products</p>
+                                            </div>
+                                        </li>
+                                        <li class="has-mega-menu">
+                                            <div class="megamenu-img""> <img src="img/orange.svg" ></div>
+                                            <div class="mega-content"> <a href="under.html">Order Health Care Products</a>
+                                                <p>20000+ Products</p>
+                                            </div>
+                                        </li>
+                                        <li class="has-mega-menu">
+                                            <div class="megamenu-img" > <img src="img/blues.svg" ></div>
+                                            <div class="mega-content"> <a href="under.html">Medpride Membership</a>
+                                                <p>Get Exclusive Benefits</p>
+                                            </div>
+                                        </li>
+                                        
+                                        
+                                        <li class="has-mega-menu">
+                                            <div class="megamenu-img" > <img src="img/pink.svg" ></div>
+                                            <div class="mega-content"> <a href="under.html">Medfill Refill</a>
+                                                <p>Unforgatable Refill</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+						</div>
+                    </div>
+              
+        <header class="ps-header ps-header--1 ps-header--mobile">
+           <div class="ps-header__middle">
+                    <div class="container mobilelogo">
+                         <div class="ps-navigation--footer">
+            <div class="ps-nav__item"><a href="under.html" id="open-menu"><i class="icon-menu" style="color:white;"></i></a>
+            <a href="under.html" id="close-menu"><i class="icon-cross"></i></a></div>
+            </div>
+                        <div class="ps-logo">
+                            <a href="under.html"> <img src="img\logo.png" alt=""></a>
+                        </div>
+                        <div class="ps-header__right">
+                            <ul class="ps-header__icons">
+                                    <li><a class="ps-header__item" href="under.html"><i class="fa fa-tag"></i></a></li>
+                                    <li><a class="ps-header__item" href="under.html"><i class="fa fa-user"></i></a></li>
+                                    <li><a class="ps-header__item" href="under.html" id="cart-mini"><i class="fa fa-shopping-cart"></i></a>
+                                        <div class="ps-cart--mini">
+                                            <ul class="ps-cart__items">
+                                                <li class="ps-cart__item">
+                                                    <div class="ps-product--mini-cart">
+                                                        <a class="ps-product__thumbnail" href="under.html"><img src="img\products\055.jpg" alt="alt"></a>
+                                                        <div class="ps-product__content"><a class="ps-product__name" href="under.html">  tablet</a>
+                                                            <p class="ps-product__meta"> <span class="ps-product__price">399.99</span></p>
+                                                        </div><a class="ps-product__remove" href="javascript: void(0)"><i class="icon-cross"></i></a> </div>
+                                                </li>
+                                              
+                                            </ul>
+                                            <div class="ps-cart__total"><span>Subtotal </span><span>399</span></div>
+                                            <div class="ps-cart__footer"><a class="ps-btn ps-btn--outline" href="under.html">View Cart</a><a class="ps-btn ps-btn--warning" href="under.html">Checkout</a></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                 
+                        </div>
+                        <div class="deliver"> <select>
+                                            <option value="1">Choose Locality</option>
+                                            <option value="1">1</option>
+                                            <option value="1">1</option>
+                                        </select></div>
+                    </div>
+                    
+                    <div class="ps-navigation">
+                        <div class="container">
+                          
+                         <div class="input-group serching">
+                                        <input class="form-control ps-input" type="text" placeholder="Search medicine/healthcare products">
+                                        <div class="input-group-append"><a href="under.html"><i class="fa fa-search"></i></a></div>
+                             </div>
+                        </div>
+                </div>
+                </div>
+        </header>
+        <div class="ps-home ps-home--1">
+            <section class="ps-section--banner">
+                <div class="ps-section__overlay">
+                    <div class="ps-section__loading"></div>
+                </div>
+                <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="8000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" single-items="true" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="800" data-owl-mousedrag="on">
+                    <div class="ps-banner baners" style="background-image: url(img/png/banner1.png);">
+                        <div class="container container-initial">
+                            <div class="ps-banner__block">
+                               </div>
+                        </div>
+                    </div>
+                    <div class="ps-banner baners" style="background-image: url(img/png/banner2.png);">
+                        <div class="container container-initial">
+                            <div class="ps-banner__block">
+                              </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+            <div class="ps-home__content">
+                <div class="container">
+                    <div class="ps-promo">
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                <div class="ps-promo__item wow fadeInLeft" data-wow-delay="0.5s">
+                                    <div class="ps-promo__content" style="background-image: url(img/png/promo.png);">
+                                        <div class="cont">
+                                            <h4 class=" ps-promo__name">Online &nbsp;<strong> Pharmacy</strong></h4>
+                                            <h6>Get upto 75% off</h6> <a class="promo__btn" href="under.html"><i class="fa fa-angle-right"></i> Shop now</a> </div>
+                                        <div class="cont2"> <img class="ps-promo__banner" src="img\png\pro1.png"> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="ps-promo__item little wow fadeInDown" data-wow-delay="0.5s">
+                                    <div class="ps-promo__content prop"  style="background-image: url(img/png/promo4.png);">
+                                        <div class="just"> <img class="ps" src="img\png\proi1.png">
+                                            <h6 class="">Have a <br>Prescription?</h6> <a class="ps-btns" href="under.html">Upload now</a> </div>
+                                    </div>
+                                </div>
+                                <div class="ps-promo__item mt-1 wow fadeInDown" data-wow-delay="0.8s">
+                                    <div class="ps-promo__content prop"  style="background-image: url(img/png/promo2.png);">
+                                        <div class="just"> <img class="ps" src="img\png\proi.png">
+                                            <h6 class="">Don't Have a Prescription?</h6> <a class="ps-btns" href="under.html">Consult now</a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="ps-promo__item wow fadeInRight" data-wow-delay="0.5s" >
+                                    <div class="ps-promo__content" style="background-image: url(img/png/promo3.png);">
+                                        <div class="cont1">
+                                            <h5 class=" ps-promo__name" style="color:#0A6C04 !important;">Healthcare  &nbsp;<strong>Products</strong></h5>
+                                            <h6>Get upto 75% off</h6> <a class="promo__btn" href="under.html"><i class="fa fa-angle-right"></i> Shop now</a> </div>
+                                        <div class="cont11"> <img class="ps-promo__banner" src="img\png\pro3.png"> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <section class="work-process-section padding">
+     <h3 class="headingl">Behind the Screen</h3>
+<video  autoplay loop muted playsinline id="vid" style="width:100%">
+            
+            <source type="video/mp4" src="img/png/how.m4v"></source>
+         </video>
+
+         
+</section>
+            <section class="ps-section--latest">
+                 
+                        <h3 class="shopby">Shop by concern</h3>
+                        <div class="ps-section__carousel">
+                            <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="15000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="10" data-owl-item-xs="7" data-owl-item-sm="7" data-owl-item-md="5" data-owl-item-lg="10" data-owl-item-xl="10" data-owl-duration="1000" data-owl-mousedrag="on">
+                                <div class="ps-section__product wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="ps-product ps-product--standard ">
+                                        <div class="ps-product__thumbnail shopby">
+                                            <a class="ps-product__image" href="under.html">
+                                               <img src="img\png\tab.png" alt="alt"> 
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__title"><a href="under.html">Diebetics</a></h5> </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="ps-product ps-product--standard ">
+                                        <div class="ps-product__thumbnail shopby">
+                                            <a class="ps-product__image" href="under.html">
+                                          <img src="img\png\liver.png" alt="alt">
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__title"><a href="under.html">Liver Care</a></h5> </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product wow fadeInUp" data-wow-delay="0.3s">
+                                    <div class="ps-product ps-product--standard ">
+                                        <div class="ps-product__thumbnail shopby">
+                                            <a class="ps-product__image" href="under.html">
+                                           <img src="img\png\stomc.png" alt="alt"> 
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__title"><a href="under.html">Stomach Care</a></h5> </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="ps-product ps-product--standard ">
+                                        <div class="ps-product__thumbnail shopby">
+                                            <a class="ps-product__image" href="under.html">
+                                             <img src="img\png\kid.png" alt="alt"> 
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__title"><a href="under.html">Kidney Care</a></h5> </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product wow fadeInUp" data-wow-delay="0.5s">
+                                    <div class="ps-product ps-product--standard ">
+                                        <div class="ps-product__thumbnail shopby">
+                                            <a class="ps-product__image" href="under.html">
+                                           <img src="img\png\lung.png" alt="alt"> 
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__title"><a href="under.html">Lungs Care</a></h5> </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.6s">
+                                    <div class="ps-product ps-product--standard ">
+                                        <div class="ps-product__thumbnail shopby">
+                                            <a class="ps-product__image" href="under.html">
+                                         <img src="img\png\soap.png" alt="alt"> 
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__title"><a href="under.html">Covid Care</a></h5> </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.7s">
+                                    <div class="ps-product ps-product--standard ">
+                                        <div class="ps-product__thumbnail shopby">
+                                            <a class="ps-product__image" href="under.html"> <img src="img\png\skin.png" alt="alt"> 
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__title"><a href="under.html">Skin Care</a></h5> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   
+                </section>
+                
+               
+                <div class="ps-delivery lap">
+                    <div class="ps-delivery__content row">
+                        <div class="ps-delivery__text col-md-4 col-12"><span> Steal The Deals With 
+                            <span class="med">Medpride </span></span>
+							
+                        </span>
+							</div>
+                             <div class="col-md-8 p-0 member">
+							<p>Get <span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
+                             <!--<a class="" href="under.html">Get Membership</a>-->
+                            <div class="owl-carousel owl-theme" id="try">
+                             <div class=""> <img src="img\png\6.png" alt="alt"> </div>
+                             <div class=""> <img src="img\png\6.png" alt="alt"> </div>
+                             <div class=""> <img src="img\png\6.png" alt="alt"> </div>
+                             <div><img src="img\png\6.png" alt="alt"> </div>
+                             <div><img src="img\png\6.png" alt="alt"> </div>
+                             
+                           </div>
+                            
+                        </div>
+                       
+                    </div>
+                </div>
+
+                 <div class="ps-delivery mobile">
+                    <div class="ps-delivery__content row">
+                        <div class="ps-delivery__text col-md-4 col-8"><span> Steal The Deals With 
+                            <strong style="color: #EBA604;">Medpride </strong></span>
+							
+                       <h3> <a class="getmem" href="under.html"> </a></h3>
+					   </div>
+                        
+
+                        <div class="col-md-4 col-4 memberm">
+                            
+                            <div class="owl-carousel owl-theme" id="try1">
+                             <div class=""> <img src="img\png\6.png" alt="alt"> </div>
+                             <div class=""> <img src="img\png\6.png" alt="alt"> </div>
+                             <div class=""> <img src="img\png\6.png" alt="alt"> </div>
+                             <div><img src="img\png\6.png" alt="alt"> </div>
+                             <div><img src="img\png\6.png" alt="alt"> </div>
+                             
+                           </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="container" style="background-image: url(img/png/backg.png);    background-size: cover;
+                   background-repeat: no-repeat;">
+                    <section class="ps-section--topcategory">
+                        <h3 class="headings">Categories to Bag</h3>
+                        <div class="ps-section__carousel">
+                            <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="3000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="8" data-owl-item-xs="6" data-owl-item-sm="7" data-owl-item-md="3" data-owl-item-lg="7" data-owl-item-xl="7" data-owl-duration="1000" data-owl-mousedrag="on">
+                                <div class="ps-section__product wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="ps-product ps-product--standard personal" style="background-image: url(img/png/top.png);background-position: center;">
+                                        <div class="ps-product__thumbnail corona">
+                                            <a class="ps-product__image" href="under.html">
+                                             <img src="img\png\top2.png" alt="alt"> 
+                                            </a>
+                                            <div class="ps-product__badge"> </div>
+                                            <div class="ps-product__percent" >54% OFF</div>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <div class="orange">
+                                            <h5 class="ps-product__title topfive"><a href="under.html" style="color:#FBFBFB;"> Covid essential</a></h5> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="ps-product ps-product--standard personal" style="background-image: url(img/png/top.png);background-position: center;">
+                                        <div class="ps-product__thumbnail corona">
+                                            <a class="ps-product__image" href="under.html">
+                                                <img src="img\png\top5.png" alt="alt"> 
+                                            </a>
+                                            <div class="ps-product__badge"> </div>
+                                            <div class="ps-product__percent">54% OFF</div>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__title topfive"><a href="under.html"  style="color:#FBFBFB;">Personal Care</a></h5> </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.3s">
+                                    <div class="ps-product ps-product--standard personal" style="background-image: url(img/png/top.png);background-position: center;">
+                                        <div class="ps-product__thumbnail corona">
+                                            <a class="ps-product__image" href="under.html">
+                                               <img src="img\png\top3.png" alt="alt"> 
+                                            </a>
+                                            <div class="ps-product__badge"> </div>
+                                            <div class="ps-product__percent">54% OFF</div>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__title topfive"><a href="under.html"  style="color:#FBFBFB;">Baby Care</a></h5> </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="ps-product ps-product--standard personal" style="background-image: url(img/png/top.png);background-position: center;">
+                                        <div class="ps-product__thumbnail corona">
+                                            <a class="ps-product__image" href="under.html">
+                                               <img src="img\png\top4.png" alt="alt"> 
+                                            </a>
+                                            <div class="ps-product__badge"> </div>
+                                            <div class="ps-product__percent">54% OFF</div>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__title topfive"><a href="under.html"  style="color:#FBFBFB;">Pregnancy Care</a></h5> </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.5s">
+                                    <div class="ps-product ps-product--standard personal" style="background-image: url(img/png/top.png);background-position: center;">
+                                        <div class="ps-product__thumbnail corona">
+                                            <a class="ps-product__image" href="under.html">
+                                                <img src="img\png\top1.png" alt="alt"> 
+                                            </a>
+                                            <div class="ps-product__badge"> </div>
+                                            <div class="ps-product__percent">54% OFF</div>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__title topfive"><a href="under.html"  style="color:#FBFBFB;"> Ayurveda Care</a></h5> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="ps-section--brand">
+                        <h3 class="headings">Featured brand</h3>
+                        <div class="ps-section__carousel">
+                            <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="13000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="6" data-owl-item-xs="7" data-owl-item-sm="7" data-owl-item-md="5" data-owl-item-lg="6" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
+                                <div class="ps-section__product">
+                                    <div class="ps-product ps-product--standard brand">
+                                        <div class="ps-product__thumbnail ">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\brn.png" alt="alt"></figure>
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__titleb" style="color: black;"><a class="covid" href="under.html">Dabur</a></h5>
+                                            <h6 class="text-center">3000+ items</h6> </div> <a href="" class="fbrand"><i class="fa fa-angle-right"></i></a> </div>
+                                </div>
+                               
+                                 <div class="ps-section__product">
+                                    <div class="ps-product ps-product--standard brand">
+                                        <div class="ps-product__thumbnail ">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\brn1.jpg" alt="alt"> </figure>
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__titleb" style="color: black;"><a class="covid"  href="under.html">Pankajakasthuri</a></h5>
+                                            <h6 class="text-center">3000+ items</h6> </div><a href="" class="fbrand"><i class="fa fa-angle-right"></i></a> </div>
+                                </div>
+                                <div class="ps-section__product">
+                                    <div class="ps-product ps-product--standard brand">
+                                        <div class="ps-product__thumbnail ">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\logo3.png" alt="alt"> </figure>
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__titleb" style="color: black;"><a class="covid"  href="under.html">Himalaya</a></h5>
+                                            <h6 class="text-center">125+ items</h6> </div><a href="" class="fbrand"><i class="fa fa-angle-right"></i></a> </div>
+                                </div>
+                                <div class="ps-section__product">
+                                    <div class="ps-product ps-product--standard brand">
+                                        <div class="ps-product__thumbnail ">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\logo4.png" alt="alt"> </figure>
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__titleb" style="color: black;"><a class="covid"  href="under.html">Nivea</a></h5>
+                                            <h6 class="text-center">125+ items</h6> </div><a href="" class="fbrand"><i class="fa fa-angle-right"></i></a> </div>
+                                </div>
+                                <div class="ps-section__product">
+                                    <div class="ps-product ps-product--standard brand">
+                                        <div class="ps-product__thumbnail ">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\logo5.png" alt="alt"></figure>
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__titleb" style="color: black;"><a  class="covid" href="under.html">Pond's</a></h5>
+                                            <h6 class="text-center">125+ items</h6> </div><a href="" class="fbrand"><i class="fa fa-angle-right"></i></a> </div>
+                                </div>
+                                <div class="ps-section__product">
+                                    <div class="ps-product ps-product--standard brand">
+                                        <div class="ps-product__thumbnail ">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\logo6.png" alt="alt"></figure>
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <h5 class="ps-product__titleb" style="color: black;"><a class="covid"  href="under.html">Dove</a></h5>
+                                            <h6 class="text-center">3000+ items</h6> </div><a href="" class="fbrand"><i class="fa fa-angle-right"></i></a> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="ps-section--mega">
+                        <div class="ps-section__carousel">
+                            <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="3000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="false" data-owl-item="3" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="3" data-owl-item-lg="3" data-owl-item-xl="3" data-owl-duration="1000" data-owl-mousedrag="on">
+                                <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="ps-product ps-product--standard ">
+                                        <div class="ps-product__thumbnail normal">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\megao.png" alt="alt" class="mega"> </figure>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product   wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="ps-product ps-product--standard ">
+                                        <div class="ps-product__thumbnail normal">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\megat.png" alt="alt" class="mega"> </figure>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product   wow fadeInUp" data-wow-delay="0.3s">
+                                    <div class="ps-product ps-product--standard ">
+                                        <div class="ps-product__thumbnail normal">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\megar.png" alt="alt" class="mega"> </figure>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                
+                            </div>
+                        </div>
+                    </section>
+                    <section class="ps-section--deals">
+                        <h3 class="headings"><img src="img/png/offer.png" width="30" class="rotate">Offers From Our Payment Partners</h3>
+                        <div class="ps-section__carousel">
+                            <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="13000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="false" data-owl-item="3" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="3" data-owl-item-lg="3" data-owl-item-xl="3" data-owl-duration="1000" data-owl-mousedrag="on">
+                                <div class="ps-section__product   wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="ps-product ps-product--standard ">
+                                        <div class="ps-product__thumbnail offers">
+                                            <div class="ps-product__image off"> <img src="img/png/offers.png">
+                                                <div class="rows">
+                                                    <div class="imgd pull-left"> <img src="img\png\of.svg" alt="alt"> </div>
+                                                    <!--col-md-4-->
+                                                    <div class="imgc">
+                                                        <h3>Get extra 10% off on Medimall</h3>
+                                                        <p>Get extra 10% off on PharmEasy Labtests/ packages.Minimum order value is Rs 899  </p>
+                                                         <div class="tcdiv"><a href="" class="tc">T&C</a></div>
+                                                         <div class="code">
+                                                            <ul>
+                                                                <li ></li>
+                                                                 <li class="copys"><span >Copy code</span>
+                                                                  <div class="tooltip">
+                                                                    <input type="text"  style="display: none;">
+                                                                     <button class="btn" >
+                                                                      <span class="tooltiptext" >MEDFOLIO</span>
+                                                                       <img src="img/png/offer-i.png" class="off-icon">MEDFOLIO
+                                                                      </button>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        </div>
+                                                    <!--col-md-8-->
+                                                </div>
+                                                <!--row-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="ps-product ps-product--standard ">
+                                        <div class="ps-product__thumbnail offers">
+                                            <div class="ps-product__image off"> <img src="img/png/offers.png">
+                                                <div class="rows">
+                                                    <div class="imgd pull-left"> <img src="img\png\best.png" alt="alt"> </div>
+                                                    <!--col-md-4-->
+                                                    <div class="imgc">
+                                                        <h3 style="color: #F6BF02">Flat 20% off + 20% cashback on your 1st medicine order </h3>
+                                                        <p>Flat 20% off + Additional 20% cashback upto Rs.600 on your 1st medicine order</p>
+                                                        <div class="tcdiv"><a href="" class="tc">T&C</a></div>
+                                                       <div class="code">
+                                                            <ul>
+                                                                <li ></li>
+                                                                 <li class="copys"><span >Copy code</span>
+                                                                  <div class="tooltip">
+                                                                    <input type="text" value="MEDFOLIO"  style="display: none;">
+                                                                     <button class="btn" >
+                                                                      <span class="tooltiptext">MEDFOLIO</span>
+                                                                        <img src="img/png/offer-i.png" class="off-icon">MEDFOLIO
+                                                                      </button>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <!--col-md-8-->
+                                                </div>
+                                                <!--row-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product   wow fadeInUp" data-wow-delay="0.3s">
+                                    <div class="ps-product ps-product--standard ">
+                                        <div class="ps-product__thumbnail offers">
+                                            <div class="ps-product__image off"> <img src="img/png/offers.png">
+                                                <div class="rows">
+                                                    <div class="imgd pull-left"> <img src="img\png\off1.png" alt="alt"> </div>
+                                                    <!--col-md-4-->
+                                                    <div class="imgc">
+                                                        <h3 style="color: #FC0663">Upto Rs.300 Cashback on ICICI Debit & Credit cards. </h3>
+                                                        <p>Flat 10% cashback upto Rs.300 on a minimum purchase of Rs.1500 on ICICI Debit & credit cards.</p>
+                                                        <div class="tcdiv"><a href="" class="tc">T&C</a></div>
+                                                       <div class="code">
+                                                            <ul>
+                                                                <li></li>
+                                       <li class="copys"><span >Copy code</span>
+                                                                  <input type="text" value="MEDFOLIO" id="myInput"  style="display: none;">
+
+                                          <div class="tooltip">
+                                             <button class="btn" onclick="myFunction()" onmouseout="outFunc()">
+                                                                      <span class="tooltiptext" id="myTooltip">Copy code</span>
+                                                                     <img src="img/png/offer-i.png" class="off-icon">MEDFOLIO
+                                                                      </button>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <!--col-md-8-->
+                                                </div>
+                                                <!--row-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <section class="ps-section--dealing" style="padding-bottom: 0;"> 
+                    <h3 class="dealcont lap">Hot Deals For You</h3>
+                    <div class="row">
+                        <div class="col-lg-3 back">
+                            <h1 class="lap ps-section__title text-left text-white"><span class="grab">Grab </span>your<br>
+                                 <span class="grab">thinks </span> </h1>
+                                  <h1 class=" mobile ps-section__title text-center text-white"><strong>Grab </strong>your
+                                 <strong>thinks</strong> </h1>
+                            <div id="demo"></div>
+                        </div>
+                        <div class="col-lg-9 ps-section__carousel">
+                            <h3 class="dealcont mobile">Deal of the day</h3>
+                            <a href="under.html" class="viewall llo">View all</a>
+                            <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="false" data-owl-item="8" data-owl-item-xs="3" data-owl-item-sm="3" data-owl-item-md="3" data-owl-item-lg="8" data-owl-item-xl="8" data-owl-duration="1000" data-owl-mousedrag="on">
+                                <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="ps-product ps-product--standard personals">
+                                        <div class="ps-product__thumbnail deal">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\d1.png" alt="alt"> </figure>
+                                            </a>
+                                            <div class="ps-product__badge"> </div>
+                                            <div class="ps-product__percents">From 999</div>
+                                        </div>
+                                        <div class="ps-product__content personalsc">
+                                            <h5 class="ps-product__title"><a href="under.html"> Pure protection snuggy </a></h5>
+                                            <div class="ps-product__meta"> <span class="ps-product__price"> <i class="fa fa-inr"></i>299.99 </span> <span class="ps-product__del">  <i class="fa fa-inr"></i>53.99</span> </div>
+                                            <h6 class="ps-product__title"><a href="under.html"> Ends in 50 m 22 sec </a></h6> <a href="" class="buy">Add to Cart</a> </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="ps-product ps-product--standard personals">
+                                        <div class="ps-product__thumbnail deal">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\d2.png" alt="alt"> </figure>
+                                            </a>
+                                            <div class="ps-product__badge"> </div>
+                                            <div class="ps-product__percents">From 999</div>
+                                        </div>
+                                        <div class="ps-product__content personalsc">
+                                            <h5 class="ps-product__title"><a href="under.html"> Pure protection snuggy </a></h5>
+                                            <div class="ps-product__meta"> <span class="ps-product__price"> <i class="fa fa-inr"></i> 299.99 </span>
+                                            <span class="ps-product__del">  53.99</span> </div>
+                                            <h6 class="ps-product__title"><a href="under.html"> Ends in 50 m 22 sec </a></h6> <a href="" class="buy">Add to Cart</a> </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.3s">
+                                    <div class="ps-product ps-product--standard personals">
+                                        <div class="ps-product__thumbnail deal">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\d3.png" alt="alt"> </figure>
+                                            </a>
+                                            <div class="ps-product__badge"> </div>
+                                             <div class="ps-product__percents">From 999</div>
+                                        </div>
+                                        <div class="ps-product__content personalsc">
+                                            <h5 class="ps-product__title"><a href="under.html"> Pure protection snuggy </a></h5>
+                                            <div class="ps-product__meta"> <span class="ps-product__price"> <i class="fa fa-inr"></i> 299.99 </span> 
+                                            <span class="ps-product__del">  53.99</span> </div>
+                                            <h6 class="ps-product__title"><a href="under.html"> Ends in 50 m 22 sec </a></h6> <a href="" class="buy">Add to Cart</a> </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product   wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="ps-product ps-product--standard personals">
+                                        <div class="ps-product__thumbnail deal">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\d1.png" alt="alt"> </figure>
+                                            </a>
+                                            <div class="ps-product__badge"> </div>
+                                             <div class="ps-product__percents">From 999</div>
+                                        </div>
+                                        <div class="ps-product__content personalsc">
+                                            <h5 class="ps-product__title"><a href="under.html"> Pure protection snuggy </a></h5>
+                                            <div class="ps-product__meta"> <span class="ps-product__price"> <i class="fa fa-inr"></i> 299.99 </span> 
+                                            <span class="ps-product__del">  53.99</span> </div>
+                                            <h6 class="ps-product__title"><a href="under.html"> Ends in 50 m 22 sec </a></h6> <a href="" class="buy">Add to Cart</a> </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product   wow fadeInUp" data-wow-delay="0.5s">
+                                    <div class="ps-product ps-product--standard personals">
+                                        <div class="ps-product__thumbnail deal">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\d2.png" alt="alt"> </figure>
+                                            </a>
+                                            <div class="ps-product__badge"> </div>
+                                                       <div class="ps-product__percents">From 999</div>
+                                        </div>
+                                        <div class="ps-product__content personalsc">
+                                            <h5 class="ps-product__title"><a href="under.html"> Pure protection snuggy </a></h5>
+                                            <div class="ps-product__meta"> <span class="ps-product__price"> <i class="fa fa-inr"></i> 299.99 </span>
+                                            <span class="ps-product__del"> 53.99</span> </div>
+                                            <h6 class="ps-product__title"><a href="under.html"> Ends in 50 m 22 sec </a></h6> <a href="" class="buy">Add to Cart</a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                
+                </section>
+               
+                    <section class="ps-section--healthcareproduct" style="background-color: #FBFBFB">
+                        <div class="container">
+                        <h3 class="headings">Popular health care products</h3>
+                        <h5 class="text-right"><a href="under.html" class="viewall">View all</a></h5>
+                        <div class="ps-section__carousel  wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="owl-carousel" data-owl-auto="false" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="false" data-owl-item="6" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="6" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
+                                <div class="ps-section__product  wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="ps-product ps-product--standard popular">
+                                        <div class="ps-product__thumbnail popular">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\pop-item.png" alt="alt"> </figure>
+                                                <div class="ps-product__badge"></div>
+                                                <div class="ps-product__percent pophealth">54% Off</div>
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content popular">
+                                            <h6>Pure Baby care</h6>
+                                            <h5 class="ps-product__title"><a href="under.html">Pure protection snuggy</a></h5>
+                                            <h6>3000+ items</h6>
+                                            <div class="wc">
+                                                <div class="ps-product__meta"> <span class="ps-product__price"><i class="fa fa-inr"></i> 39.99 </span>
+                                                <span class="ps-product__del"> 53.99</span> </div>
+                                                <div class="ps-product__item" data-placement="left"> <a href="under.html"><i class="fa fa-heart-o"></i></a> <a class="str">|</a>
+                                        <a href="under.html" class="shopping"><img src="img/png/cart.png" class="shopping-cart"></a> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product   wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="ps-product ps-product--standard popular">
+                                        <div class="ps-product__thumbnail popular">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\pop.png" alt="alt"> </figure>
+                                                <div class="ps-product__badge"></div>
+                                                <div class="ps-product__percent pophealth">54% Off</div>
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content popular">
+                                            <h6>Baby care</h6>
+                                            <h5 class="ps-product__title"><a href="under.html">Pure protection snuggy</a></h5>
+                                            <h6>3000+ items</h6>
+                                            <div class="wc">
+                                                <div class="ps-product__meta"> <span class="ps-product__price"><i class="fa fa-inr"></i> 39.99 </span>
+                                                <span class="ps-product__del"> 53.99</span> </div>
+                                                <div class="ps-product__item" data-placement="left"> <a href="under.html"><i class="fa fa-heart-o"></i></a> <a class="str">|</a><a href="under.html" class="shopping"><img src="img/png/cart.png" class="shopping-cart"></a> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product   wow fadeInUp" data-wow-delay="0.3s">
+                                    <div class="ps-product ps-product--standard popular">
+                                        <div class="ps-product__thumbnail popular">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\pop-item.png" alt="alt"> </figure>
+                                                <!--<div class="ps-product__badge"></div>-->
+                                                <!--<div class="ps-product__percent pophealth"></div>-->
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content popular">
+                                            <h6>Baby care</h6>
+                                            <h5 class="ps-product__title"><a href="under.html">Pure protection snuggy</a></h5>
+                                            <h6>3000+ items</h6>
+                                            <div class="wc">
+                                                <div class="ps-product__meta"> <span class="ps-product__price"><i class="fa fa-inr"></i> 39.99 </span>
+                                                <span class="ps-product__del"> 53.99</span> </div>
+                                                <div class="ps-product__item" data-placement="left"> <a href="under.html"><i class="fa fa-heart-o"></i></a> <a class="str">|</a><a href="under.html" class="shopping"><img src="img/png/cart.png" class="shopping-cart"></a> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product   wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="ps-product ps-product--standard popular">
+                                        <div class="ps-product__thumbnail popular">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\pop1.png" alt="alt"> </figure>
+                                                <div class="ps-product__badge"></div>
+                                                <div class="ps-product__percent pophealth-p">54% Off</div>
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content popular">
+                                            <h6>Baby care</h6>
+                                            <h5 class="ps-product__title"><a href="under.html">Body lotion</a></h5>
+                                            <h6>3000+ items</h6>
+                                            <div class="wc">
+                                                <div class="ps-product__meta"> <span class="ps-product__price"><i class="fa fa-inr"></i> 39.99 </span> 
+                                                <span class="ps-product__del"> 53.99</span> </div>
+                                                <div class="ps-product__item" data-placement="left"> <a href="under.html"><i class="fa fa-heart-o"></i></a> <a class="str">|</a><a href="under.html" class="shopping"><img src="img/png/cart.png" class="shopping-cart"></a> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product   wow fadeInUp" data-wow-delay="0.5s">
+                                    <div class="ps-product ps-product--standard popular">
+                                        <div class="ps-product__thumbnail popular">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\pop-item.png" alt="alt"> </figure>
+                                                <div class="ps-product__badge"></div>
+                                                <div class="ps-product__percent pophealth">54% Off</div>
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content popular">
+                                            <h6>Baby care</h6>
+                                            <h5 class="ps-product__title"><a href="under.html">Pure protection snuggy</a></h5>
+                                            <h6>3000+ items</h6>
+                                            <div class="wc">
+                                                <div class="ps-product__meta"> <span class="ps-product__price"><i class="fa fa-inr"></i> 39.99 </span>
+                                                <span class="ps-product__del"> 53.99</span> </div>
+                                                <div class="ps-product__item" data-placement="left"> <a href="under.html"><i class="fa fa-heart-o"></i></a> <a class="str">|</a><a href="under.html" class="shopping"><img src="img/png/cart.png" class="shopping-cart"></a> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__product   wow fadeInUp" data-wow-delay="0.6s">
+                                    <div class="ps-product ps-product--standard popular">
+                                        <div class="ps-product__thumbnail popular">
+                                            <a class="ps-product__image" href="under.html">
+                                                <figure><img src="img\png\pop.png" alt="alt"> </figure>
+                                                <div class="ps-product__badge"></div>
+                                                <div class="ps-product__percent pophealth">54% Off</div>
+                                            </a>
+                                        </div>
+                                        <div class="ps-product__content popular">
+                                            <h6>Baby care</h6>
+                                            <h5 class="ps-product__title"><a href="under.html">Pure protection snuggy</a></h5>
+                                            <h6>3000+ items</h6>
+                                            <div class="wc">
+                                                <div class="ps-product__meta"> <span class="ps-product__price"><i class="fa fa-inr"></i> 39.99 </span> 
+                                                <span class="ps-product__del"> 53.99</span> </div>
+                                                <div class="ps-product__item" data-placement="left"> <a href="under.html"><i class="fa fa-heart-o"></i></a> <a class="str">|</a><a href="under.html" class="shopping"><img src="img/png/cart.png" class="shopping-cart"></a> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> </div>
+                    </section>
+                    <section class="lap"  style="background-color: #FBFBFB">
+                        <div class="container">
+                           
+                            <div class="row">
+                                <div class="col-md-2  ">
+                                    <div class="employees">
+                                        <img src="img/png/g1.png">
+                                    </div>
+                                </div>
+                                <div class="col-md-2   ">
+                                    <div class="employees">
+                                         <img src="img/png/g2.png">
+                                    </div>
+                                </div>
+                                <div class="col-md-2   ">
+                                    <div class="employees">
+                                         <img src="img/png/g3.png">
+                                    </div>
+                                </div>
+                                <div class="col-md-2  ">
+                                    <div class="employees">
+                                    <img src="img/png/g4.png">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="employees">
+                                       <img src="img/png/g5.png">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="employees">
+                                        <img src="img/png/g6.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background-color: #fbfbfb; padding: 5px 0px;" >
+                        <div class="container">
+                         <div class="row" >
+                                <div class="col-md-2">
+                                    <div class="employees">
+                                        <p class="employee-p">100% Genuine Products</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="employees">
+                                       <p class="employee-p">20,000 + Deliverable Pincodes</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="employees">
+                                        <p class="employee-p">3 Hour Delivery on Selected Pincodes</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="employees">
+                                        <p class="employee-p">Easy Return</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="employees">
+                                        <p class="employee-p">100,000 + <br>Inventories</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="employees">
+                                       <p class="employee-p">3 Layer Quality Checking</p>
+                                    </div>
+                                </div>
+                            </div></div></div>
+                    </section>
+
+                     <section class="mobile"  style="background-color: #FBFBFB">
+                        <div class="container">
+                           
+                            <div class="row">
+                                <div class="col-md-2  col-6">
+                                    <div class="employees">
+                                        <p class="couti"> <img src="img/png/g1.png"></p>
+                                         <p class="employee-p">100% Genuine Products</p>
+                                    </div>
+                                   
+                                </div>
+                                <div class="col-md-2   col-6">
+                                    <div class="customer">
+                                        <p class="couti"> <img src="img/png/g2.png"></p>
+                                         <p class="employee-p">20,000 + Deliverable Pincodes</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2   col-6">
+                                    <div class="design">
+                                        <p class="couti"> <img src="img/png/g3.png"></p>
+                                        <p class="employee-p">3 Hour Delivery on Selected Pincodes</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2   col-6">
+                                    <div class="order">
+                                        <p class="couti"> <img src="img/png/g4.png"></p>
+                                        <p class="employee-p">Easy Return</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2   col-6">
+                                    <div class="order">
+                                        <p class="couti"> <img src="img/png/g5.png"></p>
+                                         <p class="employee-p">100,000 + Inventories</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2   col-6">
+                                    <div class="order">
+                                        <p class="couti"> <img src="img/png/g6.png"></p>
+                                         <p class="employee-p">3 Layer Quality Checking</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.0.47/jquery.fancybox.min.css" />
+
+                 <section class="vide" style="padding: 0px;">
+                    <div class="container">
+                    <section class="ps-about--video">
+                        <div class="ps-banner">
+                            <div class="container">
+                                <h2 class="ps-section__title">How to order Medicines from Medimall?</h2>
+                                <div class="ps-banner__block">
+                                    <div class="contents">
+                                       
+                                        <ol class="timeline">
+                                            <li class="wow fadeInUp" data-wow-duration="0.5s">
+                                                <h5>Open the App</h5>
+                                                <p class="how-one">Our Medimall App is easily available on Play Store and App Store. Click download and open the app to find 100,000 + Inventories.</p>
+                                            </li>
+                                            <li class="wow fadeInUp" data-wow-duration="1.0s">
+                                                <h5>Search for a Product</h5>
+                                                <p class="how-two">Search for your desired products using the medimall. Choose your product or medicines. You can easily check the availability, Ingredients, and expiry dates.</p>
+                                            </li>
+                                            <li class="wow fadeInUp" data-wow-duration="1.6s">
+                                                <h5>Click to order</h5>
+                                                <p class="how-three">Cart your Essentials and click to order. If you have carted any prescribed medicines, you will be given an option to upload the prescription. If you don’t have one, yo u can easily consult our doctors at the comfort of your home and get a prescription. Then you can proceed with your order and choose your shipping address.</p>
+                                            </li>
+                                            <li class="wow fadeInUp" data-wow-duration="2.0s">
+                                                <h5>Choose your Payment</h5>
+                                                <p class="how-four">Once you have chosen the shipping address, you’ll have to select your payment method. For payment, you can either use cards, UPI apps, net banking, or pay on delivery. After you make your payment, we will confirm your order and notify you of the delivery date.</p>
+                                            </li>
+                                        </ol>
+                                    </div>
+								 <div class="ps-banner__thumnail thumbnail">
+								 <img src="img\png\video.png">
+                        <a data-fancybox="video-gallery" class="how_to" href="https://youtu.be/n92oV9a8opk">
+						
+						<div class="vedio">
+                          <div class="ps-banner__video"><i class="fa fa-play"></i></div>
+                         </div>
+						</a>
+						
+                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                    </section>
+                    <section style="background-image: url(img/png/backg.png);    background-size: cover; background-repeat: no-repeat; padding:0px;">
+                        <div class="containers">
+                    <section class="ps-section--blog">
+                        <h3 class="ps-section__title">MedArticles </h3>
+                        <h5>Carefully Curated By our Health Experts</h5>
+                        
+                        <a href="http://medimall.co.in/blog.html" class="viewall desktop-only">View All</a>
+                        <a href="http://medimall.co.in/blog.html" class="viewallm mobile-only">View All</a>
+                        <div class="ps-section__carousel">
+                            <div class="owl-carousel" data-owl-auto="false" data-owl-loop="true" data-owl-speed="13000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="4" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="2" data-owl-item-lg="4" data-owl-item-xl="4" data-owl-duration="1000" data-owl-mousedrag="on">
+                                
+                                <div class="ps-section__item wow fadeInUp" data-wow-duration="0.1s">
+                                    <div class="ps-blog--latset">
+                                        <div class="ps-blog__thumbnail">
+                                            <div class="col-md-12  recent-blog-i"> <img src="http://medimall.co.in/img/png/blog/psyc1.jpg">
+                                                <div class="middle">
+                                                    <a href="http://medimall.co.in/mental-health.html" class="text">Read more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ps-blog__content">
+                                            <div class="ps-blog__meta"> <a class="ps-blog__title" href="http://medimall.co.in/mental-health.html">Mental Health and the Children of India</a></div>
+                                                <div class="blogname" style="display:flex;">
+                                                    
+                                                    <p>Mental Health</p><a>|</a>
+                                                    <p>T Arjun Vijayaraghavan</p>
+                                                </div>
+                                                <p class="ps-blog__des">Mental health is quite an important segment in all our lives but, the Indian society ...</p>
+                                                <div class="bt">
+                                                    <a href="http://medimall.co.in/mental-health.html" class="hvr-underline-from-left" >Read More</a>
+									             <div class="blogname" style="display:flex;">
+                                                    <p>26-5-2021</p>
+									  	                         <a>|</a>  
+									  	                    <a href="#" class="" ><i class="icon-share2" ></i></a>
+									            </div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="ps-section__item wow fadeInUp" data-wow-duration="0.2s">
+                                    <div class="ps-blog--latset">
+                                        <div class="ps-blog__thumbnail">
+                                            <div class="col-md-12  recent-blog-i"> <img src="http://medimall.co.in/img/png/blog/vacc1.jpg">
+                                                <div class="middle">
+                                                    <a href="http://medimall.co.in/vaccination.html" class="text">Read more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ps-blog__content">
+                                            <div class="ps-blog__meta"> <a class="ps-blog__title" href="http://medimall.co.in/vaccination.html">Vaccination - The Way to conquer your fear of Covid19</a></div>
+                                                <div class="blogname" style="display:flex;">
+                                                    
+                                                    <p>Covid 19</p>&nbsp;<a>|</a>&nbsp;
+                                                    <p>Arun Lal</p>
+                                                    
+                                                </div>
+                                                <p class="ps-blog__des">Do you recall the last time you received a call from a relative or had a conversation...</p>
+                                                <div class="bt">
+                                                    <a href="http://medimall.co.in/vaccination.html" class="hvr-underline-from-left" >Read More</a>
+									             <div class="blogname" style="display:flex;">
+                                                    <p>28/05/2021</p>
+									  	                         <a>|</a>  
+									  	                    <a href="#" class="" ><i class="icon-share2" ></i></a>
+									            </div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__item  wow fadeInUp" data-wow-duration="0.3s">
+                                    <div class="ps-blog--latset">
+                                        <div class="ps-blog__thumbnail">
+                                            <div class="col-md-12  recent-blog-i"> <img src="http://medimall.co.in/img/png/blog/disea1.jpg">
+                                                <div class="middle">
+                                                    <a href="http://medimall.co.in/disease-management.html" class="text">Read more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ps-blog__content">
+                                            <div class="ps-blog__meta"> <a class="ps-blog__title" href="http://medimall.co.in/disease-management.html">Covid 19 Second Wave: The Government Protocols Curbing...</a></div>
+                                                <div class="blogname" style="display:flex;">
+                                                    
+                                                    <p>General Health</p>&nbsp;<a>|</a>&nbsp;
+                                                    <p>T Arjun Vijayaraghavan</p>
+                                                </div>
+                                                <p class="ps-blog__des">The Covid 19 first wave penetrated India by February end, 2020, and from there ...</p>
+                                                <div class="bt">
+                                                    <a href="http://medimall.co.in/disease-management.html" class="hvr-underline-from-left" >Read More</a>
+									             <div class="blogname" style="display:flex;">
+                                                    <p>28-05-2021</p>
+									  	                         <a>|</a>  
+									  	                    <a href="#" class="" ><i class="icon-share2" ></i></a>
+									            </div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__item  wow fadeInUp" data-wow-duration="0.4s">
+                                    <div class="ps-blog--latset">
+                                        <div class="ps-blog__thumbnail">
+                                            <div class="col-md-12  recent-blog-i"> <img src="http://medimall.co.in/img/png/blog/per-care1.jpg">
+                                                <div class="middle">
+                                                    <a href="http://medimall.co.in/personal-care.html" class="text">Read more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ps-blog__content">
+                                            <div class="ps-blog__meta"> <a class="ps-blog__title" href="http://medimall.co.in/personal-care.html">Things You Know and Don't Know About Hydrating Face...</a></div>
+                                                <div class="blogname" style="display:flex;">
+                                                    
+                                                    <p>General Health</p>&nbsp;<a>|</a>&nbsp;
+                                                    <p>Arun Lal</p>
+                                                </div>
+                                                <p class="ps-blog__des">Like the famous saying your body is a temple, it requires worship and care...</p>
+                                                <div class="bt">
+                                                    <a href="http://medimall.co.in/personal-care.html" class="hvr-underline-from-left" >Read More</a>
+									            <div class="blogname" style="display:flex;">
+                                                    <p>27-05-2021</p>
+									  	                         <a>|</a>  
+									  	                    <a href="#" class="" ><i class="icon-share2" ></i></a>
+									            </div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__item  wow fadeInUp" data-wow-duration="0.5s">
+                                    <div class="ps-blog--latset">
+                                        <div class="ps-blog__thumbnail">
+                                            <div class="col-md-12  recent-blog-i"> <img src="img/png/blog/exe-fit1.jpg">
+                                                <div class="middle">
+                                                    <a href="http://medimall.co.in/exersize-fitness.html" class="text">Read more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ps-blog__content">
+                                            <div class="ps-blog__meta"> <a class="ps-blog__title" href="http://medimall.co.in/exersize-fitness.html">Yoga 101: Life-Changing Benefits Of Yoga</a></div>
+                                                <div class="blogname" style="display:flex;">
+                                                    
+                                                    <p>Self Care</p>&nbsp;<a>|</a>&nbsp;
+                                                    <p>Arun Lal</p>
+                                                </div>
+                                                <p class="ps-blog__des">Are you tired of living that stressed-out hectic lifestyle? Want a new beginning... </p>
+                                                <div class="bt">
+                                                    <a href="http://medimall.co.in/exersize-fitness.html" class="hvr-underline-from-left" >Read More</a>
+									             <div class="blogname" style="display:flex;">
+                                                    <p>25-5-2021</p>
+									  	                         <a>|</a>  
+									  	                    <a href="#" class="" ><i class="icon-share2" ></i></a>
+									            </div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-section__item  wow fadeInUp" data-wow-duration="0.6s">
+                                    <div class="ps-blog--latset">
+                                        <div class="ps-blog__thumbnail">
+                                            <div class="col-md-12  recent-blog-i"> <img src="img/png/blog/nutri-food1.jpg">
+                                                <div class="middle">
+                                                    <a href="http://medimall.co.in/nutrition-food.html" class="text">Read more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ps-blog__content">
+                                            <div class="ps-blog__meta"> <a class="ps-blog__title" href="http://medimall.co.in/nutrition-food.html">Healthy Diet- An Immune Influenster</a></div>
+                                                <div class="blogname" style="display:flex;">
+                                                    
+                                                    <p>Fitness & Nutrition</p>&nbsp;<a>|</a>&nbsp;
+                                                    <p>Arun Lal</p>
+                                                </div>
+                                                <p class="ps-blog__des">Since our country's virus outbreak, you may have noticed a lot of posts using...</p>
+                                                <div class="bt">
+                                                    <a href="http://medimall.co.in/nutrition-food.html" class="hvr-underline-from-left" >Read More</a>
+									             <div class="blogname" style="display:flex;">
+                                                    <p>25-5-2021</p>
+									  	                         <a>|</a>  
+									  	                    <a href="#" class="" ><i class="icon-share2" ></i></a>
+									            </div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </section></div>
+                     <div class="container">
+                    <section class="ps-section--blog worry">
+                        <h2 class="">Million Worries One Cure</h2>
+                        <div class="row">
+                            <div class="col-md-4 wow fadeInUp" data-wow-duration="0.1s">
+                                <div class="one-app wow fadeInUp" data-wow-duration="0.2s">
+                                    <div class="one-img"> <img src="img/png/one1.png" ></div>
+                                    <div class="one-cont">
+                                        <h3>Stay Home & FolioFit</h3>
+                                        <p>Transform Yourself with the mantra of Fitness. Commence your Fitness journey with daily workout sessions , yoga and much more.</p>
+                                    </div>
+                                </div>
+                                <div class="one-app  wow fadeInUp" data-wow-duration="0.4s">
+                                    <div class="one-img"> <img src="img/png/one2.png" ></div>
+                                    <div class="one-cont">
+                                        <h3>Express Deliveries</h3>
+                                        <p>Be it the village, the cities or the suburbs, get lighting fast cures on your doorsteps.</p>
+                                    </div>
+                                </div>
+                                <div class="one-app  wow fadeInUp" data-wow-duration="0.6s">
+                                    <div class="one-img"> <img src="img/png/one3.png" ></div>
+                                    <div class="one-cont">
+                                        <h3>Keep learning with MedFeed</h3>
+                                        <p>Jolt your knowledge with Medfeed. Explore the realm of articles, quizzes and expert talks from anywhere anytime.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4  wow fadeInUp" data-wow-duration="0.2s">
+                                <video  autoplay loop muted playsinline id="vid" style="width:100%">
+                                  <source type="video/mp4" src="img/png/one.mp4"></source>
+                             </video>
+                            </div>
+                            <div class="col-md-4  wow fadeInUp" data-wow-duration="0.3s">
+                                <div class="one-apps  wow fadeInUp" data-wow-duration="0.2">
+                                   
+                                    <div class="one-cont">
+                                        <h3>Virtual Hospitals</h3>
+                                        <p>Doctors are now just one click away. Consult your doctor at the comfort of your home with upto 40+ specialities.</p>
+                                    </div>
+                                     <div class="one-img"> <img src="img/png/one4.png" ></div>
+                                </div>
+                                <div class="one-apps wow fadeInUp" data-wow-duration="0.4s">
+                                    <div class="one-cont">
+                                        <h3>Replenish & Stock up </h3>
+                                        <p>Replenish your medicines with Medfill. Get Timely reminders and stay up to date with your health.</p>
+                                    </div>
+                                     <div class="one-img"> <img src="img/png/one5.png" ></div>
+                                </div>
+                                <div class="one-apps wow fadeInUp" data-wow-duration="0.6s">
+                                    <div class="one-cont">
+                                        <h3>Indulge yourself with medimall</h3>
+                                        <p>Appease your cravings for health needs with Medimall. Get your hands on 100,000+ healthcare and inventories.</p>
+                                    </div>
+                                     <div class="one-img"> <img src="img/png/one6.png" ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                   </div>
+                   
+                   </section>
+              
+<div class="home-hero -reveal">
+<div class="home-slides c--white h-100 owl-carousel owl-theme"  data-owl-auto="false" data-owl-loop="true" data-owl-speed="20000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" single-items="true" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="80000" data-owl-mousedrag="on">
+<!--<div class="header-slides" style="background-color: #ffea2e;">
+<div class="slides--slide -web -active wrapper-container-el">
+
+<div class="el-device">
+<div class="asset">
+<div class="asset--chrome">
+<div class="asset--chrome--viewport">
+<img src="home\images\banner\desk.png" width="577" height="9999" class="will-scroll">
+</div>
+</div>
+</div>
+</div>
+
+<div class="el-bg-elements">
+<div class="el-mobile-bg-elements is-show">
+<div class="container-obj">
+<img data-src="home/images/objects/gym1.png" class="obj obj-1" alt="">
+<img data-src="home/images/objects/gym2.svg" class="obj obj-2 rotate_Move" alt="">
+<img data-src="home/images/objects/gym2.png" class="obj obj-3 " alt="">
+</div>
+</div>
+</div>
+</div>
+<div class="asset-content d-block">
+<div class="copy d-lg-flex flex-column justify-content-center align-items-lg-start justify-content-lg-center">
+<div class="copy--title w--100">
+
+<h2>Commence your Fitness venture with FolioFit</h2>
+</div>
+<div class="slide-progress-main">
+<div class="slide-progress"></div>
+</div>
+<div class="copy--body w--100">
+<p>Tired of going to the gym? Kickstart your fitness journey with Foliofit from the comfort of your home.
+ Get Personalized Workout Sessions Carefully curated for you. </p>
+<p><a href="#" target="_self" rel="noopener">Download app Now</a></p>
+</div>
+</div>
+</div>
+</div>-->
+<div class="header-slides" style="background-color: #72ef72;">
+<div class="slides--slide -web -active wrapper-container-el">
+<div class="container-illu">
+<div class="container-device">
+
+<div class="el-device">
+<img src="home\images\objects\iPhoneX.svg" class="iphone" alt="">
+<div class="container-screen">
+<img data-src="home\images\banner\bb.png" class="unscroll" alt="">
+<img data-src="home\images\banner\yoga-srn.png" class="scroll will-scroll" alt="">
+
+</div>
+</div>
+<div class="el-device">
+<img src="home\images\objects\iPhoneX.svg" class="iphone" alt="">
+<div class="container-screen">
+<img data-src="home\images\banner\yoga-srn.png" class="header" alt="">
+<img data-src="home\images\banner\yoga-srn.png" class="unscroll " alt="">
+
+</div>
+</div>
+</div>
+</div>
+<div class="el-bg-elements">
+<div class="el-mobile-bg-elements is-show">
+<div class="container-obj">
+<img data-src="home/images/objects/yoga1.svg" class="obj obj-3" alt="">
+<img data-src="home/images/objects/y-star.png" class="obj obj-1 rotate_Move" alt="">
+
+</div>
+</div>
+</div>
+</div>
+<div class="asset-content d-block">
+ <div class="copy d-lg-flex flex-column justify-content-center align-items-lg-start justify-content-lg-center">
+<div class="copy--title w--100">
+
+    <h2>Heal Your Mind 
+Nourish Your Soul
+Sculpt your Body With Daily Yoga Sessions</h2>
+</div>
+<div class="slide-progress-main">
+<div class="slide-progress"></div>
+</div>
+<div class="copy--body w--100">
+<p>Rejuvenate your Mind, Body, and Soul with the Art of Yoga. 
+Get access to daily yoga sessions from beginners to experts. Join now and heal your body and soul with Medimall.</p>
+<p><a href="#" target="_self" rel="noopener">Download app Now</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="header-slides" style="background-color: #ffea2e;">
+<div class="slides--slide -web -active wrapper-container-el">
+<div class="container-illu">
+<div class="container-device">
+<div class="el-device">
+<img data-src="home/images/objects/iPhoneX.svg" class="iphone" alt="">
+<div class="container-screen">
+<img src="home\images\banner\remind-srn1.png" class="unscroll" alt="">
+</div>
+</div>
+<div class="el-device">
+<img src="home\images\objects\iPhoneX.svg" class="iphone" alt="">
+<div class="container-screen">
+<img data-src="home\images\banner\remind-srn2.png" class="header" alt="">
+<img data-src="home\images\banner\remind-srn2.png" class="unscroll " alt="">
+
+</div>
+</div>
+</div>
+</div>
+<div class="el-bg-elements">
+<div class="el-mobile-bg-elements is-show">
+<div class="container-obj">
+<img data-src="home/images/objects/remind1.svg" class="obj obj-1" alt="">
+<img data-src="home/images/objects/remind2.svg" class="obj obj-2 rotate_Move" alt="">
+<img data-src="home/images/objects/" class="obj obj-3 " alt="">
+</div>
+</div>
+</div>
+</div>
+<div class="asset-content d-block">
+ <div class="copy d-lg-flex flex-column justify-content-center align-items-lg-start justify-content-lg-center">
+<div class="copy--title w--100">
+
+    <h2>Stay Reminded with your health needs with Health Reminder</h2>
+</div>
+<div class="slide-progress-main">
+<div class="slide-progress"></div>
+</div>
+<div class="copy--body w--100">
+<p>Always forgetting to take your medicines? Worry no more. Stay notified of your health needs.
+ Be it a meal or medicine, get timely notifications with our health reminders.</p>
+<p><a href="#" target="_self" rel="noopener">Download app Now</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header-slides" style="background-color: #ed5858;">
+    <div class="slides--slide -web -active wrapper-container-el">
+        <div class="container-illu">
+        <div class="container-device">
+        <div class="el-device">
+        <img data-src="home/images/objects/iPhoneX.svg" class="iphone" alt="">
+        <div class="container-screen">
+         <img data-src="home\images\banner\nutri.png" class="unscroll" alt="">
+        </div>
+        </div>
+       <div class="el-device">
+        <img src="home\images\objects\iPhoneX.svg" class="iphone" alt="">
+        <div class="container-screen">
+        <img data-src="home\images\banner\bb.png" class="unscroll" alt="">
+        <img data-src="img/art1.png" class="scroll will-scroll" alt="">
+        <img data-src="home/images/objects/ol-scroll-footer.png" class="footer" alt="">
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="el-bg-elements">
+<div class="el-mobile-bg-elements is-show">
+<div class="container-obj">
+<img data-src="home/images/objects/.png" class="obj obj-1" alt="">
+<img data-src="home/images/objects/.svg" class="obj obj-2 rotate_Move" alt="">
+<img data-src="home/images/objects/.png" class="obj obj-3 " alt="">
+</div>
+</div>
+</div>
+        </div>
+<div class="asset-content d-block">
+<div class="copy d-lg-flex flex-column justify-content-center align-items-lg-start justify-content-lg-center">
+<div class="copy--title w--100">
+
+    <h2>Are you making the right choices with your food? </h2>
+</div>
+<div class="slide-progress-main">
+<div class="slide-progress"></div>
+</div>
+<div class="copy--body w--100">
+<p>Are you aware of the nutritionist facts hiding in your body? Every individual is different and every body craves for 
+different nutritions and proteins. Are you eating the right food for your body? Connect with your nutriExpert and find out today.</p>
+<p><a href="#" target="_self" rel="noopener">Download app Now</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header-slides" style="background-color: orange;">
+    <div class="slides--slide -web -active wrapper-container-el">
+        <div class="container-illu">
+        <div class="container-device">
+        <div class="el-device">
+        <img data-src="home/images/objects/iPhoneX.svg" class="iphone" alt="">
+        <div class="container-screen">
+         <img data-src="home/images/bmi1.png" class="unscroll" alt="">
+        </div>
+        </div>
+       <div class="el-device">
+        <img src="home\images\objects\iPhoneX.svg" class="iphone" alt="">
+       
+		<div class="container-screen">
+<img data-src="home\images\banner\bb.png" class="unscroll" alt="">
+  <img data-src="home/images/bmi2.png" class="scroll will-scroll" alt="">
+
+</div>
+        </div>
+        </div>
+        </div>
+        <div class="el-bg-elements">
+<div class="el-mobile-bg-elements is-show">
+<div class="container-obj">
+<img data-src="home/images/objects/ht1.png" class="obj obj-1" alt="">
+<img data-src="home/images/objects/ht2.svg" class="obj obj-2 rotate_Move" alt="">
+<img data-src="home/images/objects/ht3.png" class="obj obj-4 " alt="">
+</div>
+</div>
+</div>
+        </div>
+<div class="asset-content d-block">
+<div class="copy d-lg-flex flex-column justify-content-center align-items-lg-start justify-content-lg-center">
+<div class="copy--title w--100">
+
+    <h2>Are you making the right choices with your food? </h2>
+</div>
+<div class="slide-progress-main">
+<div class="slide-progress"></div>
+</div>
+<div class="copy--body w--100">
+<p>Are you aware of the nutritionist facts hiding in your body? Every individual is different and every body craves for 
+different nutritions and proteins. Are you eating the right food for your body? Connect with your nutriExpert and find out today.</p>
+<p><a href="#" target="_self" rel="noopener">Download app Now</a></p>
+</div>
+</div>
+</div>
+</div>
+<!--<div class="header-slides" style="background-color: #72ef72;">
+<div class="slides--slide -web -active wrapper-container-el">
+<div class="container-illu">
+<div class="container-device">
+<div class="el-device">
+<img data-src="home/images/objects/iPhoneX.svg" class="iphone" alt="">
+<div class="container-screen">
+<img src="home\images\banner\esaf_unscroll.jpg" class="unscroll" alt="">
+</div>
+</div>
+ <div class="el-device">
+        <img src="home\images\objects\iPhoneX.svg" class="iphone" alt="">
+        <div class="container-screen">
+        <img data-src="home/images/objects/ol-scroll-header.png" class="header" alt="">
+      
+        <img data-src="home/images/objects/ol-scroll-footer.png" class="footer" alt="">
+        </div>
+        </div>
+</div>
+</div>
+<div class="el-bg-elements">
+<div class="el-mobile-bg-elements is-show">
+<div class="container-obj">
+<img data-src="home/images/objects/ht1.png" class="obj obj-1" alt="">
+<img data-src="home/images/objects/ht2.svg" class="obj obj-2 rotate_Move" alt="">
+<img data-src="home/images/objects/ht3.svg" class="obj obj-3 " alt="">
+</div>
+</div>
+</div>
+</div>
+<div class="asset-content d-block">
+<div class="copy d-lg-flex flex-column justify-content-center align-items-lg-start justify-content-lg-center">
+<div class="copy--title w--100">
+
+<h2>Little habits for a better change.</h2>
+</div>
+<div class="slide-progress-main">
+<div class="slide-progress"></div>
+</div>
+<div class="copy--body w--100">
+<p>Is your diet plant not effective? Discover healthy recipes and personalized meal plans 
+specially designed for your goals. Every day is a chance to be healthy, start your health journey with Medimall.</p>
+<p><a href="#" target="_self" rel="noopener">Download app Now</a></p>
+</div>
+</div>
+</div>
+</div>-->
+
+</div>
+</div> 
+                <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css">
+                
+               <section class="ps-whowe">
+                    <div class="counter">
+                        <div class="container">
+                            <h3 class="text-center">Accomplishments That Speaks for Itself</h3>
+                            <div class="desktop-only">
+                            <div class="conut row ">
+                                <div class="counts col-md-2  wow fadeInUp" data-wow-duration="0.5s">
+                                    <div class="employees">
+                                        <img src="img/png/we1.png">
+                                        <h2 class="counter-count" data-max="10000">+ <br>
+                                           </h2>  <span class="counti">Family Served</span></div>
+                                </div>
+                                <div class="counts  col-md-2  wow fadeInUp" data-wow-duration="1s">
+                                    <div class="employees">
+                                         <img src="img/png/we2.png">
+                                        <h2 class="counter-count" data-max="17500">+ <br>
+                                        </h2><span class="counti">Pincodes</span> </div>
+                                </div>
+                                <div class="counts  col-md-2  wow fadeInUp" data-wow-duration="1.5s">
+                                    <div class="employees">
+                                        <img src="img/png/we3.png">
+                                        <h2 class="counter-count" data-max="25000">+ <br>
+                                        </h2><span class="counti">Products</span> </div>
+                                </div>
+                                <div class="counts col-md-2 wow fadeInUp" data-wow-duration="2s">
+                                    <div class="employees">
+                                        <img src="img/png/we4.png">
+                                        <h2 class="counter-count" data-max="12000">+ <br>
+                                       </h2>  <span  class="counti">Order Delivered</span></div>
+                                </div>
+                                <div class="counts col-md-2  wow fadeInUp" data-wow-duration="2.5s">
+                                    <div class="employees">
+                                       <img src="img/png/we5.png">
+                                        <h2 class="counter-count" data-max="5000">+ <br>
+                                        </h2><span  class="counti">5 Star Review</span> </div>
+                                </div>
+                            </div></div>
+                             <div class="mobile-only">
+                            <div class="conut row ">
+                                <div class="counts col-md-2 col-6  wow fadeInUp" data-wow-duration="0.5s">
+                                    <div class="employees">
+                                        <img src="img/png/we1.png">
+                                        <h2 class="counter-count" data-max="10000">+ <br>
+                                            <span class="counti">Family Served</span></h2> </div>
+                                </div>
+                                <div class="counts  col-md-2 col-6  wow fadeInUp" data-wow-duration="1s">
+                                    <div class="employees">
+                                         <img src="img/png/we2.png">
+                                        <h2 class="counter-count" data-max="17500">+ <br>
+                                        <span class="counti">Pincodes</span></h2> </div>
+                                </div>
+                                <div class="counts  col-md-2 col-6  wow fadeInUp" data-wow-duration="1.5s">
+                                    <div class="employees">
+                                        <img src="img/png/we3.png">
+                                        <h2 class="counter-count" data-max="25000">+ <br>
+                                        <span class="counti">Products</span></h2> </div>
+                                </div>
+                                <div class="counts col-md-2  col-6 wow fadeInUp" data-wow-duration="2s">
+                                    <div class="employees">
+                                        <img src="img/png/we4.png">
+                                        <h2 class="counter-count" data-max="12000">+ <br>
+                                        <span  class="counti">Order Delivered</span></h2> </div>
+                                </div>
+                                <div class="counts col-md-2 col-xs-12  wow fadeInUp" data-wow-duration="2.5s">
+                                    <div class="employees">
+                                       <img src="img/png/we5.png">
+                                        <h2 class="counter-count" data-max="5000">+ <br>
+                                        <span  class="counti">5 Star Review</span></h2> </div>
+                                </div>
+                            </div></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="ps-section--reviews">
+                    <h3 class="ps-section__title"> Our Happy Customers</h3>
+                    <div class="ps-section__content">
+                        <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="2000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="false" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="7" data-owl-item-xl="7" data-owl-duration="1000" data-owl-mousedrag="on">
+                            <div class="ps-review wow zoomIn" data-wow-duration="0.5s" style="background-color:#CFF3FF">
+                                <div class="ir">
+                                <div class="ih"> <img class="ihimg" src="img/png/test1.png">
+                                    <div class="dt">
+                                        <h5>Manu Mathew</h5>
+                                        <h6>12 Sep 2021</h6></div>
+                                </div>
+                                
+                                </div>
+                                <div class="ps-review__text"> <img src="img/png/pin.png" class="pins">
+                               
+                                I love reading I love reading Mediblogs. They not only help you stay informed on healthcare and wellness
+                                but also helps you gather knowledge on healthcare tips like how to prevent and cure certain diseases, health
+                                benefits of different foods, and much more.</div>
+                            </div>
+                            <div class="ps-review wow zoomIn" data-wow-duration="1s"  style="background-color: #CFFFEA">
+                                <div class="ih"><img class="ihimg" src="img/png/test5.png">
+                                    <div class="dt">
+                                        <h5>Febin Muhammad</h5>
+                                        <h6>20 Sep 2021</h6></div>
+                                </div>
+                                <div class="ps-review__text"> <img src="img/png/pin.png" class="pins"> I get sick very often and I am tired of going to hospitals every week.
+                                I was searching for some health tips for preventing cold and cough and that's when I found my little gem, the medimall app. MediBlog has a cure for everything,
+                                and I love how they help you to prevent these from coming. I love reading their blogs.</div>
+                            </div>
+                            <div class="ps-review wow zoomIn" data-wow-duration="1.5s"  style="background-color: #F2FFCF">
+                                <div class="ih"><img class="ihimg" src="img/png/test3.png">
+                                    <div class="dt">
+                                        <h5>Aiden Joseph</h5>
+                                        <h6>10 Nov 2021</h6></div>
+                                </div>
+                                <div class="ps-review__text"> <img src="img/png/pin.png" class="pins"> I am a health junkie and I love taking care of myself. Most of the 
+                                time I use different sites to get my grooming products, medicines, immunity boosters and read about various health tips. What I love about medimall is that
+                                it has everything one would require to take care of themselves. Thank you medimall for making my life easy.</div>
+                            </div>
+                            <div class="ps-review wow zoomIn" data-wow-duration="2s"  style="background-color: #FFEACF">
+                                <div class="ih"><img class="ihimg" src="img/png/test4.png">
+                                    <div class="dt">
+                                        <h5>Geethika Krishna</h5>
+                                        <h6>25 Nov 2021</h6></div>
+                                </div>
+                                <div class="ps-review__text"> <img src="img/png/pin.png" class="pins">My parents live in a small village by themselves. Most of the time the medicines 
+                                they need are not available in stores. So they struggle a lot.That's when I got the Medimall app. With Medimall I can easily order the medicines my father needs. 
+                                And Medimall will deliver it to my parents at the comfort of their home. </div>
+                            </div>
+                            <div class="ps-review wow  zoomIn" data-wow-duration="2.5s"  style="background-color: #CFF3FF">
+                                <div class="ih"><img class="ihimg" src="img/png/test2.png">
+                                    <div class="dt">
+                                        <h5>Fathima Razool</h5>
+                                        <h6>07 Dec 2021</h6></div>
+                                </div>
+                                <div class="ps-review__text"><img src="img/png/pin.png" class="pins"> My parents are diabetic patients, so they constantly need checkups. With the surge in 
+                                pandemics, we were terrified to go to the hospitals with the fear of getting sick. With the help of Medimall, we were able to consult the doctor virtually
+                                without having to worry about going to the hospital.Thank you Medimall </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </section>
+                <section class="ps-about__banner give">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7 ">
+                                <div class="mobilecont">
+                                    <h1 class="ps-banner__title" style="color: white;font-weight: 400;"><strong>Giving hope</strong> to <strong  style="color: #181818;">India</strong> </h1>
+                                    <div class="col-md-5">
+                                         <h6>Download the app for free</h6>
+                                    </div> 
+									 <div class=" col-md-7 play-apps">
+                              <a href="" class="hvr-grow"><img src="img/png/play1.png"></a>
+                               <a href=""  class="hvr-grow"><img src="img/png/play.png"></a>
+                            </div>
+                           </div>
+                            </div>
+                            <video  autoplay loop muted playsinline id="vid-give" class="ps" >
+                    <source type="video/mp4" src="img/give.m4v"></source>
+                    </video>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <footer class="ps-footer ps-footer--5">
+            <div class="ps-footer--top">
+                <div class="container">
+                    <div class="row m-0 mains">
+                       
+                        <h4>Medimall, India's Most Trusted Healthcare platform  </h4><br><br>
+                       
+                        <p>Get Authentic Products in assured discounts <br>Medimall is your one stop destination for everything healthy needs where you can shop for quality online medicines, wellness products, and consult India's top doctors. Get your medicines and wellness
+products delivered at the comfort of your home, no matter where you live be it the cities, the village or the suburbs. Here is what we promise to you and your well beings. </p>
+                        <h5>Virtual Hospitals</h5>
+                        <p>Doctors are now just one click away. Consult your doctor at the comfort of your home.Connect with 40+ specialties and 800+ doctors.
+                                              </p>
+                          <h5>3 Hour Lightning Fast Deliveries</h5>
+                        <p>Be it the village, the cities or the suburbs, get lighting fast cures on your doorsteps.
+                              </p>
+                        <h5>FolioFit: Your Fitness Expert</h5>
+                        <p>Transform Yourself with the mantra of Fitness.
+  Commence your Fitness journey with our workouts, yoga sessions and much more. </p>
+  <h5> Jolt your Knowledge with MedFeed</h5>
+  <p> Amplify your knowledge with MedFeed. Learn & Explore the horizons of Healthcare with articles, quizzes and expert talks from anywhere anytime. </p>
+  <h5>MedFill - Replenish Your Medical Needs</h5>
+  <p>Get your timely medical refills with Medfill. Stay up to date with your health with our health reminders.</p>
+  <h5>Indulge your MeDesires with Medimall</h5>
+  <p>Appease your cravings for health needs with Medimall. Get your hands on 100,000+ healthcare and inventories. </p>
+  <h5>What makes us Unique?</h5>
+  <p>Humans are bound to have succumbed to illness quite often. With the surge of the pandemic, people are terrified to go to hospitals and pharmacies.Our solution caters to the needs of these individuals. The most affected by these issues are people living in remote areas of India. Through medimall, we aim at digitizing and simplifying the way they live. Through our services, people living in remote areas could avail of consultation services from the top doctors in India. Since we offer our app services in regional languages, people can make hassle-free communication.</p>
+  <h5>Serving You With The Best</h5>
+  <p> The abundance and unavailability of medicines and their supply to these hyper-local areas could be sorted out by the implementation of our app. We also offer services relating to fitness and health and offer a virtual gymnasium fulfilling all requirements from the comfort of their homes.<br>We will guide individuals on how to use the app, and how to do things with ease. If an individual is sick or is having ailments, they can order medicine from the comfort of their homes.
+       Our dedicated team will deliver the product after assessment through a 3 level quality check, within a stipulated time. </p>
+  <h5>Our Vision</h5>
+  <p>With medimall, we strive to bridge the gap between the scarcity of healthcare services in rural areas and the abundance of healthcare professionals in urban areas. We are working to balance the scales between these two extremes. We hope to offer the future of health and fitness and deliver that promise to their doorsteps.</p>
+  <p class="colors">Avail our services from whole kerala and bangalore</p>
+                       
+                        <h3>Top Categories :</h3>
+                        <ul class="footer-cat">
+                            <li><a href="#" class="menus-f">Ayur care</a></li>
+                            <li>|</li>
+                            <li><a href="#" class="menus-f">Personal Care</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Home care</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Baby Care</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Skin Care</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Body Care</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Elder Care</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Pregnancy Care</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Diabetic Care</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Mother Care</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Hair Care</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Eye Care</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Covid Essentials</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Health Care</a></li><li>|</li>
+                            
+                        </ul>
+                        <h3>Top Brands :</h3>
+                        <ul class="footer-cat">
+                            <li><a href="#" class="menus-f">Dabur</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Colgate</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Himalaya</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Dove</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Nivia</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Patanjali</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Medimall</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Dettol</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Horlicks</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Medlife PL</a></li>
+                            
+                        </ul>
+                        <h3>Top Selling Products :</h3>
+                        <ul class="footer-cat">
+                            <li><a href="#" class="menus-f">DIGENE Acidity & Gas Relief Mint</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Dettol Antiseptic</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Dabur Chyawanprash Awaleha</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Medimall Advanced</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Himalaya Himcolin</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Medimall Essentials Multivitamin</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Dettol Antiseptic</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Fingertip Pulse</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Hand Sanitizer IPA Based</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Accu-Chek Active</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Medimall Essentials Apple Cider Vinegar</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Revital H Daily Health Supplement</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Medlife Essentials Shilajeet</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">For Daily Health</a></li>
+                           
+                        </ul>
+                        <h3>Most Searched Healthcare Products :</h3>
+                        <ul class="footer-cat">
+                            <li><a href="#" class="menus-f">DIGENE Acidity & Gas Relief Mint</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Calcimax Forte+</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Himalaya Tentex Forte</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Calcimax 500 Mg</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Dabur Pudin Hara</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Rango Medlife Pure Generics 650 mg</a></li>
+                            <li>|</li>
+                            <li><a href="#" class="menus-f">Himalaya Tentex Royal</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Aimil Neeri</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Himalaya Himplasia</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Zandu Tripala</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Benadon 40 mg</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Himalaya Rumalaya Forte</a></li>
+                           
+                        </ul>
+                        <h3>Most Searched Brands :</h3>
+                        <ul class="footer-cat">
+                             <li><a href="#" class="menus-f">Baidyanath</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Medimall Essentials</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Sri Sri Tattva</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Dabur</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Patanjali</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Medimall</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Dettol</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Horlicks</a></li><li>|</li>
+                            <li><a href="#" class="menus-f">Medlife PL</a></li>
+                        </ul>
+                        <h5>Most Viewed Articles :</h5>
+                        <br>
+                        <br>
+                        
+                    </div>
+                </div>
+            </div>
+
+<style>
+    @font-face {
+    font-family: SegoeUI;
+    src:
+        local("Segoe UI Light"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff2) format("woff2"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff) format("woff"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.ttf) format("truetype");
+    font-weight: 100;
+}
+</style>
+
+
+              <section class="ps-section--newsletter">
+                <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                      <video  autoplay loop muted playsinline id="vid-delivery" class="ps" >
+                    <source type="video/mp4" src="img/delivery.m4v"></source>
+                    </video>
+                    </div>
+                    <!-- <div class="col-md-6"></div> -->
+                    <div class="col-md-9">
+                         <form action="do_action" method="post" class="news">
+                            <div class="ps-form--subscribe">
+                                <h4 >Get the link to Download App</h4>
+                                <div class="ps-form__control ml-2">
+                                    <input class="form-control ps-inputs" type="text" placeholder="Enter your Phone number">
+                                    <button class="ps-btn">Get link</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                 </div>
+                </section>
+            <div class="container">
+                <div class="ps-footer__middle">
+                    <div class="row ps-footer__category  m-0 justify-content-between">
+                        <div class="ft">
+                            <div class="ps-footer--block ">
+                                <h5 class="ps-block__title">Company</h5>
+                                <ul class="ps-block__list shadows ">
+                                    <li><a href="who-we-are.html">Our Legacy </a></li>
+                                    <li><a href="leadership.html">Health Saviours</a></li>
+                                    <li><a href="credible-platform.html">Trustable platform</a></li>
+                                    <li><a href="career.html">Career </a></li>
+                                    <li><a href="foundation.html">Medimall Foundation </a></li>
+                                    <li><a href="blog.html">MediBlog</a></li>
+                                    <li><a href="refer.html">Refer & Earn</a></li>
+                                    <li><a href="press-release.html">Press Release </a></li>
+                                    <li><a href="reward.html">Glitch Reward Programme</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ft ">
+                            <div class="ps-footer--block">
+                                <h5 class="ps-block__title">Our Services</h5>
+                                <ul class="ps-block__list shadows">
+                                    <li><a href="order.html">Order Medicines</a></li>
+                                    <li><a href="under.html">Order Healthcare Products</a></li>
+                                    <li><a href="under.html">Virtual Consultation</a></li>
+                                    <li><a href="under.html">Offline Medical Store</a></li>
+                                    <li><a href="gym.html">Gym</a></li>
+                                    <li><a href="gym.html#yoga"> Yoga</a></li>
+                                    <li><a href="gym.html#nutri">Nutri Chart </a></li>
+                                    <li><a href="gym.html#diet"> Diet Regime</a></li>
+                                    <li><a href="gym.html">Quiz</a></li>
+                                    <li><a href="under.html">Medpride Subscription </a></li>
+                                    <li><a href="under.html">Medfil Refill</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ft">
+                            <div class="ps-footer--block">
+                                <h5 class="ps-block__title">Partner With Us</h5>
+                                <ul class="ps-block__list shadows">
+                                    <li><a href="franchise.html">Own a Franchise </a></li>
+                                       <li><a href="join.html" target="_blank"> Affiliate Centres </a></li>
+                                   
+                                    <li><a href="companion.html">Doctors Be a Health Companion</a></li></ul>
+                            </div>
+                        </div>
+                        <div class="ft">
+                            <div class="ps-footer--block">
+                                <h5 class="ps-block__title">Quick Links</h5>
+                                <ul class="ps-block__list shadows">
+                                    <li><a href="order.html">Order Medicines</a></li>
+                                    <li><a href="under.html">Order Healthcare Products </a></li>
+                                    <li><a href="under.html">My Orders </a></li>
+                                    <li><a href="under.html">My Membership</a></li>
+                                    <li><a href="under.html">Ayure Care </a></li>
+                                    <li><a href="under.html">Expert Talk  </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ft">
+                            <div class="ps-footer--block">
+                                <h5 class="ps-block__title">Help</h5>
+                                <ul class="ps-block__list shadows">
+                                    <li><a href="under.html">FAQ</a></li>
+                                    <li><a href="under.html">Return Policy </a></li>
+                                    <li><a href="under.html">Terms & Conditions </a></li>
+                                    <li><a href="under.html">Privacy Policy </a></li>
+                                    <li><a href="under.html">Refund Policy </a></li>
+                                    <li><a href="under.html">Editorial Policy  </a></li>
+                                    <li><a href="under.html">Referal Policy </a></li>
+                                    <li><a href="under.html">Site Map </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lap">
+                        <div class="row ">
+                            <div class="col-12 col-md-4">
+                                <div class="ps-footer--contact">
+                                    <div class="text-white partner">Our payment Partners</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="ps-footer--contact"> </div>
+                            </div>
+                            <div class="col-12 col-md-2">
+                                <div class="ps-footer--address">
+                                    <div class="ps-logo">
+                                        <!--<a href="under.html"><img class="logo-black" src="img\Logo-black.png" alt=""></a>-->
+                                    </div>
+                                    <div class="text-white">We are Social</div>
+                                   <ul class="ps-social">
+                                        <li><a class="ps-social__link facebook icon" href="under.html"><i class="fa fa-facebook"> </i><span class="ps-tooltip">Facebook</span></a></li>
+                                        <li><a class="ps-social__link instagram icon" href="under.html"><i class="fa fa-instagram"></i><span class="ps-tooltip">Instagram</span></a></li>
+                                        <li><a class="ps-social__link youtube icon" href="under.html"><i class="fa fa-youtube-play"></i><span class="ps-tooltip">Youtube</span></a></li>
+                                        <li><a class="ps-social__link pinterest icon" href="under.html"><i class="fa fa-whatsapp"></i><span class="ps-tooltip">Whatsapp</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile">
+                        <div class="row ">
+                            <div class="col-12 col-md-3">
+                                <div class="ps-footer--address">
+                                    <div class="ps-logo">
+                                        <!--<a href="under.html"><img class="logo-black" src="img\Logo-black.png" alt=""></a>-->
+                                    </div>
+                                    <div class="text-white">We are Social</div>
+                                    <ul class="ps-social">
+                                        <li><a class="ps-social__link facebook " href="under.html"><i class="fa fa-facebook"> </i><span class="ps-tooltip">Facebook</span></a></li>
+                                        <li><a class="ps-social__link instagram" href="under.html"><i class="fa fa-instagram"></i><span class="ps-tooltip">Instagram</span></a></li>
+                                        <li><a class="ps-social__link youtube" href="under.html"><i class="fa fa-youtube-play"></i><span class="ps-tooltip">Youtube</span></a></li>
+                                        <li><a class="ps-social__link pinterest" href="under.html"><i class="fa fa-whatsapp"></i><span class="ps-tooltip"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="ps-footer--contact"> </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="ps-footer--contact">
+                                    <div class="text-white partner">Our payment Partners</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ps-footer--bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <a><img class="payment-light" src="img\png\f1.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f2.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f3.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f4.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f5.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f6.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f7.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f8.png" alt=""></a>
+                            <a><img class="payment-light" src="img\png\f9.png" alt=""></a>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <p style="color: #103178; padding-top: 5px;" class="copy">Copyright © 2021 Medimall. All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        </div>
+      
+        <div class="ps-search">
+            <div class="ps-search__content ps-search--mobile"><a class="ps-search__close" href="under.html" id="close-search"><i class="icon-cross"></i></a>
+                <h3>Search</h3>
+                <form action="do_action" method="post">
+                    <div class="ps-search-table">
+                        <div class="input-group">
+                            <input class="form-control ps-input" type="text" placeholder="Search for products">
+                            <div class="input-group-append"><a href="under.html"><i class="fa fa-search"></i></a></div>
+                        </div>
+                    </div>
+                </form>
+                <div class="ps-search__result">
+                    <div class="ps-search__item">
+                        <div class="ps-product ps-product--horizontal">
+                            <div class="ps-product__thumbnail">
+                                <a class="ps-product__image" href="under.html">
+                                    <figure><img src="img\png\smade.png" alt="alt"></figure>
+                                </a>
+                            </div>
+                            <div class="ps-product__content">
+                                <h5 class="ps-product__title"><a>3-layer <span class='hightlight'>mask</span> with an elastic band (1 piece)</a></h5>
+                                <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate</p>
+                                <div class="ps-product__meta"><span class="ps-product__price">$38.24</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ps-search__item">
+                        <div class="ps-product ps-product--horizontal">
+                            <div class="ps-product__thumbnail">
+                                <a class="ps-product__image" href="under.html">
+                                    <!--<figure><img src="img\products\033.jpg" alt="alt"></figure>-->
+                                </a>
+                            </div>
+                            <div class="ps-product__content">
+                                <h5 class="ps-product__title"><a>3 Layer Disposable Protective Face <span class='hightlight'>mask</span>s</a></h5>
+                                <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate</p>
+                                <div class="ps-product__meta"><span class="ps-product__price sale">$14.52</span><span class="ps-product__del">$17.24</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ps-search__item">
+                        <div class="ps-product ps-product--horizontal">
+                            <div class="ps-product__thumbnail">
+                                <a class="ps-product__image" href="under.html">
+                                    <figure><img src="img\png\smade.png" alt="alt"></figure>
+                                </a>
+                            </div>
+                            <div class="ps-product__content">
+                                <h5 class="ps-product__title"><a>3-Ply Ear-Loop Disposable Blue Face <span class='hightlight'>mask</span></a></h5>
+                                <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate</p>
+                                <div class="ps-product__meta"><span class="ps-product__price sale">$14.99</span><span class="ps-product__del">$38.24</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ps-search__item">
+                        <div class="ps-product ps-product--horizontal">
+                            <div class="ps-product__thumbnail">
+                                <a class="ps-product__image" href="under.html">
+                                    <!--<figure><img src="img\products\050.jpg" alt="alt"></figure>-->
+                                </a>
+                            </div>
+                            <div class="ps-product__content">
+                                <h5 class="ps-product__title"><a>Disposable Face <span class='hightlight'>mask</span> for Unisex</a></h5>
+                                <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH certificate</p>
+                                <div class="ps-product__meta"><span class="ps-product__price sale">$8.15</span><span class="ps-product__del">$12.24</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="ps-menu--slidebar">
+            <div class="ps-menu__content">
+                <div id="close-menu" class="overlay_mob_menu"></div>
+        <div class="mobile_menu_sec">
+
+            <a href="#"><div class="mobile_menu_sec_head">Login / Sign Up <span><i class="fa fa-angle-right"></i></span></div></a>
+            <div class="mobile_menu_sec_banner">
+                <div class="mobile_menu_banner_left_txt">
+                    <strong>Exciting offers are Waiting for you</strong>
+                    <span>Get flat 74% Off on Medimall App</span>
+                     <div class="mobile_menu_banner_btm_sec">
+                    <a href="#"><div class="mobile_menu_banner_btm_btn"><img src="img/menu/appstore.png" alt=""></div></a>
+                    <a href="#"><div class="mobile_menu_banner_btm_btn"><img class="" src="img/menu/playstore.png"></div></a>
+                </div>
+                </div>
+                <div class="mobile_menu_banner_right_img_sec"><img src="img/menu/bann_img.png" alt=""></div>
+               
+            </div>
+            
+            <div class="mobile_menu_mn_1 mn_bdr_btm">
+                <a href="#"> <div class="mobile_menu_mn_ico"><img src="img/menu/home.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Home</div></a>
+            </div>
+
+            <div class="mobile_menu_mn_1 ">
+                <a  href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><div class="mob_btn_left_ico"><img src="img/menu/odr_top1.png" alt=""></div>
+                <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/order_med.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Order Medicine<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div></a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+
+            <div class="mobile_menu_mn_1 ">
+                <a  href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><div class="mob_btn_left_ico"><img src="img/menu/odr_top2.png" alt=""></div>
+                <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/order_heal.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Order Healthcare Products<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div></a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+
+
+            <div class="mobile_menu_mn_1 mn_bdr_btm" style="padding-right: 50px;margin-bottom: 10px ;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/offer.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Offers<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                <div class="mob_mn_new_btn">NEW</div>
+                 </a>
+            </div>
+
+            
+            <div class="mobile_menu_mn_1 "  style="padding: 5px 15px;">
+                <a  href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/account.png" alt=""></div>
+                <div class="mobile_menu_mn_text">MY Account<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div></a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+
+            <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/orders.png" alt=""></div>
+                <div class="mobile_menu_mn_text">My Orders<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+
+            
+            <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/medfill.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Med Refill<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+
+            <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/membership.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Medpride Membership<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+            <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/health_vault.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Health Vault<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+
+            <div class="mobile_menu_mn_1 mn_bdr_btm"  style="padding: 5px 15px;margin-bottom: 10px ;padding-bottom: 15px;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/wallet.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Wallet<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+
+            <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/refer_earn.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Refer and Earn<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+
+            <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/conact_us.png" alt=""></div>
+                <div class="mobile_menu_mn_text">Contact Us<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+
+            <div class="mobile_menu_mn_1 mn_bdr_btm" style="padding: 5px 15px;padding-bottom:30px">
+                <a href="#"><div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img src="img/menu/faq.png" alt=""></div>
+                <div class="mobile_menu_mn_text">FAQ<br>
+                <span>A home where you will find that healing touch that will cure all your health</span>
+                </div>
+                 </a>
+            </div>
+            <div class="mobile_menu_mn_1 mn_bdr_btm"></div>
+			</div>
+          </div>
+        </div>
+        <button class="btn scroll-top"><i class="fa fa-angle-double-up"></i></button>
+        <div class="ps-preloader" id="preloader">
+            <div class="ps-preloader-section ps-preloader-left"></div>
+            <div class="ps-preloader-section ps-preloader-right"></div>
+        </div>
+       
+        <script>
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied: " + copyText.value;
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy to clipboard";
+}
+</script>
+
+        
+        <style type="text/css">
+ .icon {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+      padding: 3px 10px;
+    font-size: 18px;
+  font-family: sans-serif;
+}
+
+.icon:nth-child(1) { background: #00aaff; }
+.icon:nth-child(2) { background: salmon; }
+.icon:nth-child(3) { background: gray; }
+
+/**
+ * The "shine" element
+ */
+
+.icon:after {
+  content: "";
+  position: absolute;
+  /*top: -110%;
+  left: -210%;*/
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: rotate(30deg);
+  
+  background: rgba(255, 255, 255, 0.13);
+  background: linear-gradient(
+    to right, 
+    rgba(255, 255, 255, 0.13) 0%,
+    rgba(255, 255, 255, 0.13) 77%,
+    rgba(255, 255, 255, 0.5) 92%,
+    rgba(255, 255, 255, 0.0) 100%
+  );
+}
+
+/* Hover state - trigger effect */
+
+.icon:hover:after {
+  opacity: 1;
+ /* top: -30%;
+  left: -30%;*/
+  transition-property: left, top, opacity;
+  transition-duration: 0.7s, 0.7s, 0.15s;
+  transition-timing-function: ease;
+}
+
+/* Active state */
+
+.icon:active:after {
+  opacity: 0;
+}
+ </style>       
+ <style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+  opacity: 1;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip button {
+    font-weight: 600;
+    font-size: 13px;
+    color: #575757;
+    opacity: 1;
+}
+</style>
+                                                           
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <style type="text/css">
+        .intro {
+            height: auto;
+            min-height: 100vh;
+            text-align: center;
+            background-color: teal;
+        }
+        </style>
+
+<script>
+    var player = new MediaElementPlayer('#player1');
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        initSlider();
+ function initSlider() {
+  $('.home-slides ').owlCarousel({
+    items: 1,
+    dots: false,
+         loop: true,
+         autoplay: true,
+         nav : true,
+         onInitialized: startProgressBar,
+    onTranslate: resetProgressBar,
+    onTranslated: startProgressBar  
+});
+}   
+         
+    function startProgressBar() {
+  // apply keyframe animation
+  $(".slide-progress").css({
+    width: "100%",
+    transition: "width 5000ms"
+  });
+}
+
+function resetProgressBar() {
+  $(".slide-progress").css({
+    width: 0,
+    transition: "width 0s"
+  });
+}
+
+});
+</script>      
+        <script type="text/javascript">
+    $(document).ready(function(){
+  $('#try').owlCarousel({
+    items: 1,
+      autoplaySpeed: 15000,
+         loop: true,
+         mouseDrag: false,
+         touchDrag: false,
+         pullDrag: false,
+         dots: false,
+         autoplay: true,
+         margin: 25,
+         nav: false,
+          autoplayHoverPause: true,
+  animateOut: 'slideOutUp',
+  animateIn: 'slideInUp'
+     });
+});
+</script>
+         <script type="text/javascript">
+    $(document).ready(function(){
+  $('#try1').owlCarousel({
+    items: 1,
+
+         loop: true,
+         mouseDrag: false,
+         touchDrag: false,
+         pullDrag: false,
+         dots: false,
+         autoplay: true,
+         margin: 50,
+         nav: false,
+          autoplayHoverPause: true,
+  animateOut: 'slideOutUp',
+  animateIn: 'slideInUp'
+     });
+});
+</script>
+        
+        
+        <script type="text/javascript">
+        function inVisible(element) {
+            //Checking if the element is
+            //visible in the viewport
+            var WindowTop = $(window).scrollTop();
+            var WindowBottom = WindowTop + $(window).height();
+            var ElementTop = element.offset().top;
+            var ElementBottom = ElementTop + element.height();
+            //animating the element if it is
+            //visible in the viewport
+            if((ElementBottom <= WindowBottom) && ElementTop >= WindowTop) animate(element);
+        }
+
+        function animate(element) {
+            //Animating the element if not animated before
+            if(!element.hasClass('ms-animated')) {
+                var maxval = element.data('max');
+                var html = element.html();
+                element.addClass("ms-animated");
+                $({
+                    countNum: element.html()
+                }).animate({
+                    countNum: maxval
+                }, {
+                    //duration 5 seconds
+                    duration: 5000,
+                    easing: 'linear',
+                    step: function() {
+                        element.html(Math.floor(this.countNum) + html);
+                    },
+                    complete: function() {
+                        element.html(this.countNum + html);
+                    }
+                });
+            }
+        }
+        //When the document is ready
+        $(function() {
+            //This is triggered when the
+            //user scrolls the page
+            $(window).scroll(function() {
+                //Checking if each items to animate are 
+                //visible in the viewport
+                $("h2[data-max]").each(function() {
+                    inVisible($(this));
+                });
+            })
+        });
+        </script>
+     
+        <!--<script type="text/javascript" src="https://kenwheeler.github.io/slick/slick/slick.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $(".Modern-Slider").slick({
+                autoplay: true,
+                autoplaySpeed: 10000,
+                speed: 600,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                pauseOnHover: false,
+                dots: true,
+                pauseOnDotsHover: true,
+                cssEase: 'linear',
+                // fade:true,
+                draggable: false,
+                prevArrow: '<button class="PrevArrow"></button>',
+                nextArrow: '<button class="NextArrow"></button>',
+            });
+        })
+        </script>-->
+        
+        <script src="plugins\jquery.min.js"></script>
+        <script src="plugins\popper.min.js"></script>
+        <script src="plugins\bootstrap4\js\bootstrap.min.js"></script>
+       
+        <script src="plugins\select2\dist\js\select2.full.min.js"></script>
+     <script src="plugins\owl-carousel\owl.carousel.min.js"></script>
+        <script src="plugins\jquery-bar-rating\dist\jquery.barrating.min.js"></script>
+        <script src="plugins\lightGallery\dist\js\lightgallery-all.min.js"></script>
+        <script src="plugins\slick\slick\slick.min.js"></script>
+        <script type="text/javascript" src="https://www.medfoliotechnologies.com/js/wow.js"></script>
+     
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.0.47/jquery.fancybox.min.js"></script>
+
+<script src="home\js\script.js" type="be9dfe49072cb4d1912e7519-text/javascript"></script>
+<script src="home\js\output.min.js" type="be9dfe49072cb4d1912e7519-text/javascript"></script>
+
+
+<script src="js/rocket-loader.min.js" data-cf-settings="be9dfe49072cb4d1912e7519-|49" defer=""></script>
+<script>
+
+const typedTextSpan = document.querySelector(".typed-text");
+const cursorSpan = document.querySelector(".cursor");
+
+const textArray = ["Member"];
+const typingDelay = 200;
+const erasingDelay = 100;
+const newTextDelay = 2000; // Delay between current and next text
+let textArrayIndex = 0;
+let charIndex = 0;
+
+function type() {
+  if (charIndex < textArray[textArrayIndex].length) {
+    if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(type, typingDelay);
+  } 
+  else {
+    cursorSpan.classList.remove("typing");
+  	setTimeout(erase, newTextDelay);
+  }
+}
+
+function erase() {
+	if (charIndex > 0) {
+    if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+    charIndex--;
+    setTimeout(erase, erasingDelay);
+  } 
+  else {
+    cursorSpan.classList.remove("typing");
+    textArrayIndex++;
+    if(textArrayIndex>=textArray.length) textArrayIndex=0;
+    setTimeout(type, typingDelay + 1100);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() { // On DOM Load initiate the effect
+  if(textArray.length) setTimeout(type, newTextDelay + 250);
+});
+
+</script>
+<script>
+var hideTimeout = null;
+
+var show = function() {
+  $('.sticky-container').show();
+}
+
+var hide = function() {
+  $('.sticky-container').hide();
+}
+
+$(document).ready(function(){
+
+  $(window).scroll(function(e){
+  	if (hideTimeout) {
+    	window.clearTimeout(hideTimeout);
+      hideTimeout = null;
+    }
+    hide();
+
+    window.setTimeout(show, 1000);
+  });
+  
+});
+
+
+</script>
+
+
+
+        <script type="text/javascript">
+            
+const timeline = $(".js-timeline");
+const timelineItems = timeline.find(".c-timeline__item");
+
+if (timeline.length > 0 && !timeline.hasClass("js-animation-has-finished")) {
+  $(window).scroll(function () {
+    animateTimeline(timeline);
+  });
+}
+
+// Function for animating the timeline track
+const animateTimeline = timeline => {
+  timelineItems.each(function (index) {
+    var el = $(this);
+    // firstEl = $(timelineItems[0]);
+
+    if (window.scrollY >= el.offset().top - 150) {
+      el.addClass("active");
+      console.log("first");
+
+      // Adding a class on the last element
+      if (index == timelineItems.length - 1) {
+        el.parent().addClass("js-animation-has-finished");
+      }
+    }
+  });
+};
+
+// Note: For wider browser compatibility use the compiled version
+
+
+        </script>
+        <script>
+        wow = new WOW({
+            animateClass: 'animated',
+            offset: 100,
+            callback: function(box) {
+                console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+            }
+        });
+        wow.init();
+        document.getElementById('moar').onclick = function() {
+            var section = document.createElement('section');
+            section.className = 'section--purple wow fadeInDown';
+            this.parentNode.insertBefore(section, this);
+        };
+        </script>
+
+<script type="text/javascript">
+
+</script>
+
+
+
+        <script type="text/javascript">
+        function copyToClipboard() {
+            const str = document.getElementById('item-to-copy').innerText;
+            const el = document.createElement('textarea');
+            el.value = str;
+            el.setAttribute('readonly', '');
+            el.style.position = 'absolute';
+            el.style.left = '-9999px';
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+        }
+        </script>
+        <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Jan 5, 2022 15:37:25").getTime();
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+            // Get today's date and time
+            var now = new Date().getTime();
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+            // Time calculations for days, hours, minutes and seconds
+            // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            // Output the result in an element with id="demo"
+            document.getElementById("demo").innerHTML = "<div class=\"hours\">" + hours  + "</div>"+  "<div class=\"hours\">" + minutes +  "</div>" + "<div class=\"hours\">" + seconds + "</div>";
+            // If the count down is over, write some text 
+            if(distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+        </script>
+        
+		<script>
+            
+$(window).ready(function(){
+    setInterval(function(){ 
+      $('.loader-container').addClass("active")
+    }, 1500);
+  
+  });
+  
+        </script>
+        <!-- custom code-->
+		
+        <script src="js\main.js"></script>
+        
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.8.3/TweenMax.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.5/gsap.min.js"></script>
+		<script>
+  AOS.init();
+</script>
+        
+</body>
+
+</html>

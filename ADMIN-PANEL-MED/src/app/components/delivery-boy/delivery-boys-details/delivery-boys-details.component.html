@@ -1,0 +1,311 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid innerpage_tab_top">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-body tab2-card">
+
+                <br><br>
+                <button type="button" class="btn btn-dark btn-inverse-dark" (click)="BackRedirectTo()"><i
+                        class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-dark btn-inverse-dark pull-right" data-toggle="modal"
+                    data-original-title="test" data-target="#exampleModal" (click)="open(exampleModalcontent,'edit')">
+                    <i class="fa fa-edit"></i> Edit</button>
+                <!-- *ngIf="editFlag" -->
+                <br><br><br>
+                <label>Delivery Boy Details</label>
+
+                <br><br><br>
+
+                <div class="mt-2 row">
+                    <div class="col-md-12">
+
+                        <!-- <div class="text-center mt-3" *ngIf="loading"><br><br>
+                        <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div> -->
+                        <table *ngFor="let i of List_Array">
+                            <tr>
+                                <td><label for="expiration">Full Name</label></td>
+                                <td> <label>{{i.fullName}}</label></td>
+                            </tr>
+                            <tr>
+                                <td> <label for="expiration">Mobile Number</label></td>
+                                <td><label>{{i.mobile}}</label></td>
+                            </tr>
+                            <tr>
+                                <td> <label for="expiration">Email ID</label></td>
+                                <td><label>{{i.email}}</label></td>
+                            </tr>
+                            <tr>
+                                <td> <label for="expiration">Driving License Number</label></td>
+                                <td><label>{{i.drivingLicenseNumber}}</label></td>
+                            </tr>
+                            <tr>
+                                <td> <label style="color: #fff;" for="validationCustom0" class="">Aadhar Card
+                                        Number</label>
+                                </td>
+                                <td><label>{{i.aadharCardNumber}}</label></td>
+                            </tr>
+                            <tr>
+                                <td> <label>Address</label></td>
+                                <td><label>{{i.address}}</label></td>
+                            </tr>
+
+                            <tr>
+                                <td> <label style="color: #fff;" for="validationCustom0" class="">City</label>
+                                </td>
+                                <td> <label>{{i.city}}</label></td>
+                            </tr>
+
+                            <tr>
+                                <td> <label style="color: #fff;" for="validationCustom0" class="">Choose Store</label>
+                                </td>
+                                <td> <label *ngFor="let s of i.store">{{s.name}}</label></td>
+                            </tr>
+
+                            <tr>
+                                <td> <label style="color: #fff;" for="validationCustom0" class="">Pincode</label>
+                                </td>
+                                <td><label *ngFor="let p of i.pincode">{{p.code}}</label></td>
+                            </tr>
+
+                            <tr>
+                                <td> <label style="color: #fff;" for="validationCustom0" class="">Commission Per
+                                        Order</label>
+
+                                </td>
+                                <td><label>{{i.commission}}</label></td>
+                            </tr>
+
+                            <tr>
+                                <td> <label style="color: #fff;" for="validationCustom0" class="">Credit</label>
+                                </td>
+                                <td> <label>{{i.credit}}</label></td>
+                            </tr>
+
+                            <tr>
+                                <td> <label style="color: #fff;" for="validationCustom0" class="">Created Date</label>
+                                </td>
+                                <td> <label>{{i.createdDate}}</label></td>
+                            </tr>
+
+
+                        </table>
+                    </div>
+
+                </div>
+
+
+                <br>
+                <div class="mt-2 row" *ngFor="let i of List_Array">
+                    <div class="form-group col-md-3">
+                        <label class="ml-4 col-md-3 col-form-label"></label>
+                        <div class="btn-dark"
+                            style="text-align: center;border-radius: 10px;padding: 15px 10px 10px 10px;background-color: #014466;">
+                            <img src={{i.licence}} width="80px" height="80px"> <label
+                                style="font-size: 12px;color:white;"><a href="{{ i.licence }}" class="mt-2"
+                                    style="color:white;" target="_blank" rel="noopener noreferrer">Driving
+                                    License</a></label>
+                            <!-- src="assets/images/file-icons/icon-file.svg" -->
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label class="ml-4 col-md-3 col-form-label"></label>
+                        <div class="btn-dark"
+                            style="text-align: center;border-radius: 10px;padding: 15px 10px 10px 10px;background-color: #014466;">
+                            <img src={{i.aadhar}} width="80px" height="80px"> <label
+                                style="font-size: 12px;color:white;"><a href="{{ i.aadhar }}" class="mt-2"
+                                    style="color:white;" target="_blank" rel="noopener noreferrer">Aadhar</a>
+                            </label>
+                            <!-- src="assets/images/file-icons/icon-file.svg" -->
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-md-3">
+                        <label class="ml-4 col-md-3 col-form-label"></label>
+                        <div class="btn-dark"
+                            style="text-align: center;border-radius: 10px;padding: 15px 10px 10px 10px;background-color: #014466;">
+                            <img src={{i.rcBook}} width="80px" height="80px"> <label
+                                style="font-size: 12px;color:white;"><a href="{{ i.rcBook }}" class="mt-2"
+                                    style="color:white;" target="_blank" rel="noopener noreferrer">RC Book</a>
+                            </label>
+                            <!-- src="assets/images/file-icons/icon-file.svg" -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid ends-->
+
+
+<ng-template #exampleModalcontent let-modal>
+    <div *ngIf="update_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="exampleModal">Update</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div *ngIf="add_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="exampleModal">Add</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="Delivery_Boy_Form">
+            <div class="row">
+                <div class="col-md-12 mb-2" (click)="show_pin()">
+                    <label>Choose Store</label>
+                    <div class="example-wrapper">
+                        <!-- formControlName="Store" -->
+                        <!-- <kendo-multiselect class="form-control" [data]="listStore" > -->
+
+
+                        <kendo-multiselect #multiselect id="multiselect" class="form-control" formControlName="Store"
+                            [data]="listStore" [filterable]="true" textField="name" valueField="_id" [autoClose]="false"
+                            [checkboxes]="false" [(ngModel)]="selectedStore" [placeholder]="'-- Select Store --'"
+                            (valueChange)="handleStoreChange($event)" (filterChange)="handleCategoryFilter($event)">
+
+                        </kendo-multiselect>
+                        <small for="Store" class="form-text text-danger" *ngIf="Delivery_Boy_Form.controls['Store'].errors?.required && 
+                        (Delivery_Boy_Form.controls['Store'].dirty ||  
+                        Delivery_Boy_Form.controls['Store'].touched || 
+                        (Delivery_Boy_Form.controls['Store'].untouched  && attemptedSubmit ) )">
+                            Store required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div>
+                <button (click)="show_pin()" [disabled]="!store_change_flag"
+                    class="btn-dark-rounded px-2 py-2 mb-2 ml-0">Show Pincodes</button>
+            </div> -->
+
+            <div class="row">
+                <div class="col-md-12 mb-2" (click)="show_pin()">
+                    <label (click)="show_pin()">Choose Pincode</label>
+                    <div class="example-wrapper" (click)="show_pin()">
+                        <!-- formControlName="Pincode" -->
+                        <kendo-multiselect #multiselect class="form-control" id="multiselect" class="form-control"
+                            formControlName="Pincode" [data]="listPincode" [filterable]="true" textField="code"
+                            valueField="_id" [autoClose]="false" [checkboxes]="false"
+                            [placeholder]="'-- Select Pincode --'" [disabled]="!store_change_flag"
+                            [(ngModel)]="selectedPin"  (filterChange)="handlePinFilter($event)">
+                            <!-- (click)="show_pin()" -->
+                            <!-- [(ngModel)]="selectedStore" -->
+                            <!-- (filterChange)="handleCategoryFilter($event)" -->
+                            <!-- (valueChange)="handleCategoryChange($event)"  -->
+                        </kendo-multiselect>
+                        <small for=" Pincode" class="form-text text-danger" *ngIf="Delivery_Boy_Form.controls['Pincode'].errors?.required && 
+                        (Delivery_Boy_Form.controls['Pincode'].dirty ||  
+                        Delivery_Boy_Form.controls['Pincode'].touched || 
+                        (Delivery_Boy_Form.controls['Pincode'].untouched  && attemptedSubmit ) )">
+                            Pincode required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 mb-2">
+                    <label>Commission Per Order</label>
+                    <input type="text" class="form-control" formControlName="Commission">
+                    <small for="Commission" class="form-text text-danger" *ngIf="Delivery_Boy_Form.controls['Commission'].errors?.required && 
+                        (Delivery_Boy_Form.controls['Commission'].dirty ||  
+                        Delivery_Boy_Form.controls['Commission'].touched || 
+                        (Delivery_Boy_Form.controls['Commission'].untouched  && attemptedSubmit ) )">
+                        Commission Per Order required.
+                    </small>
+                    <small for="Commission" class="form-text text-danger"
+                        *ngIf="Delivery_Boy_Form.controls['Commission'].errors?.pattern">
+                        Letters And Decimals Not Allowed
+                    </small>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 mb-2">
+                    <label>Credit</label>
+                    <input type="text" class="form-control" formControlName="Credit">
+                    <small for="parent" class="form-text text-danger" *ngIf="Delivery_Boy_Form.controls['Credit'].errors?.required && 
+                    (Delivery_Boy_Form.controls['Credit'].dirty ||  
+                    Delivery_Boy_Form.controls['Credit'].touched || 
+                    (Delivery_Boy_Form.controls['Credit'].untouched  && attemptedSubmit ) )">
+                        Credit required.
+                    </small>
+                    <small for="Credit" class="form-text text-danger"
+                        *ngIf="Delivery_Boy_Form.controls['Credit'].errors?.pattern">
+                        Letters And Decimals Not Allowed
+                    </small>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 mb-2">
+                    <label>Password</label>
+                    <input type="password" class="form-control" formControlName="Password">
+                    <small for="Password" class="form-text text-danger" *ngIf="Delivery_Boy_Form.controls['Password'].errors?.required && 
+                        (Delivery_Boy_Form.controls['Password'].dirty ||  
+                        Delivery_Boy_Form.controls['Password'].touched || 
+                        (Delivery_Boy_Form.controls['Password'].untouched  && attemptedSubmit ) )">
+                        Password required.
+                    </small>
+                    <small for="Password" class="form-text text-danger"
+                        *ngIf="Delivery_Boy_Form.controls['Password'].errors?.minlength">
+                        Minimum 6 characters required.
+                    </small>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn  btn-dark-rounded" (click)="edit_DELIVERY_BOY()">Save <div *ngIf="loading"
+                class="spinner-border text-light" style="width: 0.8rem; height: 0.8rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div></button>
+
+        <button class="btn btn-dark-rounded" type="button" class="btn btn-dark-rounded" type="button"
+            data-dismiss="modal" (click)="modal.dismiss('Cross click')">Close</button>
+    </div>
+</ng-template>
+
+<ng-template #AddPincodeContent let-modal>
+    <div class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="AddPincodeExampleModal">Add</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body Main_Category">
+
+        <div class="row">
+            <div class="col-md-12">
+                <textarea class="form-control" placeholder="Add Pincode"></textarea>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class=" mb-0 col-md-4 "></div>
+            <div class=" mb-0 col-md-4 ">
+                <button type="button" class="btn btn-dark btn-dark-rounded">Save</button>
+            </div>
+            <div class=" mb-0 col-md-4 "></div>
+        </div>
+    </div>
+</ng-template>

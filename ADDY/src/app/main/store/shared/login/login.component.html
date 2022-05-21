@@ -1,0 +1,268 @@
+<div
+  class="modal fade"
+  id="exampleModal1"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  style="padding: 0"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="form-down">
+          <div class="text-center">
+            <p>Welcome To</p>
+            <img src="assets/img/addy-logo.png" class="logo-img" />
+          </div>
+          <hr />
+          <div class="form-otp">
+            <p>Please enter the OTP sent to</p>
+            <h4>
+              <b>{{ _auth.intlNumber.code }}-{{ _auth.intlNumber.mobile }}</b
+              >&nbsp;&nbsp;<small>
+                <a
+                  (click)="retypeNumber()"
+                  style="font-size: 12px; text-decoration: underline"
+                  >Change</a
+                ></small
+              >
+            </h4>
+            <div class="mb-10">
+              <div class="text-center">
+                <form [formGroup]="otpForm">
+                  <div id="otp" class="flex justify-center">
+                    <input
+                      class="text-center"
+                      formControlName="first"
+                      type="text"
+                      id="first"
+                      #otpBox1
+                      (input)="setFocus2()"
+                      maxlength="1"
+                      placeholder="-"
+                    />
+                    <input
+                      class="text-center"
+                      formControlName="second"
+                      type="text"
+                      id="second"
+                      #otpBox2
+                      (input)="setFocus3()"
+                      maxlength="1"
+                      placeholder="-"
+                    />
+                    <input
+                      class="text-center"
+                      type="text"
+                      id="third"
+                      #otpBox3
+                      (input)="setFocus4()"
+                      formControlName="third"
+                      maxlength="1"
+                      placeholder="-"
+                    />
+                    <input
+                      class="text-center"
+                      #otpBox4
+                      (input)="setFocus5()"
+                      type="text"
+                      id="fourth"
+                      formControlName="fourth"
+                      maxlength="1"
+                      placeholder="-"
+                    />
+                    <input
+                      class="text-center"
+                      type="text"
+                      #otpBox5
+                      id="fifth"
+                      formControlName="fifth"
+                      maxlength="1"
+                      placeholder="-"
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+            <br />
+            <small class="mb-50"
+              >You will receive the code in {{ _auth.timeLeft }} seconds... if
+              not click
+              <a style="text-decoration: underline" (click)="resendOtp()"
+                >Resend</a
+              ></small
+            >
+            <p style="color: red" *ngIf="hasErrorOtp && otpForm.invalid">
+              Invalid otp
+            </p>
+            <button
+              style="display: none"
+              data-bs-dismiss="modal"
+              #closeModal
+            ></button>
+
+            <button
+              (click)="submitOtp()"
+              type="button"
+              class="btn-2 mt-20"
+              style="width: 100%"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="exampleModal2"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  style="padding: 0"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="form-down">
+          <div class="text-center">
+            <p>Welcome to</p>
+            <img src="assets/img/addy-logo.png" class="logo-img" />
+          </div>
+          <div
+            style="
+              border-top: 1px solid #c9e0ff;
+              margin-top: 30px;
+              padding: 20px 0 0;
+            "
+          >
+            <form [formGroup]="userForm">
+              <div class="text-center">
+                <div class="text-center">
+                  <div id="setup" class="flex justify-center">
+                    <div class="mb-10">
+                      <label>First Name</label>
+                      <input
+                        type="text"
+                        id="my-field"
+                        formControlName="first_name"
+                        placeholder="First Name"
+                      />
+                      <small *ngIf="isValidUser('first_name')" class="form-text"
+                        >Required</small
+                      >
+                    </div>
+                    <div class="mb-10">
+                      <label>Last Name</label>
+                      <input
+                        type="text"
+                        id="my-field1"
+                        formControlName="last_name"
+                        placeholder="Last Name"
+                      />
+                      <small *ngIf="isValidUser('last_name')" class="form-text"
+                        >Required</small
+                      >
+                    </div>
+                    <div class="mb-10">
+                      <label>Enter your E-mail</label>
+                      <input
+                        formControlName="email"
+                        type="email"
+                        placeholder="Enter your E-mail"
+                      />
+                      <small *ngIf="isValidUser('email')" class="form-text"
+                        >Enter valid email</small
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                id="closeOtp"
+                data-bs-dismiss="modal"
+                style="display: none"
+              >
+                close modals
+              </button>
+
+              <button
+                type="button"
+                class="btn-2"
+                (click)="submitUserDetails()"
+                data-bs-dismiss="modal"
+                style="width: 100%; max-width: 400px"
+              >
+                Done
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ! select address modal -->
+<div
+  class="modal fade"
+  id="exampleModal3"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  style="padding: 0"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="form-down address">
+          <div class="">
+            <p>Select Address</p>
+          </div>
+          <ng-container *ngFor="let add of userAddresses; let index = index">
+            <div *ngIf="hasAddress" class="address-sec">
+              <div class="">
+                <div class="first-div">
+                  <img src="assets/img/address-pin.png" style="width: 100%" />
+                </div>
+                <div class="second-div">
+                  <p>Home</p>
+                  <h4 id="h4{{ index }}" (click)="selectAddress(add._id)">
+                    {{ add.address }} {{ add.houseNumber }} {{ add.street }}
+                    {{ add.city }},{{ add.area }}
+                  </h4>
+                  <a data-bs-dismiss="modal" (click)="gotomap(add)">Edit</a>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </ng-container>
+          <div class="mt-20">
+            <button
+              class="address-btn mb-10"
+              data-bs-dismiss="modal"
+              (click)="gotomapNew()"
+            >
+              + Add new Address
+            </button>
+            <button
+              type="button "
+              class="btn-2 mt-10"
+              style="width: 100%; max-width: 400px"
+              data-bs-dismiss="modal"
+            >
+              Checkout
+            </button>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>

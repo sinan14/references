@@ -1,0 +1,174 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card-body tab2-card">
+        <label>Promo {{ promoCode }}</label>
+        <br /><br /><br />
+        <div class="col-lg-6 col-md-6">
+          <div class="input-group">
+            <input
+              type="text"
+              trim="blur"
+              class="form-control form-control-text added"
+              style="border-radius: 27px 0px 0px 27px; opacity: 1"
+              (keyup)="onChangeKeyword($event.target.value)"
+              placeholder="Search"
+              name="search"
+            />
+            <div class="input-group-btn">
+              <button
+                class="btn btn-default"
+                type="submit"
+                style="border-radius: 0px 27px 27px 0px"
+              >
+                <i class="fa fa-search" style="color: white"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <kendo-grid
+          class="kendo_table"
+          [kendoGridBinding]="promo_table.result"
+          [filterable]="false"
+          [sortable]="true"
+        >
+          <kendo-grid-column field="slno" title="No" width="15">
+            <ng-template
+              kendoGridFilterCellTemplate
+              let-filter
+              let-column="column"
+            >
+              <kendo-grid-string-filter-cell
+                placeholder="search"
+                [showOperators]="false"
+                [column]="column"
+                title="Parent Store"
+                [filter]="filter"
+              >
+              </kendo-grid-string-filter-cell>
+            </ng-template>
+          </kendo-grid-column>
+          <kendo-grid-column title="Customer Name" width="20">
+            <ng-template
+              kendoGridCellTemplate
+              let-isNew="isNew"
+              let-dataItem="dataItem"
+            >
+              <a
+                [routerLink]="['/customer-details', 'cust', dataItem.userId]"
+                style="text-decoration: none; cursor: pointer"
+                >{{ dataItem.name }}</a
+              >
+            </ng-template>
+          </kendo-grid-column>
+
+          <kendo-grid-column title="Customer ID" width="20">
+            <ng-template
+              kendoGridCellTemplate
+              let-isNew="isNew"
+              let-dataItem="dataItem"
+            >
+              <!-- <kendo-grid-string-filter-cell
+                placeholder="search"
+                [showOperators]="false"
+                [column]="column"
+                title="Parent Store"
+                [filter]="filter"
+              > -->
+              <a
+                [routerLink]="['/customer-details', 'cust', dataItem.userId]"
+                style="text-decoration: none; cursor: pointer"
+              >
+                {{ dataItem.userId }}
+              </a>
+              <!-- </kendo-grid-string-filter-cell> -->
+            </ng-template>
+
+            <ng-template
+              kendoGridFooterTemplate
+              let-column
+              let-columnIndex="columnIndex"
+            >
+              Total Customer {{ promo_table.total_items }}
+            </ng-template>
+          </kendo-grid-column>
+
+          <kendo-grid-column title="Date & Time" width="20">
+            <ng-template
+              kendoGridCellTemplate
+              let-isNew="isNew"
+              let-dataItem="dataItem"
+            >
+              <a style="text-decoration: none; cursor: pointer">{{
+                dataItem.createdAt | date
+              }}</a>
+              <p>{{ dataItem.date }}</p>
+            </ng-template>
+          </kendo-grid-column>
+
+          <kendo-grid-column field="discountAmount" title="Amount" width="20">
+            <ng-template
+              kendoGridFilterCellTemplate
+              let-filter
+              let-column="column"
+            >
+              <kendo-grid-string-filter-cell
+                placeholder="search"
+                [showOperators]="false"
+                [column]="column"
+                title="Parent Store"
+                [filter]="filter"
+              >
+              </kendo-grid-string-filter-cell>
+            </ng-template>
+            <ng-template
+              kendoGridFooterTemplate
+              let-column
+              let-columnIndex="columnIndex"
+            >
+              Total Amount {{ promo_table.totalAmount }}
+            </ng-template>
+          </kendo-grid-column>
+        </kendo-grid>
+        <div class="row">
+          <div *ngIf="promo_table.result.length > 0" class="pagination ml-2">
+            <button (click)="orderPagination(1)">First</button>
+            <button
+              *ngIf="promo_table.hasPrevPage"
+              (click)="orderPagination(promo_table.current_page - 1)"
+            >
+              Prev
+            </button>
+            <button
+              *ngIf="promo_table.hasPrevPage"
+              (click)="orderPagination(promo_table.currentPage - 1)"
+            >
+              {{ promo_table.current_page - 1 }}
+            </button>
+            <button style="color: yellow">
+              {{ promo_table.current_page }}
+            </button>
+            <button
+              *ngIf="promo_table.hasNextPage"
+              (click)="orderPagination(promo_table.current_page + 1)"
+            >
+              {{ promo_table.current_page + 1 }}
+            </button>
+            <button
+              *ngIf="promo_table.hasNextPage"
+              (click)="orderPagination(promo_table.current_page + 1)"
+            >
+              Next
+            </button>
+            <button (click)="orderPagination(promo_table.total_page)">
+              Last
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid ends-->

@@ -1,0 +1,97 @@
+#base-container {
+    margin: 5rem;
+    padding-bottom: 10rem;
+}
+
+#top-border {
+    border-top: 40px solid #bfbfbf;
+    width: 100%;
+    margin: auto
+}
+
+.inline-text-container {
+    display: flex;
+    width: 100%;
+    height: 33px;
+}
+
+.inline-text {
+    flex: auto;
+}
+
+.logo {
+    width: 90px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.address-box {
+    height: 8rem;
+    background-color: #fafafa;
+    width: 42%;
+    margin-top: 4rem;
+    border: 1px solid #e3e3e3;
+    padding: 1rem;
+}
+
+.address-heading {
+    margin-top: 0;
+}
+
+.address-underline {
+    height: 1px;
+    border: none;
+    background-color: #d5d5d5;
+}
+
+.address {
+    font-size: 16px;
+    margin-top: 1rem;
+}
+
+.products-table {
+    width: 100%;
+    margin-top: 3rem;
+}
+
+table, th, td {
+    border: 1px solid #dedede;
+    border-collapse: collapse;
+}
+
+.products-headings {
+    height: 3rem;
+}
+
+.products-headings th {
+    padding-left: 2rem;
+}
+
+.products-listings {
+    height: 4rem;
+}
+
+.hsn-column {
+    width: 17%;
+}
+
+.uom-column {
+    width: 13%;
+}
+
+.quantity-column {
+    width: 12%;
+}
+
+.unit-column {
+    width: 12%;
+}
+
+.price-column {
+    width: 21%;
+}
+
+.amounts-container {
+    float: right;
+    text-align: end;
+}

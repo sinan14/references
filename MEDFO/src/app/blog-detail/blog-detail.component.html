@@ -1,0 +1,493 @@
+<div class="sticky-container">
+    <ul class="sticky">
+       <li class="down">
+          <i class="fa fa-download "></i>
+          <p>Download app</p>
+       </li>
+    </ul>
+  </div>
+  <body style="background: #F6F6F6; ">
+    <div class="ps-page">
+       <header class="ps-header ps-header--11 ps-header--12">
+          <div class="ps-header__middle">
+  
+             <div class="container">
+                <div class="ps-logo"><a routerLink="/"> <img src="assets/img/png/blog/logo.png" alt><img class="sticky-logo" src="assets/img/png/blog/logo.png" alt></a></div>
+                <div class="ps-header__right">
+                   <ul class="ps-header__icon">
+                      <li><a class="blogy bg-yellowa ps-banner__shop" routerLink="#">Download the App</a> </li>
+                   </ul>
+                   <div class="ps-header__menu" style="text-align: center;">
+                      <ul class="menu">
+                         <li class="has-mega-menu"><a routerLink="/category-list">Category<span class="sub-toggle"><i class="fa fa-chevron-down"></i></span></a></li>
+                         <li class="has-mega-menu"><a routerLink="/blog">Blog<span class="sub-toggle"><i class="fa fa-chevron-down"></i></span></a></li>
+                         <li class="has-mega-menu"><a routerLink="#">Medimall Foundation<span class="sub-toggle"><i class="fa fa-chevron-down"></i></span></a></li>
+                         <li class="has-mega-menu"><a routerLink="#">Fitness Arena<span class="sub-toggle"><i class="fa fa-chevron-down"></i></span></a></li>
+                         <li class="has-mega-menu"><a routerLink="#">More <span class="sub-toggle"><i class="fa fa-chevron-down"></i></span></a></li>
+                      </ul>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </header>
+       <header class="ps-header ps-header--1 ps-header--mobile">
+          <div class="ps-header__middle">
+             <div class="container">
+                <div class="ps-header__left">
+                   <div class="ps-navigation--footer">
+                      <div class="ps-nav__item"><a href="javascript: void(0);" id="open-menu"><i class="icon-menu" style="color:white;"></i></a>
+                         <a href="javascript: void(0);" id="close-menu"><i class="icon-cross"></i></a>
+                      </div>
+                   </div>
+                   <div class="ps-logo">
+                      <a href="https://medimall.co.in/index.html"> <img src="assets/img/logo.png" alt=""></a>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </header>
+       <div class="ps-post ps-post--sidebar bloging">
+          <section class="ps-blog-detail">
+            <img src="{{ad.image}}" style="width:100%">
+           
+          </section>
+         
+          <div class="downline">
+            <div class="containers">
+           <div class="row">
+             <div class="col-md-9 shadows col-12">
+              <div class="">
+               
+               <div class="blog-detail1">
+                 <div class="first-head">
+                  <h1 class="role">{{ad.title}}</h1>
+                  <ul class="detail-icon">
+                    <li><a href="https://www.facebook.com/medimall.co.in" target="_blank"><img src="assets/img/blog-detail/faceb.svg"></a></li>
+                    <li><a href="https://www.instagram.com/medimall.co.in/" target="_blank"><img src="assets/img/blog-detail/insta.svg"></a></li>
+                    <li><a href="https://wa.link/u49i5k" target="_blank"><img src="assets/img/blog-detail/whatsapp.svg"></a></li>
+                    <li><a href="javascript:void(0)" (click)="share_now()">
+                      
+                      <img src="assets/img/blog-detail/share.svg"></a></li>
+                  </ul>
+                </div>
+                <div class="detail-items">
+                  <div class="fact" *ngIf="ad.is_verified==true ">
+                    <p><img src="assets/img/blog-detail/fact.png" width="20"> Fact Checked</p>
+                  </div>
+                  <div class="fact1">
+                    <p><img src="assets/img/blog-detail/date.svg">{{ad.createdAt}}</p>
+                  </div>
+                  <div class="fact2">
+                     <p><img src="assets/img/blog-detail/step.svg"> {{ad.sub_category}}</p>
+                  </div>
+                  <div class="fact3">
+                      <p><i class="icon-clock"></i>{{ad.read_time}} Read</p>
+                  </div>
+                </div>
+               
+                <p class="container des-img1" [innerHtml]="sanitizer.bypassSecurityTrustHtml(ad.description)"></p>
+                
+                <div class="tags tag-div">
+                  <h3>Tags</h3>
+                  <ul class="tags">
+                    <li *ngFor="let t of ad.tagged_categories"><a routerLink="/blog/{{t.name}}/{{t._id}}">{{t.name}}</a></li>
+                    <!-- <li style="   align-items: center;" *ngIf="!ad.tagged_categories.length">
+                      No Tags...
+                    </li> -->
+                  </ul>
+  
+                
+                   <div class="tag-was">
+                  <div class="last-date-tag">
+                         <ul class="last-date1">
+                           <li><a class="tag-help">Was this article helpful?</a></li>
+                           <li><a><i class="icon-thumbs-up"  *ngIf="!likeFlag" (click)="likeButton(ad)"></i>
+                            <i class="fa fa-thumbs-up" aria-hidden="true" style="color: #00aaff;font-size: 18px;"  *ngIf="likeFlag" (click)="likeButton(ad)"></i>
+                           <span class="k-k">{{ad.like_count}}</span></a></li>
+                           <!-- <li><img class="unlike" src="assets/img/blog-detail/unlike.svg"><span class="k-k">30</span></li> -->
+                         </ul>
+                       </div>  
+                  <ul class="detail-icon">
+                    <li><a href="https://www.facebook.com/medimall.co.in" target="_blank"><img src="assets/img/blog-detail/faceb.svg"></a></li>
+                    <li><a href="https://www.instagram.com/medimall.co.in/" target="_blank"><img src="assets/img/blog-detail/insta.svg"></a></li>
+                    <li><a href="https://wa.link/u49i5k" target="_blank"><img src="assets/img/blog-detail/whatsapp.svg"></a></li>
+                    <li><a href="#"><img src="assets/img/blog-detail/teleg.svg"></a></li>
+                     <li><a href="https://twitter.com/Medimall2020" target="_blank"><img src="assets/img/blog-detail/twitter.svg"></a></li>
+                      <li><a href="javascript:void(0)" (click)="share_now()"><img src="assets/img/blog-detail/share.svg"></a></li>
+                  </ul>
+                </div>
+                </div>
+  
+  
+               </div>
+             </div>
+            
+            </div>
+            <div class="col-md-3 col-12"><!-- detail-side-->
+             
+              <div class="detail-side1">
+                <p>This content has been medically reviewed by <a >{{ad.reviewedBy}}</a></p>
+              </div> <div class="sides-detail">
+               <div class="detail-back" style="background-image: url(assets/img/blog-detail/round.svg);">
+                 <div class="detail-side">
+                   <div class="contact-detail">
+                     <h4>Content Detail</h4>
+                     <div class="contact-img-d">
+                      <div class="cont-img">
+                       <img src="assets/img/blog-detail/user.svg">
+                      </div>
+                      <div class="contact-name">
+                        <h4>{{ad.authorName}} </h4>
+                        <p>{{ad.designation}}</p>
+                      </div>
+  
+                      </div>
+                       <div class="last-date1">
+                         <p>Last Updated On :</p>
+                         <div class="last-date">
+                           <p>{{ad.updatedAt}}</p>
+                         </div>
+                        
+                       </div>  
+                         <div class="last-date">
+                         <ul class="last-date1">
+                           <li><a>Was this Helpful ?</a></li>
+                           <li> <i class="icon-thumbs-up" *ngIf="!likeFlag" (click)="likeButton(ad)"></i>
+                            <i class="fa fa-thumbs-up" aria-hidden="true" style="color: #00aaff;font-size: 18px;cursor: pointer;" *ngIf="likeFlag" (click)="likeButton(ad)"></i>
+                             <!-- <img src="assets/img/blog-detail/like2.svg"> -->
+                            </li>
+                           <!-- <li><img class="unlike" src="assets/img/blog-detail/unlike.svg"></li> -->
+                         </ul>
+                       </div>  
+                   </div>
+                 </div>
+               </div>
+                <h3 class="detail-recent">Recent blogs</h3>
+  
+                <div class="detail-back" *ngFor="let r of newestArticles">
+                  <a routerLink="/blog-detail/{{r._id}}"> <img class="recent-img" src="{{r.image}}"></a>
+                
+                   <div class="recent-detail">
+                     <h4><a routerLink="/blog-detail/{{r._id}}"> {{r.title}}</a></h4>
+                     
+                     <p *ngIf="r.description.length>100" innerHTML="{{r.description | slice:0:100}}..." ></p>
+                     <p *ngIf="r.description.length<=100" innerHTML="{{sanitizer.bypassSecurityTrustHtml(r.description)}}" ></p>
+                  
+                     <div class="contact-imgs">
+                      <div class="cont-img1">
+                        <img src="assets/img/blog-detail/edit.svg">
+                        <p>by {{r.authorName}}</p>
+                      </div>
+                       <div class="cont-img1">
+                        <img src="assets/img/blog-detail/date.svg">
+                        <p>{{r.createdAt}}</p>
+                      </div>
+                       <div class="cont-img1">
+                        <img src="assets/img/blog-detail/like.svg">
+                        <p>{{r.like_count}}</p>
+                      </div>
+                       <div class="cont-img1">
+                        <img src="assets/img/blog-detail/eye.svg">
+                        <p>{{r.views_count}}</p>
+                      </div>
+                     
+                      </div>
+                   </div>
+  
+               </div>
+  
+                 <h3 class="detail-recent">Quick Links</h3>
+  
+                 <div class="link">
+                   <h4>Go through links</h4>
+                   <ul>
+                     <li><a href="http://medfolio.com/" target="_blank">Medfolio.com</a></li>
+  
+                     <li><a href="https://medimall.co.in/" target="_blank">Medimall.co.in</a></li>
+  
+                     <li><a href="https://medimall.co.in/career" target="_blank">Medimall.co.in/career</a></li>
+  
+                     <li><a href="https://medimall.com/" target="_blank">Medfolio.com</a></li>
+  
+                     <li><a href="https://medimall.co.in/" target="_blank">Medimall.co.in</a></li>
+  
+                     <li><a href="https://medimall.co.in/career" target="_blank">Medimall.co.in/career</a></li>
+  
+  
+                   </ul>
+                 </div>
+  
+                 <div class="subscribe">
+                   <div class="sub-blue">
+                     <h3>Make Good Health a Daily Habit</h3>
+                   </div>
+                   <div class="sub-bluecont">
+                     <h5>Subscribe  to Our Blog Today</h5>
+                   </div>
+                 </div>
+                 <div class="forms">
+                    <form>
+                     <input type="email" name=""  placeholder="Email..." >
+                     <button class="send-mail">Send email</button>
+  
+                   </form>
+                 </div>
+                  <div class="side-head">
+                  <h3 class="">Trending Blogs</h3>
+                  <h4>{{this.trendingArticles.length}}+ posts</h4>
+                </div>
+  
+                <div class="detail-back1" *ngFor="let tr of trendingArticles">
+                  <a routerLink="/blog-detail/{{tr._id}}"> <img class="recent-img" src="{{tr.image}}"></a>
+                
+                   <div class="recent-detail">
+                     <h4><a routerLink="/blog-detail/{{tr._id}}"> {{tr.title}}</a></h4>
+                     <p *ngIf="tr.description.length>100" innerHTML="{{tr.description | slice:0:100}}..." ></p>
+                     <p *ngIf="tr.description.length<=100" innerHTML="{{sanitizer.bypassSecurityTrustHtml(tr.description)}}" ></p>
+                     <div class="contact-img-icons">
+                      <div class="cont-img1">
+                        <img src="assets/img/blog-detail/edit.svg">
+                        <p>by {{tr.authorName}}</p>
+                      </div>
+                       <div class="cont-img1">
+                        <img src="assets/img/blog-detail/date.svg">
+                        <p>{{tr.createdAt}}</p>
+                      </div>
+                       <div class="cont-img1">
+                        <img src="assets/img/blog-detail/like.svg">
+                        <p>{{tr.like_count}}</p>
+                      </div>
+                       <div class="cont-img1">
+                        <img src="assets/img/blog-detail/eye.svg">
+                        <p>{{tr.views_count}}</p>
+                      </div>
+                     
+                      </div>
+                   </div>
+  
+               </div>
+  
+                  <div class="detail-med">
+                    <div class="med1">
+                      <div class="med-img">
+                        <img src="assets/img/blog-detail/med1.png">
+                      </div>
+                      <div class="med-content">
+                        <p>Order Medicine</p>
+                      </div>
+                    </div>
+                    <div class="med1">
+                        <div class="med-img" style="">
+                             <img src="assets/img/blog-detail/med2.png">
+                        </div>
+                      <div class="med-content">
+                        <p>Order Healthcare Products</p>
+                      </div>
+                    </div>
+                  </div> 
+  
+  
+                <div>
+                 <img src="assets/img/blog-detail/9.png">
+               </div>
+             <div>
+                 <img src="assets/img/blog-detail/6.png">
+               </div>
+                
+               <div>
+                 <img src="assets/img/blog-detail/3.png">
+               </div>
+  
+               </div>
+             </div>
+  
+            
+           </div>
+           </div>
+          </div>
+        
+       </div>
+      <section class="disclaims">
+        <div class="container">
+         <div class="col-md-9">
+               <div class="disclaim">
+                 
+                  <p>Disclaimer: The information included at this site is for educational purposes only and is not intended to be a substitute for medical treatment by a healthcare professional. Because of unique individual needs, the reader should consult their physician to determine the appropriateness of the information for the reader’s situation.</p>
+  
+               </div><!--Disclaimer-->
+  
+                
+             </div>
+  
+             <div class="col-md-12">
+  
+  
+                <div class="related-product" *ngIf="ad.related_products.length>0">
+                  <h3>Related Products</h3>
+                   <!-- <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="3000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="8" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="3" data-owl-item-lg="3" data-owl-item-xl="3" data-owl-duration="1000" data-owl-mousedrag="on"> -->
+                    <owl-carousel-o [options]="myCarouselOptions" >
+  
+                      <ng-container *ngFor="let rp of ad.related_products;let st=index; ">
+                        <ng-template carouselSlide [id]="rp._id">
+                    <div class="ps-section__product">
+                                   <div class="ps-product ps-product--standard  relate-product" style="background-color:white">
+                                      <div class="ps-product__content">
+                                         <div class="ps-product__badge">{{rp.offer}} OFF </div>
+                                          <h5 class="ps-product__title "><a  href="https://medimall.co.in/under.html"  style="color:#050500; opacity: 0.81">{{rp.title}}</a></h5>
+                                          <p>By Elements.Pvt.Ltd</p>
+  
+                                           <div class="ps-product__thumbnail corona">
+                                          <a class="ps-product__image" (click)="redirectToProductDetail(rp)">
+                                             <img src="{{rp.image}}" alt="alt"> 
+                                          </a>
+                                          <h3><span class="ps-product__price"><i class="fa fa-inr"></i> {{rp.price}} </span></h3>
+                                          
+                                      </div>
+                                    </div> 
+                                  </div> <div class="clik-menu"><a class="buy-rel">Buy Now</a></div>
+                              </div>
+                           
+                            </ng-template>
+                          </ng-container>
+  
+                        </owl-carousel-o>      
+                              
+                          <!-- </div> -->
+                </div>
+             </div>
+  
+            </div>
+      </section>
+      <section class="blog-im" *ngIf="ad.related_articles.length>0">
+        <div class="container">
+          <h3 class="text-center">Related Post</h3>
+          <div class="row">
+            <div class="col-md-4 mt-3" *ngFor="let ra of ad.related_articles">
+              <div class="detail-lastsec">
+                <h3 >{{ra.heading}}</h3>
+                <div class="detail-parag">
+               <p *ngIf="ra.description.length>250" outerHTML="{{ra.description | slice:0:250}}..."></p>
+               <p *ngIf="ra.description.length<=250"  outerHTML="{{sanitizer.bypassSecurityTrustHtml(ra.description)}}"></p>
+              </div>
+                <a routerLink="/blog-detail/{{ra._id}}">Read More</a>
+                 <div class="contact-imgrp">
+                      <div class="cont-img1">
+                        <img src="assets/img/blog-detail/edit.svg">
+                        <p>by {{ra.authorName}}</p>
+                      </div>
+                       <div class="cont-img1">
+                        <img src="assets/img/blog-detail/date.svg">
+                        <p>{{ra.createdAt}}</p>
+                      </div>
+                       <div class="cont-img1">
+                        <img src="assets/img/blog-detail/like.svg">
+                        <p>{{ra.like_count}}</p>
+                      </div>
+                       <div class="cont-img1">
+                        <img src="assets/img/blog-detail/eye.svg">
+                        <p>{{ra.views_count}}</p>
+                      </div>
+                     
+                      </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </section>
+  
+      <section class="heart">
+        <div class="lines-h"></div>
+        <p>Made with <i class="fa fa-heart" aria-hidden="true"></i> </p>
+      </section>
+  
+  <section class="del-over">
+  <div class="container">
+  <div class="deling">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Download It,  <span style="color:#00BBFF;font-weight: 600;">Explore It</span></h2>
+      </div>
+      <div class="col-md-6">
+        <div class="lastdowndet">
+                       
+                         <h3>Download the App for Free</h3>
+                          <div class="d-app">
+                            <a href=""><img src="assets/img/png/play1.png"></a>
+                             <a href="https://play.google.com/store/apps/details?id=com.medfolio.medimall" target="_blank"><img src="assets/img/png/play.png"></a>
+                          </div>
+                  </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </section> 
+      <section class="detail-footer">
+        <div class="container">
+          <div class="row">
+          <div class="col-md-2 topil">
+              <!-- <img src="assets/img/blog-detail/phone.png"> -->
+          </div>
+            <div class="col-md-7">
+              <div class="col-md-12">
+              <ul class="det-ul">
+                <li *ngFor="let c of main_catgeories"><a routerLink="/blog/{{c.name}}/{{c._id}}">{{c.name}}</a></li>
+                
+  
+  
+              </ul>
+            </div>
+            <div class="row" style="width: 100%;">
+              <div class="col-md-12 india">
+               <h1>Giving Hope To India</h1>
+            </div>
+            
+            </div>
+            
+  
+            </div>
+            <div class="col-md-3 foot">
+               <h1 class="fol-del"> Follow Us</h1>
+               <ul class="soc">
+                <li><a class="" href="https://www.facebook.com/medimall.co.in" target="_blank"><i class="fa fa-facebook"> </i></a></li>
+                <li><a class="" href="https://www.instagram.com/medimall.co.in/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                <li><a class="" href=""><i class="fa fa-youtube-play"></i></a></li>
+                <li><a class="" href="https://wa.link/u49i5k" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+                <li><a class="" href="https://twitter.com/Medimall2020" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                <li><a class="" href="https://www.linkedin.com/company/medimall-co-in/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+  
+               </ul>
+            </div>
+  
+          </div>
+              
+        </div>
+      </section>
+      
+    </div>
+  
+   
+    <div class="sticky-container">
+       <ul class="sticky">
+          <li class="down">
+             <i class="fa fa-download "></i>
+             <p>Download app</p>
+          </li>
+       </ul>
+    </div>
+    <div class="ps-menu--slidebar">
+       <div class="ps-menu__content">
+          <ul class="menu--mobile">
+             <li class="menu-item-has-children"><a href="javascript: void(0);">Category</a><span class="sub-toggle"><i class="fa fa-chevron-down"></i></span>
+             </li>
+             <li class="menu-item-has-children"><a href="javascript: void(0);">Blog</a></li>
+             <li class="menu-item-has-children"><a href="javascript: void(0);">Medimall Foundation</a></li>
+             <li class="menu-item-has-children"><a href="javascript: void(0);">Fitness Arena</a><span class="sub-toggle"><i class="fa fa-chevron-down"></i></span>
+             </li>
+             <li class="menu-item-has-children"><a href="javascript: void(0);">More</a></li>
+          </ul>
+       </div>
+    </div>
+    <button class="btn scroll-top"><i class="fa fa-angle-double-up"></i></button>
+    <div class="ps-preloader" id="preloader">
+    </div>

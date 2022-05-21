@@ -1,0 +1,1144 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid" style="font-family:Poppins, sans-serif !important;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card tab2-card" style="background:transparent">
+
+                <div class="row mt-3 costmr_srch_ivntrylist">
+                    <div class="col-md-4">
+                        <h5 style="margin-top:20px;color: white;opacity: 0.7;">Seasonal Offers</h5>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+
+                    
+                   
+                </div>  
+
+
+                
+                <ngb-tabset #t="ngbTabset" [activeId]="selectedTab" class="tab-coupon side_innerpage_tab">
+
+                    <ngb-tab title="Set Your Deal" id="tab-selectbyid0" *ngIf="disableTab('Set Your Deal')">
+                        <ng-template ngbTabContent>                                                                                                                                        
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">  
+
+                                        <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                        data-target="#SetDealsExampleModal" (click)="open(SetDealsContent,'add','','set_your_deal')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+                                           
+                                            <div class="mt-1 row">
+                                                <div class="col-md-4 " *ngFor="let i of setYourDealList">
+                                                     <div class="card-body card-data"> 
+                                                         <a style="font-size: 15px;" for="validationCustom0" routerLink="#" (click)="setDeal(i._id)" >{{i.name | titlecase}}</a>
+                                                     </div>
+                                                     <h6 style="float: right; color: white; font-size: 15px;"> 
+                                                        <span> 
+                                                            <i class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                                            data-target="#SetDealsExampleModal" (click)="open(SetDealsContent,'edit',i._id,'set_deal')" *ngIf="editFlag"></i>  
+                                                            
+                                                            <i style="margin-left: 15px;" class="fa fa-trash" *ngIf="editFlag" (click)="delete('set_deal',i._id)"></i>  
+                                                        </span>
+                                                    </h6> 
+                                                 </div> 
+                                             </div>
+             
+
+                                
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Editors Choice" id="tab-selectbyid2"  *ngIf="disableTab('Editors Choice')">
+                        <ng-template ngbTabContent>                                                                                                                                        
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+
+
+                                    <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#EditorsChoiceExampleModal" (click)="open(EditorsChoiceContent,'add','','editors_choice')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+                        
+
+                                    <div class="mt-1 row">
+                                        <div class="col-lg-4 col-md-6" *ngFor="let i of editorChoiceList">
+                                            <div class="post_items" >     
+                                                            <img [src]="i.image" width="100%" >
+                                                            <h6 style="float: right; color: white;font-size: 15px;"> 
+                                                                    <span> 
+
+                                                                        <i class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                                                        data-target="#EditorsChoiceExampleModal" (click)="open(EditorsChoiceContent,'edit',i._id,'editors_choice')" *ngIf="editFlag"></i>  
+                                                                        
+                                                                    <i style="margin-left: 15px;" class="fa fa-trash" *ngIf="editFlag" (click)="delete('editors_choice',i._id)"></i>  
+                                                                    </span>
+                                                            </h6>   
+                                                        
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                    <p *ngIf="editorChoiceList && !editorChoiceList.length" class="text-center text-muted alert-no-found">
+                                        <small>No Data found</small>
+                                    </p>
+
+
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Set New Offer" id="tab-selectbyid3"  *ngIf="disableTab('Set New Offer')">
+                        <ng-template ngbTabContent>                                                                                                                                        
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+
+
+                                    <!-- <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#newOfferFirstExampleModal" (click)="open(newOfferFirstContent,'add','','set_new_offer')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+                         -->
+                                    <div class="mt-1 row">
+                                        <div class="col-md-4 " *ngFor="let i of setNewOffersList">
+                                             <div class="card-body card-data"> 
+                                                 <a style="font-size: 15px;cursor: pointer;;" for="validationCustom0"  (click)="redirectToOffers(i._id)">{{i.name | titlecase}}</a>
+                                             </div>
+                                             <h6 style="float: right; color: white;font-size: 15px;"> 
+                                                <span> 
+                                                    <i  class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                                    data-target="#newOfferFirstExampleModal" (click)="open(newOfferFirstContent,'edit',i._id,'set_new_offer')" *ngIf="editFlag"></i>  
+                                                    
+                                                    <!-- <i style="margin-left: 15px;" class="fa fa-trash" *ngIf="deleteFlag" (click)="delete('set_new_offer',i._id)"></i>   -->
+                                                </span>
+                                            </h6> 
+                                         </div> 
+                                     </div>
+                                    
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Vocal Local" id="tab-selectbyid4"  *ngIf="disableTab('Vocal Local')">
+                        <ng-template ngbTabContent>                                                                                                                                        
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+
+
+                                    <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#VocallocalExampleModal" (click)="open(VocallocalContent,'add','','vocal_local')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+                        
+
+                                    
+                                    <div class="mt-1 row">
+                                        <div class="col-lg-4 col-md-6" *ngFor="let i of vocalLocalList">
+                                            <div class="post_items" >     
+                                                            <img [src]="i.image" width="100%" >
+                                                            <h6 style="float: right;  color: white;font-size: 15px;"> 
+                                                                    <span> 
+
+                                                                        <i  class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                                                        data-target="#VocallocalExampleModal" (click)="open(VocallocalContent,'edit',i._id,'vocal_local')" *ngIf="editFlag"></i>  
+                                                                        <i style="margin-left: 15px;" class="fa fa-trash" *ngIf="editFlag" (click)="delete('vocal_local',i._id)"></i>  
+                                                                    </span>
+                                                            </h6>   
+                                                        
+                                            </div>
+                                        </div>
+
+                                      
+                                    </div>
+
+
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+                    <ngb-tab title="Immunity Booster" id="tab-selectbyid5"  *ngIf="disableTab('Immunity Booster')">
+                        <ng-template ngbTabContent>                                                                                                                                        
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+
+
+                                    <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#ImmunityBoosterExampleModal" (click)="open(ImmunityBoosterContent,'add','','immunity_booster')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+                        
+
+                                    
+                                    <div class="mt-1 row">
+                                        <div class="col-lg-3 col-md-6" *ngFor="let i of immunityBoosterList">
+                                            <div class="post_items" >     
+                                                            <img [src]="i.image" width="100%" >
+                                                            <h6 style="color: white;font-size: 15px;"> {{i.title | titlecase}}
+                                                                    <span style="float: right; "> 
+
+                                                                        <i  class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                                                        data-target="#ImmunityBoosterExampleModal" (click)="open(ImmunityBoosterContent,'edit',i._id,'immunity_booster')" *ngIf="editFlag"></i>  
+                                                                        <i style="margin-left: 15px;" class="fa fa-trash" *ngIf="editFlag" (click)="delete('immunity_booster',i._id)"></i>  
+                                                                    </span>
+                                                            </h6>   
+                                                        
+                                            </div>
+                                        </div>
+
+                                       
+                                    </div>
+
+
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+                    <!-- <ngb-tab title="Top Categories" id="tab-selectbyid6"  *ngIf="disableTab('Top Categories')">
+                        <ng-template ngbTabContent>                                                                                                                                        
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+
+
+                                    <button style="margin-top:-20px;float:right;" type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#TopCategoriesExampleModal" (click)="open(TopCategoriesContent,'add','','top_categories')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+                        
+
+                                    
+                                    <div class="mt-4 row">
+                                        <div class="col-lg-4 col-md-6" *ngFor="let i of topCategoriesList">
+                                            <div class="post_items" >     
+                                                            <img [src]="i.image" width="100%" >
+                                                            <h6 style="margin-left: 80%;color: white;font-size: 15px;"> 
+                                                                    <span> 
+
+                                                                        <i   style="margin-left: 20%;" class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                                                        data-target="#TopCategoriesExampleModal" (click)="open(TopCategoriesContent,'edit',i._id,'top_categories')" *ngIf="editFlag"></i>  
+                                                                    </span>
+                                                            </h6>   
+                                                        
+                                            </div>
+                                        </div>
+
+                
+                                    </div>
+
+
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab> -->
+
+
+                    
+                    <ngb-tab title="Energize Your Workout" id="tab-selectbyid7"  *ngIf="disableTab('Energize Your Workoutl')">
+                        <ng-template ngbTabContent>                                                                                                                                        
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+
+
+                                    <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#EnergiesExampleModal" (click)="open(EnergiesContent,'add','','energize_workout')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+                        
+
+                                    
+                                    <div class="mt-1 row">
+                                        <div class="col-lg-4 col-md-6" *ngFor="let i of energizeWorkoutList">
+                                            <div class="post_items" >     
+                                                            <img [src]="i.image" width="100%" >
+                                                            <h6 style="float: right;  color: white;font-size: 15px;"> 
+                                                                    <span> 
+
+                                                                        <i  class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                                                        data-target="#EnergiesExampleModal" (click)="open(EnergiesContent,'edit',i._id,'energize_workout')" *ngIf="editFlag"></i>  
+                                                                        <i style="margin-left: 15px;" class="fa fa-trash" *ngIf="editFlag" (click)="delete('energize_workout',i._id)"></i>  
+                                                                    </span>
+                                                            </h6>   
+                                                        
+                                            </div>
+                                        </div>
+
+                                        
+                                    </div>
+                
+
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Budget Store" id="tab-selectbyid1"  *ngIf="disableTab('Budget Store')">
+                        <ng-template ngbTabContent>                                                                                                                                        
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+
+
+                                    <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#BudgetStoreExampleModal" (click)="open(BudgetStoreContent,'add','','budget_store')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+                        
+
+                                    
+                                    <div class="mt-1 row">
+                                        <div class="col-lg-4 col-md-6" *ngFor="let i of budgetStoreList">
+                                            <div class="post_items" >     
+                                                            <img [src]="i.image" width="100%" >
+                                                            <h6 style="float: right; color: white;font-size: 15px;"> 
+                                                                    <span> 
+
+                                                                        <i  class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                                                        data-target="#BudgetStoreExampleModal" (click)="open(BudgetStoreContent,'edit',i._id,'budget_store')" *ngIf="editFlag"></i>
+                                                                        
+                                                                        <i style="margin-left: 15px;" class="fa fa-trash" *ngIf="editFlag" (click)="delete('budget_store',i._id)"></i>  
+                                                                    </span>
+                                                            </h6>   
+                                                        
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+
+                </ngb-tabset>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+
+<ng-template #SetDealsContent let-modal>
+    <form [formGroup]="setDealForm">
+    <div  class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="SetDealsExampleModal">{{add_Modal_Flag ? 'Set Your Deal' : 'Update Your Deal'}}</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="mt-2 row">
+            <div class="col-md-12">
+                <label>Deal Name</label>
+                <input type="text" class="form-control" formControlName="dealname">
+                <small for="dealname" class="form-text text-danger" 
+                *ngIf="setDealForm.controls['dealname'].errors?.required && 
+                (setDealForm.controls['dealname'].dirty ||  
+                setDealForm.controls['dealname'].touched || 
+                (setDealForm.controls['dealname'].untouched  && attemptedSubmit ) )">
+                Deal Name is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="mt-2 row">
+            <div class="col-md-6">
+                <label>Starting Date</label>
+                <input type="date" class="form-control" formControlName="startingdate" (change)="StartingDateChange($event.target.value)" min="{{todayDate}}" onkeydown="return false">
+                <small for="startingdate" class="form-text text-danger" 
+                *ngIf="setDealForm.controls['startingdate'].errors?.required && 
+                (setDealForm.controls['startingdate'].dirty ||  
+                setDealForm.controls['startingdate'].touched || 
+                (setDealForm.controls['startingdate'].untouched  && attemptedSubmit ) )">
+                Starting Date is required.
+                </small>
+            </div>
+
+            <div class="col-md-6">
+                <label>Ending Date</label>
+                <input type="date" class="form-control" formControlName="endingdate" min="{{minDate}}" onkeydown="return false">
+                <small for="endingdate" class="form-text text-danger" 
+                *ngIf="setDealForm.controls['endingdate'].errors?.required && 
+                (setDealForm.controls['endingdate'].dirty ||  
+                setDealForm.controls['endingdate'].touched || 
+                (setDealForm.controls['endingdate'].untouched  && attemptedSubmit ) )">
+                Ending Date is required.
+                </small>
+            </div>
+
+        </div>
+
+        <div class="mt-2 row">
+            <div class="col-md-6">
+                <label>Starting Time</label>
+                <input type="time" class="form-control" formControlName="startingtime" (change)="StartingTimeChange($event.target.value)" onkeydown="return false">
+                <small for="startingtime" class="form-text text-danger" 
+                *ngIf="setDealForm.controls['startingtime'].errors?.required && 
+                (setDealForm.controls['startingtime'].dirty ||  
+                setDealForm.controls['startingtime'].touched || 
+                (setDealForm.controls['startingtime'].untouched  && attemptedSubmit ) )">
+               Starting Time is required.
+                </small>
+            </div>
+
+            <div class="col-md-6">
+                <label>Ending Time</label>
+                <input type="time" class="form-control" formControlName="endingtime" min="{{minTime}}" onkeydown="return false">
+                <small for="endingtime" class="form-text text-danger" 
+                *ngIf="setDealForm.controls['endingtime'].errors?.required && 
+                (setDealForm.controls['endingtime'].dirty ||  
+                setDealForm.controls['endingtime'].touched || 
+                (setDealForm.controls['endingtime'].untouched  && attemptedSubmit ) )">
+                Ending Time is required.
+                </small>
+            </div>
+
+        </div>
+
+        <div class="mt-2 row">
+            <div class="col-md-12">
+                <label>Purchase Limit</label>
+                <input type="number" class="form-control"  formControlName="limit" (keypress)="alphaNumberOnly($event)" min="1">
+                <small for="limit" class="form-text text-danger" 
+                *ngIf="setDealForm.controls['limit'].errors?.required && 
+                (setDealForm.controls['limit'].dirty ||  
+                setDealForm.controls['limit'].touched || 
+                (setDealForm.controls['limit'].untouched  && attemptedSubmit ) )">
+                Purchase Limit is required (Numbers Only).
+                </small>
+                <!-- <small for="limit" class="form-text text-danger" 
+                *ngIf="hasError">
+                Only numbers are allowed
+                </small> -->
+            </div>
+        </div>
+
+
+      
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+        (click)="close()">Close</button>
+        
+        <button *ngIf="add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="save('set_deal');attemptedSubmit = true">{{addLoading ? 'Saving...' : 'Save'}}</button>
+        <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="update('set_deal');attemptedSubmit = true">{{addLoading ? 'Updating...' : 'Update'}}</button>
+    </div>
+</form>
+</ng-template>
+
+
+
+<ng-template #ChooseProductContent let-modal>
+    <div  class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="ChooseProductExampleModal">Choose Your Product</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="mt-2 row">
+            <div class="col-md-12">
+                <label>Select category</label>
+                <select class="form-control classic" id="validationCustom02" >
+                    <option *ngFor="let i of categoryList" [value]="i._id">{{i.title}}</option>
+                </select>  
+            </div>
+        </div>
+
+        <div class="mt-2 row">
+            <div class="col-md-12">
+                <div class="example-wrapper">
+                    <label>Select Product</label>
+                    <kendo-multiselect #subcategoryid   
+                    [data]="inventoryList" 
+                    [filterable]="true"
+                    textField="title"
+                    valueField="_id"
+                    [valuePrimitive]="true"
+                    (filterChange)="handleFilterProduct($event)"
+                  >
+                </kendo-multiselect>
+                  </div>
+            </div>
+        </div>
+      
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+        (click)="close()">Close</button>
+        
+        <button *ngIf="add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="save('set_new_offer');attemptedSubmit = true">{{addLoading ? 'Saving...' : 'Save'}}</button>
+        <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="update('set_new_offer');attemptedSubmit = true">{{addLoading ? 'Updating...' : 'Update'}}</button>
+    </div>
+</ng-template>
+
+
+
+<ng-template #EditorsChoiceContent let-modal>
+    <form [formGroup]="editor_Vocal_EnergizeForm">
+ 
+
+    <div  class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="EditorsChoiceExampleModal">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="image-data">
+                    <div class="upload-btn-wrapper" [ngClass]="image_URL === '' ? 'upload-btn-wrapper' : 'upload-btn-wrapper2' ">
+                        <i class="icon fa fa-upload" *ngIf="image_URL === ''"></i>
+                        <input type="file" name="myfile" /> 
+                        <img [src]="image_URL" width="100%" class="image-icon popup-images-ht" *ngIf="image_URL != ''">
+                        <input type="file" name="myfile" class="input-file" (change)="onChange($event,'257','230')"/>
+                    </div>
+                </div>
+                 <small for="type" class="form-text text-danger" 
+                *ngIf="image_URL === '' && attemptedSubmit ">
+               This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 "></div>
+            <div class="col-md-6 ">
+                <h6 style="color: #fff;float: right;" for="validationCustom0" class="">Size : 257px x 230px</h6>
+            </div>
+        </div>
+
+        
+        <div class="mt-1 row">
+          
+            <div class="col-md-6">
+                <label>Select Category</label>
+                <!-- <select class="form-control classic" id="validationCustom02" formControlName="categoryid" (change)="categoryChange($event.target.value)">
+                    <option  *ngFor="let cat of categoryList" [value]="cat._id"> {{cat.title}} </option>
+                </select> -->
+                <kendo-dropdownlist #categoryId class="form-control" [data]="categoryList" [filterable]="true"
+                [textField]="'title'" [valueField]="'_id'" formControlName="categoryid" [valuePrimitive]="true"
+                (filterChange)="handleFilterCategory($event)" (valueChange)="categoryChange($event)">
+                </kendo-dropdownlist>
+                <small for="categoryid" class="form-text text-danger" 
+                *ngIf="editor_Vocal_EnergizeForm.controls['categoryid'].errors?.required && 
+                (editor_Vocal_EnergizeForm.controls['categoryid'].dirty ||  
+                editor_Vocal_EnergizeForm.controls['categoryid'].touched || 
+                (editor_Vocal_EnergizeForm.controls['categoryid'].untouched  && attemptedSubmit ) )">
+               This field is required.
+                </small>
+
+            </div>
+
+            <div class="col-md-6">
+                <label>Select Product</label>
+                <!-- <select class="form-control classic" id="validationCustom02" placeholder="--Select--" formControlName="subcategoryid">
+                    <option *ngFor="let prod of inventoryList" [value]="prod._id">  {{prod.title}}</option>
+                </select> -->
+                <kendo-dropdownlist #productId class="form-control" [data]="inventoryList"
+                        [filterable]="true" [textField]="'title'" [valueField]="'_id'" formControlName="subcategoryid"
+                        [valuePrimitive]="true" (filterChange)="handleCategoryWiseFilterProduct($event)">
+                </kendo-dropdownlist>
+                <small for="subcategoryid" class="form-text text-danger" 
+                *ngIf="editor_Vocal_EnergizeForm.controls['subcategoryid'].errors?.required && 
+                (editor_Vocal_EnergizeForm.controls['subcategoryid'].dirty ||  
+                editor_Vocal_EnergizeForm.controls['subcategoryid'].touched || 
+                (editor_Vocal_EnergizeForm.controls['subcategoryid'].untouched  && attemptedSubmit ) )">
+               This field is required.
+                </small>
+
+            </div>
+
+        </div>
+
+     
+    </div>
+    <div class="modal-footer">
+        
+        <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+        (click)="close()">Close</button>
+        
+        <button *ngIf="add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="save('editors_choice');attemptedSubmit = true">{{addLoading ? 'Saving...' : 'Save'}}</button>
+        <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="update('editors_choice');attemptedSubmit = true">{{addLoading ? 'Updating...' : 'Update'}}</button>
+    </div>
+</form>
+</ng-template>
+
+
+<ng-template #newOfferFirstContent let-modal>
+  
+
+    <form [formGroup]="setNewOfferForm">
+    <div  class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="newOfferFirstExampleModal">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<div class="modal-body">
+
+    <div class="mt-2 row">
+        <div class="col-md-12">
+            <label>Offer Name</label>
+            <input type="text" class="form-control" formControlName="offername">
+            <small for="offername" class="form-text text-danger" 
+            *ngIf="setNewOfferForm.controls['offername'].errors?.required && 
+            (setNewOfferForm.controls['offername'].dirty ||  
+            setNewOfferForm.controls['offername'].touched || 
+            (setNewOfferForm.controls['offername'].untouched  && attemptedSubmit ) )">
+           Offer Name is required.
+            </small>
+        </div>
+    </div>
+  
+</div>
+    <div class="modal-footer">
+        <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+        (click)="close()">Close</button>
+        
+        <button *ngIf="add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="save('set_new_offer');attemptedSubmit = true">{{addLoading ? 'Saving...' : 'Save'}}</button>
+        <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="update('set_new_offer');attemptedSubmit = true">{{addLoading ? 'Updating...' : 'Update'}}</button>
+    </div>
+    </form>
+</ng-template>
+
+
+<ng-template #newOfferContent let-modal>
+ 
+
+    <div  class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="newOfferExampleModal">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="image-data">
+                    <div class="upload-btn-wrapper ">
+                        <i class="icon fa fa-upload"></i><br><span>Banner</span>
+                        <input type="file" name="myfile" class="input-file" (change)="onChange($event,'277','353')"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 "></div>
+            <div class="col-md-6 ">
+                <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 350px x 750px</h6>
+            </div>
+        </div>
+
+        
+        <div class="mt-1 row">
+          
+            <div class="col-md-6">
+                <select class="form-control classic" id="validationCustom02">
+                    <option hidden>Category</option>
+                    <option>Category 1</option>
+                    <option>Category 2</option>
+                    <option>Category 3</option>
+                    <option>Category 4</option>
+                    <option>Category 5</option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <select class="form-control classic" id="validationCustom02" placeholder="--Select--">
+                    <option hidden>Product</option>
+                    <option>Product 1</option>
+                    <option>Product 2</option>
+                    <option>Product 3</option>
+                    <option>Product 4</option>
+                    <option>Product 5</option>
+                </select>
+            </div>
+
+        </div>
+
+     
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class=" mb-0 col-md-4 "></div>
+            <div class=" mb-0 col-md-4 ">
+                <button type="button" class="btn btn-dark btn-dark-rounded">Save</button>
+            </div>
+            <div class=" mb-0 col-md-4 "></div>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #VocallocalContent let-modal>
+   
+    <form [formGroup]="editor_Vocal_EnergizeForm">
+    <div class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="VocallocalExampleModal">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        
+        <div class="row">
+            <div class="col-md-12 ">
+                <label>Banner Image</label>
+                <div class="image-data">
+                    <div class="upload-btn-wrapper" [ngClass]="image_URL === '' ? 'upload-btn-wrapper' : 'upload-btn-wrapper1' ">
+                        <i class="icon fa fa-upload" *ngIf="image_URL === ''"></i>
+                        <input type="file" name="myfile" /> 
+                        <img [src]="image_URL" width="100%" class="image-icon popup-images-ht" *ngIf="image_URL != ''">
+                        <input type="file" name="myfile" class="input-file" (change)="onChange($event,'287','192')"/>
+                    </div>
+                </div>
+                <small for="type" class="form-text text-danger" 
+                *ngIf="image_URL === '' && attemptedSubmit ">
+               This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 "></div>
+            <div class="col-md-6 ">
+                <h6 style="color: #fff;float: right;" for="validationCustom0" class="">Size : 287px x 192px</h6>
+            </div>
+        </div>
+
+        
+        <div class="mt-1 row">
+          
+            <div class="col-md-6">
+                <label>Select Category</label>
+                <!-- <select class="form-control classic" id="validationCustom02" formControlName="categoryid" (change)="categoryChange($event.target.value)">
+                    <option  *ngFor="let cat of categoryList" [value]="cat._id"> {{cat.title}} </option>
+                </select> -->
+                <kendo-dropdownlist #categoryId class="form-control" [data]="categoryList" [filterable]="true"
+                [textField]="'title'" [valueField]="'_id'" formControlName="categoryid" [valuePrimitive]="true"
+                (filterChange)="handleFilterCategory($event)" (valueChange)="categoryChange($event)">
+                </kendo-dropdownlist>
+                <small for="categoryid" class="form-text text-danger" 
+                *ngIf="editor_Vocal_EnergizeForm.controls['categoryid'].errors?.required && 
+                (editor_Vocal_EnergizeForm.controls['categoryid'].dirty ||  
+                editor_Vocal_EnergizeForm.controls['categoryid'].touched || 
+                (editor_Vocal_EnergizeForm.controls['categoryid'].untouched  && attemptedSubmit ) )">
+               This field is required.
+                </small>
+
+            </div>
+
+            <div class="col-md-6">
+                <label>Select Product</label>
+                <!-- <select class="form-control classic" id="validationCustom02" placeholder="--Select--" formControlName="subcategoryid">
+                    <option *ngFor="let prod of inventoryList" [value]="prod._id">  {{prod.title}}</option>
+                </select> -->
+                <kendo-dropdownlist #productId class="form-control" [data]="inventoryList"
+                        [filterable]="true" [textField]="'title'" [valueField]="'_id'" formControlName="subcategoryid"
+                        [valuePrimitive]="true" (filterChange)="handleCategoryWiseFilterProduct($event)">
+                </kendo-dropdownlist>
+                <small for="subcategoryid" class="form-text text-danger" 
+                *ngIf="editor_Vocal_EnergizeForm.controls['subcategoryid'].errors?.required && 
+                (editor_Vocal_EnergizeForm.controls['subcategoryid'].dirty ||  
+                editor_Vocal_EnergizeForm.controls['subcategoryid'].touched || 
+                (editor_Vocal_EnergizeForm.controls['subcategoryid'].untouched  && attemptedSubmit ) )">
+               This field is required.
+                </small>
+
+            </div>
+
+        </div>
+
+
+     
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+        (click)="close()">Close</button>
+        
+        <button *ngIf="add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="save('vocal_local');attemptedSubmit = true">{{addLoading ? 'Saving...' : 'Save'}}</button>
+        <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="update('vocal_local');attemptedSubmit = true">{{addLoading ? 'Updating...' : 'Update'}}</button>
+    </div>
+    </form>
+</ng-template>
+ 
+
+
+<ng-template #ImmunityBoosterContent let-modal>
+  <form [formGroup]="immunityBoosterForm">
+    <div  class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="ImmunityBoosterExampleModal">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        
+        
+        <div class="mt-1 row">
+          
+            <div class="col-md-6">
+                <label>Select Category</label>
+                <!-- <select class="form-control classic" id="validationCustom02" formControlName="categoryid">
+                    <option  *ngFor="let cat of categoryList" value="{{cat._id}}"> {{cat.title}} </option>
+                </select> -->
+                <kendo-dropdownlist #categoryId class="form-control" [data]="categoryList" [filterable]="true"
+                [textField]="'title'" [valueField]="'_id'" formControlName="categoryid" [valuePrimitive]="true"
+                (filterChange)="handleFilterCategory($event)" (valueChange)="categoryChange($event)">
+                </kendo-dropdownlist>
+                <small for="categoryid" class="form-text text-danger" 
+                *ngIf="immunityBoosterForm.controls['categoryid'].errors?.required && 
+                (immunityBoosterForm.controls['categoryid'].dirty ||  
+                immunityBoosterForm.controls['categoryid'].touched || 
+                (immunityBoosterForm.controls['categoryid'].untouched  && attemptedSubmit ) )">
+               This field is required.
+                </small>
+
+            </div>
+
+            <div class="col-md-6">
+                <label>Select Product</label>
+                <!-- <select class="form-control classic" id="validationCustom02" placeholder="--Select--" formControlName="subcategoryid">
+                    <option *ngFor="let prod of inventoryList" value="{{prod._id}}">  {{prod.title}}</option>
+                </select> -->
+                <kendo-dropdownlist #subcategoryid class="form-control" [data]="inventoryList"
+                [filterable]="true" [textField]="'title'" [valueField]="'_id'" formControlName="subcategoryid"
+                [valuePrimitive]="true" (filterChange)="handleCategoryWiseFilterProduct($event)">
+                </kendo-dropdownlist>
+                <small for="subcategoryid" class="form-text text-danger" 
+                *ngIf="immunityBoosterForm.controls['subcategoryid'].errors?.required && 
+                (immunityBoosterForm.controls['subcategoryid'].dirty ||  
+                immunityBoosterForm.controls['subcategoryid'].touched || 
+                (immunityBoosterForm.controls['subcategoryid'].untouched  && attemptedSubmit ) )">
+               This field is required.
+                </small>
+
+            </div>
+
+        </div>
+
+
+     
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+        (click)="close()">Close</button>
+        
+        <button *ngIf="add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="save('immunity_booster');attemptedSubmit = true">{{addLoading ? 'Saving...' : 'Save'}}</button>
+        <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="update('immunity_booster');attemptedSubmit = true">{{addLoading ? 'Updating...' : 'Update'}}</button>
+    </div>
+</form>
+</ng-template>
+
+
+
+
+<ng-template #TopCategoriesContent let-modal>
+ 
+    <form [formGroup]="topCategoriesForm">
+
+    <div  class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="TopCategoriesExampleModal">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="row">
+            <div class="col-md-12 ">
+                <label>Choose Banner Image</label>
+                <div class="image-data">
+                    <div class="upload-btn-wrapper" [ngClass]="image_URL === '' ? 'upload-btn-wrapper' : 'upload-btn-wrapper1' ">
+                        <i class="icon fa fa-upload" *ngIf="image_URL === ''"></i>
+                        <input type="file" name="myfile" /> 
+                        <img [src]="image_URL" width="100%" class="image-icon popup-images-ht">
+                        <input type="file" name="myfile" class="input-file" (change)="onChange($event,'1228','1228')"/>
+                    </div>
+                </div>
+                <small for="type" class="form-text text-danger" 
+                *ngIf="image_URL === '' && attemptedSubmit ">
+               This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 "></div>
+            <div class="col-md-6 ">
+                <h6 style="color: #fff;margin-left: 50%;" for="validationCustom0" class="">Size : 1228px x 1228px</h6>
+            </div>
+        </div>
+
+        
+        <div class="mt-1 row">
+          
+            <div class="col-md-12 form-group">
+                <label>Select Category</label>
+                <!-- <select class="form-control classic" id="validationCustom02" formControlName="categoryid">
+                    <option  *ngFor="let cat of categoryList" value="{{cat._id}}"> {{cat.title}} </option>
+                </select> -->
+                <kendo-dropdownlist #categoryId class="form-control" [data]="categoryList" [filterable]="true"
+                [textField]="'title'" [valueField]="'_id'" formControlName="categoryid" [valuePrimitive]="true"
+                (filterChange)="handleFilterCategory($event)" (valueChange)="categoryChange($event)">
+                </kendo-dropdownlist>
+                <small for="categoryid" class="form-text text-danger" 
+                *ngIf="topCategoriesForm.controls['categoryid'].errors?.required && 
+                (topCategoriesForm.controls['categoryid'].dirty ||  
+                topCategoriesForm.controls['categoryid'].touched || 
+                (topCategoriesForm.controls['categoryid'].untouched  && attemptedSubmit ) )">
+               This field is required.
+                </small>
+
+            </div>
+        </div>
+
+        <div class="mt-2 row">
+            <div class="col-md-12">
+                <!-- <select class="form-control classic" id="validationCustom02" placeholder="--Select--" formControlName="subcategoryid">
+                    <option hidden>Product</option>
+                    <option *ngFor="let prod of inventoryList" value="{{prod._id}}">  {{prod.title}}</option>
+                </select> -->
+                <label>Select Product</label>
+                <kendo-multiselect #subcategoryid  id="multiselect"  class="form-control" formControlName="subcategoryid"
+                [data]="inventoryList" 
+                [filterable]="true"
+                textField="title"
+                valueField="_id"
+                [valuePrimitive]="true"
+                (filterChange)="handleFilterProduct($event)"
+                >
+                </kendo-multiselect>
+                <small for="subcategoryid" class="form-text text-danger" 
+                *ngIf="topCategoriesForm.controls['subcategoryid'].errors?.required && 
+                (topCategoriesForm.controls['subcategoryid'].dirty ||  
+                topCategoriesForm.controls['subcategoryid'].touched || 
+                (topCategoriesForm.controls['subcategoryid'].untouched  && attemptedSubmit ) )">
+               This field is required.
+                </small>
+
+            </div>
+
+        </div>
+
+     
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+        (click)="close()">Close</button>
+        
+        <button *ngIf="add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="save('top_categories');attemptedSubmit = true">{{addLoading ? 'Saving...' : 'Save'}}</button>
+        <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="update('top_categories');attemptedSubmit = true">{{addLoading ? 'Updating...' : 'Update'}}</button>
+    </div>
+    </form>
+</ng-template>
+
+
+
+<ng-template #EnergiesContent let-modal>
+  
+    <form [formGroup]="editor_Vocal_EnergizeForm">
+    <div  class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="EnergiesExampleModal">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        
+        <div class="row">
+            <div class="col-md-12 ">
+                <label>Banner Image</label>
+                <div class="image-data">
+                    <div class="upload-btn-wrapper" [ngClass]="image_URL === '' ? 'upload-btn-wrapper' : 'upload-btn-wrapper1' ">
+                        <i class="icon fa fa-upload" *ngIf="image_URL === ''"></i>
+                        <input type="file" name="myfile" /> 
+                        <img [src]="image_URL" width="100%" class="image-icon popup-images-ht" *ngIf="image_URL != ''">
+                        <input type="file" name="myfile" class="input-file" (change)="onChange($event,'298','298')"/>
+                    </div>
+                </div>
+                <small for="type" class="form-text text-danger" 
+                *ngIf="image_URL === '' && attemptedSubmit ">
+               This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 "></div>
+            <div class="col-md-6 ">
+                <h6 style="color: #fff;margin-left: 50%;" for="validationCustom0" class="">Size : 298px x 298px</h6>
+            </div>
+        </div>
+
+        
+        <div class="mt-1 row">
+          
+            <div class="col-md-6">
+                <label>Select Category</label>
+                <!-- <select class="form-control classic" id="validationCustom02" formControlName="categoryid" (change)="categoryChange($event.target.value)">
+                    <option  *ngFor="let cat of categoryList" [value]="cat._id"> {{cat.title}} </option>
+                </select> -->
+                <kendo-dropdownlist #categoryId class="form-control" [data]="categoryList" [filterable]="true"
+                [textField]="'title'" [valueField]="'_id'" formControlName="categoryid" [valuePrimitive]="true"
+                (filterChange)="handleFilterCategory($event)" (valueChange)="categoryChange($event)">
+                </kendo-dropdownlist>
+                <small for="categoryid" class="form-text text-danger" 
+                *ngIf="editor_Vocal_EnergizeForm.controls['categoryid'].errors?.required && 
+                (editor_Vocal_EnergizeForm.controls['categoryid'].dirty ||  
+                editor_Vocal_EnergizeForm.controls['categoryid'].touched || 
+                (editor_Vocal_EnergizeForm.controls['categoryid'].untouched  && attemptedSubmit ) )">
+               This field is required.
+                </small>
+
+            </div>
+
+            <div class="col-md-6">
+                <label>Select Product</label>
+                <!-- <select class="form-control classic" id="validationCustom02" placeholder="--Select--" formControlName="subcategoryid">
+                    <option *ngFor="let prod of inventoryList" [value]="prod._id">  {{prod.title}}</option>
+                </select> -->
+                <kendo-dropdownlist #productId class="form-control" [data]="inventoryList"
+                        [filterable]="true" [textField]="'title'" [valueField]="'_id'" formControlName="subcategoryid"
+                        [valuePrimitive]="true" (filterChange)="handleCategoryWiseFilterProduct($event)">
+                </kendo-dropdownlist>
+                <small for="subcategoryid" class="form-text text-danger" 
+                *ngIf="editor_Vocal_EnergizeForm.controls['subcategoryid'].errors?.required && 
+                (editor_Vocal_EnergizeForm.controls['subcategoryid'].dirty ||  
+                editor_Vocal_EnergizeForm.controls['subcategoryid'].touched || 
+                (editor_Vocal_EnergizeForm.controls['subcategoryid'].untouched  && attemptedSubmit ) )">
+               This field is required.
+                </small>
+
+            </div>
+
+        </div>
+
+
+     
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+        (click)="close()">Close</button>
+        
+        <button *ngIf="add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="save('energize_workout');attemptedSubmit = true">{{addLoading ? 'Saving...' : 'Save'}}</button>
+        <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="update('energize_workout');attemptedSubmit = true">{{addLoading ? 'Updating...' : 'Update'}}</button>
+    </div>
+    </form>
+</ng-template>
+
+
+
+
+<ng-template #BudgetStoreContent let-modal>
+  
+
+    <form [formGroup]="budgetStoreForm">
+    <div class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="BudgetStoreExampleModal">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="image-data">
+                    <div class="upload-btn-wrapper" [ngClass]="image_URL === '' ? 'upload-btn-wrapper' : 'upload-btn-wrapper1' ">
+                        <i class="icon fa fa-upload" *ngIf="image_URL === ''"></i>
+                        <input type="file" name="myfile" /> 
+                        <img [src]="image_URL" width="100%" class="image-icon popup-images-ht" *ngIf="image_URL != ''">
+                        <input type="file" name="myfile" class="input-file" (change)="onChange($event,'330','304')"/>
+                    </div>
+                </div>
+                <small for="type" class="form-text text-danger" 
+                *ngIf="image_URL === '' && attemptedSubmit ">
+               This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 "></div>
+            <div class="col-md-6 ">
+                <h6 style="color: #fff;margin-left: 50%;" for="validationCustom0" class="">Size : 330px x 304px</h6>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label>Select Category</label>
+                    <kendo-dropdownlist #categoryid  id="categoryid"  class="form-control" formControlName="categoryid"
+                    [data]="categoryList" 
+                    [filterable]="true"
+                    textField="title"
+                    valueField="_id"
+                    [valuePrimitive]="true"
+                    (filterChange)="handleFilterCatgory($event)"
+                    >
+                    </kendo-dropdownlist>
+                  <small for="categoryid" class="form-text text-danger" 
+                  *ngIf="budgetStoreForm.controls['categoryid'].errors?.required && 
+                  (budgetStoreForm.controls['categoryid'].dirty ||  
+                  budgetStoreForm.controls['categoryid'].touched || 
+                  (budgetStoreForm.controls['categoryid'].untouched  && attemptedSubmit ) )">
+                 This field is required.
+                  </small>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label>Price Under</label>
+                <input type="number" class="form-control" formControlName="price"  (keypress)="alphaNumberOnly($event)" min="1">
+                <small for="price" class="form-text text-danger" 
+                *ngIf="budgetStoreForm.controls['price'].errors?.required && 
+                (budgetStoreForm.controls['price'].dirty ||  
+                budgetStoreForm.controls['price'].touched || 
+                (budgetStoreForm.controls['price'].untouched  && attemptedSubmit ) )">
+                Price is required(Numbers Only).
+                </small>
+
+            </div>
+        </div>
+    
+     
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+        (click)="close()">Close</button>
+        
+        <button *ngIf="add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="save('budget_store');attemptedSubmit = true">{{addLoading ? 'Saving...' : 'Save'}}</button>
+        <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" (click)="update('budget_store');attemptedSubmit = true">{{addLoading ? 'Updating...' : 'Update'}}</button>
+    </div>
+    </form>
+</ng-template>
+
+
+
+
+
+

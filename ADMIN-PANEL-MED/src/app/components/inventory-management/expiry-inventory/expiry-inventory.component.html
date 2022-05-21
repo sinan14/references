@@ -1,0 +1,109 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid innerpage_tab_top">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-body tab2-card kendo_table">
+                <label>Pharmacy</label>
+
+                <br><br>
+                <div class="table-responsive kendo_table vendor-list">
+                    <kendo-grid [kendoGridBinding]="vendors" [filterable]="true"  [sortable]="true">
+                
+                        <kendo-grid-column field="image" title="" width="20" [filterable]="false">
+                            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                <img class="img-fluid"  src={{dataItem.image}}>
+                            </ng-template>
+                            
+                        </kendo-grid-column>
+
+                        
+                        <kendo-grid-column field="MedimallID" title="ID" width="20" >
+                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                <kendo-grid-string-filter-cell
+                                    placeholder="search"
+                                    [showOperators]="false"
+                                    [column]="column"
+                                    title="Parent Store"
+                                    [filter]="filter">
+                                </kendo-grid-string-filter-cell>
+                            </ng-template>
+                        </kendo-grid-column>
+
+
+                    
+                    
+                
+
+                    
+
+                        <kendo-grid-column field="Name" title="Name" width="30">
+                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                <kendo-grid-string-filter-cell
+                                    placeholder="search"
+                                    [showOperators]="false"
+                                    [column]="column"
+                                    title="Parent Store"
+                                    [filter]="filter">
+                                </kendo-grid-string-filter-cell>
+                            </ng-template>
+                        </kendo-grid-column>
+
+
+                        <kendo-grid-column field="Categories" title="Category" width="30">
+                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                <kendo-grid-string-filter-cell
+                                    placeholder="search"
+                                    [showOperators]="false"
+                                    [column]="column"
+                                    title="Parent Store"
+                                    [filter]="filter">
+                                </kendo-grid-string-filter-cell>
+                            </ng-template>
+                        </kendo-grid-column>
+
+                        <kendo-grid-column field="Brand" title="Brand" width="20">
+                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                <kendo-grid-string-filter-cell
+                                    placeholder="search"
+                                    [showOperators]="false"
+                                    [column]="column"
+                                    title="Parent Store"
+                                    [filter]="filter">
+                                </kendo-grid-string-filter-cell>
+                            </ng-template>
+                        </kendo-grid-column>
+
+                        <kendo-grid-column field="expiry" title="Expiry Date" width="20">
+                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                <kendo-grid-string-filter-cell
+                                    placeholder="search"
+                                    [showOperators]="false"
+                                    [column]="column"
+                                    title="Parent Store"
+                                    [filter]="filter">
+                                </kendo-grid-string-filter-cell>
+                            </ng-template>
+                        </kendo-grid-column>
+
+                    
+                    
+
+                        <kendo-grid-command-column title="Action" width="30">
+                            <ng-template kendoGridCellTemplate let-isNew="isNew">
+
+                                <button type="button" class="btn btn-dark btn-dark-rounded">EDIT</button>
+                            
+                            </ng-template>
+                        </kendo-grid-command-column>
+
+                    
+                    </kendo-grid>
+                </div>
+
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+

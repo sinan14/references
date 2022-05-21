@@ -1,0 +1,30 @@
+
+
+.outofstock span {
+    width: 100%;
+    text-align: center;
+    background: white;
+    color: red;
+    font-size: 14px;
+    padding: 5px 27px;
+    box-shadow: 1px 2px 20px #e7e6e6;
+  }
+  .outofstock {
+    position: absolute;
+    z-index: 9;
+    width: 100%;
+    text-align: center;
+  }
+
+  .suggesting{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    
+  }
+
+  .search_no_fnd_box_txt.search_no_fnd_box_txt{
+    width:auto;
+  }

@@ -1,0 +1,973 @@
+<div id="myModal" class="modal fade sign-up-popup">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button
+          type="button"
+          id="cancel-btn"
+          class="close co"
+          data-dismiss="modal"
+          (click)="closeForms()"
+        >
+          &times;
+        </button>
+        <div id="myDIV113" *ngIf="phoneFlagSocial">
+          <div class="row">
+            <div class="col-md-6 p-left">
+              <div class="signin-carousel">
+                <div
+                  id="phoneSlideSocial"
+                  class="owl-carousel"
+                  data-owl-auto="true"
+                  data-owl-loop="true"
+                  data-owl-speed="3000"
+                  data-owl-gap="0"
+                  data-owl-nav="false"
+                  data-owl-dots="true"
+                  data-owl-item="1"
+                  data-owl-item-xs="1"
+                  data-owl-item-sm="1"
+                  data-owl-item-md="1"
+                  data-owl-item-lg="1"
+                  data-owl-item-xl="1"
+                  data-owl-duration="1000"
+                  data-owl-mousedrag="on"
+                >
+                  <div class="ps-product_image">
+                    <figure>
+                      <img
+                        id="sign1"
+                        class="sign-owl-img"
+                        src="assets/img/phone-sign.png"
+                        alt="alt"
+                      />
+                    </figure>
+                  </div>
+
+                  <div class="ps-product__image">
+                    <figure>
+                      <img
+                        id="sign2"
+                        src="assets/img/scot-sign.png"
+                        alt="alt"
+                        class="sign-owl-img"
+                      />
+                    </figure>
+                  </div>
+                  <div class="ps-product__image">
+                    <figure>
+                      <img
+                        id="sign3"
+                        src="assets/img\pen-sign.png"
+                        alt="alt"
+                        class="sign-owl-img"
+                      />
+                    </figure>
+                  </div>
+                  <div class="ps-product__image">
+                    <figure>
+                      <img
+                        id="sign4"
+                        src="assets/img\yogo-sign.png"
+                        alt="alt"
+                        class="sign-owl-img"
+                      />
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="sign-ups">
+                <h4 class="mt-4 mb-4">Verify Number</h4>
+                <p>
+                  Sign up to enter the world of Healthcare.<br />
+                  Avail offers, rewards and so much more!!!!asd
+                </p>
+                <h5>Verify Your Mobile Number</h5>
+
+                <div class="wrap" style="padding-left: 0px">
+                  <form [formGroup]="phoneFormSocial">
+                    <div
+                      class="form-group"
+                      style="position: relative; margin-bottom: 0"
+                    >
+                      <ngx-intl-tel-input
+                        [preferredCountries]="[
+                          CountryISO.UnitedStates,
+                          CountryISO.UnitedKingdom
+                        ]"
+                        [enableAutoCountrySelect]="false"
+                        [enablePlaceholder]="true"
+                        [separateDialCode]="true"
+                        [searchCountryFlag]="true"
+                        [searchCountryField]="[
+                          SearchCountryField.Iso2,
+                          SearchCountryField.Name
+                        ]"
+                        [selectFirstCountry]="false"
+                        [selectedCountryISO]="CountryISO.India"
+                        [phoneValidation]="true"
+                        (keyup.enter)="extractSocialNumber()"
+                        name="phone"
+                        formControlName="phone"
+                      ></ngx-intl-tel-input>
+                      <!-- <input
+                        class="form-control tel"
+                        type="tel"
+                        placeholder="Enter your mobile number"
+                        formControlName="phone"
+                        inputmode="tel"
+                        (keyup.enter)="submitNumber1()"
+                        style="font-weight: 200"
+                      /> -->
+                      <button
+                        (click)="extractSocialNumber()"
+                        class="button-sign hand"
+                      >
+                        <i class="icon-arrow-right" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <small
+                      *ngIf="inValidPhoneSocial('phone')"
+                      class="small-block form-text"
+                      >Enter valid number</small
+                    >
+                  </form>
+                </div>
+
+                <h6 class="text-left">An OTP has been sent to this number</h6>
+                <div class="but"></div>
+                <p class="tc-sign">
+                  By clicking continue <br />you agree with our
+                  <a (click)="gotoPrivacyPolicy()" style="text-decoration: underline; cursor: pointer"
+                    >privacy policy </a
+                  >&
+                  <a (click)="navigateToTerms()" style="text-decoration: underline; cursor: pointer"
+                    >terms and conditions</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- </ng-template> -->
+        <!-- Otp -->
+        <div id="myDIV13" *ngIf="otpFlagSocial">
+          <div class="row">
+            <div class="col-md-6 p-left">
+              <div class="signin-carousel">
+                <div
+                  id="otpSlideSocial"
+                  class="owl-carousel"
+                  data-owl-auto="true"
+                  data-owl-loop="false"
+                  data-owl-speed="3000"
+                  data-owl-gap="0"
+                  data-owl-nav="false"
+                  data-owl-dots="true"
+                  data-owl-item="1"
+                  data-owl-item-xs="1"
+                  data-owl-item-sm="1"
+                  data-owl-item-md="1"
+                  data-owl-item-lg="1"
+                  data-owl-item-xl="1"
+                  data-owl-duration="1000"
+                  data-owl-mousedrag="on"
+                >
+                  <a class="ps-product__image">
+                    <figure>
+                      <img
+                        src="assets/img\otp.png"
+                        alt="alt"
+                        class="sign-owl-img"
+                      />
+                    </figure>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="otp">
+                <h4>OTP Verification</h4>
+
+                <h5>Enter Your OTP</h5>
+
+                <div class="wrap">
+                  <form class="text-center" [formGroup]="otpFormSocial">
+                    <input
+                      class="otps"
+                      id="otpField1"
+                      type="text"
+                      trim="blur"
+                      formControlName="first"
+                      #otpBox5
+                      (input)="setFocus6()"
+                      (keyup.enter)="setFocus6()"
+                      maxlength="1"
+                    />
+                    <input
+                      class="otps"
+                      type="text"
+                      trim="blur"
+                      #otpBox6
+                      (input)="setFocus7()"
+                      (keyup.enter)="setFocus7()"
+                      formControlName="second"
+                      maxlength="1"
+                    />
+                    <input
+                      class="otps"
+                      formControlName="third"
+                      type="text"
+                      trim="blur"
+                      #otpBox7
+                      (input)="setFocus8()"
+                      (keyup.enter)="setFocus8()"
+                      maxlength="1"
+                    />
+                    <input
+                      class="otps"
+                      formControlName="fourth"
+                      type="text"
+                      (input)="setFocus5()"
+                      (keyup.enter)="socialOtpVerification()"
+                      trim="blur"
+                      #otpBox8
+                      maxlength="1"
+                    />
+                  </form>
+                </div>
+                <div class="rsntotp">
+                  <small
+                    class="form-text small-block"
+                    *ngIf="
+                      inValidSocialOtp('fourth') ||
+                      inValidSocialOtp('third') ||
+                      inValidSocialOtp('second') ||
+                      inValidSocialOtp('first')
+                    "
+                  >
+                    Invalid otp
+                  </small>
+
+                  <h5 *ngIf="timeLeft">{{ timeLeft }} Seconds Left....</h5>
+                  <h6 *ngIf="timeLeft === 0">
+                    <a
+                      (click)="resendOtpSocial()"
+                      class="resend under"
+                      style="text-decoration: underline; cursor: pointer"
+                      >Resend OTP</a
+                    >
+                  </h6>
+                  <div class="otp-has">
+                    <p>
+                      OTP has been sent to xx xxxx xx{{ lastTwoDigit }}
+                      <a class="hand" (click)="reTypeNumberSocial()">Change</a>
+                    </p>
+                  </div>
+                </div>
+                <a
+                  style="color: #fff"
+                  (click)="socialOtpVerification()"
+                  class="con-otp hand"
+                  >Confirm
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- social l -->
+        <div id="myDIV11" *ngIf="phoneFlag">
+          <div class="row">
+            <div class="col-md-6 p-left">
+              <div class="signin-carousel">
+                <div
+                  id="phoneSlide"
+                  class="owl-carousel"
+                  data-owl-auto="true"
+                  data-owl-loop="true"
+                  data-owl-speed="3000"
+                  data-owl-gap="0"
+                  data-owl-nav="false"
+                  data-owl-dots="true"
+                  data-owl-item="1"
+                  data-owl-item-xs="1"
+                  data-owl-item-sm="1"
+                  data-owl-item-md="1"
+                  data-owl-item-lg="1"
+                  data-owl-item-xl="1"
+                  data-owl-duration="1000"
+                  data-owl-mousedrag="on"
+                >
+                  <div class="ps-product_image">
+                    <figure>
+                      <img
+                        id="sign1"
+                        class="sign-owl-img"
+                        src="assets/img/phone-sign.png"
+                        alt="alt"
+                      />
+                    </figure>
+                  </div>
+
+                  <div class="ps-product__image">
+                    <figure>
+                      <img
+                        id="sign2"
+                        src="assets/img/scot-sign.png"
+                        alt="alt"
+                        class="sign-owl-img"
+                      />
+                    </figure>
+                  </div>
+                  <div class="ps-product__image">
+                    <figure>
+                      <img
+                        id="sign3"
+                        src="assets/img\pen-sign.png"
+                        alt="alt"
+                        class="sign-owl-img"
+                      />
+                    </figure>
+                  </div>
+                  <div class="ps-product__image">
+                    <figure>
+                      <img
+                        id="sign4"
+                        src="assets/img\yogo-sign.png"
+                        alt="alt"
+                        class="sign-owl-img"
+                      />
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="sign-ups">
+                <h4 class="mt-4 mb-4">Sign Up</h4>
+                <p>
+                  Sign up to enter the world of Healthcare.<br />
+                  Avail offers, rewards and so much more!!!!
+                </p>
+                <h5>Login With Mobile Number</h5>
+
+                <div class="wrap" style="padding-left: 0px">
+                  <form [formGroup]="phoneForm">
+                    <div
+                      class="form-group"
+                      style="position: relative; margin-bottom: 0"
+                    >
+                      <ngx-intl-tel-input
+                        [preferredCountries]="[
+                          CountryISO.UnitedStates,
+                          CountryISO.UnitedKingdom
+                        ]"
+                        [enableAutoCountrySelect]="false"
+                        [enablePlaceholder]="true"
+                        [separateDialCode]="true"
+                        [searchCountryFlag]="true"
+                        [searchCountryField]="[
+                          SearchCountryField.Iso2,
+                          SearchCountryField.Name
+                        ]"
+                        [selectFirstCountry]="false"
+                        [selectedCountryISO]="CountryISO.India"
+                        [phoneValidation]="true"
+                        (keyup.enter)="extractNum()"
+                        name="phone"
+                        #phone
+                        formControlName="phone"
+                      ></ngx-intl-tel-input>
+                      
+                      <button (click)="extractNum()" class="button-sign hand">
+                        <i class="icon-arrow-right" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <small
+                      *ngIf="isValidPhone('phone')"
+                      class="small-block form-text"
+                      >Enter valid number</small
+                    >
+                  </form>
+                </div>
+
+                <h6 class="text-left">An OTP has been sent to this number</h6>
+                <div class="but">
+                  <a
+                    (click)="clickedFb(); signInWithFB()"
+                    class="face-blue hand"
+                    ><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp;
+                    Facebook</a
+                  >
+                  <a
+                    class="face-red hand"
+                    (click)="clickedGoogle(); signInWithGoogle()"
+                    ><i class="fa fa-google" aria-hidden="true"></i>
+                    &nbsp;Google</a
+                  >
+                </div>
+                <p class="tc-sign">
+                  By clicking continue <br />you agree with our
+                  <a (click)="gotoPrivacyPolicy()" style="text-decoration: underline; cursor: pointer"
+                    >privacy policy </a
+                  >&
+                  <a (click)="navigateToTerms()" style="text-decoration: underline; cursor: pointer"
+                    >terms and conditions</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- </ng-template> -->
+        <!-- Otp -->
+        <div id="myDIV1" *ngIf="otpFlag">
+          <div class="row">
+            <div class="col-md-6 p-left">
+              <div class="signin-carousel">
+                <div
+                  id="otpSlide"
+                  class="owl-carousel"
+                  data-owl-auto="false"
+                  data-owl-loop="true"
+                  data-owl-speed="3000"
+                  data-owl-gap="0"
+                  data-owl-nav="false"
+                  data-owl-dots="true"
+                  data-owl-item="1"
+                  data-owl-item-xs="1"
+                  data-owl-item-sm="1"
+                  data-owl-item-md="1"
+                  data-owl-item-lg="1"
+                  data-owl-item-xl="1"
+                  data-owl-duration="1000"
+                  data-owl-mousedrag="on"
+                >
+                  <a class="ps-product__image">
+                    <figure>
+                      <img
+                        src="assets/img\otp.png"
+                        alt="alt"
+                        class="sign-owl-img"
+                      />
+                    </figure>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="otp">
+                <h4>OTP Verification</h4>
+
+                <h5>Enter Your OTP</h5>
+
+                <div class="wrap">
+                  <form [formGroup]="otpForm">
+                    <input
+                      class="otps"
+                      id="otpField1"
+                      type="text"
+                      trim="blur"
+                      formControlName="first"
+                      #otpBox1
+                      (input)="setFocus2()"
+                      (keyup.enter)="setFocus2()"
+                      maxlength="1"
+                    />
+                    <input
+                      class="otps"
+                      type="text"
+                      trim="blur"
+                      #otpBox2
+                      (input)="setFocus3()"
+                      (keyup.enter)="setFocus3()"
+                      formControlName="second"
+                      maxlength="1"
+                    />
+                    <input
+                      class="otps"
+                      formControlName="third"
+                      type="text"
+                      trim="blur"
+                      #otpBox3
+                      (input)="setFocus4()"
+                      (keyup.enter)="setFocus4()"
+                      maxlength="1"
+                    />
+                    <input
+                      class="otps"
+                      formControlName="fourth"
+                      type="text"
+                      (input)="setFocus1()"
+                      (keyup.enter)="OTPVerification()"
+                      trim="blur"
+                      #otpBox4
+                      maxlength="1"
+                    />
+                  </form>
+                </div>
+                <div class="rsntotp">
+                  <small
+                    class="form-text small-block"
+                    *ngIf="
+                      isValidOtp('fourth') ||
+                      isValidOtp('third') ||
+                      isValidOtp('second') ||
+                      isValidOtp('first')
+                    "
+                  >
+                    Invalid otp
+                  </small>
+
+                  <h5 *ngIf="timeLeft">{{ timeLeft }} Seconds Left....</h5>
+                  <h6 *ngIf="timeLeft === 0">
+                    <a
+                      (click)="resendOtp()"
+                      class="resend under"
+                      style="cursor: pointer"
+                      >Resend OTP</a
+                    >
+                  </h6>
+                  <div class="otp-has">
+                    <p>
+                      OTP has been sent to xx xxxx xx{{ lastTwoDigit }}
+                      <a class="hand" (click)="reTypeNumber()">Change</a>
+                    </p>
+                  </div>
+                </div>
+                <a
+                  style="color: #fff"
+                  (click)="OTPVerification()"
+                  class="con-otp hand"
+                  >Confirm
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div id="myDIV2" *ngIf="passFlag">
+          <div class="row">
+            <div class="col-md-6 p-left">
+              <div class="signin-carousel">
+                <div
+                  id="passwordSlide"
+                  class="owl-carousel"
+                  data-owl-auto="false"
+                  data-owl-loop="true"
+                  data-owl-speed="3000"
+                  data-owl-gap="0"
+                  data-owl-nav="false"
+                  data-owl-dots="true"
+                  data-owl-item="1"
+                  data-owl-item-xs="1"
+                  data-owl-item-sm="1"
+                  data-owl-item-md="1"
+                  data-owl-item-lg="1"
+                  data-owl-item-xl="1"
+                  data-owl-duration="1000"
+                  data-owl-mousedrag="on"
+                >
+                  <a class="ps-product__image">
+                    <figure>
+                      <img
+                        src="assets/img\password.png"
+                        alt="alt"
+                        class="sign-owl-img"
+                      />
+                    </figure>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="password">
+                <h4>Password</h4>
+                <div class="wrap">
+                  <form [formGroup]="loginPasswordForm" class="form-horizontal">
+                    <div class="form-group mb-0">
+                      <div class="pass">
+                        <img
+                          src="assets/img\lock.svg"
+                          alt="alt"
+                          class="sign-lock"
+                        />
+                        <input
+                          [type]="
+                            isActiveExistingUserPass ? 'password' : 'text'
+                          "
+                          trim="blur"
+                          class="form-controls"
+                          name="password"
+                          #passwordOnly
+                          formControlName="password"
+                          (keyup.enter)="loginByPassword()"
+                          placeholder="Enter password"
+                        />
+
+                        <small
+                          *ngIf="isValidPassword('password')"
+                          class="small-block form-text"
+                          >Password should be minimum 8 characters length</small
+                        >
+                        <span
+                          (click)="changePassType5()"
+                          [ngClass]="
+                            isActiveExistingUserPass
+                              ? ' fa-eye-slash'
+                              : 'fa-eye'
+                          "
+                          class="fa fa-fw field-icon toggle-password"
+                        ></span>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="password-but">
+                  <a class="white hand" (click)="loginByOtp()">
+                    Login with OTP</a
+                  >
+                  <a class="white hand" (click)="forgotPassword()"
+                    >Forgot password</a
+                  >
+                </div>
+                <a
+                  style="color: white"
+                  (click)="loginByPassword()"
+                  class="con-otp white hand"
+                  >Continue
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- </ng-template> -->
+        <!-- Personal Detail new user-->
+        <div id="myDIV3" *ngIf="newUserFlag">
+          <div class="row">
+            <div class="col-md-6 p-left">
+              <div class="signin-carousel">
+                <div
+                  id="userSlide"
+                  class="owl-carousel"
+                  data-owl-auto="false"
+                  data-owl-loop="true"
+                  data-owl-speed="3000"
+                  data-owl-gap="0"
+                  data-owl-nav="false"
+                  data-owl-dots="true"
+                  data-owl-item="1"
+                  data-owl-item-xs="1"
+                  data-owl-item-sm="1"
+                  data-owl-item-md="1"
+                  data-owl-item-lg="1"
+                  data-owl-item-xl="1"
+                  data-owl-duration="1000"
+                  data-owl-mousedrag="on"
+                >
+                  <a class="ps-product__image">
+                    <figure>
+                      <img
+                        src="assets/img\person.png"
+                        alt="alt"
+                        class="sign-owl-img"
+                      />
+                    </figure>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="personal">
+                <h4>Personal Details</h4>
+                <div class="wrap">
+                  <form class="form-horizontal" [formGroup]="userForm">
+                    <div class="form-group m-5">
+                      <div class="pass">
+                        <i class="icon-user"></i>
+                        <input
+                          type="text"
+                          trim="blur"
+                          class="form-controls"
+                          name="name"
+                          placeholder="Name"
+                          formControlName="name"
+                        />
+                        <small
+                          *ngIf="isValidUser('name')"
+                          class="small-block form-text"
+                          >Required</small
+                        >
+                      </div>
+                      <div class="pass">
+                        <i class="icon-envelope"></i>
+                        <input
+                          type="email"
+                          trim="blur"
+                          class="form-controls"
+                          name="email"
+                          #userEmail
+                          placeholder="Email*"
+                          formControlName="email"
+                        />
+                        <small
+                          *ngIf="isValidUser('email')"
+                          class="small-block form-text"
+                          >Enter Valid mail</small
+                        >
+                        <span
+                          *ngIf="userForm.get('email').valid"
+                          class=""
+                          style="color: #00c01f"
+                          >Verified</span
+                        >
+                      </div>
+                      <div class="pass">
+                        <img
+                          src="assets/img\lock.svg"
+                          alt="alt"
+                          class="sign-lock"
+                        />
+                        <input
+                          [type]="isActiveNewUserPass ? 'password' : 'text'"
+                          trim="blur"
+                          class="form-controls"
+                          name="password"
+                          placeholder="Password*"
+                          formControlName="password"
+                        />
+                        <small
+                          *ngIf="isValidUser('password')"
+                          class="small-block form-text"
+                          >Password should be minimum 8 characters length</small
+                        >
+                        <span
+                          (click)="changePassType3()"
+                          [ngClass]="
+                            isActiveNewUserPass ? ' fa-eye-slash' : 'fa-eye'
+                          "
+                          class="fa fa-fw field-icon toggle-password"
+                          toggle="#password-field"
+                        ></span>
+                      </div>
+                      <div class="pass">
+                        <img
+                          src="assets/img\lock.svg"
+                          alt="alt"
+                          class="sign-lock"
+                        />
+                        <input
+                          [type]="isActiveNewUserPass2 ? 'password' : 'text'"
+                          trim="blur"
+                          class="form-controls"
+                          name="password"
+                          formControlName="reEnterPassword"
+                          placeholder="Re-enter password*"
+                          (keyup.enter)="newUser()"
+                        />
+                        <small
+                          *ngIf="isValidUser('reEnterPassword')"
+                          class="small-block form-text"
+                          >Password mismatch</small
+                        >
+                        <span
+                          [ngClass]="
+                            isActiveNewUserPass2 ? ' fa-eye-slash' : 'fa-eye'
+                          "
+                          class="fa fa-fw field-icon toggle-password"
+                          (click)="changePassType4()"
+                          toggle="#password-field"
+                        ></span>
+                      </div>
+                      <a
+                        style="color: #fff; cursor: pointer"
+                        class="con-otp hand mt-4"
+                        (click)="newUser()"
+                        >Continue
+                      </a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="myDIV4" *ngIf="forgotPassFlag">
+          <div class="row">
+            <div class="col-md-6 p-left">
+              <div class="signin-carousel">
+                <div
+                  id="recoverSlide"
+                  class="owl-carousel"
+                  data-owl-auto="false"
+                  data-owl-loop="true"
+                  data-owl-speed="3000"
+                  data-owl-gap="0"
+                  data-owl-nav="false"
+                  data-owl-dots="true"
+                  data-owl-item="1"
+                  data-owl-item-xs="1"
+                  data-owl-item-sm="1"
+                  data-owl-item-md="1"
+                  data-owl-item-lg="1"
+                  data-owl-item-xl="1"
+                  data-owl-duration="1000"
+                  data-owl-mousedrag="on"
+                >
+                  <a class="ps-product__image">
+                    <figure>
+                      <img
+                        src="assets/img\for-got.png"
+                        alt="alt"
+                        class="sign-owl-img"
+                      />
+                    </figure>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="personal">
+                <h4>Forgot Password</h4>
+                <div class="wrap">
+                  <form [formGroup]="recoverPassForm" class="form-horizontal">
+                    <div class="form-group m-5">
+                      <div class="pass">
+                        <i class="icon-clock"></i>
+                        <input
+                          type="text"
+                          trim="blur"
+                          class="form-controls"
+                          name="name"
+                          formControlName="otp"
+                          placeholder="Enter OTP"
+                        />
+                        <small
+                          class="form-text small-block"
+                          *ngIf="isValidForgotForm('otp')"
+                        >
+                          Invalid otp
+                        </small>
+                        <span
+                          *ngIf="recoverPassForm.get('otp').valid"
+                          class=""
+                          style="color: #00c01f"
+                          >Verified</span
+                        >
+                      </div>
+                      <div class="pass">
+                        <img
+                          src="assets/img\lock.svg"
+                          alt="alt"
+                          class="sign-lock"
+                        />
+                        <input
+                          [type]="isActiveForgotNewPass ? 'password' : 'text'"
+                          trim="blur"
+                          class="form-controls"
+                          name="password"
+                          formControlName="new_password"
+                          placeholder="New password"
+                        />
+                        <span
+                          [ngClass]="
+                            isActiveForgotNewPass ? ' fa-eye-slash' : 'fa-eye'
+                          "
+                          class="fa fa-fw field-icon toggle-password"
+                          (click)="changePassType1()"
+                          toggle="#password-field"
+                        ></span>
+                        <small
+                          class="form-text small-block"
+                          *ngIf="isValidForgotForm('new_password')"
+                        >
+                          Password should be minimum 8 characters length
+                        </small>
+                      </div>
+
+                      <div class="pass">
+                        <img
+                          src="assets/img\lock.svg"
+                          alt="alt"
+                          class="sign-lock"
+                        />
+                        <input
+                          [type]="isActiveForgotCnfPass ? 'password' : 'text'"
+                          trim="blur"
+                          class="form-controls"
+                          name="password"
+                          formControlName="confirm_new_password"
+                          (keyup.enter)="resetPassword()"
+                          placeholder="Re-enter password*"
+                        />
+                        <small
+                          class="form-text small-block"
+                          *ngIf="isValidForgotForm('confirm_new_password')"
+                        >
+                          Password mismatch
+                        </small>
+                        <span
+                          (click)="changePassType2()"
+                          [ngClass]="
+                            isActiveForgotCnfPass ? ' fa-eye-slash' : 'fa-eye'
+                          "
+                          class="fa fa-fw field-icon toggle-password"
+                        ></span>
+                      </div>
+                      <a (click)="resetPassword()" class="con-otp">Continue </a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .field-icon {
+    float: right;
+    margin-left: -25px;
+    position: absolute;
+    z-index: 2;
+    color: #262626;
+    opacity: 0.17;
+  }
+  .intro {
+    height: auto;
+    min-height: 100vh;
+    text-align: center;
+    background-color: teal;
+  }
+
+  .wrap {
+    width: auto;
+    margin: auto;
+    border-radius: 4px;
+    padding: 15px 0 5px 0;
+    box-shadow: none;
+  }
+
+  .iti {
+    width: 100%;
+  }
+</style>
+
+
+<style type="text/css">
+  .intro {
+    height: auto;
+    min-height: 100vh;
+    text-align: center;
+    background-color: teal;
+  }
+</style>
+
+

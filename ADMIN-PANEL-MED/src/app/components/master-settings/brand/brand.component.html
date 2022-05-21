@@ -1,0 +1,759 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="kendo_table master-demo">
+                <div class="card-body Brand_tab tab2-card" style="background:transparent;font-weight: lighter;">
+                    <h6>Brand</h6>
+
+                    <ngb-tabset class="tab-coupon" (tabChange)="Brands($event)">
+                        <ngb-tab title="All" id="all" *ngIf="disableTab('All')">
+                            <ng-template ngbTabContent>
+
+                                <div class="btn-popup pull-right">
+
+                                    <button type="button" class="btn btn-dark btn-inverse-dark" data-toggle="modal"
+                                        data-original-title="test" data-target="#exampleModal"
+                                        (click)="open(content,'add','')" *ngIf="addFlag"><img
+                                            src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                            style="margin-right:10px;">Add New</button>
+
+                                </div>
+
+                                <div class="table-responsive ">
+                                       <kendo-grid [kendoGridBinding]="LIST_ALL_BRANDS" [filterable]="true" [sortable]="true"
+                                        classs="master-table" [pageSize]="20" [skip]="skip"
+                                        (pageChange)="pageChange($event)" [pageable]="true">
+
+
+                                        <!-- <ng2-smart-table  [settings]="settings" [source]="vendors"
+                                    (edit)="editRow($event,content,'edit')"></ng2-smart-table> -->
+                                        <!-- <kendo-grid [kendoGridBinding]="LIST_ALL_BRANDS" [filterable]="true"
+                                        [sortable]="true"> -->
+                                        <!-- [pageSize]="10"
+                                   [skip]="skip"
+                                   (pageChange)="pageChange($event)"
+                                   [pageable]="true" -->
+                                        <kendo-grid-column field="no" title="Sl. No" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Sl. No"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="title" title="Brand Name" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Brand Name"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="image" title="Brand Image" width="30"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.image" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="baner" title="Brand Banner" width="20"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.baner" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-command-column title="Action" width="40" class="text-center">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModal" (click)="open(content,'edit',dataItem)"
+                                                    *ngIf="editFlag">Edit</button>
+
+                                                &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    (click)="Delete(dataItem._id)" *ngIf="deleteFlag">Delete</button>
+
+                                            </ng-template>
+                                        </kendo-grid-command-column>
+
+                                    </kendo-grid>
+
+
+                                    <!-- <kendo-grid [kendoGridBinding]="LIST_ALL_BRANDS" [filterable]="true"
+                                        [sortable]="true" classs="master-table" [pageSize]="10" [skip]="skip_1"
+                                        (pageChange)="pageChange_1($event)" [pageable]="true">
+
+                                        <kendo-grid-column field="no" title="Sl. No" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Sl. No"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="title" title="Brand Name" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Brand Name"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="image" title="Brand Image" width="30"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.image" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="baner" title="Brand Banner" width="20"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.baner" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-command-column title="Action" width="40" class="text-center">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModal" (click)="open(content,'edit',dataItem)"
+                                                    *ngIf="editFlag">Edit</button>
+                                            </ng-template>
+                                        </kendo-grid-command-column>
+
+                                    </kendo-grid> -->
+
+
+
+
+
+                                </div>
+
+
+                            </ng-template>
+                        </ngb-tab>
+
+
+                        <ngb-tab title="Promoted Brands" id="promoted">
+                            <ng-template ngbTabContent>
+
+                                <!-- <div class="btn-popup pull-right">
+
+                                    <button type="button" class="btn btn-dark btn-inverse-dark" data-toggle="modal"
+                                        data-original-title="test" data-target="#exampleModal"
+                                        (click)="open(content,'add','')" *ngIf="addFlag"><img
+                                            src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                            style="margin-right:10px;">Add New</button>
+
+                                </div> -->
+
+                                <div class="table-responsive  mt-5">
+                                    <!-- <ng2-smart-table  [settings]="settings" [source]="vendors"
+                                    (edit)="editRow($event,content,'edit')"></ng2-smart-table> -->
+                                    <!-- <kendo-grid [kendoGridBinding]="vendors" [filterable]="true" [sortable]="true">
+
+                                        <kendo-grid-column field="no" title="No" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brandname" title="Brand Name" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brandimage" title="Brand Image" width="20"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.brandimage" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brandbanner" title="Brand Banner" width="20"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.brandbanner" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-command-column title="Action" width="40">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModal" (click)="open(content,'edit',dataItem)"
+                                                    *ngIf="editFlag">Edit</button>
+
+                                                &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    *ngIf="deleteFlag">Delete</button>
+
+                                            </ng-template>
+                                        </kendo-grid-command-column>
+
+                                    </kendo-grid> -->
+
+                                    <kendo-grid [kendoGridBinding]="BRAND1" [filterable]="true" [sortable]="true"
+                                        classs="master-table" [pageSize]="10" [skip]="skip"
+                                        (pageChange)="pageChange($event)" [pageable]="true">
+
+                                        <kendo-grid-column field="no" title="Sl. No" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Sl. No"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="title" title="Brand Name" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Brand Name"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="image" title="Brand Image" width="30"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.image" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="baner" title="Brand Banner" width="20"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.baner" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-command-column title="Action" width="40" class="text-center">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModal" (click)="open(content,'edit',dataItem)"
+                                                    *ngIf="editFlag">Edit</button>
+                                            </ng-template>
+                                        </kendo-grid-command-column>
+
+                                    </kendo-grid>
+
+                                </div>
+
+
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab title="Shop by Brands" id="shop">
+                            <ng-template ngbTabContent>
+
+                                <!-- <div class="btn-popup pull-right">
+
+                                    <button type="button" class="btn btn-dark btn-inverse-dark" data-toggle="modal"
+                                        data-original-title="test" data-target="#exampleModal"
+                                        (click)="open(content,'add','')" *ngIf="addFlag"><img
+                                            src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                            style="margin-right:10px;">Add New</button>
+
+                                </div> -->
+
+                                <div class="table-responsive  mt-5">
+                                    <!-- <ng2-smart-table  [settings]="settings" [source]="vendors"
+                                    (edit)="editRow($event,content,'edit')"></ng2-smart-table> -->
+                                    <!-- <kendo-grid [kendoGridBinding]="vendors" [filterable]="true" [sortable]="true">
+
+                                        <kendo-grid-column field="no" title="No" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brandname" title="Brand Name" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brandimage" title="Brand Image" width="20"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.brandimage" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brandbanner" title="Brand Banner" width="20"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.brandbanner" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-command-column title="Action" width="40">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModal" (click)="open(content,'edit',dataItem)"
+                                                    *ngIf="editFlag">Edit</button>
+
+                                                &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    *ngIf="deleteFlag">Delete</button>
+
+                                            </ng-template>
+                                        </kendo-grid-command-column>
+
+                                    </kendo-grid> -->
+                                    <kendo-grid [kendoGridBinding]="BRAND2" [filterable]="true" [sortable]="true"
+                                        classs="master-table" [pageSize]="10" [skip]="skip"
+                                        (pageChange)="pageChange($event)" [pageable]="true">
+
+                                        <kendo-grid-column field="no" title="Sl. No" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Sl. No"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="title" title="Brand Name" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Brand Name"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="image" title="Brand Image" width="30"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.image" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="baner" title="Brand Banner" width="20"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.baner" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-command-column title="Action" width="40" class="text-center">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModal" (click)="open(content,'edit',dataItem)"
+                                                    *ngIf="editFlag">Edit</button>
+                                            </ng-template>
+                                        </kendo-grid-command-column>
+
+                                    </kendo-grid>
+                                </div>
+
+
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab title="Trending Brands" id="trending">
+                            <ng-template ngbTabContent>
+
+                                <!-- <div class="btn-popup pull-right">
+
+                                    <button type="button" class="btn btn-dark btn-inverse-dark" data-toggle="modal"
+                                        data-original-title="test" data-target="#exampleModal"
+                                        (click)="open(content,'add','')" *ngIf="addFlag"><img
+                                            src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                            style="margin-right:10px;">Add New</button>
+
+                                </div> -->
+
+                                <div class="table-responsive  mt-5">
+                                    <!-- <kendo-grid [kendoGridBinding]="vendors" [filterable]="true" [sortable]="true">
+
+                                        <kendo-grid-column field="no" title="No" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brandname" title="Brand Name" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brandimage" title="Brand Image" width="20"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.brandimage" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brandbanner" title="Brand Banner" width="20"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.brandbanner" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-command-column title="Action" width="40">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModal" (click)="open(content,'edit',dataItem)"
+                                                    *ngIf="editFlag">Edit</button>
+
+                                                &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    *ngIf="deleteFlag">Delete</button>
+
+                                            </ng-template>
+                                        </kendo-grid-command-column>
+
+                                    </kendo-grid> -->
+                                    <kendo-grid [kendoGridBinding]="BRAND3" [filterable]="true" [sortable]="true"
+                                        classs="master-table" [pageSize]="10" [skip]="skip"
+                                        (pageChange)="pageChange($event)" [pageable]="true">
+
+                                        <kendo-grid-column field="no" title="Sl. No" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Sl. No"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="title" title="Brand Name" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Brand Name"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="image" title="Brand Image" width="30"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.image" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="baner" title="Brand Banner" width="20"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.baner" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-command-column title="Action" width="40" class="text-center">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModal" (click)="open(content,'edit',dataItem)"
+                                                    *ngIf="editFlag">Edit</button>
+                                            </ng-template>
+                                        </kendo-grid-command-column>
+
+                                    </kendo-grid>
+                                </div>
+
+
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab title="Featured Brands" id="featured">
+                            <ng-template ngbTabContent>
+
+                                <div class="btn-popup pull-right">
+
+                                    <!-- <button type="button" class="btn btn-dark btn-inverse-dark" data-toggle="modal"
+                                        data-original-title="test" data-target="#exampleModal"
+                                        (click)="open(content,'add','')" *ngIf="addFlag"><img
+                                            src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                            style="margin-right:10px;">Add New</button> -->
+
+                                </div>
+
+                                <div class="table-responsive mt-5">
+                                    <!-- <ng2-smart-table  [settings]="settings" [source]="vendors"
+                                    (edit)="editRow($event,content,'edit')"></ng2-smart-table> -->
+                                    <!-- <kendo-grid [kendoGridBinding]="vendors" [filterable]="true" [sortable]="true">
+
+                                        <kendo-grid-column field="no" title="No" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brandname" title="Brand Name" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Parent Store"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brandimage" title="Brand Image" width="20"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.brandimage" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="brandbanner" title="Brand Banner" width="20"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.brandbanner" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-command-column title="Action" width="40">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModal" (click)="open(content,'edit',dataItem)"
+                                                    *ngIf="editFlag">Edit</button>
+
+                                                &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    *ngIf="deleteFlag">Delete</button>
+
+                                            </ng-template>
+                                        </kendo-grid-command-column>
+                                    </kendo-grid> -->
+                                    <kendo-grid [kendoGridBinding]="BRAND4" [filterable]="true" [sortable]="true"
+                                        classs="master-table" [pageSize]="10" [skip]="skip"
+                                        (pageChange)="pageChange($event)" [pageable]="true">
+
+                                        <kendo-grid-column field="no" title="Sl. No" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Sl. No"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="title" title="Brand Name" width="30">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Brand Name"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="image" title="Brand Image" width="30"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.image" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+                                        <kendo-grid-column field="baner" title="Brand Banner" width="20"
+                                            [filterable]="false">
+                                            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                <img class="flag" [src]="dataItem.baner" width="40" />
+                                            </ng-template>
+                                        </kendo-grid-column>
+
+
+                                        <kendo-grid-command-column title="Action" width="40" class="text-center">
+                                            <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                let-dataItem="dataItem">
+                                                <button type="button" class="btn btn-dark btn-dark-rounded"
+                                                    data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModal" (click)="open(content,'edit',dataItem)"
+                                                    *ngIf="editFlag">Edit</button>
+                                            </ng-template>
+                                        </kendo-grid-command-column>
+
+                                    </kendo-grid>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+                    </ngb-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+<ng-template #content let-modal>
+    <div *ngIf="update_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="exampleModal">Update</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div *ngIf="add_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="exampleModal">Add</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="Brand_Form" class="needs-validation">
+
+            <div class="mt-3 row">
+                <div class="col-md-6 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i *ngIf="banner_src == ''" class="icon fa fa-upload"></i>
+                            <span>Banner</span>
+                            <input type="file" name="myfile" (change)="onChangeBanner($event,'1508','630')" />
+                            <img *ngIf="banner_src != ''" src={{banner_src}} style="width: 100%; height: 100%;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i *ngIf="Image_src == ''" class="icon fa fa-upload"></i> <span>Image</span>
+                            <input type="file" name="myfile" (change)="onChangeImage($event,'352','250')" />
+                            <img *ngIf="Image_src != ''" src={{Image_src}} style="width: 100%; height: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 50%;opacity: 0.7;font-size: 10px;" for="validationCustom0"
+                        class="">Size : 1508 X 630 </h6>
+                </div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 50%;opacity: 0.7;font-size: 10px;" for="validationCustom0"
+                        class="">Size : 352 X 250</h6>
+                </div>
+            </div>
+
+
+
+            <div class="form row">
+                <div class="form-group mb-0 col-md-12">
+                    <label for="validationCustom02" class="mb-1">Brand Name</label>
+                    <input class="form-control" formControlName="title" id="validationCustom02" type="text">
+                    <small for="title" class="form-text text-danger" *ngIf="Brand_Form.controls['title'].errors?.required && 
+                    (Brand_Form.controls['title'].dirty ||  
+                    Brand_Form.controls['title'].touched || 
+                    (Brand_Form.controls['title'].untouched  && attemptedSubmit ) )">
+                        Data required.
+                    </small>
+                </div>
+            </div>
+
+            <div class="mt-3 row">
+                <div class="col-md-5 checking">
+                    <label>Shop By Brands</label>
+                    <input type="checkbox" checked formControlName="isShop">
+                </div>
+                <!-- [checked]="dataItem.isShop" -->
+                <div class="col-md-5 checking">
+                    <label>Trending Brands</label>
+                    <input type="checkbox" checked formControlName="isTrending">
+                </div>
+            </div>
+            <!-- [checked]="dataItem.isTrending" -->
+            <div class="mt-2 row">
+                <div class="col-md-5 checking">
+                    <label>Featured Brands</label>
+                    <input type="checkbox" checked formControlName="isFeatured">
+                </div>
+                <!-- [checked]="dataItem.isFeatured" -->
+                <div class="col-md-5 checking">
+                    <label>Promoted Brands</label>
+                    <input type="checkbox" checked formControlName="isPromoted">
+                </div>
+                <!-- [checked]="dataItem.isPromoted" -->
+            </div>
+
+            <div *ngIf="checkboxflag">
+                <small class="form-text text-danger"> Please Select A Checkbox</small>
+            </div>
+
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-dark btn-dark-rounded" type="button" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Close</button>
+        <button *ngIf="add_Modal_Flag" type="button" class="btn  btn-dark btn-dark-rounded"
+            (click)="Save()">{{addLoading?"Saving...":"Save"}}</button>
+        <button *ngIf="update_Modal_Flag" type="button" class="btn  btn-dark btn-dark-rounded"
+            (click)="Update()">{{addLoading?"Updating...":"Update"}}</button>
+    </div>
+</ng-template>

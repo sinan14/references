@@ -1,0 +1,418 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid side_innerpage_tab">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card tab2-card">
+                <div class="card-body tab2-card" *ngIf="disableTab('Diet Regime')">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-dark-rounded" (click)="BackRedirectTo()"><i
+                                    class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="col-md-6"></div>
+                        <div class="col-md-4">
+                            <button style="float:right;" type="button" class="btn btn-dark btn-dark-rounded side_innerpage_tab button"
+                                data-toggle="modal" data-original-title="test" data-target="#DietExampleModal"
+                                (click)="open(DietContent,'add')" *ngIf="editFlag"><img
+                                    src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                    style="margin-right:10px;">Add New</button>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-3" *ngIf="loading">
+                        <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <div class="mt-5 row" *ngIf="!loading && !dietDays.length">
+                        <div class="col-md-12">
+                            <i>
+                                <h5 class="text-center text-white">No Items Found</h5>
+                            </i>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="!loading">
+                        <div class="col-md-3 mt-4" *ngFor="let dietDay of dietDays">
+                            <div  class="icon-data" data-toggle="modal" data-original-title="test"
+                                data-target="#DietExampleModal" (click)="open(DietContent,'edit',this.dietDay)">
+                                <img src="{{ dietDay.image }}"
+                                    style="background-position: center;background-size: cover;width:100%;height:100%" />
+                            </div>
+                            <h6><h6 class="float-name"> {{ dietDay.title }}</h6>
+                                <span *ngIf="editFlag" style="float: right; color: white;font-size: 15px;"
+                                    (click)="delete(dietDay._id)">
+                                    <i style="margin-left: 6%;" class="fa fa-trash" *ngIf="deleteFlag"></i>
+                                </span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+
+
+
+
+
+
+<ng-template #DietContent let-modal>
+    <div *ngIf="editMode" class="modal-header">
+        <h5 style="color: white; opacity: 0.7;" class="modal-title f-w-200" id="DietExampleModal">Update</h5>
+        <button style="color: white; opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div *ngIf="!editMode" class="modal-header">
+        <h5 style="color: white; opacity: 0.7;" class="modal-title f-w-200" id="DietExampleModal">Add</h5>
+        <button style="color: white; opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <!-- <code>{{ form | json }}</code><br><br><br> -->
+        <form #f="ngForm">
+            <div class="row">
+                <div class=" mb-2 col-md-6">
+                    <label for="validationCustom02" class="mb-0">Day</label>
+                    <input type="number" min="1" class="form-control" name="day" [(ngModel)]="form.day" #day="ngModel" required>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="day.invalid && (day.touched || submitted)">
+                        This field is required.
+                    </div>
+                </div>
+                <div class=" mb-2 col-md-6">
+                    <label for="validationCustom02" class="mb-0">Title</label>
+                    <input type="text" class="form-control" name="title" [(ngModel)]="form.title" #title="ngModel"
+                        required>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="title.invalid && (title.touched || submitted)">
+                        This field is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-2 row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="!imagePreview "></i>
+                            <img src="{{imagePreview}}" width="100%" height="50%" class="image-icon popup-images-ht"
+                                *ngIf="imagePreview">
+                            <input type="file" name="image" (change)="onImageChange($event,'banner')" />
+                           
+                        </div>
+                    </div>
+                    <div class="invalid-feedback ifeed text-center" style="display: block;"
+                    *ngIf="imagePreview === null  && submitted">
+                    Image is required.
+                    </div>
+                    <div class="col-md-12 ">
+                        <label _ngcontent-serverapp-c827="" for="image" style="float: right;">282 x 295</label>
+                        
+                    </div>
+                   
+                    <!-- <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="(form.controls.image.touched && !editMode && !image)">
+                        Image is required.
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="mt-2 row">
+                <div class=" mb-0 col-md-9">
+                    <hr style="background: #99b2bf">
+                    <span style="color:#99b2bf;" class="mb-2">Morning</span>
+                </div>
+
+                <div class="col-md-3">
+                    <button style="width:80px;" type="button" class="btn btn-dark btn-modal-rounded"
+                        (click)="addMeals('morning')">+Add</button>
+                </div>
+            </div>
+
+            <ng-container *ngFor="let formMorning of form.morningMeals; let i = index; trackBy: trackByFn ">
+
+                <div class="mt-4 row">
+                    <div class=" mb-0 col-md-7">
+                        <label for="validationCustom02" class="mb-2">Describe Meal {{i+1}}</label>
+                        <input type="text" class="form-control" name="morning_{{i}}" [(ngModel)]="formMorning.meal" (change)="inputData($event.target.value,i,'morning')"
+                            #mornigMeal="ngModel" [required]="formMorning.meal || MealsSubmitted ? true : false ">
+                        <div class="invalid-feedback ifeed" style="display: block;"
+                            *ngIf="(mornigMeal).invalid && (mornigMeal.touched || submitted)">
+                            This field is required.
+                        </div>
+
+                        <label for="validationCustom02" class="mt-2 mb-2">Sub Text {{i+1}}</label>
+                        <input type="text" class="form-control" name="morning_description_{{i}}" (change)="inputData($event.target.value,i,'morning')"
+                            [(ngModel)]="formMorning.description" #mornigDescription="ngModel" [required]="formMorning.description || MealsSubmitted ? true : false">
+                        <div class="invalid-feedback ifeed" style="display: block;"
+                            *ngIf="(mornigDescription).invalid && (mornigDescription.touched || submitted)">
+                            This field is required.
+                        </div>
+                    </div>
+
+                    <div class="mt-4 col-md-3">
+                        <label for="mornign{{i}}" style="opacity: 1;">
+                            <div class="border-radius upload-btn-wrapper1">
+                                <input type="file" name="myfile" id="mornign{{i}}"  
+                                    (change)="onImageChange($event,'meal','morning',i)" name="morning_image_{{i}}"  [required]="formMorning.image || MealsSubmitted ? true : false"/>
+                                <img style="border-radius: 23px;"  *ngIf="!imageLoading"
+                                    [src]="formMorning.image ? formMorning.image : 'assets/images/file-icons/icon-image2.png' "
+                                    width="80px" />
+                            </div>
+                            <div class="col-md-12 ">
+                                <label _ngcontent-serverapp-c827="" for="image" style="float: right;">306 x 227</label>
+                                
+                            </div>
+                            <div class="invalid-feedback ifeed" style="display: block;"
+                                *ngIf="ImageSubmitted">
+                                Image is required.
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="mt-2 col-md-2" *ngIf="i!=0">
+                        <label for="validationCustom0" class=""></label>
+                        <button type="button" class="btn btn-dark btn-modal-rounded"
+                            (click)="removeMeals('morning',i)">X</button>
+
+                    </div>
+
+                </div>
+
+
+
+            </ng-container>
+
+            <div class="mt-2 row">
+                <div class=" mb-0 col-md-9">
+                    <hr style="background: #99b2bf">
+                    <span style="color:#99b2bf;" class="mb-0">After Noon</span>
+                </div>
+
+                <div class=" col-md-3">
+                    <button style="width:80px;" type="button" class="btn btn-dark btn-modal-rounded"
+                        (click)="addMeals('afterNoon')">+Add</button>
+                </div>
+            </div>
+
+            <ng-container *ngFor="let formAfterNoonOption of form.afterNoonMeals; let j = index; trackBy: trackByFn ">
+
+                <div class="mt-4 row">
+                    <div class=" mb-0 col-md-7">
+                        <label for="validationCustom02" class="mb-2">Describe Meal {{j+1}}</label>
+                        <input type="text" class="form-control" [(ngModel)]="formAfterNoonOption.meal" (keyup)="inputData($event.target.value,j,'afternoon')"
+                            name="afternoon_meal_{{j}}" #afternoonMeal="ngModel" [required]="formAfterNoonOption.meal || MealsSubmitted ? 'true' : 'false'">
+                        <div class="invalid-feedback ifeed" style="display: block;"
+                            *ngIf="(afternoonMeal).invalid && (afternoonMeal.touched || submitted)">
+                            This field is required.
+                        </div>
+
+                        <label for="validationCustom02" class="mt-2 mb-2">Sub Text {{j+1}}</label>
+                        <input type="text" class="form-control" [(ngModel)]="formAfterNoonOption.description" (keyup)="inputData($event.target.value,j,'afternoon')"
+                            name="afternoon_description_{{j}}" #afternoonDEscription="ngModel" [required]="formAfterNoonOption.description || MealsSubmitted ? 'true' : 'false'">
+                        <div class="invalid-feedback ifeed" style="display: block;"
+                            *ngIf="(afternoonDEscription).invalid && (afternoonDEscription.touched || submitted)">
+                            This field is required.
+                        </div>
+                    </div>
+
+                    <div class="mt-4 col-md-3">
+                        <label for="afterNoon{{j}}"  style="opacity: 1;">
+                            <div class="border-radius upload-btn-wrapper1">
+                                <input type="file" name="myfile" id="afterNoon{{j}}"
+                                    (change)="onImageChange($event,'meal','afterNoon',j)"
+                                    name="afternoon_image_{{j}}" />
+                                <img style="border-radius: 23px;"
+                                    [src]="formAfterNoonOption.image? formAfterNoonOption.image : 'assets/images/file-icons/icon-image2.png'"
+                                    width="80px" />
+                            </div>
+                            <div class="col-md-12 ">
+                                <label _ngcontent-serverapp-c827="" for="image" style="float: right;">306 x 227</label>
+                                
+                            </div>
+                            <div class="invalid-feedback ifeed" style="display: block;"
+                                *ngIf="!formAfterNoonOption.image && ImageSubmitted">
+                                Image is required.
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="mt-2 col-md-2" *ngIf="j!=0">
+                        <label for="validationCustom0" class=""></label>
+                        <button type="button" class="btn btn-dark btn-modal-rounded"
+                            (click)="removeMeals('afterNoon',j)">X</button>
+
+                    </div>
+
+
+                </div>
+
+            </ng-container>
+
+            <div class="mt-2 row">
+                <div class=" mb-0 col-md-9">
+                    <hr style="background: #99b2bf">
+                    <span style="color:#99b2bf;" class="mb-0">Evening</span>
+                </div>
+                <div class=" col-md-3">
+                    <button style="width:80px;" type="button" class="btn btn-dark btn-modal-rounded"
+                        (click)="addMeals('evening')">+Add</button>
+                </div>
+            </div>
+
+            <ng-container *ngFor="let formEveningOption of form.eveningMeals; let i = index; trackBy: trackByFn ">
+
+                <div class="mt-4 row">
+                    <div class=" mb-0 col-md-7">
+                        <label for="validationCustom02" class="mb-2">Describe Meal {{i+1}}</label>
+                        <input type="text" class="form-control" [(ngModel)]="formEveningOption.meal" (keyup)="inputData($event.target.value,i,'evening')"
+                            name="evening_meal_{{i}}" #eveningMeal="ngModel" [required]="formEveningOption.meal || MealsSubmitted ? 'true' : 'false'">
+                        <div class="invalid-feedback ifeed" style="display: block;"
+                            *ngIf="(eveningMeal).invalid && (eveningMeal.touched || submitted)">
+                            This field is required.
+                        </div>
+
+
+                        <label for="validationCustom02" class="mt-2 mb-2">Sub Text {{i+1}}</label>
+                        <input type="text" class="form-control" [(ngModel)]="formEveningOption.description" (keyup)="inputData($event.target.value,i,'evening')"
+                            name="evening_description_{{i}}" #eveningDescription="ngModel" [required]="formEveningOption.description || MealsSubmitted ? 'true' : 'false'">
+                        <div class="invalid-feedback ifeed" style="display: block;"
+                            *ngIf="(eveningDescription).invalid && (eveningDescription.touched || submitted)">
+                            This field is required.
+                        </div>
+                    </div>
+
+                    <div class="mt-4 col-md-3">
+                        <label for="evening{{i}}"  style="opacity: 1;">
+                            <div class="border-radius upload-btn-wrapper1">
+                                <input type="file" name="myfile" id="evening{{i}}"
+                                    (change)="onImageChange($event,'meal','evening',i)" name="evening_image_{{i}}" />
+                                <img style="border-radius: 23px;"
+                                    [src]="formEveningOption.image? formEveningOption.image : 'assets/images/file-icons/icon-image2.png'"
+                                    width="80px" />
+                            </div>
+                            <div class="col-md-12 ">
+                                <label _ngcontent-serverapp-c827="" for="image" style="float: right;">306 x 227</label>
+                                
+                            </div>
+                            <div class="invalid-feedback ifeed" style="display: block;"
+                                *ngIf="!formEveningOption.image && ImageSubmitted">
+                                Image is required.
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="mt-2 col-md-2" *ngIf="i!=0">
+                        <label for="validationCustom0" class=""></label>
+                        <button type="button" class="btn btn-dark btn-modal-rounded"
+                            (click)="removeMeals('evening',i)">X</button>
+
+                    </div>
+
+
+                </div>
+
+            </ng-container>
+
+            <div class="mt-2 row">
+                <div class=" mb-0 col-md-9">
+                    <hr style="background: #99b2bf">
+                    <span style="color:#99b2bf;" class="mb-0">Night</span>
+                </div>
+
+                <div class=" col-md-3">
+                    <button style="width:80px;" type="button" class="btn btn-dark btn-modal-rounded"
+                        (click)="addMeals('night')">+Add</button>
+                </div>
+
+            </div>
+
+            <ng-container *ngFor="let formNightOption of form.nightMeals; let i = index; trackBy: trackByFn ">
+
+                <div class="mt-4 row">
+                    <div class=" mb-0 col-md-7">
+                        <label for="validationCustom02" class="mb-2">Describe Meal {{i+1}}</label>
+                        <input type="text" class="form-control" [(ngModel)]="formNightOption.meal" (keyup)="inputData($event.target.value,i,'night')"
+                            name="night_meal_{{i}}" #nightmeal="ngModel" [required]="formNightOption.meal || MealsSubmitted ? 'true' : 'false'">
+                        <div class="invalid-feedback ifeed" style="display: block;"
+                            *ngIf="(nightmeal).invalid && (nightmeal.touched || submitted)">
+                            This field is required.
+                        </div>
+
+
+                        <label for="validationCustom02" class="mt-2 mb-2">Sub Text {{i+1}}</label>
+                        <input type="text" class="form-control" [(ngModel)]="formNightOption.description" (keyup)="inputData($event.target.value,i,'night')"
+                            name="night_description_{{i}}" #nightDescription="ngModel" [required]="formNightOption.description || MealsSubmitted ? 'true' : 'false'">
+                        <div class="invalid-feedback ifeed" style="display: block;"
+                            *ngIf="(nightDescription).invalid && (nightDescription.touched || submitted)">
+                            This field is required.
+                        </div>
+                    </div>
+
+                    <div class="mt-4 col-md-3">
+                        <label for="night{{i}}"  style="opacity: 1;">
+                            <div class="border-radius upload-btn-wrapper1">
+                                <input type="file" name="myfile" id="night{{i}}"
+                                    (change)="onImageChange($event,'meal','night',i)" name="night_image_{{i}}" />
+                                <img style="border-radius: 23px;"
+                                    [src]="formNightOption.image? formNightOption.image : 'assets/images/file-icons/icon-image2.png'"
+                                    width="80px" />
+                            </div>
+                            <div class="col-md-12 ">
+                                <label _ngcontent-serverapp-c827="" for="image" style="float: right;">306 x 227</label>
+                                
+                            </div>
+                            <div class="invalid-feedback ifeed" style="display: block;"
+                                *ngIf="!formNightOption.image && ImageSubmitted">
+                                Image is required.
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="mt-2 col-md-2" *ngIf="i!=0">
+                        <label for="validationCustom0" class=""></label>
+                        <button type="button" class="btn btn-dark btn-modal-rounded"
+                            (click)="removeMeals('night',i)">X</button>
+
+                    </div>
+
+
+                </div>
+
+            </ng-container>
+        </form>
+
+
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+           
+            <div class=" mb-0 col-md-12 ">
+                <button type="button" class="btn btn-dark btn-modal-rounded" (click)="save(f.valid);submitted = true" *ngIf="!editMode && editFlag">
+                    {{ saving ? "Saving" : "Save" }}
+                    <div class="spinner-border spinner-border-sm  text-light" role="status" *ngIf="saving">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </button>
+                <button type="button" class="btn btn-dark btn-modal-rounded" (click)="update(f.valid);submitted = true" *ngIf="editMode && editFlag">
+                    {{ updating ? "Updating" : "update" }}
+                    <div class="spinner-border spinner-border-sm  text-light" role="status" *ngIf="updating">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </button>
+            </div>
+            
+        </div>
+    </div>
+</ng-template>

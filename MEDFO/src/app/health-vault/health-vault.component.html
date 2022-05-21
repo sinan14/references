@@ -1,0 +1,322 @@
+<div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="health_vault111"><b>Health Vault</b></div>
+
+  <div class="tabbed">
+    <ul class="ul-type">
+      <li>
+        <a>
+          <div
+            (click)="clickToShow()"
+            id="prsnl"
+            class="dashboard_right_tab_btn dashboard_right_tab_btn_act aiactive"
+            [class.dashboard_right_tab_btn_act]="!showVlog"
+          >
+            Attachments
+          </div>
+        </a>
+      </li>
+
+      <li>
+        <a>
+          <div
+            (click)="clickToShow()"
+            id="mdcl"
+            class="dashboard_right_tab_btn aiactive"
+            [class.dashboard_right_tab_btn_act]="showVlog"
+          >
+            Health Log
+          </div>
+        </a>
+      </li>
+    </ul>
+    <div>
+      <button (click)="addNewHv()" class="btn btn-info btn-lgs mt-4">
+        Add New
+      </button>
+      <button
+        style="display: none"
+        id="bt1"
+        class="btn btn-info btn-lg mt-2"
+        data-toggle="modal"
+        data-target="#hvForm"
+      >
+        Add New
+      </button>
+    </div>
+    <br />
+    <section *ngIf="!showVlog" id="section11" class="helthattach">
+      <div class="row">
+        <div *ngIf="!userHealthVault.length" class="col-md-12 mt-3"><h5>No attachments available</h5></div>
+        <ng-container *ngFor="let hv of userHealthVault; let RowIndex = index">
+          <div class="col-md-6 float-left mb-2">
+            <div class="hvlog">
+              <div class="col-md-12">
+                <div class="dropdown treedotshvl">
+                  <button
+                    class="dropdown-toggle ed-button"
+                    type="button"
+                    id="dropdownMenuButton{{ RowIndex }}"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                  </button>
+                  <div
+                    class="dropdown-menu"
+                    attr.aria-labelledby="dropdownMenuButton{{ RowIndex }}"
+                  >
+                    <a (click)="updateThis(hv)" class="dropdown-item">Edit</a>
+                    <a (click)="deleteThis(hv)" class="dropdown-item">Delete</a>
+                  </div>
+                </div>
+
+                <div
+                  class="col-md-8 float-left labresult"
+                >
+                  <h5>{{ hv.category }}</h5>
+                  <label
+                    >Patient Name<span class="saron"></span>:
+                    {{ hv.patientName }}</label
+                  >
+                  <!-- <label
+                            >Date <span class="sarondate"></span>:
+                            {{ hv.date | date: "shortDate" }}</label
+                          > -->
+                  <label
+                    >Date <span class="sarondate"></span>: {{ hv.date }}</label
+                  >
+                </div>
+
+                <div
+                  class="col-md-4 float-left text-center subimageanddiscription"
+                >
+                  <a target="_blank" [href]="hv.prescription">
+                    <img [src]="hv.prescription" class="img-fluid" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </section>
+
+    <!-----------------------------------section2-------------------- -->
+
+    <section *ngIf="showVlog" id="section22" class="helthattach">
+      <div class="col-md-12 mb-4 pl-0">
+        <div class="col-md-6 float-left pl-0">
+          <div class="helthvalt">
+            <div class="col-md-4 float-left">
+              <img src="assets/img/demo/pdf.png" class="img-fluid" />
+            </div>
+            <div class="col-md-8 float-left" id="havalt">
+              <label class="hv1">Consulted on 11 Dec 2020</label>
+              <h4>Dr. Fayis</h4>
+              <label
+                ><span style="opacity: 0.5">Consult ID</span> :
+                fdf8457844</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 float-left pl-0">
+          <div class="helthvalt">
+            <div class="col-md-4 float-left">
+              <img src="assets/img/demo/pdf.png" class="img-fluid" />
+            </div>
+            <div class="col-md-8 float-left" id="havalt">
+              <label class="hv1">Consulted on 11 Dec 2020</label>
+              <h4>Dr. Fayis</h4>
+              <label
+                ><span style="opacity: 0.5">Consult ID</span> :
+                fdf8457844</label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 mb-4 pl-0">
+        <div class="col-md-6 float-left pl-0">
+          <div class="helthvalt">
+            <div class="col-md-4 float-left">
+              <img src="assets/img/demo/pdf.png" class="img-fluid" />
+            </div>
+            <div class="col-md-8 float-left" id="havalt">
+              <label class="hv1">Consulted on 11 Dec 2020</label>
+              <h4>Dr. Fayis</h4>
+              <label
+                ><span style="opacity: 0.5">Consult ID</span> :
+                fdf8457844</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 float-left pl-0">
+          <div class="helthvalt">
+            <div class="col-md-4 float-left">
+              <img src="assets/img/demo/pdf.png" class="img-fluid" />
+            </div>
+            <div class="col-md-8 float-left" id="havalt">
+              <label class="hv1">Consulted on 11 Dec 2020</label>
+              <h4>Dr. Fayis</h4>
+              <label
+                ><span style="opacity: 0.5">Consult ID</span> :
+                fdf8457844</label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 mb-4 pl-0">
+        <div class="col-md-6 float-left pl-0">
+          <div class="helthvalt">
+            <div class="col-md-4 float-left">
+              <img src="assets/img/demo/pdf.png" class="img-fluid" />
+            </div>
+            <div class="col-md-8 float-left" id="havalt">
+              <label class="hv1">Consulted on 11 Dec 2020</label>
+              <h4>Dr. Fayis</h4>
+              <label
+                ><span style="opacity: 0.5">Consult ID</span> :
+                fdf8457844</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 float-left pl-0">
+          <div class="helthvalt">
+            <div class="col-md-4 float-left">
+              <img src="assets/img/demo/pdf.png" class="img-fluid" />
+            </div>
+            <div class="col-md-8 float-left" id="havalt">
+              <label class="hv1">Consulted on 11 Dec 2020</label>
+              <h4>Dr. Fayis</h4>
+              <label
+                ><span style="opacity: 0.5">Consult ID</span> :
+                fdf8457844</label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="modal fade" id="hvForm" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 10px">
+      <div class="col-md-12">
+        <button
+          (click)="resetForm()"
+          id="dismiss-hv-Form"
+          type="button"
+          class="closeselect"
+          data-dismiss="modal"
+        >
+          &times;
+        </button>
+      </div>
+
+      <div class="modal-body text-center Login11 health-vault">
+        <div class="row" style="margin: 0px;">
+          <div class="container">
+            <h5 style="margin: 0 0 20px 0; font-weight: 600">Add Health</h5>
+            <form [formGroup]="hvForm">
+              <!-- <div class="form-group">
+                <div class="radio" >
+                  <label>
+                    <input
+                      type="radio"
+                      name="category"
+                      formControlName="category"
+                      [value]="cat"
+                      required
+                    />
+                    {{ cat }}
+                  </label>
+                </div>
+              </div> -->
+
+              <div class="form-group">
+                <label for="form_phone">User Name</label>
+                <select class="form-control" formControlName="patientId">
+                  <option *ngFor="let s of userNames" [value]="s._id">
+                    {{ s.name }}
+                  </option>
+                </select>
+
+                <small
+                  class="form-text small-block"
+                  *ngIf="isValidHv('patientId')"
+                >
+                  This field is mandatory
+                </small>
+              </div>
+              <div class="form-group">
+                <label for="form_phone">category</label>
+                <select class="form-control" formControlName="category">
+                  <option *ngFor="let cat of categories" [value]="cat">
+                    {{ cat }}
+                  </option>
+                </select>
+
+                <small
+                  class="form-text small-block"
+                  *ngIf="isValidHv('category')"
+                >
+                  This field is mandatory
+                </small>
+              </div>
+              <div class="ramagb mb-3">
+                <label for="uploadHvFile">Upload image</label>
+                <input
+                  class="upload-input"
+                  type="file"
+                  id="uploadHvFile"
+                  accept="image/png, image/gif, image/jpeg"
+                  name="myfile"
+                  (change)="onChangePres($event, '352', '250')"
+                />
+                <img *ngIf="hvPhoto" [src]="hvPhoto" class="health-img" />
+                <img class="health-img" *ngIf="!hvPhoto" src="" />
+                <small
+                  class="form-text small-block"
+                  *ngIf="isValidHv('prescription')"
+                >
+                  This field is mandatory
+                </small>
+              </div>
+            </form>
+            <button
+              *ngIf="
+                hvForm.get('prescription').value === '' || updateHvFlag == false
+              "
+              type="button"
+              (click)="onAddOrEdit()"
+              class="btn btn-primary update mt-3"
+            >
+              Add
+            </button>
+            <button
+              *ngIf="
+                hvForm.get('prescription').value !== '' && updateHvFlag == true
+              "
+              type="button"
+              (click)="onAddOrEdit()"
+              class="btn btn-primary update"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------- add or edit form------->

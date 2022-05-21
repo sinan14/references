@@ -1,0 +1,818 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid article_main">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="tab2-card">
+        <div class="card-body">
+          <div class="btn-popup row">
+            <div class="col-md-3">
+              <h6 style="color: #fff">Article</h6>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-3">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search"
+                  name="search"
+                  (keyup)="searchArticleFilter($event.target.value)"
+                />
+                <div
+                  class="input-group-btn"
+                  style="width: 70px; background: #014466"
+                >
+                  <button
+                    class="btn btn-default"
+                    type="submit"
+                    style="width: 30px"
+                  >
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="pl-0 col-md-2" style="text-align: right">
+              <button *ngIf="editFlag"
+                type="button"
+                class="btn btn-dark btn-dark-rounded"
+                (click)="newArticle()"
+              >
+                Create Article
+              </button>
+            </div>
+          </div>
+          <ngb-tabset class="tab-coupon">
+            <ngb-tab title="Article" *ngIf="disableTab('Article')">
+              <ng-template ngbTabTitle
+                ><span class="badge badge-pill pull-right">{{
+                  articleList.length
+                }}</span>
+              </ng-template>
+
+              <ng-template ngbTabContent>
+                <!-- <div class="col-md-12">
+                                    <ul class="tt">
+                                        <li> <select style="background-color: #042B3F;" class="form-control" placeholder="Choose" (change)="selectChangeCategory($event.target.value)">
+                                        <option value="all">All</option>
+                                        <option *ngFor="let item of articleMainCategoryList" value={{item._id}}>{{ item.name }}</option>
+                                    </select></li>
+
+                                    <li class="span-data"><a>HOme</a></li>
+                                    <li class="span-data"><a>About</a></li>
+                                    <li class="span-data"><a>Service</a></li>
+                                    <li class="span-data"><a>hgvhg</a></li>
+                                    <li class="span-data"><a>hgvhg</a></li>
+
+                                    <li class="span-data"><a>hgvhg</a></li>
+
+                                
+                                </ul></div> -->
+
+                <div class="scroll-container hide-scrollbar">
+                   <div class="scrol">
+                  <div class="mt-3">
+                    <select
+                      style="background-color: #042b3f;width: auto;"
+                      class="form-control"
+                      placeholder="Choose"
+                      (change)="selectChangeCategory($event.target.value)"
+                    >
+                      <option value="all">All</option>
+                      <option
+                        *ngFor="let item of articleMainCategoryList"
+                        value="{{ item._id }}"
+                      >
+                        {{ item.name }}
+                      </option>
+                    </select>
+                  </div>
+                  <div
+                    class="mt-3"
+                    *ngFor="let item of subarticleCategoryList"
+                  >
+                    <div
+                      class="span-data"
+                      [ngClass]="
+                        selectedSubCategory === item._id ? 'active' : ''
+                      "
+                    >
+                      <a
+                        routerLink="#"
+                        for="validationCustom0"
+                        (click)="selectSubCategory(item._id)"
+                        >{{ item.name
+                        }}<span class="badge badge-pill pull-right">{{
+                          item.count
+                        }}</span></a
+                      >
+                    </div>
+                    <div
+                      *ngIf="
+                        subarticleCategoryList && !subarticleCategoryList.length
+                      "
+                      class="span-data"
+                    >
+                      <a
+                        routerLink="#"
+                        for="validationCustom0"
+                        (click)="selectSubCategory(item._id)"
+                        >Not Found</a
+                      >
+                    </div>
+                  </div></div>
+                </div>
+
+                <div class="mt-2 row">
+                  <div class="col-md-12">
+                    <div class="text-center mt-3" *ngIf="dataLoading">
+                      <div
+                        class="spinner-border text-light"
+                        style="width: 3rem; height: 3rem"
+                        role="status"
+                      >
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="col-lg-6 col-md-12 col-sm-12"
+                    style="min-width: 295px"
+                    *ngFor="let i of articleList"
+                  >
+                    <div class="card-header">
+                      <h6 class="background">
+                        <span>{{ i.heading }}</span>
+                      </h6>
+                      <img
+                        src="{{ i.image }}"
+                        width="100%"
+                        height="10%"
+                        class="iconimages"
+                        (click)="viewArticle(i._id)"
+                      /><br />
+                      <div class="col-md-12 tab_inneritmmm">
+                        <p
+                          class="content-length"
+                          [innerHTML]="i.description"
+                        ></p>
+                        <!-- <button
+                                                    type="button"
+                                                    class="btn btn-dark-rounded"
+                                                    (click)="isCollapsed1 = !isCollapsed1"
+                                                    [attr.aria-expanded]="!isCollapsed1"
+                                                    aria-controls="collapseExample4"
+                                                    rippleEffect
+                                                  >
+                                                    ReadMore...
+                                                  </button>
+                                                  <div [ngbCollapse]="isCollapsed1">
+                                                    <div class="card mb-0">
+                                                      <div class="card-body">
+                                                        <p style="opacity: 0.5;font-size: 14px;" class="content-length" [innerHTML]="i.description"></p>
+                                                      </div>
+                                                    </div>
+                                                  </div> -->
+
+                        <!-- <span [innerHTML]="i.description"></span> -->
+                        <!-- <section class="content" *ngIf="i.description" [innerHTML]="i.description"></section> -->
+                        <div class="row align-item-center">
+                          <div class="col-md-6">
+                            <h5 style="color: white; opacity: 0.5">
+                              {{ i.authorName }}&nbsp;&nbsp;<i *ngIf="editFlag"
+                                class="fa fa-edit"
+                                (click)="editArticle(i._id)"
+                              ></i>
+                              &nbsp;&nbsp;<i *ngIf="editFlag"
+                                class="fa fa-trash"
+                                (click)="deleteArticle(i._id)"
+                              ></i>
+                            </h5>
+                          </div>
+                          <div class="col-md-3"></div>
+                          <div
+                            class="col-md-3 text-right"
+                            style="color: white; opacity: 0.7"
+                          >
+                            {{ i.likes }}
+                            <img
+                              src="assets/images/file-icons/icon-heart.svg"
+                              width="16%"
+                              height="50%"
+                            />&nbsp;&nbsp; {{ i.shares }}
+                            <img
+                              src="assets/images/file-icons/icon-share.svg"
+                              width="16%"
+                              height="60%"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="text-center mt-3" *ngIf="loading">
+                          <div
+                            class="spinner-border text-light"
+                            style="width: 3rem; height: 3rem"
+                            role="status"
+                          >
+                            <span class="sr-only">Loading...</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <h6
+                  *ngIf="articleList && !articleList.length"
+                  class="text-center text-muted alert-no-found"
+                >
+                  <small>No Data found</small>
+                </h6>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab *ngIf="disableTab('Most Viewed')">
+              <ng-template ngbTabTitle
+                >Most Viewed<span class="badge badge-pill pull-right">{{
+                  mostViewedList.length
+                }}</span>
+                <ng-template ngbTabContent>
+                  <!-- <div class="scroll-container hide-scrollbar">
+
+                                        <div class="mt-3 col-md-2" *ngFor="let item of subarticleCategoryList">
+                                            <div class="span-data" [ngClass]="selectedSubCategory === item._id ? 'active' : '' ">
+                                                    <a routerLink="#" for="validationCustom0"   (click)="selectSubCategory(item._id)">{{ item.name }}<span class="badge badge-pill  pull-right">{{item.count}}</span></a>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                  <div class="mt-2 row">
+                    <div
+                      class="col-lg-6 col-md-12 col-sm-12"
+                      *ngFor="let i of mostViewedList"
+                    >
+                      <div class="card-header">
+                        <h6 class="background">
+                          <span>{{ i.heading }}</span>
+                        </h6>
+                        <img
+                          src="{{ i.image }}"
+                          width="100%"
+                          (click)="viewArticle(i._id)"
+                        /><br />
+                        <div class="col-md-12 tab_inneritmmm">
+                          <p
+                            class="content-length"
+                            [innerHTML]="i.description"
+                          ></p>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <h5
+                                style="
+                                  color: white;
+                                  opacity: 0.5;
+                                  margin-bottom: 0px;
+                                "
+                              >
+                                {{ i.authorName }}&nbsp;&nbsp;<i
+                                  class="fa fa-edit" *ngIf="editFlag"
+                                  (click)="editArticle(i._id)"
+                                ></i>
+                                &nbsp;&nbsp;<i
+                                  class="fa fa-trash" *ngIf="editFlag"
+                                  (click)="deleteArticle(i._id)"
+                                ></i>
+                              </h5>
+                            </div>
+                            <div class="col-md-3"></div>
+                            <div
+                              class="col-md-3  text-right"
+                              style="color: white; opacity: 0.7"
+                            >
+                              {{ i.likes
+                              }}<img
+                                src="assets/images/file-icons/icon-heart.svg"
+                                width="16%"
+                                height="50%"
+                              />{{ i.shares }}
+                              <img
+                                src="assets/images/file-icons/icon-share.svg"
+                                width="16%"
+                                height="60%"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h6
+                    *ngIf="mostViewedList && !mostViewedList.length"
+                    class="text-center text-muted alert-no-found"
+                  >
+                    <small>No Data found</small>
+                  </h6>
+                </ng-template>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab *ngIf="disableTab('Most Shared')">
+              <ng-template ngbTabTitle
+                >Most Shared<span class="badge badge-pill pull-right">{{
+                  mostSharedList.length
+                }}</span>
+                <ng-template ngbTabContent>
+                  <!-- <div class="scroll-container hide-scrollbar">
+
+                                        <div class="mt-3 col-md-2" *ngFor="let item of subarticleCategoryList">
+                                            <div class="span-data" [ngClass]="selectedSubCategory === item._id ? 'active' : '' ">
+                                                    <a routerLink="#" for="validationCustom0"   (click)="selectSubCategory(item._id)">{{ item.name }}<span class="badge badge-pill  pull-right">{{item.count}}</span></a>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                  <div class="mt-2 row">
+                    <div
+                      class="col-lg-6 col-md-12 col-sm-12"
+                      *ngFor="let i of mostSharedList"
+                    >
+                      <div class="card-header">
+                        <h6 class="background">
+                          <span>{{ i.heading }}</span>
+                        </h6>
+                        <img
+                          src="{{ i.image }}"
+                          width="100%"
+                          (click)="viewArticle(i._id)"
+                        /><br />
+                        <div class="col-md-12 tab_inneritmmm">
+                          <p
+                            class="content-length"
+                            [innerHTML]="i.description"
+                          ></p>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <h5 style="color: white; opacity: 0.5">
+                                {{ i.authorName }}&nbsp;&nbsp;<i *ngIf="editFlag"
+                                  class="fa fa-edit"
+                                  (click)="editArticle(i._id)"
+                                ></i>
+                                &nbsp;&nbsp;<i *ngIf="editFlag"
+                                  class="fa fa-trash"
+                                  (click)="deleteArticle(i._id)"
+                                ></i>
+                              </h5>
+                            </div>
+                            <div class="col-md-3"></div>
+                            <div
+                              class="col-md-3  text-right"
+                              style="color: white; opacity: 0.7"
+                            >
+                              {{ i.likes
+                              }}<img
+                                src="assets/images/file-icons/icon-heart.svg"
+                                width="16%"
+                                height="50%"
+                              />{{ i.shares }}
+                              <img
+                                src="assets/images/file-icons/icon-share.svg"
+                                width="16%"
+                                height="60%"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h6
+                    *ngIf="mostSharedList && !mostSharedList.length"
+                    class="text-center text-muted alert-no-found"
+                  >
+                    <small>No Data found</small>
+                  </h6>
+                </ng-template>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab *ngIf="disableTab('Newest')">
+              <ng-template ngbTabTitle
+                >Newest<span class="badge badge-pill pull-right">{{
+                  newestList.length
+                }}</span>
+                <ng-template ngbTabContent>
+                  <!-- <div class="scroll-container hide-scrollbar">
+
+                                        <div class="mt-3 col-md-2" *ngFor="let item of subarticleCategoryList">
+                                            <div class="span-data" [ngClass]="selectedSubCategory === item._id ? 'active' : '' ">
+                                                    <a routerLink="#" for="validationCustom0"   (click)="selectSubCategory(item._id)">{{ item.name }}<span class="badge badge-pill  pull-right">{{item.count}}</span></a>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                  <div class="mt-2 row">
+                    <div
+                      class="col-lg-6 col-md-12 col-sm-12"
+                      *ngFor="let i of newestList"
+                    >
+                      <div class="card-header">
+                        <h6 class="background">
+                          <span>{{ i.heading }}</span>
+                        </h6>
+                        <img
+                          src="{{ i.image }}"
+                          width="100%"
+                          (click)="viewArticle(i._id)"
+                        /><br />
+                        <div class="col-md-12 tab_inneritmmm">
+                          <p
+                            class="content-length"
+                            [innerHTML]="i.description"
+                          ></p>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <h5 style="color: white; opacity: 0.5">
+                                {{ i.authorName }}&nbsp;&nbsp;<i *ngIf="editFlag"
+                                  class="fa fa-edit"
+                                  (click)="editArticle(i._id)"
+                                ></i>
+                                &nbsp;&nbsp;<i *ngIf="editFlag"
+                                  class="fa fa-trash"
+                                  (click)="deleteArticle(i._id)"
+                                ></i>
+                              </h5>
+                            </div>
+                            <div class="col-md-3"></div>
+                            <div
+                              class="col-md-3  text-right"
+                              style="color: white; opacity: 0.7"
+                            >
+                              {{ i.likes
+                              }}<img
+                                src="assets/images/file-icons/icon-heart.svg"
+                                width="16%"
+                                height="50%"
+                              />{{ i.shares }}
+                              <img
+                                src="assets/images/file-icons/icon-share.svg"
+                                width="16%"
+                                height="60%"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h6
+                    *ngIf="newestList && !newestList.length"
+                    class="text-center text-muted alert-no-found"
+                  >
+                    <small>No Data found</small>
+                  </h6>
+                </ng-template>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab *ngIf="disableTab('Trending')">
+              <ng-template ngbTabTitle>
+                Trending<span class="badge badge-pill pull-right">{{
+                  trendingList.length
+                }}</span>
+                <ng-template ngbTabContent>
+                  <!-- <div class="scroll-container hide-scrollbar">
+
+                                            <div class="mt-3 col-md-2" *ngFor="let item of subarticleCategoryList">
+                                                <div class="span-data" [ngClass]="selectedSubCategory === item._id ? 'active' : '' ">
+                                                        <a routerLink="#" for="validationCustom0"   (click)="selectSubCategory(item._id)">{{ item.name }}<span class="badge badge-pill  pull-right">{{item.count}}</span></a>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+                  <div class="mt-2 row">
+                    <div
+                      class="col-lg-6 col-md-12 col-sm-12"
+                      *ngFor="let i of trendingList"
+                    >
+                      <div class="card-header">
+                        <h6 class="background">
+                          <span>{{ i.heading }}</span>
+                        </h6>
+                        <img
+                          src="{{ i.image }}"
+                          width="100%"
+                          (click)="viewArticle(i._id)"
+                        /><br />
+                        <div class="col-md-12 tab_inneritmmm">
+                          <p
+                            class="content-length"
+                            [innerHTML]="i.description"
+                          ></p>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <h5 style="color: white; opacity: 0.5">
+                                {{ i.authorName }}&nbsp;&nbsp;<i *ngIf="editFlag"
+                                  class="fa fa-edit"
+                                  (click)="editArticle(i._id)"
+                                ></i>
+                                &nbsp;&nbsp;<i *ngIf="editFlag"
+                                  class="fa fa-trash"
+                                  (click)="deleteArticle(i._id)"
+                                ></i>
+                              </h5>
+                            </div>
+                            <div class="col-md-3"></div>
+                            <div
+                              class="col-md-3  text-right"
+                              style="color: white; opacity: 0.7"
+                            >
+                              {{ i.likes
+                              }}<img
+                                src="assets/images/file-icons/icon-heart.svg"
+                                width="16%"
+                                height="50%"
+                              />{{ i.shares }}
+                              <img
+                                src="assets/images/file-icons/icon-share.svg"
+                                width="16%"
+                                height="60%"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h6
+                    *ngIf="trendingList && !trendingList.length"
+                    class="text-center text-muted alert-no-found"
+                  >
+                    <small>No Data found</small>
+                  </h6>
+                </ng-template>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab *ngIf="disableTab('Home Page Main')">
+              <ng-template ngbTabTitle
+                >Home Page Main<span class="badge badge-pill pull-right">{{
+                  homePageMainList.length
+                }}</span>
+                <ng-template ngbTabContent>
+                  <!-- <div class="scroll-container hide-scrollbar">
+
+                                                <div class="mt-3 col-md-2" *ngFor="let item of subarticleCategoryList">
+                                                    <div class="span-data" [ngClass]="selectedSubCategory === item._id ? 'active' : '' ">
+                                                            <a routerLink="#" for="validationCustom0"   (click)="selectSubCategory(item._id)">{{ item.name }}<span class="badge badge-pill  pull-right">{{item.count}}</span></a>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+
+                  <div class="mt-2 row">
+                    <div
+                      class="col-lg-6 col-md-12 col-sm-12"
+                      *ngFor="let i of homePageMainList"
+                    >
+                      <div class="card-header">
+                        <h6 class="background">
+                          <span>{{ i.heading }}</span>
+                        </h6>
+                        <img
+                          src="{{ i.image }}"
+                          width="100%"
+                          (click)="viewArticle(i._id)"
+                        /><br />
+                        <div class="col-md-12 tab_inneritmmm">
+                          <p
+                            class="content-length"
+                            [innerHTML]="i.description"
+                          ></p>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <h5 style="color: white; opacity: 0.5">
+                                {{ i.authorName }}&nbsp;&nbsp;<i *ngIf="editFlag"
+                                  class="fa fa-edit"
+                                  (click)="editArticle(i._id)"
+                                ></i>
+                                &nbsp;&nbsp;<i *ngIf="editFlag"
+                                  class="fa fa-trash"
+                                  (click)="deleteArticle(i._id)"
+                                ></i>
+                              </h5>
+                            </div>
+                            <div class="col-md-3"></div>
+                            <div
+                              class="col-md-3  text-right"
+                              style="color: white; opacity: 0.7"
+                            >
+                              {{ i.likes
+                              }}<img
+                                src="assets/images/file-icons/icon-heart.svg"
+                                width="16%"
+                                height="50%"
+                              />{{ i.shares }}
+                              <img
+                                src="assets/images/file-icons/icon-share.svg"
+                                width="16%"
+                                height="60%"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h6
+                    *ngIf="homePageMainList && !homePageMainList.length"
+                    class="text-center text-muted alert-no-found"
+                  >
+                    <small>No Data found</small>
+                  </h6>
+                </ng-template>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab *ngIf="disableTab('Home Page Sub')">
+              <ng-template ngbTabTitle
+                >Home Page Sub<span class="badge badge-pill pull-right">{{
+                  homePageSubList.length
+                }}</span>
+                <ng-template ngbTabContent>
+                  <!-- <div class="scroll-container hide-scrollbar">
+
+                                                    <div class="mt-3 col-md-2" *ngFor="let item of subarticleCategoryList">
+                                                        <div class="span-data" [ngClass]="selectedSubCategory === item._id ? 'active' : '' ">
+                                                                <a routerLink="#" for="validationCustom0"   (click)="selectSubCategory(item._id)">{{ item.name }}<span class="badge badge-pill  pull-right">{{item.count}}</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+                  <div class="mt-2 row">
+                    <div
+                      class="col-lg-6 col-md-12 col-sm-12"
+                      *ngFor="let i of homePageSubList"
+                    >
+                      <div class="card-header">
+                        <h6 class="background">
+                          <span>{{ i.heading }}</span>
+                        </h6>
+                        <img
+                          src="{{ i.image }}"
+                          width="100%"
+                          (click)="viewArticle(i._id)"
+                        /><br />
+                        <div class="col-md-12 tab_inneritmmm">
+                          <p
+                            [innerHTML]="i.description"
+                            class="content-length"
+                          ></p>
+                          .....
+                          <div class="row">
+                            <div class="col-md-6">
+                              <h5 style="color: white; opacity: 0.5">
+                                {{ i.authorName }}&nbsp;&nbsp;<i *ngIf="editFlag"
+                                  class="fa fa-edit"
+                                  (click)="editArticle(i._id)"
+                                ></i>
+                                &nbsp;&nbsp;<i *ngIf="editFlag"
+                                  class="fa fa-trash"
+                                  (click)="deleteArticle(i._id)"
+                                ></i>
+                              </h5>
+                            </div>
+                            <div class="col-md-3"></div>
+                            <div
+                              class="col-md-3  text-right"
+                              style="color: white; opacity: 0.7"
+                            >
+                              {{ i.likes
+                              }}<img
+                                src="assets/images/file-icons/icon-heart.svg"
+                                width="16%"
+                                height="50%"
+                              />{{ i.shares }}
+                              <img
+                                src="assets/images/file-icons/icon-share.svg"
+                                width="16%"
+                                height="60%"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h6
+                    *ngIf="homePageSubList && !homePageSubList.length"
+                    class="text-center text-muted alert-no-found"
+                  >
+                    <small>No Data found</small>
+                  </h6>
+                </ng-template>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h5 style="color: white; opacity: 0.5" class="modal-title f-w-200"></h5>
+    <button
+      style="color: white; opacity: 0.5; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span style="margin: 22px" aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h6 class="background">
+          <span style="background: #014466; padding: 0 4px"
+            >Live a Healthy life</span
+          >
+        </h6>
+        <img
+          style="border-radius: 15px"
+          src="assets/images/dashboard/article2.png"
+          width="100%"
+        /><br />
+        <br /><br />
+        <h5 style="color: #fff; font-weight: 900">
+          3 mistakes in your daily routine
+        </h5>
+        <div class="col-md-12 tab_inneritmmm" style="padding: 0">
+          <p style="opacity: 0.6; font-size: 13">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua. Ut enim ad minim veniam
+          </p>
+          <div class="row">
+            <div class="col-md-6">
+              <h5 style="color: white; opacity: 0.7">Dr Aswin Vinod</h5>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4" style="color: white; opacity: 0.7">
+              110k
+              <img
+                src="assets/images/file-icons/icon-heart.svg"
+                width="25%"
+                height="50%"
+              />
+              110k
+              <img
+                src="assets/images/file-icons/icon-share.svg"
+                width="25%"
+                height="60%"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row">
+                <div class="col-md-12">
+                    <div class="" style="background: transparent;opacity: 1;">
+                                <h6 class="background"><span style="background: #014466;padding: 0 4px;">Live a Healthy life</span></h6>
+                                <img style="border-radius:15px;" src="assets/images/dashboard/article2.png" width="100%"><br>
+                                <br><br><h4 style="color:#fff;font-weight: 900;">3 mistakes in your daily routine</h4>
+                                <div class=" col-md-12 tab_inneritmmm" style="padding:0;">
+                                    <p style="opacity: 0.5;font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                        sed do eiusmod tempor incididunt ut labore et dolore
+                                        magna aliqua. Ut enim ad minim veniam
+                                    </p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        <h5 style="color:white;opacity: 0.7;">Dr Aswin Vinod</h5>
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-4" style="color:white;opacity: 0.7;">
+                                            110k <img src="assets/images/file-icons/icon-heart.svg" width="25%" height="50%"/> 110k <img src="assets/images/file-icons/icon-share.svg" width="25%" height="60%"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </div>
+                </div>
+
+
+            </div> -->
+</ng-template>

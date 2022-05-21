@@ -1,0 +1,150 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="kendo_table master-demo">
+                <div class="card-body master_Tab" style="background:transparent;font-weight: lighter;"
+                    *ngIf="disableTab('Pincode')">
+                    <h6 style="margin-bottom: 4%;">Pincode</h6>
+
+
+                    <div class="btn-popup">
+                        <!-- <button type="button" class="btn btn-dark btn-inverse-dark" (click)="BackRedirectTo()"><i
+                                class="fa fa-arrow-left" aria-hidden="true"></i></button> -->
+
+
+
+                        <button type="button" class="btn btn-dark btn-inverse-dark pull-right mb-4" data-toggle="modal"
+                            data-original-title="test" data-target="#PincodeExampleModal"
+                            (click)="open(PincodeContent,'add','')" *ngIf="addFlag"><img
+                                src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                style="margin-right:10px;">Add New</button>
+
+
+
+                    </div>
+
+                    <div class="table-responsive ">
+                        <!-- <ng2-smart-table  [settings]="settings" [source]="vendors"
+                                    (edit)="editRow($event,StoreCreationContent,'edit')"></ng2-smart-table> -->
+                        <kendo-grid [kendoGridBinding]="PINCODE_ARRAY" [filterable]="true" [sortable]="true">
+                            <kendo-grid-column field="sl" title="Sl No." width="20">
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell [showOperators]="false" [column]="column"
+                                        title="Sl No" [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+                            </kendo-grid-column>
+                            <kendo-grid-column field="code" title="Pincode" width="30">
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell [showOperators]="false" [column]="column"
+                                        title="Pincode" [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+                            </kendo-grid-column>
+                            <kendo-grid-column title="COD" width="30" class="text-center">
+                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                    <p *ngIf="dataItem.cashOnDelivery">Available</p>
+                                    <p *ngIf="!dataItem.cashOnDelivery">Unavailable</p>
+                                    <!-- <input type="checkbox" class="toggle-switch oversize" id="toggle3"
+                                        [checked]="dataItem.cashOnDelivery" (change)="COD_Activae($event,dataItem._id)" checked
+                                        *ngIf="editFlag"> -->
+                                </ng-template>
+                            </kendo-grid-column>
+                            <kendo-grid-command-column title="Action" width="30" class="text-center">
+                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                    <button type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal"
+                                        data-original-title="test" data-target="#PincodeExampleModal"
+                                        (click)="open(PincodeContent,'edit',dataItem)" *ngIf="editFlag">Edit</button>
+
+                                    <button type="button" class="btn btn-dark btn-dark-rounded"
+                                        (click)="DeletePin(dataItem)" *ngIf="deleteFlag">Delete</button>
+
+                                    &nbsp;&nbsp;<input type="checkbox" class="toggle-switch oversize" id="toggle3"
+                                        [checked]="dataItem.active" (change)="Deactivate($event,dataItem._id)" checked
+                                        *ngIf="editFlag">
+
+                                </ng-template>
+                            </kendo-grid-command-column>
+                           
+                        </kendo-grid>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #PincodeContent let-modal>
+    <div *ngIf="update_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.5;" class="modal-title f-w-200" id="PincodeExampleModal">Update</h5>
+        <button style="color: white;opacity: 0.5;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div *ngIf="add_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.5;" class="modal-title f-w-200" id="PincodeExampleModal">Add</h5>
+        <button style="color: white;opacity: 0.5;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="Pincode_Form">
+            <div class="mt-2 row">
+                <div class="col-md-12">
+                    <label>Pincode</label>
+                    <div class="example-wrapper">
+                        <input type="text" formControlName="pincode" class="form-control">
+                        <!-- <kendo-multiselect id="multiselect" class="form-control"
+                            [data]="listArticle" [filterable]="true">
+                        </kendo-multiselect> -->
+                        <small for="pincode" class="form-text text-danger" *ngIf="Pincode_Form.controls['pincode'].errors?.required && 
+                        (Pincode_Form.controls['pincode'].dirty ||  
+                        Pincode_Form.controls['pincode'].touched || 
+                        (Pincode_Form.controls['pincode'].untouched  && attemptedSubmit ) )">
+                            Pincode required.
+                        </small>
+                        <small for="pincode" class="form-text text-danger"
+                            *ngIf="Pincode_Form.controls['pincode'].errors?.pattern && attemptedSubmit">
+                            Numbers Only Allowed
+                        </small>
+                        <small for="pincode" class="form-text text-danger" *ngIf="(Pincode_Form.controls['pincode'].errors?.maxlength ||
+                            Pincode_Form.controls['pincode'].errors?.minlength) && attemptedSubmit">
+                            Pincode should be 6 digits
+                        </small>
+
+
+                       
+
+
+                        <!-- <div *ngIf="f.number.errors.required">Number is required.</div> -->
+                        <!-- <div style="color: yellow;" *ngIf="Pincode_Form.controls['pincode'].errors?.pattern">Enter only number.</div> -->
+                    </div>
+
+                    <div class="mt-3 d-flex align-items-center">
+                        <label class="mb-0">COD Available</label>
+
+                        &nbsp;&nbsp;<input formControlName="status" type="checkbox" id="toggle3">
+                    </div>
+                    <!-- (change)="COD_Activae($event,'id')" -->
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-dark btn-dark-rounded" type="button" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Close</button>
+        <button type="button" class="btn  btn-dark btn-dark-rounded" (click)="Save()"
+            *ngIf="add_Modal_Flag">{{addLoading?"Saving...":"Save"}}</button>
+        <button type="button" class="btn  btn-dark btn-dark-rounded" (click)="Update()"
+            *ngIf="update_Modal_Flag">{{addLoading?"Updating...":"Update"}}</button>
+
+    </div>
+</ng-template>

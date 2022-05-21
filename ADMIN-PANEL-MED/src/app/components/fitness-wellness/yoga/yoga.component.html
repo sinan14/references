@@ -1,0 +1,729 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid side_innerpage_tab">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card tab2-card">
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-dark-rounded" (click)="BackRedirectTo()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+
+                    </div>
+                    <div class="col-md-6"></div>
+                    <div class="col-md-4"></div>
+                   
+                </div>
+
+                <div class="card-body tab2-card">
+                    <ngb-tabset  #t="ngbTabset" [activeId]="selectedTab" (tabChange)="tabChangeEvent($event)" class="tab-coupon">
+
+
+                        <ngb-tab title="Main Category" id="tab-selectbyid0" *ngIf="disableTab('Main Category')">
+                            <ng-template ngbTabContent>    
+                                
+                                
+                                <div class=" row">
+
+                                    <div class="col-md-3  mb-3"  *ngFor="let i of mainCategoryList" >  
+                                        <img src="{{i.icon}}"  class="yoga-mgs">
+                                        <h6 class="text-left"><h6 class="float-name">{{i.title}} </h6><span>
+
+                                            <i style="float: right;" class="fa fa-edit mt-2" data-toggle="modal" data-original-title="test"
+                                            data-target="#MainCategoryExampleModal" (click)="open(MainCategoryContent,'edit',i._id,'main_category')" *ngIf="editFlag"></i>
+                                        </span></h6>  
+                                    </div>
+
+
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+
+
+
+                        <ngb-tab title="Start your healthy" id="tab-selectbyid1" *ngIf="disableTab('Start your healthy')">
+                            <ng-template ngbTabContent>    
+                                
+                                <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                data-target="#StartHealthyExampleModal" (click)="open(StartHealthyContent,'add','','')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+
+                               
+                                <div class=" row">
+
+                                    <div class="col-md-3  mb-3"  *ngFor="let i of healthyList"   >  
+                                        <img src="{{i.icon}}"  >
+                                        <h6><h6 class="float-name">{{i.title}} </h6><span>
+                                            <i style="float: right; padding-left: 15px;" class="fa fa-trash mt-2" *ngIf="editFlag" (click)="delete('start_healthy',i._id)"></i>
+                                            <i style="float: right;" class="fa fa-edit mt-2" data-toggle="modal" data-original-title="test"
+                                            data-target="#StartHealthyExampleModal" (click)="open(StartHealthyContent,'edit',i._id,'start_healthy')" *ngIf="editFlag"></i>
+                                           </span>
+                                    </h6> 
+                                         
+                                    </div>
+
+                                    
+
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+
+
+                        <ngb-tab title="Weekly workout" id="tab-selectbyid2" *ngIf="disableTab('Weekly Workout')">
+                            <ng-template ngbTabContent>    
+                                
+                                <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                data-target="#AddWeeklyWorkoutExampleModal" (click)="open(AddWeeklyWorkoutContent,'add','','')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+
+                                
+                                <div class="row">
+
+                                    <div class="col-md-3  mb-3"  *ngFor="let i of weeklyWorkoutList">  
+                                        <img src="{{i.image}}"  >
+                                       
+                                        <h6><h6 class="float-name">{{i.title}} </h6><span>
+                                            <i style="float: right; padding-left: 15px;" class="fa fa-trash mt-2" *ngIf="editFlag" (click)="delete('weekly_workouts',i._id)"></i>
+                                            <i style="float: right;" class="fa fa-edit mt-2" data-toggle="modal" data-original-title="test"
+                                            data-target="#AddWeeklyWorkoutExampleModal" (click)="open(AddWeeklyWorkoutContent,'edit',i._id,'weekly_workouts')" *ngIf="editFlag"></i>
+                                           </span></h6>  
+                                    </div>
+
+                                   
+
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab title="Recommend" id="tab-selectbyid3" *ngIf="disableTab('Recommend')">
+                            <ng-template ngbTabContent>    
+                                
+                                <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                data-target="#RecommendedExampleModal" (click)="open(RecommendedContent,'add','','')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+
+                                
+                                <div class=" row">
+
+                                    <div class="col-md-3 mb-3"    *ngFor="let i of recommendList" >  
+                                        <img src="{{i.icon}}"  >
+                                        <h6><h6 class="float-name">{{i.title}} </h6><span>
+                                            <i style="float: right; padding-left: 15px;" class="fa fa-trash mt-2" *ngIf="editFlag" (click)="delete('recommend',i._id)"></i>
+                                            <i style="float: right;" class="fa fa-edit mt-2" data-toggle="modal" data-original-title="test"
+                                            data-target="#RecommendedExampleModal" (click)="open(RecommendedContent,'edit',i._id,'recommend')" *ngIf="editFlag"></i>
+                                            </span></h6>  
+                                    </div>
+
+                                  
+
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+
+
+                        <ngb-tab title="Foliofit Home Page" id="tab-selectbyid4" *ngIf="disableTab('Foliofit Home Page')">
+                            <ng-template ngbTabContent>    
+                               
+                                
+                                <div class="row">
+
+                                    <div class="col-md-3"  *ngFor="let i of foliofitHomeList"  >  
+                                        <img src="{{i.banner}}"  >
+                                        <h6><h6 class="float-name">{{i.title}} </h6><span><i style="float: right;" class="fa fa-edit mt-2" data-toggle="modal" data-original-title="test"
+                                            data-target="#FoliofitHomePageExampleModal" (click)="open(FoliofitHomePageContent,'edit',i._id,'foliofit_home')" *ngIf="editFlag"></i></span></h6>  
+                                    </div>
+
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+
+
+               
+                    </ngb-tabset>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+<ng-template #MainCategoryContent let-modal>
+    <form [formGroup]="mainCategoryForm">
+        <div  class="modal-header">
+            <h5 style="color: white; opacity: 0.7;" class="modal-title f-w-200" id="MainCategoryExampleModal">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+            <button style="color: white; opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+    
+            <div class="mt-3 row">
+                <div class="col-md-6 ">
+                    <label>Icon</label>
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === ''"></i>
+                            <img src="{{image_URL}}" width="100%"  class=" image-icon"    >
+                            <input type="file" name="myfile" class="input-file"
+                                (change)="onChange($event,'302','302')" />
+                        </div>
+                    </div>
+                    <small for="type" class="form-text text-danger" *ngIf="image_URL === '' && attemptedSubmit ">
+                       Icon Image is required.
+                    </small>
+                </div>
+    
+                <div class="col-md-6">
+                    <label>Banner</label>
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="bannerImage_URL === ''"></i>
+                            <img src="{{bannerImage_URL}}" width="100%"  class=" image-icon" >
+                            <input type="file" name="myfile" class="input-file"
+                                (change)="onBannerChange($event,'1501','815')" />
+                        </div>
+                    </div>
+                    <small for="type" class="form-text text-danger" *ngIf="bannerImage_URL === '' && attemptedSubmit ">
+                        Banner Image is required.
+                    </small>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="pull-right">302 px X 302 px</a>
+                </div>
+                <div class="col-md-6">
+                    <a class="pull-right">1501 px X 815 px</a>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="mt-2 col-md-12" >  
+                    <label for="validationCustom02" class="mb-1">Title</label>
+                    <input type="text" class="form-control" formControlName="title">
+                    <small for="title" class="form-text text-danger" 
+                    *ngIf="mainCategoryForm.controls['title'].errors?.required && 
+                    (mainCategoryForm.controls['title'].dirty ||  
+                    mainCategoryForm.controls['title'].touched || 
+                    (mainCategoryForm.controls['title'].untouched  && attemptedSubmit ) )">
+                        Title is required.
+                    </small>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class=" mt-2 col-md-12" >  
+                    <label for="validationCustom02" class="mb-1">Sub Title</label>
+                    <input type="text" class="form-control" formControlName="subtitle">
+                    <small for="subtitle" class="form-text text-danger" 
+                    *ngIf="mainCategoryForm.controls['subtitle'].errors?.required && 
+                    (mainCategoryForm.controls['subtitle'].dirty ||  
+                    mainCategoryForm.controls['subtitle'].touched || 
+                    (mainCategoryForm.controls['subtitle'].untouched  && attemptedSubmit ) )">
+                        Sub Title is required.
+                    </small>
+                </div>
+            </div>
+    
+    
+            <div class="mt-2 row">
+                <div class=" mb-0 col-md-12" >  
+                    <label for="validationCustom02" class="mb-1">Benefits</label>
+                    <textarea class="form-control" formControlName="benefits" rows="4"></textarea>
+                    <sub><small style="opacity: 0.7;">(Eg: Good , Something, ... )</small></sub>
+                    <small for="benefits" class="form-text text-danger" 
+                    *ngIf="mainCategoryForm.controls['benefits'].errors?.required && 
+                    (mainCategoryForm.controls['benefits'].dirty ||  
+                    mainCategoryForm.controls['benefits'].touched || 
+                    (mainCategoryForm.controls['benefits'].untouched  && attemptedSubmit ) )">
+                        Benefits is required.
+                    </small>
+                </div>
+            </div>
+    
+            <div class="mt-2 row multi-dropdown">
+                <div class="col-md-12">
+                    <label>Select Videos</label>
+                 
+                        <kendo-multiselect class="form-control k-multiselect" formControlName="videos"
+                          [data]="yogaVideoList"
+                          [textField]="'title'" 
+                          [valueField]="'_id'"
+                          [autoClose]="false"
+                          [filterable]="true"
+                          [valuePrimitive]="true"
+                          (filterChange)="handleFilterYoga($event)"
+                        >
+                          <!-- <ng-template kendoMultiSelectTagTemplate let-dataItem *ngFor="let i of listItems">
+                            <span class="template">{{ dataItem.value }}</span> {{ dataItem.text }}
+                          </ng-template> -->
+                        </kendo-multiselect>
+                        <small for="videos" class="form-text text-danger" 
+                        *ngIf="mainCategoryForm.controls['videos'].errors?.required && 
+                        (mainCategoryForm.controls['videos'].dirty ||  
+                        mainCategoryForm.controls['videos'].touched || 
+                        (mainCategoryForm.controls['videos'].untouched  && attemptedSubmit ) )">
+                            Videos is required.
+                        </small>
+                     
+                      <!-- <div class="example-config">Selected Order: {{ value.text | json }}</div> -->
+                </div>
+            </div>
+    
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-dark-rounded" type="button" data-dismiss="modal" (click)="close()">Close</button>
+            <button *ngIf="add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded"
+                (click)="save('main_category');attemptedSubmit = true">{{ addLoading ? "Saving..." : "Save" }}</button>
+            <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded"
+                (click)="update('main_category')">{{ addLoading ? "Updating..." : "Update" }}</button>
+        </div>
+    </form>
+</ng-template>
+
+
+
+<ng-template #StartHealthyContent let-modal>
+    <form [formGroup]="mainCategoryForm">
+        <div  class="modal-header">
+            <h5 style="color: white; opacity: 0.7;" class="modal-title f-w-200" id="StartHealthyExampleModal">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+            <button style="color: white; opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+    
+            <div class="mt-3 row">
+                <div class="col-md-6 ">
+                    <label>Icon</label>
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === ''"></i>
+                            <img  *ngIf="image_URL != ''" src="{{image_URL}}" width="100%"  class=" image-icon"    >
+                            <input type="file" name="myfile" class="input-file"
+                                (change)="onChange($event,'852','852')" />
+                        </div>
+                    </div>
+                    <small for="type" class="form-text text-danger" *ngIf="image_URL === '' && attemptedSubmit ">
+                       Icon Image is required.
+                    </small>
+                </div>
+    
+                <div class="col-md-6">
+                    <label>Banner</label>
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="bannerImage_URL === ''"></i>
+                            <img  *ngIf="bannerImage_URL != ''" src="{{bannerImage_URL}}" width="100%"  class=" image-icon"    >
+                            <input type="file" name="myfile" class="input-file"
+                                (change)="onBannerChange($event,'1501','815')" />
+                        </div>
+                    </div>
+                    <small for="type" class="form-text text-danger" *ngIf="bannerImage_URL === '' && attemptedSubmit ">
+                        Banner Image is required.
+                    </small>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="pull-right">852 px X 852 px</a>
+                </div>
+                <div class="col-md-6">
+                    <a class="pull-right">1501 px X 815 px</a>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="mt-2 col-md-12" >  
+                    <label for="validationCustom02" class="mb-1">Title</label>
+                    <input type="text" class="form-control" formControlName="title">
+                    <small for="title" class="form-text text-danger" 
+                    *ngIf="mainCategoryForm.controls['title'].errors?.required && 
+                    (mainCategoryForm.controls['title'].dirty ||  
+                    mainCategoryForm.controls['title'].touched || 
+                    (mainCategoryForm.controls['title'].untouched  && attemptedSubmit ) )">
+                        Title is required.
+                    </small>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class=" mt-2 col-md-12" >  
+                    <label for="validationCustom02" class="mb-1">Sub Title</label>
+                    <input type="text" class="form-control" formControlName="subtitle">
+                    <small for="subtitle" class="form-text text-danger" 
+                    *ngIf="mainCategoryForm.controls['subtitle'].errors?.required && 
+                    (mainCategoryForm.controls['subtitle'].dirty ||  
+                    mainCategoryForm.controls['subtitle'].touched || 
+                    (mainCategoryForm.controls['subtitle'].untouched  && attemptedSubmit ) )">
+                        Sub Title is required.
+                    </small>
+                </div>
+            </div>
+    
+    
+            <div class="mt-2 row">
+                <div class=" mb-0 col-md-12" >  
+                    <label for="validationCustom02" class="mb-1">Benefits</label>
+                    <textarea class="form-control" formControlName="benefits" rows="4"></textarea>
+                    <sub><small style="opacity: 0.7;">(Eg: Good , Something, ... )</small></sub>
+                    <small for="benefits" class="form-text text-danger" 
+                    *ngIf="mainCategoryForm.controls['benefits'].errors?.required && 
+                    (mainCategoryForm.controls['benefits'].dirty ||  
+                    mainCategoryForm.controls['benefits'].touched || 
+                    (mainCategoryForm.controls['benefits'].untouched  && attemptedSubmit ) )">
+                        Benefits is required.
+                    </small>
+                </div>
+            </div>
+    
+            <div class="mt-2 row multi-dropdown">
+                <div class="col-md-12">
+                    <label>Select Videos</label>
+                 
+                        <kendo-multiselect class="form-control k-multiselect" formControlName="videos"
+                        [data]="yogaVideoList"
+                        [textField]="'title'" 
+                        [valueField]="'_id'"
+                        [autoClose]="false"
+                        [filterable]="true"
+                        [valuePrimitive]="true"
+                        (filterChange)="handleFilterYoga($event)"
+                        >
+                          <!-- <ng-template kendoMultiSelectTagTemplate let-dataItem *ngFor="let i of listItems">
+                            <span class="template">{{ dataItem.value }}</span> {{ dataItem.text }}
+                          </ng-template> -->
+                        </kendo-multiselect>
+                        <small for="videos" class="form-text text-danger" 
+                        *ngIf="mainCategoryForm.controls['videos'].errors?.required && 
+                        (mainCategoryForm.controls['videos'].dirty ||  
+                        mainCategoryForm.controls['videos'].touched || 
+                        (mainCategoryForm.controls['videos'].untouched  && attemptedSubmit ) )">
+                            Videos is required.
+                        </small>
+                     
+                      <!-- <div class="example-config">Selected Order: {{ value.text | json }}</div> -->
+                </div>
+            </div>
+    
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-dark-rounded" type="button" data-dismiss="modal" (click)="close()">Close</button>
+            <button *ngIf="add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded"
+                (click)="save('start_healthy');attemptedSubmit = true">{{ addLoading ? "Saving..." : "Save" }}</button>
+            <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded"
+                (click)="update('start_healthy')">{{ addLoading ? "Updating..." : "Update" }}</button>
+        </div>
+    </form>
+</ng-template>
+
+
+
+
+<ng-template #AddWeeklyWorkoutContent let-modal>
+    <form [formGroup]="mainCategoryForm">
+        <div  class="modal-header">
+            <h5 style="color: white; opacity: 0.7;" class="modal-title f-w-200" id="AddWeeklyWorkoutExampleModal">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+            <button style="color: white; opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+    
+            <div class="mt-3 row">
+                
+                <div class="col-md-12">
+                    <label>Banner</label>
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper1">
+                            <i class="icon fa fa-upload" *ngIf="bannerImage_URL === ''"></i>
+                            <img *ngIf="bannerImage_URL != ''" src="{{bannerImage_URL}}" width="100%"  class=" image-icon" [ngClass]="add_Modal_Flag  ?   ''  : 'popup-images-hts' ">
+                            <input type="file" name="myfile" class="input-file"
+                                (change)="onBannerChange($event,'1501','815')" />
+                        </div>
+                    </div>
+                    <small for="type" class="form-text text-danger" *ngIf="bannerImage_URL === '' && attemptedSubmit ">
+                        Banner Image is required.
+                    </small>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-12">
+                    <a class="pull-right">1501 px X 815 px</a>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="mt-2 col-md-12" >  
+                    <label for="validationCustom02" class="mb-1">Title</label>
+                    <input type="text" class="form-control" formControlName="title">
+                    <small for="title" class="form-text text-danger" 
+                    *ngIf="mainCategoryForm.controls['title'].errors?.required && 
+                    (mainCategoryForm.controls['title'].dirty ||  
+                    mainCategoryForm.controls['title'].touched || 
+                    (mainCategoryForm.controls['title'].untouched  && attemptedSubmit ) )">
+                        Title is required.
+                    </small>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class=" mt-2 col-md-12" >  
+                    <label for="validationCustom02" class="mb-1">Sub Title</label>
+                    <input type="text" class="form-control" formControlName="subtitle">
+                    <small for="subtitle" class="form-text text-danger" 
+                    *ngIf="mainCategoryForm.controls['subtitle'].errors?.required && 
+                    (mainCategoryForm.controls['subtitle'].dirty ||  
+                    mainCategoryForm.controls['subtitle'].touched || 
+                    (mainCategoryForm.controls['subtitle'].untouched  && attemptedSubmit ) )">
+                        Sub Title is required.
+                    </small>
+                </div>
+            </div>
+    
+    
+            <div class="mt-2 row">
+                <div class=" mb-0 col-md-12" >  
+                    <label for="validationCustom02" class="mb-1">Benefits</label>
+                    <textarea class="form-control" formControlName="benefits" rows="4"></textarea>
+                    <sub><small style="opacity: 0.7;">(Eg: Good , Something, ... )</small></sub>
+                    <small for="benefits" class="form-text text-danger" 
+                    *ngIf="mainCategoryForm.controls['benefits'].errors?.required && 
+                    (mainCategoryForm.controls['benefits'].dirty ||  
+                    mainCategoryForm.controls['benefits'].touched || 
+                    (mainCategoryForm.controls['benefits'].untouched  && attemptedSubmit ) )">
+                        Benefits is required.
+                    </small>
+                </div>
+            </div>
+    
+            <div class="mt-2 row multi-dropdown">
+                <div class="col-md-12">
+                    <label>Select Videos</label>
+                 
+                        <kendo-multiselect class="form-control k-multiselect" formControlName="videos"
+                        [data]="yogaVideoList"
+                        [textField]="'title'" 
+                        [valueField]="'_id'"
+                        [autoClose]="false"
+                        [filterable]="true"
+                        [valuePrimitive]="true"
+                        (filterChange)="handleFilterYoga($event)"
+                        >
+                          <!-- <ng-template kendoMultiSelectTagTemplate let-dataItem *ngFor="let i of listItems">
+                            <span class="template">{{ dataItem.value }}</span> {{ dataItem.text }}
+                          </ng-template> -->
+                        </kendo-multiselect>
+                        <small for="videos" class="form-text text-danger" 
+                        *ngIf="mainCategoryForm.controls['videos'].errors?.required && 
+                        (mainCategoryForm.controls['videos'].dirty ||  
+                        mainCategoryForm.controls['videos'].touched || 
+                        (mainCategoryForm.controls['videos'].untouched  && attemptedSubmit ) )">
+                            Videos is required.
+                        </small>
+                     
+                      <!-- <div class="example-config">Selected Order: {{ value.text | json }}</div> -->
+                </div>
+            </div>
+    
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-dark-rounded" type="button" data-dismiss="modal" (click)="close()">Close</button>
+            <button *ngIf="add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded"
+                (click)="save('weekly_workouts');attemptedSubmit = true">{{ addLoading ? "Saving..." : "Save" }}</button>
+            <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded"
+                (click)="update('weekly_workouts')">{{ addLoading ? "Updating..." : "Update" }}</button>
+        </div>
+    </form>
+</ng-template>
+
+
+<ng-template #RecommendedContent let-modal>
+    <form [formGroup]="mainCategoryForm">
+        <div  class="modal-header">
+            <h5 style="color: white; opacity: 0.7;" class="modal-title f-w-200" id="RecommendedExampleModal">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+            <button style="color: white; opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+    
+            <div class="mt-3 row">
+                <div class="col-md-6 ">
+                    <label>Icon</label>
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === ''"></i>
+                            <img *ngIf="image_URL != ''" src="{{image_URL}}" width="100%"  class=" image-icon"    >
+                            <input type="file" name="myfile" class="input-file"
+                                (change)="onChange($event,'852','852')" />
+                        </div>
+                    </div>
+                    <small for="type" class="form-text text-danger" *ngIf="image_URL === '' && attemptedSubmit ">
+                       Icon Image is required.
+                    </small>
+                </div>
+    
+                <div class="col-md-6">
+                    <label>Banner</label>
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="bannerImage_URL === ''"></i>
+                            <img *ngIf="bannerImage_URL != ''" src="{{bannerImage_URL}}" width="100%"  class=" image-icon"    >
+                            <input type="file" name="myfile" class="input-file"
+                                (change)="onBannerChange($event,'1501','815')" />
+                        </div>
+                    </div>
+                    <small for="type" class="form-text text-danger" *ngIf="bannerImage_URL === '' && attemptedSubmit ">
+                        Banner Image is required.
+                    </small>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="pull-right">852 px X 852 px</a>
+                </div>
+                <div class="col-md-6">
+                    <a class="pull-right">1501 px X 815 px</a>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="mt-2 col-md-12" >  
+                    <label for="validationCustom02" class="mb-1">Title</label>
+                    <input type="text" class="form-control" formControlName="title">
+                    <small for="title" class="form-text text-danger" 
+                    *ngIf="mainCategoryForm.controls['title'].errors?.required && 
+                    (mainCategoryForm.controls['title'].dirty ||  
+                    mainCategoryForm.controls['title'].touched || 
+                    (mainCategoryForm.controls['title'].untouched  && attemptedSubmit ) )">
+                        Title is required.
+                    </small>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class=" mt-2 col-md-12" >  
+                    <label for="validationCustom02" class="mb-1">Sub Title</label>
+                    <input type="text" class="form-control" formControlName="subtitle">
+                    <small for="subtitle" class="form-text text-danger" 
+                    *ngIf="mainCategoryForm.controls['subtitle'].errors?.required && 
+                    (mainCategoryForm.controls['subtitle'].dirty ||  
+                    mainCategoryForm.controls['subtitle'].touched || 
+                    (mainCategoryForm.controls['subtitle'].untouched  && attemptedSubmit ) )">
+                        Sub Title is required.
+                    </small>
+                </div>
+            </div>
+    
+    
+            <div class="mt-2 row">
+                <div class=" mb-0 col-md-12" >  
+                    <label for="validationCustom02" class="mb-1">Benefits</label>
+                    <textarea class="form-control" formControlName="benefits" rows="4"></textarea>
+                    <sub><small style="opacity: 0.7;">(Eg: Good , Something, ... )</small></sub>
+                    <small for="benefits" class="form-text text-danger" 
+                    *ngIf="mainCategoryForm.controls['benefits'].errors?.required && 
+                    (mainCategoryForm.controls['benefits'].dirty ||  
+                    mainCategoryForm.controls['benefits'].touched || 
+                    (mainCategoryForm.controls['benefits'].untouched  && attemptedSubmit ) )">
+                        Benefits is required.
+                    </small>
+                </div>
+            </div>
+    
+            <div class="mt-2 row multi-dropdown">
+                <div class="col-md-12">
+                    <label>Select Videos</label>
+                 
+                        <kendo-multiselect class="form-control k-multiselect" formControlName="videos"
+                        [data]="yogaVideoList"
+                        [textField]="'title'" 
+                        [valueField]="'_id'"
+                        [autoClose]="false"
+                        [filterable]="true"
+                        [valuePrimitive]="true"
+                        (filterChange)="handleFilterYoga($event)"
+                        >
+                          <!-- <ng-template kendoMultiSelectTagTemplate let-dataItem *ngFor="let i of listItems">
+                            <span class="template">{{ dataItem.value }}</span> {{ dataItem.text }}
+                          </ng-template> -->
+                        </kendo-multiselect>
+                        <small for="videos" class="form-text text-danger" 
+                        *ngIf="mainCategoryForm.controls['videos'].errors?.required && 
+                        (mainCategoryForm.controls['videos'].dirty ||  
+                        mainCategoryForm.controls['videos'].touched || 
+                        (mainCategoryForm.controls['videos'].untouched  && attemptedSubmit ) )">
+                            Videos is required.
+                        </small>
+                     
+                      <!-- <div class="example-config">Selected Order: {{ value.text | json }}</div> -->
+                </div>
+            </div>
+    
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-dark-rounded" type="button" data-dismiss="modal" (click)="close()">Close</button>
+            <button *ngIf="add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded"
+                (click)="save('recommend');attemptedSubmit = true">{{ addLoading ? "Saving..." : "Save" }}</button>
+            <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded"
+                (click)="update('recommend')">{{ addLoading ? "Updating..." : "Update" }}</button>
+        </div>
+    </form>
+</ng-template>
+
+
+
+<ng-template #FoliofitHomePageContent let-modal>
+    <form [formGroup]="foliofitHomeForm">
+        <div *ngIf="!add_Modal_Flag" class="modal-header">
+            <h5 style="color: white; opacity: 0.7;" class="modal-title f-w-200" id="FoliofitHomePageExampleModal">Update</h5>
+            <button style="color: white; opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+    
+    
+            <div class="mt-2 row">
+                <div class="col-md-12">
+                    <label>Select Category</label>
+                    
+                        <kendo-dropdownlist class="form-control k-multiselect" formControlName="categoryid"
+                          [data]="listCategory"
+                          [textField]="'title'" 
+                          [valueField]="'_id'"
+                          [filterable]="true"
+                          [valuePrimitive]="true"
+                          (filterChange)="handleFilterCategory($event)"
+                        >
+                        </kendo-dropdownlist>
+                        <small for="categoryid" class="form-text text-danger" 
+                        *ngIf="foliofitHomeForm.controls['categoryid'].errors?.required && 
+                        (foliofitHomeForm.controls['categoryid'].dirty ||  
+                        foliofitHomeForm.controls['categoryid'].touched || 
+                        (foliofitHomeForm.controls['categoryid'].untouched  && attemptedSubmit ) )">
+                            Category is required.
+                        </small>
+                     
+                </div>
+            </div>
+    
+    
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-dark-rounded" type="button" data-dismiss="modal" (click)="close()">Close</button>
+           
+            <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded"
+                (click)="update('foliofit_home')">{{ addLoading ? "Updating..." : "Update" }}</button>
+        </div>
+    </form>
+</ng-template>

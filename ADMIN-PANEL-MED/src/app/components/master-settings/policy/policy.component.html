@@ -1,0 +1,278 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="mr-1 col-sm-12">
+      <div class="kendo_table master-demo">
+        <div
+          class="card-body master_Tab"
+          style="background: transparent; font-weight: lighter"
+          *ngIf="disableTab('Policy')"
+        >
+          <h6 style="margin-bottom: 4%">Policy</h6>
+          <div class="btn-popup pull-right">
+            <button
+              type="button"
+              class="btn btn-dark btn-inverse-dark"
+              data-toggle="modal"
+              data-original-title="test"
+              data-target="#PolicyExampleModal"
+              (click)="open(PolicyContent, '', '', '', '', '', 'add')"
+              *ngIf="addFlag"
+            >
+              <img
+                src="assets/images/file-icons/icon-add-circle.svg"
+                width="15%"
+                height="15%"
+                style="margin-right: 10px"
+              />Add New
+            </button>
+          </div>
+
+          <div class="table-responsive">
+            <!-- <ng2-smart-table  [settings]="settings" [source]="vendors"
+                                    (edit)="editRow($event,StoreCreationContent,'edit')"></ng2-smart-table> -->
+            <kendo-grid
+              [kendoGridBinding]="this._policyService.policies"
+              [filterable]="true"
+              [sortable]="true"
+              [pageSize]="10"
+              [pageable]="true"
+              [skip]="skip"
+
+            >
+              <kendo-grid-column field="no" title="Sl No." width="30">
+                <ng-template
+                  kendoGridFilterCellTemplate
+                  let-filter
+                  let-column="column"
+                >
+                  <kendo-grid-string-filter-cell
+                    [showOperators]="false"
+                    [column]="column"
+                    title="Parent Store"
+                    [filter]="filter"
+
+                  >
+                  </kendo-grid-string-filter-cell>
+                </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column field="title" title="Policy Name" width="30">
+                <ng-template
+                  kendoGridFilterCellTemplate
+                  let-filter
+                  let-column="column"
+                >
+                  <kendo-grid-string-filter-cell
+                    [showOperators]="false"
+                    [column]="column"
+                    title="Parent Store"
+                    [filter]="filter"
+                  >
+                  </kendo-grid-string-filter-cell>
+                </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column field="cancel" title="Cancel" width="20">
+                <ng-template
+                  kendoGridFilterCellTemplate
+                  let-filter
+                  let-column="column"
+                >
+                  <kendo-grid-string-filter-cell
+                    [showOperators]="false"
+                    [column]="column"
+                    title="Parent Store"
+                    [filter]="filter"
+                  >
+                  </kendo-grid-string-filter-cell>
+                </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column field="return" title="Return" width="20">
+                <ng-template
+                  kendoGridFilterCellTemplate
+                  let-filter
+                  let-column="column"
+                >
+                  <kendo-grid-string-filter-cell
+                    [showOperators]="false"
+                    [column]="column"
+                    title="Parent Store"
+                    [filter]="filter"
+                  >
+                  </kendo-grid-string-filter-cell>
+                </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-command-column title="Action" width="50" class="text-center">
+                <ng-template
+                  kendoGridCellTemplate
+                  let-isNew="isNew"
+                  let-dataItem="dataItem"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-dark btn-dark-rounded"
+                    data-toggle="modal"
+                    data-original-title="test"
+                    data-target="#PolicyExampleModal"
+                    (click)="
+                      open(
+                        PolicyContent,
+                        dataItem._id,
+                        dataItem.title,
+                        dataItem.cancel,
+                        dataItem.return,
+                        dataItem.isDisabled,
+                        'edit'
+                      )
+                    "
+                    *ngIf="editFlag"
+                  >
+                    Edit
+                  </button>
+
+                  &nbsp;&nbsp;
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-dark btn-dark-rounded"
+                    *ngIf="deleteFlag"
+                    (click)="onDelete(dataItem._id)"
+                  >
+                    Delete
+                  </button>
+
+                  &nbsp;&nbsp;
+                  <input
+                    type="checkbox"
+                    (change)="
+                      onUpdateStatus(
+                        dataItem._id,
+                        dataItem.title,
+                        dataItem.cancel,
+                        dataItem.return,
+                        dataItem.isDisabled
+                      )
+                    "
+                    class="toggle-switch oversize"
+                    id="toggle3"
+                    [checked]="!dataItem.isDisabled"
+                  />
+                </ng-template>
+              </kendo-grid-command-column>
+            </kendo-grid>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<ng-template #PolicyContent let-modal>
+  <div *ngIf="update_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.5"
+      class="modal-title f-w-200"
+      id="PolicyExampleModal"
+    >
+      Update
+    </h5>
+    <button
+      style="color: white; opacity: 0.5; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="add_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.5"
+      class="modal-title f-w-200"
+      id="PolicyExampleModal"
+    >
+      Add
+    </h5>
+    <button
+      style="color: white; opacity: 0.5; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="policyForm" class="needs-validation">
+      <div class="mt-2 row">
+        <div class="mr-1 col-md-12">
+          <label>Policy Name</label>
+          <input
+            type="text"
+            formControlName="title"
+            class="form-control"
+          /><span *ngIf="isValid('title')" class="help-block"
+            >Enter valid name</span
+          >
+        </div>
+      </div>
+
+      <div class="mt-2 row">
+        <div class="mr-1 col-md-12">
+          <label>Return(Day)</label>
+          <input
+            type="number"
+            formControlName="return"
+            class="form-control"
+          /><span *ngIf="isValid('return')" class="help-block"
+            >Enter Valid return period</span
+          >
+        </div>
+
+        <div class="mr-1 col-md-12">
+          <label>Cancel(Day)</label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="cancel"
+          /><span *ngIf="isValid('cancel')" class="help-block"
+            >Enter valid cancel period</span
+          >
+        </div>
+      </div>
+
+      <!-- <div class="mt-2 row">
+            <div class="mr-1 col-md-6">
+                <label>Express Delivery</label>
+                <input type="checkbox" checked="checked">
+            </div>
+
+
+        </div> -->
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      class="btn btn-dark btn-dark-rounded"
+      type="button"
+      data-dismiss="modal"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Close
+    </button>
+    <button
+      (click)="onAddOrUpdate()"
+      type="button"
+      class="btn btn-dark btn-dark-rounded"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>

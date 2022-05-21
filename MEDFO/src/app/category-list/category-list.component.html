@@ -1,0 +1,742 @@
+<div class="ps-page">
+    <app-header></app-header>
+  </div>
+ <!-- Google Tag Manager (noscript) -->
+ <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W32L424"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) →-->
+  
+
+<section class="inner_new_page_container" style="overflow: hidden;background: #F7F7F7;">
+<!-- 
+<section class="category_banner">
+  <img src={{Banner_Image}} alt="" (click)= "bannerClick()">
+
+  <div class="category_banner_cnt">
+  <img src={{Banner_Image}} alt=""> 
+
+      <div class="category_banner_cnt_left_img">
+        
+      </div>
+      
+  </div>
+</section>  -->
+
+<div class="category_banner_cnt" > 
+       
+    <img src={{Banner_Image}}  (click)= "bannerClick()"  alt=""  style="object-fit: cover;height: inherit;width: inherit;" >
+
+
+</div>
+
+<section class="breadcrumbs_sec">
+  <div class="container">
+      <a href="#">Product</a> <a>></a> <a>Category</a>
+  </div>
+</section>
+
+<section class="category_list_sec">
+  <div #container class="container">
+      <div class="category_listing_cnt_sec">
+          <div class="row">
+
+              <div class="col-md-3 col-xs-6 categ_div_cent" *ngFor="let i of Category_List_Array">
+                  <a (click)="Sub_Category(i._id)">
+                      <div class="category_listing_box ">
+                          <div class="category_listing_box_img catg_bx_1  "><img src="{{i.image}}" alt=""></div>
+                          <div class="category_listing_box_txt">{{i.title}}</div>
+                      </div>
+                  </a>
+              </div>
+              <!-- <div class="col-md-3 categ_div_cent">
+                  <a href="#"> -->
+              <!-- <div class="category_listing_box ">
+                          
+                          <div class="category_listing_box_img catg_bx_1  "><img src={{i.image}} alt=""></div>
+                          <div class="category_listing_box_txt">{{i.title}}</div> -->
+
+
+              <!-- <div class="category_listing_box_img catg_bx_2"><img
+                                  src="../../../assets/img/category/2.png" alt=""></div>
+                          <div class="category_listing_box_txt">Home Remedies</div> -->
+              <!-- /  </div> -->
+              <!-- </a>
+              </div> -->
+              <!-- <div class="col-md-3 categ_div_cent">
+                  <a href="#">
+                      <div class="category_listing_box ">
+                          <div class="category_listing_box_img catg_bx_3"><img
+                                  src="../../../assets/img/category/3.png" alt=""></div>
+                          <div class="category_listing_box_txt">Covid Essentials</div>
+                      </div>
+                  </a>
+              </div>
+              <div class="col-md-3 categ_div_cent">
+                  <a href="#">
+                      <div class="category_listing_box ">
+                          <div class="category_listing_box_img catg_bx_4"><img
+                                  src="../../../assets/img/category/1.png" alt=""></div>
+                          <div class="category_listing_box_txt">Home Remedies</div>
+                      </div>
+                  </a>
+              </div>
+
+              <div class="col-md-3 categ_div_cent">
+                  <a href="#">
+                      <div class="category_listing_box ">
+                          <div class="category_listing_box_img catg_bx_2  "><img
+                                  src="../../../assets/img/category/3.png" alt=""></div>
+                          <div class="category_listing_box_txt">Covid Essentials</div>
+                      </div>
+                  </a>
+              </div> -->
+              <!-- <div class="col-md-3 categ_div_cent wow fadeInUp" data-wow-delay="0.4s">
+                  <a href="#"><div class="category_listing_box ">
+                      <div class="category_listing_box_img catg_bx_1"><img src="../../../assets/img/category/4.png" alt=""></div>
+                      <div class="category_listing_box_txt">Home Remedies</div>
+                  </div></a>
+              </div>
+              <div class="col-md-3 categ_div_cent wow fadeInUp" data-wow-delay="0.4s">
+                 <a href="#"> <div class="category_listing_box ">
+                      <div class="category_listing_box_img catg_bx_4"><img src="../../../assets/img/category/2.png" alt=""></div>
+                      <div class="category_listing_box_txt">Covid Essentials</div>
+                  </div></a>
+              </div>
+              <div class="col-md-3 categ_div_cent wow fadeInUp" data-wow-delay="0.4s">
+                  <a href="#"><div class="category_listing_box ">
+                      <div class="category_listing_box_img catg_bx_3"><img src="../../../assets/img/category/1.png" alt=""></div>
+                      <div class="category_listing_box_txt">Home Remedies</div>
+                  </div></a>
+              </div>
+
+              <div class="col-md-3 categ_div_cent wow fadeInUp" data-wow-delay="0.4s">
+                  <a href="#"><div class="category_listing_box ">
+                      <div class="category_listing_box_img catg_bx_1  "><img src="../../../assets/img/category/1.png" alt=""></div>
+                      <div class="category_listing_box_txt">Covid Essentials</div>
+                  </div></a>
+              </div>
+              <div class="col-md-3 categ_div_cent wow fadeInUp" data-wow-delay="0.4s">
+                  <a href="#"><div class="category_listing_box ">
+                      <div class="category_listing_box_img catg_bx_2"><img src="../../../assets/img/category/2.png" alt=""></div>
+                      <div class="category_listing_box_txt">Home Remedies</div>
+                  </div></a>
+              </div>
+              <div class="col-md-3 categ_div_cent wow fadeInUp" data-wow-delay="0.4s">
+                  <a href="#"><div class="category_listing_box ">
+                      <div class="category_listing_box_img catg_bx_3"><img src="../../../assets/img/category/3.png" alt=""></div>
+                      <div class="category_listing_box_txt">Covid Essentials</div>
+                  </div></a>
+              </div>
+              <div class="col-md-3 categ_div_cent wow fadeInUp" data-wow-delay="0.4s">
+                  <a href="#"><div class="category_listing_box ">
+                      <div class="category_listing_box_img catg_bx_4"><img src="../../../assets/img/category/1.png" alt=""></div>
+                      <div class="category_listing_box_txt">Home Remedies</div>
+                  </div></a>
+              </div> -->
+
+
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="categ_brif_sec">
+  <div class="container">
+      <div class="categ_brif_contant">
+          <div class="categ_brif_contant_row wow fadeInUp" data-wow-delay="0.4s">
+              <strong>Your One Stop Health Destination</strong>
+              <span>Tired of those never-ending queues at supermarkets? Can’t find the right medicines you need in
+                  the pharmacy shop? Or are you terrified of going out in these covid surging circumstances? Well,
+                  you have come to the right place. Medimall is that one haven where you can find anything and
+                  everything healthy. <br><br>
+                  Buying medicine, and getting healthy has never been this simple. With Medimall everything gets
+                  even better, from amazing discounts to exclusive deals, we got it all. Shop from our carefully
+                  curated categories and get your hands on 1 lakh + inventories. Shop Now.</span>
+          </div>
+          <div class="categ_brif_contant_row wow fadeInUp" data-wow-delay="0.4s">
+              <strong>Why Medimall?</strong>
+              <span style="opacity: 1;">
+
+                  <div class="categ_why_box">
+                      <div class="categ_why_box_img"><img src="../../../assets/img/category/bottom1.png" alt="">
+                      </div>
+                      <div class="categ_why_box_cnt">
+                          100+<br>
+                          <span style="opacity: 1;margin: 0;font-weight:500;">Brands</span>
+                      </div>
+                  </div>
+                  <div class="categ_why_box">
+                      <div class="categ_why_box_img"><img src="../../../assets/img/category/bottom2.png" alt="">
+                      </div>
+                      <div class="categ_why_box_cnt">
+                          100,000+ <br>
+                          <span style="opacity: 1;margin: 0;font-weight:500;">Inventories</span>
+                      </div>
+                  </div>
+                  <div class="categ_why_box">
+                      <div class="categ_why_box_img"><img src="../../../assets/img/category/bottom3.png" alt="">
+                      </div>
+                      <div class="categ_why_box_cnt">
+                          20,000+ <br>
+                          <span style="opacity: 1;margin: 0;font-weight:500;">Deliverable Places</span>
+                      </div>
+                  </div>
+                  <div class="categ_why_box">
+                      <div class="categ_why_box_img"><img src="../../../assets/img/category/bottom4.png" alt="">
+                      </div>
+                      <div class="categ_why_box_cnt">
+                          50,000+ <br>
+                          <span style="opacity: 1;margin: 0;font-weight:500;">Happy customers</span>
+                      </div>
+                  </div>
+
+
+              </span>
+          </div>
+
+          <div class="categ_brif_contant_row wow fadeInUp" data-wow-delay="0.4s">
+              <strong>Why you should buy medicines online?</strong>
+              <span>The surge of pandemics and the challenges thrown at us afterward had made a lot of changes in
+                  our everyday routines. With rising covid reports every day, people are getting more and more
+                  terrified to go outdoors due to the fear of getting sick. In a circumstance like this, online
+                  shopping is the best option out there to avoid going outside. Medimall aims at making your life
+                  easier by delivering healthy cures at your doorstep.</span>
+          </div>
+
+          <div class="categ_brif_contant_row" style="margin-bottom: 0;">
+              <strong style="margin-top: 10px;">Frequently Asked Questions</strong>
+              <div class="accordion">
+                  <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s">
+                      <a>1. Are these medicines authentic?</a>
+                      <div class="content">
+                          <p>Yes, All of our medicines are completely authentic and every package you receive has
+                              undergone three layers of quality check to ensure that our customers only get the
+                              best of the best.</p>
+                      </div>
+                  </div>
+                  <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s">
+                      <a>2. How long does it take to deliver household supplies?</a>
+                      <div class="content">
+                          <p>As for both medicines and health essentials, it could take up to 3 hours to 7 days to
+                              deliver. However, the delivery time entirely depends on the location.</p>
+                      </div>
+                  </div>
+
+                  <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s">
+                      <a>3. How can I know the expiry date of the medicines?</a>
+                      <div class="content">
+                          <p>You can easily find the expiry of medicines and healthcare products from our
+                              description box. We have mentioned all the information you might be interested in
+                              knowing.</p>
+                      </div>
+                  </div>
+
+
+                  <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s">
+                      <a>4. Do these products follow the covid care guidelines and protocols?</a>
+                      <div class="content">
+                          <p>Yes, all of our medicines and healthcare products are packed with extreme care and
+                              proper sanitization. And all of our products are gone through 3 step quality
+                              checking to ensure that our customers are only treated with the best.</p>
+                      </div>
+                  </div>
+
+
+
+
+
+
+
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+<section class="categ_page_btm_sec" style="display: none;">
+  <div class="container">
+      <div class="categ_page_btm_sec_cnt">
+          <div class="row categ_div_cent">
+              <div class="col-md-3 ">
+                  <div class="categ_page_btm_sec_box">
+                      <div class="categ_page_btm_sec_box_img"><img src="../../../assets/img/category/bottom1.png"
+                              alt=""></div>
+                      <div class="categ_page_btm_sec_box_head">1 lakh + products</div>
+                      <div class="categ_page_btm_sec_box_txt">Covid Essentials are used to protect you from the
+                          virus moving freely in the air and on surfaces. You must</div>
+                  </div>
+              </div>
+              <div class="col-md-3 ">
+                  <div class="categ_page_btm_sec_box">
+                      <div class="categ_page_btm_sec_box_img"><img src="../../../assets/img/category/bottom2.png"
+                              alt=""></div>
+                      <div class="categ_page_btm_sec_box_head">Secure payment</div>
+                      <div class="categ_page_btm_sec_box_txt">Covid Essentials are used to protect you from the
+                          virus moving freely in the air and on surfaces. You must</div>
+                  </div>
+              </div>
+              <div class="col-md-3 ">
+                  <div class="categ_page_btm_sec_box">
+                      <div class="categ_page_btm_sec_box_img"><img src="../../../assets/img/category/bottom3.png"
+                              alt=""></div>
+                      <div class="categ_page_btm_sec_box_head">Easy Return</div>
+                      <div class="categ_page_btm_sec_box_txt">Covid Essentials are used to protect you from the
+                          virus moving freely in the air and on surfaces. You must</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<footer class="ps-footer ps-footer--5" style="padding-top: 40px;">
+<app-footer></app-footer>
+
+</footer>
+
+<div class="ps-search">
+<div class="ps-search__content ps-search--mobile"><a class="ps-search__close" href="under.html" id="close-search"><i
+          class="icon-cross"></i></a>
+  <h3>Search</h3>
+  <form action="do_action" method="post">
+      <div class="ps-search-table">
+          <div class="input-group">
+              <input class="form-control ps-input" type="text" placeholder="Search for products">
+              <div class="input-group-append"><a href="under.html"><i class="fa fa-search"></i></a></div>
+          </div>
+      </div>
+  </form>
+  <div class="ps-search__result">
+      <div class="ps-search__item">
+          <div class="ps-product ps-product--horizontal">
+              <div class="ps-product__thumbnail">
+                  <a class="ps-product__image" href="under.html">
+                      <figure><img src="../../../assets/img\png\smade.png" alt="alt"></figure>
+                  </a>
+              </div>
+              <div class="ps-product__content">
+                  <h5 class="ps-product__title"><a>3-layer <span class='hightlight'>mask</span> with an elastic
+                          band (1 piece)</a></h5>
+                  <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH
+                      certificate</p>
+                  <div class="ps-product__meta"><span class="ps-product__price">$38.24</span> </div>
+              </div>
+          </div>
+      </div>
+      <div class="ps-search__item">
+          <div class="ps-product ps-product--horizontal">
+              <div class="ps-product__thumbnail">
+                  <a class="ps-product__image" href="under.html">
+                      <!--<figure><img src="../../../assets/img\products\033.jpg" alt="alt"></figure>-->
+                  </a>
+              </div>
+              <div class="ps-product__content">
+                  <h5 class="ps-product__title"><a>3 Layer Disposable Protective Face <span
+                              class='hightlight'>mask</span>s</a></h5>
+                  <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH
+                      certificate</p>
+                  <div class="ps-product__meta"><span class="ps-product__price sale">$14.52</span><span
+                          class="ps-product__del">$17.24</span> </div>
+              </div>
+          </div>
+      </div>
+      <div class="ps-search__item">
+          <div class="ps-product ps-product--horizontal">
+              <div class="ps-product__thumbnail">
+                  <a class="ps-product__image" href="under.html">
+                      <figure><img src="../../../assets/img\png\smade.png" alt="alt"></figure>
+                  </a>
+              </div>
+              <div class="ps-product__content">
+                  <h5 class="ps-product__title"><a>3-Ply Ear-Loop Disposable Blue Face <span
+                              class='hightlight'>mask</span></a></h5>
+                  <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH
+                      certificate</p>
+                  <div class="ps-product__meta"><span class="ps-product__price sale">$14.99</span><span
+                          class="ps-product__del">$38.24</span> </div>
+              </div>
+          </div>
+      </div>
+      <div class="ps-search__item">
+          <div class="ps-product ps-product--horizontal">
+              <div class="ps-product__thumbnail">
+                  <a class="ps-product__image" href="under.html">
+                      <!--<figure><img src="../../../assets/img\products\050.jpg" alt="alt"></figure>-->
+                  </a>
+              </div>
+              <div class="ps-product__content">
+                  <h5 class="ps-product__title"><a>Disposable Face <span class='hightlight'>mask</span> for
+                          Unisex</a></h5>
+                  <p class="ps-product__desc">Study history up to 30 days Up to 5 users simultaneously Has HEALTH
+                      certificate</p>
+                  <div class="ps-product__meta"><span class="ps-product__price sale">$8.15</span><span
+                          class="ps-product__del">$12.24</span> </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+
+<div class="ps-menu--slidebar">
+<div class="ps-menu__content">
+  <div id="close-menu" class="overlay_mob_menu"></div>
+  <div class="mobile_menu_sec">
+
+      <a href="#">
+          <div class="mobile_menu_sec_head">Login / Sign Up <span><i class="fa fa-angle-right"></i></span></div>
+      </a>
+      <div class="mobile_menu_sec_banner">
+          <div class="mobile_menu_banner_left_txt">
+              <strong>Exciting offers are Waiting for you</strong>
+              <span>Get flat 74% Off on Medimall App</span>
+              <div class="mobile_menu_banner_btm_sec">
+                  <a href="#">
+                      <div class="mobile_menu_banner_btm_btn"><img src="../../../assets/img/menu/appstore.png"
+                              alt=""></div>
+                  </a>
+                  <a href="#">
+                      <div class="mobile_menu_banner_btm_btn"><img class=""
+                              src="../../../assets/img/menu/playstore.png"></div>
+                  </a>
+              </div>
+          </div>
+          <div class="mobile_menu_banner_right_img_sec"><img src="../../../assets/img/menu/bann_img.png" alt="">
+          </div>
+
+      </div>
+
+      <div class="mobile_menu_mn_1 mn_bdr_btm">
+          <a href="#">
+              <div class="mobile_menu_mn_ico"><img src="../../../assets/img/menu/home.png" alt=""></div>
+              <div class="mobile_menu_mn_text">Home</div>
+          </a>
+      </div>
+
+      <div class="mobile_menu_mn_1 ">
+          <a href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <div class="mob_btn_left_ico"><img src="../../../assets/img/menu/odr_top1.png" alt=""></div>
+              <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img
+                      src="../../../assets/img/menu/order_med.png" alt=""></div>
+              <div class="mobile_menu_mn_text">Order Medicine<br>
+                  <span>A home where you will find that healing touch that will cure all your health</span>
+              </div>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+      </div>
+
+      <div class="mobile_menu_mn_1 ">
+          <a href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <div class="mob_btn_left_ico"><img src="../../../assets/img/menu/odr_top2.png" alt=""></div>
+              <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img
+                      src="../../../assets/img/menu/order_heal.png" alt=""></div>
+              <div class="mobile_menu_mn_text">Order Healthcare Products<br>
+                  <span>A home where you will find that healing touch that will cure all your health</span>
+              </div>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+      </div>
+
+
+      <div class="mobile_menu_mn_1 mn_bdr_btm" style="padding-right: 50px;margin-bottom: 10px ;">
+          <a href="#">
+              <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img
+                      src="../../../assets/img/menu/offer.png" alt=""></div>
+              <div class="mobile_menu_mn_text">Offers<br>
+                  <span>A home where you will find that healing touch that will cure all your health</span>
+              </div>
+              <div class="mob_mn_new_btn">NEW</div>
+          </a>
+      </div>
+
+
+      <div class="mobile_menu_mn_1 " style="padding: 5px 15px;">
+          <a href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img
+                      src="../../../assets/img/menu/account.png" alt=""></div>
+              <div class="mobile_menu_mn_text">MY Account<br>
+                  <span>A home where you will find that healing touch that will cure all your health</span>
+              </div>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+          <a href="#">
+              <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img
+                      src="../../../assets/img/menu/orders.png" alt=""></div>
+              <div class="mobile_menu_mn_text">My Orders<br>
+                  <span>A home where you will find that healing touch that will cure all your health</span>
+              </div>
+          </a>
+      </div>
+
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+          <a href="#">
+              <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img
+                      src="../../../assets/img/menu/medfill.png" alt=""></div>
+              <div class="mobile_menu_mn_text">Med Refill<br>
+                  <span>A home where you will find that healing touch that will cure all your health</span>
+              </div>
+          </a>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+          <a href="#">
+              <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img
+                      src="../../../assets/img/menu/membership.png" alt=""></div>
+              <div class="mobile_menu_mn_text">Medpride Membership<br>
+                  <span>A home where you will find that healing touch that will cure all your health</span>
+              </div>
+          </a>
+      </div>
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+          <a href="#">
+              <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img
+                      src="../../../assets/img/menu/health_vault.png" alt=""></div>
+              <div class="mobile_menu_mn_text">Health Vault<br>
+                  <span>A home where you will find that healing touch that will cure all your health</span>
+              </div>
+          </a>
+      </div>
+
+      <div class="mobile_menu_mn_1 mn_bdr_btm"
+          style="padding: 5px 15px;margin-bottom: 10px ;padding-bottom: 15px;">
+          <a href="#">
+              <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img
+                      src="../../../assets/img/menu/wallet.png" alt=""></div>
+              <div class="mobile_menu_mn_text">Wallet<br>
+                  <span>A home where you will find that healing touch that will cure all your health</span>
+              </div>
+          </a>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+          <a href="#">
+              <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img
+                      src="../../../assets/img/menu/refer_earn.png" alt=""></div>
+              <div class="mobile_menu_mn_text">Refer and Earn<br>
+                  <span>A home where you will find that healing touch that will cure all your health</span>
+              </div>
+          </a>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px;">
+          <a href="#">
+              <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img
+                      src="../../../assets/img/menu/conact_us.png" alt=""></div>
+              <div class="mobile_menu_mn_text">Contact Us<br>
+                  <span>A home where you will find that healing touch that will cure all your health</span>
+              </div>
+          </a>
+      </div>
+
+      <div class="mobile_menu_mn_1 mn_bdr_btm" style="padding: 5px 15px;padding-bottom:30px">
+          <a href="#">
+              <div style="margin-top: -4px;" class="mobile_menu_mn_ico"><img
+                      src="../../../assets/img/menu/faq.png" alt=""></div>
+              <div class="mobile_menu_mn_text">FAQ<br>
+                  <span>A home where you will find that healing touch that will cure all your health</span>
+              </div>
+          </a>
+      </div>
+      <div class="mobile_menu_mn_1 mn_bdr_btm"></div>
+  </div>
+</div>
+</div>
+<button class="btn scroll-top" (click)="container.scrollTop = 0"><i class="fa fa-angle-double-up"></i></button>
+<div class="ps-preloader" id="preloader">
+<div class="ps-preloader-section ps-preloader-left"></div>
+<div class="ps-preloader-section ps-preloader-right"></div>
+</div>
+
+
+
+
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+<style type="text/css">
+.intro {
+  height: auto;
+  min-height: 100vh;
+  text-align: center;
+  background-color: teal;
+}
+</style>
+
+
+<script type="text/javascript">
+function inVisible(element) {
+  //Checking if the element is
+  //visible in the viewport
+  var WindowTop = $(window).scrollTop();
+  var WindowBottom = WindowTop + $(window).height();
+  var ElementTop = element.offset().top;
+  var ElementBottom = ElementTop + element.height();
+  //animating the element if it is
+  //visible in the viewport
+  if ((ElementBottom <= WindowBottom) && ElementTop >= WindowTop) animate(element);
+}
+
+function animate(element) {
+  //Animating the element if not animated before
+  if (!element.hasClass('ms-animated')) {
+      var maxval = element.data('max');
+      var html = element.html();
+      element.addClass("ms-animated");
+      $({
+          countNum: element.html()
+      }).animate({
+          countNum: maxval
+      }, {
+          //duration 5 seconds
+          duration: 5000,
+          easing: 'linear',
+          step: function () {
+              element.html(Math.floor(this.countNum) + html);
+          },
+          complete: function () {
+              element.html(this.countNum + html);
+          }
+      });
+  }
+}
+//When the document is ready
+$(function () {
+  //This is triggered when the
+  //user scrolls the page
+  $(window).scroll(function () {
+      //Checking if each items to animate are 
+      //visible in the viewport
+      $("h2[data-max]").each(function () {
+          inVisible($(this));
+      });
+  })
+});
+</script>
+
+
+
+<script src="../../../assets/plugins\jquery.min.js"></script>
+<script src="../../../assets/plugins\popper.min.js"></script>
+<script src="../../../assets/plugins\bootstrap4\js\bootstrap.min.js"></script>
+
+<script src="../../../assets/plugins\select2\dist\js\select2.full.min.js"></script>
+<script src="../../../assets/plugins\owl-carousel\owl.carousel.min.js"></script>
+<script src="../../../assets/plugins\jquery-bar-rating\dist\jquery.barrating.min.js"></script>
+<script src="../../../assets/plugins\lightGallery\dist\js\lightgallery-all.min.js"></script>
+<script src="../../../assets/plugins\slick\slick\slick.min.js"></script>
+<!-- <script type="text/javascript" src="https://www.medfoliotechnologies.com/js/wow.js"></script> -->
+
+<script src="../../../home\js\script.js" type="be9dfe49072cb4d1912e7519-text/javascript"></script>
+<script src="../../../home\js\output.min.js" type="be9dfe49072cb4d1912e7519-text/javascript"></script>
+
+
+<script src="../../../js/rocket-loader.min.js" data-cf-settings="be9dfe49072cb4d1912e7519-|49" defer=""></script>
+
+<script>
+var hideTimeout = null;
+
+var show = function () {
+  $('.sticky-container').show();
+}
+
+var hide = function () {
+  $('.sticky-container').hide();
+}
+
+$(document).ready(function () {
+
+  $(window).scroll(function (e) {
+      if (hideTimeout) {
+          window.clearTimeout(hideTimeout);
+          hideTimeout = null;
+      }
+      hide();
+
+      window.setTimeout(show, 1000);
+  });
+
+});
+
+
+</script>
+
+
+
+<script>
+
+$(window).ready(function () {
+  setInterval(function () {
+      $('.loader-container').addClass("active")
+  }, 1500);
+
+});
+
+</script>
+<!-- custom code-->
+
+<script src="../../../js\main.js"></script>
+<!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.8.3/TweenMax.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script> -->
+
+<script type="text/javascript">
+
+// const items = document.querySelectorAll(".accordion a");
+
+// function toggleAccordion() {
+//   this.classList.toggle('active');
+//   this.nextElementSibling.classList.toggle('active');
+// }
+
+// items.forEach(item => item.addEventListener('click', toggleAccordion));
+
+</script>
+
+<script>
+wow = new WOW({
+  animateClass: 'animated',
+  offset: 100,
+  callback: function (box) {
+      console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+  }
+});
+wow.init();
+document.getElementById('moar').onclick = function () {
+  var section = document.createElement('section');
+  section.className = 'section--purple wow fadeInDown';
+  this.parentNode.insertBefore(section, this);
+};
+</script>

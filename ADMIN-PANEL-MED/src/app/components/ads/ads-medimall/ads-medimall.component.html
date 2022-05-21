@@ -1,0 +1,882 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card tab2-card" style="background:transparent">
+                <div class="row mt-3 costmr_srch_ivntrylist">
+                    <div class="col-md-8">
+                        <h5 style="margin-top:20px;color: white;opacity: 0.7;">Medimall Home</h5>
+                    </div>
+
+                </div>
+
+                <ngb-tabset class="tab-coupon side_innerpage_tab" (tabChange)="onTabChange($event.nextId)"
+                    [destroyOnHide]="false">
+
+                    <ngb-tab title="Slider 1" *ngIf="disableTab('Slider 1')" id="slider1">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+                                <button style="margin-top:-80px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#Slider1ExampleModal" (click)="open(popup,'add')" *ngIf="editFlag"><img
+                                        src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                        style="margin-right:10px;">Add New</button>
+
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="!loading && selectedTab == 'slider1'">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="float: right; color: white;font-size: 15px;">
+                                                <span>
+                                                    <i  class="fa fa-trash"
+                                                        (click)="delete(item._id)" *ngIf="editFlag"></i>
+
+                                                    <i style="margin-left: 15px;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Top 3 Icons" *ngIf="disableTab('Top 3 Icons')" id="top3icons">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class=" row" *ngIf="!loading && selectedTab == 'top3icons' && items.length == 3">
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="post_items">
+                                            <img src="{{ items[0].image }}" width="100%">
+                                            <h6 style="color: white;font-size: 15px;">
+                                                <span style="text-align: left;">Call to order</span>
+                                                <span style="float: right;">
+                                                    <i style="margin-left: 10%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#popup"
+                                                        (click)="open(popup,'edit',items[0])"
+                                                        (mouseover)="changeImageValidationResolution(558,230)"
+                                                        *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="post_items">
+                                            <img src="{{ items[1].image }}" width="100%">
+                                            <h6 style="color: white;font-size: 15px;">
+                                                <span style="text-align: left;">Whats app</span>
+                                                <span style="float: right;">
+                                                    <i style="margin-left: 10%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#popup"
+                                                        (click)="open(popup,'edit',items[1])"
+                                                        (mouseover)="changeImageValidationResolution(558,230)"
+                                                        *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="post_items">
+                                            <img src="{{ items[2].image }}" width="100%">
+                                            <h6 style="color: white;font-size: 15px;text-align: right;">
+                                                <span style="text-align: right;">Prescription</span>
+                                                <span>
+                                                    <i style="margin-left: 10%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#popup"
+                                                        (click)="open(popup,'edit',items[2],'top3iconsprescription')"
+                                                        (mouseover)="changeImageValidationResolution(784,196)"
+                                                        *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Main Category" *ngIf="disableTab('Main Category')" id="mainCategory">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class=" row" *ngIf="!loading && selectedTab == 'mainCategory'">
+                                    <div class="col-lg-3 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="    float: right;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Top Categories" *ngIf="disableTab('Top Categories')" id="topCategories">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class=" row" *ngIf="!loading && selectedTab == 'topCategories'">
+                                    <div class="col-lg-3 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="float: right;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i  class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Slider 2" *ngIf="disableTab('Slider 2')" id="slider2">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+                                <button style="margin-top:-80px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#Slider2ExampleModal" (click)="open(popup,'add')" *ngIf="editFlag"><img
+                                        src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                        style="margin-right:10px;">Add New</button>
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class=" row" *ngIf="!loading && selectedTab == 'slider2'">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="    float: right;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i  class="fa fa-trash"
+                                                        (click)="delete(item._id)" *ngIf="editFlag"></i>
+
+                                                    <i style="margin-left: 15px;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Slider 3" *ngIf="disableTab('Slider 3')" id="slider3">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+                                <button style="margin-top:-80px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#Slider3ExampleModal" (click)="open(popup,'add')" *ngIf="editFlag"><img
+                                        src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                        style="margin-right:10px;">Add New</button>
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="!loading && selectedTab == 'slider3'">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="    float: right;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i class="fa fa-trash"
+                                                        (click)="delete(item._id)" *ngIf="editFlag"></i>
+
+                                                    <i style="margin-left: 15px;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Slider 4" *ngIf="disableTab('Slider 4')" id="slider4">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+                                <button style="margin-top:-80px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#Slider4ExampleModal" (click)="open(popup,'add')" *ngIf="editFlag"><img
+                                        src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                        style="margin-right:10px;">Add New </button>
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="!loading && selectedTab == 'slider4'">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="    float: right;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i class="fa fa-trash"
+                                                        (click)="delete(item._id)" *ngIf="editFlag"></i>
+
+                                                    <i style="margin-left: 15px;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Top Deals" *ngIf="disableTab('Top Deals')" id="topdeals">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+                                <button style="margin-top:-80px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#TopDealsExampleModal" (click)="open(popup,'add')"
+                                    *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%"
+                                        height="15%" style="margin-right:10px;">Add New </button>
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="!loading && selectedTab == 'topdeals'">
+                                    <div class="col-lg-3 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="    float: right;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i class="fa fa-trash"
+                                                        (click)="delete(item._id)" *ngIf="editFlag"></i>
+
+                                                    <i style="margin-left: 15px;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Slider 5" *ngIf="disableTab('Slider 5')" id="slider5">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+                                <button style="margin-top:-80px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#Slider5ExampleModal" (click)="open(popup,'add')" *ngIf="editFlag"><img
+                                        src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                        style="margin-right:10px;">Add New</button>
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="!loading && selectedTab == 'slider5'">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="    float: right;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i class="fa fa-trash"
+                                                        (click)="delete(item._id)" *ngIf="editFlag"></i>
+
+                                                    <i style="margin-left: 15px;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Slider 6" *ngIf="disableTab('Slider 6')" id="slider6">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+                                <button style="margin-top:-80px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#Slider6ExampleModal" (click)="open(popup,'add')" *ngIf="editFlag"><img
+                                        src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                        style="margin-right:10px;">Add New</button>
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="!loading && selectedTab == 'slider6'">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="float: right;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i class="fa fa-trash"
+                                                        (click)="delete(item._id)" *ngIf="editFlag"></i>
+
+                                                    <i style="margin-left: 15px;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Grooming & Essentials" *ngIf="disableTab('Grooming & Essentials')" id="grooming">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+                                <button style="margin-top:-80px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#GroomingEssentialsExampleModal"
+                                    (click)="open(popup,'add')" *ngIf="editFlag"><img
+                                        src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                        style="margin-right:10px;">Add New</button>
+
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="!loading && selectedTab == 'grooming'">
+                                    <div class="col-lg-3 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="    float: right;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i class="fa fa-trash"
+                                                        (click)="delete(item._id)" *ngIf="editFlag"></i>
+
+                                                    <i style="margin-left: 15px;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Slider 7" *ngIf="disableTab('Slider 7')" id="slider7">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+                                <button style="margin-top:-80px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#Slider7ExampleModal" (click)="open(popup,'add')" *ngIf="editFlag"><img
+                                        src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                        style="margin-right:10px;"> Add New</button>
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="!loading && selectedTab == 'slider7'">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="    float: right;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i  class="fa fa-trash"
+                                                        (click)="delete(item._id)" *ngIf="editFlag"></i>
+
+                                                    <i style="margin-left: 15px;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="6 Categories" *ngIf="disableTab('6 Categories')" id="6categories">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="!loading && selectedTab == '6categories'">
+                                    <div class="col-lg-3 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="    float: right;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i style="margin-left: 0%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="HealthCare (Banner)" *ngIf="disableTab('HealthCare (Banner)')" id="healthcare">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="!loading && selectedTab == 'healthcare'">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="    float: right;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i style="margin-left: 0%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="WishList" *ngIf="disableTab('WishList')" id="wishlist">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+
+
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="!loading && selectedTab == 'wishlist'">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="    float: right;color: white;font-size: 15px;">
+                                                <span>
+
+
+                                                    <i style="margin-left: 0%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Recently Viewed" *ngIf="disableTab('Recently Viewed')" id="recentlyviewed">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 row" *ngIf="!loading && !items.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center text-white">No Items Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="!loading && selectedTab == 'recentlyviewed'">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of items">
+                                        <div class="post_items">
+                                            <img src="{{ item.image}}" width="100%">
+                                            <h6 style="    float: right;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i style="margin-left: 0%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                                        (click)="open(popup,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                </ngb-tabset>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+
+<ng-template #popup let-modal>
+    <div class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="Slider5ExampleModal">{{ editMode ?
+            "Update" : "Add"}} {{ this.selectedTabTitle }}</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+
+    <div class="modal-body">
+        <form [formGroup]="form">
+            <!-- <div class="col-md-12 ">
+                <code>{{ form.value | json }}</code>
+            </div> -->
+            <div class="row" *ngIf="selectedTab != 'grooming'">
+                <div class="col-md-12 ">
+                    <div class="image-data" >
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="!imagePreview "></i>
+                            <img src="{{imagePreview}}" width="100%" height="50%" class="image-icon popup-images-ht" *ngIf="imagePreview">
+                            <input type="file" (change)="onImageChange($event)" formControlName="image" />
+                            <!-- <i class="icon fa fa-upload"></i><br>
+                            <input type="file" (change)="onImageChange($event)" formControlName="image" /> -->
+                        </div>
+                    </div>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="(form.controls.image.touched && !editMode && !image)">
+                        Image is required.
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row" *ngIf="selectedTab != 'grooming'">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : {{
+                        imageValidationWidth }} x {{ imageValidationHeight }}</h6>
+                </div>
+            </div>
+
+            <div class="mt-2 row"
+                *ngIf="['slider1', 'slider2', 'slider3','slider4','slider5','slider6','slider7','topdeals','wishlist','recentlyviewed'].includes(selectedTab) ">
+
+                <div class="col-md-6">
+
+                    <select class="form-control classic" id="validationCustom02"
+                        (change)="onChangeType($event.target.value)" formControlName="type">
+                        <option value="">--- Select Type ---</option>
+                        <option value="{{ type._id }}" *ngFor="let type of types">{{ type.name }}
+                        </option>
+                    </select>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('type','required')">
+                        Type is required.
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="example-wrapper">
+                        <kendo-dropdownlist class="form-control" [data]="multiSelectData" [filterable]="true"
+                            textField="title" valueField="_id" [valuePrimitive]="true" formControlName="typeElement"
+                            (filterChange)="handleFilter($event)">
+                        </kendo-dropdownlist>
+                    </div>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('typeElement','required')">
+                        This field is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-2 row" *ngIf="['grooming','topCategories'].includes(selectedTab)">
+                <div class="col-md-6" *ngIf="selectedTab == 'topCategories'">
+                    <label>Offer Percentage</label>
+                    <input type="number" class="form-control" formControlName="offerPercentage">
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('offerPercentage','required')">
+                        Offer percentage is required.
+                    </div>
+                </div>
+
+                <div class="col-md-6" *ngIf="['grooming','topCategories'].includes(selectedTab)">
+                    <label>Category</label>
+                    <select class="form-control classic" id="validationCustom02"
+                        (change)="onChangeCategory($event.target.value)" formControlName="categoryId">
+                        <option value="">--- Select Category ---</option>
+                        <option value="{{ category._id }}" *ngFor="let category of categories">{{ category.title }}
+                        </option>
+                    </select>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('categoryId','required')">
+                        Category is required.
+                    </div>
+                </div>
+
+                <div class="col-md-6" *ngIf="['grooming'].includes(selectedTab)">
+                    <label>Product</label>
+                    <select class="form-control classic" id="validationCustom02" formControlName="productId">
+                        <option value="">--- Select Product ---</option>
+                        <option value="{{ product._id }}" *ngFor="let product of productsToSelectBox">{{ product.title }}
+                        </option>
+                    </select>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('productId','required')">
+                        Product is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-2 row" *ngIf="selectedTab === 'mainCategory' ">
+                <div class="col-md-12">
+                    <label>Offer Text</label>
+                    <input type="text" class="form-control" formControlName="offerText">
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('offerText','required')">
+                        Offer text is required.
+                    </div>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('offerText','maxlength')">
+                        Maximum allowed length is 255.
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+           
+            <div class=" mb-0 col-md-12 ">
+
+                <button type="button" class="btn btn-dark btn-dark-rounded" (click)="save()" *ngIf="!editMode">
+                    {{ saving ? "Saving" : "Save" }}
+                    <div class="spinner-border spinner-border-sm  text-light" role="status" *ngIf="saving">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </button>
+                <button type="button" class="btn btn-dark btn-dark-rounded" (click)="update()" *ngIf="editMode">
+                    {{ updating ? "Updating" : "update" }}
+                    <div class="spinner-border spinner-border-sm  text-light" role="status" *ngIf="updating">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </button>
+            </div>
+            
+        </div>
+    </div>
+</ng-template>
+
+

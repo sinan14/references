@@ -1,0 +1,373 @@
+
+ul.tt li{
+  
+    float: left;
+
+}
+.scrol {
+  display: flex;
+  width: 1000px;
+  overflow-x: auto;
+  align-items: center;
+}
+.card{
+  border-radius: 25px;
+}
+.span-data{
+  //justify-content: left;
+  background-color: #042B3F;
+  color:white;
+  border-radius: 20px;
+  //margin-left: 40px;
+  padding: 4px;
+  text-align: center;
+ 
+}
+i{
+  color: white;
+  opacity: 1;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.col-md-12.tab_inneritmmm {
+  padding: 0px 20px;
+}
+
+
+
+small,p{
+  color: white;
+  opacity: 0.7;
+}
+
+img{
+  cursor: pointer;
+}
+
+.span-data a{
+  font-weight: lighter;
+  font-size: 12px;
+  padding: 0px 25px;
+  color:white;
+  position: relative;
+  text-decoration: none;
+  //opacity: 0.7;
+  &:hover {
+    cursor: pointer;
+    //font-size: 15px;
+  }
+}
+.nav-link > span {
+    background-color: #042b3f !important;
+    color: white !important;
+    padding: 5px 10px !important;
+    margin-left: 10px !important;
+    font-weight: normal !important;
+}
+
+.span-data span{
+  background-color: white;
+  color: #1c1f53;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  padding-top: 8px;
+  position: absolute;
+  top: -22px;
+  right: 0px;
+}
+.tab_inneritmmm p{
+color:#fff;
+text-align:justify;
+margin-top: 10px;
+}
+.tab_inneritmmm h4{color:#fff}
+.tab_inneritmmm .like_share{
+float: right;
+  color: #fff;
+  margin-top: -20px;
+  font-size: 15px;
+}
+.modal-content{
+  background: transparent !important;
+  border: unset;
+  
+}
+.card-header{
+background-color: #023a57;
+border-radius: 33px;
+padding: 15px 0px;
+margin: 10px;
+overflow: hidden;
+}
+.article_main .tab-content{
+background: #014466 !important; 
+padding: 25px !important; 
+border-radius: 0px 15px 15px 15px;}
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+}
+
+h6.background {
+  position: relative;
+  z-index: 1;padding-left: 0px;
+  
+  &:before {
+    border-top: 1px solid #042B3F;
+      content:"";
+      margin: 0 auto; /* this centers the line to the full width specified */
+      position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+      top: 50%; left: 0; right: 0; bottom: 0;
+      width: 100%;
+      z-index: -1;
+  }
+
+  span { 
+      /* to hide the lines from behind the text, you have to set the background color the same as the container */ 
+      background: #023a57;
+      padding: 0 22px;
+      color: #fff;
+  }
+}
+
+
+
+.form-control{
+  background: #00496E;
+  border: none;
+  box-shadow: none;
+  color: white;
+  opacity: 0.7;
+}
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-body, .modal-header, .modal-footer{
+    background-color: #014466 !important;
+    border: unset;
+    width: 110%;
+}
+
+.modal-body{
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.modal-header{
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 0 0;
+}
+.modal-footer{
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+
+
+.active{
+  background-color: #006ea7 !important;
+}
+
+
+/*Button CSS*/
+
+.btn{
+  
+  font-weight: 400;
+}
+
+.btn-dark-rounded{
+  margin-left: 12px;
+  background-color: #014466;
+  border-radius: 10.25em;
+}
+
+.btn-inverse-dark {
+    background-color: rgba(79, 74, 96, 0.2);
+    background-image: none;
+    border-color: rgba(79, 74, 96, 0);
+  }
+  
+  .btn-inverse-dark:not(.btn-inverse-light) {
+    color: #4f4a60;
+  }
+  
+  .btn-inverse-dark:hover {
+    color: #ffffff;
+    background-color: #4f4a60;
+    border-color: #4f4a60;
+  }
+  
+  .btn-inverse-dark.focus, .btn-inverse-dark:focus {
+    box-shadow: 0 0 0 3px rgba(79, 74, 96, 0.5);
+  }
+  
+  .btn-inverse-dark.disabled, .btn-inverse-dark:disabled {
+    color: #4f4a60;
+    background-color: transparent;
+  }
+  
+  .btn-inverse-dark.active, .btn-inverse-dark:active,
+  .show > .btn-inverse-dark.dropdown-toggle {
+    color: #ffffff;
+    background-color: #4f4a60;
+    border-color: #4f4a60;
+  }
+  
+  .btn-dark, .btn-dark:hover {
+    box-shadow: 0 2px 2px 0 rgba(79, 74, 96, 0.14), 0 3px 1px -2px rgba(79, 74, 96, 0.2), 0 1px 5px 0 rgba(79, 74, 96, 0.12);
+      justify-content: right;
+  }
+
+.btn_prepend{
+  width: 50%;
+}
+
+input{
+  color: white;
+  opacity: 0.5;
+}
+
+
+
+
+/*Slider CSS*/
+
+
+
+.scroll_two{
+  width: 1380px;
+}
+
+
+
+
+.header.header-2, header.header-2 {
+  background-color: #002538;
+}
+
+hr {
+  margin-top: 1rem;
+}
+
+.scroll-container {
+ // border: 2px solid silver;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: .6rem .7rem;
+
+  &.hide-scrollbar {
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &.show-scroll {
+    overflow: auto;
+  }
+
+  div {
+    white-space: nowrap;
+    //background: #efefef;
+    //border: 1px solid #efefef;
+    margin: .1rem;
+    padding: .6rem .2rem;
+    &:hover {
+      cursor: pointer;
+      //border-color: #ccc;
+    }
+  }
+}
+
+
+.iconimages {
+ // border-radius: 50%;
+  //margin: 0px 0px 0px 13px;
+  object-fit: contain;
+}
+
+.text-danger{
+  color: #ec5362 !important;
+  position: absolute;
+}
+
+.content-length{
+  color: white;
+  opacity: 1 !important;
+  font-size: 14px;
+  height: 70px;
+  overflow: hidden;
+}
+
+
+.text-center{
+  margin: 0 auto;
+  display: block;
+}
+
+.text-ti{
+  text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 300px;
+  background-color: #023a57;
+    opacity: 1 !important;
+    padding-left: 20px;
+
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image:  url('../../../../assets/images/talk.png') !important;
+ 
+    background-repeat: no-repeat !important;
+    background-position-x: 91% !important;
+    background-position-y: 11px !important;
+    padding-right: 2rem;
+    background-size: 15px !important;
+}
+
+
+.scrol {
+  display: flex;
+  width: 1200px;
+  overflow-x: auto;
+  align-items: center;
+}
+
+/* width */
+.scrol::-webkit-scrollbar {
+  width: 15px;
+  height: 10px;
+}
+
+/* Track */
+.scrol::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+
+}
+ 
+/* Handle */
+.scrol::-webkit-scrollbar-thumb {
+  background: #013854;
+  border-radius: 10px;
+  
+}
+
+/* Handle on hover */
+.scrol::-webkit-scrollbar-thumb:hover {
+  background: #006ea7; 
+}

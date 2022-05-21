@@ -1,0 +1,170 @@
+
+.tab-coupon{
+  
+    justify-content: left;
+    background-color: #0a3347;
+    color:white;
+    border-radius: 20px;
+    margin-left: 40px;
+    padding: 4px;
+}
+
+.card{
+    border-radius: 25px;
+    padding: 15px;
+}
+.span-data{
+    justify-content: left;
+    background-color: #0a3347;
+    color:white;
+    border-radius: 20px;
+    margin-left: 40px;
+    padding: 4px;
+}
+.post_items{margin-bottom: 20px;}
+.post_items h6{color: #fff;opacity: 0.5;}
+
+.card-data{
+    background-color: #093e57;
+    align-content: left;
+    border-radius: 10px;
+}
+
+.hr-text {
+    line-height: 1em;
+    position: relative;
+    outline: 0;
+    border: 0;
+    color: black;
+    text-align: center;
+    height: 1.5em;
+    opacity: .5;
+}
+
+h6.background {
+    position: relative;
+    z-index: 1;
+    
+    &:before {
+        border-top: 2px solid #dfdfdf;
+        content:"";
+        margin: 0 auto; /* this centers the line to the full width specified */
+        position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+        top: 50%; left: 0; right: 0; bottom: 0;
+        width: 95%;
+        z-index: -1;
+    }
+
+    span { 
+        /* to hide the lines from behind the text, you have to set the background color the same as the container */ 
+        background: #fff; 
+        padding: 0 15px; 
+    }
+}
+
+.form-control{
+  background: #033752;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.modal-body, .modal-header, .modal-footer{
+  background-color: #00496E;
+  color:#fff;
+  width: 100%;
+  border-bottom: none !important;
+  border-top: none !important;
+  font-weight: lighter;
+  label{
+    color: white;
+    opacity: 0.5;
+    font-weight: lighter;
+  }
+  .form-control{
+    background-color: #00496E;
+    border: 1.5px solid #99b2bf;
+    box-shadow: none;
+    font-weight: lighter;
+  }
+}
+
+.modal-header{
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+}
+.modal-footer{
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+}
+
+  
+/*Button CSS*/
+
+.btn{
+  color: #99b2bf ;
+  font-weight: 400;
+  font-weight: lighter;
+}
+
+.btn-dark-rounded{
+  margin-left: -285px;
+  background-color: #042B3F;
+  //border: unset;
+  border-radius: 10.25em;
+  font-weight: lighter;
+  }
+
+
+  /*Image Upload CSS*/
+  .image-data{
+    background-color: #043954;
+    padding:30px;
+    align-content: center;
+    border-radius: 10px;
+    padding-right:113px;
+    color:white;
+    opacity: 0.5;
+    font-weight: lighter;
+    /*position: relative;
+    margin-left: 1rem;*/
+  }
+  
+  
+  .icon-style{
+    font-size: 100%;
+  }    
+  
+  
+  .upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 50%;
+  }
+  
+  .upload-btn-wrapper :hover i {
+  -webkit-transition-delay: 0.05s;
+  transition-delay: 0.05s;
+  -webkit-transition-duration: 0.35s;
+  transition-duration: 0.35s;
+  }
+  
+
+.icon {
+  border: 0px solid gray;
+  color: white;
+  opacity: 0.5;
+  background-color: transparent;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}

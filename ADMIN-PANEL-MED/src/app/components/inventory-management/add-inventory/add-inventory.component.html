@@ -1,0 +1,851 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid innerpage_tab_top">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-body tab2-card" *ngIf="disableTab('Add Inventory')">
+                <label>{{product_editFlag ? 'Update New Inventory(Medicine)' : 'Add New Inventory(Medicine)'}}</label>
+
+
+                <ngb-tabset class="tab-coupon add_inventory_tab" #t="ngbTabset">
+                    <ngb-tab title="Basic Info" id="tab1">
+                        <ng-template ngbTabContent>                                                                                                                                        
+                            <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab">
+                                <form [formGroup]="basicinfoForm">
+                                    <div class=" mt-4 row ">
+                                        <div class="col-md-2 pr-0">
+                                            <h6 for="validationCustom0" class="basic_info">Medimall Product ID</h6>
+                                        </div>
+                                        <div class="col-md-2  pl-0 pt-2">
+                                                <h6>{{medimallID}}</h6>
+                                        </div>
+                                        
+                                        <div class="col-md-1 pr-0  offset-md-2">
+                                            <h6 for="validationCustom0" class="basic_info">Brand <sup class="text-danger">*</sup></h6>
+                                        </div>
+                                        
+                                        <div class="col-md-3 pl-2">
+
+                                            <div class="example-wrapper">
+                                                
+
+                                                <!-- <select class="form-control" formControlName = 'brand'>
+                                                    <option *ngFor="let i of brandList" [value]="i._id">{{i.title}}</option>
+                                                </select> -->
+                                                <kendo-dropdownlist #multiselect class="form-control" formControlName='brand'
+                                                [data]="brandList"
+                                                textField="title"
+                                                valueField="_id"
+                                                [valuePrimitive]="true"
+                                                [filterable]="true"
+                                                (filterChange)="handleFilterBrand($event)"
+                                            >
+                                            </kendo-dropdownlist>
+
+                                                <!-- <kendo-dropdownlist id="brandmultiselect"  #brand class="form-control"
+                                                [data]="brandList"
+                                                [textField]="'title'"
+                                                [valueField]="'_id'"
+                                                [filterable]="true"
+                                                [valuePrimitive]="true"
+                                                (filterChange)="handleFilterBrand($event)"
+                                                formControlName = 'brand'>
+                                                </kendo-dropdownlist> -->
+                                                <small for="brand" class="form-text text-danger" 
+                                                *ngIf="basicinfoForm.controls['brand'].errors?.required && 
+                                                (basicinfoForm.controls['brand'].dirty ||  
+                                                basicinfoForm.controls['brand'].touched || 
+                                                (basicinfoForm.controls['brand'].untouched  && attemptedSubmit ) )">
+                                                Brand required.
+                                            </small>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div class="mt-4 row">
+
+                                        <div class="col-md-2 pr-0">
+                                            <h6 for="validationCustom0" class="basic_info"> Categories <sup class="text-danger">*</sup></h6>
+                                        </div>
+
+                                        <div class="col-md-3 pl-0"> 
+                                            <div class="example-wrapper">
+                                                <kendo-multiselect #multiselect formControlName="categories"  id="multiselect"  class="form-control" 
+                                                [data]="categoryList" 
+                                                [filterable]="true"
+                                                textField="title"
+                                                valueField="_id"
+                                                [autoClose]="false"
+                                                [checkboxes]="false"
+                                                [(ngModel)]="dataItems"
+                                                (filterChange)="filterCategories($event)"
+                                                >
+                                                </kendo-multiselect>
+
+                                            <!-- <kendo-multiselecttree #multiselect id="multiselect"
+                                            kendoMultiSelectTreeExpandable
+                                                [kendoMultiSelectTreeHierarchyBinding]="categoryList"
+                                                textField="title"
+                                                valueField="_id"
+                                                childrenField="subCategories"
+                                                formControlName='categories'
+                                                parentIdField="reportsTo"
+                                                [valueDepth]="1"
+                                                [expandedKeys]="['0']"
+                                                [dataItems]="dataItems"
+                                            >
+                                            <ng-template kendoMultiSelectTreeHeaderTemplate>
+                                                <span class="ml-2 header"> <input kendoTextBox (keyup)="filterCategories($event.target.value)" /></span>
+                                              </ng-template>
+                                        </kendo-multiselecttree> -->
+
+                                                <small for="categories" class="form-text text-danger" 
+                                                *ngIf="basicinfoForm.controls['categories'].errors?.required && 
+                                                (basicinfoForm.controls['categories'].dirty ||  
+                                                basicinfoForm.controls['categories'].touched || 
+                                                (basicinfoForm.controls['categories'].untouched  && attemptedSubmit ) )">
+                                                Categories required.
+                                            </small>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-1 pr-0  offset-md-1">
+                                            <h6 for="validationCustom0" class="basic_info">Policy <sup class="text-danger">*</sup></h6>
+                                        </div>
+                                        
+                                        <div class="col-md-3 pl-2">
+                                            <div class="example-wrapper">
+
+                                                <!-- <select class="form-control" formControlName ='policy'>
+                                                    <option *ngFor="let i of policyList" [value]="i._id">{{i.title}}</option>
+                                                </select> -->
+
+                                                <kendo-dropdownlist #policy class="form-control" formControlName='policy'
+                                                    [data]="policyList"
+                                                    textField = 'title'
+                                                    valueField = '_id'
+                                                    [valuePrimitive]="true"
+                                                    (filterChange)="handleFilterPolicy($event)"
+                                                    [filterable]="true"
+                                                >
+                                                </kendo-dropdownlist>
+                                                <small for="policy" class="form-text text-danger" 
+                                                *ngIf="basicinfoForm.controls['policy'].errors?.required && 
+                                                (basicinfoForm.controls['policy'].dirty ||  
+                                                basicinfoForm.controls['policy'].touched || 
+                                                (basicinfoForm.controls['policy'].untouched  && attemptedSubmit ) )">
+                                                Policy required.
+                                            </small>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div class="mt-4 row">
+                                        
+
+                                        <div class="col-md-2 pr-0">
+                                            <h6 for="validationCustom0" class="basic_info">Product Name <sup class="text-danger">*</sup></h6>
+                                        </div>
+
+                                        <div class="col-md-3 pl-0"> 
+                                            <input class="form-control" id="validationCustom0" formControlName="productname"
+                                            type="text" required="">
+                                            <small for="productname" class="form-text text-danger" 
+                                            *ngIf="basicinfoForm.controls['productname'].errors?.required && 
+                                            (basicinfoForm.controls['productname'].dirty ||  
+                                            basicinfoForm.controls['productname'].touched || 
+                                            (basicinfoForm.controls['productname'].untouched  && attemptedSubmit ) )">
+                                            Product Name required.
+                                        </small>
+                                        </div>
+
+                                        <div class="col-md-2 pr-0  offset-md-1 d-flex align-item-center">
+                                            <h6 for="validationCustom0" class="basic_info">Prescription Required</h6>
+                                            <input type="checkbox" checked="checked" formControlName="prescription">  
+                                            <small for="prescription" class="form-text text-danger" 
+                                            *ngIf="basicinfoForm.controls['prescription'].errors?.required && 
+                                            (basicinfoForm.controls['prescription'].dirty ||  
+                                            basicinfoForm.controls['prescription'].touched || 
+                                            (basicinfoForm.controls['prescription'].untouched  && attemptedSubmit ) )">
+                                            Prescription required.
+                                        </small>         
+                                        </div>
+                                        
+                                        <div class="col-md-1 pl-2">
+                                           
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div class="mt-4 row">
+
+                                        <div class="col-md-2 pr-0">
+                                            <h6 for="validationCustom0" class="basic_info">Stock Alert Below <sup class="text-danger">*</sup></h6>
+                                        </div>
+
+                                        <div class="col-md-3 pl-0"> 
+                                            <input class="form-control" id="validationCustom0" formControlName="stockalert"
+                                            type="number" required="" min="1">
+                                            <small for="stockalert" class="form-text text-danger" 
+                                            *ngIf="basicinfoForm.controls['stockalert'].errors?.required && 
+                                            (basicinfoForm.controls['stockalert'].dirty ||  
+                                            basicinfoForm.controls['stockalert'].touched || 
+                                            (basicinfoForm.controls['stockalert'].untouched  && attemptedSubmit ) )">
+                                            Stock Alert required.
+                                        </small>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="mt-4 row">
+
+                                        <div class="col-md-2 pr-0">
+                                            <h6 for="validationCustom0" class="basic_info">Limited Status Count <sup class="text-danger">*</sup></h6>
+                                        </div>
+
+                                        <div class="col-md-3 pl-0"> 
+                                            <input class="form-control" id="validationCustom0" formControlName="statuscount"
+                                            type="number" required="" min="1">
+                                            <small for="statuscount" class="form-text text-danger" 
+                                            *ngIf="basicinfoForm.controls['statuscount'].errors?.required && 
+                                            (basicinfoForm.controls['statuscount'].dirty ||  
+                                            basicinfoForm.controls['statuscount'].touched || 
+                                            (basicinfoForm.controls['statuscount'].untouched  && attemptedSubmit ) )">
+                                            Status Count required.
+                                        </small>
+                                        </div>
+                                    </div>
+
+                                    <div class="pull-right" style="width:100%;float:left;">
+                                        <button style="float:right;margin-top:30px;width:150px;" type="button" class="btn btn-dark btn-dark-rounded" (click)="nextTab('tab2','basicinfo',t)">Next</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Product Description" id="tab2">
+                        <ng-template ngbTabContent>                                                                                                                                        
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+                                <form [formGroup]="productinfoForm">
+                                    <div class=" mt-4 row pr-0">
+                                        <div class="col-md-2 pr-0">
+                                            <label for="validationCustom0" class="basic_info">Product Description </label>
+                                        </div>
+                                        <div class="col-md-3 pl-0">
+                                            <input class="form-control" id="validationCustom0" formControlName="description"
+                                                type="text">
+                                            <small for="description" class="form-text text-danger" 
+                                                *ngIf="productinfoForm.controls['description'].errors?.required && 
+                                                (productinfoForm.controls['description'].dirty ||  
+                                                productinfoForm.controls['description'].touched || 
+                                                (productinfoForm.controls['description'].untouched  && attemptedSubmit ) )">
+                                                Product Description required.
+                                            </small>
+                                        </div>
+                                        <div class="col-md-1 pr-0 offset-md-1">
+                                            <label for="validationCustom0" class="basic_info">Warning</label>
+                                        </div>
+                                        <div class="col-md-3  pl-0">
+                                            <input class="form-control" id="validationCustom0" formControlName="warning"
+                                                type="text">
+                                            <small for="warning" class="form-text text-danger" 
+                                                *ngIf="productinfoForm.controls['warning'].errors?.required && 
+                                                (productinfoForm.controls['warning'].dirty ||  
+                                                productinfoForm.controls['warning'].touched || 
+                                                (productinfoForm.controls['warning'].untouched  && attemptedSubmit ) )">
+                                                Warning required.
+                                            </small>
+                                        </div>
+                                    </div>
+
+                                    <div class=" mt-4 row ">
+                                        <div class="col-md-2 pr-0">
+                                            <label for="validationCustom0" class="basic_info">Direction of Use </label>
+                                        </div>
+                                        <div class="col-md-3 pl-0">
+                                            <input class="form-control" id="validationCustom0" formControlName="direction_of_use"
+                                                type="text">
+                                                <small for="direction_of_use" class="form-text text-danger" 
+                                                *ngIf="productinfoForm.controls['direction_of_use'].errors?.required && 
+                                                (productinfoForm.controls['direction_of_use'].dirty ||  
+                                                productinfoForm.controls['direction_of_use'].touched || 
+                                                (productinfoForm.controls['direction_of_use'].untouched  && attemptedSubmit ) )">
+                                                Direction of Use required.
+                                            </small>
+                                        </div>
+                                        <div class="col-md-1 pr-0 offset-md-1">
+                                            <label for="validationCustom0" class="basic_info">Side Effects</label>
+                                        </div>
+                                        <div class="col-md-3 pl-0"> 
+                                            <input class="form-control" id="validationCustom0" formControlName="side_effects"
+                                                type="text">
+                                                <small for="side_effects" class="form-text text-danger" 
+                                                *ngIf="productinfoForm.controls['side_effects'].errors?.required && 
+                                                (productinfoForm.controls['side_effects'].dirty ||  
+                                                productinfoForm.controls['side_effects'].touched || 
+                                                (productinfoForm.controls['side_effects'].untouched  && attemptedSubmit ) )">
+                                                Side Effects required.
+                                            </small>
+                                        </div>
+                                    </div>
+
+                                    <div class=" mt-4 row ">
+                                        <div class="col-md-2 pr-0">
+                                            <label for="validationCustom0" class="basic_info">Content </label>
+                                        </div>
+                                        <div class="col-md-3 pl-0">
+                                            <input class="form-control" id="validationCustom0" formControlName="content"
+                                                type="text">
+                                                <small for="content" class="form-text text-danger" 
+                                                *ngIf="productinfoForm.controls['content'].errors?.required && 
+                                                (productinfoForm.controls['content'].dirty ||  
+                                                productinfoForm.controls['content'].touched || 
+                                                (productinfoForm.controls['content'].untouched  && attemptedSubmit ) )">
+                                                Content required.
+                                            </small>
+                                        </div>
+
+                                        <div class="col-md-1 offset-md-1">
+                                            <label for="validationCustom0" class="basic_info">Meta Title </label>
+                                        </div>
+                                        <div class="col-md-3 pl-0">
+                                            <input class="form-control" id="validationCustom0" formControlName="metatitle"
+                                                type="text">
+                                                <small for="metatitle" class="form-text text-danger" 
+                                                *ngIf="productinfoForm.controls['metatitle'].errors?.required && 
+                                                (productinfoForm.controls['metatitle'].dirty ||  
+                                                productinfoForm.controls['metatitle'].touched || 
+                                                (productinfoForm.controls['metatitle'].untouched  && attemptedSubmit ) )">
+                                                Meta Title required.
+                                            </small>
+                                        </div>
+
+                                       
+                                    </div>
+
+                                    <div class=" mt-4 row ">
+                                        <div class="col-md-2 pr-0">
+                                            <label for="validationCustom0" class="basic_info">Meta Description </label>
+                                        </div>
+                                        <div class="col-md-3 pl-0">
+                                            <textarea class="form-control" id="validationCustom0" formControlName="metadescription"></textarea>
+                                                <small for="metadescription" class="form-text text-danger" 
+                                                *ngIf="productinfoForm.controls['metadescription'].errors?.required && 
+                                                (productinfoForm.controls['metadescription'].dirty ||  
+                                                productinfoForm.controls['metadescription'].touched || 
+                                                (productinfoForm.controls['metadescription'].untouched  && attemptedSubmit ) )">
+                                                Content required.
+                                            </small>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="mt-4 col-md-12 pl-0">
+                                        <label for="validationCustom0" class=" basic_info mb-2">More Information </label>
+                                        <kendo-editor [iframe]="true"  [(ngModel)]="value" name="value" id="editor" 
+                                        [pasteCleanupSettings]="pasteCleanupSettings"
+                                        #editor class=""  
+                                        formControlName="moreinfo"
+                                          style="height: 450px;background-color: #fafafa85;color: white;">
+                                            <kendo-toolbar>
+                                              <kendo-toolbar-buttongroup>
+                                                <kendo-toolbar-button kendoEditorUndoButton></kendo-toolbar-button>
+                                                <kendo-toolbar-button kendoEditorRedoButton></kendo-toolbar-button>
+                                              </kendo-toolbar-buttongroup>
+                                              <kendo-toolbar-buttongroup>
+                                                <kendo-toolbar-button kendoEditorBoldButton></kendo-toolbar-button>
+                                                <kendo-toolbar-button kendoEditorItalicButton></kendo-toolbar-button>
+                                                <kendo-toolbar-button
+                                                  kendoEditorUnderlineButton
+                                                ></kendo-toolbar-button>
+                                                <kendo-toolbar-button
+                                                  kendoEditorStrikethroughButton
+                                                ></kendo-toolbar-button>
+                                              </kendo-toolbar-buttongroup>
+                                              <kendo-toolbar-buttongroup>
+                                                <kendo-toolbar-button
+                                                  kendoEditorSubscriptButton
+                                                ></kendo-toolbar-button>
+                                                <kendo-toolbar-button
+                                                  kendoEditorSuperscriptButton
+                                                ></kendo-toolbar-button>
+                                              </kendo-toolbar-buttongroup>
+                                              <kendo-toolbar-buttongroup>
+                                                <kendo-toolbar-button
+                                                  kendoEditorAlignLeftButton
+                                                ></kendo-toolbar-button>
+                                                <kendo-toolbar-button
+                                                  kendoEditorAlignCenterButton
+                                                ></kendo-toolbar-button>
+                                                <kendo-toolbar-button
+                                                  kendoEditorAlignRightButton
+                                                ></kendo-toolbar-button>
+                                                <kendo-toolbar-button
+                                                  kendoEditorAlignJustifyButton
+                                                ></kendo-toolbar-button>
+                                              </kendo-toolbar-buttongroup>
+                                              <kendo-toolbar-dropdownlist
+                                                kendoEditorFormat
+                                              ></kendo-toolbar-dropdownlist>
+                                              <kendo-toolbar-dropdownlist
+                                                kendoEditorFontSize
+                                              ></kendo-toolbar-dropdownlist>
+                                              <kendo-toolbar-dropdownlist
+                                                kendoEditorFontFamily
+                                              ></kendo-toolbar-dropdownlist>
+                                              <kendo-toolbar-colorpicker
+                                                kendoEditorForeColor
+                                              ></kendo-toolbar-colorpicker>
+                                              <kendo-toolbar-colorpicker
+                                                kendoEditorBackColor
+                                                view="gradient"
+                                              ></kendo-toolbar-colorpicker>
+                                              <kendo-toolbar-buttongroup>
+                                                <kendo-toolbar-button
+                                                  kendoEditorInsertUnorderedListButton
+                                                ></kendo-toolbar-button>
+                                                <kendo-toolbar-button
+                                                  kendoEditorInsertOrderedListButton
+                                                ></kendo-toolbar-button>
+                                                <kendo-toolbar-button kendoEditorIndentButton></kendo-toolbar-button>
+                                                <kendo-toolbar-button kendoEditorOutdentButton></kendo-toolbar-button>
+                                              </kendo-toolbar-buttongroup>
+                                              <kendo-toolbar-buttongroup>
+                                                <kendo-toolbar-button
+                                                  kendoEditorCreateLinkButton
+                                                ></kendo-toolbar-button>
+                                                <kendo-toolbar-button kendoEditorUnlinkButton></kendo-toolbar-button>
+                                              </kendo-toolbar-buttongroup>
+                                              <kendo-editor-insert-table-button></kendo-editor-insert-table-button>
+                                              <kendo-toolbar-buttongroup>
+                                                <kendo-toolbar-button
+                                                  kendoEditorAddColumnBeforeButton
+                                                ></kendo-toolbar-button>
+                                                <kendo-toolbar-button
+                                                  kendoEditorAddColumnAfterButton
+                                                ></kendo-toolbar-button>
+                                                <kendo-toolbar-button
+                                                  kendoEditorAddRowBeforeButton
+                                                ></kendo-toolbar-button>
+                                                <kendo-toolbar-button
+                                                  kendoEditorAddRowAfterButton
+                                                ></kendo-toolbar-button>
+                                              </kendo-toolbar-buttongroup>
+                                              <kendo-toolbar-buttongroup>
+                                                <kendo-toolbar-button
+                                                  kendoEditorDeleteColumnButton
+                                                ></kendo-toolbar-button>
+                                                <kendo-toolbar-button
+                                                  kendoEditorDeleteRowButton
+                                                ></kendo-toolbar-button>
+                                                <kendo-toolbar-button
+                                                  kendoEditorDeleteTableButton
+                                                ></kendo-toolbar-button>
+                                              </kendo-toolbar-buttongroup>
+                                            <kendo-toolbar-button
+                                                kendoEditorInsertFileButton
+                                              ></kendo-toolbar-button> 
+                                              <kendo-toolbar-button 
+                                                kendoEditorInsertImageButton
+                                              >
+                                            </kendo-toolbar-button>
+                                              <kendo-toolbar-button
+                                                kendoEditorViewSourceButton
+                                              ></kendo-toolbar-button>
+                                              <kendo-toolbar-button
+                                                kendoEditorCleanFormattingButton
+                                              ></kendo-toolbar-button>
+                                            
+                                            <!-- <kendo-toolbar-button text="Upload Image" (click)="open()">
+                                              </kendo-toolbar-button> -->
+                                            </kendo-toolbar>
+                                        </kendo-editor>
+                                          <small for="moreinfo" class="form-text text-danger ml-2" 
+                                          *ngIf="productinfoForm.controls['moreinfo'].errors?.required && 
+                                          (productinfoForm.controls['moreinfo'].dirty ||  
+                                          productinfoForm.controls['moreinfo'].touched || 
+                                          (productinfoForm.controls['moreinfo'].untouched  && attemptedSubmit ) )">
+                                          More Information required.
+                                      </small>
+                                    </div>
+
+
+                                    <div class="pull-right" style="width:100%;float:left;">
+                                        <button style="float:right;margin-top:30px;width:150px;" type="button" class="btn btn-dark btn-dark-rounded" (click)="nextTab('tab3','productdescription',t)">Next</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+                    <ngb-tab title="Substitution" id="tab3">
+                        <ng-template ngbTabContent>                                                                                                                                        
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+
+                                <form [formGroup]="substitutionForm">
+                                    <div class=" mt-4 row">
+                                        <div class="col-md-1 pr-2">
+                                            <label for="validationCustom0" class="basic_info">Tags <sup class="text-danger">*</sup></label>
+                                        </div>
+                                        <div class="col-md-3 pl-3">
+                                            <input  class="form-control" id="validationCustom0" type="text" required="" formControlName="tags"> 
+                                            <sub class="sub-text">Eg: Toothpaste,Herbal ...</sub>
+                                            <small for="tags" class="form-text text-danger" 
+                                                *ngIf="substitutionForm.controls['tags'].errors?.required && 
+                                                (substitutionForm.controls['tags'].dirty ||  
+                                                substitutionForm.controls['tags'].touched || 
+                                                (substitutionForm.controls['tags'].untouched  && attemptedSubmit ) )">
+                                                Tags required.
+                                            </small>
+                                            <!-- <img src="assets/images/file-icons/icon-add-circle.svg" style="position:absolute;right:-10px;top:7px;" width="20px" height="20px"> -->
+                                        </div>
+                                        <div class="col-md-2 pr-0 offset-md-1">
+                                            <label for="validationCustom0" class="basic_info">Related Products</label>
+                                        </div>
+                                        <div class="col-md-3 pl-0">
+                                            <kendo-multiselect #multiselect id="multiselect"  class="form-control" formControlName="relatedproducts" 
+                                            [data]="productList" 
+                                            [filterable]="true"
+                                            textField="name"
+                                            valueField="_id"
+                                            [valuePrimitive]="true"
+                                            [autoClose]="false"
+                                            [checkboxes]="false"
+                                            (filterChange)="filterProducts($event)"
+                                            [placeholder]="'-- Select Related Products --'"
+                                            
+                                          >
+                                          </kendo-multiselect>
+                                          <small for="relatedproducts" class="form-text text-danger" 
+                                                *ngIf="substitutionForm.controls['relatedproducts'].errors?.required && 
+                                                (substitutionForm.controls['relatedproducts'].dirty ||  
+                                                substitutionForm.controls['relatedproducts'].touched || 
+                                                (substitutionForm.controls['relatedproducts'].untouched  && attemptedSubmit ) )">
+                                                Related Products required.
+                                            </small>
+                                            <!-- <input  class="form-control" id="validationCustom0" type="text" required="" formControlName="relatedproducts">
+                                            <img src="assets/images/file-icons/icon-add-circle.svg" style="position:absolute;right:-10px;top:7px;" width="20px" height="20px"> -->
+                                        </div>
+                                    </div>
+        
+        
+                                    <div class=" mt-4 row">
+                                        <div class="col-md-1 pr-2">
+                                            <label for="validationCustom0" class="basic_info">Substitutions</label>
+                                        </div>
+                                        <div class="col-md-3 pl-3">
+                                            <kendo-multiselect #multiselect id="multiselect"  class="form-control" formControlName="substitution" 
+                                            [data]="productList" 
+                                            [filterable]="true"
+                                            textField="name"
+                                            valueField="_id"
+                                            [valuePrimitive]="true"
+                                            [autoClose]="false"
+                                            [checkboxes]="false"
+                                            (filterChange)="filterProducts($event)"
+                                            [placeholder]="'-- Select Substitutions --'"
+                                            
+                                          >
+                                          </kendo-multiselect>
+                                          <small for="substitution" class="form-text text-danger" 
+                                                *ngIf="substitutionForm.controls['substitution'].errors?.required && 
+                                                (substitutionForm.controls['substitution'].dirty ||  
+                                                substitutionForm.controls['substitution'].touched || 
+                                                (substitutionForm.controls['substitution'].untouched  && attemptedSubmit ) )">
+                                                Substitution required.
+                                            </small>
+                                            <!-- <input class="form-control" id="validationCustom0" type="text" required=" "  formControlName="substitution">
+                                            <img src="assets/images/file-icons/icon-add-circle.svg" style="position:absolute;right:-10px;top:7px;" width="20px" height="20px"> -->
+                                        </div>
+                                       
+                                    </div>
+        
+            
+                                    
+
+                                    <div class="pull-right" style="width:100%;float:left;">
+                                        <button style="float:right;margin-top:30px;width:150px;" type="button" class="btn btn-dark btn-dark-rounded"  (click)="nextTab('tab4','substitution',t)" >Next</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Pricing & Inventory" id="tab4">
+                            <ng-template ngbTabContent>
+                                <form action="#" class="invoice-repeater" #pricingForm="ngForm">
+                                    <div class=" mt-4 row ">
+                                        <div class=" col-md-3"></div>
+                                        <div class=" col-md-3"></div>
+                                        <div class=" col-md-3"></div>
+                                        <div class=" col-md-3">
+                                            <button style="float:right;margin-top:30px;width:150px;" type="button" class="btn btn-dark btn-dark-rounded" (click)="addForm()" >Add</button>
+                                        </div>
+                                        
+                                    </div>
+                                    <ng-container *ngFor="let formOption of formArray; let i = index; trackBy: trackByFn ">
+
+                                                    <div class=" mt-4 row ">
+                                                        <div class=" col-md-3">
+                                                            <label for="validationCustom0" class="">UOM <sup class="text-danger">*</sup></label>
+                                                            <div class="example-wrapper">
+                                                                <kendo-dropdownlist class="form-control"
+                                                                    [data]="UOMList"
+                                                                    textField = 'title'
+                                                                    valueField = '_id'
+                                                                    [valuePrimitive]="true"
+                                                                    (valueChange) = "changeUOM($event,i)"
+                                                                    [(ngModel)]="formOption.uom"
+                                                                    name="formOption{{i}}.uom"
+                                                                    #question="ngModel"
+                                                                    id="formOption{{i}}.uom" required
+                                                                    [filterable]="true"
+                                                                    (filterChange)="handleFilterUOM($event)"
+                                                                >
+                                                                </kendo-dropdownlist>
+                                                                <small for="tags" class="form-text text-danger" 
+                                                                    *ngIf="!formOption.uom  && attemptedSubmit">
+                                                                    UOM is required.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class=" col-md-3">
+                                                            <label for="validationCustom0" class="">SKU <sup class="text-danger">*</sup></label>
+                                                            <div class="example-wrapper">
+                                                                <select class="form-control"  name="formOption{{i}}.sku" [(ngModel)]="formOption.sku" (change)="setUOMValue($event.target.value,i)"
+                                                                #sku="ngModel"
+                                                                id="formOption{{i}}.sku">
+                                                                    <option value="" disabled>-- Select --</option>
+                                                                    <option *ngFor="let i of formOption.skuList" value="{{i._id}}">{{i.uomValue}}</option>
+                                                                </select>
+                                                                <!-- <kendo-dropdownlist class="form-control"
+                                                                    [data]="UOMValueList"
+                                                                    textField = 'uomValue'
+                                                                    valueField = '_id'
+                                                                    [valuePrimitive]="true"
+                                                                    [filterable]="true"
+                                                                    (filterChange)="handleFilterUOMValue($event)"
+                                                                    [(ngModel)]="formOption.sku"
+                                                                    name="formOption{{i}}.sku"
+                                                                    #sku="ngModel"
+                                                                    id="formOption{{i}}.sku"
+                                                                >
+                                                                </kendo-dropdownlist> -->
+                                                                <small for="tags" class="form-text text-danger" 
+                                                                    *ngIf="!formOption.sku  && attemptedSubmit">
+                                                                    SKU is required.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class=" col-md-3">
+                                                            <label for="validationCustom0" class="">SKU/HSN No. <sup class="text-danger">*</sup></label>
+                                                            <input class="form-control" id="validationCustom0"
+                                                            type="text" required=""   [(ngModel)]="formOption.skuOrHsnNo"
+                                                            name="formOption{{i}}.skuOrHsnNo"
+                                                            #skuOrHsnNo="ngModel"
+                                                            id="formOption{{i}}.skuOrHsnNo" required>
+                                                            <small for="tags" class="form-text text-danger" 
+                                                                    *ngIf="!formOption.skuOrHsnNo  && attemptedSubmit">
+                                                                    SKU/HSN No. is required.
+                                                            </small>
+                                                        </div>
+
+                                                        <div class=" col-md-3">
+                                                            <label for="validationCustom0" class="">Price <sup class="text-danger">*</sup></label>
+                                                            <input class="form-control" id="validationCustom0"
+                                                            type="number" required="" min="1"   [(ngModel)]="formOption.price"
+                                                                name="formOption{{i}}.price"
+                                                                #price="ngModel"
+                                                                id="formOption{{i}}.price" required>
+                                                            <small for="price" class="form-text text-danger" 
+                                                                *ngIf="!formOption.price  && attemptedSubmit">
+                                                                Price is required.
+                                                            </small>
+                                                        </div>
+
+                                                
+                                                        <div class="mt-2 col-md-3">
+                                                            <label for="validationCustom0" class="">Special Price <sup class="text-danger">*</sup></label>
+                                                            <input class="form-control" id="validationCustom0" (keyup)="onKeyUpSpecialPrice($event.target.value,i)"
+                                                            type="number" required="" min="1"   [(ngModel)]="formOption.specialPrice"
+                                                                name="formOption{{i}}.specialPrice"
+                                                                #specialPrice="ngModel"
+                                                                id="formOption{{i}}.specialPrice" required>
+                                                                <small for="specialPrice" class="form-text text-danger" 
+                                                                *ngIf="!formOption.specialPrice  && attemptedSubmit">
+                                                                Special Price is required.
+                                                            </small>
+                                                        </div>
+
+                                                        <div class="mt-2 col-md-3">
+                                                            <label for="validationCustom0" class="">Volume <sup class="text-danger">*</sup></label>
+                                                            <input class="form-control" id="validationCustom0"
+                                                            type="number" required="" min="1"   [(ngModel)]="formOption.volume"
+                                                                name="formOption{{i}}.volume"
+                                                                #volume="ngModel"
+                                                                id="formOption{{i}}.volume" required>
+                                                                <small for="volume" class="form-text text-danger" 
+                                                                *ngIf="!formOption.volume  && attemptedSubmit">
+                                                                Volume is required.
+                                                            </small>
+                                                        </div>
+
+
+                                                        <div class="col-md-3 mt-2">
+                                                            <label for="validationCustom0" class="">Expiry Date <sup class="text-danger">*</sup></label>
+                                                            <input class="form-control" id="validationCustom0" min="{{minDate}}" onkeydown="return false"
+                                                                type="date" required=""    [(ngModel)]="formOption.expiryDate"
+                                                                name="formOption{{i}}.expiryDate"
+                                                                #expiryDate="ngModel"
+                                                                id="formOption{{i}}.expiryDate" required>
+                                                                <small for="expiryDate" class="form-text text-danger" 
+                                                                *ngIf="!formOption.expiryDate  && attemptedSubmit">
+                                                                Expiry Date is required.
+                                                            </small>
+                                                        </div>
+
+                                                        <div class="mt-2 col-md-3">
+                                                            <label for="validationCustom0" class="">Stock <sup class="text-danger">*</sup></label>
+                                                            <input class="form-control" id="validationCustom0"
+                                                            type="number" required="" min="1"   [(ngModel)]="formOption.stock"
+                                                                name="formOption{{i}}.stock"
+                                                                #stock="ngModel"
+                                                                id="formOption{{i}}.stock" required>
+                                                                <small for="stock" class="form-text text-danger" 
+                                                                *ngIf="!formOption.stock  && attemptedSubmit">
+                                                                Stock is required.
+                                                            </small>
+                                                        </div>
+
+                                                        <div class="mt-1 col-md-4">
+                                                            <label for="validationCustom0" class="mt-3">Image <sup class="text-danger">*</sup></label>
+                                                            <!-- <kendo-fileselect #myFileSelect style="background: #052a3d;" [restrictions]="ImageRestrictions"
+                                                            [(ngModel)]="formOption.image"
+                                                            (select)="selectEventHandler($event,i)"
+                                                            (remove)="removeEventHandler($event,i,formOption.image.i)"
+                                                            name="formOption{{i}}.image"
+                                                            #image="ngModel"
+                                                            id="formOption{{i}}.image" required>
+                                                        </kendo-fileselect>  -->
+
+                                                    
+
+                                                            <div class="span-data">
+                                                                <div class=" ">
+                                                                    <i class="icon fa fa-upload"></i>
+                                                                    <input type="file" name="myfile"  accept="image/*" (change)="onChange($event,i,'272','338')" />
+                                                                    <br><small>272px X 338px</small>
+                                                                <small for="image" class="form-text text-danger" 
+                                                                    *ngIf="!formOption.image.length && attemptedSubmit">
+                                                                    Image is required.
+                                                                </small>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row" >
+                                                               
+                                                                    <div class=" col-md-3 mt-2 text" *ngFor="let k of formOption.imagePreview;let j = index;">
+                                                                        <img name="formOption{{i}}.image" id="formOption{{i}}.image"
+                                                                           (click)="removeImage(k,j,i)"
+                                                                          [src]="k"
+                                                                          alt="image preview"
+                                                                          style="margin: 0px; width:100%;"
+                                                                        />
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-center mt-3" *ngIf="formOption.imageLoading === 'true'">
+                                                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status" >
+                                                                        <span class="sr-only">Loading...</span>
+                                                                    </div>
+                                                                
+                                                                </div>
+
+
+                                                        </div>
+
+                                                        <div class="mt-1 col-md-4">
+                                                            <label for="validationCustom0" class="mt-3">Video</label>
+                                                            <!-- <my-upload></my-upload> -->
+                                                            <!-- <kendo-fileselect style="background: #052a3d;" [multiple]="false" [restrictions]="VideoRestrictions"    [(ngModel)]="formOption.video"
+                                                            name="formOption{{i}}.video"
+                                                            (select)="selectVideoEventHandler($event,i)"
+                                                            (remove)="removeVideoEventHandler($event,i)"
+                                                            #video="ngModel"
+                                                            id="formOption{{i}}.video" required></kendo-fileselect> 
+                                                            <sub class="sub-text">(.mp4,.x-m4v Files Only)</sub> -->
+                                                            <div class="span-data">
+                                                                <div class=" ">
+                                                                    <i class="icon fa fa-upload"></i>
+                                                                    <input #myfile  type="file" name="myfile"  accept="video/*" (change)="onChangeVideo($event,i)" />
+                                                                    <br><label style="cursor: pointer;" (click)="removeVideo(formOption.video,i)">{{formOption.video}}</label>
+                                                                    <div class="text-center mt-3" *ngIf="formOption.videoLoading === 'true'">
+                                                                        <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+                                                                            <span class="sr-only">Loading...</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                           
+
+                                                           
+                                                        </div>
+
+
+                                                        <div class="mt-2 col-md-3" *ngIf="i!=0">
+                                                            <label for="validationCustom0" class=""></label>
+                                                            <button  style="margin-top:30px;width: 29%;" type="button" class="btn btn-dark btn-dark-rounded" (click)="removeForm(i)">X</button>
+
+                                                        </div>
+
+
+                                                    
+                                                        
+
+                                                    </div>
+
+                                                    <div class="mt-4"></div>
+                                                    <hr style="background: white;opacity: 0.7;" class="mt-2">
+                                    </ng-container>
+
+
+
+                                    <div class="pull-right" style="width:100%;float:left;">
+                                        <button *ngIf="!product_editFlag && editFlag" style="float:right;margin-top:30px;width:150px;" type="button" class="btn btn-dark btn-dark-rounded"
+                                         (click)="save(pricingForm,t);attemptedSubmit = true">{{addLoading ? 'Saving...' : 'Save'}}</button>
+
+                                        <button *ngIf="product_editFlag  && editFlag" style="float:right;margin-top:30px;width:150px;" type="button" class="btn btn-dark btn-dark-rounded" 
+                                         (click)="update(pricingForm,t);attemptedSubmit = true">{{addLoading ? 'Updating...' : 'Update'}}</button>
+
+                                    </div>
+                                </form>
+                            </ng-template>
+                    </ngb-tab>
+     
+                </ngb-tabset>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+

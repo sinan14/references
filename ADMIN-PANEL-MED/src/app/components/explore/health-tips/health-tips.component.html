@@ -1,0 +1,483 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid article_main">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class=" tab2-card">
+                <div class="card-body">
+                    <div class="btn-popup row">
+                        <div class="col-md-3">
+                            <h6 style="color:#fff;opacity: 0.5;">Health Tip</h6>
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search" name="search" (keyup)="search()"
+                                    [(ngModel)]="searchQuery">
+                                <div class="input-group-btn" style="width:65px;background: #014466;">
+                                    <button class="btn btn-default" type="submit" style="width: 30px;" (click)="search()" *ngIf="!searchMode"><i
+                                            class="fa fa-search"></i></button>
+                                    <button class="btn btn-default" type="button" style="width: 30px;"
+                                        (click)="clearSearch()"  *ngIf="searchMode"><i class="fa fa-times"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="text-align: right;">
+                            <button type="button" class="btn btn-dark btn-dark-rounded" (click)="newHealthTips()" *ngIf="editFlag">Create
+                                New Health Tip</button>
+                        </div>
+                    </div>
+                    <ngb-tabset class="tab-coupon" (tabChange)="onTabChange($event)" [destroyOnHide]="false">
+
+                        <ngb-tab title="Health Tips" id="all" *ngIf="disableTab('Health Tips')">
+                            <ng-template ngbTabTitle *ngIf="!searchMode"><span class="badge badge-pill  pull-right">{{ healthTipsCount.allHealthTip }}</span> </ng-template>
+
+                            <ng-template ngbTabContent>
+
+                                <div class="scroll-container hide-scrollbar" *ngIf="!searchMode">
+                                    <div class="mt-3 col-md-2">
+                                        <div class="example-wrapper">
+                                            <select style="background-color: #042B3F;" class="form-control"
+                                                placeholder="Choose" (change)="onchangeCategory($event)" [(ngModel)]="selectedCategoryId">
+                                                <option value="">All</option>
+                                                <option *ngFor="let category of categories" value="{{ category._id }}">
+                                                    {{
+                                                    category.title }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center mt-3" *ngIf="loading">
+                                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                        role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+
+                                <div class="mt-5 row" *ngIf="!loading && !healthTips.length">
+                                    <div class="col-md-12">
+                                        <i>
+                                            <h5 class="text-center" style="color: white;">No Health Tips Found</h5>
+                                        </i>
+                                    </div>
+                                </div>
+
+                                <div class="mt-2 row" *ngIf="!loading">
+                                    <div class="col-lg-6 col-md-12 col-sm-12" style="min-width: 295px;"
+                                        *ngFor="let healthTip of healthTips">
+                                        <div class="card-header" data-toggle="modal" data-original-title="test"
+                                            data-target="#articleViewexampleModal">
+                                            <div (click)="open(content,healthTip)" style="cursor: pointer;">
+                                                <h6 class="background"><span>{{ healthTip.heading }}</span></h6>
+                                                <img src="{{ healthTip.image }}" width="100%" height="6%"><br>
+                                            </div>
+                                            <div class=" col-md-12 tab_inneritmmm">
+                                                <p style="opacity: 0.5;font-size: 14px;">{{
+                                                     shortDescriptionFromHtmlContent(healthTip.description) }}...
+                                                <div class="row">
+                                                    <div class="col-md-4 col-lg-4 col-md-4 col-sm-12">
+                                                        <h5 style="color:white;opacity: 0.7;">
+                                                            <i *ngIf="editFlag" class="fa fa-edit" style="cursor: pointer;"
+                                                                (click)="edit(healthTip._id)"></i>&nbsp;&nbsp;
+                                                            <i *ngIf="editFlag" class="fa fa-trash" style="cursor: pointer;"
+                                                                (click)="delete(healthTip._id)"></i>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-md-5"></div>
+                                                    <div class="col-md-3" style="color:white;opacity: 0.7;text-align: right;">
+                                                        {{ healthTip.like_count }}
+                                                        <img src="assets/images/file-icons/icon-heart.svg" width="25%"
+                                                            height="50%" />{{ healthTip.share_count }}
+                                                        <img src="assets/images/file-icons/icon-share.svg" width="26%"
+                                                            height="60%" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab id="mostViewed" *ngIf="!searchMode && disableTab('Most Viewed')">
+                            <ng-template ngbTabTitle>Most Viewed<span class="badge badge-pill  pull-right">{{ healthTipsCount.mostViewed }}</span>
+                                <ng-template ngbTabContent>
+
+                                    <div class="scroll-container hide-scrollbar">
+                                        <div class="mt-3 col-md-2">
+                                            <select style="background-color: #042B3F;" class="form-control"
+                                                placeholder="Choose" (change)="onchangeCategory($event)" [(ngModel)]="selectedCategoryId">
+                                                <option value="">All</option>
+                                                <option *ngFor="let category of categories" value="{{ category._id }}">
+                                                    {{ category.title }}</option>
+                                            </select>
+                                        </div>
+                                        <!-- <div class="mt-3 col-md-2" *ngFor="let item of scrollItems">
+                                            <div class="span-data"> 
+                                                    <a for="validationCustom0" >{{ item }}<span class="badge badge-pill  pull-right">22</span></a>
+                                            </div>
+                                        </div> -->
+                                    </div>
+
+
+                                    <div class="text-center mt-3" *ngIf="loading">
+                                        <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                            role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-5 row" *ngIf="!loading && !healthTips.length">
+                                        <div class="col-md-12">
+                                            <i>
+                                                <h5 class="text-center" style="color: white;">No Health Tips Found</h5>
+                                            </i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 row" *ngIf="!loading">
+                                        <div class="col-lg-6 col-md-12 col-sm-12" style="min-width: 295px;"
+                                            *ngFor="let healthTip of healthTips">
+                                            <div class="card-header" data-toggle="modal" data-original-title="test"
+                                                data-target="#articleViewexampleModal">
+                                                <div (click)="open(content,healthTip)" style="cursor: pointer;">
+                                                    <h6 class="background"><span>{{ healthTip.heading }}</span></h6>
+                                                    <img src="{{ healthTip.image }}" width="100%" height="6%"><br>
+                                                </div>
+                                                <div class=" col-md-12 tab_inneritmmm">
+                                                    <p style="opacity: 0.5;font-size: 14px;">{{
+                                                        shortDescriptionFromHtmlContent(healthTip.description)}}...</p>
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-lg-4 col-md-4 col-sm-12">
+                                                            <h5 style="color:white;opacity: 0.7;">
+                                                                <i *ngIf="editFlag" class="fa fa-edit" style="cursor: pointer;"
+                                                                    (click)="edit(healthTip._id)"></i>&nbsp;&nbsp;
+                                                                <i *ngIf="editFlag" class="fa fa-trash" style="cursor: pointer;"
+                                                                    (click)="delete(healthTip._id)"></i>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-md-5"></div>
+                                                        <div class="col-md-3" style="color:white;opacity: 0.7;text-align: right;">
+                                                            {{ healthTip.like_count }}
+                                                            <img src="assets/images/file-icons/icon-heart.svg"
+                                                                width="25%" height="50%" />{{ healthTip.share_count }}
+                                                            <img src="assets/images/file-icons/icon-share.svg"
+                                                                width="26%" height="60%" />
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </ng-template>
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab id="mostShared" *ngIf="!searchMode && disableTab('Most Shared')">
+                            <ng-template ngbTabTitle>Most Shared<span class="badge badge-pill  pull-right">{{ healthTipsCount.mostShared }}</span>
+                                <ng-template ngbTabContent>
+
+                                    <div class="scroll-container hide-scrollbar">
+                                        <div class="mt-3 col-md-2">
+                                            <select style="background-color: #042B3F;" class="form-control"
+                                                placeholder="Choose" (change)="onchangeCategory($event)" [(ngModel)]="selectedCategoryId">
+                                                <option value="">All</option>
+                                                <option *ngFor="let category of categories" value="{{ category._id }}">
+                                                    {{ category.title }}</option>
+                                            </select>
+                                        </div>
+                                        <!-- <div class="mt-3 col-md-2" *ngFor="let item of scrollItems">
+                                            <div class="span-data"> 
+                                                    <a for="validationCustom0" >{{ item }}<span class="badge badge-pill  pull-right">22</span></a>
+                                            </div>
+                                        </div> -->
+                                    </div>
+
+
+                                    <div class="text-center mt-3" *ngIf="loading">
+                                        <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                            role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-5 row" *ngIf="!loading && !healthTips.length">
+                                        <div class="col-md-12">
+                                            <i>
+                                                <h5 class="text-center" style="color: white;">No Health Tips Found</h5>
+                                            </i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 row" *ngIf="!loading">
+                                        <div class="col-lg-6 col-md-12 col-sm-12" style="min-width: 295px;"
+                                            *ngFor="let healthTip of healthTips">
+                                            <div class="card-header" data-toggle="modal" data-original-title="test"
+                                                data-target="#articleViewexampleModal">
+                                                <div (click)="open(content,healthTip)" style="cursor: pointer;">
+                                                    <h6 class="background"><span>{{ healthTip.heading }}</span></h6>
+                                                    <img src="{{ healthTip.image }}" width="100%" height="6%"><br>
+                                                </div>
+                                                <div class=" col-md-12 tab_inneritmmm">
+                                                    <p style="opacity: 0.5;font-size: 14px;">{{
+                                                        shortDescriptionFromHtmlContent(healthTip.description) }}...
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-lg-4 col-md-4 col-sm-12">
+                                                            <h5 style="color:white;opacity: 0.7;">
+                                                                <i *ngIf="editFlag" class="fa fa-edit" style="cursor: pointer;"
+                                                                    (click)="edit(healthTip._id)"></i>&nbsp;&nbsp;
+                                                                <i *ngIf="editFlag" class="fa fa-trash" style="cursor: pointer;"
+                                                                    (click)="delete(healthTip._id)"></i>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-md-5"></div>
+                                                        <div class="col-md-3" style="color:white;opacity: 0.7;text-align: right;">
+                                                            {{ healthTip.like_count }}
+                                                            <img src="assets/images/file-icons/icon-heart.svg"
+                                                                width="25%" height="50%" />{{ healthTip.share_count }}
+                                                            <img src="assets/images/file-icons/icon-share.svg"
+                                                                width="26%" height="60%" />
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </ng-template>
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab id="newest" *ngIf="!searchMode && disableTab('Newest')">
+                            <ng-template ngbTabTitle>Newest<span class="badge badge-pill  pull-right">{{ healthTipsCount.newest }}</span>
+                                <ng-template ngbTabContent>
+
+                                    <div class="scroll-container hide-scrollbar">
+                                        <div class="mt-3 col-md-2">
+                                            <select style="background-color: #042B3F;" class="form-control"
+                                                placeholder="Choose" (change)="onchangeCategory($event)" [(ngModel)]="selectedCategoryId">
+                                                <option value="">All</option>
+                                                <option *ngFor="let category of categories" value="{{ category._id }}">
+                                                    {{ category.title }}</option>
+                                            </select>
+                                        </div>
+                                        <!-- <div class="mt-3 col-md-2" *ngFor="let item of scrollItems">
+                                            <div class="span-data"> 
+                                                    <a for="validationCustom0" >{{ item }}<span class="badge badge-pill  pull-right">22</span></a>
+                                            </div>
+                                        </div> -->
+                                    </div>
+
+
+                                    <div class="text-center mt-3" *ngIf="loading">
+                                        <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                            role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-5 row" *ngIf="!loading && !healthTips.length">
+                                        <div class="col-md-12">
+                                            <i>
+                                                <h5 class="text-center" style="color: white;">No Health Tips Found</h5>
+                                            </i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 row" *ngIf="!loading">
+                                        <div class="col-lg-6 col-md-12 col-sm-12" style="min-width: 295px;"
+                                            *ngFor="let healthTip of healthTips">
+                                            <div class="card-header" data-toggle="modal" data-original-title="test"
+                                                data-target="#articleViewexampleModal">
+                                                <div (click)="open(content,healthTip)" style="cursor: pointer;">
+                                                    <h6 class="background"><span>{{ healthTip.heading }}</span></h6>
+                                                    <img src="{{ healthTip.image }}" width="100%" height="6%"><br>
+                                                </div>
+                                                <div class=" col-md-12 tab_inneritmmm">
+                                                    <p style="opacity: 0.5;font-size: 14px;">{{
+                                                        shortDescriptionFromHtmlContent(healthTip.description) }}...
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-lg-4 col-md-4 col-sm-12">
+                                                            <h5 style="color:white;opacity: 0.7;">
+                                                                <i *ngIf="editFlag" class="fa fa-edit" style="cursor: pointer;"
+                                                                    (click)="edit(healthTip._id)"></i>&nbsp;&nbsp;
+                                                                <i *ngIf="editFlag" class="fa fa-trash" style="cursor: pointer;"
+                                                                    (click)="delete(healthTip._id)"></i>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-md-5"></div>
+                                                        <div class="col-md-3" style="color:white;opacity: 0.7;text-align: right;">
+                                                            {{ healthTip.like_count }}
+                                                            <img src="assets/images/file-icons/icon-heart.svg"
+                                                                width="25%" height="50%" />{{ healthTip.share_count }}
+                                                            <img src="assets/images/file-icons/icon-share.svg"
+                                                                width="26%" height="60%" />
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </ng-template>
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab id="trending" *ngIf="!searchMode && disableTab('Trending')">
+                            <ng-template ngbTabTitle>Trending<span class="badge badge-pill  pull-right">{{ healthTipsCount.trending }}</span>
+                                <ng-template ngbTabContent>
+
+                                    <div class="scroll-container hide-scrollbar">
+                                        <div class="mt-3 col-md-2">
+                                            <select style="background-color: #042B3F;" class="form-control"
+                                                placeholder="Choose" (change)="onchangeCategory($event)" [(ngModel)]="selectedCategoryId">
+                                                <option value="">All</option>
+                                                <option *ngFor="let category of categories" value="{{ category._id }}">
+                                                    {{ category.title }}</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="text-center mt-3" *ngIf="loading">
+                                        <div class="spinner-border text-light" style="width: 3rem; height: 3rem;"
+                                            role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-5 row" *ngIf="!loading && !healthTips.length">
+                                        <div class="col-md-12">
+                                            <i>
+                                                <h5 class="text-center" style="color: white;">No Health Tips Found</h5>
+                                            </i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 row" *ngIf="!loading">
+                                        <div class="col-lg-6 col-md-12 col-sm-12" style="min-width: 295px;"
+                                            *ngFor="let healthTip of healthTips">
+                                            <div class="card-header" data-toggle="modal" data-original-title="test"
+                                                data-target="#articleViewexampleModal">
+                                                <div (click)="open(content,healthTip)" style="cursor: pointer;">
+                                                    <h6 class="background"><span>{{ healthTip.heading }}</span></h6>
+                                                    <img src="{{ healthTip.image }}" width="100%" height="6%"><br>
+                                                </div>
+                                                <div class=" col-md-12 tab_inneritmmm">
+                                                    <p style="opacity: 0.5;font-size: 14px;">{{
+                                                        shortDescriptionFromHtmlContent(healthTip.description) }}...
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-lg-4 col-md-4 col-sm-12">
+                                                            <h5 style="color:white;opacity: 0.7;">
+                                                                <i *ngIf="editFlag" class="fa fa-edit" style="cursor: pointer;"
+                                                                    (click)="edit(healthTip._id)"></i>&nbsp;&nbsp;
+                                                                <i *ngIf="editFlag" class="fa fa-trash" style="cursor: pointer;"
+                                                                    (click)="delete(healthTip._id)"></i>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-md-5"></div>
+                                                        <div class="col-md-3" style="color:white;opacity: 0.7;text-align: right;">
+                                                            {{ healthTip.like_count }}
+                                                            <img src="assets/images/file-icons/icon-heart.svg"
+                                                                width="25%" height="50%" />{{ healthTip.share_count }}
+                                                            <img src="assets/images/file-icons/icon-share.svg"
+                                                                width="26%" height="60%" />
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </ng-template>
+                            </ng-template>
+                        </ngb-tab>
+
+                    </ngb-tabset>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h5 style="color: white;opacity: 0.5;" class="modal-title f-w-200"></h5>
+        <button style="color: white;opacity: 0.5;font-size: 31px;    padding-bottom: 0;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span style="margin: 22px; line-height: 1.5;" aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="card">
+            <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="selectedHealthTip">
+                <h6 class="background"><span style="background: #014466;padding: 0 4px;">{{ selectedHealthTip.heading
+                        }}</span></h6>
+                <img style="border-radius:15px;" src="{{ selectedHealthTip.image }}" width="100%"><br>
+                <!-- <br><br> -->
+                <!-- <h5 style="color:#fff;font-weight: 900;">{{ selectedHealthTip.heading }}</h5> -->
+                <div class=" col-md-12 tab_inneritmmm" style="padding:0;">
+                    <p style="opacity: 0.7;font-size: 13;" [innerHTML]="selectedHealthTip.description">
+                    </p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- <h5 style="color:white;opacity: 0.7;">Dr Aswin Vinod</h5> -->
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3" style="color:white;opacity: 0.7;">
+                            {{ selectedHealthTip.like_count }} <img src="assets/images/file-icons/icon-heart.svg"
+                                width="25%" height="50%" /> {{ selectedHealthTip.share_count }}
+                            <img src="assets/images/file-icons/icon-share.svg" width="25%" height="60%" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- <div class="row">
+                <div class="col-md-12">
+                    <div class="" style="background: transparent;opacity: 1;">
+                                <h6 class="background"><span style="background: #014466;padding: 0 4px;">Live a Healthy life</span></h6>
+                                <img style="border-radius:15px;" src="assets/images/dashboard/article2.png" width="100%"><br>
+                                <br><br><h4 style="color:#fff;font-weight: 900;">3 mistakes in your daily routine</h4>
+                                <div class=" col-md-12 tab_inneritmmm" style="padding:0;">
+                                    <p style="opacity: 0.5;font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                        sed do eiusmod tempor incididunt ut labore et dolore
+                                        magna aliqua. Ut enim ad minim veniam
+                                    </p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        <h5 style="color:white;opacity: 0.7;">Dr Aswin Vinod</h5>
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-4" style="color:white;opacity: 0.7;">
+                                            110k <img src="assets/images/file-icons/icon-heart.svg" width="25%" height="50%"/> 110k <img src="assets/images/file-icons/icon-share.svg" width="25%" height="60%"/>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                        </div>
+                </div>
+
+        
+            </div> -->
+
+</ng-template>

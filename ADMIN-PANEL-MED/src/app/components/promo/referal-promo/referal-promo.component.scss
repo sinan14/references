@@ -1,0 +1,220 @@
+h5,h6{
+  color: white;
+  font-weight: lighter;
+  opacity: 0.7;
+}
+label{
+  color: white;
+  font-weight: lighter;
+  opacity: 0.7;
+}
+a{
+    color: white;
+}
+
+.card-data{
+    background-color: #144258;
+    align-content: center;
+    border-radius: 20px;
+    justify-content: center;
+    width: 100%;
+    height: 40%;
+    color:white;
+    position: relative;
+    padding-left: 40%;
+    padding-bottom: 30%;
+}
+
+.button-prev {
+  
+  margin-left: 10px;
+}
+.buttons {
+  color: white;
+  background-color: #03344d;
+  border: 1px solid #00496e;
+  padding: 6px 10px;
+  
+}
+
+
+
+.span-data{
+    justify-content: space-between;
+    background-color: #0a3347;
+    color:white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 75px;
+    font-weight: 5em;
+    float: right;
+}
+.table th{
+  color: #94aebb;
+  font-weight: lighter;
+  background-color: #03344d;border-color: #aeb0b114;
+}
+
+.table td {
+  //color: #9cb8c6;
+  color: white;
+  font-weight: lighter;
+  opacity: 0.7;
+  background-color: #00496e;    border-color: #aeb0b114;
+}
+.table-responsive {
+    background: #00496e;
+    padding: 0;
+    border-radius: 15px;
+}
+
+
+/*Button CSS*/
+
+.btn{
+    
+    font-weight: 400;
+  }
+  .btn-inverse-dark {
+      background-color: rgba(79, 74, 96, 0.2);
+      background-image: none;
+      border-color: rgba(79, 74, 96, 0);
+    }
+    .btn-dark-rounded{
+      margin-left: 12px;
+      background-color: rgb(1 68 102 / 50%);
+      color: rgb(255 255 255 / 50%);
+    }
+
+    button.btn.btn-dark-rounded.active {
+      color: white;
+      background-color: #064e72;
+      opacity: 1;
+  }
+
+    .btn-submit{
+      color: white;
+      margin-left: 12px;
+      background-color: #014466;
+      border-radius: 10.25em;
+    }
+
+    
+    .form-control{
+      background: #052a3d;
+      color: white;
+      opacity: 0.7;
+      border:1px solid #99b2bf;
+    }
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.modal-body, .modal-header, .modal-footer{
+    background-color: #0b4866;
+}
+
+.data{
+    padding-top: 2%;
+    background-color: #053449;
+    align-content: center;
+    border-radius: 20px;
+    justify-content: center;
+}
+
+
+
+//tab css
+.tab2-card {
+  .nav-tabs {
+    .nav-link {
+      color: #9ebac8;
+      background-color: #00496e;
+      margin-right: 0px;
+      padding: 15px;
+      &.active,
+      &:focus
+        {
+        // color: $primary-color;
+        // border-color: $transparent-color;
+        // border-bottom: 2px solid $primary-color;
+        background: #0b364c;
+        color: #476778;
+        //border-color: #00496e;
+      }
+    }
+  }
+}
+
+
+//Date Styling CSS
+
+[type="date"] {
+  background:#052a3d  url('../../../../assets/images/calendar-icon.svg')  97% 50% no-repeat ;
+  background-size:1.2em auto, 100% 100%;
+  color: grey;
+
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+[type="date"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+
+  color: white;
+
+}
+// [type="date"] { color: transparent !important; } 
+
+// input[type=date]::-webkit-datetime-edit-text {
+//   -webkit-appearance: none;
+//   display: none;
+// }
+// input[type=date]::-webkit-datetime-edit-month-field{
+//   -webkit-appearance: none;
+//   display: none;
+// }
+// input[type=date]::-webkit-datetime-edit-day-field {
+//   -webkit-appearance: none;
+//   display: none;
+// }
+// input[type=date]::-webkit-datetime-edit-year-field {
+//   -webkit-appearance: none;
+//   display: none;
+// }
+
+
+.nav-tabs {
+  .nav-link {
+    color: #9ebac8;
+    background: #0b364c;
+    margin-right: 0px;
+    padding: 15px;
+    &.active,
+    &:focus,
+    &:hover {
+      // color: $primary-color;
+      // border-color: $transparent-color;
+      // border-bottom: 2px solid $primary-color;
+    background-color: #00496e;
+      color: #476778;
+      //border-color: #00496e;
+    }
+  }
+}
+
+
+
+
+      
+
+
+
+
+
+
+
+

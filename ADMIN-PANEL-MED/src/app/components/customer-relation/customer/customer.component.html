@@ -1,0 +1,1032 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-body tab2-card kendo_customer_table customer-relation"
+        style="background: transparent; padding: 0px 15px">
+        <!-- <div class="row">
+                        <input class="form-control costmr_srch"  type="search"
+                        placeholder="Enter CustomerID, Mobile, Order ID, Consultation ID">
+                        <img _ngcontent-serverapp-c18="" style="position:absolute;right:12%;top:48px;" src="assets/images/dashboard/icon-search.svg" width="20px" height="20px">
+                </div> -->
+        <br /><br />
+        <ngb-tabset class="tab-coupon" (tabChange)="tabchange_Function($event)">
+          <ngb-tab title="Customer Data Base" id="Customer_Database" *ngIf="disableTab('Customer Database')">
+            <ng-template ngbTabContent>
+              <div class="kendo_customer_table2">
+                <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab">
+                  <!-- <ng2-smart-table  [settings]="settings" [source]="vendors"></ng2-smart-table> -->
+
+                  <br />
+                  <div class="row">
+                    <div class="col-md-6">
+                      <input type="text" class="search-relation" placeholder="Search"
+                        (keyup)="Search_Details($event,1)">
+                    </div>
+                    <div class="col-md-6">
+                      <button style=" float: right" type="button" class="btn btn-dark btn-inverse-dark"
+                        data-toggle="modal" data-original-title="test" data-target="#AddNewCustomerExampleModal"
+                        (click)="open(AddNewCustomerContent, '')" *ngIf="editFlag">
+                        <img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                          style="margin-right: 10px" />Create Customer
+                      </button>
+                    </div>
+
+                  </div>
+                  <br /><br />
+                  <div class="">
+                    <div class="text-center mt-3" *ngIf="addLoading">
+                      <br /><br />
+                      <div class="spinner-border text-light" style="width: 3rem; height: 3rem" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                    </div>
+
+                    <kendo-grid [kendoGridBinding]="Customer_Database_Array" [sortable]="true">
+                      <!-- [filterable]="true" -->
+                      <kendo-grid-column field="image" title="" width="20">
+                        <!-- [filterable]="false" -->
+
+                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                          <img *ngIf="dataItem.premium" class="crown_size"
+                            src="assets/images/customer/icon-crown.png" />
+                          <!-- <img class='custmr_img' src='assets/images/customer/icon-user-pic1.png'> -->
+                          <img class="custmr_img" src="{{ dataItem.image }}" />
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column field="sl" title="Sl.No" width="10">
+                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                          <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false" [column]="column"
+                            title="Sl.No">
+                            <!-- [filter]="filter" -->
+
+                          </kendo-grid-string-filter-cell>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column field="customerId" title="Customer ID" width="30">
+                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                          <a style="cursor: pointer; text-decoration: underline;"
+                            (click)="Customer_Detail_pg(dataItem.customerId)">{{ dataItem.customerId }}</a>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column field="phone" title="Mobile" width="30">
+                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                          <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false" [column]="column"
+                            title="Mobile">
+                            <!-- [filter]="filter" -->
+
+                          </kendo-grid-string-filter-cell>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column field="name" title="Name" width="30">
+                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                          <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false" [column]="column"
+                            title="Name">
+                            <!-- [filter]="filter" -->
+                          </kendo-grid-string-filter-cell>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column field="createdAt" title="Member Since" width="20">
+                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                          <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false" [column]="column"
+                            title="Member Since">
+                            <!-- [filter]="filter" -->
+
+                          </kendo-grid-string-filter-cell>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column field="locality" title="Zone" width="20">
+                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                          <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false" [column]="column"
+                            title="Zone">
+                            <!-- [filter]="filter" -->
+
+                          </kendo-grid-string-filter-cell>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <!-- <kendo-grid-column field="total" title="Total" width="20">
+                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                    [showOperators]="false" [column]="column" title="Total"
+                                                    [filter]="filter">
+                                                </kendo-grid-string-filter-cell>
+                                            </ng-template>
+                                        </kendo-grid-column> -->
+
+                      <kendo-grid-column field="orderValue" title="Order Value" width="20">
+                        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                          <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false" [column]="column"
+                            title="Order Value">
+                            <!-- [filter]="filter" -->
+
+                          </kendo-grid-string-filter-cell>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-command-column title="Add remarks" width="40" class="text-center">
+                        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                          <!-- <a   data-toggle='modal' 
+                                                                    data-original-title='test' data-target='#exampleModal' (click)='open(exampleModalcontent)'>Remarks</a> -->
+
+                          <button type="button" class="btn btn-dark btn-inverse-dark" data-original-title="test"
+                            data-target="#exampleModal" (click)="open(exampleModalcontent, dataItem._id)"
+                            *ngIf="editFlag">
+                            Remarks
+                          </button>
+                        </ng-template>
+                      </kendo-grid-command-column>
+                    </kendo-grid>
+                  </div>
+
+                  <div class="pagination">
+                    <!-- <ngb-pagination [collectionSize]={{TotalRecords}} [(page)]={{CurrentPage}} [maxSize]={{PageSize}} [rotate]="true"
+                                        [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+
+                    <button *ngIf="hasPrevPage" (click)="onPageChangeLow(1)">
+                      First
+                    </button>
+                    <button *ngIf="hasPrevPage" (click)="onPageChangeLow(current_page - 1)">
+                      Prev
+                    </button>
+                    <button *ngIf="hasPrevPage" (click)="onPageChangeLow(current_page - 1)">
+                      {{ current_page - 1 }}
+                    </button>
+                    <button style="color: yellow">{{ current_page }}</button>
+                    <button *ngIf="hasNextPage" (click)="onPageChangeLow(current_page + 1)">
+                      {{ current_page + 1 }}
+                    </button>
+                    <button *ngIf="hasNextPage" (click)="onPageChangeLow(current_page + 1)">
+                      Next
+                    </button>
+                    <button *ngIf="hasNextPage" (click)="onPageChangeLow(total_page)">
+                      Last
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Promotional SMS Create" id="Promotional_SMS" *ngIf="disableTab('Promotional SMS Create')">
+            <ng-template ngbTabContent>
+              <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab">
+                <br /><br /><br />
+                <form class="form-sample">
+                  <div class="form-group row">
+                    <label class="ml-4" style="text-align: center">Segment</label>
+                    <div class="ml-4 col-md-4">
+                      <select class="form-control">
+                        <option>Most Viewed</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="ml-4" style="text-align: center">Customer</label>
+                    <div class="ml-3 col-md-4">
+                      <select class="form-control">
+                        <option hidden>Select</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="ml-4">Description</label>
+                    <div class="ml-2 col-md-6">
+                      <textarea class="form-control" id="exampleTextarea1" rows="5"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="ml-4">Time Slot</label>
+                    <div class="ml-2 col-md-2">
+                      <button type="button" class="btn btn-dark">
+                        Immediately
+                      </button>
+                      <!-- <span class="ml-4 calender_icon">
+                                                            <i style="font-size:20px;color: whitesmoke;" class="fa fa-calendar"></i>
+                                                        </span> -->
+                    </div>
+                    <div class="pl-4 col-md-3">
+                      <div class="coc-block">
+                        <input style="color: #fff" class="form-control" id="validationCustom01" type="date" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ml-2 col-md-8" style="width: 100%; float: left">
+                    <button style="margin-right: 42px" type="button" class="cusm_prv_btn btn-dark-rounded">
+                      Preview
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Promotional Mail Creation" id="Promotional_Mail"
+            *ngIf="disableTab('Promotional Mail Creation')">
+            <ng-template ngbTabContent>
+              <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab">
+                <br /><br /><br />
+                <form class="form-sample">
+                  <div class="form-group row">
+                    <label class="ml-4 mt-2">Segment</label>
+                    <div class="ml-3 col-md-4">
+                      <select class="form-control">
+                        <option>Most Viewed</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="ml-4" style="text-align: center">Customer</label>
+                    <div class="ml-2 col-md-4">
+                      <select class="form-control">
+                        <option hidden>Select</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="ml-4 mt-2">Subject</label>
+                    <div class="ml-4 col-md-4">
+                      <input type="text" class="form-control" />
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="ml-4">Description</label>
+                    <div class="col-md-6">
+                      <textarea class="form-control" id="exampleTextarea1" rows="5"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-md-4 upload-btn-wrapper btn-dark promot" style="
+                        border-radius: 10px;
+                        position: relative;
+                        background-color: #014466;
+                      ">
+                      <img src="assets/images/file-icons/icon-file.svg" width="40px" height="20px" />
+                      <label style="font-size: 12px;margin: 0;">Choose File</label>
+                      <input type="file" name="myfile" class="choosing" />
+                    </div>
+                  </div>
+
+                  <div class="ml-2 col-md-8" style="width: 100%; float: left">
+                    <button style="margin-right: 42px" type="button" class="cusm_prv_btn btn-dark-rounded">
+                      Send mail
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab id="Push_Notification" *ngIf="disableTab('Push Notification Create')">
+            <ng-template ngbTabTitle>Push Notification Create
+              <ng-template ngbTabContent>
+                <br /><br /><br />
+                <div class="kendo_customer_table1" style="background: transparent; padding: 0px 15px">
+                  <div class="form-group row col-md-12" style="direction: rtl">
+                    <!-- <button *ngIf="!Push_Notification_Form_Flag" type="button"
+                                        style="border: none;box-shadow: none;" (click)="Back_Button_Click()"><i
+                                            class="fa fa-arrow-left" aria-hidden="true">BACK</i></button> -->
+
+                    <button type="button" class="btn btn-dark bts" style="border: none; box-shadow: none"
+                      [ngClass]="Scheduled_Push_Flag ? 'active' : ''" (click)="Scheduled_Push_Notification()">
+                      Scheduled Push Notification
+                    </button>
+                    <button type="button" class="btn btn-dark bts" style="border: none; box-shadow: none"
+                      [ngClass]="Past_Push_Flag ? 'active' : ''" (click)="Past_Push_Notification()">
+                      Past Push Notification
+                    </button>
+                    <button type="button" class="btn btn-dark bts" style="border: none; box-shadow: none"
+                      [ngClass]="Create_Push_Flag ? 'active' : ''" (click)="Create_Push_Notification()">
+                      Create Push Notification
+                    </button>
+                  </div>
+
+                  <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab"
+                    *ngIf="Push_Notification_Form_Flag">
+                    <form [formGroup]="Push_Notification_Form" class="mt-2 form-sample">
+                      <div class="form-group row">
+                        <div class="col-md-3 mb-3">
+                          <label class="">Segment</label>
+                          <select class="form-control" (change)="Segment_Drop_Change($event, 'edit')"
+                            formControlName="segment" [attr.disabled]="View_Only_Flag ? '' : null">
+                            <option value="all_customers">ALL CUSTOMERS</option>
+                            <option value="single_order_customers">
+                              SINGLE ORDER CUSTOMERS
+                            </option>
+                            <option value="no_orders_customers">
+                              NO ORDERS CUSTOMERS
+                            </option>
+                            <option value="order_ongoing_customers">
+                              ORDER ONGOING CUSTOMERS
+                            </option>
+                            <option value="premium_customers">
+                              PREMIUM CUSTOMERS
+                            </option>
+                            <option value="subscribed_customers">
+                              SUBSCRIBED CUSTOMERS
+                            </option>
+                          </select>
+                          <!-- <small for="title" class="form-text text-danger" *ngIf="Push_Notification_Form.controls['title'].errors?.required && 
+                                            (Push_Notification_Form.controls['title'].dirty ||  
+                                            Push_Notification_Form.controls['title'].touched || 
+                                            (Push_Notification_Form.controls['title'].untouched  && Submitted ) )">
+                                            Segment required.
+                                            </small> -->
+                        </div>
+
+                        <div class="col-md-3 mb-3 text-center">
+                          <label style="visibility: hidden; width: 100%; display: none;">label</label>
+                          <button *ngIf="!View_Only_Flag" style="margin: 0px" class="btn btn-dark btn-inverse-dark"
+                            (click)="All_Customers_Select()">
+                            Select All Customers
+                          </button>
+                        </div>
+
+                        <!-- [disabled]='All_Customers_Select_Flag' -->
+                        <div class="col-md-6 mb-3">
+                          <label style="visibility: hidden">label</label>
+                          <kendo-multiselect #subcategoryid class="form-control" [data]="Customer_Array"
+                            [filterable]="true" textField="name" valueField="_id" [valuePrimitive]="true"
+                            (filterChange)="handleFilterProduct($event)" formControlName="userIds" [autoClose]="false"
+                            [attr.disabled]="View_Only_Flag ? '' : null">
+                          </kendo-multiselect>
+
+                          <small for="userIds" class="form-text text-danger" *ngIf="
+                              Push_Notification_Form.controls['userIds'].errors
+                                ?.required &&
+                              (Push_Notification_Form.controls['userIds']
+                                .dirty ||
+                                Push_Notification_Form.controls['userIds']
+                                  .touched ||
+                                (Push_Notification_Form.controls['userIds']
+                                  .untouched &&
+                                  Submitted))
+                            ">
+                            Customer required.
+                          </small>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label class="">Section</label>
+                          <select class="form-control" id="validationCustom02" (change)="
+                              dropDownChange($event.target.value, 'edit')
+                            " formControlName="redirectionType" [attr.disabled]="View_Only_Flag ? '' : null">
+                            <option value="" hidden>Select</option>
+                            <option value="Medimall">Medimall</option>
+                            <option value="Foliofit">Foliofit</option>
+                            <option value="Medfeed">Medfeed</option>
+                          </select>
+                          <small for="redirectionType" class="form-text text-danger" *ngIf="
+                              Push_Notification_Form.controls['redirectionType']
+                                .errors?.required &&
+                              (Push_Notification_Form.controls[
+                                'redirectionType'
+                              ].dirty ||
+                                Push_Notification_Form.controls[
+                                  'redirectionType'
+                                ].touched ||
+                                (Push_Notification_Form.controls[
+                                  'redirectionType'
+                                ].untouched &&
+                                  Submitted))
+                            ">
+                            Section required.
+                          </small>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label class="" style="visibility: hidden">label</label>
+                          <select class="form-control" id="validationCustom02" (change)="
+                              dropDownProductChange($event.target.value, 'edit')
+                            " formControlName="type" [attr.disabled]="View_Only_Flag ? '' : null">
+                            <option value="" hidden>Select</option>
+                            <option *ngFor="let i of value_array">
+                              {{ i }}
+                            </option>
+                            <!-- <option value="category">Category</option> -->
+                          </select>
+                          <small for="type" class="form-text text-danger" *ngIf="
+                              Push_Notification_Form.controls['type'].errors
+                                ?.required &&
+                              (Push_Notification_Form.controls['type'].dirty ||
+                                Push_Notification_Form.controls['type']
+                                  .touched ||
+                                (Push_Notification_Form.controls['type']
+                                  .untouched &&
+                                  Submitted))
+                            ">
+                            Section required.
+                          </small>
+                        </div>
+
+                        <div class="col-md-3" *ngIf="Medmall_Flag">
+                          <label class="" style="visibility: hidden">label</label>
+
+                          <kendo-dropdownlist #typeid class="form-control" [data]="product_array" [filterable]="true"
+                            [textField]="'title'" [valueField]="'_id'" formControlName="redirectionId"
+                            [valuePrimitive]="true" (filterChange)="handleFilter($event)" optionLabel="Select"
+                            [attr.disabled]="View_Only_Flag ? '' : null">
+                          </kendo-dropdownlist>
+
+                          <!-- <select class="form-control" id="validationCustom02"
+                                                    placeholder="--Select--" formControlName="redirectionId"
+                                                    [attr.disabled]="View_Only_Flag ? '' : null">
+                                                    <option value=null hidden>Select</option>
+                                                    <option *ngFor='let data of product_array' [value]="data._id">{{
+                                                        data.title }}</option>
+                                                </select> -->
+                          <small for="redirectionId" class="form-text text-danger" *ngIf="
+                              Push_Notification_Form.controls['redirectionId']
+                                .errors?.required &&
+                              (Push_Notification_Form.controls['redirectionId']
+                                .dirty ||
+                                Push_Notification_Form.controls['redirectionId']
+                                  .touched ||
+                                (Push_Notification_Form.controls[
+                                  'redirectionId'
+                                ].untouched &&
+                                  Submitted))
+                            ">
+                            Section required.
+                          </small>
+                        </div>
+                        <div class="col-md-3">
+                          <label class="">Title</label>
+                          <input type="text" class="form-control" formControlName="title"
+                            [attr.disabled]="View_Only_Flag ? '' : null" />
+                          <small for="title" class="form-text text-danger" *ngIf="
+                              Push_Notification_Form.controls['title'].errors
+                                ?.required &&
+                              (Push_Notification_Form.controls['title'].dirty ||
+                                Push_Notification_Form.controls['title']
+                                  .touched ||
+                                (Push_Notification_Form.controls['title']
+                                  .untouched &&
+                                  Submitted))
+                            ">
+                            Title required.
+                          </small>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <!-- <div class="col-md-3  mb-3">
+                                                    <label style="visibility: hidden;width:100%;">label</label>
+                                                <button *ngIf="!View_Only_Flag" style="margin:0px;"
+                                                    class="btn btn-dark btn-inverse-dark"
+                                                    (click)="All_Customers_Select()">Select All
+                                                    Customers</button></div> -->
+
+                        <!-- [disabled]='All_Customers_Select_Flag' -->
+                        <!-- <div class="col-md-9 mb-3">
+                                                    <label style="visibility: hidden;">label</label>
+                                                <kendo-multiselect #subcategoryid class="form-control"
+                                                    [data]="Customer_Array" [filterable]="true" textField="name"
+                                                    valueField="_id" [valuePrimitive]="true"
+                                                    (filterChange)="handleFilterProduct($event)"
+                                                    formControlName="userIds" [autoClose]="false"
+                                                    [attr.disabled]="View_Only_Flag ? '' : null">
+                                                </kendo-multiselect>
+                                                 <small for="userIds" class="form-text text-danger" *ngIf="Push_Notification_Form.controls['userIds'].errors?.required && 
+                                        (Push_Notification_Form.controls['userIds'].dirty ||  
+                                        Push_Notification_Form.controls['userIds'].touched || 
+                                        (Push_Notification_Form.controls['userIds'].untouched  && Submitted ) )">
+                                                    Customer required.
+                                                </small>
+                                            </div> -->
+
+                        <div class="col-md-6">
+                          <label class="">Message</label>
+                          <textarea class="form-control" id="exampleTextarea1" rows="8" formControlName="message"
+                            [attr.disabled]="View_Only_Flag ? '' : null"></textarea>
+                          <small for="message" class="form-text text-danger" *ngIf="
+                              Push_Notification_Form.controls['message'].errors
+                                ?.required &&
+                              (Push_Notification_Form.controls['message']
+                                .dirty ||
+                                Push_Notification_Form.controls['message']
+                                  .touched ||
+                                (Push_Notification_Form.controls['message']
+                                  .untouched &&
+                                  Submitted))
+                            ">
+                            Message required.
+                          </small>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="" style="visibility: hidden">label</label>
+                          <div class="span-data">
+                            <div class="upload-btn-wrapper1">
+                              <!-- <i class="icon fa fa-upload"></i> <br>
+                                                        <small> Image</small> -->
+                              <!-- <input type="file" name="myfile" /> -->
+                              <!-- <i class="icon fa fa-upload"></i> -->
+
+                              <i *ngIf="image_URL == ''" class="icon fa fa-upload"></i>
+
+                              <img *ngIf="image_URL != ''" [src]="image_URL" width="100%" height="100%"
+                                class="image-icon" />
+                              <input type="file" name="myfile" (change)="onChange($event, '700', '350')" width="100%"
+                                [attr.disabled]="View_Only_Flag ? '' : null" />
+                            </div>
+                          </div>
+                          <small style="float: right"> Image 700 X 350</small>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-md-3 d-flex align-items-center">
+                          <label class="">Time Slot</label>
+                          <button type="button" class="btn btn-dark" [ngClass]="Immediate_Flag ? 'active' : ''"
+                            (click)="Push_Notification_Immediate()" [attr.disabled]="View_Only_Flag ? '' : null">
+                            Immediately
+                          </button>
+                          <!-- <span class="ml-4 calender_icon">
+                                                            <i style="font-size:20px;color: whitesmoke;" class="fa fa-calendar"></i>
+                                                        </span> -->
+                        </div>
+                        <div class="col-md-5" *ngIf="!Immediate_Flag">
+                          <div class="coc-block">
+                            <input class="form-control" id="validationCustom01" type="date" formControlName="date"
+                              min="{{ today }}" [attr.disabled]="View_Only_Flag ? '' : null" />
+                          </div>
+                          <small for="date" class="form-text text-danger" *ngIf="
+                              Push_Notification_Form.controls['date'].errors
+                                ?.required &&
+                              (Push_Notification_Form.controls['date'].dirty ||
+                                Push_Notification_Form.controls['date']
+                                  .touched ||
+                                (Push_Notification_Form.controls['date']
+                                  .untouched &&
+                                  Submitted))
+                            ">
+                            Date required.
+                          </small>
+                        </div>
+                        <!-- min={{time_now}}  -->
+                        <div class="col-md-4" *ngIf="!Immediate_Flag">
+                          <div class="coc-block">
+                            <input type="time" class="form-control" formControlName="time"
+                              [attr.disabled]="View_Only_Flag ? '' : null" />
+                          </div>
+                          <small for="time" class="form-text text-danger" *ngIf="
+                              Push_Notification_Form.controls['time'].errors
+                                ?.required &&
+                              (Push_Notification_Form.controls['time'].dirty ||
+                                Push_Notification_Form.controls['time']
+                                  .touched ||
+                                (Push_Notification_Form.controls['time']
+                                  .untouched &&
+                                  Submitted))
+                            ">
+                            Time required.
+                          </small>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12" style="width: 100%; float: left; padding-right: 0px"
+                        *ngIf="!View_Only_Flag">
+                        <button style="" type="button" class="cusm_prv_btn btn-dark-rounded"
+                          (click)="add_PUSH_NOTIFICATION('add')" *ngIf="!Update_Flag">
+                          Send/Scheduled
+                        </button>
+                        <div *ngIf="Submitted && Loading" class="spinner-border" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </div>
+                        <button style="margin-right: 42px" type="button" class="cusm_prv_btn btn-dark-rounded"
+                          (click)="add_PUSH_NOTIFICATION('update')" *ngIf="Update_Flag">
+                          Update
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+
+                  <kendo-grid [kendoGridBinding]="Push_Notification_Array" [filterable]="true" [sortable]="true"
+                    [pageSize]="10" [skip]="skip" (pageChange)="pageChange($event)" [pageable]="true"
+                    *ngIf="!Push_Notification_Form_Flag">
+                    <!-- <kendo-grid [kendoGridBinding]="LIST_ALL_BRANDS" [filterable]="true" [sortable]="true"
+                                        classs="master-table" [pageSize]="20" [skip]="skip"
+                                        (pageChange)="pageChange($event)" [pageable]="true"> -->
+
+                    <kendo-grid-column field="sl" title="Sl.No" width="10">
+                      <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                        <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false" [column]="column"
+                          title="Sl.No" [filter]="filter">
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column field="title" title="Title" width="30">
+                      <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <a style="text-decoration: underline" (click)="View_Push_Notification(dataItem._id)">{{
+                          dataItem.title }}</a>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column field="date" title="Date" width="30">
+                      <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                        <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false" [column]="column"
+                          title="Mobile" [filter]="filter">
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-command-column title="Action" width="40" *ngIf="!Past_Push_Flag" class="text-center">
+                      <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <button type="button" class="btn btn-dark btn-inverse-dark" *ngIf="editFlag"
+                          (click)="Edit_Push_Notification(dataItem._id)">
+                          Edit
+                        </button>
+                      </ng-template>
+                    </kendo-grid-command-column>
+                  </kendo-grid>
+                </div>
+              </ng-template>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab id="Medcoin_Distribution" title="Medcoin Distribution" *ngIf="disableTab('Medcoin Distribution')">
+            <ng-template ngbTabContent>
+              <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab">
+                <br /><br /><br />
+                <form [formGroup]="payForm" class="form-sample">
+                  <div class="form-group row">
+                    <div class="mt-1 col-md-1">
+                      <label>Segment</label>
+                    </div>
+                    <div class="col-md-3">
+                      <select class="form-control" formControlName="segment"
+                        (change)="onChangeSegment($event.target.value)">
+                        <option value="all_customers">ALL CUSTOMERS</option>
+                        <option value="single_order_customers">
+                          SINGLE ORDER CUSTOMERS
+                        </option>
+                        <option value="no_orders_customers">
+                          NO ORDERS CUSTOMERS
+                        </option>
+                        <option value="order_ongoing_customers">
+                          ORDER ONGOING CUSTOMERS
+                        </option>
+                        <option value="premium_customers">
+                          PREMIUM CUSTOMERS
+                        </option>
+                        <option value="subscribed_customers">
+                          SUBSCRIBED CUSTOMERS
+                        </option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-3 text-center">
+                      <label style="visibility: hidden; width: 100%;display: none;">label</label>
+                      <button style="margin: 0px" class="btn btn-dark btn-inverse-dark" (click)="selectAllCustomers()">
+                        Select All Customers
+                      </button>
+                    </div>
+                    <label class="ml-4">Customer</label>
+                    <div class="col-md-3">
+                      <kendo-multiselect [data]="Customer_Array" id="multiselect" formControlName="customers"
+                        [placeholder]="'-- Select customers --'" class="form-control multiselect" [filterable]="true"
+                        textField="name" valueField="_id" [autoClose]="false" [checkboxes]="false"
+                        (valueChange)="payCustomerChange($event)" (filterChange)="payCustomerFilter($event)">
+                      </kendo-multiselect>
+                      <small class="form-text text-danger" *ngIf="isValidPay('customers')">
+                        Customers cannot be empty
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="mt-2 row">
+                    <div class="mt-1 col-md-1">
+                      <label>Medcoin</label>
+                    </div>
+                    <div class="col-md-3">
+                      <input type="number" class="form-control" formControlName="medCoinCount" />
+                      <small class="form-text text-danger" *ngIf="isValidPay('medCoinCount')">
+                        Enter valid number
+                      </small>
+                    </div>
+
+                    <label class="ml-4">Expiry</label>
+                    <div class="ml-4 col-md-3">
+                      <!-- <input
+                        class="form-control"
+                        formControlName="expiryDate"
+                        type="date"
+                        [min]="getToday()"
+                      />
+                      <small
+                        class="form-text help-block"
+                        *ngIf="isValidPay('expiryDate')"
+                      >
+                        Enter valid date
+                      </small> -->
+
+                      <input formControlName="expiryDate" onblur="this.type='text'" onfocus="this.type='date'"
+                        [min]="getToday()" class="form-control" />
+                      <small class="form-text  text-danger" *ngIf="isValidPay('expiryDate')">
+                        enter valid date
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 row">
+                    <div class="mt-1 col-md-1">
+                      <label>Comments</label>
+                    </div>
+                    <div class="col-md-3">
+                      <textarea formControlName="narration" class="form-control">
+                      </textarea>
+                      <small class="form-text  text-danger" *ngIf="isValidPay('narration')">
+                        Required field
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 ml-3 col-md-10" style="width: 100%; float: left">
+                    <button (click)="onSubmitPay()" type="button" class="cusm_prv_btn btn-dark-rounded">
+                      Pay
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Popup Banner" id="Popup_Banner" *ngIf="disableTab('Popup Banner')">
+            <ng-template ngbTabContent>
+              <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab">
+                <br /><br /><br />
+                <form [formGroup]="Popup_Banner_Form" class="form-sample">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="span-data">
+                        <div class="upload-btn-wrapper">
+                          <i class="icon fa fa-upload"></i>
+                          <!-- <i *ngIf="image_URL == ''" class="icon fa fa-upload"></i> <br> -->
+                          <!-- <small> Choose File</small> -->
+                          <img *ngIf="image_URL != ''" [src]="image_URL" width="100%" height="50%" class="image-icon" />
+                          <input type="file" name="myfile" (change)="onChange($event, '940', '822')" />
+                        </div>
+                      </div>
+                      <h6 style="color: #fff; text-align: right; font-size: 10px" for="validationCustom0" class="">
+                        Size : 940 X 822
+                      </h6>
+                    </div>
+
+                    <div class="mt-2 col-md-4">
+                      <div class="mt-1 row" style="padding: 0px">
+                        <div class="col-md-12 mb-3">
+                          <label>Date</label>
+                          <input type="date" class="form-control" min="{{ today }}" formControlName="date"
+                            (click)="Date_Min_Setting()" />
+                          <small for="date" class="form-text text-danger" *ngIf="
+                              Popup_Banner_Form.controls['date'].errors
+                                ?.required &&
+                              (Popup_Banner_Form.controls['date'].dirty ||
+                                Popup_Banner_Form.controls['date'].touched ||
+                                (Popup_Banner_Form.controls['date'].untouched &&
+                                  Submitted))
+                            ">
+                            Date required.
+                          </small>
+                        </div>
+                        <div class="col-md-12">
+                          <label>Section</label>
+                          <select class="form-control" id="validationCustom02" formControlName="type">
+                            <option hidden>Select</option>
+                            <option value="home">Home</option>
+                            <option value="medimall">Medimall</option>
+                            <option value="foliofit">Foliofit</option>
+                            <option value="medfeed">Medfeed</option>
+                          </select>
+                          <small for="type" class="form-text text-danger" *ngIf="
+                              Popup_Banner_Form.controls['type'].errors
+                                ?.required &&
+                              (Popup_Banner_Form.controls['type'].dirty ||
+                                Popup_Banner_Form.controls['type'].touched ||
+                                (Popup_Banner_Form.controls['type'].untouched &&
+                                  Submitted))
+                            ">
+                            Section required.
+                          </small>
+                        </div>
+                        <!-- <div class="ml-3 col-md-4">
+                                                </div> -->
+
+                        <!-- <div class="mt-1 col-md-2">
+                                                    <label>Duration</label>
+                                                </div>
+                                                <div class="pl-3 col-md-4">
+                                                    <input type="text" class="form-control" placeholder="3 second">
+                                                </div> -->
+                      </div>
+
+                      <!-- <div class="mt-4 row">
+                                                
+                                                
+                                              
+
+                                            </div> -->
+
+                      <div class="col-md-12" style="width: 100%; float: left; padding-right: 0px">
+                        <button type="button" class="cusm_prv_btn btn-dark-rounded"
+                          (click)="Popup_Banner_Form_Submit()">
+                          Send
+                        </button>
+                        <div *ngIf="Submitted && Loading" class="spinner-border" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+        <!-- <div class="pull-right">
+                        <button type="button" class="btn btn-primary">Submit</button>
+                    </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<ng-template #exampleModalcontent let-modal>
+  <div class="modal-header">
+    <h5 style="color: white; opacity: 0.5" class="modal-title f-w-200" id="exampleModal">
+      Update
+    </h5>
+    <button style="color: white; opacity: 0.5; font-size: 31px" type="button" class="close" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="Remark_Form">
+      <div class="form row">
+        <div class="form-group col-md-12">
+          <label for="validationCustom01" class="mb-1">Remarks </label>
+          <textarea class="form-control" rows="4" formControlName="remark"></textarea>
+          <small for="remark" class="form-text text-danger" *ngIf="
+              Remark_Form.controls['remark'].errors?.required &&
+              (Remark_Form.controls['remark'].dirty ||
+                Remark_Form.controls['remark'].touched ||
+                (Remark_Form.controls['remark'].untouched && Submitted))
+            ">
+            Remarks required.
+          </small>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-dark btn-dark-rounded" (click)="Edit_Remark()">
+      Save
+    </button>
+    <div *ngIf="Loading" class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <button class="btn btn-dark-rounded" type="button" class="btn btn-dark btn-dark-rounded" type="button"
+      data-dismiss="modal" (click)="modal.dismiss('Cross click')">
+      Close
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #AddNewCustomerContent let-modal>
+  <div class="modal-header">
+    <h5 style="color: white; opacity: 0.5" class="modal-title f-w-200" id="AddNewCustomerExampleModal">
+      Add
+    </h5>
+    <button style="color: white; opacity: 0.5; font-size: 31px" type="button" class="close" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="Add_Customer_Form" class="needs-validation">
+      <div class="form row">
+        <div class="form-group col-md-12">
+          <label for="validationCustom01" class="mb-1">Customer Name </label>
+          <input type="text" class="form-control" formControlName="name" />
+          <small for="name" class="form-text text-danger" *ngIf="
+              Add_Customer_Form.controls['name'].errors?.required &&
+              (Add_Customer_Form.controls['name'].dirty ||
+                Add_Customer_Form.controls['name'].touched ||
+                (Add_Customer_Form.controls['name'].untouched && Submitted))
+            ">
+            Customer Name required.
+          </small>
+          <small for="name" class="form-text text-danger" *ngIf="Add_Customer_Form.controls['name'].errors?.minlength">
+            Enter Valid Name.
+          </small>
+        </div>
+      </div>
+
+      <div class="form row">
+        <div class="form-group col-md-12">
+          <label for="validationCustom01" class="mb-1">Mobile No</label>
+          <input type="text" class="form-control" formControlName="mob" />
+          <small for="mob" class="form-text text-danger" *ngIf="
+              Add_Customer_Form.controls['mob'].errors?.required &&
+              (Add_Customer_Form.controls['mob'].dirty ||
+                Add_Customer_Form.controls['mob'].touched ||
+                (Add_Customer_Form.controls['mob'].untouched && Submitted))
+            ">
+            Mobile No required.
+          </small>
+          <small for="mob" class="form-text text-danger" *ngIf="
+              Add_Customer_Form.controls['mob'].errors?.minlength ||
+              Add_Customer_Form.controls['mob'].errors?.maxlength ||
+              Add_Customer_Form.controls['mob'].errors?.pattern
+            ">
+            Enter Valid Mobile No.
+          </small>
+        </div>
+      </div>
+
+      <div class="form row">
+        <div class="form-group col-md-12">
+          <label for="validationCustom01" class="mb-1">Email ID</label>
+          <input type="text" class="form-control" formControlName="email" />
+          <!-- <small for="email" class="form-text text-danger" *ngIf="Add_Customer_Form.controls['email'].errors?.required && 
+                    (Add_Customer_Form.controls['email'].dirty ||  
+                    Add_Customer_Form.controls['email'].touched || 
+                    (Add_Customer_Form.controls['email'].untouched  && Submitted ) )">
+                        Email ID required.
+                    </small> -->
+          <small for="email" class="form-text text-danger" *ngIf="Add_Customer_Form.controls['email'].errors?.pattern">
+            Enter Valid Email ID.
+          </small>
+        </div>
+      </div>
+
+      <div class="form row">
+        <div class="form-group col-md-12">
+          <label for="validationCustom01" class="mb-1">Address </label>
+          <textarea class="form-control" rows="4" formControlName="addr"></textarea>
+          <!-- <small for="addr" class="form-text text-danger" *ngIf="Add_Customer_Form.controls['addr'].errors?.required && 
+                    (Add_Customer_Form.controls['addr'].dirty ||  
+                    Add_Customer_Form.controls['addr'].touched || 
+                    (Add_Customer_Form.controls['addr'].untouched  && Submitted ) )">
+                        Address required.
+                    </small> -->
+          <small for="addr" class="form-text text-danger" *ngIf="Add_Customer_Form.controls['addr'].errors?.minlength">
+            Enter Valid Address.
+          </small>
+        </div>
+      </div>
+
+      <div class="form row">
+        <div class="form-group col-md-12">
+          <label for="validationCustom01" class="mb-1">Pincode</label>
+          <input type="text" class="form-control" formControlName="pincode" />
+          <!-- <small for="pincode" class="form-text text-danger" *ngIf="Add_Customer_Form.controls['pincode'].errors?.required && 
+                    (Add_Customer_Form.controls['pincode'].dirty ||  
+                    Add_Customer_Form.controls['pincode'].touched || 
+                    (Add_Customer_Form.controls['pincode'].untouched  && Submitted ) )">
+                        Pincode required.
+                    </small> -->
+          <small for="pincode" class="form-text text-danger" *ngIf="
+              Add_Customer_Form.controls['pincode'].errors?.minlength ||
+              Add_Customer_Form.controls['pincode'].errors?.maxlength
+            ">
+            Enter Valid Pincode.
+          </small>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-dark btn-dark-rounded" (click)="Add_New_Customer()">
+      Save
+    </button>
+    <div *ngIf="Submitted && Loading" class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+
+    <button class="btn btn-dark-rounded" type="button" class="btn btn-dark btn-dark-rounded" type="button"
+      data-dismiss="modal" (click)="modal.dismiss('Cross click')">
+      Close
+    </button>
+  </div>
+</ng-template>

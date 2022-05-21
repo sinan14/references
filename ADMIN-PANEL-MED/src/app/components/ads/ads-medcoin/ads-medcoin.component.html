@@ -1,0 +1,366 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card tab2-card" style="background:transparent">
+                <div class="row mt-3 costmr_srch_ivntrylist">
+                    <div class="col-md-8">
+                        <h5 style="margin-top:20px;color: white;opacity: 0.7;">Medcoin Page Home</h5>
+                    </div>
+
+                </div>
+
+                <ngb-tabset class="tab-coupon side_innerpage_tab">
+
+                    <ngb-tab title="Ad 1" *ngIf="disableTab('Ad 1')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+
+
+                                <div class=" row">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of AD1_Array">
+                                        <div class="post_items">
+
+                                            <img src={{item.image}} width="100%">
+                                            <h6 style="margin-left: 0%;color: white;font-size: 15px;">
+                                                <span style="float: right;">
+                                                    <i style="margin-left: 0%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Ad1ExampleModal"
+                                                        (click)="open(Ad1Content,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Ad 2" *ngIf="disableTab('Ad 2')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+
+
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of AD2_Array">
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%">
+                                            <h6 style="color: white;font-size: 15px;">
+                                                <span style="float: right" >
+                                                    <i class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Ad2ExampleModal"
+                                                        (click)="open(Ad2Content,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Disclaimer" *ngIf="disableTab('Disclaimer')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+
+
+                                <div class=" row">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of Disclaimer_Array">
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%">
+                                            <h6 style="color: white;font-size: 15px;">
+                                                <span style="float: right" >
+                                                    <i class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#DisclaimerExampleModal"
+                                                        (click)="open(DisclaimerContent,'edit',item)"
+                                                        *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="How It Works" *ngIf="disableTab('How It Works')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+
+
+                                <div class=" row">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of How_It_Wrk_Array">
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%">
+                                            <h6 style="color: white;font-size: 15px;">
+                                                <span style="float: right" >
+                                                    <i class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#HowItWorksExampleModal"
+                                                        (click)="open(HowItWorksContent,'edit',item)"
+                                                        *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+
+                </ngb-tabset>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+
+<ng-template #Ad1Content let-modal>
+  
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="Ad1ExampleModal">Update</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="Ad1ExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+                            <img src="{{image_URL}}" width="100%" height="50%" class="image-icon">
+                            <input type="file" name="myfile" (change)="onChangeImage($event,'1514','386')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 1514 x 386</h6>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                
+                <div class=" mb-0 col-md-12 pr-0 ">
+                   <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('ad1')">{{addLoading ? 'Updating...' : 'Update'}}</button>
+                </div>
+                
+            </div>
+        </div>
+    
+</ng-template>
+
+
+<ng-template #Ad2Content let-modal>
+ 
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="Ad2ExampleModal">Update</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="Ad2ExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+                            <img src="{{image_URL}}" width="100%" height="50%" class="image-icon">
+                            <input type="file" name="myfile" (change)="onChangeImage($event,'1523','344')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 1523 x 344</h6>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                
+                <div class=" mb-0 col-md-12 pr-0 ">
+                   <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('ad2')">{{addLoading ? 'Updating...' : 'Update'}}</button>
+                </div>
+               
+            </div>
+        </div>
+ 
+</ng-template>
+
+<ng-template #DisclaimerContent let-modal>
+   
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="DisclaimerExampleModal">Update</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="DisclaimerExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+                            <img src="{{image_URL}}" width="100%" height="50%" class="image-icon">
+                            <input type="file" name="myfile" (change)="onChangeImage($event,'1500','390')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 1500 x 390</h6>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                
+                <div class=" mb-0 col-md-12 pr-0 ">
+                   <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('disclaimer')">{{addLoading ? 'Updating...' : 'Update'}}</button>
+                </div>
+               
+            </div>
+        </div>
+ 
+</ng-template>
+
+
+<ng-template #HowItWorksContent let-modal>
+   
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="HowItWorksExampleModal">Update </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="HowItWorksExampleModal">Add </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+                            <img src="{{image_URL}}" width="100%" height="50%" class="image-icon">
+                            <input type="file" name="myfile" (change)="onChangeImage($event,'1500','390')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 1500 x 390</h6>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+               
+                <div class=" mb-0 col-md-12 pr-0">
+                   <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('howItWorks')">{{addLoading ? 'Updating...' : 'Update'}}</button>
+                </div>
+               
+            </div>
+        </div>
+    
+</ng-template>

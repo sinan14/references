@@ -1,0 +1,276 @@
+
+
+  <button type="button" class="btn btn-dark  btn-sm" data-toggle="modal" data-original-title="test"
+  data-target="#exampleModal" (click)="open(content)" style="float:right;"><img src="assets/images/dashboard/icon-cart.png" height="30px" width="40px"/>Cart</button>
+
+
+<div class="container-fluid">
+  <br><br>
+    <div class="row products-admin ratio_asos tab2-card">
+            <ng-template #content let-modal style="float: right;">
+                <div class="modal-header">
+                    <h5 class="modal-title f-w-600" id="exampleModalLabel">Cart</h5>
+                    <button type="button" class="close" aria-label="Close"
+                        (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="needs-validation">
+                        <div class="form" >
+                            <div class="product-detail" *ngFor="let product of product_list">
+                                <div class="row" >
+                                        <div class="col-md-4">
+                                            <img [src]="[product.img]" class="img-fluid blur-up lazyload bg-img" alt="">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="javascript:void(0)">
+                                                <h6>{{product.product_title}} <span style="font-size: small;">{{product.qty}}</span></h6>
+                                                <h5 style="color: white;font-weight: 20px;">{{product.price}}</h5>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h4>  <h5 >{{product.sale}}</h5></h4>
+                                        </div>
+                                       <hr>
+                                </div>
+                            </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        Medi coin
+                                    </div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-2">
+                                        120
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        Discoiunt
+                                    </div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-2">
+                                        120
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        Medi coins
+                                    </div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-2">
+                                        120
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        Coupen
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-class" placeholder="Type here">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button type="submit" class="btn-dark ">Apply</button>
+                                    </div>
+                                    <div class="col-md-2">
+                                        120
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        Upload Prescription
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-4">
+                                        <button type="submit" class="btn-dark form-control">Upload</button>
+                                    </div>
+                                </div>
+
+                                
+                               
+                                <br>
+                        </div>
+                        
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span >$1000 Cart Value</span>
+                        </div>
+                        <div class="col-md-8">
+                            <button type="button" class="btn btn-dark btn-dark-rounded"  data-dismiss="modal"
+                            (click)="modal.dismiss('Cross click')" data-toggle="modal" data-original-title="test"
+                            data-target="#cartexampleModal" (click)="popup(data)" >Send Payment Link</button>
+                        </div>
+                        <!-- <div class="form-group mb-0 col-md-3">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                                (click)="modal.dismiss('Cross click')">Close</button>
+                        </div> -->
+                        
+                    </div>
+                   
+                </div>
+            </ng-template>
+
+
+
+
+        <div class="col-xl-3 col-sm-3 col-md-6" *ngFor="let product of product_list">
+            <div class="card">
+                <div class=" product-box">
+                    <div class="img-wrapper">
+                        <h4 style="float:right;color: white;">{{product.qty}} </h4>
+                        <div class="lable-block"><span class="lable3" *ngIf="product.tag == 'new'">new</span> <span
+                                class="lable4" *ngIf="product.sale == 'on sale'">on sale</span></div>
+                        <div class="front">
+                            <a href="javascript:void(0)"><img [src]="[product.img]"
+                                    class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            <!-- <div class="product-hover">
+                                <ul>
+                                    <li>
+                                        <button class="btn" type="button" data-original-title="" title=""><i
+                                                class="icon-pencil-alt"></i></button>
+                                    </li>
+                                    <li>
+                                        <button class="btn" type="button" data-toggle="modal"
+                                            data-target="#exampleModalCenter" data-original-title="" title=""><i
+                                                class="icon-trash"></i></button>
+                                    </li>
+                                </ul>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <!-- <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div> -->
+                        <a href="javascript:void(0)">
+                            <h6>{{product.product_title}}</h6>
+                        </a>
+                        <h4>{{product.price}} </h4>
+                        <!-- <ul class="color-variant">
+                            <li class="bg-light0"></li>
+                            <li class="bg-light1"></li>
+                            <li class="bg-light2"></li>
+                        </ul> -->
+                        <br>
+                        <button  type="button" class="btn btn-dark btn-fw btn-dark-rounded">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-inverse-dark" data-toggle="modal" data-original-title="test"
+    data-target="#cartexampleModal" (click)="popup(data)" style="float:right;">Order Details</button>
+  
+</div>
+
+
+
+
+<ng-template #data let-modal style="float: right;">
+    <div class="modal-header">
+        <h5 class="modal-title f-w-600" id="cartexampleModal"></h5>
+        <button type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" id="exampleModalLabel">
+        <form class="needs-validation">
+            <div class="form">
+                <div class="row">
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Mobile </label>
+                    </div>
+
+                    <div class="form-group mb-0 col-md-6">
+                        <input class="form-control" id="validationCustom02" type="text" placeholder="9876302134">
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Name </label>
+                    </div>
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Aswin </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Mobile Number </label>
+                    </div>
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">9843271890 </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Email </label>
+                    </div>
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Aswin@gmail.com </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Promocode </label>
+                    </div>
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">c1235F </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">User Since </label>
+                    </div>
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">20 Dec 2021 </label>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row">
+                    <div class="form-group mb-0 col-md-12">
+                        <label for="validationCustom02" class="mb-1 form-control">Select delivery address </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group mb-0 col-md-6">
+                        <textarea for="validationCustom02" class="mb-1 form-control" placeholder="Aswin Vindoe #2 cross mathikkare bangaluru" cols="5"> </textarea>
+                    </div>
+                    <div class="form-group mb-0 col-md-6">
+                        <button  type="button" class="btn btn-dark btn-fw">Add new address</button>
+                    </div>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row mb-0 ">
+                <button type="button" class=" btn-dark form-control" data-dismiss="modal"
+                (click)="modal.dismiss('Cross click')">Proceed to pay</button>
+            <!-- <div class="form-group mb-0 col-md-3">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                    (click)="modal.dismiss('Cross click')">Close</button>
+            </div> -->
+            
+        </div>
+       
+    </div>
+</ng-template>

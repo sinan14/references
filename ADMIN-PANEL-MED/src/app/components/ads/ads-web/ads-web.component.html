@@ -1,0 +1,220 @@
+<div class="container-fluid gym_side_innerpage_tab">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card tab2-card kendo_table">
+
+                <label style="margin: 14px 0px 0px 36px;opacity: 0.7;font-weight: 400;">WEB</label>
+                <div class="card-body tab2-card mt-4">
+                    <!-- [activeId]="selectedTab" -->
+                    <ngb-tabset #t="ngbTabset" (tabChange)="tabChangeEvent($event)" class="tab-coupon">
+
+                        <!-- *ngIf="disableTab('Master')" -->
+                        <ngb-tab title="Home" id="home" *ngIf="disableTab('Home')">
+                            <ng-template ngbTabContent>
+                                <div class="tab-pane fade active show" role="tabpanel" aria-labelledby="account-tab">
+
+                                    <button *ngIf="editFlag" style="margin-top:-80px;float:right;" type="button"
+                                        class="btn btn-dark btn-dark-rounded btn-inverse-dark" data-toggle="modal"
+                                        data-original-title="test" data-target="#Slider1ExampleModal"
+                                        (click)="open(Slider1Content,'add','','')"><img
+                                            src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                            style="margin-right:10px;">Add New</button>
+                                    <!-- *ngIf="editFlag" -->
+
+
+                                    <div class=" row">
+
+                                        <div class="col-lg-4 col-md-6 mb-2" *ngFor="let a of WED_HOME">
+                                            <div class="post_items">
+
+                                                <img src="{{a.image}}" class="image-icon" width="100%">
+                                                <h6 style="float: right;color: white;font-size: 15px;">
+                                                    <span>
+
+                                                        <i *ngIf="editFlag" class="fa fa-trash"
+                                                            (click)="delete(a._id)"></i>
+                                                        <!-- *ngIf="deleteFlag" -->
+
+                                                        <i *ngIf="editFlag" style="margin-left: 15px;" class="fa fa-edit"
+                                                            data-toggle="modal" data-original-title="test"
+                                                            data-target="#Slider1ExampleModal"
+                                                            (click)="open(Slider1Content,'edit',a,'home')"></i>
+                                                        <!-- *ngIf="editFlag" -->
+                                                    </span>
+                                                </h6>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </ng-template>
+                        </ngb-tab>
+
+
+                        <!-- *ngIf="disableTab('Fitness Club')" -->
+
+                        <ngb-tab title="Product Banner" id="pdt_bnr" *ngIf="disableTab('Product Banner')">
+                            <ng-template ngbTabContent>
+                                <!-- *ngFor="let a of Slider1List" -->
+                                <div class="row">
+
+                                    <div class="col-lg-4 col-md-6 mb-2" *ngFor="let a of WED_Banner">
+                                        <div class="post_items">
+
+                                            <img src="{{a.image}}" class="image-icon" width="100%">
+                                            <h6 style="float: right;color: white;font-size: 15px;">
+                                                <span>
+
+                                                    <!-- <i class="fa fa-trash"
+                                                        (click)="delete(a._id)"></i> -->
+                                                    <!-- *ngIf="deleteFlag" -->
+
+                                                    <i *ngIf="editFlag" style="margin-left: 15px;" class="fa fa-edit"
+                                                        data-toggle="modal" data-original-title="test"
+                                                        data-target="#Slider1ExampleModal"
+                                                        (click)="open(Slider1Content,'edit',a,'pdt')"></i>
+                                                    <!-- *ngIf="editFlag" -->
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+                    </ngb-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<ng-template #Slider1Content let-modal>
+
+    <!-- <h1>Home Pop</h1> -->
+
+    <form [formGroup]="slider1Form">
+
+        <div class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="Slider1ExampleModal">{{add_Modal_Flag
+                ? 'Add' : 'Update'}}</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper" *ngIf="!pdt_flag"
+                            [ngClass]="!image_URL  ? 'upload-btn-wrapper' : 'upload-btn-wrapper1' ">
+                            <i *ngIf="!image_URL" class="icon fa fa-upload"></i>
+                            <img *ngIf="image_URL != ''" [src]="image_URL" width="100%" class="image-icon">
+                            <input type="file" name="myfile" class="input-file"
+                                (change)="onChange($event,'1349','265')" />
+                        </div>
+                        <div class="upload-btn-wrapper" *ngIf="pdt_flag"
+                            [ngClass]="!image_URL  ? 'upload-btn-wrapper' : 'upload-btn-wrapper1' ">
+                            <i *ngIf="!image_URL" class="icon fa fa-upload"></i>
+                            <img *ngIf="image_URL != ''" [src]="image_URL" width="100%" class="image-icon">
+                            <input type="file" name="myfile" class="input-file"
+                                (change)="onChange($event,'1349','183')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 " *ngIf="!pdt_flag">
+                    <h6 style="color: #fff;text-align: right;" for="validationCustom0" class="">Size : 1349px X 265px
+                    </h6>
+                </div>
+                <div class="col-md-6 " *ngIf="pdt_flag">
+                    <h6 style="color: #fff;text-align: right;" for="validationCustom0" class="">Size : 1349px X 183px
+                    </h6>
+                </div>
+            </div>
+
+            <div class="mt-2 row">
+                <div class="col-md-6">
+
+
+                    <select class="form-control classic" id="validationCustom02" formControlName="redirection_type"
+                        (change)="dropDownChange($event.target.value)">
+                        <option value="" selected disabled>Select</option>
+                        <option value="product">Product</option>
+                        <option value="category">Category</option>
+                    </select>
+                    <small for="redirection_type" class="form-text text-danger" *ngIf="slider1Form.controls['redirection_type'].errors?.required &&
+                (slider1Form.controls['redirection_type'].dirty ||
+                slider1Form.controls['redirection_type'].touched ||
+                (slider1Form.controls['redirection_type'].untouched  && attemptedSubmit ) )">
+                        Type required.
+                    </small>
+                </div>
+
+                <div class="col-md-6">
+
+
+
+                    <!-- <select class="form-control classic" id="validationCustom02" formControlName="redirection_id"
+                        placeholder="--Select--">
+                        <option value="" selected>Select</option>
+                        <option  *ngFor="let a of value_array" value={{a._id}}>{{a.title}}</option>
+                    </select> -->
+
+                    <!-- (filterChange)="handleFilterFitnessSliderCategory($event)" -->
+
+
+                    <kendo-dropdownlist #productType class="form-control" [data]="value_array" [filterable]="true"
+                    [textField]="'title'" [valueField]="'_id'" formControlName="redirection_id" [valuePrimitive]="true"
+                    (filterChange)="handleFilterFitnessSliderCategory($event)">
+                    </kendo-dropdownlist>
+
+
+
+
+
+                    <small for="redirection_id" class="form-text text-danger" *ngIf="slider1Form.controls['redirection_id'].errors?.required &&
+                (slider1Form.controls['redirection_id'].dirty ||
+                slider1Form.controls['redirection_id'].touched ||
+                (slider1Form.controls['redirection_id'].untouched  && attemptedSubmit ) )">
+                        Redirect Type required.
+                    </small>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-dark-rounded" type="button" data-dismiss="modal" (click)="close()">Close</button>
+            <!-- *ngIf="add_Modal_Flag" -->
+            <button *ngIf="add_Modal_Flag" type="submit" class="btn btn-dark btn-dark-rounded" [disabled]="addLoading"
+                (click)="save()"><span class="spinner-border spinner-border-sm" role="status"
+                    aria-hidden="true" *ngIf="addLoading"></span>
+                {{ addLoading ? "Saving..." : "Save" }}</button>
+            <!-- *ngIf="update_Modal_Flag" -->
+            <button *ngIf="!add_Modal_Flag && !pdt_flag" type="submit" class="btn btn-dark btn-dark-rounded" [disabled]="addLoading"
+                (click)="Update('home')"><span class="spinner-border spinner-border-sm" role="status"
+                    aria-hidden="true" *ngIf="addLoading"></span>
+                {{ addLoading ? "Updating..." : "Update" }}</button>
+
+                <button *ngIf="!add_Modal_Flag && pdt_flag" type="submit" class="btn btn-dark btn-dark-rounded" [disabled]="addLoading"
+                (click)="Update('pdt')"><span class="spinner-border spinner-border-sm" role="status"
+                    aria-hidden="true" *ngIf="addLoading"></span>
+                {{ addLoading ? "Updating..." : "Update" }}</button>
+
+        </div>
+
+
+    </form>
+</ng-template>

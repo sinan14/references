@@ -1,0 +1,113 @@
+<div *ngIf="disableTab('Diet Regime')">
+        <button style="margin-top:-70px;float:right;    background: #014466;" type="button" class="btn btn-dark btn-dark-rounded side_innerpage_tab button" data-toggle="modal"
+            data-original-title="test" data-target="#DietPlanExampleModal" (click)="open(DietPlan,'add','')" *ngIf="editFlag"><img
+                src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add Diet
+            Plan</button>
+
+        <div class="text-center mt-3" *ngIf="loading">
+            <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div class="mt-5 row" *ngIf="!loading && !dietRegimes.length">
+            <div class="col-md-12">
+                <i>
+                    <h5 class="text-center text-white">No Items Found</h5>
+                </i>
+            </div>
+        </div>
+        <div class="row" *ngIf="!loading">
+
+            <div class="col-md-3 card21 mb-3" *ngFor="let dietRegime of dietRegimes">
+                <div class="cardbdy pointer">
+                    <img src="{{ dietRegime.image }}" class="fruitv" (click)="redirectToDietPlan(dietRegime._id)" />
+                    <h6 style="text-align: left;"><h6 class="float-name">{{ dietRegime.name }} </h6>
+                        <span style="float: right; color: white;font-size: 15px;">
+                            <i class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                data-target="#CalorieChartxampleModal"
+                                (click)="open(DietPlan,'edit',dietRegime)" *ngIf="editFlag"></i>
+
+                            <i style="margin-left: 15px;" class="fa fa-trash" *ngIf="editFlag"
+                                (click)="delete(dietRegime._id)"></i>
+                        </span>
+                    </h6>
+                </div>
+            </div>
+        </div>
+</div>
+<ng-template #DietPlan let-modal>
+
+    <div *ngIf="editMode" class="modal-header">
+        <h5 style="color: white; opacity: 0.7;" class="modal-title f-w-200" id="DietPlanExampleModal">Update</h5>
+        <button style="color: white; opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div *ngIf="!editMode" class="modal-header">
+        <h5 style="color: white; opacity: 0.7;" class="modal-title f-w-200" id="DietPlanExampleModal">Add</h5>
+        <button style="color: white; opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="form">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="!imagePreview "></i>
+                            <img src="{{imagePreview}}" width="100%" height="50%" class="image-icon  "
+                                *ngIf="imagePreview">
+                            <input type="file" (change)="onImageChange($event)" formControlName="image" />
+                        </div>
+                    </div>
+                    <div class="col-md-12 ">
+                        <label _ngcontent-serverapp-c827="" for="image" style="float: right;">460 X 366</label>
+                        
+                    </div>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="(form.controls.image.touched && !editMode && !image)">
+                        Image is required.
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class=" mb-0 col-md-12">
+                    <label for="validationCustom02" class="mb-0">Diet plan</label>
+                    <input type="text" class="form-control" formControlName="name">
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('name','required')">
+                        This field is required.
+                    </div>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('name','maxlength')">
+                        Maximum allowed length is 255.
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            
+            <div class=" mb-0 col-md-12 pr-0">
+                <button type="button" class="btn btn-dark btn-dark-rounded" (click)="save()" *ngIf="!editMode">
+                    {{ saving ? "Saving" : "Save" }}
+                    <div class="spinner-border spinner-border-sm  text-light" role="status" *ngIf="saving">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </button>
+                <button type="button" class="btn btn-dark btn-dark-rounded" (click)="update()" *ngIf="editMode">
+                    {{ updating ? "Updating" : "update" }}
+                    <div class="spinner-border spinner-border-sm  text-light" role="status" *ngIf="updating">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </button>
+            </div>
+         
+        </div>
+    </div>
+</ng-template>

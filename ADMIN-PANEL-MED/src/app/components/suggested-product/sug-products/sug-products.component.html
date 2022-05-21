@@ -1,0 +1,219 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="kendo_table master-demo">
+                <div class="card-body explore_mastertab tab2-card" *ngIf="disableTab('Suggested Products')">
+                    <h6>Suggested Products</h6>
+
+
+                    <!-- <div class="btn-popup ">
+                                                <button type="button" class="btn btn-dark btn-inverse-dark pull-right" data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModal" (click)="open(exampleModalcontent,'add')"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;"> Add New</button>
+                                             
+                                            </div> -->
+                    <br><br>
+
+                    <form [formGroup]="sugForm">
+
+                        <div class="mt-2 row">
+                            <div class="col-md-3">
+                                <label>From Date</label>
+                                <!-- <input type="date" class="form-control" max="{{minDate}}"> -->
+                                <!-- <kendo-datepicker class="form-control" style="background-color: #033147;"
+                                                        [min]="min"
+                                                    ></kendo-datepicker> -->
+                                <input formControlName='strt_dt' type="date" class="form-control" max="{{ strt_dt }}"
+                                    (change)="getStartdate($event)" onkeydown="return false">
+
+                            </div>
+
+                            <div class="col-md-3">
+                                <label>To Date</label>
+                                <!-- <input type="date" class="form-control" max="{{minDate}}"> -->
+                                <input formControlName='end_dt' type="date" class="form-control" min="{{temp}}"
+                                    type="date" class="form-control" (change)="date_change($event)"
+                                    onkeydown="return false">
+
+                                <!-- <kendo-datepicker  class="form-control" style="background-color: #033147;"
+                                                            [min]="min"
+                                                    ></kendo-datepicker> -->
+                            </div>
+
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-dark btn-excel-rounded m-30"
+                                    (click)="clear()">CLEAR</button>
+
+
+                            </div>
+
+                        </div>
+                    </form>
+
+                    <br><br>
+
+                    <div class="table-responsive">
+                        <!-- <kendo-grid [kendoGridBinding]="suggestedProduct_Array" [filterable]="true" [sortable]="true"
+                            *ngIf="disableTab('Suggested Product')"> -->
+
+                            <kendo-grid [kendoGridBinding]="suggestedProduct_Array" [filterable]="true" [sortable]="true"
+                            classs="master-table" [pageSize]="10" [skip]="skip"
+                            (pageChange)="pageChange($event)" [pageable]="true" *ngIf="disableTab('Suggested Product')" id="excel-table">
+
+                            <ng-template kendoGridToolbarTemplate>
+                                <div style="padding-left: 80%;">
+                                    <button type="button" kendoGridPDFCommand class="pl-3 pr-3 btn btn-dark btn-excel-rounded"
+                                        *ngIf="viewFlag">
+                                        <i class="fa fa-file-pdf-o"></i> PDF</button>
+                                        <!-- kendoGridExcelCommand -->
+                                    &nbsp;&nbsp;&nbsp;<button type="button" (click)="exportexcel()"
+                                        class="btn btn-dark btn-excel-rounded pl-3 pr-3 " *ngIf="viewFlag">
+                                        <i class="fa fa-file-excel-o"></i> Excel</button>
+                                </div>
+                            </ng-template>
+                            <kendo-grid-column field="slno" title="SlNo" width="20">
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                        [column]="column" title="SlNo" [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+                            </kendo-grid-column>
+
+
+
+                            <kendo-grid-column field="User_id" title="Customer ID" width="20" [filterable]="true">
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                        [column]="column" title="Customer ID" [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+                            </kendo-grid-column>
+
+                            <kendo-grid-column field="name" title="Customer Name" width="20" [filterable]="true">
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                        [column]="column" title="Customer Name" [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+                            </kendo-grid-column>
+
+                            <kendo-grid-column field="contact" title="Contact No" width="20" [filterable]="true">
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                        [column]="column" title="Contact No" [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                    <a style="text-decoration: none;" routerLink="#">{{dataItem.contact}}</a>
+                                    <img src="assets/images/file-icons/icon-phone-call.svg" width="30px" height="20px" style="object-fit: contain;">
+                                </ng-template>
+                            </kendo-grid-column>
+
+
+                            <kendo-grid-column field="productname" title="Product Name" width="20" [filterable]="true">
+                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                    <kendo-grid-string-filter-cell placeholder="search" [showOperators]="false"
+                                        [column]="column" title="Product Name" [filter]="filter">
+                                    </kendo-grid-string-filter-cell>
+                                </ng-template>
+                            </kendo-grid-column>
+
+                            <kendo-grid-command-column title="Action" width="20" class="text-center">
+                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                    <button type="button" class="btn btn-dark btn-dark-rounded"
+                                        (click)="Add_Suggested_Pdt(dataItem)" *ngIf="editFlag">Add</button>
+
+                                </ng-template>
+                            </kendo-grid-command-column>
+
+                            <!-- [fetchData]="allData" -->
+                            <!-- <kendo-grid-excel fileName="Suggested Products.xlsx" ></kendo-grid-excel> -->
+                            <kendo-grid-pdf fileName="Suggested Products.pdf" [allPages]="true" paperSize="A4"
+                                [repeatHeaders]="true" [landscape]="true">
+                                <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm">
+                                </kendo-grid-pdf-margin>
+                                <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
+                                    <div class="page-template">
+                                        <div class="header">
+                                            <div style="float: right">
+                                                Page {{ pageNum }} of {{ totalPages }}
+                                            </div>
+                                            Multi-page grid with automatic page breaking
+                                        </div>
+                                        <div class="footer">Page {{ pageNum }} of {{ totalPages }}</div>
+                                    </div>
+                                </ng-template>
+                            </kendo-grid-pdf>
+
+                        </kendo-grid>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<ng-template #exampleModalcontent let-modal>
+    <div *ngIf="update_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="exampleModal">Update</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div *ngIf="add_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="exampleModal">Add</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="form row">
+            <div class="form-group col-md-6">
+                <label for="validationCustom01" class="mb-1">Choose Image</label>
+                <div class="image-data">
+                    <div class="upload-btn-wrapper ">
+                        <i class="icon fa fa-upload"></i><br>
+                        <input type="file" name="myfile" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="validationCustom01" class="mb-1">Banner</label>
+                <div class="image-data">
+                    <div class="upload-btn-wrapper ">
+                        <i class="icon fa fa-upload"></i><br>
+                        <input type="file" name="myfile" />
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <div class="form row">
+            <div class="form-group mb-0 col-md-12">
+                <label for="validationCustom02" class="mb-1">Sub Category Name</label>
+                <input class="form-control" id="validationCustom02" type="text">
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn  btn-dark-rounded">Save</button>
+        <button class="btn btn-dark-rounded" type="button" class="btn btn-dark-rounded" type="button"
+            data-dismiss="modal" (click)="modal.dismiss('Cross click')">Close</button>
+    </div>
+</ng-template>

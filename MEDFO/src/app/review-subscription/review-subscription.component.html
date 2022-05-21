@@ -1,0 +1,313 @@
+<div class="ps-page">
+    <app-header></app-header>
+  </div>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W32L424"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) →-->
+        
+        
+        <a style="display:none;" data-toggle="modal" id="display-success-popup" data-target="#success1">success</a> 
+        
+<section class="inner_new_page_container" style="background: #F7F7F7;">
+                 
+    <div class="container">
+      <h4 class="subscription-review">Review subscription</h4>    
+       <div class="row">
+          <div class="col-lg-8 col-md-12 float-right">
+             
+             <div class="cart_item_lst_row" *ngFor="let i of cartList">
+               
+                <div class="ribbon"  *ngIf="i.discountAmount!=0">{{i.discountInPercentage}}% <span>Discount</span></div>
+                <div class="cart_item_lst_row_img" style="top: 0;"><img src="{{i.image}}"
+                      alt=""></div>
+                <div class="cart_item_lst_row_contant" style="margin-left: 15px;margin-top: 30px;">
+                   <div class="cart_item_lst_row_contant_name" style="margin: 0 0 5px 0;">{{i.productName | titlecase}}
+                      wash
+                   </div>
+                   <div class="cart_item_lst_row_contant_cmpny" style="margin: 0 0 8px 0;">{{i.brandName | titlecase}}
+                      pruduct
+                   </div>
+                   <div class="cart_item_lst_row_contant_gram">{{i.uomValue}}</div>
+                   <div class="cart_item_lst_row_contant_gram sub-rev-qty">Qty : {{i.quantity}}</div>
+                   <div class="cart_item_lst_row_contant_rate sub-rev-prc" style="text-align: right;">
+                    <div class="cart_item_lst_row_contant_rate crosswith11 rupees"  *ngIf="i.discountAmount!=0">
+                        <span>
+                            <i class="fa fa-rupee"></i> {{i.price  * i.quantity}}
+                        </span>
+
+
+                    </div>
+                    <div class="review-cart-price">
+                    <!-- <div class="form-group--number1">
+                      <button class="downs" > <i class="fa fa-minus"></i></button>
+                      <input class="form-control" type="text"  value="" disabled>
+                      <button class="ups" > <i class="fa fa-plus"></i></button>
+                    </div> -->
+                      <h4 style="float: right;font-weight: 400;"><i class="fa fa-rupee"></i>
+                        {{i.specialPrice  * i.quantity}}</h4>
+                      
+                   </div></div>
+                </div>
+             </div>
+<!-- 
+             <div class="exp_amt_pay_box" style="width: 100%; padding: 15px 20px"
+             *ngIf="token && cartList && cartList.length ">
+             <span>Total amount</span>
+             <i class="fa fa-rupee"></i> {{cartDetails.totalAmountToBePaid ? cartDetails.totalAmountToBePaid : 0}}
+             <a>
+                <div class="ftr11 float-right">
+                    <button type="button" class="btn btn-primary Profile">Confirm
+                       subscription</button>
+                 </div>
+             </a>
+           </div> -->
+             
+             <div class="row mb-3">
+                <div class="ftr-box">
+                   <div class=" float-left">
+                      <label style="font-size:10px;color: #00AAFF;float: left;">Total
+                         amount</label>
+                      <h4 style="font-size:20px;"><i class="fa fa-rupee"></i> {{cartDetails.totalAmountToBePaid ? cartDetails.totalAmountToBePaid : 0}}</h4>
+                   </div>
+                   <div class="ftr11 float-right">
+                      <button type="button" class="btn btn-primary Profile" data-toggle="modal" id="popup4"
+                      data-target="#refunds">Confirm
+                         subscription</button>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-lg-4 col-md-12  float-right">
+             <div class="row">
+                <div class="col-md-6">
+                   <div class="bb1">
+                      <label>First delivery date</label>
+                      <hr>
+                      <label style="color: #00AAFF; font-weight: 700;">{{cartDetails.deliveryDate | date}}</label>
+                   </div>
+                </div>
+                <div class="col-md-6">
+                   <div class="bb1">
+                      <label>Second delivery date</label>
+                      <hr>
+                      <label style="color: #00AAFF; font-weight: 700;"> {{nextDeliveryDate}}</label>
+                   </div>
+                </div>
+             </div>
+             <div class="listing-review" style="margin-bottom: 15px;">
+                <div class="f-review">
+                    <ul style="font-size: 13px;">
+                      <li style="padding-top: 11px;">Cart value</li>
+                      <li style="padding-top: 11px;"><i class="fa fa-rupee"></i> {{cartDetails.totalCartValue}}</li>
+                   </ul>
+                </div>
+                <div class="f-review">
+                   <ul>
+                      <li>Delivery charge</li>
+                      <li style="color: #000000; opacity: 0.7; font-weight: 300;" *ngIf="!cartDetails.isThisCartEligibleForFreeDelivery">
+                        {{cartDetails.deliveryCharge}}
+                      </li>
+
+                      <li style="color: #000000; opacity: 0.7; font-weight: 300;" *ngIf="cartDetails.isThisCartEligibleForFreeDelivery">
+                        Free
+                      </li>
+                   </ul>
+                </div>
+
+                <div class="f-review">
+                  <ul>
+                      <li>Medcoins Used</li>
+                      <li>-{{cartDetails.medCoinRedeemed}}</li>
+                  </ul>
+              </div>
+              <div class="f-review">
+                <ul>
+                    <li>Donation Amount</li>
+                    <li>+{{cartDetails.donationAmount}}</li>
+                </ul>
+            </div>
+               <div class="f-review">
+                  <ul>
+                      <li>Member discount</li>
+                      <li>-{{cartDetails.memberDiscount}}</li>
+                  </ul>
+              </div>
+
+                <div class="f-review">
+                   <ul>
+                      <li>Subscription Discount</li>
+                      <li>-{{cartDetails.couponAppliedDiscount}}</li>
+                   </ul>
+                </div>
+                <div class="f-review">
+                   <ul>
+                      <li>Total amount to pay on next delivery</li>
+                      <li class="oneeighty"><i class="fa fa-rupee"></i> {{cartDetails.totalAmountToPayOnNextDelivery}}</li>
+                   </ul>
+                </div>
+                <div class="f-review-blue">
+                   <ul>
+                      <li style="color: #00AAFF;font-weight: 600;">Total payable amount
+                      </li>
+                      <li style="color: #00AAFF;font-weight: 600;"><i class="fa fa-rupee"></i>
+                         {{cartDetails.totalAmountToBePaid}}</li>
+                   </ul>
+                </div>
+             </div>
+             <div class="review-del">
+                <div class="f-del">
+                   <ul>
+                      <li style="width: 67%;">
+                         <a href="#">Delivery to {{customerAddress.type}} - {{customerAddress.pincode}}</a>
+                         <p>{{customerAddress.wholeAddress}}   </p>
+                      </li>
+                      <!-- <li><a href="#" class="change">Change <i class="fa fa-angle-right"></i></a>
+                      </li> -->
+                   </ul>
+                   <p style="font-weight: 500; margin-bottom: 0px;">Delivery in  {{cartDetails.deliveryTime}}</p>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+</section>
+
+
+            
+<footer class="ps-footer ps-footer--5" style="padding-top: 40px;">
+    <app-footer></app-footer>
+</footer>
+
+
+
+      <!-- ------------------------Choose a refund mode------------- -->
+      <section class="mode" style="padding: 0px;">
+         <div class="container">
+           <!-- Trigger the modal with a button -->
+           <!-- Modal -->
+           <div class="modal fade" id="refunds" role="dialog">
+             <div class="modal-dialog">
+               <!-- Modal content-->
+               <div class="modal-content bclolor">
+                 <div class="row">
+                   <div class="col-md-12">
+                     <button
+                       type="button"
+                       class="closeselect"
+                       data-dismiss="modal"
+                       id="dismiss-payment-mode"
+                     >
+                       &times;
+                     </button>
+                   </div>
+                 </div>
+                 <div class="headerpopup" style="border-bottom: 1px solid #e9ecef;">
+                   <div class="row p-3">
+                     <div class="col-md-12">
+                      <h4 style="font-weight: 400;">Choose a payment mode</h4>
+                      <h5 class="headingre" style="font-weight: 300;">choose the payment mode</h5>
+                       
+                     </div>
+                   </div>
+                 </div>
+                 <div class="modal-body">
+                   <div class="container">
+                     <div class="row">
+                       <div
+                         class="col-md-6 text-center"
+                         style="padding: 23px 43px" 
+                       >
+                         <div class="box3 pay-img-flex" (click)="selectPaymentType('razorpay')" [ngClass]="paymentType=='razorpay' ? 'border-active' : '' ">
+                           <img
+                             src="assets/img/cart/atmcard.png"
+                             class="img-fluid"
+                           />
+                         </div>
+                         <label class="medi">Online Payment</label>
+                       </div>
+                       <div
+                         class="col-md-6 text-center"
+                         style="padding: 23px 43px"
+                       >
+                         <!-- <p class="ribbon1">Instant</p> -->
+
+                         <div class="box3 pay-img-flex" (click)="selectPaymentType('cod')" *ngIf="cartDetails.cashOnDelivery"  [ngClass]="paymentType=='cod' ? 'border-active' : '' ">
+                           <img
+                             src="assets/img/cart/pay-medcoin.png"
+                             class="img-fluid"
+                           />
+                         </div>
+
+                         <div class="box3" *ngIf="!cartDetails.cashOnDelivery">
+                          <img
+                            src="assets/img/cart/medcoin.png"
+                            class="img-fluid"
+                          />
+                        </div>
+
+
+                         <label class="medi" *ngIf="cartDetails.cashOnDelivery">COD</label>
+                         <label class="medi small-block" *ngIf="!cartDetails.cashOnDelivery">COD not available</label>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+                 
+
+                 <div class="modal-footer ftrbox">
+                   <div class="container">
+                     <div class="row">
+                       <div class="col-md-6">
+                         <label class="refundamout">Total amount</label><br />
+                         <strong style="font-size: 18px;font-weight: 400;"
+                           ><i class="fa fa-rupee"></i>  {{cartDetails.totalAmountToBePaid }}</strong
+                         >
+                       </div>
+                       <div class="col-md-6">
+                         <button
+                           type="submit"
+                           class="btn btn-primary Confirm-btn" (click)="continuePayment()"
+                         >
+                           Confirm
+                         </button>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+         <!-- </div> -->
+       </section>
+       <!-- ------------Choose a refund mode close ------------------- -->
+
+       <!-- class="modal fade" -->
+<div class="modal fade success-pop" id="success1" tabindex="-1" role="dialog" aria-labelledby="successLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-body">
+      <div class="blue-back" style="background-image: url('../../../assets/img/icon.svg')">
+        <div class="inner-blue">
+          <div class="blue-img">
+            <img src="assets/img/blue.png" />
+          </div>
+          <div class="blue-cont">
+            <h5 class="pt-3">Payment Successfull.</h5>
+            <h5>Your order is placed.</h5>
+            <p style="opacity: 1;font-weight: 200;">
+              Your order is expected to delivered <br />on ({{cartDetails.deliveryDate | date}})
+              <span style="font-weight: 300; color: white"><a routerLink="/">keep shopping with us.</a></span>
+            </p>
+            <button type="submit" class="btn ok-button" (click)="redirectToHome()"  data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Prescription Pop Up -->
+

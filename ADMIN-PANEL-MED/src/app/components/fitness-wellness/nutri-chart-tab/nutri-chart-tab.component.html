@@ -1,0 +1,169 @@
+<div *ngIf="disableTab('Nutri Chart')">
+    <div class="row aa11" style="float: right;">
+        <button style="margin-top:-40px; float:right; background: #014466;" type="button" class="btn btn-dark btn-dark-rounded"
+            data-toggle="modal" data-original-title="test" data-target="#CalorieChartxampleModal"
+            (click)="open(CalorieChartdata,'add','')" *ngIf="editFlag"><img
+                src="assets/images/file-icons/icon-add-circle.svg" width="20px" height="20px" style="margin-right:10px;">Add
+            Category</button>
+    </div>
+
+    <div class="text-center mt-3" *ngIf="loading">
+        <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="mt-5 row" *ngIf="!loading && !nutriChartCategories.length">
+        <div class="col-md-12">
+            <i>
+                <h5 class="text-center text-white">No Items Found</h5>
+            </i>
+        </div>
+    </div>
+    <div class="row" *ngIf="!loading">
+
+        <div class="col-md-3 card21 " *ngFor="let nutryChartCategory of nutriChartCategories">
+            <div class="cardbdy">
+                <img src="{{ nutryChartCategory.image }}" class="fruitv" (click)="redirectToCalorieChart(nutryChartCategory._id)" />
+                <h6 style="text-align: left;"><h6 class="float-name">{{ nutryChartCategory.title }}</h6>
+                    <span style="float:right; color: white;font-size: 15px; padding-top: 2px;">
+                        <i class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                            data-target="#CalorieChartxampleModal" (click)="open(CalorieChartdata,'edit',nutryChartCategory)"
+                            *ngIf="editFlag"></i>
+
+                        <i style="margin-left: 15px;" class="fa fa-trash" *ngIf="editFlag" (click)="delete(nutryChartCategory._id)"></i>
+                    </span>
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #CalorieChartdataOld let-modal>
+
+    <div *ngIf="editMode" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="CalorieChartxampleModal">Update</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div *ngIf="!editMode" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="CalorieChartxampleModal">Add</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class=" form-group  row">
+            <div class=" mb-0 col-md-12">
+                <label for="validationCustom02" class="mb-0">Category Name</label>
+                <input type="text" class="form-control">
+
+            </div>
+
+        </div>
+
+        <div class="mt-3 row">
+            <div class="col-md-12 ">
+                <div class="image-data">
+                    <div class="upload-btn-wrapper">
+                        <i style=" padding: 22px 182px;" class="icon fa fa-upload"></i><br>
+                        <input type="file" name="myfile" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            
+            <div class=" mb-0 col-md-12 ">
+                <button type="button" class="btn btn-dark btn-modal-rounded">Save</button>
+            </div>
+            
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #CalorieChartdata let-modal>
+
+    <div *ngIf="editMode" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="DietPlanExampleModal">Update</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div *ngIf="!editMode" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="DietPlanExampleModal">Add</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="form">
+            <div class="row">
+                <div class=" mb-0 col-md-12">
+                    <label for="validationCustom02" class="mb-0">Category Name</label>
+                    <input type="text" class="form-control" formControlName="title">
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('title','required')">
+                        This field is required.
+                    </div>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="isControlHasError('title','maxlength')">
+                        Maximum allowed length is 255.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="!imagePreview "></i>
+                            <img src="{{imagePreview}}" width="100%" height="50%" class="image-icon  "
+                                *ngIf="imagePreview">
+                            <input type="file" (change)="onImageChange($event)" formControlName="image" />
+                        </div>
+                    </div>
+                    <div class="col-md-12 ">
+                        <label _ngcontent-serverapp-c827="" for="image" style="float: right;">460px X 366px</label>
+                        
+                    </div>
+                    <div class="invalid-feedback ifeed" style="display: block;"
+                        *ngIf="(form.controls.image.touched && !editMode && !image)">
+                        Image is required.
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            
+            <div class=" mb-0 col-md-12 ">
+                <button type="button" class="btn btn-dark btn-dark-rounded" (click)="save()" *ngIf="!editMode">
+                    {{ saving ? "Saving" : "Save" }}
+                    <div class="spinner-border spinner-border-sm  text-light" role="status" *ngIf="saving">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </button>
+                <button type="button" class="btn btn-dark btn-dark-rounded" (click)="update()" *ngIf="editMode">
+                    {{ updating ? "Updating" : "update" }}
+                    <div class="spinner-border spinner-border-sm  text-light" role="status" *ngIf="updating">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </button>
+            </div>
+          
+        </div>
+    </div>
+</ng-template>

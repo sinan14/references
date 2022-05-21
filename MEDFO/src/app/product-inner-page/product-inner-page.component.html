@@ -1,0 +1,1301 @@
+<div class="ps-page">
+  <app-header></app-header>
+</div>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript
+  ><iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-W32L424"
+    height="0"
+    width="0"
+    style="display: none; visibility: hidden"
+  ></iframe
+></noscript>
+<!-- End Google Tag Manager (noscript) →-->
+<section
+  class="inner_new_page_container"
+  style="overflow: hidden; background-color: #f7f7f7; padding-top: 185px;"
+>
+  <section class="product_dtl_top_sec">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="prd_favorite_ico" (click)="clickToLike()">
+            <i class="fa fa-heart" [ngClass]="likeFlag ? 'active' : ''"></i>
+          </div>
+          <div
+            style="margin-top: 60px"
+            class="prd_favorite_ico dropdown"
+            (click)="clickToCopyBoardShared()"
+          >
+            <i class="fa fa-share"></i>
+            <!-- <div class="dropdown-content">
+                                <a target="_blank" (click)="clickToShared('fb')"> <i class="fa fa-facebook-square"></i></a>
+                                <a  target="_blank" (click)="clickToShared('insta')"> <i class="fa fa-instagram"></i></a>
+                                <a  target="_blank" (click)="clickToShared('tw')"> <i class="fa fa-twitter-square"></i></a>
+                                <a  target="_blank" (click)="clickToShared('whp')"> <i class="fa fa-whatsapp"></i></a>
+                            </div> -->
+          </div>
+
+          <br /><br />
+          <div
+            id="sync1"
+            class="owl-carousel owl-theme owl-loaded owl-drag"
+            *ngIf="imageList"
+          >
+            <owl-carousel-o
+              id="carrousal1"
+              [options]="categoriesToBagcustomOptions"
+            >
+              <ng-container
+                class="owl-carousel"
+                *ngFor="let slide of imageList"
+              >
+                <ng-template
+                  carouselSlide
+                  [id]="slide.isImage"
+                  class="ps-section__product"
+                >
+                  <div class="item">
+                    <img
+                      class="product-slick"
+                      *ngIf="slide.isImage === 0"
+                      src="{{ slide.image }}"
+                      alt=""
+                      width="50%"
+                      height="50%"
+                    />
+
+                    <div
+                      class="stock"
+                      *ngIf="
+                        slide.stockStatus == 'Out of stock' &&
+                        slide.isImage === 0
+                      "
+                    >
+                      <span>Out of Stock</span>
+                    </div>
+                    <iframe
+                      *ngIf="slide.isImage === 1"
+                      [src]="slide.video"
+                    ></iframe>
+                  </div>
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+          </div>
+
+          <br /><br />
+
+          <div id="sync2" class="owl-carousel owl-theme owl-loaded owl-drag">
+            <figure>
+              <div class="row">
+                <div class="col-md-12">
+                  <owl-carousel-o
+                    id="carrousal2"
+                    [options]="listCarouselOption"
+                  >
+                    <ng-container
+                      class="owl-carousel"
+                      *ngFor="let slide of carrousalImageList; let i = index"
+                    >
+                      <ng-template
+                        carouselSlide
+                        [id]="slide.isImage"
+                        class="ps-section__product"
+                      >
+                        <div
+                          class="item"
+                          *ngIf="carrousalImageList.length === 1"
+                        >
+                          <img
+                            *ngIf="slide.isImage === 0"
+                            src="{{ slide.image }}"
+                            alt=""
+                            width="30%"
+                            height="30%"
+                            (click)="selectImage(slide)"
+                            [ngClass]="variantId == slide.id ? 'not-show' : ''"
+                          />
+
+                          <span style="position: relative">
+                            <a class="video-thumb"
+                              ><i class="fa fa-play" aria-hidden="true"></i
+                            ></a>
+
+                            <img
+                              *ngIf="slide.isImage === 1"
+                              src="{{ slide.thumbnail }}"
+                              alt=""
+                              width="30%"
+                              height="30%"
+                              (click)="selectImage(slide)"
+                              [ngClass]="
+                                variantId == slide.id ? 'not-show' : ''
+                              "
+                            />
+                          </span>
+                        </div>
+
+                        <div class="item" *ngIf="carrousalImageList.length > 1">
+                          <img
+                            *ngIf="slide.isImage === 0"
+                            src="{{ slide.image }}"
+                            alt=""
+                            width="30%"
+                            height="30%"
+                            (click)="selectImage(slide)"
+                            [ngClass]="
+                              variantId == slide.id ? 'prdoct_active' : ''
+                            "
+                          />
+
+                          <span style="position: relative">
+                            <a class="video-thumb"
+                              ><i class="fa fa-play" aria-hidden="true"></i
+                            ></a>
+
+                            <img
+                              [ngClass]="
+                                variantId == slide.id ? 'prdoct_active' : ''
+                              "
+                              *ngIf="slide.isImage === 1"
+                              src="{{ slide.thumbnail }}"
+                              alt=""
+                              width="30%"
+                              height="30%"
+                              (click)="selectImage(slide)"
+                            />
+                          </span>
+                        </div>
+                      </ng-template>
+                    </ng-container>
+                  </owl-carousel-o>
+                </div>
+              </div>
+            </figure>
+          </div>
+          <!-- (click)="Add_To_Cart(con._id,con.varientId,con)" -->
+          <div class="add_btn add-tocart">
+            <button
+              class="cart_button"
+              *ngIf="addToCartBtn_Flag"
+              (click)="addToCartBtnClicked(productDetail)"
+            >
+              Add to cart
+            </button>
+            <div class="">
+              <div class="form-group--number1" *ngIf="!addToCartBtn_Flag">
+                <button class="downs" (click)="decrement(productDetail)">
+                  <i class="fa fa-minus"></i>
+                </button>
+                <input
+                  class="form-control"
+                  type="number"
+                  [(ngModel)]="quantity"
+                  min="1"
+                />
+                <button class="ups" (click)="increment(productDetail)">
+                  <i class="fa fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="prd_dtl_gram_sele_sec add_btn"
+            *ngIf="pricingArray.stockStatus === 'Limited Stock'"
+          >
+            <span class="status">{{ pricingArray.stockStatus }}</span>
+          </div>
+
+          <!-- <div class="addto_cart_btn_row">
+                               <div class="addto_cart_btn">
+           
+                                <div class="xart_lst_qty_box dropdown">
+                                    <div class="form-group--number1">
+                                     <button class="downs"> <i class="fa fa-minus"></i></button>
+                                       <input class="form-control" type="number"value="1" min="1">
+                                     <button class="ups" > <i class="fa fa-plus"></i></button>
+                                     </div> 
+                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" *ngFor="let p of i.quantity">
+                                         <a class="dropdown-item" (click)="addToCart('1',i.variantId,i.product_id)">1</a>
+                                         <a class="dropdown-item" (click)="addToCart('2',i.variantId,i.product_id)">2</a>
+                                         <a class="dropdown-item" (click)="addToCart('3',i.variantId,i.product_id)">3</a>
+                                         <a class="dropdown-item" (click)="addToCart('4',i.variantId,i.product_id)">4</a>
+                                         <a class="dropdown-item" (click)="addToCart('5',i.variantId,i.product_id)">5</a>
+                                         <a class="dropdown-item" (click)="addToCart('6',i.variantId,i.product_id)">6</a>
+                                     </div>
+     
+     
+                                 </div>
+           
+                               </div>
+                           </div> -->
+        </div>
+
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="prd_dtl_right_sec">
+            <div class="prd_dtl_right_name">
+              {{ productDetail.title | titlecase }}
+            </div>
+            <div class="prd_dtl_right_name_cmpny" *ngIf="productDetail.brand">
+              {{ productDetail.brand | titlecase }}
+            </div>
+            <div class="prd_dtl_right_prd_rating">
+              Ratings &nbsp;&nbsp;
+              <span>
+                <div class="star-rating">
+                  <input
+                    [checked]="productDetail.rating === 5 ? true : false"
+                    id="star-5"
+                    type="radio"
+                    name="rating"
+                    value="star-5"
+                  />
+                  <label for="star-5" title="5 stars">
+                    <i class="active fa fa-star" aria-hidden="true"></i>
+                  </label>
+                  <input
+                    [checked]="productDetail.rating === 4 ? true : false"
+                    id="star-4"
+                    type="radio"
+                    name="rating"
+                    value="star-4"
+                  />
+                  <label for="star-4" title="4 stars">
+                    <i class="active fa fa-star" aria-hidden="true"></i>
+                  </label>
+                  <input
+                    [checked]="productDetail.rating === 3 ? true : false"
+                    id="star-3"
+                    type="radio"
+                    name="rating"
+                    value="star-3"
+                  />
+                  <label for="star-3" title="3 stars">
+                    <i class="active fa fa-star" aria-hidden="true"></i>
+                  </label>
+                  <input
+                    [checked]="productDetail.rating === 2 ? true : false"
+                    id="star-2"
+                    type="radio"
+                    name="rating"
+                    value="star-2"
+                  />
+                  <label for="star-2" title="2 stars">
+                    <i class="active fa fa-star" aria-hidden="true"></i>
+                  </label>
+                  <input
+                    [checked]="productDetail.rating === 1 ? true : false"
+                    id="star-1"
+                    type="radio"
+                    name="rating"
+                    value="star-1"
+                  />
+                  <label for="star-1" title="1 star">
+                    <i class="active fa fa-star" aria-hidden="true"></i>
+                  </label>
+                </div>
+              </span>
+            </div>
+            <div class="product_price_sec" *ngIf="pricingFlag && pricingArray">
+              Best Price
+              <strong *ngIf="pricingArray.discount != 0"
+                ><i class="fa fa-rupee"></i>{{ pricingArray.spl_price }}</strong
+              >
+              <span
+                *ngIf="pricingArray.spl_price && pricingArray.discount != 0"
+                class="product_price_sec_currnt_rate"
+                >&nbsp;{{ pricingArray.price }}</span
+              >
+
+              <strong *ngIf="pricingArray.discount === 0"
+                ><i class="fa fa-rupee"></i>&nbsp;{{
+                  pricingArray.price
+                }}</strong
+              >
+
+              <div
+                class="prd_dtl_discount_coupon"
+                *ngIf="pricingArray.discount != 0"
+              >
+                {{ pricingArray.discount }}% <span>Discount</span>
+              </div>
+            </div>
+
+            <div class="prd_dtl_gram_sele_sec">
+              <div class="prd_dtl_gram_sele_sec_lable">Size</div>
+              <div class="ram-in">
+                <div
+                  class="ramagb"
+                  *ngFor="let t of productDetail.pricing; let i = index"
+                >
+                  <!-- <input type="radio" name="option-{{i}}" value="option-{{i}}"  id="option-{{i}}" /> -->
+                  <label
+                    class="opt"
+                    for="option-0"
+                    [ngClass]="selectedUOM_ID === t._id ? 'activebtn' : ''"
+                    (click)="setPricing(t)"
+                    >{{ t.uomValue | titlecase | uppercase }}</label
+                  >
+                </div>
+
+                <!-- <div class="ramagb">
+                                        <input type="radio" name="accordion-group2" value="38" id="option-1"  (change)="setPricing(productDetail.pricing[1])"/>
+                                        <label  class="opt" for="option-1">L</label></div>
+                                                                    
+                                    <div class="ramagb" *ngIf="productDetail.pricing[2]">
+                                        <input type="radio" name="accordion-group2" value="103" id="option-2"  (change)="setPricing(productDetail.pricing[2])"/>
+                                        <label  class="opt" for="option-2">XL</label>
+                                    </div> -->
+                <!-- <input value="8GB"><input value="16GB"><input value="32GB">
+                                    </div> -->
+              </div>
+              <!-- <div class="prd_dtl_gram_sele_sec_row">
+                                   
+                                       <div class="prd_dtl_gram_sele_box prd_dtl_gram_sele_box_act">S</div>
+                                       <div class="prd_dtl_gram_sele_box">L</div>
+                                       <div class="prd_dtl_gram_sele_box">XL</div>
+                                   </div> -->
+            </div>
+
+            <div class="prd_dtl_gram_sele_sec">
+              <!-- <div class="xart_lst_qty_box">
+                                <div class="form-group--number1">
+                                 <button class="downs" > <i class="fa fa-minus"></i></button>
+                                   <input class="form-control" type="number"  value="" min="1">
+                                 <button class="ups" > <i class="fa fa-plus"></i></button>
+                                 </div> 
+                                </div> -->
+            </div>
+
+            <div class="prd_dtl_pin_enter_sec">
+              <div class="prd_dtl_pin_enter_sec_lable">Delivery details</div>
+              <div class="prd_dtl_pin_enter_sec_row">
+                <div class="row">
+                  <div class="col-md-7">
+                    <input
+                      type="text"
+                      class="prd_dtl_pin_enter_txtox"
+                      placeholder="Enter your pin code"
+                      [(ngModel)]="pincodeValue"
+                    />
+                    <small
+                      class="form-text small-block"
+                      *ngIf="!pincodeValue && attemptedSubmit"
+                    >
+                      Enter Valid Pincode
+                    </small>
+                    <a
+                      class="prd_dtl_pin_enter_change_btn"
+                      (click)="checkPincode(); attemptedSubmit = true"
+                      >Change</a
+                    >
+                  </div>
+                  <div class="col-md-5" *ngIf="pricingArray.expire_on">
+                    <div class="prd_dtl_pin_right_expiry_sec">
+                      <div class="prd_dtl_pin_right_expiry_ico">
+                        <img
+                          src="../../../assets/img/product_details/calender_ico.png"
+                          alt=""
+                        />
+                      </div>
+                      Expires on {{ pricingArray.expire_on }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prd_dtl_feature_sec" *ngIf="!deliverAvailableFlag">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="prd_dtl_feature_box">
+                    <div class="prd_dtl_feature_box_ico">
+                      <img
+                        src="../../../assets/img/product_details/delivery.png"
+                        alt=""
+                      />
+                    </div>
+                    Delivery within {{ pincodeDetails.deliveryTime }}
+                  </div>
+                </div>
+
+                <div class="col-md-4" *ngIf="pincodeDetails.returnPolicy">
+                  <div class="prd_dtl_feature_box">
+                    <div class="prd_dtl_feature_box_ico retn">
+                      <img
+                        src="../../../assets/img/product_details/return.png"
+                        alt=""
+                      />
+                    </div>
+                    {{ pincodeDetails.returnPolicy }} Days return policy
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="prd_dtl_feature_box">
+                    <div class="prd_dtl_feature_box_ico">
+                      <img
+                        src="../../../assets/img/product_details/cod.png"
+                        alt=""
+                      />
+                    </div>
+                    {{
+                      pincodeDetails.cashOnDelivery
+                        ? "Cash on delivery available"
+                        : "Cash on delivery not available"
+                    }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prd_dtl_feature_sec" *ngIf="deliverAvailableFlag">
+              <span>Delivery not available to this region </span>
+            </div>
+
+            <div class="prd_dtl_rating_box_sec">
+              <div class="prd_dtl_rating_box">
+                <div class="inner">
+                  <div class="rating">
+                    <div class="prd_dtl_rating_box_sec_head">
+                      Product rating
+                    </div>
+                    <span class="rating-num"
+                      >{{ productDetail.rating }} /
+                      <span
+                        style="
+                          color: #969696;
+                          font-size: 21px;
+                          font-weight: 500;
+                        "
+                        >5</span
+                      ></span
+                    >
+                    <!-- <div class="rating-stars">
+                                               <span><i class=" fa fa-star" ></i></span>
+                                               <span><i class=" fa fa-star"></i></span>
+                                               <span><i class=" fa fa-star"></i></span>
+                                               <span><i class=" fa fa-star"></i></span>
+                                               <span><i class="active fa fa-star"></i></span>
+                                              
+                                             </div> -->
+                    <div class="prd_dtl_right_prd_rating">
+                      &nbsp;&nbsp;
+                      <span>
+                        <div class="star-rating">
+                          <input
+                            [checked]="
+                              productDetail.rating === 5 ? true : false
+                            "
+                            id="star-10"
+                            type="radio"
+                            name="ratings"
+                            value="star-10"
+                          />
+                          <label for="star-10" title="10 stars">
+                            <i class="active fa fa-star" aria-hidden="true"></i>
+                          </label>
+                          <input
+                            [checked]="
+                              productDetail.rating === 4 ? true : false
+                            "
+                            id="star-9"
+                            type="radio"
+                            name="ratings"
+                            value="star-9"
+                          />
+                          <label for="star-9" title="9 stars">
+                            <i class="active fa fa-star" aria-hidden="true"></i>
+                          </label>
+                          <input
+                            [checked]="
+                              productDetail.rating === 3 ? true : false
+                            "
+                            id="star-8"
+                            type="radio"
+                            name="ratings"
+                            value="star-8"
+                          />
+                          <label for="star-8" title="8 stars">
+                            <i class="active fa fa-star" aria-hidden="true"></i>
+                          </label>
+                          <input
+                            [checked]="
+                              productDetail.rating === 2 ? true : false
+                            "
+                            id="star-7"
+                            type="radio"
+                            name="ratings"
+                            value="star-7"
+                          />
+                          <label for="star-7" title="7 stars">
+                            <i class="active fa fa-star" aria-hidden="true"></i>
+                          </label>
+                          <input
+                            [checked]="
+                              productDetail.rating === 1 ? true : false
+                            "
+                            id="star-6"
+                            type="radio"
+                            name="ratings"
+                            value="star-6"
+                          />
+                          <label for="star-6" title="6 star">
+                            <i class="active fa fa-star" aria-hidden="true"></i>
+                          </label>
+                        </div>
+                      </span>
+                    </div>
+                    <div class="rating-users">Based on 1 rating</div>
+                  </div>
+
+                  <div class="histo">
+                    <div class="five histo-rate">
+                      <span class="histo-star">
+                        <i class="active fa fa-star"></i> 5
+                      </span>
+                      <span class="bar-block">
+                        <span id="bar-five" class="bar"> </span>
+                        <span class="str_vlu">100%</span>
+                      </span>
+                    </div>
+
+                    <div class="four histo-rate">
+                      <span class="histo-star">
+                        <i class="active fa fa-star"></i> 4
+                      </span>
+                      <span class="bar-block">
+                        <span id="bar-four" class="bar"> </span>
+                        <span class="str_vlu">75%</span>
+                      </span>
+                    </div>
+
+                    <div class="three histo-rate">
+                      <span class="histo-star">
+                        <i class="active fa fa-star"></i> 3
+                      </span>
+                      <span class="bar-block">
+                        <span id="bar-three" class="bar"> </span>
+                        <span class="str_vlu">35%</span>
+                      </span>
+                    </div>
+
+                    <div class="two histo-rate">
+                      <span class="histo-star">
+                        <i class="active fa fa-star"></i> 2
+                      </span>
+                      <span class="bar-block">
+                        <span id="bar-two" class="bar"> </span>
+                        <span class="str_vlu">15%</span>
+                      </span>
+                    </div>
+                    <div class="two histo-rate">
+                      <span class="histo-star">
+                        <i class="active fa fa-star"></i> 1
+                      </span>
+                      <span class="bar-block">
+                        <span id="bar-one" class="bar"> </span>
+                        <span class="str_vlu">1%</span>
+                      </span>
+                    </div>
+
+                    <!-- <div class="one histo-rate">
+                                               <span class="histo-star">
+                                                 <i class="active fa fa-star"></i> 1           </span>
+                                               <span class="bar-block">
+                                                 <span id="bar-one" class="bar">
+                                                 </span> 
+                                                 <span class="str_vlu">0%</span> 
+                                               </span>
+                                             </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="prd_dtl_descri_head"
+              *ngIf="
+                productDetail.description ||
+                productDetail.direction_use ||
+                productDetail.warning ||
+                productDetail.sideEffects ||
+                productDetail.ingredients ||
+                productDetail.productDetails
+              "
+            >
+              Product Details
+            </div>
+
+            <div
+              class="prd_dtl_descri_box_sec"
+              *ngIf="
+                productDetail.description ||
+                productDetail.direction_use ||
+                productDetail.warning ||
+                productDetail.sideEffects ||
+                productDetail.ingredients ||
+                productDetail.productDetails
+              "
+            >
+              <div
+                class="prd_dtl_descri_box_cnt_row"
+                *ngIf="productDetail.productDetails"
+              >
+                <div class="prd_dtl_descri_box_head">
+                  <div class="prd_dtl_descri_box_head_ico">
+                    <img
+                      src="../../../assets/img/product_details/1.png"
+                      alt=""
+                    />
+                  </div>
+                  Product Description
+                </div>
+                <div class="prd_dtl_descri_box_cnt">
+                  <p
+                    [innerHtml]="productDetail.productDetails"
+                    style="opacity: 1"
+                  ></p>
+                </div>
+              </div>
+
+              <div
+                class="prd_dtl_descri_box_cnt_row"
+                *ngIf="productDetail.direction_use"
+              >
+                <div class="prd_dtl_descri_box_head">
+                  <div class="prd_dtl_descri_box_head_ico">
+                    <img
+                      src="../../../assets/img/product_details/2.png"
+                      alt=""
+                    />
+                  </div>
+                  Direction of use
+                </div>
+                <div class="prd_dtl_descri_box_cnt">
+                  {{ productDetail.direction_use | titlecase }}
+                </div>
+              </div>
+
+              <div
+                class="prd_dtl_descri_box_cnt_row"
+                *ngIf="productDetail.warning"
+              >
+                <div class="prd_dtl_descri_box_head">
+                  <div class="prd_dtl_descri_box_head_ico">
+                    <img
+                      src="../../../assets/img/product_details/3.png"
+                      alt=""
+                    />
+                  </div>
+                  Warning
+                </div>
+                <div class="prd_dtl_descri_box_cnt">
+                  {{ productDetail.warning | titlecase }}
+                </div>
+              </div>
+              <div
+                class="prd_dtl_descri_box_cnt_row"
+                *ngIf="productDetail.sideEffects"
+              >
+                <div class="prd_dtl_descri_box_head">
+                  <div class="prd_dtl_descri_box_head_ico">
+                    <img
+                      src="../../../assets/img/product_details/4.png"
+                      alt=""
+                    />
+                  </div>
+                  Side Effects
+                </div>
+                <div class="prd_dtl_descri_box_cnt">
+                  {{ productDetail.sideEffects | titlecase }}
+                </div>
+              </div>
+
+              <div
+                class="prd_dtl_descri_box_cnt_row"
+                *ngIf="productDetail.ingredients"
+              >
+                <div class="prd_dtl_descri_box_head">
+                  <div class="prd_dtl_descri_box_head_ico">
+                    <img
+                      src="../../../assets/img/product_details/5.png"
+                      alt=""
+                    />
+                  </div>
+                  Ingredients
+                </div>
+                <div class="prd_dtl_descri_box_cnt">
+                  {{ productDetail.ingredients | titlecase }}
+                </div>
+              </div>
+
+              <div
+                class="prd_dtl_descri_box_cnt_row"
+                *ngIf="productDetail.description"
+              >
+                <div class="prd_dtl_descri_box_head">
+                  <div class="prd_dtl_descri_box_head_ico more">
+                    <img
+                      src="../../../assets/img/product_details/6.png"
+                      alt=""
+                    />
+                  </div>
+                  More
+                </div>
+                <div class="prd_dtl_descri_box_cnt">
+                  <p
+                    [innerHtml]="productDetail.description"
+                    style="opacity: 1"
+                  ></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="substution_scroll_sec" *ngIf="productDetail.relatedProducts">
+    <div class="container">
+      <div class="substution_scroll_sec_head" *ngIf="productDetail.relatedProducts.length>0">Similar Products</div>
+      <div class="ps-section__carousel" id="similar">
+        <owl-carousel-o [options]="relatedProductscustomOptions">
+          <ng-container
+            class="owl-carousel"
+            *ngFor="let slide of productDetail.relatedProducts"
+          >
+            <ng-template
+              carouselSlide
+              [id]="slide._id"
+              class="ps-section__product"
+            >
+              <div
+                class="ps-section__product wow fadeInUp"
+                data-wow-delay="0.1s"
+              >
+                <div
+                  class="ps-product ps-product--standard"
+                  (click)="clickToProductDetail(slide._id)"
+                >
+                  <div class="ps-product__thumbnail shopby prd_sb_cl1">
+                    <a class="ps-product__image">
+                      <img src="{{ slide.image }}" alt="alt" />
+                      <div class="prd_sub_name">
+                        {{ slide.title | titlecase }}
+                      </div>
+                      <div class="prd_sub_rate" *ngIf="slide.discount != 0">
+                        <i class="fa fa-rupee"></i>{{ slide.spl_price }}
+                        <span>{{ slide.price }}</span>
+                      </div>
+
+                      <div class="prd_sub_rate" *ngIf="slide.discount === 0">
+                        <i class="fa fa-rupee"></i>{{ slide.price }}
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </section>
+
+  <section class="alsoprd_scroll_sec" *ngIf="productDetail.substitutions">
+    <div class="container">
+      <div class="substution_scroll_sec_head" *ngIf="productDetail.substitutions.length>0">
+        Customers Who Bought This Item Also Bought
+      </div>
+      <div class="ps-section__carousel">
+        <owl-carousel-o [options]="listCarouselOption">
+          <ng-container
+            class="owl-carousel"
+            *ngFor="let slide of productDetail.substitutions"
+          >
+            <ng-template
+              carouselSlide
+              [id]="slide._id"
+              class="ps-section__product"
+            >
+              <div
+                class="ps-section__product wow fadeInUp"
+                data-wow-delay="0.1s"
+              >
+                <div
+                  class="ps-product ps-product--standard"
+                  (click)="clickToProductDetail(slide._id)"
+                >
+                  <div class="ps-product__thumbnail shopby">
+                    <a class="ps-product__image">
+                      <div class="prd_dtl_also_scr_img">
+                        <div class="prd_discount_coupon">
+                          {{ slide.discount }}% <span>Discount</span>
+                        </div>
+                        <img src="{{ slide.image }}" alt="alt" />
+                      </div>
+                      <div class="prd_sub_name">
+                        {{ slide.title | titlecase }}
+                      </div>
+                      <div *ngIf="slide.discount != 0" class="prd_sub_rate">
+                        <i class="fa fa-rupee"></i>{{ slide.spl_price }}
+                        <span>{{ slide.price }}</span>
+                      </div>
+
+                      <div class="prd_sub_rate" *ngIf="slide.discount === 0">
+                        <i class="fa fa-rupee"></i>{{ slide.price }}
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer_btm_line"><hr /></div>
+
+  <section class="disclimer_sec">
+    <div class="container">
+      <div class="disclimer_sec_head">Disclaimer</div>
+      <div class="disclimer_sec_cnt">
+        The information provided herein is accurate, updated, and complete as
+        per the best medical practices of the Company. Please note that the
+        information presented should not be treated as a replacement for offline
+        or physical medical consultation or medical advice whatsoever. We do not
+        guarantee the accuracy or completeness of the information so provided.
+        The absence of any information and/or warning to any drug shall not be
+        considered and assumed as an implied assurance of the Company. We do not
+        take any responsibility for the consequences arising out of the
+        aforementioned information and strongly recommend you for a physical
+        consultation in case of any queries or doubts. Please click here to
+        review the T&C with regards to the purchase of medicines or other
+        products.
+      </div>
+    </div>
+  </section>
+</section>
+
+<footer class="ps-footer ps-footer--5" style="padding-top: 40px">
+  <app-footer></app-footer>
+</footer>
+
+<div class="ps-search">
+  <div class="ps-search__content ps-search--mobile">
+    <a class="ps-search__close" href="under.html" id="close-search"
+      ><i class="icon-cross"></i
+    ></a>
+    <h3>Search</h3>
+    <form action="do_action" method="post">
+      <div class="ps-search-table">
+        <div class="input-group">
+          <input
+            class="form-control ps-input"
+            type="text"
+            placeholder="Search for products"
+          />
+          <div class="input-group-append">
+            <a href="under.html"><i class="fa fa-search"></i></a>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="ps-search__result">
+      <div class="ps-search__item">
+        <div class="ps-product ps-product--horizontal">
+          <div class="ps-product__thumbnail">
+            <a class="ps-product__image" href="under.html">
+              <figure>
+                <img src="../../../assets/img\png\smade.png" alt="alt" />
+              </figure>
+            </a>
+          </div>
+          <div class="ps-product__content">
+            <h5 class="ps-product__title">
+              <a
+                >3-layer <span class="hightlight">mask</span> with an elastic
+                band (1 piece)</a
+              >
+            </h5>
+            <p class="ps-product__desc">
+              Study history up to 30 days Up to 5 users simultaneously Has
+              HEALTH certificate
+            </p>
+            <div class="ps-product__meta">
+              <span class="ps-product__price">$38.24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ps-search__item">
+        <div class="ps-product ps-product--horizontal">
+          <div class="ps-product__thumbnail">
+            <a class="ps-product__image" href="under.html">
+              <!--<figure><img src="../../../assets/img\products\033.jpg" alt="alt"></figure>-->
+            </a>
+          </div>
+          <div class="ps-product__content">
+            <h5 class="ps-product__title">
+              <a
+                >3 Layer Disposable Protective Face
+                <span class="hightlight">mask</span>s</a
+              >
+            </h5>
+            <p class="ps-product__desc">
+              Study history up to 30 days Up to 5 users simultaneously Has
+              HEALTH certificate
+            </p>
+            <div class="ps-product__meta">
+              <span class="ps-product__price sale">$14.52</span
+              ><span class="ps-product__del">$17.24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ps-search__item">
+        <div class="ps-product ps-product--horizontal">
+          <div class="ps-product__thumbnail">
+            <a class="ps-product__image" href="under.html">
+              <figure>
+                <img src="../../../assets/img\png\smade.png" alt="alt" />
+              </figure>
+            </a>
+          </div>
+          <div class="ps-product__content">
+            <h5 class="ps-product__title">
+              <a
+                >3-Ply Ear-Loop Disposable Blue Face
+                <span class="hightlight">mask</span></a
+              >
+            </h5>
+            <p class="ps-product__desc">
+              Study history up to 30 days Up to 5 users simultaneously Has
+              HEALTH certificate
+            </p>
+            <div class="ps-product__meta">
+              <span class="ps-product__price sale">$14.99</span
+              ><span class="ps-product__del">$38.24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ps-search__item">
+        <div class="ps-product ps-product--horizontal">
+          <div class="ps-product__thumbnail">
+            <a class="ps-product__image" href="under.html">
+              <!--<figure><img src="../../../assets/img\products\050.jpg" alt="alt"></figure>-->
+            </a>
+          </div>
+          <div class="ps-product__content">
+            <h5 class="ps-product__title">
+              <a
+                >Disposable Face <span class="hightlight">mask</span> for
+                Unisex</a
+              >
+            </h5>
+            <p class="ps-product__desc">
+              Study history up to 30 days Up to 5 users simultaneously Has
+              HEALTH certificate
+            </p>
+            <div class="ps-product__meta">
+              <span class="ps-product__price sale">$8.15</span
+              ><span class="ps-product__del">$12.24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ps-menu--slidebar">
+  <div class="ps-menu__content">
+    <div id="close-menu" class="overlay_mob_menu"></div>
+    <div class="mobile_menu_sec">
+      <a href="#"
+        ><div class="mobile_menu_sec_head">
+          Login / Sign Up <span><i class="fa fa-angle-right"></i></span></div
+      ></a>
+      <div class="mobile_menu_sec_banner">
+        <div class="mobile_menu_banner_left_txt">
+          <strong>Exciting offers are Waiting for you</strong>
+          <span>Get flat 74% Off on Medimall App</span>
+          <div class="mobile_menu_banner_btm_sec">
+            <a href="#"
+              ><div class="mobile_menu_banner_btm_btn">
+                <img src="../../../assets/img/menu/appstore.png" alt="" /></div
+            ></a>
+            <a href="#"
+              ><div class="mobile_menu_banner_btm_btn">
+                <img
+                  class=""
+                  src="../../../assets/img/menu/playstore.png"
+                /></div
+            ></a>
+          </div>
+        </div>
+        <div class="mobile_menu_banner_right_img_sec">
+          <img src="../../../assets/img/menu/bann_img.png" alt="" />
+        </div>
+      </div>
+
+      <div class="mobile_menu_mn_1 mn_bdr_btm">
+        <a href="#">
+          <div class="mobile_menu_mn_ico">
+            <img src="../../../assets/img/menu/home.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">Home</div></a
+        >
+      </div>
+
+      <div class="mobile_menu_mn_1">
+        <a
+          href="#"
+          class="dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          ><div class="mob_btn_left_ico">
+            <img src="../../../assets/img/menu/odr_top1.png" alt="" />
+          </div>
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="../../../assets/img/menu/order_med.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Order Medicine<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div></a
+        >
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+
+      <div class="mobile_menu_mn_1">
+        <a
+          href="#"
+          class="dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          ><div class="mob_btn_left_ico">
+            <img src="../../../assets/img/menu/odr_top2.png" alt="" />
+          </div>
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="../../../assets/img/menu/order_heal.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Order Healthcare Products<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div></a
+        >
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+
+      <div
+        class="mobile_menu_mn_1 mn_bdr_btm"
+        style="padding-right: 50px; margin-bottom: 10px"
+      >
+        <a href="#"
+          ><div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="../../../assets/img/menu/offer.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Offers<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+          <div class="mob_mn_new_btn">NEW</div>
+        </a>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+        <a
+          href="#"
+          class="dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton2"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="../../../assets/img/menu/account.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            MY Account<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div></a
+        >
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+        <a href="#"
+          ><div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="../../../assets/img/menu/orders.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            My Orders<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+        <a href="#"
+          ><div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="../../../assets/img/menu/medfill.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Med Refill<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+        <a href="#"
+          ><div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="../../../assets/img/menu/membership.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Medpride Membership<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+        <a href="#"
+          ><div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="../../../assets/img/menu/health_vault.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Health Vault<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+
+      <div
+        class="mobile_menu_mn_1 mn_bdr_btm"
+        style="padding: 5px 15px; margin-bottom: 10px; padding-bottom: 15px"
+      >
+        <a href="#"
+          ><div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="../../../assets/img/menu/wallet.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Wallet<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+        <a href="#"
+          ><div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="../../../assets/img/menu/refer_earn.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Refer and Earn<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+        <a href="#"
+          ><div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="../../../assets/img/menu/conact_us.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Contact Us<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+
+      <div
+        class="mobile_menu_mn_1 mn_bdr_btm"
+        style="padding: 5px 15px; padding-bottom: 30px"
+      >
+        <a href="#"
+          ><div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="../../../assets/img/menu/faq.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            FAQ<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+      <div class="mobile_menu_mn_1 mn_bdr_btm"></div>
+    </div>
+  </div>
+</div>
+<button class="btn scroll-top"><i class="fa fa-angle-double-up"></i></button>
+<div class="ps-preloader" id="preloader">
+  <div class="ps-preloader-section ps-preloader-left"></div>
+  <div class="ps-preloader-section ps-preloader-right"></div>
+</div>

@@ -1,0 +1,73 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="">
+                <div class="card-body">
+                    <div class="btn-popup pull-right">
+                        <button type="button" class="btn btn-dark btn-inverse-dark" data-toggle="modal" data-original-title="test"
+                            data-target="#exampleModal" (click)="open(content)">Add Event</button>
+                   
+                    </div>
+                    <div id="batchDelete" class="mt-4 category-table custom-datatable">
+                        
+                        <!-- <kendo-multiviewcalendar  class="k-calendar " >
+                    </kendo-multiviewcalendar> -->
+                        <div class="container">
+                            <full-calendar  style="background: #00476b;border-radius: 20px; color: white;text-align: center;"
+                            [options]="calendarOptions"
+                            (eventClick)="eventClick($event)">
+                        </full-calendar>
+                        </div>
+              
+                 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h5 style="color: white;opacity: 0.5;" class="modal-title f-w-600" id="exampleModalLabel">Add Event</h5>
+        <button style="color: white;opacity: 0.5;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form class="needs-validation">
+            <div class="form">
+                <div class="form-group">
+                    <label for="validationCustom01" class="mb-1">Title :</label>
+                    <input class="form-control" id="validationCustom01" type="text">
+                </div>
+                <div class="form-group mb-0">
+                    <label for="validationCustom02" class="mb-1">Date :</label>
+                    <input class="form-control" id="validationCustom02" type="date">
+                </div>
+                <div class="form-group mb-0">
+                    <label for="validationCustom02" class="mb-1">Time :</label>
+                    <input class="form-control" id="validationCustom02" type="text">
+                </div>
+                <div class="form-group mb-0">
+                    <label for="validationCustom02" class="mb-1">Description :</label>
+                    <textarea class="form-control" id="validationCustom02"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-dark-rounded">Add</button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+                    (click)="modal.dismiss('Cross click')">Close</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

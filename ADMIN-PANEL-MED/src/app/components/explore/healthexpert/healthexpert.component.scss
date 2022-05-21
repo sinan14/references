@@ -1,0 +1,256 @@
+p{
+  font-weight: lighter;
+  text-align: left;
+  letter-spacing: 0px;
+}
+.align-item-center{
+  align-items: center;
+}
+
+img.health-exp-img{
+height: 60px;
+border-radius : 50%;
+object-fit: contain;
+}
+.kendo_table table tr td {
+  padding: 0.76rem;
+  vertical-align: top;
+  font-weight: lighter;
+  color: #FFFFFF;
+  opacity: 0.8;
+  font-size: 12px;
+  padding: 10px 12px;
+  padding-left: 23px;
+}
+
+
+
+.tab-coupon{
+  float: left;
+  width:100%;
+  justify-content: left;
+  color: #9ebac8;
+  border-radius: 20px;
+  padding: 4px;
+}
+.helth_exprt_main .tab2-card .nav-tabs .nav-link{
+  padding: 7px 20px;
+  border-radius: 4px !important;
+  margin: 10px;
+}
+
+.card{
+  border-radius: 16px;
+  padding: 27px;
+  background-color: #00496E;
+}
+.span-data{
+  justify-content: left;
+  background-color: #0a3347;
+  color:white;
+  border-radius: 20px;
+  margin-left: 40px;
+  padding: 4px;
+}
+
+.card-data{
+  background-color: #093e57;
+  align-content: left;
+  border-radius: 10px;
+}
+
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+}
+
+h6.background {
+  position: relative;
+  z-index: 1;
+
+  &:before {
+      border-top: 2px solid #dfdfdf;
+      content:"";
+      margin: 0 auto; /* this centers the line to the full width specified */
+      position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+      top: 50%; left: 0; right: 0; bottom: 0;
+      width: 95%;
+      z-index: -1;
+  }
+
+  span {
+      /* to hide the lines from behind the text, you have to set the background color the same as the container */
+      background: #fff;
+      padding: 0 15px;
+  }
+}
+
+
+
+.form-control{
+  background: #033147;
+  border: 1.5px solid #99b2bf;
+  color: white;
+  opacity: 0.5;
+}
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-body, .modal-header, .modal-footer{
+    background-color: #00496E;
+}
+
+
+/*Button CSS*/
+
+.btn{
+
+  font-weight: 400;
+}
+
+.btn-dark-rounded{
+  margin-left: 12px;
+  background-color: #042B3F;
+  border-radius: 1.25em;
+}
+.btn-inverse-dark {
+    background-color: rgba(79, 74, 96, 0.2);
+    background-image: none;
+    border-color: rgba(79, 74, 96, 0);
+  }
+
+  .btn-inverse-dark:not(.btn-inverse-light) {
+    color: #4f4a60;
+  }
+
+  .btn-inverse-dark:hover {
+    color: #ffffff;
+    background-color: #4f4a60;
+    border-color: #4f4a60;
+  }
+
+  .btn-inverse-dark.focus, .btn-inverse-dark:focus {
+    box-shadow: 0 0 0 3px rgba(79, 74, 96, 0.5);
+  }
+
+  .btn-inverse-dark.disabled, .btn-inverse-dark:disabled {
+    color: #4f4a60;
+    background-color: transparent;
+  }
+
+  .btn-inverse-dark.active, .btn-inverse-dark:active,
+  .show > .btn-inverse-dark.dropdown-toggle {
+    color: #ffffff;
+    background-color: #4f4a60;
+    border-color: #4f4a60;
+  }
+
+  .btn-dark, .btn-dark:hover {
+    box-shadow: 0 2px 2px 0 rgba(79, 74, 96, 0.14), 0 3px 1px -2px rgba(79, 74, 96, 0.2), 0 1px 5px 0 rgba(79, 74, 96, 0.12);
+      justify-content: right;
+  }
+
+
+
+   /*Image Upload CSS*/
+.image-data{
+  background-color: #033349;
+  padding:30px;
+  align-content: center;
+  border-radius: 10px;
+  color:white;
+  position: relative;
+  margin-left: 0rem;
+}
+
+
+.icon-style{
+  font-size: 100%;
+}
+
+.upload-btn-wrapper img{
+  height: 100%;
+  object-fit: contain;
+}
+.upload-btn-wrapper {
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  height: 150px;
+}
+
+.upload-btn-wrapper :hover i {
+-webkit-transition-delay: 0.05s;
+transition-delay: 0.05s;
+-webkit-transition-duration: 0.35s;
+transition-duration: 0.35s;
+}
+
+
+
+.icon-style{
+  font-size: 100%;
+}
+
+
+// .upload-btn-wrapper {
+// position: relative;
+// overflow: hidden;
+// display: inline-block;
+// cursor: pointer;
+// }
+
+// .upload-btn-wrapper :hover i {
+// -webkit-transition-delay: 0.05s;
+// transition-delay: 0.05s;
+// -webkit-transition-duration: 0.35s;
+// transition-duration: 0.35s;
+// }
+
+
+.icon {
+border: 0px solid gray;
+color: gray;
+background-color: transparent;
+font-size: 50px;
+font-weight: bold;
+line-height: 2.5;
+}
+
+.upload-btn-wrapper input[type=file] {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 450px;
+  height: 180px !important;
+  opacity: 0;
+  cursor: pointer;
+}
+
+::placeholder{
+color: white;
+opacity: 0.5;
+font-size: 10px;
+font-weight: lighter;
+font-family: "Poppins";
+}
+
+.replied_text_color{
+  color: #1fc51f;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+::ng-deep .nav-tabs .nav-link {
+  padding: 0;
+}

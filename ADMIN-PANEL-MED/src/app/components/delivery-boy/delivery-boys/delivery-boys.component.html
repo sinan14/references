@@ -1,0 +1,1508 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="kendo_table master-demo">
+        <div class="card-body deliveryBoy_tab tab2-card">
+          
+          <h6>Delivery Boys</h6>
+          <ngb-tabset
+            class="tab-coupon"
+            #t="ngbTabset"
+            [activeId]="selectedTab"
+            (tabChange)="TabChange($event)"
+          >
+            <ngb-tab
+              title="Approved"
+              id="approved"
+              *ngIf="disableTab('Approved')"
+            >
+              <ng-template ngbTabContent>
+                <div class="text-center mt-3" *ngIf="loading">
+                  <br /><br />
+                  <div
+                    class="spinner-border text-light"
+                    style="width: 3rem; height: 3rem"
+                    role="status"
+                  >
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+
+                <br /><br /><br />
+
+                <div class="table-responsive">
+                  <kendo-grid
+                    [kendoGridBinding]="acitveBoysWithIndex"
+                    [filterable]="true"
+                    [sortable]="true"
+                    [pageSize]="10"
+                    [pageable]="true"
+                    [skip]="skip"
+                  >
+                    <kendo-grid-column field="sl" title="Sl.No" width="10">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Sl.No"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column field="fullName" title="Name" width="30">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Name"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-dataItem="dataItem"
+                        [showOperators]="false"
+                      >
+                        <a
+                          style="text-decoration: underline; cursor: pointer"
+                          [routerLink]="[
+                            '/delivery-boys/delivery-boys-details',
+                            dataItem._id
+                          ]"
+                          *ngIf="editFlag"
+                          >{{ dataItem.fullName }}</a
+                        >
+
+                        <a *ngIf="!editFlag">{{ dataItem.fullName }}</a>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="deliveryBoyId"
+                      title="Delivery Boy ID"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Delivery Boy ID"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                        [showOperators]="false"
+                      >
+                        <a
+                          style="text-decoration: none; cursor: pointer"
+                          routerLink="#"
+                          >{{ dataItem.deliveryBoyId }}</a
+                        >
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="mobile"
+                      title="Mobile No"
+                      width="20"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Mobile No"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column field="credit" title="Credit" width="20">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Credit"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+                    <!-- value="dataitem.isActive" -->
+
+                    <kendo-grid-command-column
+                      title="Action"
+                      width="20"
+                      class="text-center"
+                    >
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                        let-rowIndex="rowIndex"
+                      >
+                        <!-- <a (click)="Deactivate(dataItem._id)">{{dataItem.isActive}}</a> -->
+                        <input
+                          type="checkbox"
+                          class="toggle-switch oversize"
+                          id="toggle3"
+                          checked
+                          [value]="dataItem.isActive"
+                          *ngIf="editFlag"
+                          (click)="Deactivate(dataItem)"
+                        />
+                      </ng-template>
+                      <!-- [(ngModel)]="checkboxValue" -->
+                    </kendo-grid-command-column>
+                  </kendo-grid>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="Pending" id="pending" *ngIf="disableTab('Pending')">
+              <ng-template ngbTabContent>
+                <div class="text-center mt-3" *ngIf="loading">
+                  <br /><br />
+                  <div
+                    class="spinner-border text-light"
+                    style="width: 3rem; height: 3rem"
+                    role="status"
+                  >
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+
+                <br /><br /><br />
+                <div class="table-responsive">
+                  <kendo-grid
+                    [kendoGridBinding]="pendingBoysWithIndex"
+                    [filterable]="true"
+                    [sortable]="true"
+                    [pageSize]="10"
+                    [pageable]="true"
+                    [skip]="skip"
+                  >
+                    <kendo-grid-column field="sl" title="Sl.No" width="10">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Sl.No"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column field="fullName" title="Name" width="30">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Name"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                        [showOperators]="false"
+                      >
+                        <a
+                          style="text-decoration: underline; cursor: pointer"
+                          [routerLink]="[
+                            '/delivery-boys/details',
+                            dataItem._id
+                          ]"
+                          *ngIf="editFlag"
+                          >{{ dataItem.fullName }}</a
+                        >
+
+                        <a *ngIf="!editFlag">{{ dataItem.fullName }}</a>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="mobile"
+                      title="Mobile No"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Mobile No"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="createdDate"
+                      title="Created Date"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Created Date"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-command-column
+                      title="Action"
+                      width="40"
+                      class="text-center"
+                    >
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                          data-toggle="modal"
+                          data-original-title="test"
+                          data-target="#PendingExampleModal"
+                          (click)="
+                            Approve_Delivery_Boy(dataItem._id, 'approved')
+                          "
+                          *ngIf="editFlag"
+                        >
+                          Approved
+                        </button>
+
+                        &nbsp;&nbsp;<button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                          (click)="
+                            Approve_Delivery_Boy(dataItem._id, 'rejected')
+                          "
+                          *ngIf="editFlag"
+                        >
+                          Rejected
+                        </button>
+                      </ng-template>
+                    </kendo-grid-command-column>
+                  </kendo-grid>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab
+              title="Paid to Admin"
+              id="paidToAdmin"
+              *ngIf="disableTab('Paid to Admin')"
+            >
+              <ng-template ngbTabContent>
+                <div class="text-center mt-3" *ngIf="loading">
+                  <br /><br />
+                  <div
+                    class="spinner-border text-light"
+                    style="width: 3rem; height: 3rem"
+                    role="status"
+                  >
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+
+                <br /><br /><br />
+                <div class="mt-2 row">
+                  <div class="col-md-3">
+                    <label>Delivery Boy</label>
+                    <kendo-dropdownlist
+                      placeholder="select delivery boys"
+                      [(ngModel)]="paidToAdminStartDateAndEndDate.boy"
+                      class="form-control"
+                      [filterable]="true"
+                      textField="name"
+                      valueField="_id"
+                      [data]="activeBoysForSearch"
+
+                      (valueChange)="paidToAdminChange($event)"
+                      (filterChange)="paidToAdminFilter($event)"
+                      [valuePrimitive]="false"
+                    >
+                    </kendo-dropdownlist>
+
+                    
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>From Date</label>
+                    <input
+                      type="date"
+                      class="form-control date-calender"
+                      id="paidToAdminStart"
+                      (change)="paidToAdminStartDate($event.target.value)"
+                      [max]="getToday()"
+                    />
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>To Date</label>
+                    <input
+                      (change)="paidToAdminEndDate($event.target.value)"
+                      type="date"
+                      class="form-control date-calender"
+                      id="paidToAdminEnd"
+                      min="{{ paidToAdminStartDateAndEndDate.StartingDate }}"
+                    />
+                  </div>
+                  <div class="col-md-3">
+                    <div class="input-group">
+                      <label style="visibility: hidden;">To Date</label>
+                      <input
+                        type="text"
+                        trim="blur"
+                        class="form-control form-control-text added"
+                        style="
+                          border-radius: 27px 0px 0px 27px;
+                          opacity: 1;
+                          border: none !important;
+                        "
+                        id="searchPaidToAdmin"
+                        (keyup)="searchPaidToAdmin($event.target.value)"
+                        placeholder="Search"
+                        name="search"
+                      />
+                      <div
+                        class="input-group-btn"
+                        style="
+                          background-color: #093d57;
+                          border-radius: 0px 20px 20px 0px;
+                        "
+                      >
+                        <button
+                          class="btn btn-default"
+                          type="submit"
+                          style="padding: 5px 17px"
+                        >
+                          <i class="fa fa-search" style="color: white"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <br /><br /><br />
+                <div>
+                  <div class="table-responsive">
+                    <kendo-grid
+                      [kendoGridBinding]="paidToAdmin.table"
+                      [filterable]="false"
+                      [sortable]="true"
+                    >
+                      <kendo-grid-column field="sl" title="Sl.No" width="10">
+                        <ng-template
+                          kendoGridFilterCellTemplate
+                          let-filter
+                          let-column="column"
+                        >
+                          <kendo-grid-string-filter-cell
+                            placeholder="search"
+                            [showOperators]="false"
+                            [column]="column"
+                            title="Parent Store"
+                            [filter]="filter"
+                          >
+                          </kendo-grid-string-filter-cell>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column
+                        field="orderId"
+                        title="Order ID"
+                        width="30"
+                      >
+                        <ng-template
+                          kendoGridFilterCellTemplate
+                          let-filter
+                          let-column="column"
+                        >
+                          <kendo-grid-string-filter-cell
+                            placeholder="search"
+                            [showOperators]="false"
+                            [column]="column"
+                            title="Parent Store"
+                            [filter]="filter"
+                          >
+                          </kendo-grid-string-filter-cell>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column
+                        field="userName"
+                        title="Customer"
+                        width="30"
+                      >
+                        <ng-template
+                          kendoGridFilterCellTemplate
+                          let-filter
+                          let-column="column"
+                        >
+                          <kendo-grid-string-filter-cell
+                            placeholder="search"
+                            [showOperators]="false"
+                            [column]="column"
+                            title="Parent Store"
+                            [filter]="filter"
+                          >
+                          </kendo-grid-string-filter-cell>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column
+                        field="totalAmountToBePaid"
+                        title="Total Amount"
+                        width="30"
+                      >
+                        <ng-template
+                          kendoGridFilterCellTemplate
+                          let-filter
+                          let-column="column"
+                        >
+                          <kendo-grid-string-filter-cell
+                            placeholder="search"
+                            [showOperators]="false"
+                            [column]="column"
+                            title="Parent Store"
+                            [filter]="filter"
+                          >
+                          </kendo-grid-string-filter-cell>
+                        </ng-template>
+                      </kendo-grid-column>
+                    </kendo-grid>
+                  </div>
+                  <div class="row">
+                    <div class="pagination ml-2">
+                      <button (click)="paginatePaidToAdmin(1)">First</button>
+                      <button
+                        *ngIf="paidToAdmin.pageData.hasPrevPage"
+                        (click)="
+                          paginatePaidToAdmin(
+                            paidToAdmin.pageData.current_page - 1
+                          )
+                        "
+                      >
+                        Prev
+                      </button>
+                      <button
+                        *ngIf="paidToAdmin.pageData.hasPrevPage"
+                        (click)="
+                          paginatePaidToAdmin(
+                            paidToAdmin.pageData.current_page - 1
+                          )
+                        "
+                      >
+                        {{ paidToAdmin.pageData.current_page - 1 }}
+                      </button>
+                      <button style="color: yellow">
+                        {{ paidToAdmin.pageData.current_page }}
+                      </button>
+                      <button
+                        *ngIf="paidToAdmin.pageData.hasNextPage"
+                        (click)="
+                          paginatePaidToAdmin(
+                            paidToAdmin.pageData.current_page + 1
+                          )
+                        "
+                      >
+                        {{ paidToAdmin.pageData.current_page + 1 }}
+                      </button>
+                      <button
+                        *ngIf="paidToAdmin.pageData.hasNextPage"
+                        (click)="
+                          paginatePaidToAdmin(
+                            paidToAdmin.pageData.current_page + 1
+                          )
+                        "
+                      >
+                        Next
+                      </button>
+                      <button
+                        (click)="
+                          paginatePaidToAdmin(paidToAdmin.pageData.total_page)
+                        "
+                      >
+                        Last
+                      </button>
+                    </div>
+                    <!-- <div class="pagination ml-2">
+                      <p>
+                        {{ paidToAdmin.pageData.current_page }} -
+                        {{ paidToAdmin.table.length }} of
+                        {{ paidToAdmin.pageData.total_items }} items
+                      </p>
+                    </div> -->
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab
+              title="Pending to Admin"
+              id="pendingToAdmin"
+              *ngIf="disableTab('Pending to Admin')"
+            >
+              <ng-template ngbTabContent>
+                <div class="text-center mt-3" *ngIf="loading">
+                  <br /><br />
+                  <div
+                    class="spinner-border text-light"
+                    style="width: 3rem; height: 3rem"
+                    role="status"
+                  >
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+
+                <br /><br /><br />
+                <div class="mt-2 row">
+                  <div class="col-md-3">
+                    <label>Delivery Boy</label>
+                    <kendo-dropdownlist
+                      placeholder="select delivery boys"
+                      [(ngModel)]="pendingToAdminStartDateAndEndDate.boy"
+                      class="form-control"
+                      [filterable]="true"
+                      textField="name"
+                      valueField="_id"
+                      [data]="activeBoysForSearch"
+
+                      (valueChange)="pendingToAdminChange($event)"
+                      (filterChange)="pendingToAdminFilter($event)"
+                      [valuePrimitive]="false"
+                    >
+                    </kendo-dropdownlist>
+                    
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>From Date</label>
+                    <input
+                      id="pendingToAdminStart"
+                      type="date"
+                      class="form-control date-calender"
+                      (change)="pendingToAdminStartDate($event.target.value)"
+                      [max]="getToday()"
+                    />
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>To Date</label>
+                    <input
+                      id="pendingToAdminEnd"
+                      type="date"
+                      class="form-control date-calender"
+                      (change)="pendingToAdminEndDate($event.target.value)"
+                      min="{{ pendingToAdminStartDateAndEndDate.StartingDate }}"
+                    />
+                  </div>
+                </div>
+                <br /><br />
+                <!-- <div class="mt-3 row" style="float: right;">
+                                    <button  type="button" class="btn btn-dark ml-1">Save Changes</button>
+                                    <button  type="button" class="btn btn-dark ml-1">Update Credit</button>
+                                </div> -->
+
+                <br /><br /><br />
+                <div class="table-responsive">
+                  <kendo-grid
+                    [kendoGridBinding]="pendingToAdminData"
+                    [filterable]="true"
+                    [sortable]="true"
+                    [pageSize]="10"
+                    [pageable]="true"
+                    [skip]="skip"
+                  >
+                    <kendo-grid-column field="sl" title="Sl.No" width="10">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="orderId"
+                      title="Order ID"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="userName"
+                      title="Customer"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="totalAmountToBePaid"
+                      title="Total Amount"
+                      width="20"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column title="Action" width="40" class="text-center">
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                          (click)="payToAdmin(dataItem.orderId)"
+                        >
+                          Paid to Admin
+                        </button>
+                      </ng-template>
+                    </kendo-grid-column>
+                  </kendo-grid>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab
+              title="Payable to delivery boy"
+              id="payable"
+              *ngIf="disableTab('Payable to delivery boy')"
+            >
+              <ng-template ngbTabContent>
+                <div class="text-center mt-3" *ngIf="loading">
+                  <br /><br />
+                  <div
+                    class="spinner-border text-light"
+                    style="width: 3rem; height: 3rem"
+                    role="status"
+                  >
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+
+                <br /><br /><br />
+                <div class="mt-2 row kendo_listView">
+                  <div class="col-md-3">
+                    <label>Delivery Boy</label>
+                    <kendo-dropdownlist
+                      placeholder="select delivery boys"
+                      [(ngModel)]="payableToBoyStartDateAndEndDate.boy"
+                      class="form-control"
+                      [filterable]="true"
+                      textField="name"
+                      valueField="_id"
+                      [data]="activeBoysForSearch"
+
+                      (valueChange)="payableToBoyChange($event)"
+                      (filterChange)="payableToBoyFilter($event)"
+                      [valuePrimitive]="false"
+                    >
+                    </kendo-dropdownlist>
+                    
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>From Date</label>
+                    <input
+                      id="payableStart"
+                      type="date"
+                      class="form-control date-calender"
+                      (change)="payableStartDate($event.target.value)"
+                      [max]="getToday()"
+                    />
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>To Date</label>
+                    <input
+                      id="payableEnd"
+                      type="date"
+                      class="form-control date-calender"
+                      (change)="payableEndDate($event.target.value)"
+                      min="{{ paidToBoyStartDateAndEndDate.StartingDate }}"
+                    />
+                  </div>
+                </div>
+
+                <br /><br /><br />
+                <div class="table-responsive">
+                  <kendo-grid
+                    [kendoGridBinding]="payableToBoyData"
+                    [filterable]="true"
+                    [sortable]="true"
+                    [pageSize]="10"
+                    [pageable]="true"
+                    [skip]="skip"
+                  >
+                    <kendo-grid-column field="sl" title="Sl.No" width="10">
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="orderId"
+                      title="Order ID"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="totalAmountToBePaid"
+                      title="Amount"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      field="commission"
+                      title="Commission"
+                      width="30"
+                    >
+                      <ng-template
+                        kendoGridFilterCellTemplate
+                        let-filter
+                        let-column="column"
+                      >
+                        <kendo-grid-string-filter-cell
+                          placeholder="search"
+                          [showOperators]="false"
+                          [column]="column"
+                          title="Parent Store"
+                          [filter]="filter"
+                        >
+                        </kendo-grid-string-filter-cell>
+                      </ng-template>
+                  
+                    </kendo-grid-column>
+                  </kendo-grid>
+                </div>
+
+                <div class="mt-3" style="padding-left: 57%;text-align: right;">
+                  <ul>
+                    <li>
+                      <label
+                        style="color: #fff"
+                        for="validationCustom0"
+                        class=""
+                        >Total Commission {{ totalCommission }}</label
+                      >
+                      <label style="opacity: 1;">
+                        <button style="color: white;"
+                          (click)="payToDeliveryBoy()"
+                          type="button"
+                          class="btn btn-inverse-dark"
+                          [disabled]="payableToBoyData.length == 0"
+                        >
+                          Pay to Delivery Boy
+                        </button>
+                      </label>
+                    </li>
+                  </ul>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab
+              title="Paid to delivery boy"
+              id="paidToBoy"
+              *ngIf="disableTab('Paid to delivery boy')"
+            >
+              <ng-template ngbTabContent>
+                <div class="text-center mt-3" *ngIf="loading">
+                  <br /><br />
+                  <div
+                    class="spinner-border text-light"
+                    style="width: 3rem; height: 3rem"
+                    role="status"
+                  >
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+
+                <br /><br /><br />
+
+                <div class="mt-2 row">
+                  <div class="col-md-3">
+                    <label>Delivery Boy</label>
+                    <kendo-dropdownlist
+                      placeholder="select delivery boys"
+                      [(ngModel)]="paidToBoyStartDateAndEndDate.boy"
+                      class="form-control"
+                      [filterable]="true"
+                      textField="name"
+                      valueField="_id"
+                      [data]="activeBoysForSearch"
+
+                      (valueChange)="paidToBoyChange($event)"
+                      (filterChange)="paidToBoyFilter($event)"
+                      [valuePrimitive]="false"
+                    >
+                    </kendo-dropdownlist>
+                   
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>From Date</label>
+                    <input
+                      id="paidToBoyStart"
+                      type="date"
+                      class="form-control date-calender"
+                      (change)="paidToBoyStartDate($event.target.value)"
+                      [max]="getToday()"
+                    />
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>To Date</label>
+                    <input
+                      id="paidToBoyEnd"
+                      type="date"
+                      class="form-control date-calender"
+                      class="form-control"
+                      (change)="paidToBoyEndDate($event.target.value)"
+                      min="{{ paidToBoyStartDateAndEndDate.StartingDate }}"
+                    />
+                  </div>
+                  <div class="col-md-3">
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        trim="blur"
+                        class="form-control form-control-text added"
+                        style="
+                          border-radius: 27px 0px 0px 27px;
+                          opacity: 1;
+                          border: none !important;
+                        "
+                        id="searchPaidToBoy"
+                        (keyup)="searchPaidToBoy($event.target.value)"
+                        placeholder="Search"
+                        name="search"
+                      />
+                      <div
+                        class="input-group-btn"
+                        style="
+                          background-color: #042b3f;
+                          border-radius: 0px 20px 20px 0px;
+                        "
+                      >
+                        <button
+                          class="btn btn-default"
+                          type="submit"
+                          style="padding: 5px 17px"
+                        >
+                          <i class="fa fa-search" style="color: white"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <br /><br /><br />
+                <div>
+                  <div class="table-responsive">
+                    <kendo-grid
+                      [kendoGridBinding]="paidToBoy.table"
+                      [filterable]="false"
+                      [sortable]="true"
+                    >
+                      <kendo-grid-column field="sl" title="Sl.No" width="10">
+                      </kendo-grid-column>
+
+                      <kendo-grid-column
+                        field="orderId"
+                        title="Order ID"
+                        width="30"
+                      >
+                      </kendo-grid-column>
+
+                      <kendo-grid-column
+                        field="totalAmountToBePaid"
+                        title="Amount"
+                        width="30"
+                      >
+                      </kendo-grid-column>
+
+                      <kendo-grid-column
+                        field="commission"
+                        title="Commission"
+                        width="20"
+                      >
+                      </kendo-grid-column>
+                    </kendo-grid>
+                    <div class="row">
+                      <div class="pagination ml-2">
+                        <button (click)="paginatePaidToBoy(1)">First</button>
+                        <button
+                          *ngIf="paidToBoy.pageData.hasPrevPage"
+                          (click)="
+                            paginatePaidToBoy(
+                              paidToBoy.pageData.current_page - 1
+                            )
+                          "
+                        >
+                          Prev
+                        </button>
+                        <button
+                          *ngIf="paidToBoy.pageData.hasPrevPage"
+                          (click)="
+                            paginatePaidToBoy(
+                              paidToBoy.pageData.current_page - 1
+                            )
+                          "
+                        >
+                          {{ paidToBoy.pageData.current_page - 1 }}
+                        </button>
+                        <button style="color: yellow">
+                          {{ paidToBoy.pageData.current_page }}
+                        </button>
+                        <button
+                          *ngIf="paidToBoy.pageData.hasNextPage"
+                          (click)="
+                            paginatePaidToBoy(
+                              paidToBoy.pageData.current_page + 1
+                            )
+                          "
+                        >
+                          {{ paidToBoy.pageData.current_page + 1 }}
+                        </button>
+                        <button
+                          *ngIf="paidToBoy.pageData.hasNextPage"
+                          (click)="
+                            paginatePaidToBoy(
+                              paidToBoy.pageData.current_page + 1
+                            )
+                          "
+                        >
+                          Next
+                        </button>
+                        <button
+                          (click)="
+                            paginatePaidToBoy(paidToBoy.pageData.total_page)
+                          "
+                        >
+                          Last
+                        </button>
+                      </div>
+                      <!-- <div class="pagination ml-2">
+                      <p>
+                        {{ paidToBoy.pageData.current_page }} -
+                        {{ paidToBoy.pageData.finalResult.length }} of
+                        {{ paidToBoy.pageData.total_items }} items
+                      </p>
+                    </div> -->
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab
+              title="Help & Support"
+              id="queryBoy"
+              *ngIf="disableTab('Query_boy')"
+            >
+              <ng-template ngbTabContent>
+                <div class="text-center mt-3" *ngIf="loading">
+                  <br /><br />
+                  <div
+                    class="spinner-border text-light"
+                    style="width: 3rem; height: 3rem"
+                    role="status"
+                  >
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+
+                <br /><br /><br />
+                <div class="mt-2 row">
+                  <div class="col-md-3">
+                    <label>Delivery Boy</label>
+                    <kendo-dropdownlist
+                      placeholder="select delivery boys"
+                      [(ngModel)]="queryBoyStartDateAndEndDate.boy"
+                      class="form-control"
+                      [filterable]="true"
+                      textField="name"
+                      valueField="_id"
+                      [data]="activeBoysForSearch"
+
+                      (valueChange)="queryBoyChange($event)"
+                      (filterChange)="queryBoyFilter($event)"
+                      [valuePrimitive]="false"
+                    >
+                    </kendo-dropdownlist>
+                   
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>From Date</label>
+                    <input
+                      id="queryBoyStart"
+                      type="date"
+                      class="form-control date-calender"
+                      (change)="queryBoyFilterStartDate($event.target.value)"
+                      [max]="getToday()"
+                    />
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>To Date</label>
+                    <input
+                      id="queryBoyEnd"
+                      type="date"
+                      class="form-control date-calender"
+                      (change)="queryBoyFilterEndDate($event.target.value)"
+                      min="{{ queryBoyStartDateAndEndDate.StartingDate }}"
+                    />
+                  </div>
+                </div>
+                <br /><br />
+
+                <br /><br /><br />
+                <div class="table-responsive">
+                  <kendo-grid
+                    [kendoGridBinding]="queryBoyData"
+                    [filterable]="true"
+                    [sortable]="true"
+                    [pageSize]="10"
+                    [pageable]="true"
+                    [skip]="skip"
+                  >
+                    <kendo-grid-column field="sl" title="Sl.No" width="10">
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      title="Type"
+                      field="IssueRelated"
+                      width="20"
+                    >
+                    </kendo-grid-column>
+
+                    <kendo-grid-column field="Issue" title="Issue" width="30">
+                    </kendo-grid-column>
+                    <kendo-grid-column
+                      *ngIf="listingQB"
+                      title="Delivery Boy"
+                      field="deliveryBoyName"
+                      width="20"
+                    >
+                    </kendo-grid-column>
+
+                    <kendo-grid-column
+                      title="Created At"
+                      field="createdAt"
+                      width="20"
+                    >
+                    </kendo-grid-column>
+
+                    <kendo-grid-column title="Payment Status" width="40">
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-isNew="isNew"
+                        let-dataItem="dataItem"
+                      >
+                        <button
+                       [disabled]="dataItem.isReplied"
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                          (click)="open(ReplayContent, 'queryId', dataItem._id)"
+                        >
+                          {{dataItem.isReplied?'Replied':'Reply'}}
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                          (click)="deleteQuery(dataItem)"
+                        >
+                          Delete Query
+                        </button>
+                      </ng-template>
+                    </kendo-grid-column>
+                  </kendo-grid>
+                </div>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<ng-template #ReplayContent let-modal>
+  <form [formGroup]="replayForm">
+    <div class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="RechargeExampleModal"
+      >
+        <!-- Replay -->
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="mt-2 row">
+        <div class="col-md-12">
+          <label>Reply</label>
+          <textarea
+            formControlName="reply"
+            class="form-control"
+            rows="4"
+          ></textarea>
+          <small
+            style="color: #e73a3a"
+            class="form-text"
+            *ngIf="isValidReplay('reply')"
+          >
+            Reply cannot be empty
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        (click)="onSubmitReplay()"
+        type="button"
+        class="btn btn-dark-rounded"
+      >
+        Reply
+      </button>
+      <button
+        class="btn btn-dark-rounded"
+        type="button"
+        class="btn btn-dark-rounded"
+        type="button"
+        data-dismiss="modal"
+        (click)="modal.dismiss('Cross click')"
+      >
+        Close
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<!-- <ng-template #content let-modal>
+  <div *ngIf="update_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.5"
+      class="modal-title f-w-200"
+      id="exampleModal"
+    >
+      Update
+    </h5>
+    <button
+      style="color: white; opacity: 0.5; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="add_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.5"
+      class="modal-title f-w-200"
+      id="exampleModal"
+    >
+      Add
+    </h5>
+    <button
+      style="color: white; opacity: 0.5; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="needs-validation">
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="validationCustom01" class="mb-1">Title </label>
+          <input
+            class="form-control"
+            id="validationCustom02"
+            type="text"
+            placeholder="Title"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="validationCustom02" class="mb-1">Percentage</label>
+          <input class="form-control" id="validationCustom02" type="text" />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      class="btn btn-dark-rounded"
+      type="button"
+      data-dismiss="modal"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Close
+    </button>
+    <button type="button" class="btn btn-dark-rounded">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #PendingContent let-modal>
+  <div *ngIf="update_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.5"
+      class="modal-title f-w-200"
+      id="PendingExampleModal"
+    >
+      Update
+    </h5>
+    <button
+      style="color: white; opacity: 0.5; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="add_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.5"
+      class="modal-title f-w-200"
+      id="PendingExampleModal"
+    >
+      Add
+    </h5>
+    <button
+      style="color: white; opacity: 0.5; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <label>Choose Store</label>
+        <div class="example-wrapper">
+          <kendo-multiselect class="form-control" [data]="listStore">
+          </kendo-multiselect>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <label>Choose Pincode</label>
+        <div class="example-wrapper">
+          <kendo-multiselect class="form-control" [data]="listPincode">
+          </kendo-multiselect>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <label>Commission Per Order</label>
+        <input type="text" class="form-control" value="50" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <label>Credit</label>
+        <input type="text" class="form-control" value="50" />
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      class="btn btn-dark-rounded"
+      type="button"
+      data-dismiss="modal"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Close
+    </button>
+    <button type="button" class="btn btn-dark-rounded">Save</button>
+  </div>
+</ng-template> -->

@@ -1,0 +1,3244 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="tab2-card">
+        <div class="card-body tab2-card kendo_table customer-detail-table">
+          <label class="col-form-label"> Customer Details</label>
+          <div class="row full-row">
+            <div class="mt-4 col-md-5">
+              <div class="row">
+                <div class="col-md-4">
+                  <label
+                    for="validationCustom0"
+                    class="col-form-label pt-0 pb-3"
+                    >Name</label
+                  >&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+
+                <div class="col-md-4">
+                  <span class="" id="validationCustom0">{{ name }}</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <label
+                    for="validationCustom0"
+                    class="col-form-label pt-0 pb-3"
+                  >
+                    Contact No</label
+                  >&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+
+                <div class="col-md-4">
+                  <span class="" id="validationCustom0">{{ phone }}</span>
+                </div>
+              </div>
+              <!-- <div class="row">
+                                <div class="col-md-4">
+                                    <label for="validationCustom0" class="col-form-label">
+                                        Gender</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                </div>
+
+                                <div class="col-md-5 p-0">
+                                    <span class="l col-xl-8 col-md-7" id="validationCustom0">Male</span>
+                                </div>
+                            </div> -->
+              <div class="row">
+                <div class="col-md-4">
+                  <label
+                    for="validationCustom0"
+                    class="col-form-label pt-0 pb-3"
+                  >
+                    Email</label
+                  >&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+
+                <div class="col-md-5 p-0">
+                  <span class="l col-xl-8 col-md-7" id="validationCustom0">{{
+                    email
+                  }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 col-md-3">
+              <fieldset>
+                <legend>{{ fmailyMemberStatus }}</legend>
+                <div class="row">
+                  <div class="col-md-4" *ngFor="let f of customerFamilyMember">
+                    <img
+                      src="{{ f.image }}"
+                      alt=""
+                      style="max-width: 100%; height: auto"
+                    />
+                    <small class="ml-2">{{ f.name }}</small>
+                  </div>
+                  <!-- <div class="col-md-4">
+                                        <img src="assets/images/customer/user.png" alt="image" />
+                                        <small class="ml-2">Sreejith</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="assets/images/customer/user.png" alt="image" />
+                                        <small class="ml-2">Jobin</small>
+                                    </div>-->
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-md-2"></div>
+            <div *ngIf="Premium" class="mt-4 col-md-2">
+              <img
+                src="assets/images/icon-prime.svg"
+                width="110%"
+                height="90%"
+              />
+            </div>
+          </div>
+
+          <br />
+          <ngb-tabset
+            class="mt-5 tab-coupon"
+            (tabChange)="Tab_Change_Function($event)"
+          >
+            <ngb-tab id="ordersTab" title="Orders">
+              <ng-template ngbTabContent>
+                <div
+                  class="tab-pane fade active show full-row"
+                  id="account"
+                  role="tabpanel"
+                  aria-labelledby="account-tab"
+                >
+                  <div
+                    class="col-lg-6 col-md-6 mt-3 pl-0 mb-2"
+                    style="float: left"
+                  >
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        trim="blur"
+                        class="form-control form-control-text added"
+                        style="
+                          border-radius: 27px 0px 0px 27px;
+                          opacity: 1;
+                          border: none;
+                        "
+                        (keyup)="searchOrders($event.target.value)"
+                        placeholder="Search"
+                        name="search"
+                      />
+                      <div class="input-group-btn">
+                        <button
+                          class="btn btn-default"
+                          type="submit"
+                          style="
+                            border-radius: 0px 27px 27px 0px;
+                            background: #093d57;
+                          "
+                        >
+                          <i class="fa fa-search" style="color: white"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <br /><br /> -->
+                  <button
+                    style="float: right; margin: 0 15px 0 0"
+                    type="button"
+                    class="btn btn-dark btn-dark-rounded mt-3 mb-2"
+                    (click)="makeNewOrder()"
+                  >
+                    Make New Order
+                  </button>
+                  <br /><br /><br />
+                  <div class="table-responsive">
+                    <kendo-grid
+                      [kendoGridBinding]="customerOrderDetails.result"
+                      [filterable]="false"
+                      [sortable]="true"
+                    >
+                      <kendo-grid-column field="no" title="Sl.No" width="30">
+                        <ng-template
+                          kendoGridFilterCellTemplate
+                          let-filter
+                          let-column="column"
+                        >
+                          <kendo-grid-string-filter-cell
+                            placeholder="search"
+                            [showOperators]="false"
+                            [column]="column"
+                            title="Parent Store"
+                            [filter]="filter"
+                          >
+                          </kendo-grid-string-filter-cell>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column title="Order ID" width="30">
+                        <ng-template
+                          kendoGridCellTemplate
+                          let-isNew="isNew"
+                          let-dataItem="dataItem"
+                        >
+                          <a
+                            style="
+                              text-decoration: underline !important;
+                              cursor: pointer;
+                            "
+                            data-original-title="test"
+                            data-target="#exampleModal"
+                            (click)="
+                              open(data, '', 'viewOrderDetails', dataItem.no)
+                            "
+                            >{{ dataItem.orderId }}</a
+                          >
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column title="Order Items" width="20">
+                        <ng-template
+                          kendoGridCellTemplate
+                          let-dataItem="dataItem"
+                        >
+                          <button
+                            type="button"
+                            class="btn btn-dark btn-dark-rounded btn-sm"
+                            data-toggle="modal"
+                            data-original-title="test"
+                            data-target="#ItemListExampleModal"
+                            (click)="
+                              open(
+                                ItemListContent,
+                                '',
+                                'orderItems',
+                                dataItem.no
+                              )
+                            "
+                            style="cursor: pointer"
+                          >
+                            {{ dataItem.noOfItems }}
+                          </button>
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column title="Order Date" width="30">
+                        <ng-template
+                          kendoGridCellTemplate
+                          let-dataItem="dataItem"
+                        >
+                          <a style="color: white">
+                            {{ dataItem.createdAt | date }}</a
+                          >
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-column width="30">
+                        title="Mode of Payment"
+
+                        <ng-template
+                          kendoGridCellTemplate
+                          let-dataItem="dataItem"
+                        >
+                          <a style="color: white">
+                            {{ dataItem.paymentType | uppercase }}</a
+                          >
+                        </ng-template>
+                      </kendo-grid-column>
+
+                      <kendo-grid-command-column
+                        title="Subscription"
+                        width="20"
+                      >
+                        <ng-template
+                          kendoGridCellTemplate
+                          let-isNew="isNew"
+                          let-dataItem="dataItem"
+                        >
+                          <button
+                            type="button"
+                            class="btn btn-dark btn-dark-rounded"
+                            (click)="
+                              open(
+                                addToSubscriptionContent,
+                                '',
+                                'addToSubscription',
+                                dataItem._id
+                              )
+                            "
+                          >
+                            Add
+                          </button>
+                        </ng-template>
+                      </kendo-grid-command-column>
+                    </kendo-grid>
+                  </div>
+                  <div class="row">
+                    <div
+                      *ngIf="customerOrderDetails.result.length > 0"
+                      class="pagination ml-2"
+                    >
+                      <button (click)="orderPagination(1)">First</button>
+                      <button
+                        *ngIf="customerOrderDetails.hasPrevPage"
+                        (click)="
+                          orderPagination(customerOrderDetails.current_page - 1)
+                        "
+                      >
+                        Prev
+                      </button>
+                      <button
+                        *ngIf="customerOrderDetails.hasPrevPage"
+                        (click)="
+                          orderPagination(customerOrderDetails.current_page - 1)
+                        "
+                      >
+                        {{ customerOrderDetails.current_page - 1 }}
+                      </button>
+                      <button style="color: yellow">
+                        {{ customerOrderDetails.current_page }}
+                      </button>
+                      <button
+                        *ngIf="customerOrderDetails.hasNextPage"
+                        (click)="
+                          orderPagination(customerOrderDetails.current_page + 1)
+                        "
+                      >
+                        {{ customerOrderDetails.current_page + 1 }}
+                      </button>
+                      <button
+                        *ngIf="customerOrderDetails.hasNextPage"
+                        (click)="
+                          orderPagination(customerOrderDetails.current_page + 1)
+                        "
+                      >
+                        Next
+                      </button>
+                      <button
+                        (click)="
+                          orderPagination(customerOrderDetails.total_page - 1)
+                        "
+                      >
+                        Last
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab id="medcoinsTab" title="Med Coins">
+              <ng-template ngbTabContent>
+                <div
+                  class="tab-pane fade active show"
+                  id="account"
+                  role="tabpanel"
+                  aria-labelledby="account-tab"
+                >
+                  <form class="full-row">
+                    <div
+                      class="table-sorter-wrapper table-responsive col-md-12 col-sm-6 col-xl-12"
+                    >
+                      <table id="sortable-table-2" class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th class="sortStyle">
+                              Date<i class="mdi mdi-chevron-down"></i>
+                            </th>
+                            <th class="sortStyle">
+                              Time<i class="mdi mdi-chevron-down"></i>
+                            </th>
+                            <!-- <th class="sortStyle">
+                              Transaction ID<i class="mdi mdi-chevron-down"></i>
+                            </th> -->
+                            <th class="sortStyle">
+                              Type<i class="mdi mdi-chevron-down"></i>
+                            </th>
+                            <th class="sortStyle">
+                              Debit<i class="mdi mdi-chevron-down"></i>
+                            </th>
+                            <th class="sortStyle">
+                              Credit<i class="mdi mdi-chevron-down"></i>
+                            </th>
+                            <th class="sortStyle">
+                              Balance<i class="mdi mdi-chevron-down"></i>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="k-grid-norecords ng-star-inserted">
+                            <td colspan="6">
+                              <p
+                                style="text-align: center; padding: 20px 0px"
+                                *ngIf="
+                                  medcoinDatas.transactionHistory.length == 0
+                                "
+                              >
+                                no records
+                              </p>
+                            </td>
+                          </tr>
+
+                          <ng-container
+                            *ngFor="let data of medcoinDatas.transactionHistory"
+                          >
+                            <tr>
+                              <td>{{ data.date }}</td>
+                              <td>{{ data.time }}</td>
+                              <!-- <td>5278546</td> -->
+                              <td>{{ data.type }}</td>
+                              <td>
+                                <b *ngIf="data.debit > 0">{{ data.debit }}</b>
+                                <b *ngIf="data.debit == 0"></b>
+                              </td>
+                              <td>
+                                <b *ngIf="data.credit > 0">{{ data.credit }}</b>
+                                <b *ngIf="data.credit == 0"></b>
+                              </td>
+                              <td>
+                                <b class="span-green-label">{{
+                                  data.customerBalance
+                                }}</b>
+                              </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="row">
+                      <div
+                        *ngIf="medcoinDatas.transactionHistory.length > 0"
+                        class="pagination ml-2"
+                      >
+                        <button (click)="onPageChange(0)">First</button>
+                        <button
+                          *ngIf="medcoinDatas.currentPage > 0"
+                          (click)="onPageChange(medcoinDatas.currentPage - 1)"
+                        >
+                          Prev
+                        </button>
+                        <button
+                          *ngIf="medcoinDatas.currentPage > 1"
+                          (click)="onPageChange(medcoinDatas.currentPage - 1)"
+                        >
+                          {{ medcoinDatas.currentPage - 1 }}
+                        </button>
+                        <button style="color: yellow">
+                          {{ medcoinDatas.currentPage + 1 }}
+                        </button>
+                        <button
+                          *ngIf="medcoinDatas.hasNextPage"
+                          (click)="onPageChange(medcoinDatas.currentPage + 1)"
+                        >
+                          {{ medcoinDatas.currentPage + 2 }}
+                        </button>
+                        <button
+                          *ngIf="medcoinDatas.hasNextPage"
+                          (click)="onPageChange(medcoinDatas.currentPage + 1)"
+                        >
+                          Next
+                        </button>
+                        <button
+                          *ngIf="medcoinDatas.hasNextPage"
+                          (click)="onPageChange(medcoinDatas.totalPages - 1)"
+                        >
+                          Last
+                        </button>
+                      </div>
+
+                      <!-- <div class="col-md-3">
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                        >
+                          Issue Refund
+                        </button>
+                      </div>
+                      <div class="col-md-3">
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                        >
+                          Register Complaint
+                        </button>
+                      </div>
+                      <div class="col-md-3">
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                        >
+                          Redeem Medcoin
+                        </button>
+                      </div> -->
+                    </div>
+                  </form>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab id="premiumTab" title="Premium">
+              <ng-template ngbTabContent>
+                <div
+                  class="tab-pane fade active show"
+                  id="account"
+                  role="tabpanel"
+                  aria-labelledby="account-tab"
+                >
+                  <h6
+                    *ngIf="customerPremiumDetails.length === 0"
+                    style="text-align: center; padding: 40px 0px"
+                  >
+                    May be not a prime member
+                  </h6>
+                  <form
+                    *ngIf="customerPremiumDetails.length > 0"
+                    class="form-sample full-row"
+                  >
+                    <h5 class="mb-1" style="color: white">Plans</h5>
+                    <br />
+                    <div class="ml-2 row">
+                      <div class="col-md-4">
+                        <div class="row row-data">
+                          <div class="col-md-4">
+                            <label
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >Current Plan
+                            </label>
+                          </div>
+                          <div class="col-md-2"></div>
+                          <div class="col-md-3"></div>
+                          <div class="col-md-3">
+                            <label
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >{{ customerPremiumDetails[0].planName }}
+                            </label>
+                          </div>
+                        </div>
+                        <hr />
+                        <div class="row row-data">
+                          <div class="col-md-4">
+                            <label
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >Valid From
+                            </label>
+                          </div>
+                          <div class="col-md-4"></div>
+                          <div class="col-md-4">
+                            <label
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                            >
+                              {{ customerPremiumDetails[0].startDate | date }}
+                            </label>
+                          </div>
+                        </div>
+                        <hr />
+                        <div class="row row-data">
+                          <div class="col-md-4">
+                            <label
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                            >
+                              Valid To
+                            </label>
+                          </div>
+                          <div class="col-md-4"></div>
+                          <div class="col-md-4">
+                            <label
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                            >
+                              {{ customerPremiumDetails[0].endDate | date }}
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-8">
+                        <div class="row">
+                          <div class="ml-3 col-md-2 row-data mb-2">
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >Super Fast Delivery</small
+                            ><br />
+                            <img
+                              src="assets/images/customer/icon-delivery.png"
+                              alt="im"
+                              width="30px"
+                              height="30px"
+                            /><br />
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 ol-form-label"
+                              >{{
+                                customerPremiumDetails[0].freeDelivery
+                              }}
+                              Left</small
+                            >
+                          </div>
+
+                          <div class="ml-3 col-md-2 row-data mb-2">
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >Free Delivery</small
+                            ><br />
+                            <img
+                              src="assets/images/customer/icon-cash.svg"
+                              alt="im"
+                              width="30px"
+                              height="30px"
+                            /><br />
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 ol-form-label"
+                              >{{
+                                customerPremiumDetails[0].freeDelivery
+                              }}
+                              Left</small
+                            >
+                          </div>
+
+                          <div class="ml-3 col-md-2 row-data mb-2">
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >Cash Back</small
+                            ><br />
+                            <img
+                              src="assets/images/customer/icon-cashback.svg"
+                              alt="im"
+                              width="30px"
+                              height="30px"
+                            /><br />
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >{{ customerPremiumDetails[0].cashBackAmount }}
+                            </small>
+                          </div>
+
+                          <div class="ml-3 col-md-2 row-data mb-2">
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >Discount</small
+                            ><br />
+                            <img
+                              src="assets/images/customer/icon-cashback.svg"
+                              alt="im"
+                              width="30px"
+                              height="30px"
+                            /><br />
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >{{ customerPremiumDetails[0].discount }}
+                            </small>
+                          </div>
+
+                          <!-- <div class="ml-3 col-md-2 row-data mt-2">
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >Discount </small
+                            ><br />
+                            <img
+                              src="assets/images/customer/icon-discount.svg"
+                              alt="im"
+                              width="30px"
+                              height="30px"
+                            /><br />
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >{{ customerPremiumDetails[0].discount }}
+                            </small>
+                          </div> -->
+                          <div class="ml-3 col-md-2 row-data mb-2">
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >Priority Support</small
+                            ><br />
+                            <img
+                              src="assets/images/customer/icon-priority.png"
+                              alt="im"
+                              width="30px"
+                              height="30px"
+                            /><br />
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >Unlimited</small
+                            >
+                          </div>
+
+                          <div class="ml-3 col-md-2 row-data mb-2">
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >Foliofit Membership</small
+                            ><br />
+                            <img
+                              src="assets/images/customer/fft.png"
+                              alt="im"
+                              width="30px"
+                              height="30px"
+                            /><br />
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 ol-form-label"
+                              >Free</small
+                            >
+                          </div>
+                          <div class="ml-3 col-md-2 row-data mb-2">
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 col-form-label"
+                              >Exclusive Offers</small
+                            ><br />
+                            <img
+                              src="assets/images/customer/exclusive.png"
+                              alt="im"
+                              width="30px"
+                              height="30px"
+                            /><br />
+                            <small
+                              for="validationCustom02"
+                              class="mb-1 ol-form-label"
+                              >Unlimited</small
+                            >
+                          </div>
+
+                          <div class="ml-3 col-md-2 row-data mb-2">
+                            <small
+                              for="validationCustom02"
+                              class="col-form-label"
+                              >{{ customerPremiumDetails[0].miniMumOffer }} %
+                              off on Outlets </small
+                            ><br />
+
+                            <img
+                              src="assets/images/customer/ten.png"
+                              alt="im"
+                              width="30px"
+                              height="30px"
+                            /><br />
+                            <small
+                              for="validationCustom02"
+                              class="col-form-label"
+                              >Unlimited</small
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div class="mt-2 row">
+                      <div class="col-md-12">
+                        <button
+                          style="float: right"
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                        >
+                          Register Complaint
+                        </button>
+                      </div>
+                    </div> -->
+                  </form>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab id="subscriptionTab">
+              <ng-template ngbTabTitle
+                >Subscription
+                <ng-template ngbTabContent>
+                  <div class="full-row">
+                    <div class="row" style="justify-content: center">
+                      <!-- <div class="col-md-2"></div> -->
+                      <h6
+                        *ngIf="customerSubscriptionDetails.loop.length === 0"
+                        style="
+                          text-align: center;
+                          padding: 40px 0px;
+                          margin-right: 25px;
+                        "
+                      >
+                        No subscribed products to show
+                      </h6>
+                      <ng-container
+                        *ngFor="let sub of customerSubscriptionDetails.loop"
+                      >
+                        <div class="col-md-4 mb-3">
+                          <div class="full-row-data">
+                            <div class="row">
+                              <div class="col-md-5">
+                                <label
+                                  for="validationCustom0"
+                                  class="col-form-label"
+                                  >Subscription Id</label
+                                >
+                              </div>
+
+                              <div class="mt-2 col-md-7 text-right">
+                                <span
+                                  class="span-data"
+                                  id="validationCustom0"
+                                  >{{ sub.subscriptionId }}</span
+                                >
+                              </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                              <div class="col-md-5">
+                                <label
+                                  for="validationCustom0"
+                                  class="col-form-label"
+                                  >Status</label
+                                >
+                              </div>
+
+                              <div class="col-md-7 mt-2 text-right">
+                                <span class="" id="validationCustom0">
+                                  {{ sub.status ? "Active" : "Inactive" }}
+                                </span>
+                              </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                              <div class="col-md-5">
+                                <label
+                                  for="validationCustom0"
+                                  class="col-form-label"
+                                  >First Order Id</label
+                                >
+                              </div>
+                              <div class="mt-2 col-md-7 text-right">
+                                <span class=" " id="validationCustom0">{{
+                                  sub.orderId
+                                }}</span>
+                              </div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                              <div class="col-md-5">
+                                <label
+                                  for="validationCustom0"
+                                  class="col-form-label"
+                                  >First Delivery Date</label
+                                >
+                              </div>
+                              <div class="col-md-7 mt-2 text-right">
+                                <span class="" id="validationCustom0">
+                                  {{ sub.firstDeliveryDate | date }}
+                                </span>
+                              </div>
+                            </div>
+
+                            <hr />
+                            <div class="row">
+                              <div class="col-md-5">
+                                <label
+                                  for="validationCustom0"
+                                  class="col-form-label"
+                                  >Interval</label
+                                >
+                              </div>
+                              <div class="col-md-7 mt-2 text-right">
+                                <span class="" id="validationCustom0"
+                                  >{{ sub.interval }}
+                                  days
+                                </span>
+                              </div>
+                            </div>
+
+                            <hr />
+                            <div class="row">
+                              <div class="col-md-5">
+                                <label
+                                  for="validationCustom0"
+                                  class="col-form-label"
+                                >
+                                  Items</label
+                                >
+                              </div>
+                              <div
+                                style="
+                                  cursor: pointer;
+                                  text-decoration: underline;
+                                "
+                                class="col-md-7 mt-2 text-right"
+                              >
+                                <span
+                                  class=""
+                                  id="validationCustom0"
+                                  (click)="
+                                    open(
+                                      ItemListContent,
+                                      '',
+                                      'subscribedProducts',
+                                      sub.index
+                                    )
+                                  "
+                                  style="
+                                    cursor: pointer;
+                                    text-decoration: underline;
+                                  "
+                                  >{{ sub.numberOfItems }}
+                                </span>
+                              </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                              <div class="col-md-5">
+                                <label
+                                  for="validationCustom0"
+                                  class="col-form-label"
+                                >
+                                  Next Delivery Date</label
+                                >
+                              </div>
+                              <div class="col-md-7 mt-2 text-right">
+                                <span class="" id="validationCustom0">{{
+                                  sub.nextDeliveryDate | date
+                                }}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div>
+
+                    <!-- <div class="mt-3 row">
+                      <div class="col-md-4"></div>
+                      <div class="col-md-4">
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                        >
+                          Register Complaint
+                        </button>
+                      </div>
+                      <div class="col-md-4"></div>
+                    </div> -->
+                  </div>
+                </ng-template>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab id="Complaints">
+              <ng-template ngbTabTitle
+                >Complaints
+                <ng-template ngbTabContent>
+                  <div class="full-row">
+                    <div class="row p-3">
+                      <div class="col-md-12 text-right">
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                          (click)="open(complaintdata, '', 'new', '')"
+                        >
+                          Register Complaint
+                        </button>
+                      </div>
+
+                      <div
+                        class="ml-2 mt-3 full-row-data col-md-4"
+                        *ngFor="let i of Complaints_Array"
+                      >
+                        <div
+                          class=""
+                          data-toggle="modal"
+                          data-original-title="test"
+                          data-target="#complaintexampleModal"
+                          (click)="open(complaintdata, i._id, 'view', '')"
+                          style="cursor: pointer"
+                        >
+                          <div class="ml-2 mt-2 row">
+                            <div class="col-md-5">
+                              <label
+                                for="validationCustom0"
+                                class="col-form-label"
+                                >Complaint ID</label
+                              >
+                            </div>
+                            <!-- <div class="col-md-4"></div> -->
+                            <div class="col-md-7 text-right">
+                              <span class="" id="validationCustom0">{{
+                                i.ComplaintId
+                              }}</span>
+                            </div>
+                          </div>
+                          <hr />
+
+                          <div class="ml-2 mt-2 row">
+                            <div class="col-md-5">
+                              <label
+                                for="validationCustom0"
+                                class="col-form-label"
+                                >Department</label
+                              >
+                            </div>
+                            <!-- <div class="col-md-4"></div> -->
+                            <div class="col-md-7 text-right">
+                              <span class="" id="validationCustom0">{{
+                                i.Department
+                              }}</span>
+                            </div>
+                          </div>
+
+                          <hr />
+                          <div class="ml-2 mt-2 row">
+                            <div class="col-md-5">
+                              <label
+                                for="validationCustom0"
+                                class="col-form-label"
+                                >Priority</label
+                              >
+                            </div>
+                            <!-- <div class="col-md-4"></div> -->
+                            <div class="col-md-7 text-right">
+                              <span class="" id="validationCustom0">{{
+                                i.preference
+                              }}</span>
+                            </div>
+                          </div>
+                          <hr />
+                          <div class="ml-2 mt-2 row">
+                            <div class="col-md-5">
+                              <label
+                                for="validationCustom0"
+                                class="col-form-label"
+                                >Complaint Date</label
+                              >
+                            </div>
+                            <div class="col-md-7 text-right">
+                              <span class="" id="validationCustom0">{{
+                                i.date
+                              }}</span>
+                            </div>
+                          </div>
+                          <hr />
+                        </div>
+                      </div>
+
+                      <div class="col-md-2"></div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="Finance">
+              <ng-template ngbTabContent>
+                <div
+                  class="tab-pane fade active show"
+                  id="account"
+                  role="tabpanel"
+                  aria-labelledby="account-tab"
+                >
+                  <form class="full-row">
+                    <div class="table-sorter-wrapper table-responsive">
+                      <table id="sortable-table-2" class="table table-striped">
+                        <thead>
+                          <tr></tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td style="background-color: #00496e"></td>
+                            <td>
+                              <h3>
+                                Total Revenue Generated
+                                <span style="padding-left: 30px">1234</span>
+                              </h3>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Total revenue Generated to aswin</td>
+
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>medicoin :100 card :100</td>
+                            <td>20 Dec 2020</td>
+                            <td>10:20 am</td>
+                            <td></td>
+                            <td>105</td>
+                          </tr>
+
+                          <tr>
+                            <td>For Consultation</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+
+                          <tr>
+                            <td>medicoin :100 card :100</td>
+                            <td>20 Dec 2020</td>
+                            <td>10:20 am</td>
+                            <td></td>
+                            <td>105</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-4"></div>
+                      <div class="col-md-4">
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-dark-rounded"
+                        >
+                          Register Complaint
+                        </button>
+                      </div>
+                      <div class="col-md-4"></div>
+                    </div>
+                  </form>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="Notes">
+              <ng-template ngbTabContent>
+                <div
+                  class="tab-pane fade active show full-row"
+                  id="account"
+                  role="tabpanel"
+                  aria-labelledby="account-tab"
+                >
+                  <div class="mt-3 row">
+                    <!-- <div class="mt-3 col-sm-2"></div> -->
+                    <div
+                      class="mt-3 col-sm-4 ml-3 pt-2 full-row-data"
+                      *ngFor="let i of Notes_Array"
+                    >
+                      <span class="mt-2">{{ i.date.slice(0, 10) }}</span>
+                      <!-- <span style="margin-left: 235px;justify-content: space-between"
+                                                class="mt-2">21/2/2021</span><br> -->
+                      <br />{{ i.notes }}
+                    </div>
+
+                    <div class="mt-3 col-sm-4">
+                      <form [formGroup]="Notes_Form">
+                        <textarea
+                          class="form-control"
+                          id="exampleTextarea1"
+                          rows="4"
+                          placeholder="Type Here"
+                          formControlName="notes"
+                        ></textarea>
+                      </form>
+                    </div>
+                    <div class="mt-3 col-sm-2"></div>
+                  </div>
+
+                  <div class="mt-3 row">
+                    <div class="mt-3 col-md-8"></div>
+                    <div class="mt-3 col-md-4">
+                      <button
+                        type="submit"
+                        class="btn btn-dark btn-dark-rounded"
+                        style="float: right; margin: 0 10px 0 0"
+                        (click)="Add_Note()"
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="Personal Details">
+              <ng-template ngbTabContent>
+                <div
+                  class="tab-pane fade active show full-row"
+                  id="account"
+                  role="tabpanel"
+                  aria-labelledby="account-tab"
+                >
+                  <div class="mt-3 row">
+                    <div class="mt-3 col-sm-6">
+                      <table class="table table-bordered Personal-table">
+                        <thead>
+                          <tr>
+                            <th colspan="2">Personal</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Name</td>
+                            <td>{{ customerName }}</td>
+                          </tr>
+
+                          <tr>
+                            <td>Gender</td>
+                            <td>{{ customerGender }}</td>
+                          </tr>
+                          <tr>
+                            <td>Contact Number</td>
+                            <td>{{ customerContact }}</td>
+                          </tr>
+                          <tr>
+                            <td>Date of Birth</td>
+                            <td
+                              *ngIf="
+                                customerDateOfBirth !=
+                                'Select your date of birth'
+                              "
+                            >
+                              {{ customerDateOfBirth }}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Blood Group</td>
+                            <td>{{ customerBlood }}</td>
+                          </tr>
+
+                          <tr>
+                            <td>Marital Status</td>
+                            <td>{{ customerMaritalStatus }}</td>
+                          </tr>
+
+                          <tr>
+                            <td>Height</td>
+                            <td>{{ customerHeight }}</td>
+                          </tr>
+
+                          <tr>
+                            <td>Weight</td>
+                            <td>{{ customerWeight }}</td>
+                          </tr>
+
+                          <tr>
+                            <td>Email</td>
+                            <td>{{ customerEmail }}</td>
+                          </tr>
+
+                          <tr>
+                            <td>Reason for not Completing</td>
+                            <td *ngFor="let r of reasonNotCompleting">
+                              {{ r }}
+                              <p>{{ reasonNotComment }}</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div class="mt-3 col-sm-6">
+                      <table class="table table-bordered Personal-table">
+                        <thead>
+                          <tr>
+                            <th colspan="2">Medical</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Current Medications</td>
+                            <td>
+                              {{ customerMedicalCMedication }}
+                              <p *ngIf="customerMedicalCMedicationDetail != ''">
+                                {{ customerMedicalCMedicationDetail }}
+                              </p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Allergies</td>
+                            <td>
+                              {{ customerMedicalAllergies }}
+                              <p *ngIf="customerMedicalAllergiesDetail != ''">
+                                {{ customerMedicalAllergiesDetail }}
+                              </p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Past Medications</td>
+                            <td>
+                              {{ customerMedicalPMedication }}
+                              <p *ngIf="customerMedicalPMedicationDetail != ''">
+                                {{ customerMedicalPMedicationDetail }}
+                              </p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Chronic Diseases</td>
+                            <td>
+                              {{ customerMedicalChronic }}
+                              <p *ngIf="customerMedicalChronicDetail != ''">
+                                {{ customerMedicalChronicDetail }}
+                              </p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Injuries</td>
+                            <td>
+                              {{ customerMedicalInjuries }}
+                              <p *ngIf="customerMedicalInjuriesDetail != ''">
+                                {{ customerMedicalInjuriesDetail }}
+                              </p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Surgeries</td>
+                            <td>
+                              {{ customerMedicalSurgeries }}
+                              <p *ngIf="customerMedicalSurgeriesDetail != ''">
+                                {{ customerMedicalSurgeriesDetail }}
+                              </p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="Family Members">
+              <ng-template ngbTabContent>
+                <div
+                  class="col-md-12 mt-3"
+                  *ngIf="customerFamilyMember.length > 0; else e"
+                >
+                  <div
+                    class="tab-pane fade active show full-row"
+                    id="account"
+                    role="tabpanel"
+                    aria-labelledby="account-tab"
+                    style="background: none"
+                  >
+                    <ngb-tabset
+                      class="tab-coupon side_innerpage_tab"
+                      style="float: none"
+                      (tabChange)="Tab_Change_Function($event)"
+                    >
+                      <ngb-tab title="{{ customerFamilyName }}">
+                        <ng-template ngbTabContent>
+                          <div class="mt-3 row">
+                            <div class="mt-3 col-sm-8">
+                              <table
+                                class="table table-bordered Personal-table"
+                              >
+                                <thead>
+                                  <tr>
+                                    <th colspan="2">Personal</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Name</td>
+                                    <td>{{ customerFamilyName }}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Surname</td>
+                                    <td>{{ customerFamilySurname }}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Gender</td>
+                                    <td>{{ customerFamilyGender }}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Age</td>
+                                    <td>{{ customerFamilyAge }}</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>Blood Group</td>
+                                    <td>{{ customerFamilyBlood }}</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>Relation</td>
+                                    <td>{{ customerFamilyRelation }}</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>Height</td>
+                                    <td>{{ customerFamilyHieght }}</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>Weight</td>
+                                    <td>{{ customerFamilyWeight }}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </ng-template>
+                      </ngb-tab>
+                      <ngb-tab
+                        *ngFor="let family of familyArray"
+                        title="{{ family.name }}"
+                      >
+                        <ng-template ngbTabContent>
+                          <div class="row">
+                            <div class="mt-3 col-sm-8">
+                              <table
+                                class="table table-bordered Personal-table"
+                              >
+                                <thead>
+                                  <tr>
+                                    <th colspan="2">Personal</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Name</td>
+                                    <td>{{ family.name }}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Surname</td>
+                                    <td>{{ family.surname }}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Gender</td>
+                                    <td>{{ family.gender }}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Age</td>
+                                    <td>{{ family.age }}</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>Blood Group</td>
+                                    <td>{{ family.bloodGroup }}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Relation</td>
+                                    <td>{{ family.relation }}</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>Height</td>
+                                    <td>{{ family.height }}</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>Weight</td>
+                                    <td>{{ family.weight }}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </ng-template>
+                      </ngb-tab>
+                    </ngb-tabset>
+                  </div>
+                </div>
+
+                <ng-template #e>
+                  <div
+                    class="col-lg-12 col-md-5 col-sm-12 col-xs-12 text-center"
+                  >
+                    <br />
+                    <br /><br />
+                    <h3>No family members added</h3>
+                  </div>
+                </ng-template>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Order Popup Example-->
+
+<ng-template #data let-modal style="float: right">
+  <div class="modal-header">
+    <h5 class="modal-title f-w-600" id="cartexampleModal"></h5>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" id="exampleModalLabel">
+    <form class="needs-validation">
+      <div class="form">
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Order ID </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >{{ showOrderDetails.orderId }}
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Ordered Items </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">
+              {{ showOrderDetails.orderItem }}
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Orderd Date</label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >{{ showOrderDetails.trackingDates.placed }}
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Mode Of Payment
+            </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1" style="color: yellow"
+              >{{ showOrderDetails.paymentType | uppercase }}
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Devivery Address
+            </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >{{ showOrderDetails.name }}
+            </label>
+            <label for="validationCustom02" class="mb-1"
+              >{{ showOrderDetails.name }} {{ showOrderDetails.wholeAddress }}
+            </label>
+          </div>
+        </div>
+
+        <!-- <div class="row"> -->
+        <!-- const arr = [
+        "order placed",
+        "order under review",
+        "order confirmed",
+        "order packed",
+        "order shipped",
+        "out for delivery",
+        "delivered",
+      ]; -->
+        <!-- ngClass -->
+        <div class="row mb-2">
+          <div class="col-md-12 bar-div">
+            <label for="validationCustom02" class="mb-1"
+              >Payment Details
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Total Cart Value</label
+            >
+          </div>
+
+          <div class="form-group mb-0 col-md-6 text-right">
+            <label for="validationCustom02" class="mb-1">
+              <i class="fa fa-inr"></i>
+
+              {{ showOrderDetails.totalCartValue }}</label
+            >
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Donation Amount
+            </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6 text-right">
+            <label for="validationCustom02" class="mb-1"
+              >(+){{ showOrderDetails.donationAmount }}</label
+            >
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Delivery Charge
+            </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6 text-right">
+            <label for="validationCustom02" class="mb-1"
+              >(+){{ showOrderDetails.deliveryCharge }}</label
+            >
+          </div>
+        </div>
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Coupon </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6 text-right">
+            <label for="validationCustom02" class="mb-1">
+              (-){{ showOrderDetails.couponAppliedDiscount }}
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Medi Coin </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6 text-right">
+            <label for="validationCustom02" class="mb-1"
+              >(-){{ showOrderDetails.medCoinRedeemed }}</label
+            >
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Member Discount
+            </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6 text-right">
+            <label for="validationCustom02" class="mb-1"
+              >(-){{ showOrderDetails.memberDiscount }}</label
+            >
+          </div>
+        </div>
+
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <h5
+              style="color: rgb(255 255 255 / 70%)"
+              for="validationCustom02"
+              class="mb-1"
+            >
+              <b>Total</b>
+            </h5>
+          </div>
+
+          <div class="form-group mb-0 col-md-6 text-right">
+            <h5
+              style="color: rgb(255 255 255 / 70%)"
+              for="validationCustom02"
+              class="mb-1"
+            >
+              <b
+                ><i class="fa fa-inr"></i>
+                {{ showOrderDetails.totalAmountToBePaid }}</b
+              >
+            </h5>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="mt-2 row">
+          <div class="col-lg-6 col-md-6 grid-margin stretch-card">
+            <ul class="bullet-line-list" style="text-transform: capitalize">
+              <li>
+                <p
+                  [ngClass]="
+                    showOrderDetails.trackingDates.placed != ''
+                      ? 'white-text'
+                      : 'text-muted'
+                  "
+                  class="mb-2"
+                >
+                  Order placed
+                </p>
+                <p *ngIf="showOrderDetails.trackingDates.placed != ''">
+                  {{ showOrderDetails.trackingDates.placed }}
+                </p>
+              </li>
+              <li>
+                <p
+                  class="mb-2"
+                  [ngClass]="
+                    showOrderDetails.trackingDates.confirmed != ''
+                      ? 'white-text'
+                      : 'text-muted'
+                  "
+                >
+                  Order confirmed
+                </p>
+                <p *ngIf="showOrderDetails.trackingDates.confirmed != ''">
+                  {{ showOrderDetails.trackingDates.confirmed }}
+                </p>
+              </li>
+              <li>
+                <p
+                  class="mb-2"
+                  [ngClass]="
+                    showOrderDetails.trackingDates.underReview != ''
+                      ? 'white-text'
+                      : 'text-muted'
+                  "
+                >
+                  Order under review
+                </p>
+                <p *ngIf="showOrderDetails.trackingDates.underReview != ''">
+                  {{ showOrderDetails.trackingDates.underReview }}
+                </p>
+              </li>
+              <li *ngIf="showOrderDetails.trackingDates.pharmacyRejected != ''">
+                <p class="mb-2 white-text">Pharmacy rejected</p>
+                <p>
+                  {{ showOrderDetails.trackingDates.pharmacyRejected }}
+                </p>
+              </li>
+              <li *ngIf="showOrderDetails.trackingDates.doctorRejected != ''">
+                <p class="mb-2 white-text">Doctor rejected</p>
+                <p>
+                  {{ showOrderDetails.trackingDates.doctorRejected }}
+                </p>
+              </li>
+
+              <li>
+                <p
+                  *ngIf="showOrderDetails.trackingDates.cancelled === ''"
+                  class="mb-2"
+                  [ngClass]="
+                    showOrderDetails.trackingDates.packed != ''
+                      ? 'white-text'
+                      : 'text-muted'
+                  "
+                >
+                  Order packed
+                </p>
+                <p *ngIf="showOrderDetails.trackingDates.packed != ''">
+                  {{ showOrderDetails.trackingDates.packed }}
+                </p>
+              </li>
+              <li>
+                <p
+                  *ngIf="showOrderDetails.trackingDates.cancelled === ''"
+                  class="mb-2"
+                  [ngClass]="
+                    showOrderDetails.trackingDates.shipped != ''
+                      ? 'white-text'
+                      : 'text-muted'
+                  "
+                >
+                  Order shipped
+                </p>
+
+                <p *ngIf="showOrderDetails.trackingDates.shipped != ''">
+                  {{ showOrderDetails.trackingDates.shipped }}
+                </p>
+              </li>
+              <li>
+                <p
+                  *ngIf="showOrderDetails.trackingDates.cancelled === ''"
+                  class="mb-2"
+                  [ngClass]="
+                    showOrderDetails.trackingDates.outForDelivery != ''
+                      ? 'white-text'
+                      : 'text-muted'
+                  "
+                >
+                  Out for delivery
+                </p>
+                <p *ngIf="showOrderDetails.trackingDates.outForDelivery != ''">
+                  {{ showOrderDetails.trackingDates.outForDelivery }}
+                </p>
+              </li>
+              <li>
+                <p
+                  *ngIf="showOrderDetails.trackingDates.cancelled === ''"
+                  class="mb-2"
+                  [ngClass]="
+                    showOrderDetails.trackingDates.delivered != ''
+                      ? 'white-text'
+                      : 'text-muted'
+                  "
+                >
+                  Order delivered
+                </p>
+                <p *ngIf="showOrderDetails.trackingDates.delivered != ''">
+                  {{ showOrderDetails.trackingDates.delivered }}
+                </p>
+              </li>
+
+              <li *ngIf="showOrderDetails.trackingDates.cancelled != ''">
+                <p class="mb-2 white-text">Order cancelled</p>
+                <p>
+                  {{ showOrderDetails.trackingDates.cancelled }}
+                </p>
+              </li>
+              <li *ngIf="showOrderDetails.trackingDates.appliedForReturn != ''">
+                <p class="mb-2 white-text">Return request Submitted</p>
+                <p>
+                  {{ showOrderDetails.trackingDates.appliedForReturn }}
+                </p>
+              </li>
+              <li *ngIf="showOrderDetails.trackingDates.returned != ''">
+                <p class="mb-2 white-text">Returned</p>
+                <p>
+                  {{ showOrderDetails.trackingDates.returned }}
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-12 col-md-12 grid-margin stretch-card mt-3">
+            <p
+              class="mb-2"
+              style="
+                float: left;
+                padding-right: 2rem;
+                text-transform: capitalize;
+              "
+            >
+              Order Status
+            </p>
+
+            <p style="text-transform: capitalize">
+              {{ showOrderDetails.orderStatus }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <div class="row text-center">
+      <div
+        *ngIf="
+          !showOrderDetails.deliveryStatus &&
+          showOrderDetails.trackingDates.shipped === '' &&
+          showOrderDetails.trackingDates.cancelled === ''
+        "
+        class="col-md-6 text-left"
+      >
+        <button
+          *ngIf="showOrderDetails.paymentType != 'cod'"
+          type="button"
+          class="btn btn-dark btn-dark-rounded"
+          data-toggle="modal"
+          data-original-title="test"
+          data-target="#cancelexampleModal"
+          (click)="open(canceldata, '', '', ''); modal.dismiss('Cross click')"
+          style="cursor: pointer"
+        >
+          Cancel
+        </button>
+
+        <button
+          *ngIf="showOrderDetails.paymentType == 'cod'"
+          type="submit"
+          class="btn btn-dark btn-dark-rounded"
+          (click)="cancel_COD_Order(showOrderDetails._id)"
+          style="cursor: pointer"
+        >
+          Cancel
+        </button>
+      </div>
+      <div
+        *ngIf="
+          showOrderDetails.deliveryStatus &&
+          showOrderDetails.trackingDates.returned === ''
+        "
+        [class.col-md-6]="!showOrderDetails.deliveryStatus"
+        [class.col-md-12]="showOrderDetails.deliveryStatus"
+      >
+        <!-- </div>
+      <div> -->
+        <button
+          type="button"
+          class="btn btn-dark btn-dark-rounded"
+          (click)="openReturn()"
+          style="cursor: pointer"
+        >
+          Return
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!--Order Return Popup Example-->
+
+<ng-template #returndata let-modal style="float: right">
+  <div class="modal-header">
+    <h5 class="modal-title f-w-600" id="returnexampleModal"></h5>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click'); closeAll()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" id="exampleModalLabel">
+    <form [formGroup]="returnForm" class="needs-validation">
+      <div class="form">
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Order ID </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >{{ showOrderDetails.orderId }}
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Ordered Items </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >{{ showOrderDetails.orderItem }}
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Orderd Date</label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >{{ showOrderDetails.trackingDates.placed }}
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Mode Of Payment
+            </label>
+          </div>
+
+          <div
+            class="form-group mb-0 col-md-6"
+            *ngIf="showOrderDetails.paymentType != 'cod'"
+          >
+            <label for="validationCustom02" class="mb-1" style="color: yellow"
+              >{{ showOrderDetails.paymentType }}
+            </label>
+          </div>
+
+          <div
+            class="form-group mb-0 col-md-6"
+            *ngIf="showOrderDetails.paymentType === 'cod'"
+          >
+            <label for="validationCustom02" class="mb-1" style="color: yellow"
+              >COD
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Devivery Address
+            </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >{{ showOrderDetails.wholeAddress }}
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Select Pickup Address
+            </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >{{ showOrderDetails.wholeAddress }}
+            </label>
+          </div>
+        </div>
+
+        <ng-container
+          *ngFor="let product of this.showOrderDetails.productsArray"
+        >
+          <div class="mt-2 row">
+            <div class="col-md-4">
+              <img
+                [src]="[product.image]"
+                class="img-fluid blur-up lazyload bg-img"
+                alt=""
+              />
+            </div>
+            <div class="col-md-4">
+              <a>
+                <label class="btn btn-default btn-lg toggle-checkbox primary">
+                  <input
+                    (change)="onReturnCheckboxChange($event)"
+                    type="checkbox"
+                    value="{{ product.product_id }}"
+                  />
+                  <i class="fa fa-circle"></i>
+                  {{ product.productName }}
+                </label>
+                <h6>
+                  <span style="font-size: small">{{ product.quantity }}</span>
+                </h6>
+                <h5 style="color: white; font-weight: 20px">
+                  <i class="fa fa-inr"></i> {{ product.price }}
+                </h5>
+              </a>
+            </div>
+
+            <hr />
+          </div>
+        </ng-container>
+
+        <div class="mt-2 row bar-div">
+          <div class="col-md-12">
+            <h6 for="validationCustom02" class="mb-1">Payment Details</h6>
+          </div>
+        </div>
+
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Coupen</label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >{{ showOrderDetails.couponAppliedDiscount }}
+            </label>
+          </div>
+        </div>
+
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Medi coin </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >{{ showOrderDetails.medCoinRedeemed }}
+            </label>
+          </div>
+        </div>
+
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Cash </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              ><i class="fa fa-inr"></i> 120</label
+            >
+          </div>
+        </div>
+        <hr />
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Total </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              ><i class="fa fa-inr"></i
+              >{{ showOrderDetails.totalAmountToBePaid }}</label
+            >
+          </div>
+        </div>
+
+        <hr />
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Total Refund Amount</label
+            >
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              ><i class="fa fa-inr"></i
+              >{{ showOrderDetails.refundableAmount }}</label
+            >
+          </div>
+        </div>
+        <hr />
+
+        <label>Refund Mode</label>
+
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-1"></div>
+          <ng-container *ngFor="let method of ['bank', 'medcoin']">
+            <div class="form-group mb-0 col-md-5 card-data">
+              <label
+                [ngClass]="
+                  returnForm.get('paymentMethod').value === method
+                    ? 'border'
+                    : ''
+                "
+                for="validationCustom02"
+                class="mb-1"
+              >
+                <input
+                  type="radio"
+                  formControlName="paymentMethod"
+                  [value]="method"
+                />
+
+                {{ method | titlecase }}</label
+              >
+            </div>
+          </ng-container>
+
+          <div class="form-group mb-0 col-md-1"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <button
+          style="cursor: pointer"
+          type="button"
+          class="btn btn-dark btn-dark-rounded"
+          (click)="onSubmitReturn()"
+        >
+          Confirm Return
+        </button>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+</ng-template>
+
+<!--Order Cancel Popup Example-->
+
+<ng-template #canceldata let-modal style="float: right">
+  <div class="modal-header">
+    <h5 class="modal-title f-w-600" id="cancelexampleModal"></h5>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" id="exampleModalLabel">
+    <form class="needs-validation">
+      <div class="form">
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1 col-sm-3 col-form-label"
+              >Order ID
+            </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1 col-sm-3 col-form-label"
+              >{{ showOrderDetails.orderId }}
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Ordered Items </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">
+              {{ showOrderDetails.orderItem }}
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Orderd Date</label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">{{
+              showOrderDetails.trackingDates.placed
+            }}</label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Mode Of Payment
+            </label>
+          </div>
+
+          <div
+            class="form-group mb-0 col-md-6"
+            *ngIf="showOrderDetails.paymentType != 'cod'"
+          >
+            <label for="validationCustom02" class="mb-1" style="color: yellow"
+              >Debit card
+            </label>
+          </div>
+
+          <div
+            class="form-group mb-0 col-md-6"
+            *ngIf="showOrderDetails.paymentType === 'cod'"
+          >
+            <label for="validationCustom02" class="mb-1" style="color: yellow"
+              >COD
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Devivery Address
+            </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >{{ showOrderDetails.name }} {{ showOrderDetails.wholeAddress }}
+            </label>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="mt-2 row" *ngFor="let product of showOrderDetails.products">
+          <div class="col-md-2">
+            <img
+              [src]="[product.image]"
+              class="img-fluid blur-up lazyload bg-img"
+              alt=""
+              width="50px"
+            />
+          </div>
+          <div class="col-md-4">
+            <a href="javascript:void(0)">
+              <label> {{ product.productName }} </label><br />
+              <label style="color: white; font-weight: 20px">
+                {{ product.uomValue }}
+              </label>
+            </a>
+          </div>
+
+          <div class="col-md-2">
+            <label tyle="color: white; font-weight: 20px">
+              <i class="fa fa-inr"></i> {{ product.specialPrice }}
+            </label>
+          </div>
+
+          <div class="col-md-2">
+            <label tyle="color: white; font-weight: 20px">
+              {{ product.quantity }}
+            </label>
+          </div>
+
+          <div class="col-md-2">
+            <label tyle="color: white; font-weight: 20px">
+              <i class="fa fa-inr"></i>
+              {{ product.specialPrice * product.quantity }}
+            </label>
+          </div>
+          <hr />
+        </div>
+
+        <div class="mt-2 row bar-div">
+          <div class="col-md-12">
+            <label for="validationCustom02" class="mb-1"
+              >Payment Details
+            </label>
+          </div>
+        </div>
+
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Coupon discount</label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">
+              <i class="fa fa-inr"></i>
+              {{ showOrderDetails.couponAppliedDiscount }}
+            </label>
+          </div>
+        </div>
+
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Medcoin redeemed</label
+            >
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">
+              <i class="fa fa-inr"></i> {{ showOrderDetails.medCoinRedeemed }}
+            </label>
+          </div>
+        </div>
+
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Delivery charge
+            </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              ><i class="fa fa-inr"></i>
+              {{ showOrderDetails.deliveryCharge }}</label
+            >
+          </div>
+        </div>
+
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Donation amount</label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">
+              <i class="fa fa-inr"></i> {{ showOrderDetails.donationAmount }}
+            </label>
+          </div>
+        </div>
+
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Member discount</label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">
+              <i class="fa fa-inr"></i> {{ showOrderDetails.memberDiscount }}
+            </label>
+          </div>
+        </div>
+
+        <hr />
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Total </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              ><i class="fa fa-inr"></i>
+              {{ showOrderDetails.totalAmountToBePaid }}</label
+            >
+          </div>
+        </div>
+
+        <div class="mt-2 row bar-div">
+          <div class="col-md-12">
+            <label for="validationCustom02" class="mb-1">Note</label>
+          </div>
+        </div>
+        <hr />
+        <label>Refund Mode</label>
+        <div class="mt-2 row">
+          <div class="form-group ml-4 col-md-12">
+            <ul style="list-style-type: disc">
+              <li>Amount 250 has credited to source account</li>
+              <li>100 Medcoin credited to med coin account</li>
+              <li>Coupen vouchers are not refundable</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr />
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Total Refund Amount</label
+            >
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              ><i class="fa fa-inr"></i>
+              {{
+                showOrderDetails.totalAmountToBePaid +
+                  showOrderDetails.medCoinRedeemed -
+                  showOrderDetails.donationAmount
+              }}</label
+            >
+          </div>
+        </div>
+        <hr />
+
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-1"></div>
+
+          <div
+            class="form-group mb-0 col-md-5 card-data"
+            [ngClass]="refundModeType === 'bank' ? 'refund-type' : ''"
+            (click)="changeRefundType('bank')"
+          >
+            <label for="validationCustom02" class="mb-1"
+              >Source of bank account</label
+            >
+          </div>
+
+          <div
+            class="form-group mb-0 ml-4 col-md-5 card-data"
+            [ngClass]="refundModeType === 'medcoin' ? 'refund-type' : ''"
+            (click)="changeRefundType('medcoin')"
+          >
+            <label for="validationCustom02" class="mb-1">Medcoin</label>
+          </div>
+
+          <div class="form-group mb-0 col-md-1"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <!-- <button
+          type="button"
+          class="btn btn-dark btn-dark-rounded"
+          data-toggle="modal"
+          data-original-title="test"
+          data-target="#confirmcancelexampleModal"
+          (click)="open(confirmcanceldata, '', '', '')"
+          style="cursor: pointer"
+        >
+          Confirm Cancel
+        </button> -->
+        <button
+          type="submit"
+          class="btn btn-dark btn-dark-rounded"
+          (click)="Cancel_online_order(showOrderDetails._id)"
+          style="cursor: pointer"
+        >
+          Confirm Cancel
+        </button>
+        <!-- <div class="form-group mb-0 col-md-3">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                            (click)="modal.dismiss('Cross click')">Close</button>
+                    </div> -->
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+</ng-template>
+
+<!--Order Confirm Cancel Example-->
+
+<ng-template #confirmcanceldata let-modal style="float: right">
+  <div class="modal-header">
+    <h5 class="modal-title f-w-600" id="confirmcancelexampleModal"></h5>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" id="exampleModalLabel">
+    <form class="needs-validation">
+      <div class="form">
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Order ID </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">SD34657I </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Ordered Items </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Mask,Glow </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Orderd Date</label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">20 Dec 2021 </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Mode Of Payment
+            </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1" style="color: yellow"
+              >Debit card
+            </label>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Devivery Address
+            </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >1st cross main building mathikare 509322
+            </label>
+          </div>
+        </div>
+        <div class="mt-2 row bar-div">
+          <div class="col-md-12">
+            <label for="validationCustom02" class="mb-1"
+              >Payment Details
+            </label>
+          </div>
+        </div>
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Coupen </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              ><i class="fa fa-inr"></i> 120</label
+            >
+          </div>
+        </div>
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Medi Coin </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">120 </label>
+          </div>
+        </div>
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Cash </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              ><i class="fa fa-inr"></i> 120</label
+            >
+          </div>
+        </div>
+        <hr />
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1">Total </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              ><i class="fa fa-inr"></i> 120</label
+            >
+          </div>
+        </div>
+
+        <div class="mt-2 row bar-div">
+          <div class="col-md-12">
+            <label for="validationCustom02" class="mb-1">Refund Details</label>
+          </div>
+        </div>
+
+        <div class="mt-2 row">
+          <div class="col-lg-4 col-md-4 grid-margin stretch-card">
+            <ul class="bullet-line-list">
+              <li>
+                <p class="text-muted mb-2">Refund Initiated</p>
+                <p style="font-size: small">20 Dec 2021</p>
+              </li>
+              <li>
+                <p class="text-muted mb-2">Refund Processed</p>
+                <p>28 Dec 2021</p>
+              </li>
+              <li>
+                <p class="text-muted mb-2">Refund Credited</p>
+                <p>3 Jan 2022</p>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-4"></div>
+          <div class="col-lg-4 col-md-4 grid-margin stretch-card"></div>
+        </div>
+
+        <div class="mt-2 row">
+          <div class="col-md-12">
+            <label for="validationCustom02" class="mb-1 form-control"
+              >Note</label
+            >
+          </div>
+        </div>
+        <hr />
+        <label>Refund Mode</label>
+        <div class="mt-2 row">
+          <div class="form-group ml-4 col-md-12">
+            <ul style="list-style-type: disc">
+              <li>Amount 250 has credited to source account</li>
+              <li>100 Medcoin credited to med coin account</li>
+              <li>Coupen vouchers are not refundable</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr />
+        <div class="mt-2 row">
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              >Total Refund Amount</label
+            >
+          </div>
+
+          <div class="form-group mb-0 col-md-6">
+            <label for="validationCustom02" class="mb-1"
+              ><i class="fa fa-inr"></i> 120</label
+            >
+          </div>
+        </div>
+        <hr />
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<!--Complaint Popup Example-->
+
+<ng-template #complaintdata let-modal style="float: right">
+  <div class="modal-header modal-content register-head">
+    <h5
+      *ngIf="!View_Complaint_Flag"
+      class="modal-title f-w-600 text-white"
+      id="complaintexampleModal"
+    >
+      Register A Complaint
+    </h5>
+    <h5
+      *ngIf="View_Complaint_Flag"
+      class="modal-title f-w-600 text-white"
+      id="complaintexampleModal"
+    >
+      Complaint
+    </h5>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div
+    class="modal-body modal-content register-body"
+    style="border-radius: 0px"
+    id="exampleModalLabel"
+  >
+    <form class="needs-validation" [formGroup]="Register_Complaint_Form">
+      <div class="form customer-complaint">
+        <div class="row">
+          <div class="form-group mb-0 col-md-2">
+            <label for="validationCustom02" class="mb-1">Mobile :</label>
+          </div>
+
+          <div class="form-group mb-0 col-md-4">
+            <p>{{ phone }}</p>
+            <!-- *ngIf="New_Complaint_Flag" -->
+            <!-- <input  *ngIf="!New_Complaint_Flag" class="form-control" id="validationCustom02" type="text" formControlName="phone" [attr.disabled]="View_Complaint_Flag ? '' : null"> -->
+          </div>
+          <div class="form-group mb-0 col-md-6"></div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-2">
+            <label for="validationCustom02" class="mb-1">Name :</label>
+          </div>
+          <div class="form-group mb-0 col-md-4">
+            <p>{{ name }}</p>
+            <!-- *ngIf="New_Complaint_Flag" -->
+            <!-- <input *ngIf="!New_Complaint_Flag" class="form-control" id="validationCustom02" type="text" formControlName="name" [attr.disabled]="View_Complaint_Flag ? '' : null"> -->
+          </div>
+          <div class="form-group mb-0 col-md-1">
+            <label for="validationCustom02" class="mb-1">Email:</label>
+          </div>
+          <div class="form-group mb-0 col-md-5">
+            <p>{{ email }}</p>
+            <!-- *ngIf="New_Complaint_Flag" -->
+            <!-- <input *ngIf="!New_Complaint_Flag" class="form-control" id="validationCustom02" type="text"  formControlName="email"  [attr.disabled]="View_Complaint_Flag ? '' : null"> -->
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-2">
+            <label for="validationCustom02" class="mb-1"
+              >Reason for Complaint</label
+            >
+          </div>
+
+          <div class="form-group mb-0 col-md-4">
+            <select
+              class="form-control select_custum_classic"
+              id="validationCustom02"
+              (change)="ReasonDropChange($event)"
+              formControlName="ReasonForComplaint"
+              [attr.disabled]="View_Complaint_Flag ? '' : null"
+            >
+              <option value="payment">Payment related</option>
+              <option value="order">Order related</option>
+              <option value="medpride">Medpride membership</option>
+              <option value="refund">Refund</option>
+              <option value="medcoin">Medcoin</option>
+              <option value="medfill">Medfill</option>
+            </select>
+
+            <small
+              for="ReasonForComplaint"
+              class="form-text text-danger"
+              *ngIf="
+                Register_Complaint_Form.controls['ReasonForComplaint'].errors
+                  ?.required &&
+                (Register_Complaint_Form.controls['ReasonForComplaint'].dirty ||
+                  Register_Complaint_Form.controls['ReasonForComplaint']
+                    .touched ||
+                  (Register_Complaint_Form.controls['ReasonForComplaint']
+                    .untouched &&
+                    Submitted))
+              "
+            >
+              Reason required.
+            </small>
+          </div>
+          <div class="form-group mb-0 col-md-6">
+            <div class="row">
+              <div class="col-md-3">
+                <button
+                  type="button"
+                  class="button-reson form-class btn-sm"
+                  [ngClass]="preference == 'high' ? 'active' : ''"
+                  style="padding-left: 15px"
+                  (click)="Preference_Value_Set('high')"
+                  [attr.disabled]="View_Complaint_Flag ? '' : null"
+                >
+                  High
+                </button>
+              </div>
+              <div class="col-md-3">
+                <button
+                  type="button"
+                  class="button-reson form-class btn-sm"
+                  [ngClass]="preference == 'medium' ? 'active' : ''"
+                  style="padding-left: 15px"
+                  (click)="Preference_Value_Set('medium')"
+                  [attr.disabled]="View_Complaint_Flag ? '' : null"
+                >
+                  Medium
+                </button>
+              </div>
+              <div class="col-md-3">
+                <button
+                  type="button"
+                  class="button-reson form-class btn-sm"
+                  [ngClass]="preference == 'low' ? 'active' : ''"
+                  style="padding-left: 15px"
+                  (click)="Preference_Value_Set('low')"
+                  [attr.disabled]="View_Complaint_Flag ? '' : null"
+                >
+                  Low
+                </button>
+              </div>
+              <small
+                for="preference"
+                class="form-text text-danger"
+                *ngIf="
+                  Register_Complaint_Form.controls['preference'].errors
+                    ?.required &&
+                  (Register_Complaint_Form.controls['preference'].dirty ||
+                    Register_Complaint_Form.controls['preference'].touched ||
+                    (Register_Complaint_Form.controls['preference'].untouched &&
+                      Submitted))
+                "
+              >
+                Preference required.
+              </small>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="form-group mb-0 col-md-2">
+            <label for="validationCustom02" class="mb-1"
+              >Department Related Complaint
+            </label>
+          </div>
+
+          <div class="form-group mb-0 col-md-4">
+            <kendo-dropdownlist
+              [attr.disabled]="View_Complaint_Flag ? '' : null"
+              formControlName="Department"
+              #list
+              [data]="Dept_Array"
+              class="form-control select_custum_classic"
+              textField="name"
+              valueField="_id"
+              [valuePrimitive]="true"
+              (valueChange)="Dept_Change($event)"
+            >
+            </kendo-dropdownlist>
+
+            <!-- valueField="_id" -->
+            <!-- <select class="form-control select_custum_classic" id="validationCustom02" formControlName="Department"
+              [attr.disabled]="View_Complaint_Flag ? '' : null">
+    
+              <option *ngFor="let i of Dept_Array" value="{{i._id}}">
+                {{ i.name }}
+              </option>
+            </select> -->
+          </div>
+          <small
+            for="Department"
+            class="form-text text-danger"
+            *ngIf="
+              Register_Complaint_Form.controls['Department'].errors?.required &&
+              (Register_Complaint_Form.controls['Department'].dirty ||
+                Register_Complaint_Form.controls['Department'].touched ||
+                (Register_Complaint_Form.controls['Department'].untouched &&
+                  Submitted))
+            "
+          >
+            Department required.
+          </small>
+          <div class="form-group mb-0 col-md-3"></div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <textarea
+              for="validationCustom02"
+              class="form-control"
+              formControlName="Details"
+              rows="3"
+              cols="4"
+              [attr.disabled]="View_Complaint_Flag ? '' : null"
+            >
+            </textarea>
+            <small
+              for="Details"
+              class="form-text text-danger"
+              *ngIf="
+                Register_Complaint_Form.controls['Details'].errors?.required &&
+                (Register_Complaint_Form.controls['Details'].dirty ||
+                  Register_Complaint_Form.controls['Details'].touched ||
+                  (Register_Complaint_Form.controls['Details'].untouched &&
+                    Submitted))
+              "
+            >
+              Details required.
+            </small>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+        <br />
+        <div *ngIf="!View_Complaint_Flag">
+          Previous Compliants
+          <hr />
+          <div class="row">
+            <div class="col-md-6" *ngFor="let i of Complaints_Array">
+              <div
+                class="card-data"
+                style="
+                  padding: 10px !important;
+                  text-align: left !important;
+                  border-radius: 20px;
+                "
+              >
+                <span>{{ i.name }}</span>
+                <span style="float: right">{{ i.date }}</span
+                ><br />
+                <br />{{ i.Details }}
+              </div>
+            </div>
+
+            <!-- <div class="ml-4 col-md-5 card-data" style="padding: 10px;border-radius: 20px;">
+                            <span>Aswin Vinod</span>
+                            <span style="float: right;">20 Dec 2021</span><br>
+                            <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut
+                            labore et dolore magna
+                        </div> -->
+            <div class="col-md-1"></div>
+          </div>
+
+          <hr />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer modal-content register-footer">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4" *ngIf="!View_Complaint_Flag">
+        <button
+          type="button"
+          class="btn btn-dark btn-dark-rounded"
+          ata-dismiss="modal"
+          (click)="Add_User_Complaint()"
+        >
+          Register Complaint
+        </button>
+        <!-- <div class="form-group mb-0 col-md-3">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                        (click)="modal.dismiss('Cross click')">Close</button>
+                </div> -->
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #dropdowndata let-modal style="float: right">
+  <div class="modal-header modal-content">
+    <h5 class="modal-title f-w-600" id="dropdownexampleModal"></h5>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body modal-content" id="dropdownexampleModal">
+    <ul>
+      <li>Delivered</li>
+      <li>Returned</li>
+      <li>Cancelled</li>
+      <li>Transit</li>
+    </ul>
+  </div>
+</ng-template>
+
+<ng-template #ItemListContent let-modal>
+  <div class="modal-header">
+    <h6 class="modal-title f-w-600" id="ItemListExampleModal"></h6>
+    <button
+      style="color: white; opacity: 0.5"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <table class="table table-striped">
+        <thead
+          style="color: white; font-size: 20px; background-color: #032536"
+          class=""
+        >
+          <th>No</th>
+          <th>Name</th>
+          <th>UOM</th>
+          <th>Quantity</th>
+        </thead>
+        <tbody style="color: white; opacity: 0.5">
+          <ng-container *ngFor="let product of orderedProducts">
+            <tr>
+              <td>{{ product.index }}</td>
+              <td>{{ product.productName }}</td>
+              <td>{{ product.uomValue }}</td>
+              <td>{{ product.quantity }}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="modal-footer"></div>
+</ng-template>
+
+<ng-template #addToSubscriptionContent let-modal>
+  <div class="modal-header">
+    <h5
+      style="color: white; opacity: 0.5"
+      class="modal-title f-w-200"
+      id="exampleModal"
+    >
+      Add to subscription
+    </h5>
+    <button
+      style="
+        color: white;
+        opacity: 0.5;
+        font-size: 31px;
+        margin: -1rem -1rem -1rem auto;
+      "
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="needs-validation" [formGroup]="addToSubscriptionForm">
+      <div class="form row">
+        <div class="form-group col-md-12 mb-0">
+          <label for="validationCustom01" class="mb-1"
+            >Choose delivery interval
+          </label>
+          <select
+            class="form-control"
+            formControlName="subscriptionInterval"
+            id="validationCustom01"
+          >
+            <option
+              *ngFor="let interval of [30, 45, 60, 90]"
+              value="{{ interval }}"
+            >
+              {{ interval }} Days
+            </option>
+          </select>
+          <span
+            *ngIf="isValidAddToSubscription('subscriptionInterval')"
+            class="help-block"
+            >Choose valid interval</span
+          >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      style="color: white"
+      class="btn btn-dark-rounded"
+      type="button"
+      data-dismiss="modal"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Close
+    </button>
+    <button
+      style="color: white"
+      (click)="addToSubscription()"
+      type="button"
+      class="btn btn-dark-rounded"
+    >
+      Add
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #confirmcanceldata2 let-modal style="float: right">
+  <form [formGroup]="bankForm">
+    <div class="modal-header">
+      <h5
+        style="color: white; opacity: 0.5"
+        class="modal-title f-w-200"
+        id="PayExampleModal"
+      >
+        Account details
+      </h5>
+      <button
+        style="color: white; opacity: 0.5; font-size: 31px"
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click'); closeAll()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-12">
+          <label>Customer name</label>
+          <input
+            formControlName="customerName"
+            type="text"
+            class="form-control"
+          />
+          <small
+            class="form-text help-block"
+            *ngIf="isValidBank('customerName')"
+          >
+            Customer name required
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <label>Account number</label>
+          <input
+            formControlName="accountNumber"
+            type="text"
+            class="form-control"
+          />
+          <small
+            class="form-text help-block"
+            *ngIf="isValidBank('accountNumber')"
+          >
+            Enter valid a/c number
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <label>Confirm a/c number</label>
+          <input
+            formControlName="reAccountNumber"
+            type="text"
+            class="form-control"
+          />
+          <small
+            class="form-text help-block"
+            *ngIf="isValidBank('reAccountNumber')"
+          >
+            A/c number mismatch
+          </small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label>Bank name</label>
+          <input formControlName="bankName" type="text" class="form-control" />
+          <small class="form-text help-block" *ngIf="isValidBank('bankName')">
+            Bank name required
+          </small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label>IFSC Code</label>
+          <input formControlName="ifsc" type="text" class="form-control" />
+          <small class="form-text help-block" *ngIf="isValidBank('ifsc')">
+            Enter valid ifsc code
+          </small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label>Branch name</label>
+          <input formControlName="branch" type="text" class="form-control" />
+          <small class="form-text help-block" *ngIf="isValidBank('branch')">
+            Branch name required
+          </small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="validationCustom01" class="mb-1">A/c type </label>
+          <select class="form-control" formControlName="accountType">
+            <option selected value="savings">Savings</option>
+            <option value="current">Current</option>
+          </select>
+          <span *ngIf="isValidBank('accountType')" class="help-block">
+            Choose a/c type
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        (click)="submitBankDetails()"
+        type="button"
+        class="btn btn-dark-rounded"
+      >
+        Submit
+      </button>
+      <button
+        class="btn btn-dark-rounded"
+        type="button"
+        class="btn btn-dark-rounded"
+        type="button"
+        (click)="modal.dismiss('Cross click'); closeAll()"
+      >
+        Close
+      </button>
+    </div>
+  </form>
+</ng-template>
+<button
+  style="display: none"
+  id="openBankBtn"
+  type="button"
+  (click)="open(confirmcanceldata2, '', '', '')"
+></button>
+<button
+  id="openReturn"
+  type="button"
+  (click)="open(returndata, '', 'return', '')"
+  style="display: none"
+>
+  Return
+</button>

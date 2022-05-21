@@ -1,0 +1,182 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="">
+                <div class="card-body" style="background: transparent;">
+                                
+                                <h5 style="color: white;opacity: 0.5;margin-top: -10px;margin-bottom: -16px;margin-left: 15px;margin-top: 15px;">Manage Your Team</h5>
+                                <div class="row mt-2 " >
+                                    <div class="col-md-3 mt-4" *ngFor="let dept of departments; let i = index">
+                                        <div class="card-body card-data" style="position: relative;"> 
+                                            <div class="row">
+                                               <div class="edit-box">
+                                                    <h6> 
+                                                        <i   class="fa fa-edit edit-icon" data-toggle="modal" data-original-title="test"
+                                                        data-target="#exampleModal" (click)="open(content,'edit',dept._id)"></i> 
+                                                        <i  class="fa fa-trash edit-icon" (click)="deleteDapartment(dept._id,dept.name)"></i>
+                                                    </h6>
+                                               </div>
+                                                <a for="validationCustom0" [routerLink]="['/team-management/team-list', dept._id ]" > {{dept.name}}</a>
+
+                                            </div>
+                                        </div>
+                                       
+                                    </div> 
+
+                                    <!-- <div class="col-md-3 mt-4"  *ngIf="dept.col2">
+                                        <div class="card-body card-data"> 
+                                            <div class="row" >
+                                                <div class="edit-box">
+                                                    <h6> 
+                                                        <i   class="fa fa-edit edit-icon" (click)="editDapartment(dept.id)"></i> 
+                                                        <i  class="fa fa-trash edit-icon" (click)="deleteDapartment(dept.id)"></i>
+                                                    </h6>
+                                                </div>
+                                                <a for="validationCustom0" [routerLink]="['/team-management/team-list', {_:ids[i].id2}]"> {{dept.col2}}</a>
+
+                                            </div>
+                                        </div>
+                                       
+                                    </div> 
+
+                                    <div class="col-md-3 mt-4"  *ngIf="dept.col3">
+                                        <div class="card-body card-data"> 
+                                            <div class="row" >
+                                                <div class="edit-box">
+                                                    <h6> 
+                                                        <i   class="fa fa-edit edit-icon" (click)="editDapartment(dept.id)"></i> 
+                                                        <i  class="fa fa-trash edit-icon" (click)="deleteDapartment(dept.id)"></i>
+                                                    </h6>
+                                                </div>
+                                                <a for="validationCustom0"  [routerLink]="['/team-management/team-list',{_:ids[i].id3}]"> {{dept.col3}}</a>
+
+                                            </div>
+                                        </div>
+                                       
+                                    </div> 
+
+                                    <div class="col-md-3 mt-4" *ngIf="dept.col4">
+                                        <div class="card-body card-data"> 
+                                            <div class="row" >
+                                                <div class="edit-box">
+                                                    <h6> 
+                                                        <i   class="fa fa-edit edit-icon" (click)="editDapartment(dept.id)"></i> 
+                                                        <i  class="fa fa-trash edit-icon" (click)="deleteDapartment(dept.id)"></i>
+                                                    </h6>
+                                                </div>
+                                                <a for="validationCustom0" [routerLink]="['/team-management/team-list', {_:ids[i].id4}]" [state]="{ hello: dept.col4 }"> {{dept.col4}}</a>
+
+                                            </div>
+                                        </div>
+                                       
+                                    </div> -->
+
+                                    
+                                </div> 
+                                <h6 *ngIf="departments && !departments.length" class="text-center text-muted">
+                                    <i>No Departments are added</i>
+                                </h6>
+
+                                
+
+
+                                <div class="row mt-4">
+                                     
+
+                                    <div class="col-md-3">
+                                        <div class="card-body card-data"> 
+                                            <div class="row ">
+                                                <div class="img_circle" data-toggle="modal" data-original-title="test"
+                                                data-target="#exampleModal" (click)="open(content,'add','')">
+                                                       <img style="padding: 0 !important;padding-top: 44px !important;" src="assets/images/file-icons/icon-add-circle.svg" width="30px">
+                                                       
+                                                        <a style="padding-top: 10px !important;" for="validationCustom0" class="" >Add Department</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div> 
+                                   
+                                </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+
+<ng-template #content let-modal>
+    <div  class="modal-header">
+        <h5 style="color: white;opacity: 0.5;" class="modal-title f-w-200" id="exampleModalLabel">{{ add_Modal_Flag ? "Add Privilege" : "Edit Privilege" }}</h5>
+        <button style="color: white;opacity: 0.5;" type="button" class="close"
+        (click)="modal.dismiss('Cross click')" >
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form class="needs-validation" [formGroup]="departmentForm"  >
+      
+
+
+
+        <div class="modal-body" >
+                <div class="form">
+                    <div class="form-group">
+                        <label>Department Name </label>
+                        <input class="form-control" id="validationCustom01" type="text" formControlName="deptname" [(ngModel)]="deptname">
+                        <small for="deptname" class="form-text text-danger"
+                        *ngIf="departmentForm.controls['deptname'].errors?.required &&  attemptedSubmit &&
+                         departmentForm.controls['deptname'].invalid &&
+                        (departmentForm.controls['deptname'].dirty ||  
+                        departmentForm.controls['deptname'].touched)">
+                            Department Name required.
+                        </small>
+                    </div>
+                    <div class="form-group mb-0">
+                        <label>Privilege Group </label>
+                        <kendo-multiselect #multiselect formControlName="multiselect"  id="multiselect"  class="form-control" 
+                        [data]="privileges" 
+                        [filterable]="true"
+                        textField="name"
+                        valueField="_id"
+                        [autoClose]="false"
+                        [checkboxes]="false"
+                        [(ngModel)]="selectedValues"
+                        [placeholder]="'-- Select Privilages --'"
+                        (valueChange)="handleChange($event)"
+                        (filterChange)="handleFilter($event)"
+                        >
+                        </kendo-multiselect>
+                        <small for="multiselect" class="form-text text-danger"
+                        *ngIf="departmentForm.controls['multiselect'].errors?.required &&   attemptedSubmit &&
+                         departmentForm.controls['deptname'].invalid &&
+                        (departmentForm.controls['multiselect'].dirty ||  
+                        departmentForm.controls['multiselect'].touched)">
+                            Privilege Group required.
+                        </small>
+                    
+                        <!-- <select class="form-control"  #privilageGroup multiple="multiple" (change)="handleChange($event.target.selectedIndex)">
+                            
+                            <option *ngFor="let privilege of privilegesList">{{privilege.name}}</option>
+                            
+                        </select> -->
+                    
+                    </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+            
+            <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Close</button>
+            <button *ngIf="add_Modal_Flag"  type="submit" class="btn btn-dark-rounded" (click)="save()">Add</button>
+            <button *ngIf="!add_Modal_Flag" type="submit" class="btn btn-dark-rounded" (click)="update()">Update</button>
+        </div>
+    </form>
+</ng-template>

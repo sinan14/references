@@ -1,0 +1,144 @@
+<div class="ps-page">
+    <app-header></app-header>
+</div>
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W32L424" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) →-->
+<section class="inner_new_page_container" style="overflow: hidden;">
+    <div class="category_banner_cnt">
+
+        <img src={{banner}} alt="" (click)="bannerClick()" style="object-fit: cover;height: inherit;width: inherit;">
+
+
+    </div>
+    <section class="breadcrumbs_sec">
+        <div class="container">
+            <div class="col-md-12">
+            <a href="#">Product</a> <a>></a> <a>Brands</a></div>
+        </div>
+      </section>
+
+    <section class="produc_list_categ_scr">
+        <div class="container">
+
+          <!--  <div class="row">
+                <div class="col-md-6">
+                    <h3 class="produc_list_categ_cnt_head" style="margin-top: 10px;">{{brandName}}</h3>
+                </div>
+
+            </div>-->
+
+            <div class="produc_list_categ_cnt">
+                <div class="ps-section__carousel" id="tt">
+
+         <div class="row">
+             <div class="col-md-6">
+                 <div class="col-md-12"> <h3 class="produc_list_categ_cnt_head" style="margin-top: 10px;">{{brandName}}</h3></div>
+                
+             </div>
+            
+         </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <section class="product_list_sec">
+
+        <div class="container">
+            <div class="row" >
+
+                <div class="col-lg-12 col-md-8 col-sm-12 col-xs-12 tb_full_wd">
+
+                    <div class="product_right_product_sec ">
+                        <div class="container" >
+
+                            <div class="row"  *ngIf="productList.length>0;else e">
+
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" *ngFor="let con of productList">
+                                    <div class="product_list_box wow fadeInUp" data-wow-delay="0.4s">
+                                        <div class="product_list_box_img">
+
+                                            <div class="prd_star_rate_sec">
+                                                <div class="prd_star_rate_sec_box"><i
+                                                        class="fa fa-star"></i> {{con.rating}}</div>
+                                                <span>Ratings</span>
+                                            </div>
+
+                                            <div class="prd_discount_cpn_sec">
+                                                <div class="prd_discount_coupon"*ngIf="con.discount > 0">
+                                                    {{con.discount}}%  <span> Discount</span>
+                                                </div>
+
+
+
+                                                <div class="prd_ml_sec">{{con.uom}}</div>
+                                            </div>
+
+                                            <div class="outofstock" *ngIf="con.stockStatus=='Out of stock'">
+                                                <span>Out of Stock</span>
+                                            </div>
+                                            <a (click)="productDetails(con)"><img src="{{con.image}}" alt=""
+                                                    (click)="productDetails(con)"></a>
+                                        </div>
+                                        <div class="product_list_box_text">
+                                            <a>
+                                                <div class="product_list_box_text_prd_name"(click)="productDetails(con)">{{con.title}}</div>
+                                            </a>
+                                            <div class="product_list_box_text_prd_sub">{{con.brandName}}</div>
+                                            <div class="product_list_box_text_prd_rate"><i
+                                                    class="fa fa-rupee"></i> {{con.spl_price}} <span class="product_price_sec_currnt_rate" *ngIf="con.spl_price !=con.price">{{con.price}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="product_list_box_btn_row">
+                                            <!-- <a href="#"> -->
+                                                <div class="product_list_box_btn"
+                                                    (click)="Add_To_Cart(con._id,con.varientId,con)">Add to cart</div>
+                                            <!-- </a> -->
+                                            <a href="#">
+                                                <div class="product_list_box_btn">Buy Now</div>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                
+                                </div>
+                         
+                                   
+                             
+                               
+                            </div>
+                            <ng-template #e>
+                                <div class="col-lg-12 col-md-5 col-sm-12 col-xs-12 text-center">
+                                    <h3>No products found</h3>
+                                </div>
+                            </ng-template>
+                            
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+    </section>
+</section>
+
+
+<footer class="ps-footer ps-footer--5" style="padding-top: 40px;">
+    <app-footer></app-footer>
+
+</footer>

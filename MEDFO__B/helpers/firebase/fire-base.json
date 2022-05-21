@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "medimall-app",
+  "private_key_id": "68695950ffa4299c7718d504f067c2b92ab646d1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDnb62YqJ4xccQr\nalad8JfvFEckUw108LTc9/mFAZ5oh2gOWlDCw/xJFuNRQzIW2oubfrdtLlC8g0Ru\nLPtMGpwQ3SX/JpTk9HR4inLlYUeNyw51xhtxlduhFa+Ex8faLMW+Mh6PqjHnDRqa\nn3DcGnD9mbhXXmn5M+NzMWtZx/Hmyf4ADN1uIaslezAMt7IjDnruGw1VFmMTkH7Y\nAbgJNL6d7hIyPq21JWcfvL4h+quSa22qHpyR4oOTi5EcUT7sUrCBlNJQM5fRi+Td\nR7HaET3l8HoBGSWqc2sArG7jHzqNDrRhQSW8grzu8enp2Q4+8XmCWISUeOWX3xAo\nXZuGpLo1AgMBAAECggEAFTUtJbeR43sG3GmerVNuQMjNah04NvaVxEfu9Aq9btu1\no9cP3oEiHbp8syYisWhucZ3PhjA/0r5+p0/06TjpAzyYrkRlUYO7Jo6dT7q12V75\noL46JpLycNTxZAwAmtQOfMrP9R9F+mO/g9rHd0vu/bY3572tnVntZlFpgm0plBnS\nz5FbURQh+qFOMfCzuM5rHrovKOUSbQh+4U2CJXNaL5WVEiSmzb++deB3+KZkcllQ\naORmYXyv9pvg2ed26C31bpcQ1lCZ2W6/i+2eKGatIdlNFJ6LM+vrknyzPwgIBlVA\nrVtVBT8eqL58AWAzsIm4DyV4SprdwG5WxROy6IlFQwKBgQD4hLoQmG+LJPo9NZXU\n0OaVPGKsefUmIikgoQ1BqfFXJX3KjaeiNGOBNzmJoZpgMhCdVUD8VoXgo6zzEWVt\nyvYIYZ9Eu+W+ShtCMdiVr0S00pS1Hk6jRUb0TIOB5ywn8zpuVrsKZAaL1xC4oJZw\nc2efjyE9V8f3KcIME+JOReCxkwKBgQDuZ016AxipyNHn5VpcSW65415PoY0oTobv\n/QHp35KJVz3YRMvc32N9h4mrbWmlpr47S/GAAp8jO8Di5T8ItedMWHZQEqIz5et9\nMUcUPNZm/mjsNpdy9yr+SOWxKvS2IEk+RzmjXe97a5gYzXX610PU1yptv3dDKT6e\nhfqcFSviFwKBgGbirBVKxoMYn/DPSmR8x7lo8oDtTKyo39X+VvqkXKHzh4xf8NKa\nVcedEVkFamAA2hgIv4q4V1yU5nkK7q7xo8H8iG9wSsDo9TgGYuA1W4Bw3dfN4Eh/\n2cwyEQ+qoQE5FSuxBGZc2sjyFJ4a/a04WeIY42399W9B/m/5m2tESq25AoGBAM6k\nkA1gPbJ9NSSSMn6nz+gkYo0XdOkpF+FRJqV3eua8zgh1qVcr8mrOXtBOqDJDk8SG\nETBqFVJO6uRA3SBJu9D7JKJHZH0jn7kGS5wJF7ZycrO8pg2qnIOI4D9vAmoTFil7\nR0SJmZkbK9zjyo3ApTUJw+cY/OEkEPkLHKzJ1R3FAoGBAIWOSfRknEA9a9I8x7kW\n/of7bEc37aeuj6tA3JmSccYSdGhjniZPszWUpv/AKdHZjmY8yIZzjH/hH3Je8j5B\ngQ0sJZr1qhEARagg196MuFE7trI2jT9sYiGr/Txn7XefrV1LN3/XL9a6dfPnzhIs\nDppmhXVKRqZd/jlfES/nzxJH\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-t9oxh@medimall-app.iam.gserviceaccount.com",
+  "client_id": "104383766832000041406",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-t9oxh%40medimall-app.iam.gserviceaccount.com"
+}

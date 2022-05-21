@@ -1,0 +1,210 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid inventory_Tab">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body inventory_Tab tab2-card">
+                    <h5 style="color: white;opacity: 0.7;">Inventory Management</h5>
+                    <ngb-tabset class="tab-coupon">
+                        <ngb-tab title="Medicines" *ngIf="disableTab('Medicine')">
+                            <ng-template ngbTabContent>
+                                <div class="row mt-4">
+
+                                    <div class="col-md-3 mt-4" *ngIf="user.isStore">
+                                        <div class="card-body card-data" *ngIf="disableBox('Stock')">
+                                            <div class="row">
+                                                <a for="validationCustom0" routerLink="/inventory/stock/medicine"
+                                                    class="">Stock</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                    <div class="col-md-3 mt-4">
+                                        <div class="card-body card-data" *ngIf="disableBox('Add Inventory')">
+                                            <div class="row">
+                                                <a for="validationCustom0"
+                                                    routerLink="/inventory/add-inventory/medicine"> Add Inventory</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 mt-4">
+                                        <div class="card-body card-data" *ngIf="disableBox('Inventory List')">
+                                            <div class="row">
+                                                <a for="validationCustom0"
+                                                    routerLink="/inventory/inventory-list/medicine" class="">Inventory
+                                                    List</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-3 mt-4" *ngIf="user.isAdmin">
+                                        <div class="card-body card-data" *ngIf="disableBox('Stock')">
+                                            <div class="row">
+                                                <a for="validationCustom0" routerLink="/inventory/stock/medicine"
+                                                    class="">Stock</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 mt-4">
+                                        <div class="card-body card-data" *ngIf="disableBox('Most Buyed')">
+                                            <div class="row">
+                                                <a for="validationCustom0" class=""
+                                                    routerLink="/inventory/buyed/medicine">Most
+                                                    Buyed</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="row ">
+
+
+                                    <div class="col-md-3 mt-4">
+                                        <div class="card-body card-data" *ngIf="disableBox('Most Searched')">
+                                            <div class="row">
+                                                <a for="validationCustom0" class=""
+                                                    routerLink="/inventory/searched/medicine">Most Searched</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 mt-4">
+                                        <div class="card-body card-data" *ngIf="disableBox('Favourite')">
+                                            <div class="row">
+                                                <a for="validationCustom0" class=""
+                                                    routerLink="/inventory/favourite/medicine">Favourite</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab title="Healthcare" *ngIf="disableTab('Healthcare')">
+                            <ng-template ngbTabContent>
+
+                                <div class="row">
+
+                                    <div class="col-md-3 mt-4" *ngIf="user.isStore">
+                                        <div class="card-body card-data" *ngIf="disableBox('Stock')">
+                                            <div class="row">
+                                                <a for="validationCustom0" routerLink="/inventory/stock/healthcare"
+                                                    class="">Stock</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-md-3 mt-4">
+                                        <div class="card-body card-data" *ngIf="disableBox('Add Inventory')">
+                                            <div class="row">
+                                                <a for="validationCustom0"
+                                                    routerLink="/inventory/add-inventory/healthcare"> Add Inventory</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 mt-4">
+                                        <div class="card-body card-data" *ngIf="disableBox('Inventory List')">
+                                            <div class="row">
+                                                <a for="validationCustom0"
+                                                    routerLink="/inventory/inventory-list/healthcare" class="">Inventory
+                                                    List</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-3 mt-4" *ngIf="user.isAdmin">
+                                        <div class="card-body card-data" *ngIf="disableBox('Stock')">
+                                            <div class="row">
+                                                <a for="validationCustom0" routerLink="/inventory/stock/healthcare"
+                                                    class="">Stock</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 mt-4">
+                                        <div class="card-body card-data" *ngIf="disableBox('Most Buyed')">
+                                            <div class="row">
+                                                <a for="validationCustom0" class=""
+                                                    routerLink="/inventory/buyed/healthcare">Most Buyed</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="row ">
+
+                                    <div class="col-md-3 mt-4">
+                                        <div class="card-body card-data" *ngIf="disableBox('Most Searched')">
+                                            <div class="row">
+                                                <a for="validationCustom0" class=""
+                                                    routerLink="/inventory/searched/healthcare">Most Searched</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 mt-4">
+                                        <div class="card-body card-data" *ngIf="disableBox('Favourite')">
+                                            <div class="row">
+                                                <a for="validationCustom0" class=""
+                                                    routerLink="/inventory/favourite/healthcare">Favourite</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+
+
+                            </ng-template>
+                        </ngb-tab>
+
+                    </ngb-tabset>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->

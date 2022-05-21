@@ -1,0 +1,325 @@
+<div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="dashboard_right_cnt_sec odr_list_sc">
+        <div class="dashboard_right_cnt_head">Order List</div>
+
+
+
+        <div class="dashboard_right_txt_row">
+
+            <h6 class="text-center" *ngIf="myOrderList.length==0">No orders found</h6>
+
+            <div class="order_list_box" *ngFor="let order of myOrderList">
+                <div class="order_list_box_head">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt1">Order Number &nbsp; : &nbsp; {{order.orderId}}</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt3" *ngIf="order.orderStatus=='order placed'" >
+                                <div class="order_list_box_cnt3_ico"><img src="assets/images/order/order-placed.svg" alt=""></div>
+                                Order placed
+                                <span>Arriving by {{order.statusDate}}</span>
+                            </div>
+
+                            <div class="order_list_box_cnt3 cancel_odr rej" *ngIf="order.orderStatus== 'doctor rejected'" >
+                                <div  class="order_list_box_cnt4_ico rej-img"><img src="assets/img/dashboard/cancel_ico.png" alt="">
+                                </div>
+                                   &nbsp;&nbsp;Rejected
+                                <span>Rejected on {{order.statusDate}}</span>
+                            </div>
+
+                            <div class="order_list_box_cnt3" *ngIf="order.orderStatus== 'order confirmed'" >
+                                <div class="order_list_box_cnt3_ico"><img src="assets/images/order/order-confirm.svg" alt=""></div>
+                                Order confirmed
+                                <span>Arriving by {{order.statusDate}}</span>
+                            </div>
+
+                            <div class="order_list_box_cnt3 cancel_odr" *ngIf="order.orderStatus== 'cancelled'" >
+                                <div class="order_list_box_cnt4_ico"><img src="assets/img/dashboard/cancel_ico.png" alt=""></div>
+                                Cancelled
+                                <span>Cancelled on {{order.statusDate}}</span>
+                            </div>
+
+                            <div class="order_list_box_cnt3" *ngIf="order.orderStatus== 'order under review'" >
+                                <div class="order_list_box_cnt3_ico"><img src="assets/images/order/order-under-review.svg" alt=""></div>
+                                Order under review
+                                <span>Arriving by {{order.statusDate}}</span>
+                            </div>
+
+                            
+
+                            <div class="order_list_box_cnt3" *ngIf="order.orderStatus=='order shipped'">
+                                <div class="order_list_box_cnt3_ico"><img src="assets/img/dashboard/ship_ico.png" alt=""></div>
+                                Shipped
+                                <span>Arriving by {{order.statusDate}}</span>
+                            </div>
+
+                            <div  class="order_list_box_cnt3 cancel_odr rej" *ngIf="order.orderStatus=='pharmacy rejected'">
+                                <div style="" class="order_list_box_cnt4_ico  rej-img-pharm"><img src="assets/img/dashboard/cancel_ico.png" alt="">
+                                </div>
+                                Rejected
+                                <span>Rejected on {{order.statusDate}}</span>
+                            </div>
+
+                            <div class="order_list_box_cnt3" *ngIf="order.orderStatus=='order packed'">
+                                <div class="order_list_box_cnt3_ico"><img src="assets/images/order/order-packed.svg" alt=""></div>
+                                Order packed
+                                <span>Arriving by {{order.statusDate}}</span>
+                            </div>
+
+
+                            <div class="order_list_box_cnt3" *ngIf="order.orderStatus=='out for delivery'">
+                                <div class="order_list_box_cnt3_ico"><img src="assets/images/order/out-for-delivery.svg" alt=""></div>
+                                Out for delivery
+                                <span>Arriving by {{order.statusDate}}</span>
+                            </div>
+
+                            <div class="order_list_box_cnt3" *ngIf="order.orderStatus=='delivered'">
+                                 <div class="order_list_box_cnt3_ico"><img src="assets/images/order/order-delivered.svg" alt=""></div>
+                                Delivered
+                                
+                                <!-- <span *ngIf="order.deliveryDate">Delivered on {{changeSecondDateFormat(order.deliveryDate)}}</span> -->
+                                <span *ngIf="order.statusDate">Delivered on {{order.statusDate}}</span>
+                            </div>
+
+                            <div class="order_list_box_cnt3 cancel_odr rej" *ngIf="order.orderStatus=='rejected'">
+                                <div class="order_list_box_cnt4_ico "><img src="assets/img/dashboard/cancel_ico.png" alt="">
+                                </div>
+                                Rejected
+                                <span>Rejected on {{order.statusDate}}</span>
+                            </div>
+
+                            <div class="order_list_box_cnt3" *ngIf="order.orderStatus=='applied for return'">
+                                <div class="order_list_box_cnt3_ico"><img src="assets/images/applied-for-return.png" alt=""></div>
+                                Applied for return
+                               
+                               <!-- <span *ngIf="order.deliveryDate">Delivered on {{changeSecondDateFormat(order.deliveryDate)}}</span> -->
+                               <span *ngIf="order.statusDate">Applied on {{order.statusDate}}</span>
+                           </div>
+
+                           <div class="order_list_box_cnt3" *ngIf="order.orderStatus=='returned'">
+                            <div class="order_list_box_cnt3_ico"><img src="assets/images/returned.png" alt=""></div>
+                            Returned
+                           
+                            <!-- <span *ngIf="order.deliveryDate">Delivered on {{changeSecondDateFormat(order.deliveryDate)}}</span> -->
+                            <span *ngIf="order.statusDate">Returned on {{order.statusDate}}</span>
+                            </div>
+
+
+                            <div class="order_list_box_cnt3" *ngIf="order.orderStatus=='return confirmed'">
+                                <div class="order_list_box_cnt3_ico"><img src="assets/images/order/order-delivered.png" alt=""></div>
+                                Return confirmed
+                               
+                                <!-- <span *ngIf="order.deliveryDate">Delivered on {{changeSecondDateFormat(order.deliveryDate)}}</span> -->
+                                <span *ngIf="order.statusDate">Returned on {{order.statusDate}}</span>
+                                </div>
+
+                            <div class="order_list_box_cnt3" *ngIf="order.orderStatus=='return approved'">
+                                <div class="order_list_box_cnt3_ico"><img src="assets/images/return-approved.png" alt=""></div>
+                                    Return approved
+                                   
+                                    <!-- <span *ngIf="order.deliveryDate">Delivered on {{changeSecondDateFormat(order.deliveryDate)}}</span> -->
+                                    <span *ngIf="order.statusDate">Returned on {{order.statusDate}}</span>
+                            </div>
+
+                            <div class="order_list_box_cnt3" *ngIf="order.orderStatus=='return picked up'">
+                                <div class="order_list_box_cnt3_ico"><img src="assets/images/return-pickup.png" alt=""></div>
+                                Return picked up
+                               
+                                <!-- <span *ngIf="order.deliveryDate">Delivered on {{changeSecondDateFormat(order.deliveryDate)}}</span> -->
+                                <span *ngIf="order.statusDate">Returned on {{order.statusDate}}</span>
+                                </div>
+
+                            <div class="order_list_box_cnt3" *ngIf="order.orderStatus =='pickup pending'  || order.orderStatus =='requested'">
+                                Return requested
+                               
+                               <!-- <span *ngIf="order.deliveryDate">Delivered on {{changeSecondDateFormat(order.deliveryDate)}}</span> -->
+                               <span *ngIf="order.statusDate">Requested on {{order.statusDate}}</span>
+                           </div>
+
+                           <div class="order_list_box_cnt3" *ngIf="order.orderStatus =='collected' 
+                            || order.orderStatus =='submitted' || order.orderStatus =='quality check'">
+                               Pickup
+                               
+                               <!-- <span *ngIf="order.deliveryDate">Delivered on {{changeSecondDateFormat(order.deliveryDate)}}</span> -->
+                               <span *ngIf="order.statusDate">Picked on {{order.statusDate}}</span>
+                           </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="order_list_box_cnt" (click)="redirectToOrderDetails(order._id,order.orderStatus)">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt0">{{order.addressName}}</div>
+                            <div class="order_list_box_cnt1">Order Date &nbsp;&nbsp; : &nbsp;  {{order.createdAt}}</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt3 rt_mb rupee">
+                                <div class="order_list_box_cnt3_rate"><i class="fa fa-rupee"></i> {{order.totalAmountToBePaid.toFixed(2)}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order_list_box_ftr_cnt">
+                    <div class="row">
+                        <div class="col-md-8">
+
+                            <div class="order_list_box_cnt1" *ngIf="order.firstProductName.length>50">{{order.firstProductName  | slice:0:50}}...</div>
+                            <div class="order_list_box_cnt1" *ngIf="order.firstProductName.length<=50">{{order.firstProductName}}</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="order_list_box_cnt3 rt_mb rupee">
+                                <a *ngIf="order.noOfItems>1">+ {{order.noOfItems - 1}} Items</a>
+                                <a *ngIf="order.noOfItems==1">{{order.noOfItems}} Item</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- <div class="order_list_box cncllld_bx">
+                <div class="order_list_box_head">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt1">Order Number &nbsp; : &nbsp; 2526654451</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt3 cancel_odr">
+                                <div class="order_list_box_cnt4_ico"><img src="img/dashboard/cancel_ico.png" alt="">
+                                </div>
+                                Cancelled
+                                <span>Cancelled on Mon 12 Dec</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order_list_box_cnt">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt0">Aswin Vinod</div>
+                            <div class="order_list_box_cnt1">Order Date &nbsp;&nbsp; : &nbsp; 9 December 2021</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt3 rt_mb">
+                                <div class="order_list_box_cnt3_rate"><i class="fa fa-rupee"></i>200</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order_list_box_ftr_cnt">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="order_list_box_cnt1">Seven layer mask</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt3 rt_mb">
+                                <a href="#">+2 Items</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="order_list_box">
+                <div class="order_list_box_head">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt1">Order Number &nbsp; : &nbsp; 2526654451</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt3">
+                                <div class="order_list_box_cnt3_ico"><img src="img/dashboard/ship_ico.png" alt=""></div>
+                                Shipped
+                                <span>Arriving by Mon 12 Dec</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order_list_box_cnt">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt0">Aswin Vinod</div>
+                            <div class="order_list_box_cnt1">Order Date &nbsp;&nbsp; : &nbsp; 9 December 2021</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt3 rt_mb">
+                                <div class="order_list_box_cnt3_rate"><i class="fa fa-rupee"></i>200</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order_list_box_ftr_cnt">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="order_list_box_cnt1">Seven layer mask</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt3 rt_mb">
+                                <a href="#">+2 Items</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> -->
+
+            <!-- <div class="order_list_box cncllld_bx">
+                <div class="order_list_box_head">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt1">Order Number &nbsp; : &nbsp; 2526654451</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt3 cancel_odr">
+                                <div class="order_list_box_cnt4_ico"><img src="img/dashboard/cancel_ico.png" alt="">
+                                </div>
+                                Cancelled
+                                <span>Cancelled on Mon 12 Dec</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order_list_box_cnt">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt0">Aswin Vinod</div>
+                            <div class="order_list_box_cnt1">Order Date &nbsp;&nbsp; : &nbsp; 9 December 2021</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt3 rt_mb">
+                                <div class="order_list_box_cnt3_rate"><i class="fa fa-rupee"></i>200</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order_list_box_ftr_cnt">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="order_list_box_cnt1">Seven layer mask</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="order_list_box_cnt3 rt_mb">
+                                <a href="#">+2 Items</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> -->
+
+
+        </div>
+
+
+    </div>  
+
+</div>
+

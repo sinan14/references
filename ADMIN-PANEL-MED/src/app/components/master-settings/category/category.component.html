@@ -1,0 +1,261 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="kendo_table master-demo">
+                
+                <div class="card-body explore_mastertab tab2-card" *ngIf="disableTab('Category')">
+                    <h6>Category</h6>
+                    <ngb-tabset class="tab-coupon"  #t="ngbTabset" [activeId]="selectedTab" (tabChange)="tabChangeEvent($event)">
+                            <ngb-tab title="Medicine" id="tab-selectbyid0" *ngIf="disableTab('Medicine')">
+                                <ng-template ngbTabContent> 
+
+                                    <div class="btn-popup pull-right">
+                                        <!-- <button type="button" class="btn btn-dark btn-inverse-dark" data-toggle="modal" data-original-title="test"
+                                            data-target="#exampleModal" (click)="open(exampleModalcontent,'add')"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;"> Add New</button>
+                                         -->
+                                    </div>
+                                            <br><br>
+                                            <div class="table-responsive">
+                                                    <!-- <ng2-smart-table  [settings]="settings" [source]="vendors"  bdata-target="#exampleModal" 
+                                                    (edit)="editRow($event,exampleModalcontent,'edit')"></ng2-smart-table> -->
+
+                                                    <kendo-grid [kendoGridBinding]="medicineCategoryList" 
+                                                    [filterable]="true"  
+                                                    [sortable]="true"
+                                                    [pageSize]="4"
+                                                    [skip]="skip"
+                                                    (pageChange)="pageChange($event)"
+                                                    [pageable]="true">
+
+                                                        <kendo-grid-column field="title" title="Category" width="30">
+                                                            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                                <kendo-grid-string-filter-cell placeholder="search"
+                                                                    [showOperators]="false" [column]="column" title="Sl. No"
+                                                                    [filter]="filter">
+                                                                </kendo-grid-string-filter-cell>
+                                                            </ng-template>
+                                                            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                                <a style="text-decoration: underline;cursor: pointer;" (click)="redirectToMedicineSubCategory(dataItem._id)">{{dataItem.title}}</a>
+                                                        </ng-template>
+                                                            
+                                                        </kendo-grid-column>
+
+                                                        
+                                                        <kendo-grid-column field="image" title="Image" width="20" [filterable]="false">
+                                                            <ng-template kendoGridCellTemplate  let-isNew="isNew" let-dataItem="dataItem">
+                                                                <img class="flag" src="{{dataItem.image}}" width="50%" />
+                                                            </ng-template>
+                                                        </kendo-grid-column>
+                                                     
+                
+                                                            <kendo-grid-command-column title="Action" width="40"  class="text-center">
+                                                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                                    <button type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                                                    data-target="#medicineExampleModal" (click)="open(medicineExampleModalcontent,'edit','medicine',dataItem._id)" *ngIf="editFlag">Edit</button>
+                                                                    
+                                                                    
+                                                                    &nbsp;&nbsp;<input type="checkbox" class="toggle-switch oversize" id="toggle3" checked *ngIf="editFlag" [checked]="!dataItem.isDisabled" (change)="statusChange($event,'medicine',dataItem._id)">
+                                                                </ng-template>
+                                                            </kendo-grid-command-column>
+
+                                                    </kendo-grid>
+                                            </div>
+
+                                            
+        
+                         
+                                </ng-template>
+                            </ngb-tab>
+        
+        
+                            <ngb-tab title="Health Care" id="tab-selectbyid1" *ngIf="disableTab('Healthcare')">
+                                <ng-template ngbTabContent>                                                                                                                                        
+                                    <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                            aria-labelledby="account-tab">
+
+                                            <div class="btn-popup pull-right">
+                                                <button type="button" class="btn btn-dark btn-inverse-dark" data-toggle="modal" data-original-title="test"
+                                                    data-target="#healthCareExampleModalLabel" (click)="open(healthcareContent,'add','','')" *ngIf="addFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;" *ngIf="editFlag"> Add New</button>
+                                             
+                                            </div>
+                                                    <br><br>
+                                                    <div class="table-responsive ">
+                                                        <kendo-grid [kendoGridBinding]="healthcareCategoryList" 
+                                                        [filterable]="true"  
+                                                        [sortable]="true"
+                                                        [pageSize]="10"
+                                                        [skip]="skip"
+                                                        (pageChange)="pageChange($event)"
+                                                        [pageable]="true">
+
+                                                            <kendo-grid-column field="title" title="Category" width="30">
+                                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                                    <kendo-grid-string-filter-cell placeholder="search"
+                                                                        [showOperators]="false" [column]="column" title="Sl. No"
+                                                                        [filter]="filter">
+                                                                    </kendo-grid-string-filter-cell>
+                                                                </ng-template>
+                                                                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                                    <a style="text-decoration: underline;cursor: pointer;" (click)="redirectToSubCategory(dataItem._id)">{{dataItem.title}}</a>
+                                                            </ng-template>
+                                                                
+                                                            </kendo-grid-column>
+    
+                                                            
+                                                            <kendo-grid-column field="image" title="Image" width="20" [filterable]="false">
+                                                                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                                                                    <img class="flag" [src]="dataItem.image" width="40" />
+                                                                </ng-template>
+                                                            </kendo-grid-column>
+                                                         
+                    
+                                                                <kendo-grid-command-column title="Action" width="40"  class="text-center">
+                                                                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                                                        <button type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                                                        data-target="#healthCareExampleModalLabel" (click)="open(healthcareContent,'edit','healthcare',dataItem._id)" *ngIf="editFlag">Edit</button>
+                                                                        
+                                                                        &nbsp;&nbsp;<button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="deleteFlag" (click)="delete('healthcare',dataItem._id)">Delete</button>
+    
+                                                                        
+                                                                        &nbsp;&nbsp;<input type="checkbox" class="toggle-switch oversize" id="toggle3" *ngIf="editFlag" [checked]="!dataItem.isDisabled" (change)="statusChange($event,'healthcare',dataItem._id)">
+                                                                    </ng-template>
+                                                                </kendo-grid-command-column>
+    
+                                                          </kendo-grid>
+                                                    </div>
+        
+                                            
+                                    </div>
+                                </ng-template>
+                            </ngb-tab>
+    
+    
+    
+                    </ngb-tabset>
+    
+                  
+                         
+
+                               
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<ng-template #medicineExampleModalcontent let-modal>
+<form [formGroup]="medicineForm">
+    <div  class="modal-header">
+        <h5 style="color: white; opacity: 0.7;" class="modal-title f-w-200" id="medicineExampleModal">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+        <button style="color: white; opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+            <div class="form row">
+                <div class="form-group col-md-12">
+                    <label for="validationCustom01" class="mb-1">Choose Image</label>
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload"  *ngIf="add_Modal_Flag" ></i>
+                            <img  *ngIf="!add_Modal_Flag" src="{{image_URL}}" width="100%" class="image-icon">
+                            <input type="file" name="myfile" class="input-type"  (change)="onChangeImage($event,'480','392')"/>
+                        </div>
+                    </div>
+                    <span class="pull-right">480px X 392px</span>
+                    <small for="image" class="form-text text-danger" 
+                    *ngIf="image_URL ===''  && attemptedSubmit">
+                    Image required.
+                    </small>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="form row">
+                <div class="form-group mb-0 col-md-12">
+                    <label for="validationCustom02" class="mb-1">Category Name</label>
+                    <input class="form-control" id="validationCustom02" type="text" formControlName="categoryname">
+                    <small for="categoryname" class="form-text text-danger" 
+                    *ngIf="medicineForm.controls['categoryname'].errors?.required && 
+                    (medicineForm.controls['categoryname'].dirty ||  
+                    medicineForm.controls['categoryname'].touched || 
+                    (medicineForm.controls['categoryname'].untouched  && attemptedSubmit ) )">
+                        Category Name required.
+                </small>
+                </div>
+            </div>
+
+      
+    </div>
+    <div class="modal-footer">
+        <button type="button"  class="btn  btn-dark-rounded" (click)="update('medicine');attemptedSubmit = true;">{{ addLoading ? "Updating..." : "Update" }}</button>
+        <button class="btn btn-dark-rounded" type="button" class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Close</button>
+    </div>
+</form>
+</ng-template>
+
+
+<ng-template #healthcareContent let-modal>
+  
+
+    <form [formGroup]="healthcareForm">
+    <div class="modal-header">
+        <h5 style="color: white; opacity: 0.7;" class="modal-title f-w-200" id="healthCareExampleModalLabel">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+        <button style="color: white; opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="form row">
+            <div class="form-group col-md-12">
+                <label for="validationCustom01" class="mb-1">Choose Image</label>
+                <div class="image-data">
+                    <div class="upload-btn-wrapper ">
+                        <i class="icon fa fa-upload"  *ngIf="image_URL === ''" ></i>
+                        <img *ngIf="image_URL != ''"  src="{{image_URL}}" width="100%" class="image-icon">
+                        <input type="file" name="myfile" class="input-type"  (change)="onChangeImage($event,'200','200')"/>
+                    </div>
+                </div>
+                <span class="pull-right">200px X 200px</span>
+                <small for="image" class="form-text text-danger" 
+                *ngIf="image_URL === ''  && attemptedSubmit">
+                Image required.
+                </small>
+            </div>
+        </div>
+
+
+            <div class="form row">
+                <div class="form-group mb-0 col-md-12">
+                    <label for="validationCustom02" class="mb-1">Category Name</label>
+                    <input class="form-control" id="validationCustom02" type="text" formControlName="categoryname">
+                    <small for="categoryname" class="form-text text-danger" 
+                    *ngIf="healthcareForm.controls['categoryname'].errors?.required && 
+                    (healthcareForm.controls['categoryname'].dirty ||  
+                    healthcareForm.controls['categoryname'].touched || 
+                    (healthcareForm.controls['categoryname'].untouched  && attemptedSubmit ) )">
+                        Category Name required.
+                </small>
+                </div>
+            </div>
+
+    </div>
+    <div class="modal-footer">
+        <button *ngIf="add_Modal_Flag" type="button" class="btn btn-dark-rounded"  (click)="save('healthcare');attemptedSubmit = true;">{{ addLoading ? "Saving..." : "Save" }}</button>
+        <button *ngIf="!add_Modal_Flag" type="button" class="btn btn-dark-rounded"  (click)="update('healthcare');attemptedSubmit = true;">{{ addLoading ? "Updating..." : "Update" }}</button>
+        <button class="btn btn-dark-rounded" type="button" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Close</button>
+    </div>
+</form>
+</ng-template>

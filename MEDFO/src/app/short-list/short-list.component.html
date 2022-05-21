@@ -1,0 +1,220 @@
+<div class="ps-page">
+    <app-header></app-header>
+</div>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W32L424" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) →-->
+
+
+<section class="inner_new_page_container short_list_sc" style="overflow: hidden;background-color: #F7F7F7;">
+    <div class="container">
+
+        <div class="cart_page_head">Short List</div>
+
+
+
+        <div class="row">
+            <div class="col-lg-8 col-md-7">
+                <div class="short_list_sc_bx">
+                    <div class="short_list_sc_bx_head">Wish List</div>
+                    <div class="short_list_sc_bx_cnt" *ngFor="let i of Wish_List">
+
+                        <div class="cart_item_lst_row">
+                            <div class="cart_item_lst_row_delet">
+                                <i class="fa fa-heart" (click)="Fav_Icon_Click(i.varient_id , i._id)"></i>
+                            </div>
+                            <div class="cart_item_lst_dicount" *ngIf="i.discount > 0" (click)="imgClick(i,'wish')">
+                                {{i.discount}}% <span>Discount</span></div>
+                                
+                            <div class="cart_item_lst_row_img">
+                                <div class="outofstock" *ngIf="i.stockStatus=='Out of stock'">
+                                <span >Out of Stock</span>
+                            </div>
+                            <img src={{i.image}} (click)="imgClick(i,'wish')"></div>
+                            <div class="cart_item_lst_row_contant">
+                                <div class="cart_item_lst_row_contant_name" (click)="imgClick(i,'wish')">{{i.title}}</div>
+                                <div class="cart_item_lst_row_contant_cmpny" (click)="imgClick(i,'wish')">{{i.brand}}</div>
+                                <div class="cart_item_lst_row_contant_gram" (click)="imgClick(i,'wish')">{{i.quantity}}
+                                </div>
+                                <div class="cart_item_lst_row_contant_rate" (click)="imgClick(i,'wish')">
+                                    <span *ngIf="i.discount > 0">
+                                        {{i.real_price}}
+                                    </span>
+                                    <strong><i class="fa fa-rupee"></i> {{i.spl_price}}</strong>
+
+                                </div>
+                                <a (click)="addToCart(i._id , i.varient_id,i,i.is_cart)">
+                                    <div  *ngIf="i.stockStatus!='Out of stock'" style="float: left;margin: 0;" class="cart_sub_btn_row_btn">{{i.is_cart ==
+                                        1?'Go to Cart':'Move to Cart'}}</div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div *ngIf="Wish_List.length == 0">
+                        <div class="col-lg-12 col-md-5 col-sm-12 col-xs-12 text-center ">
+                            <br><br><br><br><br><br>
+                            <h3>No products available</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-5">
+                <div class="short_list_sc_bx recen-view">
+                    <div class="short_list_sc_bx_head mob-view">Recently viewed</div>
+                    <div class="short_list_sc_bx_cnt">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12 recent-view-padding" *ngFor="let i of Recently_Viewed">
+                                <div class="product_list_box">
+                                    <div class="product_list_box_img" (click)="imgClick(i,'recent')">
+                                        <div class="rcent_view_offer_tg" *ngIf="i.discount > 0">
+                                            <span class="off_tg_sp new1">
+                                                <p>{{i.discount}}%
+                                                    <span class="off_tg_sp_dic">Discount</span>
+                                            </span>
+                                        </div>
+                                        <a (click)="imgClick(i,'recent')"><img src={{i.image}} alt=""></a>
+                                        <div class="outofstock" *ngIf="i.stockStatus=='Out of stock'">
+                                            <span >Out of Stock</span>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="product_list_box_text" (click)="imgClick(i,'recent')">
+                                        <a (click)="imgClick(i,'recent')">
+                                            <div class="product_list_box_text_prd_name">{{i.product}}</div>
+                                        </a>
+
+                                        <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i>
+                                            {{i.spl_price}} <span *ngIf="i.discount > 0"> {{i.price}}</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a (click)="addToCart(i.product_id , i.varient_id,i,i.is_cart)">
+                                            <div *ngIf="i.stockStatus!='Out of stock'" class="product_list_box_btn">{{i.is_cart == 1 ?"Go to Cart":"Move to
+                                                Cart"}}</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box">
+                                    <div class="product_list_box_img">
+                                        <div class="rcent_view_offer_tg">
+                                        <span class="off_tg_sp new1"><p>50%
+                                                <span class="off_tg_sp_dic">Discount</span></span>
+                                        </div>
+                                        <a href="#"><img src="../../../assets/img/cart/prd2.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name daburch">Dabur Chyaqanprash</div></a>
+                                        
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Move to cart</div></a>
+                                    </div>
+        
+                                </div>
+                            </div>
+        
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box">
+                                    <div class="product_list_box_img">
+                                        <div class="rcent_view_offer_tg">
+                                    <span class="off_tg_sp new1"><p>50%
+                                                <span class="off_tg_sp_dic">Discount</span></span>
+                                        </div>
+                                        <a href="#"><img src="../../../assets/img/product/2.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Instant hand sanitizer</div></a>
+                                        
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Move to cart</div></a>
+                                    </div>
+        
+                                </div>
+                            </div>
+        
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box">
+                                    <div class="product_list_box_img">
+                                        <div class="rcent_view_offer_tg">
+                                    <span class="off_tg_sp new1"><p>50%
+                                                <span class="off_tg_sp_dic">Discount</span></span>
+                                        </div>
+                                        <a href="#"><img src="../../../assets/img/product/1.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Instant hand sanitizer</div></a>
+                                        
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Move to cart</div></a>
+                                    </div>
+        
+                                </div>
+                            </div>
+        
+        
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box">
+                                    <div class="product_list_box_img">
+                                        <div class="rcent_view_offer_tg">
+                                        <span class="off_tg_sp new1"><p>50%
+                                                <span class="off_tg_sp_dic">Discount</span></span>
+                                        </div>
+                                        <a href="#"><img src="../../../assets/img/cart/prd1.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name">Himalaya men face wash</div></a>
+                                        
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Move to cart</div></a>
+                                    </div>
+        
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="product_list_box">
+                                    <div class="product_list_box_img">
+                                        <div class="rcent_view_offer_tg">
+                                    <span class="off_tg_sp new1"><p>50%
+                                                <span class="off_tg_sp_dic">Discount</span></span>
+                                        </div>
+                                        <a href="#"><img src="../../../assets/img/cart/prd2.png" alt=""></a>
+                                    </div>
+                                    <div class="product_list_box_text">
+                                        <a href="#"><div class="product_list_box_text_prd_name daburch">Dabur Chyaqanprash</div></a>
+                                        
+                                            <div class="product_list_box_text_prd_rate"><i class="fa fa-rupee"></i> 100 <span>199</span></div>
+                                    </div>
+                                    <div class="product_list_box_btn_row">
+                                        <a href="#"><div class="product_list_box_btn">Move to cart</div></a>
+                                    </div>
+        
+                                </div>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<footer class="ps-footer ps-footer--5" style="padding-top: 40px;">
+    <app-footer></app-footer>
+</footer>

@@ -1,0 +1,67 @@
+<form [formGroup]="verifyNumberForm">
+  <div class="row contact-sec mt-100">
+    <div class="col-md-12">
+      <h5>Enter your mobile number to proceed</h5>
+      <div>
+        <!-- <div class="form_group first-div">
+          <input
+            type="text"
+            id="txtPhone"
+            class="txtbox"
+            ng2TelInput
+            (intlTelInputObject)="telInputObject($event)"
+            [ng2TelInputOptions]="{ initialCountry: 'in' }"
+            (countryChange)="onCountryChange($event)"
+          />
+        </div>
+        <div class="second-div">
+          <input type="text" class="full" placeholder="Mobile Number" name="" />
+        </div> -->
+
+        <div class="form_group first-div">
+          <ngx-intl-tel-input
+            [preferredCountries]="[
+              CountryISO.UnitedStates,
+              CountryISO.UnitedKingdom
+            ]"
+            [cssClass]="'txtbox'"
+            [enableAutoCountrySelect]="false"
+            [enablePlaceholder]="true"
+            [separateDialCode]="true"
+            [searchCountryFlag]="true"
+            [searchCountryField]="[
+              SearchCountryField.Iso2,
+              SearchCountryField.Name
+            ]"
+            [selectFirstCountry]="false"
+            [selectedCountryISO]="CountryISO.India"
+            [phoneValidation]="true"
+            name="phone"
+            (countryChange)="onCountryChange($event)"
+            (keyup.enter)="extractNum()"
+            formControlName="phone"
+          ></ngx-intl-tel-input>
+
+          <small *ngIf="isValidPhone('phone')" class="form-text"
+            >Enter valid phone number</small
+          >
+        </div>
+        <div class="second-div">
+          <!-- <input type="text" class="full" placeholder="Mobile Number" name="" /> -->
+        </div>
+      </div>
+      <br />
+      <!-- <button
+        class="btn-2 mt-20"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal3"
+      >
+        Login to Continue
+      </button> -->
+
+      <button class="btn-2 mt-20" (click)="extractNum()">
+        Login to Continue
+      </button>
+    </div>
+  </div>
+</form>

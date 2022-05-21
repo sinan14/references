@@ -1,0 +1,256 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card tab2-card" style="background:transparent">
+                <div class="row mt-3 costmr_srch_ivntrylist">
+                    <div class="col-md-8">
+                        <h5 style="margin-top:20px;color: white;opacity: 0.7;">Promotion Page Home</h5>
+                    </div>
+
+                </div>
+
+                <ngb-tabset class="tab-coupon side_innerpage_tab">
+
+                    <ngb-tab title="Partner Promotion" *ngIf="disableTab('Partner Promotion')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+
+                                <button style="margin-top:-80px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#PartnerPromotionExampleModal"
+                                    (click)="open(PartnerPromotionContent,'add','')" *ngIf="editFlag"><img
+                                        src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                        style="margin-right:10px;">Add New</button>
+
+
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of Partner_Promotion_Array">
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%" class="promo-imgs">
+                                            <h6 style="margin-left: 85%;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i style="margin-left: 15%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test"
+                                                        data-target="#PartnerPromotionExampleModal"
+                                                        (click)="open(PartnerPromotionContent,'edit',item)"
+                                                        *ngIf="editFlag"></i>
+                                                    <i style="margin-left: 20%;" class="fa fa-trash"
+                                                        (click)="delete('PartnerPromotionContent',item._id)"
+                                                        *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Promotion" *ngIf="disableTab('Promotion')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+                                <button style="margin-top:-80px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#PromotionExampleModal" (click)="open(PromotionContent,'add','')"
+                                    *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%"
+                                        height="15%" style="margin-right:10px;">Add New</button>
+
+
+
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of Promotion_Array">
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%">
+                                            <h6 style="margin-left: 85%;color: white;font-size: 15px;">
+                                                <span>
+                                                    <i style="margin-left: 15%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#PromotionExampleModal"
+                                                        (click)="open(PromotionContent,'edit',item)"
+                                                        *ngIf="editFlag"></i>
+                                                    <i style="margin-left: 20%;" class="fa fa-trash"
+                                                        (click)="delete('PromotionContent',item._id)"
+                                                        *ngIf="editFlag"></i>
+
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+
+
+                </ngb-tabset>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+
+<ng-template #PartnerPromotionContent let-modal>
+
+    <form [formGroup]="Partner_Promotion_Form">
+
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="PartnerPromotionExampleModal">Update
+            </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="PartnerPromotionExampleModal">Add
+            </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i><br>
+                            <img *ngIf="image_URL != ''" [src]="image_URL" width="100%" height="50%" class="image-icon popup-images-ht">
+                            <input type="file" name="myfile" (change)="onChangeImage($event,'278','248')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 278 x 248</h6>
+                </div>
+            </div>
+
+
+            <div class="mt-2 row">
+                <div class="col-md-12">
+                    <label>External Link</label>
+                    <input type="text" class="form-control" formControlName="ExternalLink">
+                    <small for="ExternalLink" class="form-text text-danger" *ngIf="Partner_Promotion_Form.controls['ExternalLink'].errors?.required && 
+                    (Partner_Promotion_Form.controls['ExternalLink'].dirty ||  
+                    Partner_Promotion_Form.controls['ExternalLink'].touched || 
+                    (Partner_Promotion_Form.controls['ExternalLink'].untouched  && attemptedSubmit ) )">
+                        External Link required.
+                    </small>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="add_Modal_Flag"
+                (click)="Save('PartnerPromotion')">Save</button>
+
+            <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                (click)="OnUpdate('PartnerPromotion')">Update</button>
+            <button class="btn btn-dark-rounded" type="button" class="btn btn-dark-rounded" type="button"
+                data-dismiss="modal" (click)="modal.dismiss('Cross click')">Close</button>
+        </div>
+    </form>
+</ng-template>
+
+
+
+<ng-template #PromotionContent let-modal>
+    <form [formGroup]="Promotion_Form">
+
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="PromotionExampleModal">Update </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="PromotionExampleModal">Add </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i><br>
+                            <img *ngIf="image_URL != ''" [src]="image_URL"  width="100%" height="50%" class="image-icon popup-images-ht">
+                            <input type="file" name="myfile" (change)="onChangeImage($event,'646','124')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 646 x 124</h6>
+                </div>
+            </div>
+
+            <div class="mt-2 row">
+                <div class="col-md-12">
+                    <label>Terms & Conditions</label>
+                    <textarea class="form-control" rows="4" formControlName="termsConditions"></textarea>
+                    <small for="termsConditions" class="form-text text-danger" *ngIf="Promotion_Form.controls['termsConditions'].errors?.required && 
+                    (Promotion_Form.controls['termsConditions'].dirty ||  
+                    Promotion_Form.controls['termsConditions'].touched || 
+                    (Promotion_Form.controls['termsConditions'].untouched  && attemptedSubmit ) )">
+                        Terms & Conditions required.
+                    </small>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="add_Modal_Flag"
+                (click)="Save('Promotion')">Save</button>
+
+            <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                (click)="OnUpdate('Promotion')">Update</button>
+            <button class="btn btn-dark-rounded" type="button" class="btn btn-dark-rounded" type="button"
+                data-dismiss="modal" (click)="modal.dismiss('Cross click')">Close</button>
+
+            <!-- <button type="button" class="btn  btn-dark-rounded">Save</button>
+        <button class="btn btn-dark-rounded" type="button" class="btn btn-dark-rounded" type="button"
+            data-dismiss="modal" (click)="modal.dismiss('Cross click')">Close</button> -->
+        </div>
+    </form>
+</ng-template>

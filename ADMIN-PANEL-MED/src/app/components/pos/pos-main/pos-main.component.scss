@@ -1,0 +1,132 @@
+a,h6{
+    color: white;
+    font-size: 12px;
+  }
+  h5{
+      color: white;
+  }
+  a:hover{
+      text-decoration: none;
+  }
+  
+  .hr_line{
+    width: 248px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 3px;
+    background-color: rgb(46, 85, 100);
+    opacity: 0.5;
+    margin-top: 23;
+  }
+
+  .hr:active{
+      
+    background-color: rgb(46, 85, 100);
+  }
+  
+  .card-header{
+    padding:10px;
+    padding: 20px;
+    border-radius: 5px;
+    padding-right: 20px;
+    color:white;
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    height: 85%;
+  }
+  .card-header:active{
+    .hr{
+        background-color: rgb(46, 85, 100);
+      }
+  }
+
+  .card-footer-title{
+    padding: none !important;
+    background-color: none !important;
+    border-top: none !important;
+    text-align: center;
+  }
+  
+  .card-icon{
+    background-color: #00AAFF;
+    padding:10px;
+    padding: 24px;
+    border-radius: 15px;
+    //padding-right: 20px;
+    color:white;
+    position: relative;
+    width: 90%;
+    cursor: pointer;
+  }
+  
+  .span-data{
+    justify-content: space-between;
+    background-color: #0a3347;
+    color:white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 75px;
+    font-weight: 5em;
+    float: right;
+  }
+  
+  
+  
+  
+  /*Button CSS*/
+  
+  .btn{
+    
+    font-weight: 400;
+  }
+  .btn-inverse-dark {
+      background-color: rgba(79, 74, 96, 0.2);
+      background-image: none;
+      border-color: rgba(79, 74, 96, 0);
+    }
+    
+    .btn-inverse-dark:not(.btn-inverse-light) {
+      color: #4f4a60;
+    }
+    
+    .btn-inverse-dark:hover {
+      color: #ffffff;
+      background-color: #4f4a60;
+      border-color: #4f4a60;
+    }
+    
+    .btn-inverse-dark.focus, .btn-inverse-dark:focus {
+      box-shadow: 0 0 0 3px rgba(79, 74, 96, 0.5);
+    }
+    
+    .btn-inverse-dark.disabled, .btn-inverse-dark:disabled {
+      color: #4f4a60;
+      background-color: transparent;
+    }
+    
+    .btn-inverse-dark.active, .btn-inverse-dark:active,
+    .show > .btn-inverse-dark.dropdown-toggle {
+      color: #ffffff;
+      background-color: #4f4a60;
+      border-color: #4f4a60;
+    }
+    
+    .btn-dark, .btn-dark:hover {
+      box-shadow: 0 2px 2px 0 rgba(79, 74, 96, 0.14), 0 3px 1px -2px rgba(79, 74, 96, 0.2), 0 1px 5px 0 rgba(79, 74, 96, 0.12);
+        justify-content: right;
+    }
+    
+    
+  .form-control{
+      background: #014466;
+    }
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+  
+  
+  
+  
+  
+  

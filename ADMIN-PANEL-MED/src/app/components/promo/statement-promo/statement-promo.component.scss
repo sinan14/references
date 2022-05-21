@@ -1,0 +1,209 @@
+h5,h6,label{
+  color: #8d969b;
+}
+
+a{
+  
+    color: #FFFFFF !important;
+    opacity: 0.5;
+}
+a:hover {
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+.full-row{
+  
+  background-color: #00496e;
+}
+.statemnt_prmo_man .nav-tabs>.nav-link{
+  padding: 15px 74px !important;
+}
+.satemt_promo_main{
+  background-color: #014466;
+  padding: 40px 30px 20px;
+  border-radius: 0 0px 15px 15px;
+}
+.table .thead-dark th{
+  background-color: #053449 !important;
+  border-color: #053449 !important;
+  color: #FFFFFF !important;
+  opacity: 1;
+  font-weight: 400;
+  text-align: center;
+}
+.card_data_stmt_promo{
+  float: left;
+  width: 100%;
+  background: #03344d;
+  text-align: center;
+  border-radius: 10px;
+  color: #fff;
+  margin-bottom: 20px;  
+}
+.card_data_stmt_promo a{
+  width: 100%;
+  cursor: pointer;
+  padding: 13px 10px;
+  float: left;
+}
+.card-data{
+    background-color: #03334c;
+    align-content: center;
+    border-radius: 20px;
+    justify-content: center;
+    width: 100%;
+    height: 40%;
+    color:white;
+    position: relative;
+    padding-left: 43%;
+    padding-bottom: 24%;
+    padding-top: 10%;
+}
+
+.span-data{
+    justify-content: space-between;
+    background-color: #0a3347;
+    color:#FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 75px;
+    font-weight: 5em;
+    float: right;
+}
+
+
+
+
+/*Button CSS*/
+
+.btn{
+    
+    font-weight: 400;
+  }
+
+  .btn-dark-rounded{
+    margin-left: 12px;
+    background: #014466;
+    box-shadow: 3px 3px 9px #00000033;
+    border-radius: 34px;
+    opacity: 1;
+    height: 48px;
+    border: 0;
+  }
+
+
+  .btn-inverse-dark {
+      background-color: rgba(79, 74, 96, 0.2);
+      background-image: none;
+      border-color: rgba(79, 74, 96, 0);
+    }
+    
+    .btn-inverse-dark:not(.btn-inverse-light) {
+      color: #4f4a60;
+    }
+    
+    .btn-inverse-dark:hover {
+      color: #ffffff;
+      background-color: #4f4a60;
+      border-color: #4f4a60;
+    }
+    
+    .btn-inverse-dark.focus, .btn-inverse-dark:focus {
+      box-shadow: 0 0 0 3px rgba(79, 74, 96, 0.5);
+    }
+    
+    .btn-inverse-dark.disabled, .btn-inverse-dark:disabled {
+      color: #4f4a60;
+      background-color: transparent;
+    }
+    
+    .btn-inverse-dark.active, .btn-inverse-dark:active,
+    .show > .btn-inverse-dark.dropdown-toggle {
+      color: #ffffff;
+      background-color: #4f4a60;
+      border-color: #4f4a60;
+    }
+    
+    .btn-dark, .btn-dark:hover {
+      box-shadow: 0 2px 2px 0 rgba(79, 74, 96, 0.14), 0 3px 1px -2px rgba(79, 74, 96, 0.2), 0 1px 5px 0 rgba(79, 74, 96, 0.12);
+        justify-content: right;
+    }
+    
+    
+.form-control{
+    background: #014466;
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.modal-body, .modal-header, .modal-footer{
+  box-shadow: 4px 4px 10px #a1969682;
+  border-radius: 21px;
+  background: #00486D;
+}
+label{
+  color: #ffffff;
+  opacity: 0.7;
+  font-size: 16px;
+}
+.data{
+    padding-top: 2%;
+    background-color: #053449;
+    align-content: center;
+    border-bottom-left-radius: 16px;
+    border-top-left-radius: 18px;
+    text-align: center;
+}
+.right_radius_custom_data_{
+  padding-top: 2%;
+  background-color: #053449;
+  align-content: center;
+  border-bottom-right-radius: 16px;
+  border-top-right-radius: 18px;
+  justify-content: center;
+
+}
+
+.table td {
+color: #FFFFFF;
+opacity: 1;
+}
+
+i{
+color: #FFFFFF;
+opacity: 0.5;
+}
+.modal-body ,.table , label
+{
+  color: #FFFFFF !important;
+    opacity: 1 !important;
+}
+      
+////////////////new////////
+
+// .statemnt_prmo_man .nav-tabs {
+//   margin-top: 7px !important;
+// }
+
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+  border-color: #03476a !important;
+}
+.table-bordered th, .table-bordered td {
+  border: 1px solid #79797982 !important;
+}
+// p.pramppgh {
+//   line-height: 0;
+//   letter-spacing: 1px;
+//   font-size: 13px;
+//   padding: 4px 9px 0 0px;
+//   text-align: center;
+// }
+.modal-body,.table td tr span.clrpramo {
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+}
+td.promoclr {
+  color: #fff;
+  opacity: 0.5 !important;
+}

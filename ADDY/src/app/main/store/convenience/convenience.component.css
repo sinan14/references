@@ -1,0 +1,58 @@
+@import url('../../../../assets/css/style2.css');
+body {
+    background: var(--primary2);
+}
+a {
+    color: var(--black);
+}
+a:hover {
+    text-decoration: none;
+}
+h5 {
+    font-size: 16px;
+}
+.mt-100 {
+    margin-top: 100px;
+}
+.mt-50 {
+    margin-top: 50px;
+}
+.mb-10 {
+    margin-bottom: 10px;
+}
+.mb-50 {
+    margin-bottom: 50px;
+}
+.mt-20 {
+    margin-top: 20px;
+}
+.mt-10 {
+    margin-top: 10px;
+}
+ header {
+    background: var(--white);
+    border-radius: 0px 0px 24px 24px;
+    padding: 10px 0 20px;
+    position: relative;
+}
+header .right ul {
+    margin: 0;
+}
+header .right ul li {
+    list-style: none;
+    float: right;
+    margin-left: 20px;
+    font-size: 24px;
+    margin-top: 7px;
+}
+.container-fluid:before{
+    display: table;
+    content: " ";
+}
+.container-fluid:after{
+    clear: both;
+}
+.con-h5{
+font-size: 16px;
+font-weight: 400;
+}

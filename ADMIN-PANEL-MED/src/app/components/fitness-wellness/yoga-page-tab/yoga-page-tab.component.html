@@ -1,0 +1,302 @@
+<div class="tabs">
+    <input id="tab1" type="radio" name="tabs" [checked]="!updateFlag">
+    <label for="tab1" *ngIf="disableTab('Uploaded Videos')" (click)="reset()">Uploaded Videos</label>
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2" *ngIf="disableTab('Upload Videos') && saveFlag" (click)="reset()">Upload Videos</label>
+    <label for="tab2" *ngIf="disableTab('Upload Videos') && updateFlag" (click)="reset()">Update Video</label>
+    <input id="tab3" type="radio" name="tabs">
+    <label for="tab3" *ngIf="disableTab('Popular Videos')">Popular Videos</label>
+
+    <div class="content">
+        <div id="content1">
+
+            <div class="row">
+
+                <h6 style="color:white;margin-left: 4%;padding-top: 13px;">Categories</h6>
+                <div class="input-group" style="float: right;margin-left: 58%;">
+                    <input type="text" class="form-control form-control-text"
+                        (keyup)="searchAllVideos($event.target.value)" placeholder="Search" name="search">
+                    <div class="input-group-btn" style="width: 25px;">
+                        <button class="btn form-control-text" type="submit" style="
+                        padding: 8px 18px;border-radius: 0px 6px 6px 0px;"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+
+            <div class="mt-1 row">
+                <div class="col-md-12 scroll-container hide-scrollbar">
+                   <div class="scrol">
+                    <div class="">
+                        <select class="form-control" placeholder="Choose"
+                            (change)="selectChangeCategory($event.target.value)" style="width: auto;">
+                            <option value="0">All</option>
+                            <option *ngFor="let item of Main_Categories_Array" value={{item.value}}>{{ item.title }}
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <div class="span-data col-md-2" *ngFor="let i of Sub_Categories_Array"
+                        [ngClass]="selectedSubCat === i._id ? 'active' : '' " style="overflow: hidden;">
+                        <a routerLink="#" for="validationCustom0" (click)="selectSubCategory(i._id)" style="background: none;padding: 1px;
+                        text-align: center;"> {{i.title}}</a>
+                    </div>
+                </div>
+                    <!-- <div class="span-data" *ngFor="let i of Sub_Categories_Array">
+                        <a routerLink="#" for="validationCustom0" (click)='selectSubCategory(i._id)'> {{i.title}}</a>
+                    </div> -->
+
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="mt-2 row">
+                <input id="tab2" type="radio" name="tabs">
+                <div class="col-md-4" *ngFor="let item of GET_YOGA_VID_ARRAY">
+                    <a class="play-button"><i class="fa fa-play"></i></a>
+                    <img style="width: 100%;" src={{item.thumbnail}}>
+
+                    <h6 style="text-align: left;">
+                        <h6 class="wid-sx">{{item.title}}</h6>
+                        <span>
+                            <i style="float: right;" class="fa fa-trash mt-2" (click)="delete(item._id)" *ngIf="editFlag"></i>
+                            <label for="tab2" style="background: none; width: 10%; float: right;     padding-right: 15px;
+                        padding-top: 4px;">
+                                <i class="fa fa-edit" (click)="Img_Click(item)" *ngIf="editFlag"></i>
+                            </label>
+                        </span>
+                    </h6>
+
+
+                </div>
+
+                <h6 *ngIf="GET_YOGA_VID_ARRAY && !GET_YOGA_VID_ARRAY.length"
+                    class="text-center text-muted alert-no-found">
+                    <small>No Data found</small>
+                </h6>
+
+            </div>
+        </div>
+
+        <div id="content2">
+            <form [formGroup]="Yoga_Form">
+                <div class=" mt-4 row ">
+                    <div class=" col-md-6">
+                        <div class="span-data2">
+                            <i *ngIf="vid_src == ''" class="icon fa fa-upload"></i>
+                            <span *ngIf="saveFlag" style="color: white;opacity: 0.7;">Choose Video</span>
+                            <video name="type" *ngIf="vid_src != ''" controls (click)="toggleVideo($event)" #videoPlayer
+                                width="100%" height="100%">
+                                <source src={{vid_src}} type="video/mp4" />
+                                Browser not supported
+                            </video>
+                            <input type="file" accept="video/mp4,video/x-m4v,video/*" (change)="onVideoChange($event)">
+                        </div>
+                        <small for="type" class="form-text text-danger" *ngIf="vid_src === '' && attemptedSubmit ">
+                            Video is required.
+                        </small>
+                    </div>
+
+                    <div class=" col-md-6">
+                        <div class="span-data2">
+                            <i *ngIf="image_URL == ''" class="icon fa fa-upload"></i>
+                            <span *ngIf="saveFlag" style="color: white;opacity: 0.7;">Thumbnail Image</span>
+
+                            <!-- <i *ngIf="!updateFlag" class="icon fa fa-upload"></i><br><span
+                                style="color: white;opacity: 0.7;">Thumbnail
+                                Image</span> -->
+                            <img *ngIf="image_URL != ''" [src]="image_URL" width="100%" height="50%" class="image-icon" style="height: 100%;">
+                            <input type="file" name="myfile" (change)="onChangeImage($event,'1501','815')" />
+
+                        </div>
+                        <label for="" class="mes" style="box-shadow: none;background: none;
+                        text-align: right;width: 100%;">1501 X 815</label>
+                        <small for="type" class="form-text text-danger" *ngIf="image_URL === '' && attemptedSubmit ">
+                            Thumbnail Image is required.
+                        </small>
+                    </div>
+
+                </div>
+
+                <div class=" mt-4 row ">
+                    <div class=" col-md-6">
+                        <h6 for="validationCustom0" class="">Name</h6>
+                        <input formControlName="title" type="text" class="form-control" name="" id=""
+                            class="form-control">
+                        <small for="title" class="form-text text-danger" *ngIf="Yoga_Form.controls['title'].errors?.required && 
+                                (Yoga_Form.controls['title'].dirty ||  
+                                Yoga_Form.controls['title'].touched || 
+                                (Yoga_Form.controls['title'].untouched  && attemptedSubmit ) )">
+                            Name is required.
+                        </small>
+                    </div>
+
+                    <div class=" col-md-6">
+                        <h6 for="validationCustom0" class="">Workout Time</h6>
+                        <input formControlName="workoutTime" type="text" class="form-control" name="" id=""
+                            class="form-control">
+                        <small for="workoutTime" class="form-text text-danger" *ngIf="Yoga_Form.controls['workoutTime'].errors?.required && 
+                                (Yoga_Form.controls['workoutTime'].dirty ||  
+                                Yoga_Form.controls['workoutTime'].touched || 
+                                (Yoga_Form.controls['workoutTime'].untouched  && attemptedSubmit ) )">
+                            Workout Time is required.
+                        </small>
+                    </div>
+                </div>
+
+
+                <div *ngIf="saveFlag" class="mt-4 pull-right ">
+                    <button style="width:150px" type="button" class="btn btn-dark btn-dark-rounded" (click)="Save()" *ngIf="editFlag">{{
+                        addLoading ?
+                        "Saving..." : "Save" }}</button>
+                </div>
+                <div *ngIf="updateFlag" class="mt-4 pull-right ">
+                    <button style="width:150px" type="button" class="btn btn-dark btn-dark-rounded" *ngIf="editFlag"
+                        (click)="Update()">{{
+                        addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                </div>
+
+                <!-- <div class="mt-4 pull-right ">
+                    <button style="width:150px" type="button" class="btn btn-dark btn-dark-rounded">Upload</button>
+                </div> -->
+            </form>
+        </div>
+
+        <div id="content3">
+            <div class="row">
+                <div class="input-group" style="float: right;margin-left: 70%;">
+                    <input type="text" class="form-control form-control-text" placeholder="Search"
+                        (keyup)="Search_Popular_Vids($event.target.value)" name="search">
+                    <div class="input-group-btn" style="width:20px;background: #014466;">
+                        <button class="btn form-control-text" type="submit" style="width: 30px;"><i
+                                class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="mt-2 row image-data" *ngFor="let i of GET_POPULAR_YOGA_VID_ARRAY">
+                <div class="col-lg-4 col-md-6">
+                    <a class="play-buttons"><i class="fa fa-play"></i></a>
+                    <img src={{i.thumbnail}}>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <ul>
+                        <li class="img_liwidth ty">Title</li>
+                        <li> {{i.title}}</li>
+                    </ul>
+                    <ul>
+                        <li class="img_liwidth ty">Categories </li>
+                        <span *ngFor="let a of i.catagory ;let isLast=last">
+                            <li> {{a.title}} <span *ngIf="!isLast">, </span></li>
+
+                        </span>
+                    </ul>
+                    <!-- <ul>
+                        <li class="img_liwidth">Sub Categories</li>
+                        <li>: Dentist</li>
+                    </ul>
+                    <ul>
+                        <li class="img_liwidth">Tag</li>
+                        <li>: Jsguysay</li>
+                    </ul> -->
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="row">
+                        <h6 for="validationCustom0" class="col-lg-4 col-md-4" style="opacity: 1;"><i
+                                class="fa fa-eye fa-lg" style="opacity: 0.7;"></i><br><span style="opacity: 1;">{{i.views}}</span>
+                        </h6>
+                        <h6 for="validationCustom0" class="col-md-4" style="opacity: 1;"><i class="fa fa-heart fa-lg" style="opacity: 0.7;"></i><br><span style="opacity: 1;">{{i.likes}}</span>
+                        </h6>
+                        <h6 for="validationCustom0" class="col-md-4" style="opacity: 1;"><i
+                                class="fa fa-share-alt fa-lg" style="opacity: 0.7;"></i><br><span style="opacity: 1;">{{i.shares}}</span>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div *ngIf="GET_POPULAR_YOGA_VID_ARRAY && !GET_POPULAR_YOGA_VID_ARRAY.length" class="text-center">
+                    <span>No Data Found</span>
+                </div>
+            </div>
+
+            <!-- <div class="mt-2 row image-data">
+                <div class="col-lg-4 col-md-6">
+                    <img src="assets/images/dashboard/poliofit1.png">
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <ul>
+                        <li class="img_liwidth">Description</li>
+                        <li>: Lorem Ipsum</li>
+                    </ul>
+                    <ul>
+                        <li class="img_liwidth">Categories</li>
+                        <li>: Ortho</li>
+                    </ul>
+                    <ul>
+                        <li class="img_liwidth">Sub Categories</li>
+                        <li>: Dentist</li>
+                    </ul>
+                    <ul>
+                        <li class="img_liwidth">Tag</li>
+                        <li>: Jsguysay</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="row">
+                        <h6 for="validationCustom0" class="col-lg-4 col-md-4"><i class="fa fa-eye fa-lg"></i><br>8,682
+                        </h6>
+                        <h6 for="validationCustom0" class="col-md-4"><i class="fa fa-heart fa-lg"></i><br>8,682</h6>
+                        <h6 for="validationCustom0" class="col-md-4"><i class="fa fa-share-alt fa-lg"></i><br>8,682
+                        </h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-2 row image-data">
+                <div class="col-lg-4 col-md-6">
+                    <img src="assets/images/dashboard/poliofit2.png">
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <ul>
+                        <li class="img_liwidth">Description</li>
+                        <li>: Lorem Ipsum</li>
+                    </ul>
+                    <ul>
+                        <li class="img_liwidth">Categories</li>
+                        <li>: Ortho</li>
+                    </ul>
+                    <ul>
+                        <li class="img_liwidth">Sub Categories</li>
+                        <li>: Dentist</li>
+                    </ul>
+                    <ul>
+                        <li class="img_liwidth">Tag</li>
+                        <li>: Jsguysay</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="row">
+                        <h6 for="validationCustom0" class="col-lg-4 col-md-4"><i class="fa fa-eye fa-lg"></i><br>8,682
+                        </h6>
+                        <h6 for="validationCustom0" class="col-md-4"><i class="fa fa-heart fa-lg"></i><br>8,682</h6>
+                        <h6 for="validationCustom0" class="col-md-4"><i class="fa fa-share-alt fa-lg"></i><br>8,682
+                        </h6>
+                    </div>
+                </div>
+            </div> -->
+
+
+        </div>
+    </div>
+
+</div>

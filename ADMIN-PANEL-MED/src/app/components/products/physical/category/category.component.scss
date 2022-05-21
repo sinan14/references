@@ -1,0 +1,17 @@
+.custom-datatable{
+    border-radius: 10px;
+}
+.innerr_table_style ng2-smart-table {
+    table {
+      background-color: #00496e;
+      .ng2-smart-titles {
+        background-color: #03344d;
+        .ng2-smart-th {
+          padding: -0.25rem;
+          background-color: #03344d;
+          //border: 1px solid #12151b !important;
+        }
+    
+      }
+    }
+}

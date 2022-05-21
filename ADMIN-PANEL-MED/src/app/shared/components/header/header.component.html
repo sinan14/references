@@ -1,0 +1,170 @@
+<div class="page-main-header addes" [class.open]="open" style="background-color: #014466">
+    <div class="main-header-right row">
+        <!-- <div class="main-header-left d-lg-none">
+            <div class="logo-wrapper"><a [routerLink]="'/dashboard/default'"><img class="blur-up lazyloaded"
+                        src="assets/images/dashboard/logo-new.png" alt=""></a></div>
+        </div> -->
+        <!-- <div class="mobile-sidebar">
+            <div class="media-body text-right switch-sm">
+                <label class="switch">
+                    <a>
+                        <app-feather-icons id="sidebar-toggle" [icon]="'align-left'" (click)="collapseSidebar()">
+                        </app-feather-icons>
+                    </a>
+                </label>
+            </div>
+        </div> -->
+
+        <div class="mobile-sidebar">
+            <div class="media-body text-right switch-sm">
+                <label class="switch">
+                    <a><img class="lazyloaded"
+                        src="assets/images/logo.png" alt="" style="width: 120px;height: 56px;
+                   margin: 0 0 47px 0 !important;" id="sidebar-toggle" (click)="collapseSidebar()"></a>
+                  
+                </label>
+            </div>
+        </div>
+
+        <div class=""></div>
+        <div class="main-header-left d-lg-none">
+            <!-- <div class="logo-wrapper"><a [routerLink]="'/dashboard/default'"><img class="blur-up lazyloaded"
+                        src="assets/images/dashboard/logo-new.png" alt=""></a></div> -->
+                        
+        </div>
+
+        <div class=""></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class=""></div>
+
+        <div class="nav-right ">
+            <div class="d-lg-none mobile-toggle" (click)="openMobileNewNav()">
+                <app-feather-icons [icon]="'more-horizontal'"></app-feather-icons>
+            </div>
+            
+            <ul class="nav-menus header-menus" [ngClass]="{'open' : openNewNav}">
+               
+                <li >
+                    <a routerLink="#" class="text-dark" [class.open]="isOpenMobile" >
+                        <img src="assets/images/dashboard/icon-calender.svg" width="20px" height="20px"/>
+                    </a>
+                </li>
+                <li >
+                    <a routerLink="#" class="text-dark" [class.open]="isOpenMobile">
+                        <img src="assets/images/dashboard/icon-gmail.svg" width="20px" height="20px"/>
+                    </a>
+                </li>
+                <li>
+                    <a  routerLink="#"class="text-dark" [class.open]="isOpenMobile" >
+                        <img src="assets/images/dashboard/icon-chat.svg" width="20px" height="20px"/>
+                    </a>
+                </li>
+                <li >
+                    <a  routerLink="/task/task-list"  routerLinkActive="active" kendoTooltip title="task-list" position="bottom"  >
+                        <img src="assets/images/dashboard/icon-microkosm.svg" width="20px" height="20px"/>
+                    </a>
+                </li>
+                 <li >
+                    <a routerLink="/team-management"  routerLinkActive="active"  kendoTooltip title="team-management" position="bottom" *ngIf="this.user.isAdmin">
+                        <img src="assets/images/dashboard/icons.svg" width="20px" height="20px"/>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+      
+
+        <div class="nav-right col">
+
+            <ul class="nav-menus" [ngClass]="{'open' : openNav}">
+               
+
+                <li class="iconglob" style="margin-right: 2%;">
+                </li>
+                <!-- <li>
+                    <h6 style="padding: 0;"></h6>
+                    
+                </li> -->
+                <li class="onhover-dropdown" style="margin-right: 0%;">
+                    <img class="img-fluid" src="assets/images/dashboard/icon-lang.svg" width="20px" height="20px"/>
+                    <a  style="color: #fff; opacity: 1;;" >
+                  
+                        English
+                    </a>
+                    <ul class="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
+                        <li>
+                            <a >
+                            English
+                            </a>
+                        
+                        </li>
+                        <li style="border-bottom:0" ><a href="javascript:void(0)" data-lng="es">
+                                Malayalam</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a class="text-dark" >
+                        <img src="assets/images/dashboard/icon-search.svg"  width="20px" height="20px"/>
+                    </a>
+                </li>
+
+                <li >
+                    <a  class="text-dark" >
+                        <img src="assets/images/dashboard/icon-bell.svg" width="20px" height="20px"/>
+                    </a>
+                </li>
+
+                <!-- <li>
+                    <h6 style="padding: 0;"></h6>
+                    
+                </li> -->
+          
+                <li class="onhover-dropdown">
+                    <div class="media align-items-center">
+                        <small class="mr-2 name-ue">{{loggedEmployeeName}}<br>{{loggedEmployeeType}}</small>
+                        
+                        <img class="align-self-center pull-right img-40 rounded-circle usr"
+                                src={{loggedEmployeeImage}} alt="header-user" style="">
+
+                            <div class="dotted-animation">
+                                <span class="animate-circle"></span>
+                                <span class="main-circle"></span>
+                            </div>
+                    </div>
+                    <ul class="profile-dropdown onhover-show-div profile-dropdown-hover">
+                        <li style="margin-bottom: 10px;margin-top: 10px;border-radius: 10px;">
+                            <h6>{{loggedEmployeeName}}</h6>
+                            <h6 ><small></small></h6>
+                            <small>ID : {{loggedEmployeeID}}</small>
+                        </li>
+                        
+                        <li style="border-radius:10px 10px 0px 0px;">
+                            <a href="javascript:void(0)">
+                                Manage Employee
+                            </a>
+                        </li>
+
+                        <li>
+                            <a routerLink="/settings/profile">
+                                Change Password
+                            </a>
+                        </li>
+
+                        <li style="border-radius:0px 0px 10px 10px;">
+                            <a (click)="logout()">
+                                Logout
+                            </a>
+                        
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="d-lg-none mobile-toggle pull-right" (click)="openMobileNav()">
+                <app-feather-icons [icon]="'more-horizontal'"></app-feather-icons>
+            </div>
+
+        </div>
+    </div>
+</div>

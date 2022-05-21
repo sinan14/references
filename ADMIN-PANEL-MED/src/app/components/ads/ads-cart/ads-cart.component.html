@@ -1,0 +1,973 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card tab2-card" style="background:transparent">
+                <div class="row mt-3 costmr_srch_ivntrylist">
+                    <div class="col-md-8">
+                        <h5 style="margin-top:20px;color: white;opacity: 0.7;">Cart</h5>
+                    </div>
+
+                </div>
+
+                <ngb-tabset class="tab-coupon side_innerpage_tab">
+
+                    <ngb-tab title="Hand Pick" *ngIf="disableTab('Hand Pick')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+                                <button style="margin-top:-80px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#HandPicExampleModal" (click)="open(HandPicContent,'add','handpick')"
+                                    *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%"
+                                        height="15%" style="margin-right:10px;">Add New</button>
+
+
+
+                                <div class=" row">
+                                    <div class="col-lg-2 col-md-6" *ngFor="let item of HandPick_Array">
+
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%" height="130px">
+                                            
+                                            <h6 style="text-align:center; color: white;font-size: 15px;">
+                                                <span>
+                                                    <i class="fa fa-edit" style="margin-right: 15px;"
+                                                        data-toggle="modal" data-original-title="test"
+                                                        data-target="#HandPicExampleModal"
+                                                        (click)="open(HandPicContent,'edit',item)" *ngIf="editFlag"></i>
+
+                                                    <i class="fa fa-trash" (click)="delete('handpick',item._id)"
+                                                        *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Ad 1" *ngIf="disableTab('Ad 1')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of AD1_Array">
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%">
+                                            <h6 style="float: right; color: white;font-size: 15px;">
+                                                <span>
+                                                    <i style="margin-left: 20%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test" data-target="#Ad1ExampleModal"
+                                                        (click)="open(Ad1Content,'edit',item)" *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+                    <ngb-tab title="Subscription" *ngIf="disableTab('Subscription')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of Subscrption_Array">
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%">
+                                            <h6 style="float: right; color: white;font-size: 15px;">
+                                                <span>
+                                                    <i style="margin-left: 20%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test"
+                                                        data-target="#SubscriptionExampleModal"
+                                                        (click)="open(SubscriptionContent,'edit',item)"
+                                                        *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+                    <ngb-tab title="Order Review" *ngIf="disableTab('Order Review')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of Order_Rev1_Array">
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%">
+                                            <h6 style="float: right; color: white;font-size: 15px;">
+                                                <span>
+                                                    <i style="margin-left: 20%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test"
+                                                        data-target="#OrderReviewExampleModal"
+                                                        (click)="open(OrderReviewContent,'edit',item)"
+                                                        *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of Order_Rev2_Array">
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%">
+                                            <h6 style="float: right; color: white;font-size: 15px;">
+                                                <span>
+                                                    <i style="margin-left: 20%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test"
+                                                        data-target="#OrderReview2ExampleModal"
+                                                        (click)="open(OrderReview2Content,'edit',item)"
+                                                        *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Order Medicine - 3 Icon" *ngIf="disableTab('Order Medicine - 3 Icon')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+
+
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of Order_Medicine_3Icon_Array">
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%">
+                                            <h6 style="width:100%; color: white;font-size: 13px;">{{item.name}}
+                                                <span>
+                                                    <i style="float: right; padding-top:5px;" class="fa fa-edit"
+                                                        data-toggle="modal" data-original-title="test"
+                                                        data-target="#OrderMedicineExampleModal"
+                                                        (click)="open(OrderMedicineContent,'edit',item)"
+                                                        *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="How To Order Medicine" *ngIf="disableTab('How To Order Medicine')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6" *ngFor="let item of How_To_Order_Medicine_Array">
+                                        <div class="post_items video-img">
+                                            <img src={{item.thumbnail}} width="100%">
+                                            <a class="play-button"><i class="fa fa-play"></i></a>
+                                            <h6 style="float: right; color: white;font-size: 15px;">
+                                                <span>
+                                                    <i style="margin-left: 20%;" class="fa fa-edit" data-toggle="modal"
+                                                        data-original-title="test"
+                                                        data-target="#HowToOrderMedicineExampleModal"
+                                                        (click)="open(HowToOrderMedicineContent,'edit',item)"
+                                                        *ngIf="editFlag"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Order Medicine - Slider" *ngIf="disableTab('Order Medicine - Slider')">
+                        <ng-template ngbTabContent>
+                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                aria-labelledby="account-tab">
+
+                                <button style="margin-top:-80px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#OrderMedicineSliderExampleModal"
+                                    (click)="open(OrderMedicineSliderContent,'add','')" *ngIf="editFlag"><img
+                                        src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%"
+                                        style="margin-right:10px;">Add New</button>
+
+
+
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-6" *ngFor="let item of Order_Medicine_Slider_Array">
+                                        <div class="post_items">
+                                            <img src={{item.image}} width="100%" height="130px">
+                                            <h6 style="text-align: center;  color: white;font-size: 15px;">
+                                                <span>
+                                                    <i class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                                        data-target="#OrderMedicineSliderExampleModal"
+                                                        (click)="open(OrderMedicineSliderContent,'edit',item)"
+                                                        *ngIf="editFlag"></i>
+
+                                                    <i style="margin-left: 15px;" class="fa fa-trash" *ngIf="editFlag"
+                                                        (click)="delete('OrderMedicineSlider',item._id)"></i>
+                                                </span>
+                                            </h6>
+
+                                        </div>
+                                    </div>
+
+                                
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+
+
+
+                </ngb-tabset>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+
+<ng-template #HandPicContent let-modal>
+    <form [formGroup]="Hand_Pick_ContentUpdateForm">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="HandPicExampleModal">Update</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="HandPicExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+
+            <div class="mt-2 row">
+                <div class="col-md-6">
+                    <label for="type">Category :</label>
+                    <kendo-dropdownlist formControlName="type" #list [data]="drop1_cat_array"
+                        class="form-control classic" [filterable]="true" textField="title" valueField="_id"
+                        [valuePrimitive]="true" (filterChange)="FilterMainDrop($event)"
+                        (valueChange)="dropDownProductChange($event)" id="validationCustom02">
+                    </kendo-dropdownlist>
+                    <small for="type" class="form-text text-danger" *ngIf="Hand_Pick_ContentUpdateForm.controls['type'].errors?.required && 
+                    (Hand_Pick_ContentUpdateForm.controls['type'].dirty ||  
+                    Hand_Pick_ContentUpdateForm.controls['type'].touched || 
+                    (Hand_Pick_ContentUpdateForm.controls['type'].untouched  && attemptedSubmit ) )">
+                        Category required.
+                    </small>
+                    <!-- <select class="form-control classic" id="validationCustom02" formControlName="type"
+                        (change)="dropDownProductChange($event.target.value)"> -->
+                    <!-- <option value=null>Category</option> -->
+
+                    <!-- <option selected="selected">Select</option> -->
+                    <!-- <option  value=null>Select</option> -->
+                    <!-- <option *ngFor='let data of drop1_cat_array' value={{data._id}}>{{ data.title }}</option> -->
+                    <!-- <option value="0">Category 1</option>
+                        <option value="1">Category 2</option> -->
+                    <!-- </select> -->
+
+                </div>
+
+                <div class="col-md-6">
+                    <label for="typeId">Product :</label>
+                    <kendo-dropdownlist formControlName="typeId" #list [data]="drop2_subcat_array"
+                        class="form-control classic" [filterable]="true" textField="title" valueField="_id"
+                        [valuePrimitive]="true" (filterChange)="FilterSubDrop($event)" id="validationCustom02">
+                    </kendo-dropdownlist>
+
+                    <small for="typeId" class="form-text text-danger" *ngIf="Hand_Pick_ContentUpdateForm.controls['typeId'].errors?.required && 
+                    (Hand_Pick_ContentUpdateForm.controls['typeId'].dirty ||  
+                    Hand_Pick_ContentUpdateForm.controls['typeId'].touched || 
+                    (Hand_Pick_ContentUpdateForm.controls['typeId'].untouched  && attemptedSubmit ) )">
+                        Product required.
+                    </small>
+
+                    <!-- <select class="form-control classic" id="validationCustom02" formControlName="typeId"
+                        placeholder="--Select--">
+                        <option *ngIf="drop2_subcat_array?.length = 0 "value=null >Product</option> -->
+                    <!-- <option selected="selected">Select</option>  -->
+                    <!-- <option value=null>Select</option> -->
+                    <!-- <option *ngFor='let data of drop2_subcat_array' value={{data._id}}>{{ data.title }}</option>
+                    </select> -->
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 ">
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="add_Modal_Flag"
+                        (click)="Save('handpick')">Save</button> -->
+                    <button type="submit" class="btn btn-dark btn-dark-rounded"
+                        (click)="Save('handpick');attemptedSubmit = true" *ngIf="add_Modal_Flag">{{ addLoading ?
+                        "Saving..." : "Save" }}</button>
+
+                    <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('handpick')">{{
+                        addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('handpick')">Update</button> -->
+
+                    <!-- <div class=" mb-0 col-md-4 "></div> -->
+                </div>
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+
+<ng-template #Ad1Content let-modal>
+    <form [formGroup]="Ad1_Subs_OrdrRev2">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="Ad1ExampleModal">Update</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="Ad1ExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+                            <img *ngIf="image_URL != ''" [src]="image_URL" width="100%" height="50%" class="image-icon">
+                            <input type="file" name="myfile" (change)="onChangeImage($event,'1500','454')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 1500 x 454</h6>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 ">
+                    <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('ad1')">{{
+                        addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('ad1')">Update</button> -->
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+
+<ng-template #SubscriptionContent let-modal>
+    <form [formGroup]="Ad1_Subs_OrdrRev2">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="SubscriptionExampleModal">Update</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="SubscriptionExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+                            <img *ngIf="image_URL != ''" [src]="image_URL" width="100%" height="50%" class="image-icon">
+                            <input type="file" name="myfile" (change)="onChangeImage($event,'786','122')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 786 x 122</h6>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 ">
+                    <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('subscription')">{{
+                        addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('subscription')">Update</button> -->
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+
+
+<ng-template #OrderReviewContent let-modal>
+    <form [formGroup]="OrderReview_1_ContentUpdateForm">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="OrderReviewExampleModal">Update</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="OrderReviewExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+                            <img *ngIf="image_URL != ''" [src]="image_URL" width="100%" class="image-icon">
+                            <input type="file" name="myfile" class="input-type" accept="image/*"
+                                (change)="onChangeImage($event,'1508','630')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 1508 x 630</h6>
+                </div>
+            </div>
+
+            <div class="mt-2 row">
+                <div class="col-md-6">
+                    <select class="form-control classic" id="validationCustom02" formControlName="type"
+                        (change)="dropDownChange($event.target.value)">
+                        <!-- <option hidden>Medimall</option> -->
+                        <!-- <option hidden>select</option> -->
+                        <option value="1">Product</option>
+                        <option value="0">Category</option>
+                        <!-- <option *ngFor='let data of drop1_pdtORcat_array' value={{data._id}}>{{ data.title }}</option> -->
+                    </select>
+                    <small for="type" class="form-text text-danger" *ngIf="OrderReview_1_ContentUpdateForm.controls['type'].errors?.required && 
+                (OrderReview_1_ContentUpdateForm.controls['type'].dirty ||  
+                OrderReview_1_ContentUpdateForm.controls['type'].touched || 
+                (OrderReview_1_ContentUpdateForm.controls['type'].untouched  && attemptedSubmit ) )">
+                        Dara required.
+                    </small>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <kendo-dropdownlist formControlName="typeId" #list [data]="drop_list_array"
+                        class="form-control classic" [filterable]="true" textField="title" valueField="_id"
+                        [valuePrimitive]="true" (filterChange)="FilterOR1($event)" id="validationCustom02">
+                    </kendo-dropdownlist>
+
+                    <small for="typeId" class="form-text text-danger" *ngIf="OrderReview_1_ContentUpdateForm.controls['typeId'].errors?.required && 
+                (OrderReview_1_ContentUpdateForm.controls['typeId'].dirty ||  
+                OrderReview_1_ContentUpdateForm.controls['typeId'].touched || 
+                (OrderReview_1_ContentUpdateForm.controls['typeId'].untouched  && attemptedSubmit ) )">
+                        Dara required.
+                    </small>
+
+
+
+
+
+                    <!-- <select class="form-control classic" id="validationCustom02" formControlName="typeId"
+                        placeholder="--Select--">
+                        <option hidden>select</option>
+                        <option *ngFor='let data of drop_list_array' value={{data._id}}>{{ data.title }}</option>
+                    </select> -->
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 ">
+                    <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('Order_Rev_1')">{{
+                        addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('Order_Rev_1')">Update</button> -->
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+
+
+
+<ng-template #OrderReview2Content let-modal>
+    <form [formGroup]="Ad1_Subs_OrdrRev2">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="OrderReview2ExampleModal">Update</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="OrderReview2ExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+                            <img *ngIf="image_URL != ''" [src]="image_URL" width="100%" height="50%" class="image-icon">
+                            <input type="file" name="myfile" (change)="onChangeImage($event,'742','266')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 742 x 266</h6>
+                </div>
+            </div>
+
+            <!-- <div class="mt-2 row">
+            <div class="col-md-6">
+                <select class="form-control classic" id="validationCustom02" (change)="dropDownProductChange($event.target.value)">
+                    <option hidden>Medimall</option>
+                    <option value="Product">Product</option>
+                    <option value="Category">Category</option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <select class="form-control classic" id="validationCustom02" placeholder="--Select--">
+                    <option hidden>Product</option>
+                    <option *ngFor='let data of product_array'>{{ data }}</option>
+                </select>
+            </div>
+
+        </div>
+     -->
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 ">
+                    <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('orderreview2')">{{
+                        addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('orderreview2')">Update</button> -->
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+
+
+<ng-template #OrderMedicineContent let-modal>
+    <form [formGroup]="OrderMedicine_3Icon_ContentUpdateForm">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="OrderMedicineExampleModal">Update
+            </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="OrderMedicineExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+                            <img *ngIf="image_URL != ''" [src]="image_URL" width="100%" height="50%" class="image-icon">
+                            <input type="file" name="myfile" (change)="onChangeImage($event,'688','186')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 688 x 186</h6>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Name</label>
+                    <input type="text" class="form-control" formControlName="name">
+                    <small for="name" class="form-text text-danger" *ngIf="OrderMedicine_3Icon_ContentUpdateForm.controls['name'].errors?.required && 
+                    (OrderMedicine_3Icon_ContentUpdateForm.controls['name'].dirty ||  
+                    OrderMedicine_3Icon_ContentUpdateForm.controls['name'].touched || 
+                    (OrderMedicine_3Icon_ContentUpdateForm.controls['name'].untouched  && attemptedSubmit ) )">
+                        Name required.
+                    </small>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 ">
+                    <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('orderMedicine3Icon')">{{
+                        addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('orderMedicine3Icon')">Update</button> -->
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+
+<ng-template #HowToOrderMedicineContent let-modal>
+    <form [formGroup]="HowToOrder_MedicineContent_UpdateForm">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="HowToOrderMedicineExampleModal">
+                Update
+            </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="HowToOrderMedicineExampleModal">Add
+            </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+
+
+            <!-- <i class="icon fa fa-upload"></i><br>
+            <span style="color: white;opacity: 0.7;">{{ uploadedVideoFileName ? uploadedVideoFileName :
+                "Choose Video " }}</span> -->
+            <!-- <input type="file" formControlName="video" accept="video/mp4,video/x-m4v,video/*"
+                (change)="onVideoChange($event)"> -->
+            <!-- <div class="invalid-feedback ifeed" style="display: block;"
+                *ngIf="(healthCareForm.controls.video.touched && !editMode && !uploadedVideo)">
+                Video is required.
+            </div> -->
+
+
+
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label style="opacity: 0.7;">Upload Video</label>
+                    <div class="image-data d-flex-pop-img">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="vid_src === '' "></i>
+                            <video *ngIf="vid_src != ''" controls (click)="toggleVideo($event)" #videoPlayer
+                                width="100%" height="100%">
+                                <source src={{vid_src}} type="video/mp4" />
+                                Browser not supported
+                            </video>
+                            <input type="file" accept="video/mp4,video/x-m4v,video/*" (change)="onVideoChange($event)">
+
+                            <!-- <input type="file" name="myfile" /> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label style="opacity: 0.7;">Thumbnail Image</label>
+                    <div class="image-data d-flex-pop-img">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i><br>
+                            <img *ngIf="image_URL != ''" [src]="image_URL" width="100%" height="50%"
+                                class="image-icon nine-height">
+                            <input type="file" name="myfile" (change)="onChangeImage($event,'1076','444')" />
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 1076 x 444</h6>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 ">
+                    <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('howToOrderMedicineThumbnail')">{{
+                        addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('howToOrderMedicineThumbnail')">Update</button> -->
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+
+
+<ng-template #OrderMedicineSliderContent let-modal>
+    <form [formGroup]="Order_Medicine_Slider_Form">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="OrderMedicineSliderExampleModal">
+                Update
+            </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="OrderMedicineSliderExampleModal">Add
+            </h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="icon fa fa-upload" *ngIf="image_URL === '' "></i>
+                            <img *ngIf="image_URL != ''" [src]="image_URL" width="100%" height="50%"
+                                class="image-icon popup-images-ht">
+                            <input type="file" name="myfile" (change)="onChangeImage($event,'242','298')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 "></div>
+                <div class="col-md-6 ">
+                    <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 242 x 298</h6>
+                </div>
+            </div>
+
+
+            <div class="mt-2 row">
+                <div class="col-md-6">
+                    <select class="form-control classic" id="validationCustom02" formControlName="type"
+                        (change)="newdropDown($event.target.value)">
+                        <option hidden>select</option>
+                        <option value="1">Product</option>
+                        <option value="0">Category</option>
+                    </select>
+                    <small for="type" class="form-text text-danger" *ngIf="Order_Medicine_Slider_Form.controls['type'].errors?.required && 
+                    (Order_Medicine_Slider_Form.controls['type'].dirty ||  
+                    Order_Medicine_Slider_Form.controls['type'].touched || 
+                    (Order_Medicine_Slider_Form.controls['type'].untouched  && attemptedSubmit ) )">
+                        Data required.
+                    </small>
+                </div>
+
+                <div class="col-md-6">
+
+                    <kendo-dropdownlist formControlName="typeId" #list [data]="newdrop_list_array"
+                        class="form-control classic" [filterable]="true" textField="title" valueField="_id"
+                        [valuePrimitive]="true" (filterChange)="FilterOMS($event)" id="validationCustom02">
+                    </kendo-dropdownlist>
+                    <small for="typeId" class="form-text text-danger" *ngIf="Order_Medicine_Slider_Form.controls['typeId'].errors?.required && 
+                (Order_Medicine_Slider_Form.controls['typeId'].dirty ||  
+                Order_Medicine_Slider_Form.controls['typeId'].touched || 
+                (Order_Medicine_Slider_Form.controls['typeId'].untouched  && attemptedSubmit ) )">
+                        Data required.
+                    </small>
+
+
+                    <!-- <select class="form-control classic" id="validationCustom02" formControlName="typeId"
+                        placeholder="--Select--">
+                        <option hidden>select</option>
+                        <option *ngFor='let data of newdrop_list_array' value={{data._id}}>{{ data.title }}</option> -->
+                    <!-- <option *ngFor='let data of product_array' value={{data._id}}>{{ data.title }}</option> -->
+                    <!-- </select> -->
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 ">
+
+                    <button type="submit" class="btn btn-dark btn-dark-rounded"
+                        (click)="Save('OrderMedicineSlider');attemptedSubmit = true" *ngIf="add_Modal_Flag">{{
+                        addLoading ?
+                        "Saving..." : "Save" }}</button>
+
+                    <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('OrderMedicineSlider')">{{
+                        addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('handpick')">Update</button> -->
+
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="update_Modal_Flag"
+                        (click)="OnUpdate('OrderMedicineSlider')">Update</button> -->
+                    <!-- <button type="button" class="btn btn-dark btn-dark-rounded" *ngIf="add_Modal_Flag"
+                        (click)="Save('OrderMedicineSlider')">Save</button> -->
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>

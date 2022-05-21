@@ -1,0 +1,246 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card kendo_table master-demo">
+        <div class="card-body master_Tab">
+          <h6>UOM Value</h6>
+          <div class="btn-popup pull-right">
+            <button
+              type="button"
+              class="btn btn-dark btn-inverse-dark"
+              data-toggle="modal"
+              data-original-title="test"
+              data-target="#exampleModal"
+              (click)="open(content, '', '', '', false, 'add')"
+              *ngIf="addFlag"
+            >
+              <img
+                src="assets/images/file-icons/icon-add-circle.svg"
+                width="15%"
+                height="15%"
+                style="margin-right: 10px"
+              />
+              Add New
+            </button>
+          </div>
+
+          <div class="table-responsive" *ngIf="disableTab('UOM Value')">
+            <!-- <ng2-smart-table  [settings]="settings" [source]="vendors"
+                                    (edit)="editRow($event,content,'edit')"></ng2-smart-table> -->
+            <kendo-grid
+              [kendoGridBinding]="this._uomValueService.uomValues"
+              [filterable]="true"
+              [sortable]="true"
+              [pageSize]="10"
+              [pageable]="true"
+              [skip]="skip"
+            >
+              <kendo-grid-column field="no" title="Sl. No" width="30">
+                <ng-template
+                  kendoGridFilterCellTemplate
+                  let-filter
+                  let-column="column"
+                >
+                  <kendo-grid-string-filter-cell
+                    placeholder="search"
+                    [showOperators]="false"
+                    [column]="column"
+                    title="Parent Store"
+                    [filter]="filter"
+                  >
+                  </kendo-grid-string-filter-cell>
+                </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column field="uom" title="UOM Name" width="30">
+                <ng-template
+                  kendoGridFilterCellTemplate
+                  let-filter
+                  let-column="column"
+                >
+                  <kendo-grid-string-filter-cell
+                    placeholder="search"
+                    [showOperators]="false"
+                    [column]="column"
+                    title="Parent Store"
+                    [filter]="filter"
+                  >
+                  </kendo-grid-string-filter-cell>
+                </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column field="uomValue" title="UOM Value" width="30">
+                <ng-template
+                  kendoGridFilterCellTemplate
+                  let-filter
+                  let-column="column"
+                >
+                  <kendo-grid-string-filter-cell
+                    placeholder="search"
+                    [showOperators]="false"
+                    [column]="column"
+                    title="Parent Store"
+                    [filter]="filter"
+                  >
+                  </kendo-grid-string-filter-cell>
+                </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-command-column
+                title="Action"
+                width="40"
+                class="text-center"
+              >
+                <ng-template
+                  let-dataItem="dataItem"
+                  kendoGridCellTemplate
+                  let-isNew="isNew"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-dark btn-dark-rounded"
+                    data-toggle="modal"
+                    data-original-title="test"
+                    data-target="#exampleModal"
+                    (click)="
+                      open(
+                        content,
+                        dataItem.uomId,
+                        dataItem.uomValue,
+                        dataItem._id,
+                        dataItem.isDisabled,
+                        'edit'
+                      )
+                    "
+                    *ngIf="editFlag"
+                  >
+                    Edit
+                  </button>
+
+                  &nbsp;&nbsp;<button
+                    type="button"
+                    class="btn btn-dark btn-dark-rounded"
+                    *ngIf="deleteFlag"
+                    (click)="onDeleteUomValue(dataItem._id)"
+                  >
+                    Delete
+                  </button>
+                  &nbsp;&nbsp;<input
+                    type="checkbox"
+                    (change)="
+                      updateDisableStatus(
+                        dataItem._id,
+                        dataItem.uomValue,
+                        dataItem.uomId,
+                        dataItem.isDisabled
+                      )
+                    "
+                    class="toggle-switch oversize"
+                    id="toggle3"
+                    [checked]="!dataItem.isDisabled"
+                  />
+                </ng-template>
+              </kendo-grid-command-column>
+            </kendo-grid>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->
+
+<ng-template #content let-modal>
+  <div *ngIf="update_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.5"
+      class="modal-title f-w-200"
+      id="exampleModal"
+    >
+      Update
+    </h5>
+    <button
+      style="color: white; opacity: 0.5; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="add_Modal_Flag" class="modal-header">
+    <h5
+      style="color: white; opacity: 0.5"
+      class="modal-title f-w-200"
+      id="exampleModal"
+    >
+      Add
+    </h5>
+    <button
+      style="color: white; opacity: 0.5; font-size: 31px"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="needs-validation" [formGroup]="uomValueForm">
+      <div class="form row">
+        <div class="form-group col-md-6">
+          <label for="validationCustom01" class="mb-1">UOM Name </label>
+          <select
+            class="form-control"
+            formControlName="uomId"
+            id="validationCustom01"
+          >
+            <option class="hidden" value="" disabled selected>
+              Select UOM
+            </option>
+            <option *ngFor="let uom of activeUoms" [value]="uom._id">
+              {{ uom.title }}
+            </option>
+          </select>
+          <span *ngIf="isValid('uomId')" class="help-block"
+            >select one uom</span
+          >
+        </div>
+
+        <div class="form-group mb-0 col-md-6">
+          <label for="validationCustom02" class="mb-1">UOM Value</label>
+          <input
+            class="form-control"
+            id="validationCustom02"
+            type="text"
+            formControlName="uomValue"
+          />
+          <span *ngIf="isValid('uomValue')" class="help-block"
+            >uom value cannot be empty</span
+          >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      class="btn btn-dark-rounded"
+      type="button"
+      data-dismiss="modal"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Close
+    </button>
+    <button
+      (click)="onAddOrUpdateUomValue()"
+      type="button"
+      class="btn btn-dark-rounded"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>

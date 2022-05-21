@@ -1,0 +1,223 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.header-section-max{
+    background-color:  #2787FF;
+    width: 100%;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+
+    
+}
+.rounder-boarder{
+    width: 100%;
+    height: 60px;
+    background-color: #FFFFFF;
+    border-radius: 50px;
+
+    position: absolute;
+    left: 0;
+    bottom: -31px;
+}
+.body-container-max{
+    width: 100%; 
+    padding-top: 213px;   
+}
+.body-container-section{
+    max-width: 576px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+}
+
+
+.details-section{
+    border-bottom: 1px solid #C9E0FF;
+    padding-bottom: 24px;
+}
+.body-text-main{
+    font-size: 20px;
+    font-weight: 400;
+    color: #252525c2;
+}
+.body-text-sub{
+    font-size: 16px;
+    color: #25252599;
+}
+.details-line{
+    line-height: 44px;
+}
+
+.order-image-size{
+    width: 62px;
+}
+.order-image-shade{
+    box-shadow: 0 2px 5px rgb(206, 206, 206);
+    border-radius: 8px;
+}
+
+.item-title-main{
+    font-size: 18px;
+    color: rgb(10, 10, 10);
+    font-weight: 400;
+    line-height: 10px;
+    padding-left: 15px;
+}
+.item-text-small{
+    font-size: 12px;
+    color: #25252599;
+    line-height: 36px;
+    padding-left: 15px;
+}
+.item-text-small1{
+    font-size: 12px;
+    line-height: 5px;
+    padding-left: 15px;
+    }
+    
+
+.item-text-normal{
+    color: #25252599;
+}
+.item-text-normal span{
+    font-size: 18px;
+    color: #2787FF;
+}
+
+.payment-btn-container{
+    width: 100%;
+}
+.payment-btn-container button{
+    width: 100%;
+    height: 60px;
+    background-color: #2787FF;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 500;
+    box-shadow: 0 3px 12px rgba(151, 151, 151, 0.692);
+    
+}
+.payment-btn-container button:hover{
+    background-color: #016ef3;
+    transition: 0.3s;
+}
+.payment-btn-container button:active{
+    transform: scale(0.94);
+
+}
+
+.cash-pay-link{
+    font-size: 16px;
+    color: #2787FF;
+    text-decoration: none !important;
+    font-weight: 500;
+}
+
+
+
+
+
+
+
+
+@media(max-width: 768px){
+    .header-section-max{
+        background-color:  #2787FF;
+        width: 100%;
+        height: 200px;       
+    }
+    .rounder-boarder{
+        width: 100%;
+    }
+    .body-container-max{
+        width: 100%;  
+        padding-top: 213px;  
+    }
+    .body-container-section{
+        max-width: 576px;
+        margin: 0 auto;
+        padding-bottom: 40px;
+    }
+    
+    
+    .details-section{
+        border-bottom: 1px solid #C9E0FF;
+        padding-bottom: 24px;
+    }
+    .body-text-main{
+        font-size: 20px;
+    }
+    .body-text-sub{
+        font-size: 14px;
+    }
+    
+    .order-image-size{
+        width: 57px;
+    }
+    .order-image-shade{
+        box-shadow: 0 1px 3px rgb(206, 206, 206);
+    }
+    
+    .item-title-main{
+        font-size: 16px;
+        line-height: 10px;
+        padding-left: 15px;
+    }
+    .item-title-main1{
+        font-size: 16px;
+        line-height: 10px;
+        padding-left: 0px;
+    }
+    .item-text-small{
+        font-size: 12px;
+        line-height: 36px;
+        padding-left: 15px;
+    }
+    .item-text-small1{
+    font-size: 12px;
+    line-height: 5px;
+    padding-left: 15px;
+    }
+    
+    .item-text-normal{
+        font-size: 14px;
+    }
+    .item-text-normal span{
+        font-size: 16px;
+    }
+    
+    .payment-btn-container{
+        width: 100%;
+    }
+    .payment-btn-container button{
+        width: 100%;
+        height: 45px;
+        border-radius: 8px;
+        font-size: 16px;
+        box-shadow: 0 3px 6px rgba(199, 198, 198, 0.692);
+        
+    }
+   
+    
+    .cash-pay-link{
+        font-size: 15px;
+    }
+    .logo-opacity {
+        opacity: 1;
+        width: 200px;
+      }
+    
+
+}

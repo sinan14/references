@@ -1,0 +1,322 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card-body tab2-card add_inventory_tab pre-table">
+        <label>Premium Members List</label>
+        <br /><br />
+        <!--Search-->
+        <div class="mt-2" style="float: right">
+          <div class="col-md-12 input-group">
+            <input
+              type="text"
+              class="form-control form-control-text added"
+              style="
+                border-radius: 27px 0px 0px 27px;
+                opacity: 1;
+                background: #014466 !important;
+              "
+              (keyup)="searchPremiumList($event.target.value)"
+              placeholder="Search"
+              name="search"
+            />
+            <div class="input-group-btn">
+              <button
+                class="btn btn-default"
+                type="submit"
+                style="
+                  border-radius: 0px 27px 27px 0px;
+                  background: #014466 !important;
+                "
+              >
+                <i class="fa fa-search" style="color: white"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <ngb-tabset class="tab-coupon">
+          <ngb-tab
+            title="All Premium Members"
+            *ngIf="disableTab('All Premium Members')"
+          >
+            <ng-template ngbTabContent>
+              <div
+                class="tab-pane fade active show"
+                id="account"
+                role="tabpanel"
+                aria-labelledby="account-tab"
+              >
+                <br /><br />
+                <kendo-grid
+                  class="kendo_table"
+                  [kendoGridBinding]="allMembers"
+                  [filterable]="false"
+                  [sortable]="true"
+                >
+                  <kendo-grid-column field="sl" title="Sl.No" width="15">
+                    <ng-template
+                      kendoGridFilterCellTemplate
+                      let-filter
+                      let-column="column"
+                    >
+                      <kendo-grid-string-filter-cell
+                        placeholder="search"
+                        [showOperators]="false"
+                        [column]="column"
+                        title="Parent Store"
+                        [filter]="filter"
+                      >
+                      </kendo-grid-string-filter-cell>
+                    </ng-template>
+                  </kendo-grid-column>
+
+                  <kendo-grid-column
+                    field="memberName"
+                    title="Member Name"
+                    width="20"
+                  >
+                    <ng-template
+                      kendoGridFilterCellTemplate
+                      let-filter
+                      let-column="column"
+                    >
+                      <kendo-grid-string-filter-cell
+                        placeholder="search"
+                        [showOperators]="false"
+                        [column]="column"
+                        title="Parent Store"
+                        [filter]="filter"
+                      >
+                      </kendo-grid-string-filter-cell>
+                    </ng-template>
+                  </kendo-grid-column>
+
+                  <kendo-grid-column
+                    field="MemberId"
+                    title="Member ID"
+                    width="20"
+                  >
+                    <!--<ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                        <kendo-grid-string-filter-cell 
+                                                            placeholder="search"
+                                                            [showOperators]="false"
+                                                            [column]="column"
+                                                            title="Parent Store"
+                                                            [filter]="filter" >
+                                                        </kendo-grid-string-filter-cell>
+                                                    </ng-template>-->
+                    <ng-template
+                      kendoGridCellTemplate
+                      let-isNew="isNew"
+                      let-dataItem="dataItem"
+                    >
+                      <a
+                        *ngIf="editFlag"
+                        style="cursor: pointer; text-decoration: underline"
+                        (click)="Customer_Detail_pg(dataItem.MemberId)"
+                        >{{ dataItem.MemberId }}</a
+                      >
+
+                      <a *ngIf="!editFlag">{{ dataItem.MemberId }}</a>
+                    </ng-template>
+                  </kendo-grid-column>
+
+                  <kendo-grid-column field="package" title="Package" width="20">
+                    <ng-template
+                      kendoGridFilterCellTemplate
+                      let-filter
+                      let-column="column"
+                    >
+                      <kendo-grid-string-filter-cell
+                        placeholder="search"
+                        [showOperators]="false"
+                        [column]="column"
+                        title="Parent Store"
+                        [filter]="filter"
+                      >
+                      </kendo-grid-string-filter-cell>
+                    </ng-template>
+                  </kendo-grid-column>
+
+                  <kendo-grid-column
+                    field="startDate"
+                    title="Purchased Date"
+                    width="20"
+                  >
+                    <ng-template
+                      kendoGridFilterCellTemplate
+                      let-filter
+                      let-column="column"
+                    >
+                      <kendo-grid-string-filter-cell
+                        placeholder="search"
+                        [showOperators]="false"
+                        [column]="column"
+                        title="Parent Store"
+                        [filter]="filter"
+                      >
+                      </kendo-grid-string-filter-cell>
+                    </ng-template>
+                  </kendo-grid-column>
+                </kendo-grid>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab
+            title="Active Premium Members"
+            *ngIf="disableTab('Active Premium Members')"
+            id="activeTab"
+          >
+            <ng-template ngbTabContent>
+              <div
+                class="tab-pane fade active show"
+                id="account1"
+                role="tabpanel"
+                aria-labelledby="account-tab"
+              >
+                <br /><br />
+                <kendo-grid
+                  class="kendo_table"
+                  [kendoGridBinding]="activeAll"
+                  [filterable]="false"
+                  [sortable]="true"
+                >
+                  <kendo-grid-column field="sl" title="Sl.No" width="15">
+                    <ng-template
+                      kendoGridFilterCellTemplate
+                      let-filter
+                      let-column="column"
+                    >
+                      <kendo-grid-string-filter-cell
+                        placeholder="search"
+                        [showOperators]="false"
+                        [column]="column"
+                        title="Parent Store"
+                        [filter]="filter"
+                      >
+                      </kendo-grid-string-filter-cell>
+                    </ng-template>
+                  </kendo-grid-column>
+
+                  <kendo-grid-column
+                    field="memberName"
+                    title="Member Name"
+                    width="20"
+                  >
+                    <ng-template
+                      kendoGridFilterCellTemplate
+                      let-filter
+                      let-column="column"
+                    >
+                      <kendo-grid-string-filter-cell
+                        placeholder="search"
+                        [showOperators]="false"
+                        [column]="column"
+                        title="Parent Store"
+                        [filter]="filter"
+                      >
+                      </kendo-grid-string-filter-cell>
+                    </ng-template>
+                  </kendo-grid-column>
+
+                  <kendo-grid-column
+                    field="MemberId"
+                    title="Member ID"
+                    width="20"
+                  >
+                    <!--  <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                        <kendo-grid-string-filter-cell
+                                                            placeholder="search"
+                                                            [showOperators]="false"
+                                                            [column]="column"
+                                                            title="Parent Store"
+                                                            [filter]="filter">
+                                                        </kendo-grid-string-filter-cell>
+                                                    </ng-template>-->
+                    <ng-template
+                      kendoGridCellTemplate
+                      let-isNew="isNew"
+                      let-dataItem="dataItem"
+                    >
+                      <a
+                        *ngIf="editFlag"
+                        style="cursor: pointer; text-decoration: underline"
+                        (click)="Customer_Detail_pg(dataItem.MemberId)"
+                        >{{ dataItem.MemberId }}</a
+                      >
+
+                      <a *ngIf="!editFlag">{{ dataItem.MemberId }}</a>
+                    </ng-template>
+                  </kendo-grid-column>
+
+                  <kendo-grid-column field="package" title="Package" width="20">
+                    <ng-template
+                      kendoGridFilterCellTemplate
+                      let-filter
+                      let-column="column"
+                    >
+                      <kendo-grid-string-filter-cell
+                        placeholder="search"
+                        [showOperators]="false"
+                        [column]="column"
+                        title="Parent Store"
+                        [filter]="filter"
+                      >
+                      </kendo-grid-string-filter-cell>
+                    </ng-template>
+                  </kendo-grid-column>
+
+                  <kendo-grid-column
+                    field="startDate"
+                    title="Purchased Date"
+                    width="20"
+                  >
+                    <ng-template
+                      kendoGridFilterCellTemplate
+                      let-filter
+                      let-column="column"
+                    >
+                      <kendo-grid-string-filter-cell
+                        placeholder="search"
+                        [showOperators]="false"
+                        [column]="column"
+                        title="Parent Store"
+                        [filter]="filter"
+                      >
+                      </kendo-grid-string-filter-cell>
+                    </ng-template>
+                  </kendo-grid-column>
+                </kendo-grid>
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+        <div class="pagination">
+          <!-- <ngb-pagination [collectionSize]={{TotalRecords}} [(page)]={{CurrentPage}} [maxSize]={{PageSize}} [rotate]="true"
+                      [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+          <button *ngIf="hasPrevPage" (click)="onPageChange(1)">First</button>
+          <button *ngIf="hasPrevPage" (click)="onPageChange(CurrentPage - 1)">
+            Prev
+          </button>
+          <button *ngIf="hasPrevPage" (click)="onPageChange(CurrentPage - 1)">
+            {{ CurrentPage - 1 }}
+          </button>
+          <button style="color: yellow">{{ CurrentPage }}</button>
+          <button *ngIf="hasNextPage" (click)="onPageChange(CurrentPage + 1)">
+            {{ CurrentPage + 1 }}
+          </button>
+          <button *ngIf="hasNextPage" (click)="onPageChange(CurrentPage + 1)">
+            Next
+          </button>
+          <button *ngIf="hasNextPage" (click)="onPageChange(totalPages)">
+            Last
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container-fluid ends-->

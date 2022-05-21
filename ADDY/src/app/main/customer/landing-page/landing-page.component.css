@@ -1,0 +1,32 @@
+/* @import '../../../../assets/css/style.css'; */
+
+span.pro-verify {
+  background-color: white;
+  padding: 3px 10px;
+  position: absolute;
+  right: 33px;
+  border-radius: 50%;
+  z-index: 99;
+  color: #A2CD85;
+}
+img {
+  max-width: 100%;
+}
+.profile-content p {
+  color: #ffffff;
+  font-weight: 400;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 10%;
+}
+.profile-content .blueButton{
+  border-radius: 10px;
+  background-color: #2787ff;
+  color: white;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  width: 100%;
+  height: 100%;
+  padding: 19px;
+                        
+}

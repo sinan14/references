@@ -1,0 +1,317 @@
+
+<div class="tabs card-body">
+
+  
+  
+    <input id="tab1" type="radio" name="tabs" [checked]="!editMode" (click)="normalClick()">
+    <label for="tab1" *ngIf="disableTab('Uploaded Videos')">Uploaded Videos</label>
+    <input id="tab2" type="radio" name="tabs" (click)="normalClick()">
+    <label for="tab2" *ngIf="disableTab('Upload Videos')">{{editMode ? 'Update Video' : 'Upload Videos'}}</label>
+    <input id="tab3" type="radio" name="tabs" (click)="normalClick()">
+    <label for="tab3" *ngIf="disableTab('Popular Videos')">Popular Videos</label>
+
+    <div class="content">
+        <div id="content1">
+
+
+            <div class="row">
+
+                <h6 style="color:white;margin-left: 4%;    padding-top: 14px;">Categories</h6>
+                <div class="input-group" style="float: right;margin-left: 58%;">
+                    <input type="text" class="form-control form-control-text"
+                        placeholder="Search" name="search" (keyup)="searchFilter($event.target.value)">
+                    <div class="input-group-btn"
+                        style="width:25px;">
+                        <button class="btn form-control-text" type="submit"
+                            style="
+                            padding: 8px 20px;border-radius: 0px 6px 6px 0px;"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+           
+
+            <br>
+        
+
+
+            <div class="mt-1 row">
+                <div class="col-md-12 scroll-container hide-scrollbar">
+                    <div class="scrol">
+                    <div class=" ">
+                        <select class="form-control" placeholder="Choose"  style="width: auto;" (change)="changeMainCategory($event.target.value)">
+                            <option value="all">All</option>
+                            <option value="maincategory">Main Category</option>
+                            <option value="homeworkouts">Home Workouts</option>
+                            <option value="weeklyworkout">Weekly Workouts</option>
+                            <option value="fullbodyworkouts">Full Body Workouts</option>
+                            <option value="healthyjourney">Commence Your Healthy Journey</option>
+                        </select>
+                    </div>
+
+                    <!-- <div class="span-data col-md-3" [ngClass]="selectedSubCategory === '' ? 'active' : '' " (click)="getFitnessClubVideos()">
+                        <a routerLink="#" for="validationCustom0" > All</a>
+                    </div> -->
+
+                    <div class="span-data " *ngFor="let p of fitnesClubCategories" [ngClass]="selectedSubCategory === p._id ? 'active' : '' ">
+                        <a routerLink="#" for="validationCustom0" (click)="selectFoliofitSubCategory(p._id)" style="width: 100%;
+                        text-align: center;    padding: 5px;"> {{p.title}}</a>
+                    </div>
+                </div>
+                </div>
+
+            </div> 
+
+            <div class="mt-2 row">
+
+                
+                <div class="col-md-12">
+                    <div class="text-center mt-3" *ngIf="dataLoading">
+                        <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="col-md-4" *ngFor="let i of fitnesClubAllVideos">
+                  
+                        <img [src]="i.thumbnail">
+                        <a class="play-button"><i class="fa fa-play"></i></a>
+                        <br><h6><h6 class="wid-sx">{{i.title}}</h6>
+                            <input id="tab2" type="radio" name="tabs"> 
+                            <i  class="fa fa-trash mt-2 text-left-delete" (click)="deleteVideo(i._id)" *ngIf="editFlag"></i>
+                            <label for="tab2" style="background: none;" class="label-img" style="padding-top: 4px;">
+                                <i  class="fa fa-edit text-left"  (click)="clickToEdit(i._id)"  *ngIf="editFlag"></i>
+                            </label>
+                           </h6>
+                    
+                    
+                </div>
+
+              
+
+                <div class="col-md-12">
+                    <div *ngIf="fitnesClubAllVideos && !fitnesClubAllVideos.length"  class="text-center">
+                        <span >No Data Found</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- <app-pagination [allPagesNumber]="allPages" (changePage)="onPageChange($event)"></app-pagination> -->
+
+            <!-- <kendo-datapager style="color: black !important; "
+            [style.width.%]="100"
+            [pageSize]="pageSize"
+            [skip]="skip"
+            [total]="fitnesClubAllVideos.length"
+            (pageChange)="onPageChange($event)"
+          >
+          </kendo-datapager> -->
+        
+
+        </div>
+
+        <div id="content2">
+            <form [formGroup]="videoForm">
+                    <div class=" mt-4 row ">
+                        <div class=" col-md-4">
+                            <div class="span-data2">
+                                <i class="icon fa fa-upload" ></i><br><span
+                                    style="color: white;opacity: 0.7;">{{video_URL ?  video_URL : 'Choose Video'}}</span>
+                                <!-- <video  controls (click)="toggleVideo($event)" #videoPlayer
+                                    width="100%" height="100%">
+                                    <source src={{video_URL}} type="video/mp4"  *ngIf="video_URL != ''" />
+                                    Browser not supported
+                                </video> -->
+                                <input type="file" accept="video/mp4,video/x-m4v,video/*" (change)="onVideoChange($event)">
+                            </div>
+                            <small for="type" class="form-text text-danger" *ngIf="video_URL === '' && attemptedSubmit ">
+                                Video  is required.
+                            </small>
+
+                        </div>
+
+                        <div class=" col-md-4">
+                            <div class="span-data2">
+                                <i class="icon fa fa-upload" *ngIf="image_URL === ''"></i>
+                                <span *ngIf="image_URL === ''"
+                                    style="color: white;opacity: 0.7;">Thumbnail Image</span> 
+                                    <img [src]="image_URL"  width="100%" *ngIf="image_URL != '' ">
+                                <input type="file" name="myfile"  (change)="onChangeImage($event,'1501','815')" accept="image/*">
+                            </div>
+                            <span class="pull-right" style="color: white;opacity: 0.7;"> 1501px X 815px</span>
+                            <small for="type" class="form-text text-danger" *ngIf="image_URL === '' && attemptedSubmit ">
+                                Thumbnail Image is required.
+                            </small>
+                        </div>
+
+                        <div class=" col-md-4 ">
+                            <div class="span-data2">
+                                <img src="assets/images/file-icons/icon-gif-file.svg"  *ngIf="!gifImg_URL"
+                                    style="width: 100%; height: 94px;" class="gif-img">
+                                    <img src="{{gif_URL}}"  *ngIf="gif_URL != '' && gifImg_URL"
+                                    style="width: 100%;    height: 100%;
+                                    object-fit: contain;">
+                                <span style="color: white;opacity: 0.7;" *ngIf="!gifImg_URL">{{gif_URL ? gif_URL : 'Upload GIF/Image/Video'}}</span>
+                                <input type="file" name="myfile"  (change)="onChangeGif($event)" accept="image/gif,image/*,video/mp4,video/x-m4v,video/*"/>
+                            </div>
+                            <span class="pull-right" style="color: white;opacity: 0.7;">Image Size (539px X 333px)</span>
+                            <small for="type" class="form-text text-danger" *ngIf="gif_URL === '' && attemptedSubmit ">
+                                GIF/Image/Video is required.
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class=" mt-4 row ">
+                        <div class=" col-md-6">
+                            <h6 for="validationCustom0" class="">Title</h6>
+                            <input type="text" class="form-control" name="" id="" formControlName="title"
+                                class="form-control">
+                                <small for="title" class="form-text text-danger" *ngIf="videoForm.controls['title'].errors?.required && 
+                                (videoForm.controls['title'].dirty ||  
+                                videoForm.controls['title'].touched || 
+                                (videoForm.controls['title'].untouched  && attemptedSubmit ) )">
+                                    Title is required.
+                                </small>
+                        </div>
+
+                        <div class=" col-md-6">
+                            <h6 for="validationCustom0" class="">Workout Time (Eg: 10 min)</h6>
+                            <input type="text" class="form-control" name="" id="" formControlName="workout_time"
+                                class="form-control">
+                                <small for="type" class="form-text text-danger" *ngIf="videoForm.controls['workout_time'].errors?.required && 
+                                (videoForm.controls['workout_time'].dirty ||  
+                                videoForm.controls['workout_time'].touched || 
+                                (videoForm.controls['workout_time'].untouched  && attemptedSubmit ) )">
+                                    Workout Time is required.
+                                </small>
+                        </div>
+                    </div>
+
+
+                    <div class=" mt-4 row ">
+                        <div class=" col-md-12 ">
+                            <h6 for="validationCustom0" class="">Description English</h6>
+                            <!-- <textarea name="" id="" class="form-control" cols="10" rows="5"></textarea> -->
+                            <kendo-editor #editor  name="value" id="editor" 
+                            [iframe]="true"  class="mt-4 form-control  editors"  formControlName="english_description"  
+                            [pasteCleanupSettings]="pasteCleanupSettings"
+                            style="height: 450px; background-color: #fafafa85; color: white">
+
+                            </kendo-editor>
+                            <small for="type" class="form-text text-danger" *ngIf="videoForm.controls['english_description'].errors?.required && 
+                            (videoForm.controls['english_description'].dirty ||  
+                            videoForm.controls['english_description'].touched || 
+                            (videoForm.controls['english_description'].untouched  && attemptedSubmit ) )">
+                                English Description is required.
+                            </small>
+                        </div>
+                       
+                    </div>
+
+                    <div class="mt-4 row">
+                        <div class="col-md-12">
+                                <h6 for="validationCustom0" class="">Description Malayalam</h6>
+                                <!-- <textarea name="" id="" class="form-control" cols="10" rows="5"></textarea> -->
+                                <kendo-editor #editor name="value" id="editor"
+                                 [iframe]="true"  class="mt-4 form-control editors"  formControlName="malayalam_description" 
+                                 [pasteCleanupSettings]="pasteCleanupSettings"
+                                 style="height: 450px; background-color: #fafafa85; color: white">
+    
+                                </kendo-editor>
+                                <small for="type" class="form-text text-danger" *ngIf="videoForm.controls['malayalam_description'].errors?.required && 
+                                (videoForm.controls['malayalam_description'].dirty ||  
+                                videoForm.controls['malayalam_description'].touched || 
+                                (videoForm.controls['malayalam_description'].untouched  && attemptedSubmit ) )">
+                                Malayalam Description is required.
+                                </small>
+                        </div>
+                    </div>
+
+
+
+                    <div class="mt-2 pull-right ">
+                        <button style="width:150px" type="button" (click)="upload();attemptedSubmit = true" *ngIf="!editMode && editFlag"
+                            class="btn btn-dark btn-dark-rounded">{{addLoading ? 'Uploading...' : 'Upload'}}</button>
+
+                        <button style="width:150px" type="button" (click)="update();attemptedSubmit = true" *ngIf="editMode && editFlag" 
+                            class="btn btn-dark btn-dark-rounded">{{addLoading ? 'Updating...' : 'Update'}}</button>
+                    </div>
+            </form>
+        </div>
+
+        <div id="content3">
+
+
+            <div class="row">
+                <div class="input-group" style="float: right;margin-left: 68%;">
+                    <input type="text" class="form-control form-control-text" (keyup)="searchPopularVideos($event.target.value)"
+                        placeholder="Search By Title" name="search">
+                    <div class="input-group-btn"
+                        style="width:5px;background: #014466;">
+                        <button class="btn form-control-text" type="submit"
+                            ><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="col-md-12">
+                <div class="text-center mt-3" *ngIf="dataLoading">
+                    <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2 row image-data" *ngFor="let i of fitnesClubPopularVideos;">
+                <div class="col-lg-4 col-md-6" >
+                    <img [src]="i.thumbnail">
+                    <a class="play-buttons"><i class="fa fa-play"></i></a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <ul style="padding-left: 2px;">
+                        <li class="img_liwidth ty">Title</li>
+                        <li> {{i.title}}</li>
+                    </ul>
+                    <ul>
+                        <li class="img_liwidth ty">Categories  </li>
+                        <li *ngFor="let cat of i.catagory;let isLast=last" class="pull-right"> {{cat.title}}
+                            <span *ngIf="!isLast">, </span>
+                        </li>
+                        <!-- <li >
+                            
+                        </li> -->
+                    </ul>
+                    <!-- <ul>
+                        <li class="img_liwidth">Sub Categories</li>
+                        <li>: Dentist</li>
+                    </ul>
+                    <ul>
+                        <li class="img_liwidth">Tag</li>
+                        <li>: Jsguysay</li>
+                    </ul> -->
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="row mt-5">
+                        <h6 for="validationCustom0" class="col-lg-4 col-md-4"><i
+                                class="fa fa-eye fa-lg"></i><br>{{i.views}}</h6>
+                        <h6 for="validationCustom0" class="col-md-4"><i
+                                class="fa fa-heart fa-lg"></i><br>{{i.likes}}</h6>
+                        <h6 for="validationCustom0" class="col-md-4"><i
+                                class="fa fa-share-alt fa-lg"></i><br>{{i.shares}}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div *ngIf="fitnesClubPopularVideos && !fitnesClubPopularVideos.length"  class="text-center">
+                    <span >No Data Found</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+

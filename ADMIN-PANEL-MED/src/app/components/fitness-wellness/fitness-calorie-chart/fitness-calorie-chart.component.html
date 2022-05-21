@@ -1,0 +1,380 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid side_innerpage_tab">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card tab2-card" *ngIf="disableTab('Fitness Calorie Chart')">
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-dark-rounded" (click)="BackRedirectTo()"><i
+                                class="fa fa-arrow-left" aria-hidden="true"></i></button>
+
+                    </div>
+                    <div class="col-md-6"></div>
+                    <div class="col-md-4"></div>
+
+                </div>
+
+                <div class="card-body tab2-card">
+                    <ngb-tabset #t="ngbTabset" [activeId]="selectedTab" (tabChange)="tabChangeEvent($event)"
+                        class="tab-coupon">
+
+
+                        <ngb-tab title="Nutritious Sources" id="tab-selectbyid0" *ngIf="disableTab('Nutritious Sources')">
+                            <ng-template ngbTabContent>
+
+
+                                <button style="margin-top:-70px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#CategoryExampleModal" (click)="open(CategoryContent,'add','','cate')"
+                                    *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%"
+                                        height="15%" style="margin-right:10px;">Add New</button>
+
+
+
+                                <div class="row">
+
+                                    <div class="col-md-3 mb-3" data-toggle="modal" data-original-title="test"
+                                        data-target="#CategoryExampleModal" *ngFor="let i of CATEGORY_BASED_ARRAY">
+                                        <img src={{i.image}} class="fruitv">
+
+                                        <h6>
+                                            <h6 class="float-name">{{i.title}}</h6>
+                                            <span>
+                                                <i style="float: right;padding-top: 4px;padding-left: 10px;" class="fa fa-trash "
+                                                    *ngIf="editFlag" (click)="delete(i._id,'cate')"></i>
+                                                <i class="fa fa-edit" style="float: right;
+                                            padding-top: 4px;" (click)="open(CategoryContent,'edit',i,'cate')"  *ngIf="editFlag"></i>
+                                            </span>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+
+
+
+                        <ngb-tab title="Vitamins" id="tab-selectbyid1" *ngIf="disableTab('Vitamins')">
+                            <ng-template ngbTabContent>
+
+                                <button style="margin-top:-80px;float:right;" type="button"
+                                    class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                    data-target="#VitaminsExampleModal" (click)="open(VitaminsContent,'add','','')"
+                                    *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%"
+                                        height="15%" style="margin-right:10px;">Add New</button>
+
+
+                                <div class=" row">
+
+                                    <div class="col-md-2 mb-3" data-toggle="modal" data-original-title="test"
+                                        data-target="#VitaminsExampleModal" *ngFor="let b of VITAMINS_ARRAY">
+                                        <img src={{b.image}}>
+                                        <h6><h6 class="float-name">{{b.title}}</h6><span>
+                                            <i style="float: right;padding-top: 4px;padding-left: 6px;" class="fa fa-trash"
+                                                    *ngIf="editFlag" (click)="delete(b._id,'vitamins')"></i>
+                                                    <i class="fa fa-edit"
+                                                    style="float: right;padding-top: 4px;"
+                                                    (click)="open(VitaminsContent,'edit',b,'vitamins')"  *ngIf="editFlag"></i></span>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+
+
+                        <ngb-tab title="Recommended" id="tab-selectbyid2" *ngIf="disableTab('Recommended')">
+                            <ng-template ngbTabContent>
+                                <div class=" row">
+                                    <div class="col-md-2  mb-3" *ngFor="let r of RECOMMENDED_ARRAY">
+                                        <div class="" data-toggle="modal" data-original-title="test"
+                                            data-target="#DietExampleModal">
+                                            <img src={{r.image}} style="background-position: center;background-size: cover;width:100%;height: 150px;
+                                                object-fit: contain;" />
+                                            <h6 style="text-align: left;">
+                                                <h6 class="float-name">{{r.title}}</h6>
+                                                <span><i
+                                                        style="float: right;padding-top: 4px;" class="fa fa-trash"
+                                                        *ngIf="editFlag"
+                                                        (click)="delete(r._id,'recommended')"></i></span></h6>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </ng-template>
+                        </ngb-tab>
+
+
+
+
+                    </ngb-tabset>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+
+
+<ng-template #CategoryContent let-modal>
+    <form [formGroup]="Category_Form">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="CategoryExampleModal">Update</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="CategoryExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+
+            <div class="mt-3 row">
+                <div class="col-md-12 ">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="category_icon fa fa-upload" *ngIf="!img_url"></i>
+                            <img name="image" *ngIf="img_url" src={{img_url}} class="image-icon  ">
+                            <input type="file" (change)="onChangeImage($event,'300','345')" name="myfile" />
+
+                        </div>
+
+                    </div>
+                    <label for="image" style="float: right;">300x345</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="mt-2 col-md-12">
+                    <label for="validationCustom02" class="mb-1">Name</label>
+                    <input type="text" formControlName="name" class="form-control">
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 pr-0" *ngIf="add_Modal_Flag">
+                    <!-- <button type="button" class="btn btn-dark btn-modal-rounded" (click)="Save('cate')">Save</button> -->
+                    <button type="button" class="btn btn-dark btn-dark-rounded" (click)="Save('cate')">{{ addLoading ?
+                        "Saving..." : "Save" }}</button>
+                </div>
+                <div class=" mb-0 col-md-4 pr-0" *ngIf="update_Modal_Flag">
+                    <button type="button" class="btn btn-dark btn-dark-rounded" (click)="Update('cate')">{{addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                    <!-- <button type="button" class="btn btn-dark btn-modal-rounded"
+                        (click)="Update('cate')">Update</button> -->
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+
+
+<ng-template #VitaminsContent let-modal>
+    <form [formGroup]="Vitamins_Form">
+        <div *ngIf="update_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="VitaminsExampleModal">Update</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="add_Modal_Flag" class="modal-header">
+            <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="VitaminsExampleModal">Add</h5>
+            <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+
+            <div class="mt-3 row">
+                <div class="col-md-12">
+                    <div class="image-data">
+                        <div class="upload-btn-wrapper ">
+                            <i class="category_icon fa fa-upload" *ngIf="!img_url"></i>
+                            <img name="image" *ngIf="img_url" src={{img_url}} class="image-icon  ">
+                            <input type="file" (change)="onChangeImage($event,'296','296')" name="myfile" />
+
+                        </div>
+
+                    </div>
+                    <label for="image" style="float: right;">296x296</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="mt-2 col-md-12">
+                    <label for="validationCustom02" class="mb-1">Name</label>
+                    <input formControlName="name" type="text" class="form-control">
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+
+                <div class=" mb-0 col-md-12 pr-0" *ngIf="add_Modal_Flag">
+                    <!-- <button type="button" class="btn btn-dark btn-modal-rounded"
+                        (click)="Save('vitamins')">Save</button> -->
+                    <button type="button" class="btn btn-dark btn-dark-rounded" (click)="Save('vitamins')">{{ addLoading
+                        ?
+                        "Saving..." : "Save" }}</button>
+                </div>
+                <div class=" mb-0 col-md-4 pr-0" *ngIf="update_Modal_Flag">
+                    <!-- <button type="button" class="btn btn-dark btn-modal-rounded"
+                        (click)="Update('vitamins')">Update</button> -->
+                    <button type="button" class="btn btn-dark btn-dark-rounded"
+                        (click)="Update('vitamins')">{{addLoading ?
+                        "Updating..."
+                        : "Update" }}</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+
+
+
+<!-- <ng-template #DietContent let-modal>
+    <div *ngIf="update_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="DietExampleModal">Update</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div *ngIf="add_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="DietExampleModal">Add</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="row">
+            <div class=" mb-0 col-md-12">
+                <label for="validationCustom02" class="mb-0">Name</label>
+                <input type="text" class="form-control" value="Banana">
+
+            </div>
+        </div>
+
+        <div class="mt-3 row">
+            <div class="col-md-6 ">
+                <div class="image-data">
+                    <div class="upload-btn-wrapper ">
+                        <i class="icon fa fa-upload"></i><br><small style="    margin-left: 82px;">Banner</small>
+                        <input type="file" name="myfile" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 ">
+                <div class="image-data">
+                    <div class="upload-btn-wrapper ">
+                        <i class="icon fa fa-upload"></i><br><small style="    margin-left: 82px;">Image</small>
+                        <input type="file" name="myfile" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="mt-3 row">
+            <div class=" mb-0 col-md-12">
+                <label for="validationCustom02" class="mb-0">Description</label>
+                <textarea class="form-control" rows="5"></textarea>
+
+            </div>
+        </div>
+
+        <div class="mt-3 row">
+            <div class=" mb-0 col-md-6">
+                <label for="validationCustom02" class="mb-0">Vitamins</label>
+                <div class="example-wrapper">
+                    <kendo-multiselect id="multiselect" class="form-control" [data]="listVitamins" [filterable]="true">
+                    </kendo-multiselect>
+                </div>
+
+            </div>
+            <div class=" mb-0 col-md-6">
+                <label for="validationCustom02" class="mb-0">Category Base</label>
+                <div class="example-wrapper">
+                    <kendo-multiselect id="multiselect" class="form-control" [data]="listCategoryBase"
+                        [filterable]="true">
+                    </kendo-multiselect>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3 row">
+            <div class=" mb-0 col-md-12">
+                <label for="validationCustom02" class="mb-0">Nice To Avoid</label>
+                <div class="example-wrapper">
+                    <kendo-multiselect id="multiselect" class="form-control" [data]="listCategoryBase"
+                        [filterable]="true">
+                    </kendo-multiselect>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3 row">
+            <div class="col-md-3">
+                <label for="validationCustom02" class="mb-0">Veg</label>&nbsp;&nbsp;
+                <input class="radio_animated" id="edo-ani1" type="radio" name="rdo-ani" checked="true">
+            </div>
+
+            <div class="col-md-4">
+                <label for="validationCustom02" class="mb-0">Non-Veg</label>&nbsp;&nbsp;
+                <input class="radio_animated" id="edo-ani2" type="radio" name="rdo-ani">
+            </div>
+
+
+            <div class="col-md-5">
+                <label>Recommended</label>
+                <input type="checkbox" checked="checked">
+            </div>
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+
+            <div class=" mb-0 col-md-12 pr-0">
+                <button type="button" class="btn btn-dark btn-modal-rounded">Save</button>
+            </div>
+
+        </div>
+    </div>
+</ng-template> -->

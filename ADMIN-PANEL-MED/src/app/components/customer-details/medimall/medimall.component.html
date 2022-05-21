@@ -1,0 +1,508 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+                <div class="card-body kendo_listView">
+
+
+                   
+
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5 style="color: white;opacity: 0.5;">Medimall</h5>
+                                        </div>
+                                    </div>
+
+                               <kendo-listview [data]="productList">
+
+                                            <ng-template kendoListViewHeaderTemplate>
+                                            <div class="row mb-3">
+                                                <div class="col-md-8 pl-0">
+                                                    
+                                                    <kendo-textbox class="form-control"
+                                                    placeholder="Filter items..."
+                                                    (valueChange)="handleFilterChange($event)"
+                                                    (keyup)="Searching($event)"
+                                                    >
+                                                    <ng-template kendoTextBoxSuffixTemplate>
+                                                        <span class="k-icon k-i-search"></span>
+                                                    </ng-template>
+                                                    </kendo-textbox>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <button type="button" class="btn btn-dark  btn-sm" data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModalLabel" (click)="open(content,'')" style="float:right;"><img src="assets/images/dashboard/icon-cart.png" height="20px" width="20px"/>  Cart</button>
+                                
+                                                </div>
+                                                
+                                            </div>
+                                            </ng-template>
+
+                                            <ng-template kendoListViewItemTemplate let-dataItem="dataItem" let-index="index" >
+                                                
+                                                <div class="gallery">
+                                                    <!-- <h4 style="float:right;color: white;font-size: 14px;opacity: 0.5;">{{dataItem.pricing[0].sku}}</h4> -->
+                                                    
+                                                    <div class="img-medimall">
+                                                    <img class="image_cls" src="{{dataItem.pricing[0].image}}" alt="Cinque Terre" style="max-width: 55%;height: auto;text-align: center;" ></div>
+                                               
+                                                
+                                                    <div class="desc">{{dataItem.name}}</div>
+                                                    <div class="desc"> <i class="fa fa-inr" ></i> {{dataItem.pricing[0].specialPrice}}</div>
+                                                        
+                                                    <div class="desc" >
+                                                        <input  type="number" class="form-select-control" value="{{dataItem.pricing[0].quantity!=null ? dataItem.pricing[0].quantity : 1}}"  min="1" max="200" (change)="updateQuantity($event,dataItem._id,dataItem.pricing[0].variantId,dataItem.pricing[0].cartId)">
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <select class="form-select-control"  (change)="skuClick($event,dataItem,index)">
+                                                        
+                                                            <option *ngFor="let p of dataItem.pricing;let i=index" [value]="i">{{p.sku}}</option>
+                                                           
+                                                        </select>
+                                                    </div>
+                                                    <!-- <div class="desc">
+                                                    
+                                                    </div> -->
+                                                    <button  type="button" class="btn btn-dark btn-fw btn-dark-rounded" (click)="add_to_Cart(dataItem._id,dataItem.pricing[0].variantId,1)">Add to Cart</button>
+                                                </div>
+
+
+                                            </ng-template>
+                                    </kendo-listview>
+
+                </div>
+        </div>
+    </div>
+</div>
+                                 
+        
+
+<!-- Subscription detail popup-->
+<ng-template #content let-modal style="float: right;">
+    <div class="modal-header">
+        <h5 style="color: white;opacity: 0.5;" class="modal-title f-w-600" id="exampleModalLabel">Cart</h5>
+        <button style="color: white;opacity: 0.5;" type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+            <div class="form" >
+                <div class="product-detail">
+
+                    <table class="table table-striped">
+                        <thead style="color: white;font-size: 20px;background-color: #032536;">
+                            <th>Image</th>
+                            <th>Product Name</th>
+                            <th>UOM</th>
+                            <th>Qty</th>
+                            <th>Total</th>
+                        </thead>
+                        <tbody style="color: white;">
+                            <ng-container *ngIf="cartList && cartList.length">
+                            <tr *ngFor="let i of cartList">
+                                    <td>
+                                        <img src="{{i.image}}" class="img-fluid blur-up lazyload bg-img" alt="" width="70px">
+                                    </td>
+                                    <td>
+                                        {{i.productName | titlecase}}
+                                    </td>
+                                    <td>
+                                        {{i.uomValue}}
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" min="1" max="200" value="{{i.quantity}}" (change)="update_Cart($event,i.cartId)">
+                                    </td>
+                                    <td>
+                                        {{i.specialPrice * i.quantity}}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-dark btn-dark-rounded btn-sm" (click)="remove_from_cart(i.cartId)">X</button>
+                                    </td>
+                            </tr>
+                            </ng-container>
+
+                            <tr *ngIf="cartList.length==0">
+                                <td></td>
+                                <td></td>
+                                <td><h6>Cart Empty...</h6></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                           <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Cart Value</td>
+                                <td><b> <i class="fa fa-inr"></i> {{cartDetails.totalCartValue}} </b></td>
+                                <td></td>
+                            </tr>
+                          
+                           <tr>
+                            <td> Donation Amount</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                {{cartDetails.donationAmount}}
+                            </td>
+                        </tr>
+                           <tr>
+                            <td> Member Discount</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                {{cartDetails.memberDiscount}}
+                           </td>
+                        </tr>
+                       
+                        <tr>
+                            <td>  MedCoin Redeemed</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                 <input type="number" class="form-control" value="{{cartDetails.medCoinRedeemed}}" (keyup)="updateMedcoin($event)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Apply  Coupon</td>
+                            <td>
+                                <input type="text" class="form-control" [(ngModel)]="couponCode"  (change)="changeCouponValue($event)">
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-dark btn-dark-rounded btn-sm" (click)="applyCoupon()" *ngIf="appliedCoupon==''">Apply</button>
+                                <button type="button" class="btn btn-dark btn-dark-rounded btn-sm" (click)="removeCoupon()" *ngIf="appliedCoupon!=''">Remove</button>
+                            </td>
+                            <td></td>
+                            <td><i class="fa fa-inr"></i> {{cartDetails.couponAppliedDiscount}}</td>
+                        </tr>
+                        <tr>
+                            <td>  Final Amount</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><i class="fa fa-inr"></i> {{cartDetails.totalAmountToBePaid}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>  Upload Prescription</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div class="upload-btn-wrapper">
+                                    <input type="file" class="form-control" (change)="uploadPrescription($event)">
+                                    <button type="button" class="btn btn-dark btn-dark-rounded btn-sm">Upload</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <div class="row" *ngIf="prescriptionImageURLArray.length>0">              
+                                <div class="col-md-3 mt-2 text gallery-ad-img" *ngFor="let k of prescriptionImageURLArray;let j = index;">
+                                    <img  src="{{k}}" alt="image preview" width="100%" (click)="removePrescription(j)"
+                                    />
+                                   
+                                </div>
+                            </div>
+                            <div class="text-center mt-3" *ngIf="imageLoading">
+                                <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status" >
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            
+                            </div>
+                        </tr>
+                        <tr>
+                            
+                            <button *ngIf="prescriptionImageURLArray.length>0" type="submit" class="btn btn-dark btn-dark-rounded btn-sm" (click)="savePrescription()">Save</button>
+                        </tr>
+                        
+
+                        </tbody>
+                    </table>
+                    <!-- <div class="row" >
+                            <div class="col-md-4">
+                                <img [src]="[product.img]" class="img-fluid blur-up lazyload bg-img" alt="">
+                            </div>
+                            <div class="col-md-4">
+                                <a href="javascript:void(0)">
+                                    <h6>{{product.product_title}} <span style="font-size: small;">Qty {{product.qty}}</span></h6>
+                                    <h5 style="color: white;font-weight: 20px;">{{product.price}}</h5>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <h4>  <h5 style="font-size: small;">{{product.sale}}</h5></h4>
+                            </div>
+                            <div class="col-md-1">
+                                <h4>  <h5 style="font-size: small;"><a >X</a></h5></h4>
+                            </div>
+                        <hr>
+                    </div> -->
+                </div>
+
+                
+                    <div class="mt-2 row">
+                        <div class="col-md-12">
+                            <label>Choose Address</label>
+                            <select style=" width: 100%;" class="form-control">
+                                <option>{{addressDetails.wholeAddress}} , {{addressDetails.mobile}}</option>
+                            </select>
+                        </div>
+                      
+                    </div>
+                    <br>
+                    <label style="cursor: pointer;" (click)="addAddress()">+ Add Address</label>
+
+                    <form [formGroup]="addressForm" *ngIf="addressFlag">
+                        <div class="mt-2 row">
+                            <div class="col-md-6">
+                                <label>Name</label>
+                                <input type="text" class="form-control" formControlName="name">
+                                <small for="type" class="form-text text-danger" *ngIf="addressForm.controls['name'].errors?.required && 
+                                (addressForm.controls['name'].dirty ||  
+                                addressForm.controls['name'].touched || 
+                                (addressForm.controls['name'].untouched  && attemptedSubmit ) )">
+                                   Name is required.
+                                </small>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Road name, Area, Street</label>
+                                <input type="text" class="form-control" formControlName="street">
+                                <small for="type" class="form-text text-danger" *ngIf="addressForm.controls['street'].errors?.required && 
+                                (addressForm.controls['street'].dirty ||  
+                                addressForm.controls['street'].touched || 
+                                (addressForm.controls['street'].untouched  && attemptedSubmit ) )">
+                                Road name, Area, Street is required.
+                                </small>
+                            </div>
+                        
+                        </div>
+
+                        <div class="mt-2 row">
+                            <div class="col-md-6">
+                                <label>Phone Number</label>
+                                <input type="number" class="form-control number-textbox" formControlName="mobile">
+                                <small for="type" class="form-text text-danger" *ngIf="addressForm.controls['mobile'].errors?.required && 
+                                (addressForm.controls['mobile'].dirty ||  
+                                addressForm.controls['mobile'].touched || 
+                                (addressForm.controls['mobile'].untouched  && attemptedSubmit ) )">
+                                Phone Number is required.
+                                </small>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Landmark</label>
+                                <input type="text" class="form-control" formControlName="landmark">
+                                <small for="type" class="form-text text-danger" *ngIf="addressForm.controls['landmark'].errors?.required && 
+                                (addressForm.controls['landmark'].dirty ||  
+                                addressForm.controls['landmark'].touched || 
+                                (addressForm.controls['landmark'].untouched  && attemptedSubmit ) )">
+                                Landmark is required.
+                                </small>
+                            </div>
+                        
+                        </div>
+
+                        <div class="mt-2 row">
+                            <div class="col-md-6">
+                                <label>Pincode</label>
+                                <input type="number" class="form-control number-textbox" formControlName="pincode">
+                                <small for="type" class="form-text text-danger" *ngIf="addressForm.controls['pincode'].errors?.required && 
+                                (addressForm.controls['pincode'].dirty ||  
+                                addressForm.controls['pincode'].touched || 
+                                (addressForm.controls['pincode'].untouched  && attemptedSubmit ) )">
+                                Enter valid pincode
+                                </small>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>State</label> <small class="text-danger" >*</small>
+                                <select style=" width: 100%;" class="form-control" formControlName="state">
+                                    <ng-container *ngFor="let state of states">
+                                        <option [value]="state">
+                                          {{ state }}
+                                        </option>
+                                      </ng-container>
+                                </select>
+                                <small for="type" class="form-text text-danger" *ngIf="addressForm.controls['state'].errors?.required && 
+                                (addressForm.controls['state'].dirty ||  
+                                addressForm.controls['state'].touched || 
+                                (addressForm.controls['state'].untouched  && attemptedSubmit ) )">
+                                Address is required.
+                                </small>
+                            </div>
+                        
+                        </div>
+
+                        <div class="mt-2 row">
+                            <div class="col-md-6">
+                                <label>House number & Building name</label> <small class="text-danger" >*</small>
+                                <input type="text" class="form-control" formControlName="house">
+                                <small for="type" class="form-text text-danger" *ngIf="addressForm.controls['house'].errors?.required && 
+                                (addressForm.controls['house'].dirty ||  
+                                addressForm.controls['house'].touched || 
+                                (addressForm.controls['house'].untouched  && attemptedSubmit ) )">
+                                House number & Building name is required.
+                                </small>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Type</label> <small class="text-danger" >*</small> <br>
+                                Home<input type="radio" class="form-control" id="radio1" name="radio1" value="home" formControlName="type">
+                                Office<input type="radio" class="form-control" id="radio1" name="radio1" value="office" formControlName="type">
+                                Other<input type="radio" class="form-control" id="radio1" name="radio1" value="other" formControlName="type">
+
+                                <small for="type" class="form-text text-danger" *ngIf="addressForm.controls['type'].errors?.required && 
+                                (addressForm.controls['type'].dirty ||  
+                                addressForm.controls['type'].touched || 
+                                (addressForm.controls['type'].untouched  && attemptedSubmit ) )">
+                                   Type is required.
+                                </small>
+                            </div>
+                        
+                        </div>
+
+                        <div class="mt-2 row">
+                            <div class="col-md-4">
+                               
+                            </div>
+                        
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-dark btn-dark-rounded" (click)="saveAddress();attemptedSubmit=true">Save</button>
+                            </div>
+
+                            <div class="col-md-4">
+                               
+                            </div>
+                        
+                        </div>
+
+
+                    </form>
+            </div>
+            
+    </div>
+    <div class="modal-footer">
+
+        <button type="button" class="btn btn-dark btn-dark-rounded" (click)="convertToCodeOrder()">Convert Order to COD</button>
+
+
+        <button type="button" class="btn btn-dark btn-dark-rounded" (click)="sendPaymentLink()">Send Payment Link</button>
+
+        <!-- <div class="row">
+            <div class="col-md-4">
+                <span ></span>
+            </div>
+            <div class="col-md-8">
+                <button type="button" class="btn btn-dark btn-dark-rounded" >Send Payment Link</button>
+            </div>
+        </div> -->
+    
+    </div>
+</ng-template>
+
+
+
+<ng-template #data let-modal style="float: right;">
+    <div class="modal-header">
+        <h5 class="modal-title f-w-600" id="cartexampleModal"></h5>
+        <button type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" id="exampleModalLabel">
+        <form class="needs-validation">
+            <div class="form">
+                <div class="row">
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Mobile </label>
+                    </div>
+
+                    <div class="form-group mb-0 col-md-6">
+                        <input class="form-control" id="validationCustom02" type="text" placeholder="9876302134">
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Name </label>
+                    </div>
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Aswin </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Mobile Number </label>
+                    </div>
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">9843271890 </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Email </label>
+                    </div>
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Aswin@gmail.com </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">Promocode </label>
+                    </div>
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">c1235F </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">User Since </label>
+                    </div>
+
+                    <div class="form-group mb-0 col-md-6">
+                        <label for="validationCustom02" class="mb-1">20 Dec 2021 </label>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row">
+                    <div class="form-group mb-0 col-md-12">
+                        <label for="validationCustom02" class="mb-1 form-control">Select delivery address </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group mb-0 col-md-6">
+                        <textarea for="validationCustom02" class="mb-1 form-control" placeholder="Aswin Vindoe #2 cross mathikkare bangaluru" cols="5"> </textarea>
+                    </div>
+                    <div class="form-group mb-0 col-md-6">
+                        <button  type="button" class="btn btn-dark btn-fw">Add new address</button>
+                    </div>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row mb-0 ">
+                <button type="button" class=" btn-dark form-control" data-dismiss="modal"
+                (click)="modal.dismiss('Cross click')">Proceed to pay</button>
+            <!-- <div class="form-group mb-0 col-md-3">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                    (click)="modal.dismiss('Cross click')">Close</button>
+            </div> -->
+            
+        </div>
+       
+    </div>
+</ng-template>

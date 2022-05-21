@@ -1,0 +1,535 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card tab2-card" style="background:transparent">
+                        <div class="row mt-3 costmr_srch_ivntrylist">
+                            <div class="col-md-8">
+                                <h5 style="margin-top:20px;color: white;opacity: 0.7;">Medfeed Home</h5>
+                            </div>
+
+                        </div>
+
+                        <ngb-tabset class="tab-coupon side_innerpage_tab">
+
+                            <ngb-tab title="Slider 1" *ngIf="disableTab('Slider 1')">
+                                <ng-template ngbTabContent>
+                                    <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                            aria-labelledby="account-tab">
+
+                                                <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                                data-target="#Slider1ExampleModal" (click)="open(Slider1Content,'add','','slider1')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+
+
+
+                                                <div class="row" >
+                                                    <div class="col-lg-4 col-md-6"  *ngFor="let s of Slider1List">
+                                                        <div class="post_items">
+                                                                        <img src="{{s.image}}" width="100%" >
+                                                                        <h6 style="margin-left: 85%;color: white;font-size: 15px;">
+                                                                                <span>
+                                                                                    <i style="margin-left: 15%;" class="fa fa-trash" *ngIf="editFlag" (click)="delete(s._id)"></i>
+
+                                                                                    <i   style="margin-left: 20%;" class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                                                                    data-target="#Slider1ExampleModal" (click)="open(Slider1Content,'edit',s._id,'slider1')" *ngIf="editFlag"></i>
+                                                                                </span>
+                                                                        </h6>
+
+                                                        </div>
+                                                    </div>
+
+                                                   <!--  <div class="col-lg-4 col-md-6">
+                                                    <div class="post_items" >
+                                                                        <img src="assets/images/dashboard/poster1.png" width="100%" >
+                                                                        <h6 style="margin-left: 80%;color: white;font-size: 15px;">
+                                                                                <span>
+                                                                                    <i style="margin-left: 15%;" class="fa fa-trash" *ngIf="deleteFlag"></i>
+
+                                                                                    <i style="margin-left: 20%;" class="fa fa-edit" *ngIf="editFlag"></i>
+                                                                                </span>
+                                                                        </h6>
+
+                                                        </div>
+                                                    </div> -->
+
+                                                </div>
+
+                                    </div>
+                                </ng-template>
+                            </ngb-tab>
+
+                            <ngb-tab title="Main Category" *ngIf="disableTab('Main Category')">
+                                <ng-template ngbTabContent>
+                                    <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab">
+                                                <div class=" row">
+                                                    <div class="col-lg-3 col-md-6"*ngFor="let m of MainCategoryList">
+                                                        <div class="post_items" >
+                                                                        <img src="{{m.image}}" class="quiz-imgs" width="100%" height="130px" >
+                                                                        <h6 style="margin-left: 85%;color: white;font-size: 15px;">
+                                                                                <span>
+                                                                                    <i style="margin-left: 35%;" class="fa fa-edit"data-toggle="modal" data-original-title="test"
+                                                                                    data-target="#mainCategoryExampleModal" (click)="open(mainCategoryContent,'edit',m._id,'maincategory')" *ngIf="editFlag"></i>
+                                                                                </span>
+                                                                        </h6>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- <div class="col-lg-4 col-md-6">
+                                                        <div class="post_items" >
+                                                                        <img src="assets/images/dashboard/poster2.png" width="100%" height="130px" >
+                                                                        <h6 style="margin-left: 80%;color: white;font-size: 15px;">
+                                                                            <span>
+                                                                                <i style="margin-left: 35%;" class="fa fa-edit"data-toggle="modal" data-original-title="test"
+                                                                                data-target="#mainCategoryExampleModal" (click)="open(mainCategoryContent,'')" *ngIf="editFlag"></i>
+                                                                            </span>
+                                                                        </h6>
+
+                                                        </div>
+                                                    </div> -->
+
+
+                                                   <!--  <div class="col-lg-4 col-md-6">
+                                                        <div class="post_items" >
+                                                                        <img src="assets/images/dashboard/poster2.png" width="100%" height="130px" >
+                                                                        <h6 style="margin-left: 80%;color: white;font-size: 15px;">
+                                                                            <span>
+                                                                                <i style="margin-left: 35%;" class="fa fa-edit"data-toggle="modal" data-original-title="test"
+                                                                                data-target="#mainCategoryExampleModal" (click)="open(mainCategoryContent,'')" *ngIf="editFlag"></i>
+                                                                            </span>
+                                                                        </h6>
+
+                                                        </div>
+                                                    </div> -->
+
+
+                                                    <!-- <div class="col-lg-4 col-md-6">
+                                                        <div class="post_items" >
+                                                                        <img src="assets/images/dashboard/poster2.png" width="100%" height="130px" >
+                                                                        <h6 style="margin-left: 80%;color: white;font-size: 15px;">
+                                                                            <span>
+                                                                                <i style="margin-left: 35%;" class="fa fa-edit"data-toggle="modal" data-original-title="test"
+                                                                                data-target="#mainCategoryExampleModal" (click)="open(mainCategoryContent,'')" *ngIf="editFlag"></i>
+                                                                            </span>
+                                                                        </h6>
+
+                                                        </div>
+                                                    </div> -->
+
+
+                                                    <!-- <div class="col-lg-4 col-md-6">
+                                                        <div class="post_items" >
+                                                                        <img src="assets/images/dashboard/poster2.png" width="100%" height="130px" >
+                                                                        <h6 style="margin-left: 80%;color: white;font-size: 15px;">
+                                                                            <span>
+                                                                                <i style="margin-left: 35%;" class="fa fa-edit"data-toggle="modal" data-original-title="test"
+                                                                                data-target="#mainCategoryExampleModal" (click)="open(mainCategoryContent,'')" *ngIf="editFlag"></i>
+                                                                            </span>
+                                                                        </h6>
+
+                                                        </div>
+                                                    </div> -->
+
+
+
+
+                                                </div>
+                                    </div>
+                                </ng-template>
+                            </ngb-tab>
+
+
+                            <ngb-tab title="Quiz" *ngIf="disableTab('Quiz')">
+                                <ng-template ngbTabContent>
+                                    <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                            aria-labelledby="account-tab">
+
+                                                <button style="margin-top:-80px;float:right;" type="button" class="btn btn-dark btn-dark-rounded" data-toggle="modal" data-original-title="test"
+                                                data-target="#QuizExampleModal" (click)="open(QuizContent,'add','','quiz')" *ngIf="editFlag"><img src="assets/images/file-icons/icon-add-circle.svg" width="15%" height="15%" style="margin-right:10px;">Add New</button>
+                                                 
+                                                     <div class="col-lg-4 col-md-6" >
+                                                       <div class="post_items" >
+                                                                        <img src="{{QuizOneList.image}}"  width="100%" >
+                                                                        <h6 style="margin-left: 85%;color: white;font-size: 15px;">
+                                                                                <span>
+
+                                                                                    
+                                                                                <i   style="margin-left: 20%;" class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                                                                    data-target="#Quiz1Modal" (click)="open(Quiz1Content,'edit',QuizOneList._id,'quiz1')" *ngIf="editFlag"></i>
+                                                                              </span>
+                                                                        </h6>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+
+                                               
+                                                    <div class="col-lg-4 col-md-6" *ngFor="let q of QuizList">
+                                                        <div class="post_items" >
+                                                                        <img src="{{q.image}}" width="100%" >
+                                                                        <h6 style="margin-left: 85%;color: white;font-size: 15px;">
+                                                                                <span>
+                                                                                  <i style="margin-left: 15%;" class="fa fa-trash" *ngIf="deleteFlag" (click)="deleteQuiz(q._id)"></i>
+                                                                                    <i   style="margin-left: 20%;" class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                                                                    data-target="#QuizExampleModal" (click)="open(QuizContent,'edit',q._id,'quiz')" *ngIf="editFlag"></i>
+                                                                                </span>
+                                                                        </h6>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                    <!-- <div class="col-lg-4 col-md-6">
+                                                    <div class="post_items" >
+                                                                        <img src="assets/images/dashboard/poster1.png" width="100%" >
+                                                                        <h6 style="margin-left: 80%;color: white;font-size: 15px;">
+                                                                                <span>
+                                                                                    <i style="margin-left: 15%;" class="fa fa-trash" *ngIf="deleteFlag"></i>
+
+                                                                                    <i style="margin-left: 20%;" class="fa fa-edit" *ngIf="editFlag"></i>
+                                                                                </span>
+                                                                        </h6>
+
+                                                        </div>
+                                                    </div> -->
+
+                                       
+
+                                    </div>
+                                </ng-template>
+                            </ngb-tab>
+
+
+
+                            <ngb-tab title="Expert Advise" *ngIf="disableTab('Expert Advise')">
+                                <ng-template ngbTabContent>
+                                    <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                            aria-labelledby="account-tab">
+
+
+                                                <div class=" row">
+                                                    <div class="col-lg-4 col-md-6" *ngFor="let e of ExpertAdviceList">
+                                                        <div class="post_items" >
+                                                                        <img src="{{e.image}}" width="100%" >
+                                                                        <h6 style="margin-left: 90%;color: white;font-size: 15px;">
+                                                                                <span>
+
+                                                                                    <i   style="margin-left: 20%;" class="fa fa-edit" data-toggle="modal" data-original-title="test"
+                                                                                    data-target="#HealthAdviseModal" (click)="open(HealthAdviseContent,'edit',e._id,'expertadvise')" *ngIf="editFlag"></i>
+                                                                                </span>
+                                                                        </h6>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                    </div>
+                                </ng-template>
+                            </ngb-tab>
+
+                        </ngb-tabset>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+
+<ng-template #Slider1Content let-modal>
+  <form  [formGroup]="slider1Form" >
+   
+    <div  class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="Slider1ExampleModal">{{add_Modal_Flag ? 'Add' : 'Update'}}</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+        (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+
+        <div class="row">
+            <div class="col-md-12 ">
+              <label for="validationCustom01" class="mb-1">Choose Image</label>
+                <div class="image-data">
+                    <div class="upload-btn-wrapper ">
+                        <i class="icon fa fa-upload" *ngIf="image_URL === ''"></i>
+                        <img  [src]="image_URL" width="100%" class="image-icon">
+                        <input type="file" name="myfile"  (change)="OnChange($event,'3000','1317')" />
+                    </div>
+                </div>
+                <small class="form-text text-danger" *ngIf="image_URL === ''  && attemptedSubmit">
+                Image required.
+              </small>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 "></div>
+            <div class="col-md-6 ">
+                <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 3000 x 1317</h6>
+            </div>
+        </div>
+
+        <div class="mt-2 row">
+            <div class="col-md-7">
+                
+                <select class="form-control classic" formControlName="slidertype" id="validationCustom02" (change)="dropDownChange($event.target.value)">
+                    <option value="" selected disabled hidden>Select An Option</option>
+                    <option value="MedArticle">MedArticle</option>
+                    <option value="MedQuiz">MedQuiz</option>
+                    <option value="Expert Advice">Expert Advice</option>
+                    <option value="HealthTips">HealthTips</option>
+                    <option value="Live Updates">Live Updates</option>
+                </select>
+                <small for="slidertype" class="form-text text-danger"
+                        *ngIf="slider1Form.controls['slidertype'].errors?.required &&
+                        (slider1Form.controls['slidertype'].dirty ||
+                        slider1Form.controls['slidertype'].touched ||
+                        (slider1Form.controls['slidertype'].untouched  && attemptedSubmit ) )">
+                        Slidertype required.
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <div class="row">
+            <div class=" mb-0 col-md-3 "></div>
+            <div class=" mb-0 col-md-12 pr-0">
+              <button type="submit" *ngIf="add_Modal_Flag" class="btn btn-dark btn-dark-rounded" (click)="save('slider1');attemptedSubmit = true"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+                {{ addLoading ? "Saving..." : "Save" }}</button>
+              <button type="submit" *ngIf="update_Modal_Flag" class="btn btn-dark btn-dark-rounded" (click)="edit('slider1');attemptedSubmit = true"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+                {{ addLoading ? "Updating..." : "Update" }}</button>
+            </div>
+            
+        </div>
+    </div>
+  </form>
+  </ng-template>
+
+
+
+<ng-template #mainCategoryContent let-modal>
+  <form  [formGroup]="medarticleForm" >
+    <div class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="mainCategoryExampleModal">Update</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+        (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body Main_Category">
+
+        <div class="row">
+            <div class="col-md-12 ">
+              <label for="validationCustom01" class="mb-1">Choose Image</label>
+                <div class="image-data">
+                    <div class="upload-btn-wrapper ">
+                        <i class="icon fa fa-upload" *ngIf="image_URL === ''" ></i>
+                        <img  [src]="image_URL" width="100%" class="image-icon popup-images-ht">
+                        <input type="file" name="myfile"(change)="OnChange($event,'186','162')" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 "></div>
+            <div class="col-md-6 ">
+                <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 186 x 162</h6>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class=" mb-0 col-md-4 "></div>
+            <div class=" mb-0 col-md-12  pr-0">
+                <button type="button" class="btn btn-dark btn-dark-rounded" (click)="update_MC_EA('maincategory')"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+                  {{ addLoading ? "Updating..." : "Update" }}</button>
+            </div>
+            
+        </div>
+    </div>
+  </form>
+</ng-template>
+
+
+<ng-template #QuizContent let-modal>
+  <form  [formGroup]="quizForm" >
+    <div *ngIf="update_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="QuizExampleModal">Update</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+        (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div *ngIf="add_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="QuizExampleModal">Add</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+        (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="image-data">
+                    <div class="upload-btn-wrapper ">
+                        <i class="icon fa fa-upload" *ngIf="image_URL === ''"></i>
+                        <img  [src]="image_URL" width="100%" class="image-icon">
+                        <input type="file" name="myfile" (change)="OnChange($event,'697','280')" />
+                    </div>
+                </div>
+                <small for="image" class="form-text text-danger" 
+                *ngIf="image_URL === ''  && attemptedSubmit">
+                Image is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 "></div>
+            <div class="col-md-6 ">
+                <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 697 x 280</h6>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <div class="row">
+            <div class=" mb-0 col-md-4 "></div>
+            <div class=" mb-0 col-md-12  pr-0">
+              <button type="submit" *ngIf="add_Modal_Flag" class="btn btn-dark btn-dark-rounded" (click)="save('quiz');attemptedSubmit = true"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+                {{ addLoading ? "Saving..." : "Save" }}</button>
+              <button type="submit" *ngIf="update_Modal_Flag" class="btn btn-dark btn-dark-rounded" (click)="edit('quiz');;attemptedSubmit = true"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+                {{ addLoading ? "Updating..." : "Update" }}</button>
+            </div>
+            
+        </div>
+    </div>
+  </form>
+</ng-template>
+
+
+<ng-template #HealthAdviseContent let-modal>
+  <form  [formGroup]="expertadviseForm" >
+    <div *ngIf="update_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="HealthAdviseModal">Update</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+        (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div *ngIf="add_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="HealthAdviseModal">Add</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+        (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="image-data">
+                    <div class="upload-btn-wrapper ">
+                        <i class="icon fa fa-upload" *ngIf="image_URL === ''"></i>
+                        <img  [src]="image_URL" width="100%" class="image-icon">
+                        <input type="file" name="myfile"(change)="OnChange($event,'1498','476')"/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 "></div>
+            <div class="col-md-6 ">
+                <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 1498 x 476</h6>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <div class="row">
+            <div class=" mb-0 col-md-4 "></div>
+            <div class=" mb-0 col-md-12  pr-0">
+              <button type="button" class="btn btn-dark btn-dark-rounded" (click)="updateExpertCategory('expertadvise')"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+                {{ addLoading ? "Updating..." : "Update" }}</button>
+            </div>
+            
+        </div>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #Quiz1Content let-modal>
+  <form  [formGroup]="Quiz1Form" >
+    <div *ngIf="update_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="Quiz1Modal">Update</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+        (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div *ngIf="add_Modal_Flag" class="modal-header">
+        <h5 style="color: white;opacity: 0.7;" class="modal-title f-w-200" id="Quiz1Modal">Add</h5>
+        <button style="color: white;opacity: 0.7;font-size: 31px;" type="button" class="close" aria-label="Close"
+        (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="image-data">
+                    <div class="upload-btn-wrapper ">
+                        <i class="icon fa fa-upload" *ngIf="image_URL === ''"></i>
+                        <img  [src]="image_URL" width="100%" class="image-icon">
+                        <input type="file" name="myfile"(change)="OnChange($event,'1498','392')"/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 "></div>
+            <div class="col-md-6 ">
+                <h6 style="color: #fff;margin-left: 60%;" for="validationCustom0" class="">Size : 1498 x 392</h6>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <div class="row">
+            <div class=" mb-0 col-md-8"></div>
+            <div class=" mb-0 col-md-12  pr-0">
+              <button type="button" class="btn btn-dark btn-dark-rounded" (click)="updateQuizOne()"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+                {{ addLoading ? "Updating..." : "Update" }}</button>
+            </div>
+        </div>
+    </div>
+  </form>
+</ng-template>

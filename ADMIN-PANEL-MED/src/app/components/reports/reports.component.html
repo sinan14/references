@@ -1,0 +1,603 @@
+<!-- Container-fluid starts-->
+<!-- <div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-8 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Sales Summary</h5>
+                </div>
+                <div class="card-body sell-graph">
+                    <canvas baseChart id="myGraph" [datasets]="salesChartData" [labels]="salesChartLabels"
+                        [options]="salesChartOptions" [colors]="salesChartColors" [legend]="salesChartLegend"
+                        [chartType]="salesChartType"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card report-employee">
+                <div class="card-header">
+                    <h2>75%</h2>
+                    <h6 class="mb-0">Employees Satisfied</h6>
+                </div>
+                <div class="card-body p-0 o-hidden">
+                    <div class="ct-4 flot-chart-container report-full">
+                            <x-chartist [type]="chart5.type" [data]="chart5.data" [options]="chart5.options"></x-chartist>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Transfer Report</h5>
+                </div>
+                <div class="card-body">
+                    <div id="batchDelete" class="custom-datatable">
+                        <div class="table-responsive">
+                            <ng2-smart-table [settings]="settings" [source]="report"></ng2-smart-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Expenses</h5>
+                </div>
+                <div class="card-body expense-chart">
+                    <div class="chart-overflow" id="area-chart1">
+                        <google-chart [data]="areaChart1"></google-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5> Sales / Purchase</h5>
+                </div>
+                <div class="card-body">
+                    <div class="sales-chart">
+                        <google-chart [data]="columnChart1"></google-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5> Sales / Purchase Return</h5>
+                </div>
+                <div class="card-body sell-graph">
+                    <google-chart [data]="lineChart"></google-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- Container-fluid Ends-->
+
+
+
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card tab2-card">
+                <div class="card-header">
+                    <h5> Customer Details</h5>
+                </div>
+
+                <div class="card-body tab2-card">
+                    <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-4">
+                                        <label for="validationCustom0" class="">
+                                             Name</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span class="" id="validationCustom0" >Ram</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                        <label for="validationCustom0" class="">
+                                             Contact No</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span class="" id="validationCustom0" >9876543210</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                        <label for="validationCustom0" class="">
+                                             Gender</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span class="l col-xl-8 col-md-7" id="validationCustom0" >Male</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                        <label for="validationCustom0" class="">
+                                             Email</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span class="l col-xl-8 col-md-7" id="validationCustom0" >Ram@gmail.com</span>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row col-md-6">
+                        <fieldset>
+                            <legend>Family Members</legend>
+                                <div class="row ">
+                                        <div class="col-md-2">
+                                                <img  src=""  alt="image"/>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <img  src=""  alt="image"/>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <img  src=""  alt="image"/>
+                                        </div>
+                                </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+
+
+
+                <ngb-tabset class="tab-coupon">
+                    <ngb-tab title="Orders">
+                        <ng-template ngbTabContent>                                                                                                                                        <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+                                <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="card-body card-data"> 
+                                                <div class="row" >
+                                                    <label for="validationCustom0" class="">Order ID</label>
+                                                    <span class="l col-xl-8 col-md-7 span-data" id="validationCustom0"  >1001</span>
+
+                                                </div>
+                                                <hr>
+                                                    
+                                                <div class="row">
+                                                    <label for="validationCustom0" class="">
+                                                        Order Items</label>
+                                                    <span class="l col-xl-8 col-md-7 span-data" id="validationCustom0" >AAAAA</span>
+                                                </div>
+                                                
+                                                <hr>
+                                                <div class="row">
+                                                    <label for="validationCustom0" class="">
+                                                        Order Date</label>
+                                                    <span class="l col-xl-8 col-md-7 span-data" id="validationCustom0" >12/4/2021</span>
+                                                </div>
+                                                
+                                                <hr>
+                                                <div class="row">
+                                                    <label for="validationCustom0" class="">
+                                                       Mode Of Payment</label>
+                                                    <span class="l col-xl-8 col-md-7  span-data" id="validationCustom0" >Debit Card</span>
+                                                </div>
+
+                                            </div>
+                                        </div> 
+
+
+
+                                        <div class="col-md-6" >
+                                            <div class="card-body card-data" > 
+                                                <div class="row" >
+                                                    <label for="validationCustom0" class="">
+                                                        Order ID</label>
+                                                    <span class="l col-xl-6 col-md-7 span-data" id="validationCustom0" >1001</span>
+
+                                                </div>
+                                                    
+                                                <hr>
+                                                <div class="row">
+                                                    <label for="validationCustom0" class="">
+                                                        Order Items</label>
+                                                    <span class="l col-xl-6 col-md-7 span-data" id="validationCustom0" >AAAAA</span>
+                                                </div>
+                                                
+                                                <hr>
+                                                <div class="row">
+                                                    <label for="validationCustom0" class="">
+                                                        Order Date</label>
+                                                    <span class="l col-xl-6 col-md-7  span-data" id="validationCustom0" >12/4/2021</span>
+                                                </div>
+                                                
+                                                <hr>
+                                                <div class="row">
+                                                    <label for="validationCustom0" class="">
+                                                       Mode Of Payment</label>
+                                                    <span class="l col-xl-6 col-md-7  span-data" id="validationCustom0" >Debit Card</span>
+                                                </div>
+
+                                            </div>
+                                        </div> 
+
+                                        
+                                </div>
+
+
+
+
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Med Coins">
+                        <ng-template ngbTabContent>                                                                                                                                        <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+                                    <form >
+                                        <div class="table-sorter-wrapper  table-responsive">
+                                            <table id="sortable-table-2" class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                <th class="sortStyle">Date<i class="mdi mdi-chevron-down"></i></th>
+                                                <th class="sortStyle">Time<i class="mdi mdi-chevron-down"></i></th>
+                                                <th class="sortStyle">Transaction ID<i class="mdi mdi-chevron-down"></i></th>
+                                                <th class="sortStyle">Particular<i class="mdi mdi-chevron-down"></i></th>
+                                                <th class="sortStyle">Debit<i class="mdi mdi-chevron-down"></i></th>
+                                                <th class="sortStyle">Credit<i class="mdi mdi-chevron-down"></i></th>
+                                                <th class="sortStyle">Balance<i class="mdi mdi-chevron-down"></i></th>
+                                                </tr>
+                                            </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>10001</td>
+                                                        <td>9966432123</td>
+                                                        <td>Herman Beck</td>
+                                                        <td>John</td>
+                                                        <td>Photoshop</td>
+                                                        <td>$456.00</td>
+                                                        <td>12 May 2017</td>
+                                                    </tr>
+    
+                                                    <tr>
+                                                        <td>10001</td>
+                                                        <td>9966432123</td>
+                                                        <td>Herman Beck</td>
+                                                        <td>John</td>
+                                                        <td>Photoshop</td>
+                                                        <td>$456.00</td>
+                                                        <td>12 May 2017</td>
+                                                        <td>956</td>
+                                                    </tr>
+    
+                                                    <tr>
+                                                        <td>10001</td>
+                                                        <td>9966432123</td>
+                                                        <td>Herman Beck</td>
+                                                        <td>John</td>
+                                                        <td>Photoshop</td>
+                                                        <td>$456.00</td>
+                                                        <td>12 May 2017</td>
+                                                        <td>956</td>
+                                                    </tr>
+                                                
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <button type="button" class="btn btn-inverse-dark btn-fw">Issue Refund</button>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button type="button" class="btn btn-inverse-dark btn-fw">Register Complaint</button>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button type="button" class="btn btn-inverse-dark btn-fw">Redeem Medcoin</button>
+                                            </div>
+                                        </div>
+                                    
+                                </form>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+                    <ngb-tab title="Premium">
+                        <ng-template ngbTabContent>                                                                                                                                        <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+                                    <form class="form-sample">
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Segment</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control">
+                                                    <option>Most Viewed</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Description</label>
+                                            <div class="col-sm-9">
+                                                <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label class="col-sm-3 col-form-label"></label>
+                                            <div class="input-group"> 
+                                                <span class="input-group-append">
+                                                <button class="file-upload-browse form-control" type="button"><i class="fa fa-upload"></i></button>
+                                              </span>
+                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Choose file">
+                                              </div>
+                                            <input type="file" name="img[]" class="file-upload-default">
+                                        </div>
+
+
+                                        <button type="button" class="btn btn-dark">Send mail</button>
+                                    </form>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab>
+                        <ng-template ngbTabTitle>Subscription
+                            <ng-template ngbTabContent>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="card-body card-data"> 
+                                                    <div class="row" >
+                                                        <label for="validationCustom0" class="">Subscription No</label>
+                                                        <span class="l col-xl-8 col-md-7 span-data" id="validationCustom0"  >1001</span>
+
+                                                    </div>
+                                                    <hr>
+                                                        
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                            From</label>
+                                                        <span class="l col-xl-8 col-md-7 span-data" id="validationCustom0" >AAAAA</span>
+                                                    </div>
+                                                    
+                                                    <hr>
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                            To</label>
+                                                        <span class="l col-xl-8 col-md-7 span-data" id="validationCustom0" >12/4/2021</span>
+                                                    </div>
+                                                    
+                                                    <hr>
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                       Items</label>
+                                                        <span class="l col-xl-8 col-md-7  span-data" id="validationCustom0" >Debit Card</span>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                       Items</label>
+                                                        <span class="l col-xl-8 col-md-7  span-data" id="validationCustom0" >Debit Card</span>
+                                                    </div>
+
+                                                </div>
+                                            </div> 
+
+
+
+                                            <div class="col-md-6" >
+                                                <div class="card-body card-data" > 
+                                                    <div class="row" >
+                                                        <label for="validationCustom0" class="">
+                                                            Order ID</label>
+                                                        <span class="l col-xl-6 col-md-7 span-data" id="validationCustom0" >1001</span>
+
+                                                    </div>
+                                                        
+                                                    <hr>
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                            Order Items</label>
+                                                        <span class="l col-xl-6 col-md-7 span-data" id="validationCustom0" >AAAAA</span>
+                                                    </div>
+                                                    
+                                                    <hr>
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                            Order Date</label>
+                                                        <span class="l col-xl-6 col-md-7  span-data" id="validationCustom0" >12/4/2021</span>
+                                                    </div>
+                                                    
+                                                    <hr>
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                        Mode Of Payment</label>
+                                                        <span class="l col-xl-6 col-md-7  span-data" id="validationCustom0" >Debit Card</span>
+                                                    </div>
+
+                                                </div>
+                                            </div> 
+
+                                            
+                                            <button type="button" class="btn btn-inverse-dark btn-fw">Register Complaint</button>
+                                    </div>
+
+                            </ng-template>
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+                    <ngb-tab>
+                        <ng-template ngbTabTitle>Complaints
+                            <ng-template ngbTabContent>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="card-body card-data"> 
+                                                    <div class="row" >
+                                                        <label for="validationCustom0" class="">Complaint ID</label>
+                                                        <span class="l col-xl-8 col-md-7 span-data" id="validationCustom0"  >1001</span>
+
+                                                    </div>
+                                                    <hr>
+                                                        
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                            Department</label>
+                                                        <span class="l col-xl-8 col-md-7 span-data" id="validationCustom0" >AAAAA</span>
+                                                    </div>
+                                                    
+                                                    <hr>
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                            Priority</label>
+                                                        <span class="l col-xl-8 col-md-7 span-data" id="validationCustom0" >12/4/2021</span>
+                                                    </div>
+                                                    
+                                                    <hr>
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                       Complaint Date</label>
+                                                        <span class="l col-xl-8 col-md-7  span-data" id="validationCustom0" >Debit Card</span>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                       Assured Resolve Date</label>
+                                                        <span class="l col-xl-8 col-md-7  span-data" id="validationCustom0" >Debit Card</span>
+                                                    </div>
+
+                                                </div>
+                                            </div> 
+
+
+
+                                            <div class="col-md-6">
+                                                <div class="card-body card-data"> 
+                                                    <div class="row" >
+                                                        <label for="validationCustom0" class="">Complaint ID</label>
+                                                        <span class="l col-xl-8 col-md-7 span-data" id="validationCustom0"  >1001</span>
+
+                                                    </div>
+                                                    <hr>
+                                                        
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                            Department</label>
+                                                        <span class="l col-xl-8 col-md-7 span-data" id="validationCustom0" >AAAAA</span>
+                                                    </div>
+                                                    
+                                                    <hr>
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                            Priority</label>
+                                                        <span class="l col-xl-8 col-md-7 span-data" id="validationCustom0" >12/4/2021</span>
+                                                    </div>
+                                                    
+                                                    <hr>
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                       Complaint Date</label>
+                                                        <span class="l col-xl-8 col-md-7  span-data" id="validationCustom0" >Debit Card</span>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <label for="validationCustom0" class="">
+                                                       Assured Resolve Date</label>
+                                                        <span class="l col-xl-8 col-md-7  span-data" id="validationCustom0" >Debit Card</span>
+                                                    </div>
+
+                                                </div>
+                                            </div> 
+                                            
+                                            <button type="button" class="btn btn-inverse-dark btn-fw">Register Complaint</button>
+                                            
+                                    </div>
+
+                            </ng-template>
+                        </ng-template>
+                    </ngb-tab>
+
+
+
+                    <ngb-tab title="Finance">
+                        <ng-template ngbTabContent>                                                                                                                                        <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+                                    <h3 style="align-content: center;">Revenue Generated <span style="padding-left: 30px;">1234</span></h3>
+                                        <form >
+                                            <div class="table-sorter-wrapper  table-responsive">
+                                                <table id="sortable-table-2" class="table table-borderless">
+                                                <thead>
+                                                    <tr>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Total revenue Generated to aswin</td>
+                                                            
+                                                            <td>$456.00</td>
+                                                            <td>12 May 2017</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>medicoin :100</td>
+                                                            <td>card :100</td>
+                                                            <td>30 Dec 2020</td>
+                                                            <td>10:20 am</td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td>For Consultation</td>
+                                                           
+                                                        </tr>
+        
+                                                        <tr>
+                                                            <td>medicoin :100</td>
+                                                            <td>card :100</td>
+                                                            <td>30 Dec 2020</td>
+                                                            <td>10:20 am</td>
+                                                        </tr>
+                                                        
+                                                    
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <button type="button" class="btn btn-inverse-dark btn-fw">Register Complaint</button>
+                                                </div>
+                                            </div>
+                                        
+                                    </form>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Notes">
+                        <ng-template ngbTabContent>                                                                                                                                        <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+                                        <div class="row">
+                                            <div class="col-sm-6 card-data">
+                                                <span >21/2/2021</span>
+                                                <span style="margin-left: 250px;justify-content: space-between">21/2/2021</span><br>
+                                                    dsvfbbfvbgv  dsvfbbfvbgv  dsvfbbfvbgv  dsvfbbfvbgv  dsvfbbfvbgv  dsvfbbfvbgv 
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <textarea class="form-control" id="exampleTextarea1" rows="4" placeholder="Type Here"></textarea>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-inverse-dark pull-right">Save</button>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+
+                    
+
+
+
+
+                </ngb-tabset>
+
+
+            </div>
+        </div>
+    </div>
+</div>

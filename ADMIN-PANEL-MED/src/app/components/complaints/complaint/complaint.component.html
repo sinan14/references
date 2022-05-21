@@ -1,0 +1,556 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid explore_mastertab cmpnt_mnnms">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card tab2-card">
+                <div class="card-body tab2-card">
+                    <h6>Complaints</h6>
+                    <ngb-tabset class="tab-coupon" (tabChange)="Tab_Change_Function($event)">
+                        <ngb-tab title="Solved Complaints" id="solved" *ngIf="disableTab('Solved Complaints')">
+                            <ng-template ngbTabContent>
+                                <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+                                    <br><br>
+                                    <div class="table-responsive kendo_table">
+
+                                        <kendo-grid [kendoGridBinding]="complaint_data" [filterable]="true"
+                                        [sortable]="true" [pageSize]="10" [skip]="skip"
+                                        (pageChange)="pageChange($event)" [pageable]="true">
+
+
+
+                                        <!-- <kendo-grid [kendoGridBinding]="complaint_data" [filterable]="true"
+                                            [sortable]="true"> -->
+                                            <!-- <ng-template kendoGridToolbarTemplate >
+                                                    <div  style="padding-left: 80%;">
+                                                        <button  type="button"  kendoGridPDFCommand  class="btn btn-dark btn-excel-rounded">
+                                                            <i class="fa fa-file-pdf-o"></i>Excel</button>
+
+                                                        &nbsp;&nbsp;&nbsp;<button type="button" kendoGridExcelCommand class="btn btn-dark btn-excel-rounded">
+                                                            <i class="fa fa-file-excel-o"></i>PDF</button>
+                                                    </div>
+                                                </ng-template> -->
+                                            <kendo-grid-column field="slno" title="SlNo" width="10">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell placeholder="search"
+                                                        [showOperators]="false" [column]="column" title="SlNo"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="name" title="Name" width="20">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell placeholder="search"
+                                                        [showOperators]="false" [column]="column" title="Name"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+
+
+                                            <kendo-grid-column field="ComplaintId" title="Complaint ID" width="20"
+                                                [filterable]="true">
+                                                <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                    let-dataItem="dataItem">
+                                                    <a style="text-decoration: underline;cursor: pointer;" *ngIf="viewFlag"
+                                                        data-toggle="modal" data-original-title="test"
+                                                        data-target="#ViewComplaintexampleModal"
+                                                        (click)="open(content,dataItem.ComplaintId,dataItem._id,'view')">{{dataItem.ComplaintId}}</a>
+
+                                                        <a style="text-decoration: underline;cursor: pointer;" *ngIf="!viewFlag">{{dataItem.ComplaintId}}</a>
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="Department" title="Department" width="20"
+                                                [filterable]="true">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell placeholder="search"
+                                                        [showOperators]="false" [column]="column" title="Department"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+
+
+                                            <kendo-grid-column field="ReasonForComplaint" title="Subject" width="20"
+                                                [filterable]="true">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell placeholder="search"
+                                                        [showOperators]="false" [column]="column" title="Subject"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="solvedDate" title="Solved Date" width="20"
+                                                [filterable]="true">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell placeholder="search"
+                                                        [showOperators]="false" [column]="column" title="Solved Date"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="date" title="Complaint Date" width="20"
+                                                [filterable]="true">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell placeholder="search"
+                                                        [showOperators]="false" [column]="column" title="Complaint Date"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+
+                                            <!-- <kendo-grid-column field="Notes" title="Notes" width="30"
+                                                [filterable]="true">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell placeholder="search"
+                                                        [showOperators]="false" [column]="column" title="Notes"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                            </kendo-grid-column> -->
+
+                                            <kendo-grid-column field="HandledBy" title="Handled By" width="20"
+                                                [filterable]="true">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell placeholder="search"
+                                                        [showOperators]="false" [column]="column" title="Handled By"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+
+                                            <!-- <kendo-grid-excel fileName="Complaint.xlsx"></kendo-grid-excel>
+                                            <kendo-grid-pdf fileName="Products.pdf" [allPages]="true" paperSize="A4"
+                                                [repeatHeaders]="true" [landscape]="true">
+                                                <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm">
+                                                </kendo-grid-pdf-margin>
+                                                <ng-template kendoGridPDFTemplate let-pageNum="pageNum"
+                                                    let-totalPages="totalPages">
+                                                    <div class="page-template">
+                                                        <div class="header">
+                                                            <div style="float: right">
+                                                                Page {{ pageNum }} of {{ totalPages }}
+                                                            </div>
+                                                            Multi-page grid with automatic page breaking
+                                                        </div>
+                                                        <div class="footer">Page {{ pageNum }} of {{ totalPages }}</div>
+                                                    </div>
+                                                </ng-template>
+                                            </kendo-grid-pdf> -->
+
+                                        </kendo-grid>
+                                    </div>
+
+
+
+                                    <!-- <div class="table-sorter-wrapper  table-responsive innerr_table_style" style="padding: 15px 0px; background: #014466; border-radius: 0px 15px 15px;">
+                                                <table id="sortable-table-2" class="table table-striped">
+                                                <thead class="column-head">
+                                                    <tr>
+                                                    <th ><label style="color: white;opacity: 0.5;">Complaint ID</label><i class="mdi mdi-chevron-down"></i></th>
+                                                    <th class="sortStyle"><label style="color: white;opacity: 0.5;">Department</label><i class="mdi mdi-chevron-down"></i></th>
+                                                    <th class="sortStyle"><label style="color: white;opacity: 0.5;">Subject</label><i class="mdi mdi-chevron-down"></i></th>
+                                                    <th class="sortStyle"><label style="color: white;opacity: 0.5;">Solved Date</label><i class="mdi mdi-chevron-down"></i></th>
+                                                    <th class="sortStyle"><label style="color: white;opacity: 0.5;">Complaint Date</label><i class="mdi mdi-chevron-down"></i></th>
+                                                    <th class="sortStyle"><label style="color: white;opacity: 0.5;">Notes</label><i class="mdi mdi-chevron-down"></i></th>
+                                                    <th class="sortStyle"><label style="color: white;opacity: 0.5;">Handled By</label><i class="mdi mdi-chevron-down"></i></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><a  style="cursor: pointer;" data-toggle="modal" data-original-title="test"
+                                                            data-target="#ViewComplaintexampleModal" (click)="open(content)">SDDS834793</a></td>
+                                                        <td>Finance Department</td>
+                                                        <td>Payment Failed</td>
+                                                        <td>20 Dec 2021</td>
+                                                        <td>15 Dec 2021</td>
+                                                        <td>Payment Gateway Failure</td>
+                                                        <td>Aswin Vinod</td>
+                                                    </tr>
+                                                    
+
+                                                    <tr>
+                                                        <td><a  style="cursor: pointer;" data-toggle="modal" data-original-title="test"
+                                                            data-target="#ViewComplaintexampleModal" (click)="open(content)">SDDS834793</a></td>
+                                                        <td>Finance Department</td>
+                                                        <td>Payment Failed</td>
+                                                        <td>20 Dec 2021</td>
+                                                        <td>15 Dec 2021</td>
+                                                        <td>Payment Gateway Failure</td>
+                                                        <td>Aswin Vinod</td>
+                                                    </tr>
+    
+
+                                                    <tr>
+                                                        <td><a  style="cursor: pointer;" data-toggle="modal" data-original-title="test"
+                                                            data-target="#ViewComplaintexampleModal" (click)="open(content)">SDDS834793</a></td>
+                                                        <td>Finance Department</td>
+                                                        <td>Payment Failed</td>
+                                                        <td>20 Dec 2021</td>
+                                                        <td>15 Dec 2021</td>
+                                                        <td>Payment Gateway Failure</td>
+                                                        <td>Aswin Vinod</td>
+                                                    </tr>
+    
+
+                                                    <tr>
+                                                        <td><a>SDDS834793</a></td>
+                                                        <td>Finance Department</td>
+                                                        <td>Payment Failed</td>
+                                                        <td>20 Dec 2021</td>
+                                                        <td>15 Dec 2021</td>
+                                                        <td>Payment Gateway Failure</td>
+                                                        <td>Aswin Vinod</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td><a>SDDS834793</a></td>
+                                                        <td>Finance Department</td>
+                                                        <td>Payment Failed</td>
+                                                        <td>20 Dec 2021</td>
+                                                        <td>15 Dec 2021</td>
+                                                        <td>Payment Gateway Failure</td>
+                                                        <td>Aswin Vinod</td>
+                                                    </tr>
+    
+
+                                                    <tr>
+                                                        <td><a>SDDS834793</a></td>
+                                                        <td>Finance Department</td>
+                                                        <td>Payment Failed</td>
+                                                        <td>20 Dec 2021</td>
+                                                        <td>15 Dec 2021</td>
+                                                        <td>Payment Gateway Failure</td>
+                                                        <td>Aswin Vinod</td>
+                                                    </tr>
+    
+                                                   
+                                                  
+                                                </tbody>
+                                                </table>
+                                            </div>
+                                         -->
+
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+
+                        <ngb-tab title="Unsolved Complaints" id="unsolved" *ngIf="disableTab('Unsolved Complaints')">
+                            <ng-template ngbTabContent>
+                                <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+
+                                    <br><br>
+                                    <div class="table-responsive kendo_table">
+                                       
+                                        <kendo-grid [kendoGridBinding]="ucomplaint_data" [filterable]="true"
+                                        [sortable]="true" [pageSize]="10" [skip]="skip"
+                                        (pageChange)="pageChange($event)" [pageable]="true">
+                                       
+                                        <!-- <kendo-grid [kendoGridBinding]="ucomplaint_data" [filterable]="true"
+                                            [sortable]="true"> -->
+                                            <!-- <ng-template kendoGridToolbarTemplate >
+                                                    <div  style="padding-left: 80%;">
+                                                        <button  type="button"  kendoGridPDFCommand  class="btn btn-dark btn-excel-rounded">
+                                                            <i class="fa fa-file-pdf-o"></i>Excel</button>
+
+                                                        &nbsp;&nbsp;&nbsp;<button type="button" kendoGridExcelCommand class="btn btn-dark btn-excel-rounded">
+                                                            <i class="fa fa-file-excel-o"></i>PDF</button>
+                                                    </div>
+                                                </ng-template> -->
+                                            <kendo-grid-column field="slno" title="SlNo" width="20">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell placeholder="search"
+                                                        [showOperators]="false" [column]="column" title="SlNo"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+                                            <kendo-grid-column field="name" title="Name" width="20">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell placeholder="search"
+                                                        [showOperators]="false" [column]="column" title="Name"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+
+
+                                            <kendo-grid-column field="ComplaintId" title="Complaint ID" width="20"
+                                                [filterable]="true">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell placeholder="search"
+                                                        [showOperators]="false" [column]="column" title="Complaint ID"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+
+
+                                            <kendo-grid-column field="ReasonForComplaint" title="Subject" width="20"
+                                                [filterable]="true">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell placeholder="search"
+                                                        [showOperators]="false" [column]="column" title="Subject"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+
+                                            <kendo-grid-column field="date" title="Complaint Date" width="20"
+                                                [filterable]="true">
+                                                <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                                                    <kendo-grid-string-filter-cell placeholder="search"
+                                                        [showOperators]="false" [column]="column" title="Complaint Date"
+                                                        [filter]="filter">
+                                                    </kendo-grid-string-filter-cell>
+                                                </ng-template>
+                                            </kendo-grid-column>
+
+
+                                            <kendo-grid-command-column title="Action" width="20">
+                                                <ng-template kendoGridCellTemplate let-isNew="isNew"
+                                                    let-dataItem="dataItem">
+                                                    <button type="button" class="btn btn-dark btn-inverse-rounded"
+                                                        data-toggle="modal" data-original-title="test"
+                                                        data-target="#SolveComplaintexampleModal"
+                                                        (click)="open(data,dataItem.ComplaintId,dataItem._id,'solve')"
+                                                        *ngIf="editFlag">Solve</button>
+
+                                                </ng-template>
+                                            </kendo-grid-command-column>
+
+
+                                            <!-- <kendo-grid-excel fileName="BMI.xlsx"></kendo-grid-excel>
+                                            <kendo-grid-pdf fileName="Products.pdf" [allPages]="true" paperSize="A4"
+                                                [repeatHeaders]="true" [landscape]="true">
+                                                <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm">
+                                                </kendo-grid-pdf-margin>
+                                                <ng-template kendoGridPDFTemplate let-pageNum="pageNum"
+                                                    let-totalPages="totalPages">
+                                                    <div class="page-template">
+                                                        <div class="header">
+                                                            <div style="float: right">
+                                                                Page {{ pageNum }} of {{ totalPages }}
+                                                            </div>
+                                                            Multi-page grid with automatic page breaking
+                                                        </div>
+                                                        <div class="footer">Page {{ pageNum }} of {{ totalPages }}</div>
+                                                    </div>
+                                                </ng-template>
+                                            </kendo-grid-pdf> -->
+
+                                        </kendo-grid>
+                                    </div>
+
+
+
+                                    <!-- <form class="form-sample">
+                                                <div class="table-sorter-wrapper  table-responsive innerr_table_style" style="padding: 15px 0px; background: #014466; border-radius: 0px 15px 15px;">
+                                                    <table id="sortable-table-2" class="table table-striped">
+                                                    <thead class="">
+                                                        <tr>
+                                                        <th class="sortStyle"><label style="color: white;opacity: 0.5;">Complaint ID</label><i class="mdi mdi-chevron-down"></i></th>
+                                                        <th class="sortStyle"><label style="color: white;opacity: 0.5;">Subject</label><i class="mdi mdi-chevron-down"></i></th>
+                                                        <th class="sortStyle"><label style="color: white;opacity: 0.5;">Complaint Date</label><i class="mdi mdi-chevron-down"></i></th>
+                                                        <th class="sortStyle"><label style="color: white;opacity: 0.5;">Action</label><i class="mdi mdi-chevron-down"></i></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><a>SDDS834793</a></td>
+                                                            <td>Finanace Department</td>
+                                                            <td>20 Dec 2021</td>
+                                                            <td><button type="button" class="btn btn-dark btn-inverse-rounded"  data-toggle="modal" data-original-title="test"
+                                                                data-target="#SolveComplaintexampleModal" (click)="open(data)">Solve</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><a>SDDS834793</a></td>
+                                                            <td>Finanace Department</td>
+                                                            <td>20 Dec 2021</td>
+                                                            <td><button type="button" class="btn btn-dark btn-inverse-rounded" >Solve</button></td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td><a>SDDS834793</a></td>
+                                                            <td>Finanace Department</td>
+                                                            <td>20 Dec 2021</td>
+                                                            <td><button type="button" class="btn btn-dark btn-inverse-rounded">Solve</button></td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td><a>SDDS834793</a></td>
+                                                            <td>Finanace Department</td>
+                                                            <td>20 Dec 2021</td>
+                                                            <td><button type="button" class="btn btn-dark btn-inverse-rounded">Solve</button></td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td><a>SDDS834793</a></td>
+                                                            <td>Finanace Department</td>
+                                                            <td>20 Dec 2021</td>
+                                                            <td><button type="button" class="btn btn-dark btn-inverse-rounded">Solve</button></td>
+                                                        </tr>
+                                                        
+ 
+                                                    </tbody>
+                                                    </table>
+                                                </div>
+                                        </form> -->
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+
+
+
+                    </ngb-tabset>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <ng-template #content let-modal>
+
+        <div class="modal-body modal-content-data">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <ul class="cmpnt_pop_align">
+                        <li>Customer Name</li>
+                        <li>: {{Customer_Name}}</li>
+                    </ul>
+
+                    <ul class="cmpnt_pop_align">
+                        <li>Complaint ID</li>
+                        <li>: {{ComplaintId}}</li>
+                    </ul>
+                    <ul class="cmpnt_pop_align">
+                        <li>Department</li>
+                        <li>: {{Department}}</li>
+                    </ul>
+                    <ul class="cmpnt_pop_align">
+                        <li>Subject</li>
+                        <li>: {{Subject}}</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="cmpnt_pop_align">
+                        <li>Complaint Date</li>
+                        <li>: {{ComplaintDate}}</li>
+                    </ul>
+                    <ul class="cmpnt_pop_align">
+                        <li>Solved Date</li>
+                        <li>: {{SolvedDate.slice(0, 10)}}</li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <ul class="cmpnt_pop_align">
+                        <li>Description</li>
+                        <li style="width:78%;">: {{Description}}</li>
+                    </ul>
+                    <ul class="cmpnt_pop_align">
+                        <li>Handled By</li>
+                        <li style="width:78%;">: {{HandledBy}}</li>
+                    </ul>
+                    <ul class="cmpnt_pop_align">
+                        <li>Solution</li>
+                        <li style="width:78%;">: {{Solution}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+
+
+
+
+    <ng-template #data let-modal>
+        <div class="modal-body modal-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="cmpnt_pop_align">
+                        <li>Customer Name</li>
+                        <li>: {{Customer_Name}}</li>
+                    </ul>
+                    <ul class="cmpnt_pop_align">
+                        <li>Complaint ID</li>
+                        <li>: {{ComplaintId}}</li>
+                    </ul>
+                    <ul class="cmpnt_pop_align">
+                        <li>Department</li>
+                        <li>: {{Department}}</li>
+                    </ul>
+                    <ul class="cmpnt_pop_align">
+                        <li>Subject</li>
+                        <li>: {{Subject}}</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="cmpnt_pop_align">
+                        <li>Complaint Date</li>
+                        <li>: {{ComplaintDate}}</li>
+                    </ul>
+                    <ul class="cmpnt_pop_align">
+                        <li>Solved Date</li>
+                        <li>: {{DateNow.slice(0, 10)}}</li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <ul class="cmpnt_pop_align">
+                        <li>Description</li>
+                        <li style="width:78%;">: {{Description}}</li>
+                    </ul>
+                    <ul class="cmpnt_pop_align">
+                        <li>Handled By</li>
+                        <li style="width:78%;">: {{Name}}</li>
+                    </ul>
+                    <ul class="cmpnt_pop_align">
+                        <li>Solution</li>
+                        <form [formGroup]="Update_Complaint_Form">
+
+                            <li style="width:78%;">
+                                <textarea _ngcontent-serverapp-c397="" placeholder="Type Here" class="form-control"
+                                    autocomplete="off" formControlName="solution"></textarea>
+                                    <small for="solution" class="form-text text-danger" *ngIf="Update_Complaint_Form.controls['solution'].errors?.required && 
+                                    (Update_Complaint_Form.controls['solution'].dirty ||  
+                                    Update_Complaint_Form.controls['solution'].touched || 
+                                    (Update_Complaint_Form.controls['solution'].untouched  && Submitted ) )">
+                                    Solution required.
+                                </small>
+                            </li>
+                        </form>
+                    </ul>
+                  
+                </div>
+                <div class="form-group col-md-12" style="text-align: center;">
+                    <button style="width: 150px;" type="button" class="btn btn-dark btn-dark-rounded "
+                        aria-label="Close" (click)="updatet_COMPLAINT_STATUS()">Solve</button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </ng-template>
+
+
+</div>
+<!-- Container-fluid Ends-->

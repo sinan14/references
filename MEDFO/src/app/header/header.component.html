@@ -1,0 +1,960 @@
+<header class="ps-header ps-header--1">
+  <div class="ps-header__middle">
+    <div class="container">
+      <div class="ps-logo">
+        <a routerLink="/">
+          <img src="assets/img/logo.png" /><img
+            class="sticky-logo"
+            src="assets/img\logo.png"
+        /></a>
+      </div>
+      <!-- a class="ps-menu--sticky" ><i class="fa fa-bars"></i></a> -->
+      <div class="ps-header__right">
+        <div class="ps-header__search">
+          <form action="do_action" method="post">
+            <div class="ps-search-table">
+              <div class="location">
+                <span><img src="assets/img/png/point.png" /></span>
+                <select>
+                  <option value="1">Choose Locality</option>
+                  <option value="1">1</option>
+                  <option value="1">1</option>
+                </select>
+              </div>
+              <style type="text/css">
+                select {
+                  /* for Firefox */
+                  -moz-appearance: none;
+                  /* for Chrome */
+                  -webkit-appearance: none;
+                }
+
+                /* For IE10 */
+
+                select::-ms-expand {
+                  display: none;
+                }
+              </style>
+
+              <div class="input-group serching">
+                <input
+                  class="form-control ps-input"
+                  type="text"
+                  [(ngModel)]="searchWord"
+                  placeholder="Search Medicines / Healthcare Products"
+                  (keyup)="Searching($event)"
+                />
+
+                <div class="input-group-append">
+                  <a><i class="fa fa-search" (click)="searchIcon()"></i></a>
+                </div>
+              </div>
+              <div class="search_result_box" *ngIf="Search_Box_Flag">
+                <div class="search_no_fnd_sec">
+                  <div class="search_no_fnd_box" *ngFor="let s of searchResult">
+                    <i class="fa fa-search"></i>
+
+                    <h5 style="text-align: left; font-weight: bold">
+                      <a (click)="findProduct(s)">{{ s }}<br /><br /></a>
+                    </h5>
+                  </div>
+
+                  <!-- ngFor close tag-->
+                  <!-- <br /><br /> -->
+                  <div class="not -sugest">
+                    <div class="search_no_fnd_box_ico">
+                      <img src="assets/img/cant_fnd_img.png" />
+                    </div>
+                    <div class="search_no_fnd_box_txt">
+                      Can't Find your product ?<br />
+                      <a
+                        data-toggle="modal"
+                        data-target="#exampleModal"
+                        (click)="Suggest_Pdt_Link_Clik()"
+                        style="
+                          color: #003af7 !important;
+                          text-decoration: underline;
+                          cursor: pointer;
+                        "
+                        >Suggest your product</a
+                      >
+                      We will try to add soon
+                      <a data-toggle="modal" data-target="#success">sucess</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <a
+          class="placeholder bg-yellow ps-banner__shop hvr-grow"
+          href="https://play.google.com/store/apps/details?id=com.medfolio.medimall"
+          >Download the App</a
+        >
+        <!-- <a class="bg-yellow ps-banner__shop" >Download the App</a> -->
+        <div class="container">
+          <div class="ps-navigation__right">
+            <nav class="ps-main-menu">
+              <ul class="menu">
+                <li class="has-mega-menu" (mouseenter)="get_category_list()">
+                  <a routerLink="/category-list"
+                    >Category<span class="sub-toggle"
+                      ><i class="fa fa-angle-down"></i></span
+                  ></a>
+
+                  <div class="mega-menu pb-0">
+                    <div class="container pb-0 pt-0">
+                      <div class="mega-menu__row pt-0">
+                        <!-- <nav class="navbar navbar-expand-md navbar-light bg-light">
+                                    
+                                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                        <ul class="navbar-nav medimenu">
+                                          <h4>All Categories <i class="fa fa-angle-right" aria-hidden="true"></i></h4>
+                                            <li class="nav-item dropdown ">
+                                                <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Personal Care </a>
+                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                
+                                                    <li class="dropdown-item"><div class="tab2">
+                                                      <button class="tablinks2" onclick="openCitys(event, 'in1')">London</button>
+                                                      <button class="tablinks2" onclick="openCitys(event, 'in2')">Paris</button>
+                                                      <button class="tablinks2" onclick="openCitys(event, 'in3')">Tokyo</button>
+                                                    </div>
+                                                    <div id="in1" class="tabcontent2">
+                                                      <h3>London</h3>
+                                                      <p>London is the capital city of England.</p>
+                                                    </div></li>
+                                                    <li><a class="dropdown-item" href="#">Hair Care</a></li>
+                                                    
+                                                </ul>
+                                            </li>
+                                            <li>Hair Care</li>
+                                            <li>Hair Care</li>
+                                            <li>Hair Care</li>
+                                            <li>Hair Care</li>
+                                            <li>Hair Care</li>
+                                            
+                                        </ul>
+                                    </div>
+                                </nav> -->
+                        <!-- <ul>
+                                    <h4>All Categories <i class="fa fa-angle-right" aria-hidden="true"></i></h4>
+                                    <li>Personal Care <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                                    <li>Hair care <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                                  </ul>
+                                   -->
+
+                        <div class="tab">
+                          <h4>All Categories</h4>
+                          <div class="menu-height">
+                            <button
+                              class="tablinks"
+                              *ngFor="let item of categoryList; let i = index"
+                              onclick="openCity(event, 'i')"
+                              (click)="get_sub_category_list(item._id)"
+                            >
+                              {{ item.title }} &nbsp;&nbsp;<i
+                                class="fa fa-angle-right"
+                                aria-hidden="true"
+                              ></i>
+                            </button>
+                          </div>
+                        </div>
+                        <!-----1st sub category list-->
+                        <div id="i" class="tabcontent">
+                          <div class="tab2">
+                            <div class="row">
+                              <div id="main_content">
+
+                                <li class="selected" id="page1" onclick="change_tab(this.id);">Page1</li>
+                                <li class="notselected" id="page2" onclick="change_tab(this.id);">Page2</li>
+                                <li class="notselected" id="page3" onclick="change_tab(this.id);">Page3</li>
+                                
+                                <div class='hidden_desc' id="page1_desc">
+                                  <div
+                                  class="col-md-3"
+                                  *ngFor="let sub of resultArray; let i = index"
+                                >
+                                  <h4 class="title-h4" (click)="toCategoryPage(sub._id)">
+                                    {{ sub.title }}
+                                  </h4>
+                                  <ul>
+                                    <li *ngFor="let cat of sub.subSubCategorys">
+                                      <a
+                                        (click)="
+                                          toCategoryPage1(
+                                            cat.subCategoryId,
+                                            cat._id
+                                          )
+                                        "
+                                        >{{ cat.title }}
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                                </div>
+                               
+                                <div class='hidden_desc' id="page2_desc">
+                                 <h2>Page 2</h2>
+                                 Hello this is Page 2 description and this is just a sample text .This is the demo of Multiple Tab In Single Page Using JavaScript and CSS.
+                                </div>
+                                
+                                <div class='hidden_desc' id="page3_desc">
+                                 <h2>Page 3</h2>
+                                 Hello this is Page 3 description and this is just a sample text .This is the demo of Multiple Tab In Single Page Using JavaScript and CSS. 
+                                 Hello this is Page 3 description and this is just a sample text .This is the demo of Multiple Tab In Single Page Using JavaScript and CSS.
+                                </div>
+                                
+                               
+                                
+                               </div>
+                             
+                             
+                            </div>
+                            <!-- <button class="tablinks2" *ngFor="let item1 of subCategoryList;let i=index" onmouseover="openCitys(event, 'in1')" (click)=" toCategoryPage(item1._id)">{{item1.title}}</button>
+                                              <ul *ngFor="let item2 of subSubCategoryList">
+                                                <li (click)=" toCategoryPage1(item2.subCategoryId,item2._id)">{{item2.title}}</li>
+                                               
+                                              </ul> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="has-mega-menu">
+                  <a routerLink="/blog"
+                    >Blog<span class="sub-toggle"
+                      ><i class="fa fa-angle-down"></i></span
+                  ></a>
+                </li>
+                <li class="has-mega-menu">
+                  <a routerLink="/form-page"
+                    >Medimall Foundation<span class="sub-toggle"
+                      ><i class="fa fa-angle-down"></i></span
+                  ></a>
+                </li>
+                <li class="has-mega-menu">
+                  <a routerLink="/dashboard-order-details/profile"
+                    >Fitness Arena<span class="sub-toggle"
+                      ><i class="fa fa-angle-down"></i></span
+                  ></a>
+                </li>
+                <li class="has-mega-menu">
+                  <a routerLink="/dashboard-order-details/profile"
+                    >More
+                    <span class="sub-toggle"
+                      ><i class="fa fa-angle-down"></i></span
+                  ></a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="ps-navigation__right">
+            <ul class="ps-header__icons">
+              <li>
+                <a class="ps-header__item" routerLink="/offers"
+                  ><img
+                    (click)="logToConsole()"
+                    src="../../assets/img/off.svg"
+                  /><span class="off-tag"> Offers</span></a
+                >
+              </li>
+              <li>
+                <a
+                  *ngIf="!_auth.loggedIn()"
+                  class="ps-header__item"
+                  id="login-button"
+                  data-toggle="modal"
+                  data-target="#myModal"
+                  ><i class="fa fa-user"></i><span> Login</span></a
+                >
+
+                <a
+                  id="logout-button"
+                  *ngIf="_auth.loggedIn()"
+                  class="ps-header__item"
+                  routerLink="/dashboard-order-details/profile"
+                  ><i class="fa fa-user"></i><span> My account</span></a
+                >
+              </li>
+              <li>
+                <a class="ps-header__item" routerLink="/cart" id="cart-mini"
+                  ><i class="fa fa-shopping-cart"></i>
+                  <span class="badge" *ngIf="Login_Flag">{{
+                    _cartService.cartCountOnly
+                  }}</span>
+
+                  <span class="badge" *ngIf="!Login_Flag">{{
+                    _cartService.cartCount
+                  }}</span
+                  ><span>Cart</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="ps-navigation desktop-only">
+  <div class="overlap-menu">
+    <div class="container">
+      <div class="ps-navigation__left" style="text-align: center">
+        <nav class="ps-main-menu">
+          <ul class="menu">
+            <li
+              class="has-mega-menu"
+              data-toggle="modal"
+              data-target="#refund"
+              (click)="orderMedicine()"
+            >
+              <div class="megamenu-img">
+                <img src="assets/img/green.svg" />
+              </div>
+              <div class="mega-content">
+                <a>Order Medicines</a>
+
+                <p>25000+ Products</p>
+              </div>
+            </li>
+            <li
+              class="has-mega-menu"
+              (click)="redrectionToInnerPage('healthcare')"
+            >
+              <div class="megamenu-img">
+                <img src="assets/img/orange.svg" />
+              </div>
+              <div class="mega-content">
+                <a>Order Health Care Products</a>
+                <p>20000+ Products</p>
+              </div>
+            </li>
+            <li
+              class="has-mega-menu"
+              (click)="redrectionToInnerPage('medpride')"
+            >
+              <div class="megamenu-img">
+                <img src="assets/img/blues.svg" />
+              </div>
+              <div class="mega-content">
+                <a>MedPride Membership</a>
+                <p>Get Exclusive Benefits</p>
+              </div>
+            </li>
+
+            <li class="has-mega-menu">
+              <div class="megamenu-img">
+                <img src="assets/img/pink.svg" />
+              </div>
+              <div class="mega-content">
+                <a>Continous Refilling</a>
+                <p>MedFill Refill</p>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header class="ps-header ps-header--1 ps-header--mobile">
+  <div class="ps-header__middle">
+    <div class="container mobilelogo">
+      <div class="ps-navigation--footer">
+        <div [class.active]="hambergerStatus" class="ps-nav__item">
+          <a id="open-menu" (click)="toggleHamberger()"
+            ><i name="ok" class="icon-menu" style="color: white"></i
+          ></a>
+          <a (click)="toggleHamberger()" name="2nd" id="close-menu"
+            ><i class="icon-cross"></i
+          ></a>
+        </div>
+      </div>
+      <div class="ps-logo">
+        <a> <img src="assets/img\logo.png" /></a>
+      </div>
+      <div class="ps-header__right">
+        <ul class="ps-header__icons">
+          <li>
+            <a class="ps-header__item" routerLink="/offers"
+              ><img src="assets/img/off.svg" class=""
+            /></a>
+          </li>
+          <li>
+            <a
+              class="ps-header__item"
+              routerLink="/dashboard-order-details/profile"
+              ><i class="fa fa-user"></i
+            ></a>
+          </li>
+          <li>
+            <a class="ps-header__item" id="cart-mini" routerLink="/cart"
+              ><i class="fa fa-shopping-cart"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+      <div class="deliver">
+        <select>
+          <option value="1">Choose Locality</option>
+          <option value="1">1</option>
+          <option value="1">1</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="ps-navigation">
+      <div class="container">
+        <div class="input-group serching">
+          <input
+            class="form-control ps-input"
+            type="text"
+            [(ngModel)]="searchWord"
+            placeholder="Search Medicines / Healthcare Products"
+            (keyup)="Searching($event)"
+          />
+
+          <div class="input-group-append">
+            <a><i class="fa fa-search" (click)="searchIcon()"></i></a>
+          </div>
+        </div>
+        <div class="search_result_box" *ngIf="Search_Box_Flag">
+          <div class="search_no_fnd_sec">
+            <div class="search_no_fnd_box" *ngFor="let s of searchResult">
+              <i class="fa fa-search"></i>
+
+              <h5 style="text-align: left; font-weight: bold">
+                <a (click)="findProduct(s)">{{ s }}<br /><br /></a>
+              </h5>
+            </div>
+
+            <!-- ngFor close tag-->
+            <!-- <br /><br /> -->
+            <div class="not -sugest">
+              <div class="search_no_fnd_box_ico">
+                <img src="assets/img/cant_fnd_img.png" />
+              </div>
+              <div class="search_no_fnd_box_txt">
+                Can't Find your product ?<br />
+                <a
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                  (click)="Suggest_Pdt_Link_Clik()"
+                  style="
+                    color: #003af7 !important;
+                    text-decoration: underline;
+                    cursor: pointer;
+                  "
+                  >Suggest your product</a
+                >
+                We will try to add soon
+                <a data-toggle="modal" data-target="#success">sucess</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div [class.active]="hambergerStatus" class="ps-menu--slidebar">
+  <div class="ps-menu__content">
+    <!-- <div
+      (click)="toggleHamberger()"
+      name='1st'
+      id="close-menu-"
+      class="overlay_mob_menu"
+    ></div> -->
+
+    <div class="mobile_menu_sec">
+      <a>
+        <div
+          class="mobile_menu_sec_head"
+          *ngIf="!_auth.loggedIn()"
+          data-toggle="modal"
+          data-target="#myModal"
+        >
+          Login / Sign Up <span><i class="fa fa-angle-right"></i></span>
+        </div>
+
+        <div
+          class="mobile_menu_sec_head"
+          *ngIf="_auth.loggedIn()"
+          data-toggle="modal"
+          data-target="#myModal"
+        >
+          Logout / Signout <span><i class="fa fa-angle-right"></i></span>
+        </div>
+      </a>
+      <div class="mobile_menu_sec_banner">
+        <div class="mobile_menu_banner_left_txt">
+          <strong>Exciting offers are Waiting for you</strong>
+          <span>Get flat 74% Off on Medimall App</span>
+          <div class="mobile_menu_banner_btm_sec">
+            <a>
+              <div class="mobile_menu_banner_btm_btn">
+                <img src="assets/img/menu/appstore.png" alt="" />
+              </div>
+            </a>
+            <a>
+              <div class="mobile_menu_banner_btm_btn">
+                <img class="" src="assets/img/menu/playstore.png" />
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="mobile_menu_banner_right_img_sec">
+          <img src="assets/img/menu/bann_img.png" alt="" />
+        </div>
+      </div>
+
+      <div class="mobile_menu_mn_1 mn_bdr_btm">
+        <a>
+          <div class="mobile_menu_mn_ico">
+            <img src="assets/img/menu/home.png" alt="" />
+          </div>
+          <div routerLink="/" class="mobile_menu_mn_text">Home</div>
+        </a>
+      </div>
+
+      <div
+        class="mobile_menu_mn_1"
+        data-toggle="modal"
+        data-target="#refund"
+        (click)="orderMedicine()"
+      >
+        <a>
+          <div class="mob_btn_left_ico">
+            <img src="assets/img/menu/odr_top1.png" alt="" />
+          </div>
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="assets/img/menu/order_med.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Order Medicine<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+
+        <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item">Action</a>
+          <a class="dropdown-item">Another action</a>
+          <a class="dropdown-item">Something else here</a>
+        </div> -->
+      </div>
+
+      <div class="mobile_menu_mn_1">
+        <a
+          class="dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <div class="mob_btn_left_ico">
+            <img src="assets/img/menu/odr_top2.png" alt="" />
+          </div>
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="assets/img/menu/order_heal.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Order Healthcare Products<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <a class="dropdown-item">Action</a>
+          <a class="dropdown-item">Another action</a>
+          <a class="dropdown-item">Something else here</a>
+        </div>
+      </div>
+
+      <div
+        class="mobile_menu_mn_1 mn_bdr_btm"
+        style="padding-right: 50px; margin-bottom: 10px"
+      >
+        <a>
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="assets/img/menu/offer.png" alt="" />
+          </div>
+          <div routerLink="/offers" class="mobile_menu_mn_text">
+            Offers<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+          <div class="mob_mn_new_btn">NEW</div>
+        </a>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+        <a
+          class="dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton2"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="assets/img/menu/account.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            MY Account<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+          <a class="dropdown-item" routerLink="/dashboard-order-details/profile"
+            >Action</a
+          >
+          <a class="dropdown-item">Another action</a>
+          <a class="dropdown-item">Something else here</a>
+        </div>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+        <a routerLink="/dashboard-order-details/order-list">
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="assets/img/menu/orders.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            My Orders<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+        <a routerLink="/dashboard-order-details/medfill-subscription">
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="assets/img/menu/medfill.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Med Refill<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+        <a routerLink="/medpride-membership">
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="assets/img/menu/membership.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Medpride Membership<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+        <a>
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="assets/img/menu/health_vault.png" alt="" />
+          </div>
+          <div
+            routerLink="/dashboard-order-details/health-vault"
+            class="mobile_menu_mn_text"
+          >
+            Health Vault<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+
+      <div
+        class="mobile_menu_mn_1 mn_bdr_btm"
+        style="padding: 5px 15px; margin-bottom: 10px; padding-bottom: 15px"
+      >
+        <a>
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="assets/img/menu/wallet.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Wallet<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+        <a>
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="assets/img/menu/refer_earn.png" alt="" />
+          </div>
+          <div
+            routerLink="/dashboard-order-details/refer-and-earn"
+            class="mobile_menu_mn_text"
+          >
+            Refer and Earn<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+
+      <div class="mobile_menu_mn_1" style="padding: 5px 15px">
+        <a>
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="assets/img/menu/conact_us.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            Contact Us<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+
+      <div
+        class="mobile_menu_mn_1 mn_bdr_btm"
+        style="padding: 5px 15px; padding-bottom: 30px"
+      >
+        <a>
+          <div style="margin-top: -4px" class="mobile_menu_mn_ico">
+            <img src="assets/img/menu/faq.png" alt="" />
+          </div>
+          <div class="mobile_menu_mn_text">
+            FAQ<br />
+            <span
+              >A home where you will find that healing touch that will cure all
+              your health</span
+            >
+          </div>
+        </a>
+      </div>
+      <div class="mobile_menu_mn_1 mn_bdr_btm"></div>
+    </div>
+  </div>
+</div>
+<button class="btn scroll-top"><i class="fa fa-angle-double-up"></i></button>
+<div class="ps-preloader" id="preloader">
+  <div class="ps-preloader-section ps-preloader-left"></div>
+  <div class="ps-preloader-section ps-preloader-right"></div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog suggest-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="padding: 0px; border: none">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          id="modal_close_button"
+          aria-label="Close"
+          style="padding: 0"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body not-login" *ngIf="!Login_Flag">
+        <div class="row">
+          <div class="col-md-12">
+            <img src="assets/assets/img/phone-sign.png" />
+          </div>
+          <div class="col-md-12 pt-3">
+            <h5>NOT LOGGED IN</h5>
+            <h3>Please Login To Suggest</h3>
+            <button (click)="Not_Login_PopClk()">
+              <a
+                class="ps-header__item"
+                data-toggle="modal"
+                data-target="#myModal"
+              >
+                Login</a
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- *ngIf="Login_Flag" -->
+      <div class="modal-body" *ngIf="Login_Flag">
+        <div class="sugest-flex">
+          <img src="{{ userImage }}" />
+          <span>
+            <h5>{{ userName }}</h5>
+            <p>Hi {{ userName }}, Suggest a product</p>
+          </span>
+        </div>
+        <div class="suj-form">
+          <form [formGroup]="Suggest_Product_Form">
+            <input
+              type="text"
+              placeholder="Suggest a product"
+              formControlName="Product_Name"
+            />
+            <small
+              for="Product_Name"
+              class="form-text text-danger"
+              *ngIf="
+                Suggest_Product_Form.controls['Product_Name'].errors
+                  ?.required &&
+                (Suggest_Product_Form.controls['Product_Name'].dirty ||
+                  Suggest_Product_Form.controls['Product_Name'].touched ||
+                  (Suggest_Product_Form.controls['Product_Name'].untouched &&
+                    attemptedSubmit))
+              "
+            >
+              Product required.
+            </small>
+            <small
+              for="pincode"
+              class="form-text text-danger"
+              *ngIf="
+                Suggest_Product_Form.controls['Product_Name'].errors?.minlength
+              "
+            >
+              Minimun 3 Letters.
+            </small>
+            <small
+              for="pincode"
+              class="form-text text-danger"
+              *ngIf="
+                Suggest_Product_Form.controls['Product_Name'].errors?.maxlength
+              "
+            >
+              Maximum 100 Letters.
+            </small>
+
+            <!-- (click)="Submit_Product_Form()" -->
+
+            <!-- data-toggle="modal" data-target="#success" id="upload"  -->
+            <a id="upload" (click)="Submit_Product_Form()">Submit</a>
+            <a data-toggle="modal" data-target="#success" id="pop" hidden
+              >POP</a
+            >
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade success-pop"
+  id="success"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="successLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div
+          class="blue-back"
+          style="background-image: url('../../../assets/img/icon.svg')"
+        >
+          <div class="inner-blue">
+            <div class="blue-img">
+              <img src="assets/img/blue.png" />
+            </div>
+            <div class="blue-cont">
+              <h5>Success!!!</h5>
+              <p style="opacity: 1">
+                We have successfully added your suggestion <br />to our
+                <span style="font-weight: 500; color: white"
+                  >healthy wishlist.</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!------------order medicine pop up-------->
+<section class="mode p-0">
+  <div class="container">
+    <!-- Trigger the modal with a button -->
+    <!-- Modal -->
+    <div class="modal fade" id="refund" role="dialog">
+      <div class="modal-dialog" id="mdwidth1" id="mdwidth">
+        <!-- Modal content-->
+        <div class="modal-content bclolor">
+          <div class="row">
+            <div class="col-md-12">
+              <button
+                type="button"
+                class="closeselect"
+                data-dismiss="modal"
+                id="dismiss-refund"
+              >
+                &times;
+              </button>
+            </div>
+          </div>
+          <!-- <div class="headerpopup">
+            <div class="row p-3"></div>
+          </div> -->
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div
+                  class="col-md-6 col-6 text-center div-box"
+                  *ngFor="let m of medicineName"
+                >
+                  <div class="box3" (click)="orderMedicineRoute()">
+                    <img src="{{ m.image }}" class="img-fluid" />
+                    <label class="medi">{{ m.title }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+</section>
+
+<app-signup-model></app-signup-model>

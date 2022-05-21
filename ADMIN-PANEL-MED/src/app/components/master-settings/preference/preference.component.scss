@@ -1,0 +1,251 @@
+.form-control{
+    background: #052a3d;
+    color: #fff;
+    opacity: 0.7;
+    border: 1px solid white !important;
+  }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+label{
+  color: white;
+  opacity: 0.7;
+  width:100% !important;
+}
+
+.span_numbers{
+  padding-right: 5%;
+}
+
+td {
+  border: 1px solid #85868770;
+  padding: 20px;
+}
+
+.btn{
+  color: #99b2bf ;
+  font-weight: 400;
+}
+
+.card{
+  border-radius: 16px;
+  padding: 27px;
+  background-color: #00496E;
+}
+
+.btn-dark-rounded{
+  margin-left: 12px;
+  background-color: #00283d;
+  border: unset;
+  border-radius: 10.25em;
+  }
+
+  .btn-inverse-dark{
+    background-color: #00496E;
+    background-image: none;
+    border: unset;
+    border-radius: 10.25em;
+  }
+
+  .btn-sm{
+    padding: 0.5rem 1.5rem;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    line-height: 12px;
+    text-transform: capitalize;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.3s ease-in-out;
+    background-color: #033752;
+  }
+
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 15px;
+    color: white !important;
+    //opacity: 0.5 !important;
+  }
+  
+  .icon {
+    border: 0px solid gray;
+    background-color: transparent;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 60px;
+    font-weight: bold;
+    border-radius: 1.25em;
+    align-content: center;
+  }
+
+  
+.modal-body, .modal-header, .modal-footer{
+  background-color: #0b4866;
+  color:#fff;
+  width: 110%;
+  border-bottom: none !important;
+  border-top: none !important;
+  label{
+    width: 100% !important;
+  }
+  .form-control{
+    background: #0b4866;
+    color: #fff;
+    opacity: 0.7;
+    border: 1px solid white;
+  }
+}
+
+.modal-header{
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+}
+.modal-footer{
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+}
+
+
+
+/* Libary CSS */
+.shell {
+  position: relative;
+  line-height: 1;
+  span {
+  position: absolute;
+  left: 3px;
+  top: 1px;
+  color: red;
+  pointer-events: none;
+  z-index: -1;
+    i { /* any of these 3 will work */
+        color: transparent;
+        opacity: 0;
+        visibility: hidden;
+    }
+  }
+}
+
+input.masked,
+.shell span {
+  font-size: 16px;
+  font-family: monospace;
+  padding-right: 10px;
+  background-color: transparent;
+  text-transform: uppercase;
+}
+
+/* Look and feel (not lib specific) */
+
+li {
+  line-height: 4;
+  font-family: helvetica;
+  list-style-type: none;
+  //border-bottom: 1px solid #ccc;
+}
+label { 
+  display: inline-block;
+  //width: 14em;
+  width: 25%;
+}
+input {
+  border: none;
+  
+}
+
+/*Time Picker CSS Styling*/
+
+input[type=time] {
+    color: #99b2bf;
+    font-size: 14px;
+    font-family: "Poppins";
+  }
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+  }
+
+/*Toggle Switch*/
+
+  .toggle-switch {
+    --clr-checked: #df2;
+    --clr-unchecked: #AAAAAA;
+    --clr-focus: var(--clr-checked);
+    --clr-background-checked: #FFFFFF;
+    --clr-background-unchecked: #FFFFFF;
+    --transition-length: 200ms;
+    --transition: cubic-bezier(0.76, 0.08, 0.54, 1.4);
+    --size-height: 1.5em;
+    --size-width: 3em;
+    --size-gap: 0.2em;
+    --size-focus: var(--size-gap);
+    --size-shadow: var(--size-gap);
+    appearance: none;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+    width: var(--size-width);
+    height: var(--size-height);
+    border-radius: calc(var(--size-height) / 2);
+    background: var(--clr-background-unchecked);
+    //box-shadow: inset 0 0 calc(var(--size-height) / 4) var(--clr-shadow);
+  
+  
+    &::after {
+      content: '';
+      position: absolute;
+      top: var(--size-gap);
+      left: var(--size-gap);
+      bottom: var(--size-gap);
+      width: calc(var(--size-height) - (var(--size-gap) * 2));
+      border-radius: 50%;
+      background: var(--clr-unchecked);
+      box-shadow:
+        inset 0 0 calc(var(--size-height) / 4) var(--clr-highlight), 
+        0 0 var(--size-shadow) 0 var(--clr-shadow);
+      transition: 
+        left var(--transition-length) var(--transition),
+        //background var(--transition-length) var(--transition);
+    }
+  
+    &:checked::after {
+      left: calc(var(--size-width) - var(--size-height) + var(--size-gap));
+      background: var(--clr-checked);
+    }
+  
+  }
+  
+  .toggle-switch.tight {
+    --clr-checked: #3df;
+    --clr-unchecked: #AAAAAA;
+    --clr-background-checked: #FFFFFF;
+    --clr-background-hover: #27afcc;
+    --transition-length: 150ms;
+    --size-width: 2.65em;
+    --size-height: 1.8em;
+    --size-gap: 0.1em;
+    --size-focus: 0.15em;
+    //--size-shadow: 0.2em;
+  }
+  
+  .toggle-switch.oversize {
+    --clr-checked: #00B4FF;
+    --clr-unchecked: #AAAAAA;
+    --clr-focus: #eba;
+    --clr-shadow: #FFFFFF;
+    --clr-highlight: #FFFFFF;
+    --size-width: 2.5em;
+    --size-height: 1em;
+    --size-gap: -0.2em;
+    --size-focus: 0.22em;
+    //--size-shadow: 0.2em
+  }
+.help-block {
+  color:#ec5362 !important;
+  
+  font-size: medium;
+}

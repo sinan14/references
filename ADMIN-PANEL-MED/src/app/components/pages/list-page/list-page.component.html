@@ -1,0 +1,166 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Manage Your Team</h5>
+                </div>
+                <div class="card-body">
+
+                                <div class="row">
+                                    <div class="col-md-3 mt-4">
+                                        <div class="card-body card-data"> 
+                                            <div class="row" >
+                                                <a for="validationCustom0" (click)="toplevelLink()"> Top Level Management</a>
+
+                                            </div>
+                                        </div>
+                                       
+                                    </div> 
+
+                                    <div class="col-md-3 mt-4">
+                                        <div class="card-body card-data"> 
+                                            <div class="row" >
+                                                <a for="validationCustom0" class="">Chief Finanacial Officer</a>
+        
+                                            </div>
+                                        </div>
+                                       
+                                    </div> 
+                                    <div class="col-md-3 mt-4">
+                                        <div class="card-body card-data"> 
+                                            <div class="row" >
+                                                <a for="validationCustom0" class="">Chief Operating Officer</a>
+        
+                                            </div>
+                                        </div>
+                                       
+                                    </div> 
+
+                                    <div class="col-md-3 mt-4">
+                                        <div class="card-body card-data"> 
+                                            <div class="row" >
+                                                <a for="validationCustom0" class="">Marketing</a>
+        
+                                            </div>
+                                        </div>
+                                       
+                                    </div> 
+                                </div>
+
+
+                                <div class="row mt-4">
+                                    <div class="col-md-3 ">
+                                        <div class="card-body card-data"> 
+                                            <div class="row" >
+                                                <a for="validationCustom0" class="">Sales</a>
+
+                                            </div>
+                                        </div>
+                                       
+                                    </div> 
+
+                                    <div class="col-md-3">
+                                        <div class="card-body card-data"> 
+                                            <div class="row" >
+                                                <a for="validationCustom0" class="">Human Resource</a>
+        
+                                            </div>
+                                        </div>
+                                       
+                                    </div> 
+                                    <div class="col-md-3">
+                                        <div class="card-body card-data"> 
+                                            <div class="row" >
+                                                <a for="validationCustom0" class="">Customer Relation Management</a>
+        
+                                            </div>
+                                        </div>
+                                       
+                                    </div> 
+
+                                    <div class="col-md-3">
+                                        <div class="card-body card-data"> 
+                                            <div class="row">
+                                                <a for="validationCustom0" class="">Doctor Relation Management</a>
+        
+                                            </div>
+                                        </div>
+                                       
+                                    </div> 
+                                </div>
+
+
+                                <div class="row  mt-4">
+                                    <div class="col-md-3">
+                                        <div class="card-body card-data"> 
+                                            <div class="row" >
+                                                <a for="validationCustom0" class="">Administration</a>
+
+                                            </div>
+                                        </div>
+                                       
+                                    </div> 
+
+                                    <div class="col-md-3">
+                                        <div class="card-body card-data"> 
+                                            <div class="row" >
+                                                <a for="validationCustom0" class=""><i class="fa fa-plus-square-o" data-toggle="modal" data-original-title="test"
+                                                    data-target="#exampleModal" (click)="open(content)"></i>Add Department</a>
+                                               
+                                            </div>
+                                        </div>
+                                       
+                                    </div> 
+                                   
+                                </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+
+
+
+
+<ng-template #content let-modal>
+    <div class="modal-header ">
+        <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Privilege</h5>
+        <button type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body " >
+        <form class="needs-validation">
+            <div class="form">
+                <div class="form-group">
+                    <h6 for="validationCustom01" class="mb-1">Group Name :</h6>
+                    <input class="form-control" id="validationCustom01" type="text">
+                </div>
+                <div class="form-group mb-0">
+                    <h6 for="validationCustom02" class="mb-1">Access Permission :</h6>
+                    <select class="form-control">
+                        <option>Manage Admin</option>
+                        <option>Manage HR</option>
+                        <option>Manage Accounts</option>
+                        <option>Manage Product</option>
+                        <option>Manage Order</option>
+                        <option>Manage Inventory</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dark">ADD</button>
+        <button class="btn btn-dark" type="button" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Close</button>
+    </div>
+</ng-template>

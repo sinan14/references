@@ -1,0 +1,326 @@
+<div class="col-xl-12 col-md-10 col-sm-12 col-xs-12 mt-4">
+  <div style="margin-top: 7%" class="dashboard_right_cnt_sec">
+    <form [formGroup]="familyForm">
+      <div id="personal" class="dashboard_right_txt_row">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="profile_left_avatar_box">
+              <div class="profile_left_avatar_box_img">
+                <input
+                  class="upload-input"
+                  type="file"
+                  accept="image/png, image/jpeg"
+                  name="myfile"
+                  (change)="onChangeFamilyPhoto($event, '352', '250')"
+                />
+                <img *ngIf="familyPhoto" [src]="familyPhoto" alt="" />
+                <img
+                  class="ups-1"
+                  src="../../assets/img/pro-ifelse.png"
+                  *ngIf="!familyPhoto"
+                  alt="profile"
+                />
+              </div>
+              <div class="profile_left_avatar_editt">
+                <i class="fa fa-edit"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Name</div>
+              <input
+                placeholder="Enter name "
+                formControlName="name"
+                [ngClass]="{
+                  'help-block': invalidFamily('name')
+                }"
+                type="text"
+                trim="blur"
+                class="dashboard_right_txt_box_input"
+              />
+              <small
+                class="form-text small-block"
+                *ngIf="invalidFamily('name')"
+              >
+                Required field
+              </small>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Surname</div>
+              <input
+                placeholder="Enter surname "
+                formControlName="surname"
+                [ngClass]="{
+                  'help-block': invalidFamily('surname')
+                }"
+                type="text"
+                trim="blur"
+                class="dashboard_right_txt_box_input"
+                style="background: #f7f7f7"
+              />
+              <small
+                class="form-text small-block"
+                *ngIf="invalidFamily('surname')"
+              >
+                Required field
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Gender</div>
+              <div class="ram-in">
+                <div class="ramagb gender">
+                  <input
+                    type="radio"
+                    formControlName="gender"
+                    value="male"
+                    name="gender"
+                    id="male1"
+                  />
+                  <label class="opt" for="male1"
+                    ><img src="assets/img/dashboard/male.png"
+                  /></label>
+                </div>
+
+                <div class="ramagb gender">
+                  <input
+                    type="radio"
+                    formControlName="gender"
+                    name="gender"
+                    value="female"
+                    id="female1"
+                  />
+                  <label class="opt" for="female1"
+                    ><img src="assets/img/dashboard/female.png"
+                  /></label>
+                </div>
+
+                <div class="ramagb gender">
+                  <input
+                    type="radio"
+                    formControlName="gender"
+                    name="gender"
+                    value="other"
+                    id="neutral"
+                  />
+                  <label class="opt" for="neutral"
+                    ><img
+                      src="assets/img/dashboard/com.png"
+                      style="padding: 14px 15px; object-fit: contain"
+                  /></label>
+                </div>
+              </div>
+            </div>
+            <small
+              class="form-text small-block"
+              *ngIf="invalidFamily('gender')"
+            >
+              Select your gender
+            </small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Age</div>
+              <input
+                formControlName="age"
+                placeholder="Enter age"
+                (change)="validateAge()"
+                [ngClass]="{
+                  'help-block': invalidFamily('age')
+                }"
+                trim="blur"
+                class="dashboard_right_txt_box_input"
+                style="background: #f7f7f7"
+                onfocus="(this.type='number')"
+                onblur="(this.type='text')"
+              />
+              <small class="form-text small-block" *ngIf="invalidFamily('age')">
+                Enter valid age
+              </small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Relation</div>
+              <input
+                placeholder="Enter your relation"
+                formControlName="relation"
+                [ngClass]="{
+                  'help-block': invalidFamily('relation')
+                }"
+                type="text"
+                class="dashboard_right_txt_box_input"
+                style="background: #f7f7f7"
+              /><small
+                class="form-text small-block"
+                *ngIf="invalidFamily('relation')"
+              >
+                required
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Blood Group</div>
+              <div class="gender_rnd_sec" style="padding-left: 0">
+                <div class="ram-in">
+                  <div
+                    *ngFor="let bg of bgroup; let RowIndex = index"
+                    class="ramagb"
+                  >
+                    <input
+                      formControlName="bloodGroup"
+                      id="1b{{ RowIndex }}"
+                      [value]="bg"
+                      type="radio"
+                    />
+                    <label for="1b{{ RowIndex }}" class="opt blood">
+                      {{ bg }}</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <small
+                class="form-text small-block"
+                *ngIf="invalidFamily('bloodGroup')"
+              >
+                Select your blood group
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2 cl_6_mb">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Height</div>
+              <input
+                placeholder="Height "
+                formControlName="height"
+                (change)="validateHeight()"
+                [ngClass]="{
+                  'help-block':
+                    invalidFamily('height') ||
+                    familyForm.controls['height'].errors?.pattern
+                }"
+                onfocus="(this.type='number')"
+                onblur="(this.type='text')"
+                trim="blur"
+                class="dashboard_right_txt_box_input"
+                style="background: #f7f7f7"
+              />
+
+              <small
+                class="form-text small-block"
+                *ngIf="
+                  invalidFamily('height') ||
+                  familyForm.controls['height'].errors?.pattern
+                "
+              >
+                Enter valid height
+              </small>
+            </div>
+          </div>
+          <div class="col-md-2 cl_6_mb">
+            <div class="dashboard_right_txt_box">
+              <div class="dashboard_right_txt_box_lable">Weight</div>
+              <input
+                placeholder="Weight "
+                formControlName="weight"
+                (change)="validateWeight()"
+                onfocus="(this.type='number')"
+                onblur="(this.type='text')"
+                [ngClass]="{
+                  'help-block':
+                    invalidFamily('weight') ||
+                    familyForm.controls['weight'].errors?.pattern
+                }"
+                type="text"
+                trim="blur"
+                class="dashboard_right_txt_box_input"
+                style="background: #f7f7f7"
+              />
+              <small
+                class="form-text small-block"
+                
+                *ngIf="
+                  invalidFamily('weight') ||
+                  familyForm.controls['weight'].errors?.pattern
+                "
+              >
+                Enter valid weight
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li>
+                <label class="checkbox-button">
+                  <input
+                    name="choice1"
+                    class="checkbox-button__input"
+                    type="checkbox"
+                    value="true"
+                    formControlName="permissionToShare"
+                    [checked]="
+                      familyForm.get('permissionToShare').value == 'true'
+                    "
+                  />
+                  <span class="checkbox-button__control" checked></span>
+                  <span class="checkbox-button__label"
+                    >I here by declare that i am lawfully authorised to provide
+                    the above information on behalf of the owner of the
+                    information</span
+                  >
+                </label>
+                <small
+                  class="form-text small-block"
+                  *ngIf="
+                    familyForm.get('permissionToShare').value == false &&
+                    errorFamilyForm
+                  "
+                >
+                  Required
+                </small>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dashboard_right_txt_box" style="text-align: center">
+          <button
+            (click)="onSubmitFamily()"
+            style="cursor: pointer"
+            class="prf_save_dtl"
+          >
+            Save details
+          </button>
+          <button
+            *ngIf="updateFlag"
+            class="btn btn-danger add-delete"
+            (click)="deleteFamilyMember(familyMemberData)"
+          >
+            Delete Member
+          </button>
+        </div>
+        <!-- <div class="dashboard_left_txt_box">
+        
+        </div> -->
+      </div>
+    </form>
+  </div>
+</div>

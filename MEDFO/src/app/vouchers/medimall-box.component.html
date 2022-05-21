@@ -1,0 +1,254 @@
+<div class="ps-page">
+  <app-header></app-header>
+</div>
+
+<section class="coupon-offers inner_new_page_container">
+  <div class="container">
+    <h2>Coupons and Offers</h2>
+    <p>Category</p>
+
+    <div class="tab">
+      <button
+        id="buttonAll"
+        class="tablinks options active"
+        (click)="openCategory($event, 'All')"
+      >
+        <label for="rad1" title="item1">
+          <input id="rad1" value="All" name="category" type="radio" checked />
+          All
+          <img />
+        </label>
+      </button>
+      <button
+        id="button2"
+        class="tablinks options"
+        (click)="openCategory($event, 'medicine')"
+      >
+        <label for="rad2" title="item1">
+          <input id="rad2" value="medicine" name="category" type="radio" />
+          Medicine
+          <img />
+        </label></button
+      ><button
+        id="button3"
+        class="tablinks options"
+        (click)="openCategory($event, 'healthcare')"
+      >
+        <label for="rad3" title="item1">
+          <input id="rad3" value="Healthcare" name="category" type="radio" />
+          Healthcare
+          <img />
+        </label>
+      </button>
+
+      <button
+        id="button4"
+        class="tablinks options"
+        (click)="openCategory($event, 'Subscription')"
+      >
+        <label for="rad4" title="item1">
+          <input id="rad4" value="Subscription" name="category" type="radio" />
+          Subscription
+          <img />
+        </label>
+      </button>
+
+      <button
+        id="button5"
+        class="tablinks options"
+        (click)="openCategory($event, 'Premium Subscription')"
+      >
+        <label for="rad5" title="item1">
+          <input
+            id="rad5"
+            value="medpridemembership"
+            name="category"
+            type="radio"
+          />
+          Medpride Membership
+          <img />
+        </label>
+      </button>
+
+      <!-- [checked]="catForm.get('category').value === cat" -->
+    </div>
+    <div id="London" class="tabcontent">
+      <div class="row coupon-offer-row">
+        <div class="col-md-12 text-center no-coupon">
+          <h3 *ngIf="!filteredCoupons.length">
+            No coupons available in this category
+          </h3>
+        </div>
+
+        <ng-container
+          *ngFor="let coupon of filteredCoupons; let RowIndex = index"
+        >
+          <div class="coupon-offer-div">
+            <div class="coupon-offer-sub">
+              <div class="coupon-offer-img">
+                <img src="{{ coupon.image }}" />
+              </div>
+              <div class="coupon-offer-content">
+                <h4>
+                  {{ coupon.name }}
+                </h4>
+                <div
+                  *ngIf="coupon.termsAndCondition.length > 30"
+                  (click)="viewCoupon(coupon, RowIndex)"
+                  data-toggle="modal"
+                  data-target="#viewCoupon"
+                  style="cursor: pointer"
+                  class="ps-blog__des"
+                  innerHTML="{{ coupon.termsAndCondition | slice: 0:30 }}..."
+                ></div>
+                <div
+                  (click)="viewCoupon(coupon, RowIndex)"
+                  data-toggle="modal"
+                  data-target="#viewCoupon"
+                  style="cursor: pointer"
+                  *ngIf="coupon.termsAndCondition.length < 30"
+                  innerHtml="{{ coupon.termsAndCondition }}"
+                ></div>
+                <button
+                  type="button"
+                  style="cursor: pointer"
+                  class="btn btn-primary copy-code"
+                  (click)="copyText(coupon.code)"
+                  id="buttontext"
+                >
+                  Copy Code
+                </button>
+                <!-- this button is just for testing  -->
+                <!-- <button
+                  type="button"
+                  style="cursor: pointer"
+                  class="btn btn-primary copy-code"
+                  (click)="viewCoupon(coupon)"
+                >
+                  <a data-toggle="modal" data-target="#viewCoupon"
+                    >View Details</a
+                  >
+                </button> -->
+                <!-- testing -->
+                <hr />
+                <div class="coupon-copy">
+                  <div class="row align-items-center">
+                    <div class="col-6 coupon-copy-code">
+                      <input
+                        type="text"
+                        readonly
+                        id="inputfield"
+                        value="{{ coupon.code }}"
+                      />
+                    </div>
+                    <div
+                      (click)="viewCoupon(coupon, RowIndex)"
+                      class="col-6 coupon-details"
+                    >
+                      <a data-toggle="modal" data-target="#viewCoupon"
+                        >View Details</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <app-social-share></app-social-share>
+</section>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="viewCoupon"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="viewCouponLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog coupon" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="coupon-offer-imgs">
+          <img src="{{ showCouponDetails.image }}" />
+        </div>
+        <div class="top-pop-detail">
+          <div class="coupon-copy-codes">
+            <input
+              type="text"
+              readonly
+              id="inputfield"
+              value="{{ showCouponDetails.code }}"
+            />
+          </div>
+          <button
+            (click)="copyText(showCouponDetails.code)"
+            class="btn btn-primary copy-codes p-0"
+            id="buttontext"
+            type="button"
+            style="cursor: pointer"
+          >
+            Copy Code
+          </button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <h5>
+          {{ showCouponDetails.name }}
+        </h5>
+        <p style="font-size: 11px"></p>
+        <hr />
+        <!-- <div class="popup-flex">
+          <img src="assets/img/coupon/pop1.svg" />
+          <div class="popup-content">
+            <h5>Eligibility</h5>
+            <p>
+              Offer valid for all users This offer cannot be clubbed with any
+              other offer or deal.
+            </p>
+          </div>
+        </div> -->
+        <!-- <div class="popup-flex">
+          <img src="assets/img/coupon/pop2.svg" />
+          <div class="popup-content">
+            <h5>How do you get it?</h5>
+            <p>
+              Log into PharmEasy app or website. Check out our T&C page to read
+              all the information related to the contest. Place your order via
+              PharmEasy app or website. Please use the code 5FIT while placing
+              the order. Min product value eligible to get the discount is Rs.
+              50 After the coupon code is applied, please proceed to complete
+              the order process.
+            </p>
+          </div>
+        </div> -->
+        <div class="popup-flex">
+          <img src="assets/img/coupon/pop1.svg" />
+          <div class="popup-content">
+            <h5>Terms and condition</h5>
+            <div [innerHtml]="showCouponDetails.termsAndCondition"></div>
+
+            <!-- <p>
+              Get additonal 5% Off upto Rs.200 on Everherb & LivEasy products on
+              PharmEasy Min product value eligible to get the discount is Rs. 50
+              Offer is eligible only if there is at least one LivEasy/Everherb
+              product in the cart PharmEasy reserves the right to amend the
+              terms & conditions, end the offer, or call back any or all of its
+              offers without prior notice This offer is valid in select cities
+              only.
+            </p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <button id >close modal</button> -->
+<footer class="ps-footer ps-footer--5" style="padding-top: 40px">
+  <app-footer></app-footer>
+</footer>

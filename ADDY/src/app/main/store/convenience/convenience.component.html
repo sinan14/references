@@ -1,0 +1,191 @@
+<body class="shopping-page">
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-9 col-xs-6">
+                    <img src="assets/img/logo.png" class="img-responsive" />
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="right" style="height: 100%;">
+                        <ul>
+                            <li>
+                                <a href=""><i class="fa fa-whatsapp"></i></a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa fa-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+   
+    <section class="sec-padding">
+        <div class="container-fluid">
+            <div class="product-header">
+                <div class="first-div">
+                    <a href="address.html"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                    <h5>Conveniance</h5>
+                </div>
+                <!-- <div class="second-div">
+                    <a href="shoping.html"><img src="assets/img/boxes.png" /></a>
+                </div> -->
+                <div class="second-div">
+                    <a 
+                      ><span></span> <img src="assets/img/filterbox.png"
+                    /></a>
+                    </div>
+            </div>
+        </div>
+        <div class="product-section">
+            <div class="container-fluid" style="max-width: 600px;">
+                <div class="conv-sec mt-50">
+                    <div class="day">
+                        <h4>Day</h4>
+                        <div class="scrolling-wrapper">
+                            <div class="card payment-block">
+                                <input type="radio" class="radio-custom" id="1" name="day" />
+                                <label for="1" class="radio-custom-label">
+                                    <div style="text-align: center; margin-top: -10px; margin-bottom: 15px;">
+                                        <h4>11</h4>
+                                        <p>Monday</p>
+                                    </div>
+                                </label>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="card payment-block">
+                                <input type="radio" class="radio-custom" id="2" name="day" checked="" />
+                                <label for="2" class="radio-custom-label">
+                                    <div style="text-align: center; margin-top: -10px; margin-bottom: 15px;">
+                                        <h4>12</h4>
+                                        <p>Tuesday</p>
+                                    </div>
+                                </label>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="card payment-block">
+                                <input type="radio" class="radio-custom" id="3" name="day" />
+                                <label for="3" class="radio-custom-label">
+                                    <div style="text-align: center; margin-top: -10px; margin-bottom: 15px;">
+                                        <h4>13</h4>
+                                        <p>Wednesday</p>
+                                    </div>
+                                </label>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="card payment-block">
+                                <input type="radio" class="radio-custom" id="5" name="day" />
+                                <label for="5" class="radio-custom-label">
+                                    <div style="text-align: center; margin-top: -10px; margin-bottom: 15px;">
+                                        <h4>14</h4>
+                                        <p>Thursday</p>
+                                    </div>
+                                </label>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="card payment-block">
+                                <input type="radio" class="radio-custom" id="6" name="day" />
+                                <label for="6" class="radio-custom-label">
+                                    <div style="text-align: center; margin-top: -10px; margin-bottom: 15px;">
+                                        <h4>15</h4>
+                                        <p>Friday</p>
+                                    </div>
+                                </label>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="time">
+                        <h4>Time</h4>
+                        <div class="time-block">
+                            <input type="radio" class="radio-custom" id="11" name="time">
+                            <label for="11" class="radio-custom-label">
+                                <div class="time-block-content">
+                                    <div class="first-div">
+                                        <h2>06:30<span>am</span></h2>
+                                    </div>
+                                    <div class="second-div"><p>To</p></div>
+                                    <div class="third-div">
+                                        <h2>10:30<span>am</span></h2>
+                                    </div>
+                                </div>
+                            </label>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="time-block">
+                            <input type="radio" class="radio-custom" id="12" name="time" checked="">
+                            <label for="12" class="radio-custom-label">
+                                <div class="time-block-content">
+                                    <div class="first-div">
+                                        <h2>10:30<span>am</span></h2>
+                                    </div>
+                                    <div class="second-div"><p>To</p></div>
+                                    <div class="third-div">
+                                        <h2>02:30<span>pm</span></h2>
+                                    </div>
+                                </div>
+                            </label>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="time-block">
+                            <input type="radio" class="radio-custom" id="13" name="time">
+                            <label for="13" class="radio-custom-label">
+                                <div class="time-block-content">
+                                    <div class="first-div">
+                                        <h2>02:30<span>pm</span></h2>
+                                    </div>
+                                    <div class="second-div"><p>To</p></div>
+                                    <div class="third-div">
+                                        <h2>06:30<span>pm</span></h2>
+                                    </div>
+                                </div>
+                            </label>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <button class="btn-2 mt-50" [routerLink]="['/review']">Continue</button>
+                        <!-- <button class="btn-2 mt-10" onclick="window.location.href='login.html'">Login to Continue</button> -->
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+        </div>
+    </section>
+      
+       
+    <footer>
+        <h4>Kidteracy Shop</h4>
+        <div class="footer-contact">
+            <p><a href="">+9711234567</a></p>
+            <p><a href="">kidteracy@gmail.com</a></p>
+        </div>
+        <div class="footer-contact">
+            <p>Tax No</p>
+            <p><a href="">12345 12345 1234 </a></p>
+        </div>
+        <div class="footer-contact">
+            <p>Com Reg No</p>
+            <p><a href="">12345 12345 1234</a></p>
+        </div>
+        <div class="footer-bottom">
+            <small>
+                Powered by Addy<br />
+                Copyright (c) 2021, Kidteracy. All rights reserved
+            </small>
+        </div>
+    </footer>
+</body>
+<script type="text/javascript" src="assets/js/js2.js"></script>
+<script type="text/javascript">
+    function testInput(event) {
+        var value = String.fromCharCode(event.which);
+        var pattern = new RegExp(/[a-zåäö ]/i);
+        return pattern.test(value);
+    }
+
+    $("#my-field").bind("keypress", testInput);
+</script>
